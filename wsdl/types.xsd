@@ -4,7 +4,7 @@
         xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
         targetNamespace="http://schemas.microsoft.com/exchange/services/2006/types"
         xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="namespace.xsd"/>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <!-- SOAP header to indicate language for mailbox interaction-->
     <xs:complexType name="MailboxCultureType">
         <xs:simpleContent>
