@@ -16,13 +16,13 @@ const (
 )
 
 type Config struct {
-	endpoint string
-	encoding string
+	Endpoint string `json:"endpoint"`
+	Encoding string `json:"encoding"`
 }
 
-func NewClient(c *Config, h HTTPClient) wsdl.SOAPClient {
+func NewClient(c *Config, h http.RoundTripper) wsdl.SOAPClient {
 	var encoding MessageEncoding
-	switch strings.ToUpper(c.encoding) {
+	switch strings.ToUpper(c.Encoding) {
 	case MTOM:
 	case MMA:
 	default:
@@ -30,13 +30,13 @@ func NewClient(c *Config, h HTTPClient) wsdl.SOAPClient {
 	}
 	return &client{
 		http:     h,
-		endpoint: c.endpoint,
+		endpoint: c.Endpoint,
 		encoding: encoding,
 	}
 }
 
 type client struct {
-	http     HTTPClient
+	http     http.RoundTripper
 	endpoint string
 	encoding MessageEncoding
 }
@@ -72,7 +72,7 @@ func (s *client) Call(ctx context.Context, soapAction string, request, response 
 	req.Header.Set("Content-Type", contentType)
 	req.Header.Set("User-Agent", "ews")
 
-	rsp, err := s.http.Do(req)
+	rsp, err := s.http.RoundTrip(req)
 	if err != nil {
 		return err
 	}

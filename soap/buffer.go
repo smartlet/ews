@@ -26,24 +26,24 @@ func NewBuffer(c int) *Buffer {
 	}
 }
 
-func (b Buffer) Len() int {
+func (b *Buffer) Len() int {
 	return b.len
 }
 
-func (b Buffer) Cap() int {
+func (b *Buffer) Cap() int {
 	return b.cap
 }
 
-func (b Buffer) Bytes() []byte {
+func (b *Buffer) Bytes() []byte {
 	return b.buf[b.off:b.len]
 }
 
-func (b Buffer) Reset() {
+func (b *Buffer) Reset() {
 	b.off = 0
 	b.len = 0
 }
 
-func (b Buffer) Read(p []byte) (int, error) {
+func (b *Buffer) Read(p []byte) (int, error) {
 	if b.off >= b.len {
 		return 0, io.EOF
 	}
@@ -52,7 +52,7 @@ func (b Buffer) Read(p []byte) (int, error) {
 	return n, nil
 }
 
-func (b Buffer) Write(p []byte) (int, error) {
+func (b *Buffer) Write(p []byte) (int, error) {
 	n := len(p)
 	if b.len+n > b.cap {
 		buf := b.buf
@@ -64,7 +64,7 @@ func (b Buffer) Write(p []byte) (int, error) {
 	return n, nil
 }
 
-func (b Buffer) Seek(offset int64, whence int) (int64, error) {
+func (b *Buffer) Seek(offset int64, whence int) (int64, error) {
 	switch whence {
 	case io.SeekStart:
 		b.off = int(offset)
@@ -76,7 +76,7 @@ func (b Buffer) Seek(offset int64, whence int) (int64, error) {
 	return int64(b.off), nil
 }
 
-func (b Buffer) Close() error {
+func (b *Buffer) Close() error {
 	return nil
 }
 

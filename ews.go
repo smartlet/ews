@@ -32,8 +32,8 @@ type Credential interface {
 	Get(meta *Metadata) (string, string, error)
 }
 
-// Authorization 认证接口
-type Authorization interface {
+// Authorizer 认证接口
+type Authorizer interface {
 	Get(meta *Metadata) (string, error)
 	Set(meta *Metadata, auth string) error
 }

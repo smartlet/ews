@@ -7,6 +7,12 @@ import (
 	"time"
 )
 
+type (
+	RoundTripper = http.RoundTripper
+	Request      = http.Request
+	Response     = http.Response
+)
+
 // 默认值与go/pkg/http相同
 const (
 	defaultDialerTimeout       = 30 * time.Second
@@ -34,22 +40,20 @@ type Config struct {
 	Password            string        `json:"password"`
 }
 
-func newHTTPClient(c *Config) *http.Client {
-	return &http.Client{
-		Transport: &http.Transport{
-			Proxy: http.ProxyFromEnvironment,
-			DialContext: (&net.Dialer{
-				Timeout:   nvl(c.DialerTimeout, defaultDialerTimeout),
-				KeepAlive: nvl(c.DialerKeepAlive, defaultDialerKeepAlive),
-			}).DialContext,
-			TLSClientConfig:     &tls.Config{InsecureSkipVerify: c.InsecureSkipVerify},
-			TLSHandshakeTimeout: nvl(c.TLSHandshakeTimeout, defaultTLSHandshakeTimeout),
-			MaxIdleConnsPerHost: nvl(c.MaxIdleConnsPerHost, defaultMaxIdleConnsPerHost),
-			MaxConnsPerHost:     nvl(c.MaxConnsPerHost, defaultMaxConnsPerHost),
-			IdleConnTimeout:     nvl(c.IdleConnTimeout, defaultIdleConnTimeout),
-			WriteBufferSize:     nvl(c.WriteBufferSize, defaultWriteBufferSize),
-			ReadBufferSize:      nvl(c.ReadBufferSize, defaultReadBufferSize),
-		},
+func NewHTTPRoundTripper(c *Config) http.RoundTripper {
+	return &http.Transport{
+		Proxy: http.ProxyFromEnvironment,
+		DialContext: (&net.Dialer{
+			Timeout:   nvl(c.DialerTimeout, defaultDialerTimeout),
+			KeepAlive: nvl(c.DialerKeepAlive, defaultDialerKeepAlive),
+		}).DialContext,
+		TLSClientConfig:     &tls.Config{InsecureSkipVerify: c.InsecureSkipVerify},
+		TLSHandshakeTimeout: nvl(c.TLSHandshakeTimeout, defaultTLSHandshakeTimeout),
+		MaxIdleConnsPerHost: nvl(c.MaxIdleConnsPerHost, defaultMaxIdleConnsPerHost),
+		MaxConnsPerHost:     nvl(c.MaxConnsPerHost, defaultMaxConnsPerHost),
+		IdleConnTimeout:     nvl(c.IdleConnTimeout, defaultIdleConnTimeout),
+		WriteBufferSize:     nvl(c.WriteBufferSize, defaultWriteBufferSize),
+		ReadBufferSize:      nvl(c.ReadBufferSize, defaultReadBufferSize),
 	}
 }
 

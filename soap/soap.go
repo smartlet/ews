@@ -3,7 +3,6 @@ package soap
 import (
 	"encoding/xml"
 	"io"
-	"net/http"
 )
 
 const (
@@ -14,10 +13,6 @@ const (
 	mtomContentType string = `multipart/related; start-info="application/soap+xml"; type="application/xop+xml"; boundary="%s"`
 	XmlNsSoapEnv    string = "http://schemas.xmlsoap.org/soap/envelope/"
 )
-
-type HTTPClient interface {
-	Do(req *http.Request) (*http.Response, error)
-}
 
 type SOAPEnvelope struct {
 	XMLName xml.Name `xml:"soap:Envelope"`
