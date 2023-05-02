@@ -16324,7 +16324,7 @@ func NewExchangeServicePortType(client SOAPClient) ExchangeServicePortType {
 
 func (service *exchangeServicePortType) ResolveNamesContext(ctx context.Context, request *ResolveNamesType) (*ResolveNamesResponseType, error) {
 	response := new(ResolveNamesResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ResolveNames", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ResolveNames", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16341,7 +16341,7 @@ func (service *exchangeServicePortType) ResolveNames(request *ResolveNamesType) 
 
 func (service *exchangeServicePortType) ExpandDLContext(ctx context.Context, request *ExpandDLType) (*ExpandDLResponseType, error) {
 	response := new(ExpandDLResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ExpandDL", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ExpandDL", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16358,7 +16358,7 @@ func (service *exchangeServicePortType) ExpandDL(request *ExpandDLType) (*Expand
 
 func (service *exchangeServicePortType) GetServerTimeZonesContext(ctx context.Context, request *GetServerTimeZonesType) (*GetServerTimeZonesResponseType, error) {
 	response := new(GetServerTimeZonesResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetServerTimeZones", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetServerTimeZones", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16375,7 +16375,7 @@ func (service *exchangeServicePortType) GetServerTimeZones(request *GetServerTim
 
 func (service *exchangeServicePortType) FindFolderContext(ctx context.Context, request *FindFolderType) (*FindFolderResponseType, error) {
 	response := new(FindFolderResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16392,7 +16392,7 @@ func (service *exchangeServicePortType) FindFolder(request *FindFolderType) (*Fi
 
 func (service *exchangeServicePortType) FindItemContext(ctx context.Context, request *FindItemType) (*FindItemResponseType, error) {
 	response := new(FindItemResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindItem", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindItem", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16409,7 +16409,7 @@ func (service *exchangeServicePortType) FindItem(request *FindItemType) (*FindIt
 
 func (service *exchangeServicePortType) GetFolderContext(ctx context.Context, request *GetFolderType) (*GetFolderResponseType, error) {
 	response := new(GetFolderResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16426,7 +16426,7 @@ func (service *exchangeServicePortType) GetFolder(request *GetFolderType) (*GetF
 
 func (service *exchangeServicePortType) UploadItemsContext(ctx context.Context, request *UploadItemsType) (*UploadItemsResponseType, error) {
 	response := new(UploadItemsResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UploadItems", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UploadItems", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16443,7 +16443,7 @@ func (service *exchangeServicePortType) UploadItems(request *UploadItemsType) (*
 
 func (service *exchangeServicePortType) ExportItemsContext(ctx context.Context, request *ExportItemsType) (*ExportItemsResponseType, error) {
 	response := new(ExportItemsResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ExportItems", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ExportItems", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16460,7 +16460,7 @@ func (service *exchangeServicePortType) ExportItems(request *ExportItemsType) (*
 
 func (service *exchangeServicePortType) ConvertIdContext(ctx context.Context, request *ConvertIdType) (*ConvertIdResponseType, error) {
 	response := new(ConvertIdResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ConvertId", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ConvertId", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16477,7 +16477,7 @@ func (service *exchangeServicePortType) ConvertId(request *ConvertIdType) (*Conv
 
 func (service *exchangeServicePortType) CreateFolderContext(ctx context.Context, request *CreateFolderType) (*CreateFolderResponseType, error) {
 	response := new(CreateFolderResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16494,7 +16494,7 @@ func (service *exchangeServicePortType) CreateFolder(request *CreateFolderType) 
 
 func (service *exchangeServicePortType) CreateFolderPathContext(ctx context.Context, request *CreateFolderPathType) (*CreateFolderPathResponseType, error) {
 	response := new(CreateFolderPathResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateFolderPath", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateFolderPath", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16511,7 +16511,7 @@ func (service *exchangeServicePortType) CreateFolderPath(request *CreateFolderPa
 
 func (service *exchangeServicePortType) DeleteFolderContext(ctx context.Context, request *DeleteFolderType) (*DeleteFolderResponseType, error) {
 	response := new(DeleteFolderResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16528,7 +16528,7 @@ func (service *exchangeServicePortType) DeleteFolder(request *DeleteFolderType) 
 
 func (service *exchangeServicePortType) EmptyFolderContext(ctx context.Context, request *EmptyFolderType) (*EmptyFolderResponseType, error) {
 	response := new(EmptyFolderResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/EmptyFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/EmptyFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16545,7 +16545,7 @@ func (service *exchangeServicePortType) EmptyFolder(request *EmptyFolderType) (*
 
 func (service *exchangeServicePortType) UpdateFolderContext(ctx context.Context, request *UpdateFolderType) (*UpdateFolderResponseType, error) {
 	response := new(UpdateFolderResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16562,7 +16562,7 @@ func (service *exchangeServicePortType) UpdateFolder(request *UpdateFolderType) 
 
 func (service *exchangeServicePortType) MoveFolderContext(ctx context.Context, request *MoveFolderType) (*MoveFolderResponseType, error) {
 	response := new(MoveFolderResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/MoveFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/MoveFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16579,7 +16579,7 @@ func (service *exchangeServicePortType) MoveFolder(request *MoveFolderType) (*Mo
 
 func (service *exchangeServicePortType) CopyFolderContext(ctx context.Context, request *CopyFolderType) (*CopyFolderResponseType, error) {
 	response := new(CopyFolderResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CopyFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CopyFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16596,7 +16596,7 @@ func (service *exchangeServicePortType) CopyFolder(request *CopyFolderType) (*Co
 
 func (service *exchangeServicePortType) SubscribeContext(ctx context.Context, request *SubscribeType) (*SubscribeResponseType, error) {
 	response := new(SubscribeResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/Subscribe", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/Subscribe", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16613,7 +16613,7 @@ func (service *exchangeServicePortType) Subscribe(request *SubscribeType) (*Subs
 
 func (service *exchangeServicePortType) UnsubscribeContext(ctx context.Context, request *UnsubscribeType) (*UnsubscribeResponseType, error) {
 	response := new(UnsubscribeResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/Unsubscribe", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/Unsubscribe", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16630,7 +16630,7 @@ func (service *exchangeServicePortType) Unsubscribe(request *UnsubscribeType) (*
 
 func (service *exchangeServicePortType) GetEventsContext(ctx context.Context, request *GetEventsType) (*GetEventsResponseType, error) {
 	response := new(GetEventsResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetEvents", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetEvents", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16647,7 +16647,7 @@ func (service *exchangeServicePortType) GetEvents(request *GetEventsType) (*GetE
 
 func (service *exchangeServicePortType) GetStreamingEventsContext(ctx context.Context, request *GetStreamingEventsType) (*GetStreamingEventsResponseType, error) {
 	response := new(GetStreamingEventsResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetEvents", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetEvents", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16664,7 +16664,7 @@ func (service *exchangeServicePortType) GetStreamingEvents(request *GetStreaming
 
 func (service *exchangeServicePortType) SyncFolderHierarchyContext(ctx context.Context, request *SyncFolderHierarchyType) (*SyncFolderHierarchyResponseType, error) {
 	response := new(SyncFolderHierarchyResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SyncFolderHierarchy", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SyncFolderHierarchy", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16681,7 +16681,7 @@ func (service *exchangeServicePortType) SyncFolderHierarchy(request *SyncFolderH
 
 func (service *exchangeServicePortType) SyncFolderItemsContext(ctx context.Context, request *SyncFolderItemsType) (*SyncFolderItemsResponseType, error) {
 	response := new(SyncFolderItemsResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SyncFolderItems", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SyncFolderItems", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16698,7 +16698,7 @@ func (service *exchangeServicePortType) SyncFolderItems(request *SyncFolderItems
 
 func (service *exchangeServicePortType) CreateManagedFolderContext(ctx context.Context, request *CreateManagedFolderRequestType) (*CreateManagedFolderResponseType, error) {
 	response := new(CreateManagedFolderResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateManagedFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateManagedFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16715,7 +16715,7 @@ func (service *exchangeServicePortType) CreateManagedFolder(request *CreateManag
 
 func (service *exchangeServicePortType) GetItemContext(ctx context.Context, request *GetItemType) (*GetItemResponseType, error) {
 	response := new(GetItemResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetItem", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetItem", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16732,7 +16732,7 @@ func (service *exchangeServicePortType) GetItem(request *GetItemType) (*GetItemR
 
 func (service *exchangeServicePortType) CreateItemContext(ctx context.Context, request *CreateItemType) (*CreateItemResponseType, error) {
 	response := new(CreateItemResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateItem", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateItem", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16749,7 +16749,7 @@ func (service *exchangeServicePortType) CreateItem(request *CreateItemType) (*Cr
 
 func (service *exchangeServicePortType) DeleteItemContext(ctx context.Context, request *DeleteItemType) (*DeleteItemResponseType, error) {
 	response := new(DeleteItemResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteItem", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteItem", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16766,7 +16766,7 @@ func (service *exchangeServicePortType) DeleteItem(request *DeleteItemType) (*De
 
 func (service *exchangeServicePortType) UpdateItemContext(ctx context.Context, request *UpdateItemType) (*UpdateItemResponseType, error) {
 	response := new(UpdateItemResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateItem", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateItem", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16783,7 +16783,7 @@ func (service *exchangeServicePortType) UpdateItem(request *UpdateItemType) (*Up
 
 func (service *exchangeServicePortType) UpdateItemInRecoverableItemsContext(ctx context.Context, request *UpdateItemInRecoverableItemsType) (*UpdateItemInRecoverableItemsResponseType, error) {
 	response := new(UpdateItemInRecoverableItemsResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateItemInRecoverableItems", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateItemInRecoverableItems", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16800,7 +16800,7 @@ func (service *exchangeServicePortType) UpdateItemInRecoverableItems(request *Up
 
 func (service *exchangeServicePortType) SendItemContext(ctx context.Context, request *SendItemType) (*SendItemResponseType, error) {
 	response := new(SendItemResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SendItem", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SendItem", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16817,7 +16817,7 @@ func (service *exchangeServicePortType) SendItem(request *SendItemType) (*SendIt
 
 func (service *exchangeServicePortType) MoveItemContext(ctx context.Context, request *MoveItemType) (*MoveItemResponseType, error) {
 	response := new(MoveItemResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/MoveItem", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/MoveItem", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16834,7 +16834,7 @@ func (service *exchangeServicePortType) MoveItem(request *MoveItemType) (*MoveIt
 
 func (service *exchangeServicePortType) CopyItemContext(ctx context.Context, request *CopyItemType) (*CopyItemResponseType, error) {
 	response := new(CopyItemResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CopyItem", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CopyItem", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16851,7 +16851,7 @@ func (service *exchangeServicePortType) CopyItem(request *CopyItemType) (*CopyIt
 
 func (service *exchangeServicePortType) ArchiveItemContext(ctx context.Context, request *ArchiveItemType) (*ArchiveItemResponseType, error) {
 	response := new(ArchiveItemResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ArchiveItem", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ArchiveItem", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16868,7 +16868,7 @@ func (service *exchangeServicePortType) ArchiveItem(request *ArchiveItemType) (*
 
 func (service *exchangeServicePortType) CreateAttachmentContext(ctx context.Context, request *CreateAttachmentType) (*CreateAttachmentResponseType, error) {
 	response := new(CreateAttachmentResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateAttachment", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateAttachment", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16885,7 +16885,7 @@ func (service *exchangeServicePortType) CreateAttachment(request *CreateAttachme
 
 func (service *exchangeServicePortType) DeleteAttachmentContext(ctx context.Context, request *DeleteAttachmentType) (*DeleteAttachmentResponseType, error) {
 	response := new(DeleteAttachmentResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteAttachment", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteAttachment", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16902,7 +16902,7 @@ func (service *exchangeServicePortType) DeleteAttachment(request *DeleteAttachme
 
 func (service *exchangeServicePortType) GetAttachmentContext(ctx context.Context, request *GetAttachmentType) (*GetAttachmentResponseType, error) {
 	response := new(GetAttachmentResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetAttachment", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetAttachment", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16919,7 +16919,7 @@ func (service *exchangeServicePortType) GetAttachment(request *GetAttachmentType
 
 func (service *exchangeServicePortType) GetClientAccessTokenContext(ctx context.Context, request *GetClientAccessTokenType) (*GetClientAccessTokenResponseType, error) {
 	response := new(GetClientAccessTokenResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetClientAccessToken", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetClientAccessToken", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16936,7 +16936,7 @@ func (service *exchangeServicePortType) GetClientAccessToken(request *GetClientA
 
 func (service *exchangeServicePortType) GetDelegateContext(ctx context.Context, request *GetDelegateType) (*GetDelegateResponseMessageType, error) {
 	response := new(GetDelegateResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetDelegate", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetDelegate", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16953,7 +16953,7 @@ func (service *exchangeServicePortType) GetDelegate(request *GetDelegateType) (*
 
 func (service *exchangeServicePortType) AddDelegateContext(ctx context.Context, request *AddDelegateType) (*AddDelegateResponseMessageType, error) {
 	response := new(AddDelegateResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddDelegate", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddDelegate", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16970,7 +16970,7 @@ func (service *exchangeServicePortType) AddDelegate(request *AddDelegateType) (*
 
 func (service *exchangeServicePortType) RemoveDelegateContext(ctx context.Context, request *RemoveDelegateType) (*RemoveDelegateResponseMessageType, error) {
 	response := new(RemoveDelegateResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveDelegate", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveDelegate", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -16987,7 +16987,7 @@ func (service *exchangeServicePortType) RemoveDelegate(request *RemoveDelegateTy
 
 func (service *exchangeServicePortType) UpdateDelegateContext(ctx context.Context, request *UpdateDelegateType) (*UpdateDelegateResponseMessageType, error) {
 	response := new(UpdateDelegateResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateDelegate", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateDelegate", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17004,7 +17004,7 @@ func (service *exchangeServicePortType) UpdateDelegate(request *UpdateDelegateTy
 
 func (service *exchangeServicePortType) CreateUserConfigurationContext(ctx context.Context, request *CreateUserConfigurationType) (*CreateUserConfigurationResponseType, error) {
 	response := new(CreateUserConfigurationResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateUserConfiguration", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateUserConfiguration", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17021,7 +17021,7 @@ func (service *exchangeServicePortType) CreateUserConfiguration(request *CreateU
 
 func (service *exchangeServicePortType) DeleteUserConfigurationContext(ctx context.Context, request *DeleteUserConfigurationType) (*DeleteUserConfigurationResponseType, error) {
 	response := new(DeleteUserConfigurationResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteUserConfiguration", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteUserConfiguration", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17038,7 +17038,7 @@ func (service *exchangeServicePortType) DeleteUserConfiguration(request *DeleteU
 
 func (service *exchangeServicePortType) GetUserConfigurationContext(ctx context.Context, request *GetUserConfigurationType) (*GetUserConfigurationResponseType, error) {
 	response := new(GetUserConfigurationResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserConfiguration", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserConfiguration", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17055,7 +17055,7 @@ func (service *exchangeServicePortType) GetUserConfiguration(request *GetUserCon
 
 func (service *exchangeServicePortType) GetSpecificUserConfigurationContext(ctx context.Context, request *GetSpecificUserConfigurationType) (*GetSpecificUserConfigurationResponseType, error) {
 	response := new(GetSpecificUserConfigurationResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSpecificUserConfiguration", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSpecificUserConfiguration", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17072,7 +17072,7 @@ func (service *exchangeServicePortType) GetSpecificUserConfiguration(request *Ge
 
 func (service *exchangeServicePortType) UpdateUserConfigurationContext(ctx context.Context, request *UpdateUserConfigurationType) (*UpdateUserConfigurationResponseType, error) {
 	response := new(UpdateUserConfigurationResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateUserConfiguration", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateUserConfiguration", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17089,7 +17089,7 @@ func (service *exchangeServicePortType) UpdateUserConfiguration(request *UpdateU
 
 func (service *exchangeServicePortType) GetUserAvailabilityContext(ctx context.Context, request *GetUserAvailabilityRequestType) (*GetUserAvailabilityResponseType, error) {
 	response := new(GetUserAvailabilityResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserAvailability", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserAvailability", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17106,7 +17106,7 @@ func (service *exchangeServicePortType) GetUserAvailability(request *GetUserAvai
 
 func (service *exchangeServicePortType) GetUserOofSettingsContext(ctx context.Context, request *GetUserOofSettingsRequest) (*GetUserOofSettingsResponse, error) {
 	response := new(GetUserOofSettingsResponse)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserOofSettings", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserOofSettings", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17123,7 +17123,7 @@ func (service *exchangeServicePortType) GetUserOofSettings(request *GetUserOofSe
 
 func (service *exchangeServicePortType) SetUserOofSettingsContext(ctx context.Context, request *SetUserOofSettingsRequest) (*SetUserOofSettingsResponse, error) {
 	response := new(SetUserOofSettingsResponse)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetUserOofSettings", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetUserOofSettings", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17140,7 +17140,7 @@ func (service *exchangeServicePortType) SetUserOofSettings(request *SetUserOofSe
 
 func (service *exchangeServicePortType) GetServiceConfigurationContext(ctx context.Context, request *GetServiceConfigurationType) (*GetServiceConfigurationResponseMessageType, error) {
 	response := new(GetServiceConfigurationResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetServiceConfiguration", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetServiceConfiguration", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17157,7 +17157,7 @@ func (service *exchangeServicePortType) GetServiceConfiguration(request *GetServ
 
 func (service *exchangeServicePortType) GetMailTipsContext(ctx context.Context, request *GetMailTipsType) (*GetMailTipsResponseMessageType, error) {
 	response := new(GetMailTipsResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetMailTips", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetMailTips", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17174,7 +17174,7 @@ func (service *exchangeServicePortType) GetMailTips(request *GetMailTipsType) (*
 
 func (service *exchangeServicePortType) PlayOnPhoneContext(ctx context.Context, request *PlayOnPhoneType) (*PlayOnPhoneResponseMessageType, error) {
 	response := new(PlayOnPhoneResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/PlayOnPhone", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/PlayOnPhone", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17191,7 +17191,7 @@ func (service *exchangeServicePortType) PlayOnPhone(request *PlayOnPhoneType) (*
 
 func (service *exchangeServicePortType) GetPhoneCallInformationContext(ctx context.Context, request *GetPhoneCallInformationType) (*GetPhoneCallInformationResponseMessageType, error) {
 	response := new(GetPhoneCallInformationResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetPhoneCallInformation", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetPhoneCallInformation", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17208,7 +17208,7 @@ func (service *exchangeServicePortType) GetPhoneCallInformation(request *GetPhon
 
 func (service *exchangeServicePortType) DisconnectPhoneCallContext(ctx context.Context, request *DisconnectPhoneCallType) (*DisconnectPhoneCallResponseMessageType, error) {
 	response := new(DisconnectPhoneCallResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DisconnectPhoneCall", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DisconnectPhoneCall", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17225,7 +17225,7 @@ func (service *exchangeServicePortType) DisconnectPhoneCall(request *DisconnectP
 
 func (service *exchangeServicePortType) GetSharingMetadataContext(ctx context.Context, request *GetSharingMetadataType) (*GetSharingMetadataResponseMessageType, error) {
 	response := new(GetSharingMetadataResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSharingMetadata", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSharingMetadata", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17242,7 +17242,7 @@ func (service *exchangeServicePortType) GetSharingMetadata(request *GetSharingMe
 
 func (service *exchangeServicePortType) RefreshSharingFolderContext(ctx context.Context, request *RefreshSharingFolderType) (*RefreshSharingFolderResponseMessageType, error) {
 	response := new(RefreshSharingFolderResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RefreshSharingFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RefreshSharingFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17259,7 +17259,7 @@ func (service *exchangeServicePortType) RefreshSharingFolder(request *RefreshSha
 
 func (service *exchangeServicePortType) GetSharingFolderContext(ctx context.Context, request *GetSharingFolderType) (*GetSharingFolderResponseMessageType, error) {
 	response := new(GetSharingFolderResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSharingFolder", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSharingFolder", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17276,7 +17276,7 @@ func (service *exchangeServicePortType) GetSharingFolder(request *GetSharingFold
 
 func (service *exchangeServicePortType) SetTeamMailboxContext(ctx context.Context, request *SetTeamMailboxRequestType) (*SetTeamMailboxResponseMessageType, error) {
 	response := new(SetTeamMailboxResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetTeamMailbox", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetTeamMailbox", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17293,7 +17293,7 @@ func (service *exchangeServicePortType) SetTeamMailbox(request *SetTeamMailboxRe
 
 func (service *exchangeServicePortType) UnpinTeamMailboxContext(ctx context.Context, request *UnpinTeamMailboxRequestType) (*UnpinTeamMailboxResponseMessageType, error) {
 	response := new(UnpinTeamMailboxResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UnpinTeamMailbox", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UnpinTeamMailbox", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17310,7 +17310,7 @@ func (service *exchangeServicePortType) UnpinTeamMailbox(request *UnpinTeamMailb
 
 func (service *exchangeServicePortType) GetRoomListsContext(ctx context.Context, request *GetRoomListsType) (*GetRoomListsResponseMessageType, error) {
 	response := new(GetRoomListsResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetRoomLists", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetRoomLists", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17327,7 +17327,7 @@ func (service *exchangeServicePortType) GetRoomLists(request *GetRoomListsType) 
 
 func (service *exchangeServicePortType) GetRoomsContext(ctx context.Context, request *GetRoomsType) (*GetRoomsResponseMessageType, error) {
 	response := new(GetRoomsResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetRooms", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetRooms", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17344,7 +17344,7 @@ func (service *exchangeServicePortType) GetRooms(request *GetRoomsType) (*GetRoo
 
 func (service *exchangeServicePortType) FindMessageTrackingReportContext(ctx context.Context, request *FindMessageTrackingReportRequestType) (*FindMessageTrackingReportResponseMessageType, error) {
 	response := new(FindMessageTrackingReportResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindMessageTrackingReport", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindMessageTrackingReport", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17361,7 +17361,7 @@ func (service *exchangeServicePortType) FindMessageTrackingReport(request *FindM
 
 func (service *exchangeServicePortType) GetMessageTrackingReportContext(ctx context.Context, request *GetMessageTrackingReportRequestType) (*GetMessageTrackingReportResponseMessageType, error) {
 	response := new(GetMessageTrackingReportResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetMessageTrackingReport", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetMessageTrackingReport", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17378,7 +17378,7 @@ func (service *exchangeServicePortType) GetMessageTrackingReport(request *GetMes
 
 func (service *exchangeServicePortType) FindConversationContext(ctx context.Context, request *FindConversationType) (*FindConversationResponseMessageType, error) {
 	response := new(FindConversationResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindConversation", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindConversation", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17395,7 +17395,7 @@ func (service *exchangeServicePortType) FindConversation(request *FindConversati
 
 func (service *exchangeServicePortType) ApplyConversationActionContext(ctx context.Context, request *ApplyConversationActionType) (*ApplyConversationActionResponseType, error) {
 	response := new(ApplyConversationActionResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ApplyConversationAction", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ApplyConversationAction", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17412,7 +17412,7 @@ func (service *exchangeServicePortType) ApplyConversationAction(request *ApplyCo
 
 func (service *exchangeServicePortType) GetConversationItemsContext(ctx context.Context, request *GetConversationItemsType) (*GetConversationItemsResponseType, error) {
 	response := new(GetConversationItemsResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetConversationItems", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetConversationItems", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17429,7 +17429,7 @@ func (service *exchangeServicePortType) GetConversationItems(request *GetConvers
 
 func (service *exchangeServicePortType) FindPeopleContext(ctx context.Context, request *FindPeopleType) (*FindPeopleResponseMessageType, error) {
 	response := new(FindPeopleResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindPeople", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindPeople", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17446,7 +17446,7 @@ func (service *exchangeServicePortType) FindPeople(request *FindPeopleType) (*Fi
 
 func (service *exchangeServicePortType) FindTagsContext(ctx context.Context, request *FindTagsType) (*FindTagsResponseMessageType, error) {
 	response := new(FindTagsResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindTags", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindTags", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17463,7 +17463,7 @@ func (service *exchangeServicePortType) FindTags(request *FindTagsType) (*FindTa
 
 func (service *exchangeServicePortType) AddTagContext(ctx context.Context, request *AddTagType) (*AddTagResponseMessageType, error) {
 	response := new(AddTagResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddTag", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddTag", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17480,7 +17480,7 @@ func (service *exchangeServicePortType) AddTag(request *AddTagType) (*AddTagResp
 
 func (service *exchangeServicePortType) HideTagContext(ctx context.Context, request *HideTagType) (*HideTagResponseMessageType, error) {
 	response := new(HideTagResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/HideTag", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/HideTag", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17497,7 +17497,7 @@ func (service *exchangeServicePortType) HideTag(request *HideTagType) (*HideTagR
 
 func (service *exchangeServicePortType) GetPersonaContext(ctx context.Context, request *GetPersonaType) (*GetPersonaResponseMessageType, error) {
 	response := new(GetPersonaResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetPersona", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetPersona", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17514,7 +17514,7 @@ func (service *exchangeServicePortType) GetPersona(request *GetPersonaType) (*Ge
 
 func (service *exchangeServicePortType) GetInboxRulesContext(ctx context.Context, request *GetInboxRulesRequestType) (*GetInboxRulesResponseType, error) {
 	response := new(GetInboxRulesResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetInboxRules", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetInboxRules", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17531,7 +17531,7 @@ func (service *exchangeServicePortType) GetInboxRules(request *GetInboxRulesRequ
 
 func (service *exchangeServicePortType) UpdateInboxRulesContext(ctx context.Context, request *UpdateInboxRulesRequestType) (*UpdateInboxRulesResponseType, error) {
 	response := new(UpdateInboxRulesResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateInboxRules", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateInboxRules", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17548,7 +17548,7 @@ func (service *exchangeServicePortType) UpdateInboxRules(request *UpdateInboxRul
 
 func (service *exchangeServicePortType) GetPasswordExpirationDateContext(ctx context.Context, request *GetPasswordExpirationDateType) (*GetPasswordExpirationDateResponseMessageType, error) {
 	response := new(GetPasswordExpirationDateResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetPasswordExpirationDate", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetPasswordExpirationDate", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17565,7 +17565,7 @@ func (service *exchangeServicePortType) GetPasswordExpirationDate(request *GetPa
 
 func (service *exchangeServicePortType) GetSearchableMailboxesContext(ctx context.Context, request *GetSearchableMailboxesType) (*GetSearchableMailboxesResponseMessageType, error) {
 	response := new(GetSearchableMailboxesResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSearchableMailboxes", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSearchableMailboxes", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17582,7 +17582,7 @@ func (service *exchangeServicePortType) GetSearchableMailboxes(request *GetSearc
 
 func (service *exchangeServicePortType) SearchMailboxesContext(ctx context.Context, request *SearchMailboxesType) (*SearchMailboxesResponseType, error) {
 	response := new(SearchMailboxesResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SearchMailboxes", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SearchMailboxes", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17599,7 +17599,7 @@ func (service *exchangeServicePortType) SearchMailboxes(request *SearchMailboxes
 
 func (service *exchangeServicePortType) GetDiscoverySearchConfigurationContext(ctx context.Context, request *GetDiscoverySearchConfigurationType) (*GetDiscoverySearchConfigurationResponseMessageType, error) {
 	response := new(GetDiscoverySearchConfigurationResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetDiscoverySearchConfiguration", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetDiscoverySearchConfiguration", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17616,7 +17616,7 @@ func (service *exchangeServicePortType) GetDiscoverySearchConfiguration(request 
 
 func (service *exchangeServicePortType) GetHoldOnMailboxesContext(ctx context.Context, request *GetHoldOnMailboxesType) (*GetHoldOnMailboxesResponseMessageType, error) {
 	response := new(GetHoldOnMailboxesResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetHoldOnMailboxes", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetHoldOnMailboxes", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17633,7 +17633,7 @@ func (service *exchangeServicePortType) GetHoldOnMailboxes(request *GetHoldOnMai
 
 func (service *exchangeServicePortType) SetHoldOnMailboxesContext(ctx context.Context, request *SetHoldOnMailboxesType) (*SetHoldOnMailboxesResponseMessageType, error) {
 	response := new(SetHoldOnMailboxesResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetHoldOnMailboxes", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetHoldOnMailboxes", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17650,7 +17650,7 @@ func (service *exchangeServicePortType) SetHoldOnMailboxes(request *SetHoldOnMai
 
 func (service *exchangeServicePortType) GetNonIndexableItemStatisticsContext(ctx context.Context, request *GetNonIndexableItemStatisticsType) (*GetNonIndexableItemStatisticsResponseMessageType, error) {
 	response := new(GetNonIndexableItemStatisticsResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetNonIndexableItemStatistics", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetNonIndexableItemStatistics", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17667,7 +17667,7 @@ func (service *exchangeServicePortType) GetNonIndexableItemStatistics(request *G
 
 func (service *exchangeServicePortType) GetNonIndexableItemDetailsContext(ctx context.Context, request *GetNonIndexableItemDetailsType) (*GetNonIndexableItemDetailsResponseMessageType, error) {
 	response := new(GetNonIndexableItemDetailsResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetNonIndexableItemDetails", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetNonIndexableItemDetails", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17684,7 +17684,7 @@ func (service *exchangeServicePortType) GetNonIndexableItemDetails(request *GetN
 
 func (service *exchangeServicePortType) MarkAllItemsAsReadContext(ctx context.Context, request *MarkAllItemsAsReadType) (*MarkAllItemsAsReadResponseType, error) {
 	response := new(MarkAllItemsAsReadResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/MarkAllItemsAsRead", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/MarkAllItemsAsRead", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17701,7 +17701,7 @@ func (service *exchangeServicePortType) MarkAllItemsAsRead(request *MarkAllItems
 
 func (service *exchangeServicePortType) MarkAsJunkContext(ctx context.Context, request *MarkAsJunkType) (*MarkAsJunkResponseType, error) {
 	response := new(MarkAsJunkResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/MarkAsJunk", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/MarkAsJunk", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17718,7 +17718,7 @@ func (service *exchangeServicePortType) MarkAsJunk(request *MarkAsJunkType) (*Ma
 
 func (service *exchangeServicePortType) ReportMessageContext(ctx context.Context, request *ReportMessageType) (*ReportMessageResponseType, error) {
 	response := new(ReportMessageResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ReportMessage", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ReportMessage", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17735,7 +17735,7 @@ func (service *exchangeServicePortType) ReportMessage(request *ReportMessageType
 
 func (service *exchangeServicePortType) GetAppManifestsContext(ctx context.Context, request *GetAppManifestsType) (*GetAppManifestsResponseType, error) {
 	response := new(GetAppManifestsResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetAppManifests", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetAppManifests", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17752,7 +17752,7 @@ func (service *exchangeServicePortType) GetAppManifests(request *GetAppManifests
 
 func (service *exchangeServicePortType) AddNewImContactToGroupContext(ctx context.Context, request *AddNewImContactToGroupType) (*AddNewImContactToGroupResponseMessageType, error) {
 	response := new(AddNewImContactToGroupResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddNewImContactToGroup", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddNewImContactToGroup", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17769,7 +17769,7 @@ func (service *exchangeServicePortType) AddNewImContactToGroup(request *AddNewIm
 
 func (service *exchangeServicePortType) AddNewTelUriContactToGroupContext(ctx context.Context, request *AddNewTelUriContactToGroupType) (*AddNewTelUriContactToGroupResponseMessageType, error) {
 	response := new(AddNewTelUriContactToGroupResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddNewTelUriContactToGroup", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddNewTelUriContactToGroup", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17786,7 +17786,7 @@ func (service *exchangeServicePortType) AddNewTelUriContactToGroup(request *AddN
 
 func (service *exchangeServicePortType) AddImContactToGroupContext(ctx context.Context, request *AddImContactToGroupType) (*AddImContactToGroupResponseMessageType, error) {
 	response := new(AddImContactToGroupResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddImContactToGroup", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddImContactToGroup", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17803,7 +17803,7 @@ func (service *exchangeServicePortType) AddImContactToGroup(request *AddImContac
 
 func (service *exchangeServicePortType) RemoveImContactFromGroupContext(ctx context.Context, request *RemoveImContactFromGroupType) (*RemoveImContactFromGroupResponseMessageType, error) {
 	response := new(RemoveImContactFromGroupResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveImContactFromGroup", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveImContactFromGroup", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17820,7 +17820,7 @@ func (service *exchangeServicePortType) RemoveImContactFromGroup(request *Remove
 
 func (service *exchangeServicePortType) AddImGroupContext(ctx context.Context, request *AddImGroupType) (*AddImGroupResponseMessageType, error) {
 	response := new(AddImGroupResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddImGroup", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddImGroup", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17837,7 +17837,7 @@ func (service *exchangeServicePortType) AddImGroup(request *AddImGroupType) (*Ad
 
 func (service *exchangeServicePortType) AddDistributionGroupToImListContext(ctx context.Context, request *AddDistributionGroupToImListType) (*AddDistributionGroupToImListResponseMessageType, error) {
 	response := new(AddDistributionGroupToImListResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddDistributionGroupToImList", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/AddDistributionGroupToImList", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17854,7 +17854,7 @@ func (service *exchangeServicePortType) AddDistributionGroupToImList(request *Ad
 
 func (service *exchangeServicePortType) GetImItemListContext(ctx context.Context, request *GetImItemListType) (*GetImItemListResponseMessageType, error) {
 	response := new(GetImItemListResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetImItemList", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetImItemList", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17871,7 +17871,7 @@ func (service *exchangeServicePortType) GetImItemList(request *GetImItemListType
 
 func (service *exchangeServicePortType) GetImItemsContext(ctx context.Context, request *GetImItemsType) (*GetImItemsResponseMessageType, error) {
 	response := new(GetImItemsResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetImItems", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetImItems", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17888,7 +17888,7 @@ func (service *exchangeServicePortType) GetImItems(request *GetImItemsType) (*Ge
 
 func (service *exchangeServicePortType) RemoveContactFromImListContext(ctx context.Context, request *RemoveContactFromImListType) (*RemoveContactFromImListResponseMessageType, error) {
 	response := new(RemoveContactFromImListResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveContactFromImList", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveContactFromImList", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17905,7 +17905,7 @@ func (service *exchangeServicePortType) RemoveContactFromImList(request *RemoveC
 
 func (service *exchangeServicePortType) RemoveDistributionGroupFromImListContext(ctx context.Context, request *RemoveDistributionGroupFromImListType) (*RemoveDistributionGroupFromImListResponseMessageType, error) {
 	response := new(RemoveDistributionGroupFromImListResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveDistributionGroupFromImList", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveDistributionGroupFromImList", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17922,7 +17922,7 @@ func (service *exchangeServicePortType) RemoveDistributionGroupFromImList(reques
 
 func (service *exchangeServicePortType) RemoveImGroupContext(ctx context.Context, request *RemoveImGroupType) (*RemoveImGroupResponseMessageType, error) {
 	response := new(RemoveImGroupResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveImGroup", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/RemoveImGroup", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17939,7 +17939,7 @@ func (service *exchangeServicePortType) RemoveImGroup(request *RemoveImGroupType
 
 func (service *exchangeServicePortType) SetImGroupContext(ctx context.Context, request *SetImGroupType) (*SetImGroupResponseMessageType, error) {
 	response := new(SetImGroupResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetImGroup", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetImGroup", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17956,7 +17956,7 @@ func (service *exchangeServicePortType) SetImGroup(request *SetImGroupType) (*Se
 
 func (service *exchangeServicePortType) SetImListMigrationCompletedContext(ctx context.Context, request *SetImListMigrationCompletedType) (*SetImListMigrationCompletedResponseMessageType, error) {
 	response := new(SetImListMigrationCompletedResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetImListMigrationCompleted", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetImListMigrationCompleted", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17973,7 +17973,7 @@ func (service *exchangeServicePortType) SetImListMigrationCompleted(request *Set
 
 func (service *exchangeServicePortType) GetUserRetentionPolicyTagsContext(ctx context.Context, request *GetUserRetentionPolicyTagsType) (*GetUserRetentionPolicyTagsResponseMessageType, error) {
 	response := new(GetUserRetentionPolicyTagsResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserRetentionPolicyTags", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserRetentionPolicyTags", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -17990,7 +17990,7 @@ func (service *exchangeServicePortType) GetUserRetentionPolicyTags(request *GetU
 
 func (service *exchangeServicePortType) InstallAppContext(ctx context.Context, request *InstallAppType) (*InstallAppResponseType, error) {
 	response := new(InstallAppResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/InstallApp", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/InstallApp", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18007,7 +18007,7 @@ func (service *exchangeServicePortType) InstallApp(request *InstallAppType) (*In
 
 func (service *exchangeServicePortType) UpdateExtensionUsageContext(ctx context.Context, request *UpdateExtensionUsageType) (*UpdateExtensionUsageResponseType, error) {
 	response := new(UpdateExtensionUsageResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateExtensionUsage", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateExtensionUsage", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18024,7 +18024,7 @@ func (service *exchangeServicePortType) UpdateExtensionUsage(request *UpdateExte
 
 func (service *exchangeServicePortType) UninstallAppContext(ctx context.Context, request *UninstallAppType) (*UninstallAppResponseType, error) {
 	response := new(UninstallAppResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UninstallApp", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UninstallApp", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18041,7 +18041,7 @@ func (service *exchangeServicePortType) UninstallApp(request *UninstallAppType) 
 
 func (service *exchangeServicePortType) DisableAppContext(ctx context.Context, request *DisableAppType) (*DisableAppResponseType, error) {
 	response := new(DisableAppResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DisableApp", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DisableApp", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18058,7 +18058,7 @@ func (service *exchangeServicePortType) DisableApp(request *DisableAppType) (*Di
 
 func (service *exchangeServicePortType) GetAppMarketplaceUrlContext(ctx context.Context, request *GetAppMarketplaceUrlType) (*GetAppMarketplaceUrlResponseMessageType, error) {
 	response := new(GetAppMarketplaceUrlResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetAppMarketplaceUrl", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetAppMarketplaceUrl", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18075,7 +18075,7 @@ func (service *exchangeServicePortType) GetAppMarketplaceUrl(request *GetAppMark
 
 func (service *exchangeServicePortType) FindAvailableMeetingTimesContext(ctx context.Context, request *FindAvailableMeetingTimesType) (*FindAvailableMeetingTimesResponseMessageType, error) {
 	response := new(FindAvailableMeetingTimesResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindAvailableMeetingTimes", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindAvailableMeetingTimes", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18092,7 +18092,7 @@ func (service *exchangeServicePortType) FindAvailableMeetingTimes(request *FindA
 
 func (service *exchangeServicePortType) FindMeetingTimeCandidatesContext(ctx context.Context, request *FindMeetingTimeCandidatesType) (*FindMeetingTimeCandidatesResponseMessageType, error) {
 	response := new(FindMeetingTimeCandidatesResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindMeetingTimeCandidates", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindMeetingTimeCandidates", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18109,7 +18109,7 @@ func (service *exchangeServicePortType) FindMeetingTimeCandidates(request *FindM
 
 func (service *exchangeServicePortType) GetUserPhotoContext(ctx context.Context, request *GetUserPhotoType) (*GetUserPhotoResponseMessageType, error) {
 	response := new(GetUserPhotoResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserPhoto", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetUserPhoto", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18126,7 +18126,7 @@ func (service *exchangeServicePortType) GetUserPhoto(request *GetUserPhotoType) 
 
 func (service *exchangeServicePortType) SetUserPhotoContext(ctx context.Context, request *SetUserPhotoType) (*SetUserPhotoResponseMessageType, error) {
 	response := new(SetUserPhotoResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetUserPhoto", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/SetUserPhoto", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18143,7 +18143,7 @@ func (service *exchangeServicePortType) SetUserPhoto(request *SetUserPhotoType) 
 
 func (service *exchangeServicePortType) GetMeetingSpaceContext(ctx context.Context, request *GetMeetingSpaceType) (*GetMeetingSpaceResponseMessageType, error) {
 	response := new(GetMeetingSpaceResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetMeetingSpace", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetMeetingSpace", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18160,7 +18160,7 @@ func (service *exchangeServicePortType) GetMeetingSpace(request *GetMeetingSpace
 
 func (service *exchangeServicePortType) DeleteMeetingSpaceContext(ctx context.Context, request *DeleteMeetingSpaceType) (*DeleteMeetingSpaceResponseMessageType, error) {
 	response := new(DeleteMeetingSpaceResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteMeetingSpace", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteMeetingSpace", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18177,7 +18177,7 @@ func (service *exchangeServicePortType) DeleteMeetingSpace(request *DeleteMeetin
 
 func (service *exchangeServicePortType) UpdateMeetingSpaceContext(ctx context.Context, request *UpdateMeetingSpaceType) (*UpdateMeetingSpaceResponseMessageType, error) {
 	response := new(UpdateMeetingSpaceResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateMeetingSpace", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateMeetingSpace", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18194,7 +18194,7 @@ func (service *exchangeServicePortType) UpdateMeetingSpace(request *UpdateMeetin
 
 func (service *exchangeServicePortType) CreateMeetingSpaceContext(ctx context.Context, request *CreateMeetingSpaceType) (*CreateMeetingSpaceResponseMessageType, error) {
 	response := new(CreateMeetingSpaceResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateMeetingSpace", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateMeetingSpace", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18211,7 +18211,7 @@ func (service *exchangeServicePortType) CreateMeetingSpace(request *CreateMeetin
 
 func (service *exchangeServicePortType) FindMeetingSpaceByJoinUrlContext(ctx context.Context, request *FindMeetingSpaceByJoinUrlType) (*FindMeetingSpaceByJoinUrlResponseMessageType, error) {
 	response := new(FindMeetingSpaceByJoinUrlResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindMeetingSpaceByJoinUrl", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/FindMeetingSpaceByJoinUrl", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18228,7 +18228,7 @@ func (service *exchangeServicePortType) FindMeetingSpaceByJoinUrl(request *FindM
 
 func (service *exchangeServicePortType) GetMeetingInstanceContext(ctx context.Context, request *GetMeetingInstanceRequestType) (*GetMeetingInstanceResponseMessageType, error) {
 	response := new(GetMeetingInstanceResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetMeetingInstanceRequest", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetMeetingInstanceRequest", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18245,7 +18245,7 @@ func (service *exchangeServicePortType) GetMeetingInstance(request *GetMeetingIn
 
 func (service *exchangeServicePortType) DeleteMeetingInstanceContext(ctx context.Context, request *DeleteMeetingInstanceRequestType) (*DeleteMeetingInstanceResponseMessageType, error) {
 	response := new(DeleteMeetingInstanceResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteMeetingInstanceRequest", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteMeetingInstanceRequest", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18262,7 +18262,7 @@ func (service *exchangeServicePortType) DeleteMeetingInstance(request *DeleteMee
 
 func (service *exchangeServicePortType) UpdateMeetingInstanceContext(ctx context.Context, request *UpdateMeetingInstanceRequestType) (*UpdateMeetingInstanceResponseMessageType, error) {
 	response := new(UpdateMeetingInstanceResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateMeetingInstanceRequest", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/UpdateMeetingInstanceRequest", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18279,7 +18279,7 @@ func (service *exchangeServicePortType) UpdateMeetingInstance(request *UpdateMee
 
 func (service *exchangeServicePortType) CreateMeetingInstanceContext(ctx context.Context, request *CreateMeetingInstanceRequestType) (*CreateMeetingInstanceResponseMessageType, error) {
 	response := new(CreateMeetingInstanceResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateMeetingInstanceRequest", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/CreateMeetingInstanceRequest", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18296,7 +18296,7 @@ func (service *exchangeServicePortType) CreateMeetingInstance(request *CreateMee
 
 func (service *exchangeServicePortType) StartSearchSessionContext(ctx context.Context, request *StartSearchSession) (*StartSearchSessionResponseMessage, error) {
 	response := new(StartSearchSessionResponseMessage)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/StartSearchSession", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/StartSearchSession", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18313,7 +18313,7 @@ func (service *exchangeServicePortType) StartSearchSession(request *StartSearchS
 
 func (service *exchangeServicePortType) GetSearchSuggestionsContext(ctx context.Context, request *GetSearchSuggestions) (*GetSearchSuggestionsResponseMessage, error) {
 	response := new(GetSearchSuggestionsResponseMessage)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSearchSuggestions", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetSearchSuggestions", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18330,7 +18330,7 @@ func (service *exchangeServicePortType) GetSearchSuggestions(request *GetSearchS
 
 func (service *exchangeServicePortType) DeleteSearchSuggestionContext(ctx context.Context, request *DeleteSearchSuggestion) (*DeleteSearchSuggestionResponseMessageType, error) {
 	response := new(DeleteSearchSuggestionResponseMessageType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteSearchSuggestion", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/DeleteSearchSuggestion", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18347,7 +18347,7 @@ func (service *exchangeServicePortType) DeleteSearchSuggestion(request *DeleteSe
 
 func (service *exchangeServicePortType) ExecuteSearchContext(ctx context.Context, request *ExecuteSearch) (*ExecuteSearchResponseMessage, error) {
 	response := new(ExecuteSearchResponseMessage)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ExecuteSearch", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/ExecuteSearch", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18364,7 +18364,7 @@ func (service *exchangeServicePortType) ExecuteSearch(request *ExecuteSearch) (*
 
 func (service *exchangeServicePortType) EndSearchSessionContext(ctx context.Context, request *EndSearchSession) (*EndSearchSessionResponseMessage, error) {
 	response := new(EndSearchSessionResponseMessage)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/EndSearchSession", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/EndSearchSession", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18381,7 +18381,7 @@ func (service *exchangeServicePortType) EndSearchSession(request *EndSearchSessi
 
 func (service *exchangeServicePortType) GetLastPrivateCatalogUpdateContext(ctx context.Context, request *GetLastPrivateCatalogUpdateType) (*GetLastPrivateCatalogUpdateResponseType, error) {
 	response := new(GetLastPrivateCatalogUpdateResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetLastPrivateCatalogUpdate", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetLastPrivateCatalogUpdate", request, response)
 	if err != nil {
 		return nil, err
 	}
@@ -18398,7 +18398,7 @@ func (service *exchangeServicePortType) GetLastPrivateCatalogUpdate(request *Get
 
 func (service *exchangeServicePortType) GetPrivateCatalogAddInsContext(ctx context.Context, request *GetPrivateCatalogAddInsType) (*GetPrivateCatalogAddInsResponseType, error) {
 	response := new(GetPrivateCatalogAddInsResponseType)
-	err := service.client.CallContext(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetPrivateCatalogAddIns", request, response)
+	err := service.client.Call(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetPrivateCatalogAddIns", request, response)
 	if err != nil {
 		return nil, err
 	}

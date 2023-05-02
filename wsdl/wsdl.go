@@ -2,9 +2,9 @@ package wsdl
 
 import "context"
 
-// SOAPClient SOAP Client interface
+// SOAPClient SOAP SOAPClient interface
 type SOAPClient interface {
-	CallContext(ctx context.Context, soapAction string, request, response interface{}) error
+	Call(ctx context.Context, soapAction string, request, response interface{}) error
 }
 
 // XsDuration https://www.w3.org/TR/xmlschema-2/#duration

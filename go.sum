@@ -1,0 +1,4 @@
+github.com/azure/go-ntlmssp v0.0.0-20221128193559-754e69321358 h1:gGJIrCOpqKypxIlLTtUB7uZXRQGW91Wtkxilude6iXk=
+github.com/azure/go-ntlmssp v0.0.0-20221128193559-754e69321358/go.mod h1:toUGNZ684EkajYM3ZcTGgYR1X7csF2Qh2duf4JnJ4vU=
+golang.org/x/crypto v0.8.0 h1:pd9TJtTueMTVQXzk8E2XESSMQDj/U7OUu0PqJqPXQjQ=
+golang.org/x/crypto v0.8.0/go.mod h1:mRqEX+O9/h5TFCrQhkgjo2yKi0yYA+9ecGkdQoHrywE=
