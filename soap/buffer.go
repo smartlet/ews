@@ -34,6 +34,10 @@ func (b *Buffer) Cap() int {
 	return b.cap
 }
 
+func (b *Buffer) Buff() []byte {
+	return b.buf[:b.len]
+}
+
 func (b *Buffer) Bytes() []byte {
 	return b.buf[b.off:b.len]
 }

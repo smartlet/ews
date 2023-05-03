@@ -13,6 +13,10 @@ type (
 	Response     = http.Response
 )
 
+var (
+	NewRequestWithContext = http.NewRequestWithContext
+)
+
 // 默认值与go/pkg/http相同
 const (
 	defaultDialerTimeout       = 30 * time.Second

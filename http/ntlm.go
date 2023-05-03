@@ -1,11 +1,18 @@
 package http
 
 import (
+	"bytes"
 	"encoding/base64"
+	"fmt"
 	"github.com/Azure/go-ntlmssp"
 	"github.com/smartlet/ews"
+	"github.com/smartlet/ews/soap"
+	"io"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strings"
+	"time"
 )
 
 func NewNTLMRoundTripper(conf *Config, auth ews.Authorizer, cred ews.Credential) http.RoundTripper {
@@ -25,6 +32,40 @@ type ntlmRoundTripper struct {
 var ng = ntlmssp.Negotiator{}
 
 func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) {
+
+	rsp, err := rt.roundTrip(req)
+	if err != nil {
+		return nil, err
+	}
+	// FOR DEBUG
+	buf := new(bytes.Buffer)
+
+	fmt.Fprintln(buf, req.Method, req.URL)
+	for k, v := range req.Header {
+		fmt.Fprintln(buf, k, ":", v)
+	}
+	fmt.Fprintln(buf, string(req.Body.(*soap.Buffer).Buff()))
+	fmt.Fprintln(buf)
+	fmt.Fprintln(buf, rsp.Proto, rsp.Status)
+	for k, v := range rsp.Header {
+		fmt.Fprintln(buf, k, ":", v)
+	}
+
+	rspBuf := new(bytes.Buffer)
+	io.Copy(rspBuf, rsp.Body)
+	fmt.Fprintln(buf, rspBuf.String())
+	rsp.Body = io.NopCloser(rspBuf)
+
+	fmt.Fprintln(buf)
+	os.WriteFile(
+		filepath.Join("E:\\temp", time.Now().Format("20060102150405")+".txt"),
+		buf.Bytes(),
+		os.ModePerm)
+
+	return rsp, nil
+}
+
+func (rt *ntlmRoundTripper) roundTrip(req *http.Request) (*http.Response, error) {
 
 	meta := ews.From(req.Context())
 	if meta == nil {
