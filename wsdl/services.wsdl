@@ -8,6 +8,7 @@
     <wsdl:types>
         <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <xs:import namespace="http://schemas.microsoft.com/exchange/services/2006/messages" schemaLocation="messages.xsd"/>
+            <xs:import namespace="http://schemas.microsoft.com/exchange/services/2006/types" schemaLocation="types.xsd"/>
         </xs:schema>
     </wsdl:types>
     <wsdl:message name="FindAvailableMeetingTimesSoapIn">
