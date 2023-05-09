@@ -33,11 +33,12 @@ func (d *dumpRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) 
 	}
 	d.writer.Write(req.Body.(*kits.Buffer).Data())
 	fmt.Fprintln(d.writer)
+	fmt.Fprintln(d.writer)
 	fmt.Fprintln(d.writer, rsp.Proto, rsp.Status)
 	for k, v := range rsp.Header {
 		fmt.Fprintln(d.writer, k, ":", v)
 	}
-	body := kits.NewBuffer(int(rsp.ContentLength))
+	body := kits.NewBuffer(1024)
 	io.Copy(body, rsp.Body)
 	d.writer.Write(body.Data())
 	rsp.Body = body

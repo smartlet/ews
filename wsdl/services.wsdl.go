@@ -11639,11 +11639,9 @@ func (b *ExchangeServiceBinding) GetUserAvailability(ctx context.Context, input 
 		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
 		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	}{
 		ExchangeImpersonation: input.ExchangeImpersonation,
 		TimeZoneContext:       input.TimeZoneContext,
-		RequestServerVersion:  input.RequestServerVersion,
 		RequestServerVersion:  input.RequestServerVersion,
 	}
 	inputBody := &struct {
