@@ -16,9 +16,8 @@ type client struct {
 	tripper http.RoundTripper
 }
 
-func (c client) Call(ctx context.Context, soapAction string, inputHeader any, inputBody any, outputHeader any, outputBody any, faultDetail any) error {
-	envelope := new(Envelope)
-
+func (c client) Call(ctx context.Context, soapAction string, inputHeader any, inputBody any, outputHeader any, outputBody any) error {
+	return nil
 }
 
 var _ wsdl.SOAPClient = (*client)(nil)

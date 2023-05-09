@@ -12,11 +12,11 @@ func NewMemoryCredential(data map[string][2]string) *MemoryCredential {
 	}
 }
 
-func (m MemoryCredential) Get(sess ews.Session) (string, string) {
+func (m MemoryCredential) Get(sess ews.Session) (string, string, error) {
 	if vs, ok := m.data[sess.GetId()]; ok {
-		return vs[0], vs[1]
+		return vs[0], vs[1], nil
 	}
-	return "", ""
+	return "", "", ews.ErrInvalidCredential
 }
 
 var _ ews.Credential = (*MemoryCredential)(nil)

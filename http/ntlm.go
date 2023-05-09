@@ -2,6 +2,7 @@ package http
 
 import (
 	"encoding/base64"
+	"github.com/Azure/go-ntlmssp"
 	"github.com/smartlet/ews"
 	"github.com/smartlet/ews/kits"
 	"net/http"
