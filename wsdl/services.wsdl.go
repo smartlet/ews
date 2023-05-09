@@ -144,8 +144,8 @@ type SOAPClient interface {
 
 const (
 	XmlnsS = "http://schemas.xmlsoap.org/soap/envelope/"
-	XmlnsT = "https://schemas.microsoft.com/exchange/services/2006/types"
-	XmlnsM = "https://schemas.microsoft.com/exchange/services/2006/messages"
+	XmlnsT = "http://schemas.microsoft.com/exchange/services/2006/types"
+	XmlnsM = "http://schemas.microsoft.com/exchange/services/2006/messages"
 )
 
 var XmlnsPrefix = map[string]string{
@@ -2924,8 +2924,19 @@ const (
 
 type ListOfExtensionIdsType []GuidType
 
+type MessageXmlType struct {
+}
+
+type SearchRefinersTypeM struct {
+	SearchRefiner []*DynamicRefinerQueryType `xml:"m:SearchRefiner,omitempty"`
+}
+
+type ExtendedKeywordsType struct {
+	ExtendedKeywordDefinition []*ExtendedKeywordDefinitionType `xml:"m:ExtendedKeywordDefinition,omitempty"`
+}
+
 type RequestServerVersionType struct {
-	Version ExchangeVersionType `xml:"Version,attr"`
+	Version ExchangeVersionType `xml:"Version,attr,omitempty"`
 }
 
 type MailboxGuidsType struct {
@@ -2933,11 +2944,11 @@ type MailboxGuidsType struct {
 }
 
 type ServerVersionInfoType struct {
-	MajorVersion     XsInt    `xml:"MajorVersion,attr"`
-	MinorVersion     XsInt    `xml:"MinorVersion,attr"`
-	MajorBuildNumber XsInt    `xml:"MajorBuildNumber,attr"`
-	MinorBuildNumber XsInt    `xml:"MinorBuildNumber,attr"`
-	Version          XsString `xml:"Version,attr"`
+	MajorVersion     XsInt    `xml:"MajorVersion,attr,omitempty"`
+	MinorVersion     XsInt    `xml:"MinorVersion,attr,omitempty"`
+	MajorBuildNumber XsInt    `xml:"MajorBuildNumber,attr,omitempty"`
+	MinorBuildNumber XsInt    `xml:"MinorBuildNumber,attr,omitempty"`
+	Version          XsString `xml:"Version,attr,omitempty"`
 }
 
 type SuggestionsType struct {
@@ -2964,22 +2975,11 @@ type MailboxesInformationType struct {
 	MailboxInformation []*MailboxInformationType `xml:"t:MailboxInformation,omitempty"`
 }
 
-type MessageXmlType struct {
-}
-
-type SearchRefinersTypeM struct {
-	SearchRefiner []*DynamicRefinerQueryType `xml:"m:SearchRefiner,omitempty"`
-}
-
-type ExtendedKeywordsType struct {
-	ExtendedKeywordDefinition []*ExtendedKeywordDefinitionType `xml:"m:ExtendedKeywordDefinition,omitempty"`
-}
-
 type ResolveNamesType struct {
 	BaseRequestType       `xml:",omitempty"`
-	ReturnFullContactData XsBoolean                         `xml:"ReturnFullContactData,attr"`
-	SearchScope           ResolveNamesSearchScopeType       `xml:"SearchScope,attr"`
-	ContactDataShape      DefaultShapeNamesType             `xml:"ContactDataShape,attr"`
+	ReturnFullContactData XsBoolean                         `xml:"ReturnFullContactData,attr,omitempty"`
+	SearchScope           ResolveNamesSearchScopeType       `xml:"SearchScope,attr,omitempty"`
+	ContactDataShape      DefaultShapeNamesType             `xml:"ContactDataShape,attr,omitempty"`
 	ParentFolderIds       *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
 	UnresolvedEntry       NonEmptyStringType                `xml:"m:UnresolvedEntry,omitempty"`
 }
@@ -3084,7 +3084,7 @@ type ItemInfoResponseMessageType struct {
 }
 
 type ResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr"`
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
@@ -3155,11 +3155,11 @@ type ResolveNamesResponseMessageType struct {
 
 type ExpandDLResponseMessageType struct {
 	ResponseMessageType     `xml:",omitempty"`
-	IndexedPagingOffset     XsInt                   `xml:"IndexedPagingOffset,attr"`
-	NumeratorOffset         XsInt                   `xml:"NumeratorOffset,attr"`
-	AbsoluteDenominator     XsInt                   `xml:"AbsoluteDenominator,attr"`
-	IncludesLastItemInRange XsBoolean               `xml:"IncludesLastItemInRange,attr"`
-	TotalItemsInView        XsInt                   `xml:"TotalItemsInView,attr"`
+	IndexedPagingOffset     XsInt                   `xml:"IndexedPagingOffset,attr,omitempty"`
+	NumeratorOffset         XsInt                   `xml:"NumeratorOffset,attr,omitempty"`
+	AbsoluteDenominator     XsInt                   `xml:"AbsoluteDenominator,attr,omitempty"`
+	IncludesLastItemInRange XsBoolean               `xml:"IncludesLastItemInRange,attr,omitempty"`
+	TotalItemsInView        XsInt                   `xml:"TotalItemsInView,attr,omitempty"`
 	DLExpansion             *ArrayOfDLExpansionType `xml:"m:DLExpansion,omitempty"`
 }
 
@@ -3377,7 +3377,7 @@ type ExpandDLResponseType struct {
 
 type GetServerTimeZonesType struct {
 	BaseRequestType        `xml:",omitempty"`
-	ReturnFullTimeZoneData XsBoolean                      `xml:"ReturnFullTimeZoneData,attr"`
+	ReturnFullTimeZoneData XsBoolean                      `xml:"ReturnFullTimeZoneData,attr,omitempty"`
 	Ids                    *NonEmptyArrayOfTimeZoneIdType `xml:"m:Ids,omitempty"`
 }
 
@@ -3387,7 +3387,7 @@ type GetServerTimeZonesResponseType struct {
 
 type FindFolderType struct {
 	BaseRequestType          `xml:",omitempty"`
-	Traversal                FolderQueryTraversalType          `xml:"Traversal,attr"`
+	Traversal                FolderQueryTraversalType          `xml:"Traversal,attr,omitempty"`
 	FolderShape              *FolderResponseShapeType          `xml:"m:FolderShape,omitempty"`
 	Restriction              *RestrictionType                  `xml:"m:Restriction,omitempty"`
 	ParentFolderIds          *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
@@ -3401,7 +3401,7 @@ type FindFolderResponseType struct {
 
 type FindItemType struct {
 	BaseRequestType             `xml:",omitempty"`
-	Traversal                   ItemQueryTraversalType            `xml:"Traversal,attr"`
+	Traversal                   ItemQueryTraversalType            `xml:"Traversal,attr,omitempty"`
 	ItemShape                   *ItemResponseShapeType            `xml:"m:ItemShape,omitempty"`
 	Restriction                 *RestrictionType                  `xml:"m:Restriction,omitempty"`
 	SortOrder                   *NonEmptyArrayOfFieldOrdersType   `xml:"m:SortOrder,omitempty"`
@@ -3418,9 +3418,9 @@ type FindItemType struct {
 
 type QueryStringType struct {
 	CharData             XsString  `xml:",chardata"`
-	ResetCache           XsBoolean `xml:"ResetCache,attr"`
-	ReturnHighlightTerms XsBoolean `xml:"ReturnHighlightTerms,attr"`
-	ReturnDeletedItems   XsBoolean `xml:"ReturnDeletedItems,attr"`
+	ResetCache           XsBoolean `xml:"ResetCache,attr,omitempty"`
+	ReturnHighlightTerms XsBoolean `xml:"ReturnHighlightTerms,attr,omitempty"`
+	ReturnDeletedItems   XsBoolean `xml:"ReturnDeletedItems,attr,omitempty"`
 }
 
 type FindItemResponseType struct {
@@ -3457,7 +3457,7 @@ type ExportItemsResponseType struct {
 
 type ConvertIdType struct {
 	BaseRequestType   `xml:",omitempty"`
-	DestinationFormat IdFormatType                     `xml:"DestinationFormat,attr"`
+	DestinationFormat IdFormatType                     `xml:"DestinationFormat,attr,omitempty"`
 	SourceIds         *NonEmptyArrayOfAlternateIdsType `xml:"m:SourceIds,omitempty"`
 }
 
@@ -3487,7 +3487,7 @@ type CreateFolderPathResponseType struct {
 
 type DeleteFolderType struct {
 	BaseRequestType `xml:",omitempty"`
-	DeleteType      DisposalType                      `xml:"DeleteType,attr"`
+	DeleteType      DisposalType                      `xml:"DeleteType,attr,omitempty"`
 	FolderIds       *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
 }
 
@@ -3497,8 +3497,8 @@ type DeleteFolderResponseType struct {
 
 type EmptyFolderType struct {
 	BaseRequestType  `xml:",omitempty"`
-	DeleteType       DisposalType                      `xml:"DeleteType,attr"`
-	DeleteSubFolders XsBoolean                         `xml:"DeleteSubFolders,attr"`
+	DeleteType       DisposalType                      `xml:"DeleteType,attr,omitempty"`
+	DeleteSubFolders XsBoolean                         `xml:"DeleteSubFolders,attr,omitempty"`
 	FolderIds        *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
 }
 
@@ -3624,8 +3624,8 @@ type GetItemResponseType struct {
 
 type CreateItemType struct {
 	BaseRequestType        `xml:",omitempty"`
-	MessageDisposition     MessageDispositionType                  `xml:"MessageDisposition,attr"`
-	SendMeetingInvitations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingInvitations,attr"`
+	MessageDisposition     MessageDispositionType                  `xml:"MessageDisposition,attr,omitempty"`
+	SendMeetingInvitations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingInvitations,attr,omitempty"`
 	SavedItemFolderId      *TargetFolderIdType                     `xml:"m:SavedItemFolderId,omitempty"`
 	Items                  *NonEmptyArrayOfAllItemsType            `xml:"m:Items,omitempty"`
 }
@@ -3636,10 +3636,10 @@ type CreateItemResponseType struct {
 
 type DeleteItemType struct {
 	BaseRequestType          `xml:",omitempty"`
-	DeleteType               DisposalType                            `xml:"DeleteType,attr"`
-	SendMeetingCancellations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingCancellations,attr"`
-	AffectedTaskOccurrences  AffectedTaskOccurrencesType             `xml:"AffectedTaskOccurrences,attr"`
-	SuppressReadReceipts     XsBoolean                               `xml:"SuppressReadReceipts,attr"`
+	DeleteType               DisposalType                            `xml:"DeleteType,attr,omitempty"`
+	SendMeetingCancellations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingCancellations,attr,omitempty"`
+	AffectedTaskOccurrences  AffectedTaskOccurrencesType             `xml:"AffectedTaskOccurrences,attr,omitempty"`
+	SuppressReadReceipts     XsBoolean                               `xml:"SuppressReadReceipts,attr,omitempty"`
 	ItemIds                  *NonEmptyArrayOfBaseItemIdsType         `xml:"m:ItemIds,omitempty"`
 }
 
@@ -3649,10 +3649,10 @@ type DeleteItemResponseType struct {
 
 type UpdateItemType struct {
 	BaseRequestType                       `xml:",omitempty"`
-	ConflictResolution                    ConflictResolutionType          `xml:"ConflictResolution,attr"`
-	MessageDisposition                    MessageDispositionType          `xml:"MessageDisposition,attr"`
-	SendMeetingInvitationsOrCancellations CalendarItemUpdateOperationType `xml:"SendMeetingInvitationsOrCancellations,attr"`
-	SuppressReadReceipts                  XsBoolean                       `xml:"SuppressReadReceipts,attr"`
+	ConflictResolution                    ConflictResolutionType          `xml:"ConflictResolution,attr,omitempty"`
+	MessageDisposition                    MessageDispositionType          `xml:"MessageDisposition,attr,omitempty"`
+	SendMeetingInvitationsOrCancellations CalendarItemUpdateOperationType `xml:"SendMeetingInvitationsOrCancellations,attr,omitempty"`
+	SuppressReadReceipts                  XsBoolean                       `xml:"SuppressReadReceipts,attr,omitempty"`
 	SavedItemFolderId                     *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
 	ItemChanges                           *NonEmptyArrayOfItemChangesType `xml:"m:ItemChanges,omitempty"`
 }
@@ -3675,7 +3675,7 @@ type UpdateItemInRecoverableItemsResponseType struct {
 
 type SendItemType struct {
 	BaseRequestType   `xml:",omitempty"`
-	SaveItemToFolder  XsBoolean                       `xml:"SaveItemToFolder,attr"`
+	SaveItemToFolder  XsBoolean                       `xml:"SaveItemToFolder,attr,omitempty"`
 	ItemIds           *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
 	SavedItemFolderId *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
 }
@@ -3757,7 +3757,7 @@ type GetClientAccessTokenResponseType struct {
 
 type GetDelegateType struct {
 	BaseDelegateType   `xml:",omitempty"`
-	IncludePermissions XsBoolean          `xml:"IncludePermissions,attr"`
+	IncludePermissions XsBoolean          `xml:"IncludePermissions,attr,omitempty"`
 	UserIds            *ArrayOfUserIdType `xml:"m:UserIds,omitempty"`
 }
 
@@ -4064,8 +4064,8 @@ type GetMessageTrackingReportResponseMessageType struct {
 
 type FindConversationType struct {
 	BaseRequestType             `xml:",omitempty"`
-	Traversal                   ConversationQueryTraversalType  `xml:"Traversal,attr"`
-	ViewFilter                  ViewFilterType                  `xml:"ViewFilter,attr"`
+	Traversal                   ConversationQueryTraversalType  `xml:"Traversal,attr,omitempty"`
+	ViewFilter                  ViewFilterType                  `xml:"ViewFilter,attr,omitempty"`
 	SortOrder                   *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
 	ParentFolderId              *TargetFolderIdType             `xml:"m:ParentFolderId,omitempty"`
 	MailboxScope                MailboxSearchLocationType       `xml:"m:MailboxScope,omitempty"`
@@ -4254,8 +4254,8 @@ type MarkAllItemsAsReadResponseType struct {
 
 type MarkAsJunkType struct {
 	BaseRequestType `xml:",omitempty"`
-	IsJunk          XsBoolean                       `xml:"IsJunk,attr"`
-	MoveItem        XsBoolean                       `xml:"MoveItem,attr"`
+	IsJunk          XsBoolean                       `xml:"IsJunk,attr,omitempty"`
+	MoveItem        XsBoolean                       `xml:"MoveItem,attr,omitempty"`
 	ItemIds         *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
 }
 
@@ -4265,7 +4265,7 @@ type MarkAsJunkResponseType struct {
 
 type ReportMessageType struct {
 	BaseRequestType           `xml:",omitempty"`
-	ReportAction              ReportMessageActionType   `xml:"ReportAction,attr"`
+	ReportAction              ReportMessageActionType   `xml:"ReportAction,attr,omitempty"`
 	ItemIds                   *ArrayOfBaseItemIdsType   `xml:"m:ItemIds,omitempty"`
 	BlockReportingToMicrosoft XsBoolean                 `xml:"m:BlockReportingToMicrosoft,omitempty"`
 	Platform                  ReportMessagePlatformType `xml:"m:Platform,omitempty"`
@@ -4293,17 +4293,17 @@ type ArrayOfPrivateCatalogAddInsType struct {
 }
 
 type PrivateCatalogAddInsType struct {
-	ProductId            XsString                          `xml:"ProductId,attr"`
-	State                AddInStateType                    `xml:"State,attr"`
-	Version              VersionType                       `xml:"Version,attr"`
-	DefaultEnabledStatus AADOfficeExtensionStatusType      `xml:"DefaultEnabledStatus,attr"`
-	InstallTimeInTicks   XsLong                            `xml:"InstallTimeInTicks,attr"`
+	ProductId            XsString                          `xml:"ProductId,attr,omitempty"`
+	State                AddInStateType                    `xml:"State,attr,omitempty"`
+	Version              VersionType                       `xml:"Version,attr,omitempty"`
+	DefaultEnabledStatus AADOfficeExtensionStatusType      `xml:"DefaultEnabledStatus,attr,omitempty"`
+	InstallTimeInTicks   XsLong                            `xml:"InstallTimeInTicks,attr,omitempty"`
 	StoreInfo            *PrivateCatalogAddInStoreInfoType `xml:"m:StoreInfo,omitempty"`
 }
 
 type PrivateCatalogAddInStoreInfoType struct {
-	AssetId       XsString `xml:"AssetId,attr"`
-	ContentMarket XsString `xml:"ContentMarket,attr"`
+	AssetId       XsString `xml:"AssetId,attr,omitempty"`
+	ContentMarket XsString `xml:"ContentMarket,attr,omitempty"`
 }
 
 type GetAppManifestsResponseType struct {
@@ -4779,8 +4779,8 @@ type NonEmptyArrayOfBaseFolderIdsType struct {
 
 type FolderIdType struct {
 	BaseFolderIdType `xml:",omitempty"`
-	Id               XsString `xml:"Id,attr"`
-	ChangeKey        XsString `xml:"ChangeKey,attr"`
+	Id               XsString `xml:"Id,attr,omitempty"`
+	ChangeKey        XsString `xml:"ChangeKey,attr,omitempty"`
 }
 
 type BaseFolderIdType struct {
@@ -4788,8 +4788,8 @@ type BaseFolderIdType struct {
 
 type DistinguishedFolderIdType struct {
 	BaseFolderIdType `xml:",omitempty"`
-	Id               DistinguishedFolderIdNameType `xml:"Id,attr"`
-	ChangeKey        XsString                      `xml:"ChangeKey,attr"`
+	Id               DistinguishedFolderIdNameType `xml:"Id,attr,omitempty"`
+	ChangeKey        XsString                      `xml:"ChangeKey,attr,omitempty"`
 	Mailbox          *EmailAddressType             `xml:"t:Mailbox,omitempty"`
 }
 
@@ -4808,8 +4808,8 @@ type BaseEmailAddressType struct {
 
 type ItemIdType struct {
 	BaseItemIdType `xml:",omitempty"`
-	Id             XsString `xml:"Id,attr"`
-	ChangeKey      XsString `xml:"ChangeKey,attr"`
+	Id             XsString `xml:"Id,attr,omitempty"`
+	ChangeKey      XsString `xml:"ChangeKey,attr,omitempty"`
 }
 
 type BaseItemIdType struct {
@@ -4940,13 +4940,13 @@ type ItemType struct {
 
 type MimeContentType struct {
 	CharData     XsString `xml:",chardata"`
-	CharacterSet XsString `xml:"CharacterSet,attr"`
+	CharacterSet XsString `xml:"CharacterSet,attr,omitempty"`
 }
 
 type BodyType struct {
 	CharData    XsString     `xml:",chardata"`
-	BodyType    BodyTypeType `xml:"BodyType,attr"`
-	IsTruncated XsBoolean    `xml:"IsTruncated,attr"`
+	BodyType    BodyTypeType `xml:"BodyType,attr,omitempty"`
+	IsTruncated XsBoolean    `xml:"IsTruncated,attr,omitempty"`
 }
 
 type NonEmptyArrayOfAttachmentsType struct {
@@ -4987,13 +4987,13 @@ type AttachmentType struct {
 
 type AttachmentIdType struct {
 	RequestAttachmentIdType `xml:",omitempty"`
-	RootItemId              XsString `xml:"RootItemId,attr"`
-	RootItemChangeKey       XsString `xml:"RootItemChangeKey,attr"`
+	RootItemId              XsString `xml:"RootItemId,attr,omitempty"`
+	RootItemChangeKey       XsString `xml:"RootItemChangeKey,attr,omitempty"`
 }
 
 type RequestAttachmentIdType struct {
 	BaseItemIdType `xml:",omitempty"`
-	Id             XsString `xml:"Id,attr"`
+	Id             XsString `xml:"Id,attr,omitempty"`
 }
 
 type MessageType struct {
@@ -5306,10 +5306,10 @@ type EmailAddressDictionaryType struct {
 
 type EmailAddressDictionaryEntryType struct {
 	CharData    XsString            `xml:",chardata"`
-	Key         EmailAddressKeyType `xml:"Key,attr"`
-	Name        XsString            `xml:"Name,attr"`
-	RoutingType XsString            `xml:"RoutingType,attr"`
-	MailboxType MailboxTypeType     `xml:"MailboxType,attr"`
+	Key         EmailAddressKeyType `xml:"Key,attr,omitempty"`
+	Name        XsString            `xml:"Name,attr,omitempty"`
+	RoutingType XsString            `xml:"RoutingType,attr,omitempty"`
+	MailboxType MailboxTypeType     `xml:"MailboxType,attr,omitempty"`
 }
 
 type AbchEmailAddressDictionaryType struct {
@@ -5328,7 +5328,7 @@ type PhysicalAddressDictionaryType struct {
 }
 
 type PhysicalAddressDictionaryEntryType struct {
-	Key             PhysicalAddressKeyType `xml:"Key,attr"`
+	Key             PhysicalAddressKeyType `xml:"Key,attr,omitempty"`
 	Street          XsString               `xml:"t:Street,omitempty"`
 	City            XsString               `xml:"t:City,omitempty"`
 	State           XsString               `xml:"t:State,omitempty"`
@@ -5342,7 +5342,7 @@ type PhoneNumberDictionaryType struct {
 
 type PhoneNumberDictionaryEntryType struct {
 	CharData XsString           `xml:",chardata"`
-	Key      PhoneNumberKeyType `xml:"Key,attr"`
+	Key      PhoneNumberKeyType `xml:"Key,attr,omitempty"`
 }
 
 type ArrayOfStringsType struct {
@@ -5355,7 +5355,7 @@ type ImAddressDictionaryType struct {
 
 type ImAddressDictionaryEntryType struct {
 	CharData XsString         `xml:",chardata"`
-	Key      ImAddressKeyType `xml:"Key,attr"`
+	Key      ImAddressKeyType `xml:"Key,attr,omitempty"`
 }
 
 type ArrayOfBinaryType struct {
@@ -5385,7 +5385,7 @@ type MembersListType struct {
 }
 
 type MemberType struct {
-	Key     XsString          `xml:"Key,attr"`
+	Key     XsString          `xml:"Key,attr,omitempty"`
 	Mailbox *EmailAddressType `xml:"t:Mailbox,omitempty"`
 	Status  MemberStatusType  `xml:"t:Status,omitempty"`
 }
@@ -5547,14 +5547,14 @@ type DeletedOccurrenceInfoType struct {
 }
 
 type TimeZoneType struct {
-	TimeZoneName XsString        `xml:"TimeZoneName,attr"`
+	TimeZoneName XsString        `xml:"TimeZoneName,attr,omitempty"`
 	BaseOffset   XsDuration      `xml:"t:BaseOffset,omitempty"`
 	Standard     *TimeChangeType `xml:"t:Standard,omitempty"`
 	Daylight     *TimeChangeType `xml:"t:Daylight,omitempty"`
 }
 
 type TimeChangeType struct {
-	TimeZoneName             XsString                             `xml:"TimeZoneName,attr"`
+	TimeZoneName             XsString                             `xml:"TimeZoneName,attr,omitempty"`
 	Offset                   XsDuration                           `xml:"t:Offset,omitempty"`
 	Time                     XsTime                               `xml:"t:Time,omitempty"`
 	RelativeYearlyRecurrence *RelativeYearlyRecurrencePatternType `xml:"t:RelativeYearlyRecurrence,omitempty"`
@@ -5562,8 +5562,8 @@ type TimeChangeType struct {
 }
 
 type TimeZoneDefinitionType struct {
-	Id                XsString                      `xml:"Id,attr"`
-	Name              XsString                      `xml:"Name,attr"`
+	Id                XsString                      `xml:"Id,attr,omitempty"`
+	Name              XsString                      `xml:"Name,attr,omitempty"`
 	Periods           *NonEmptyArrayOfPeriodsType   `xml:"t:Periods,omitempty"`
 	TransitionsGroups *ArrayOfTransitionsGroupsType `xml:"t:TransitionsGroups,omitempty"`
 	Transitions       *ArrayOfTransitionsType       `xml:"t:Transitions,omitempty"`
@@ -5574,9 +5574,9 @@ type NonEmptyArrayOfPeriodsType struct {
 }
 
 type PeriodType struct {
-	Bias XsDuration `xml:"Bias,attr"`
-	Name XsString   `xml:"Name,attr"`
-	Id   XsString   `xml:"Id,attr"`
+	Bias XsDuration `xml:"Bias,attr,omitempty"`
+	Name XsString   `xml:"Name,attr,omitempty"`
+	Id   XsString   `xml:"Id,attr,omitempty"`
 }
 
 type ArrayOfTransitionsGroupsType struct {
@@ -5584,7 +5584,7 @@ type ArrayOfTransitionsGroupsType struct {
 }
 
 type ArrayOfTransitionsType struct {
-	Id         XsString        `xml:"Id,attr"`
+	Id         XsString        `xml:"Id,attr,omitempty"`
 	Transition *TransitionType `xml:"t:Transition,omitempty"`
 }
 
@@ -5594,7 +5594,7 @@ type TransitionType struct {
 
 type TransitionTargetType struct {
 	CharData XsString                 `xml:",chardata"`
-	Kind     TransitionTargetKindType `xml:"Kind,attr"`
+	Kind     TransitionTargetKindType `xml:"Kind,attr,omitempty"`
 }
 
 type EnhancedLocationType struct {
@@ -5742,7 +5742,7 @@ type SmartResponseBaseType struct {
 
 type ResponseObjectType struct {
 	ResponseObjectCoreType `xml:",omitempty"`
-	ObjectName             XsString `xml:"ObjectName,attr"`
+	ObjectName             XsString `xml:"ObjectName,attr,omitempty"`
 }
 
 type ResponseObjectCoreType struct {
@@ -5912,7 +5912,7 @@ type NonEmptyArrayOfInternetHeadersType struct {
 
 type InternetHeaderType struct {
 	CharData   XsString `xml:",chardata"`
-	HeaderName XsString `xml:"HeaderName,attr"`
+	HeaderName XsString `xml:"HeaderName,attr,omitempty"`
 }
 
 type NonEmptyArrayOfResponseObjectsType struct {
@@ -5947,12 +5947,12 @@ type ExtendedPropertyType struct {
 
 type PathToExtendedFieldType struct {
 	BasePathToElementType      `xml:",omitempty"`
-	DistinguishedPropertySetId DistinguishedPropertySetType `xml:"DistinguishedPropertySetId,attr"`
-	PropertySetId              GuidType                     `xml:"PropertySetId,attr"`
-	PropertyTag                PropertyTagType              `xml:"PropertyTag,attr"`
-	PropertyName               XsString                     `xml:"PropertyName,attr"`
-	PropertyId                 XsInt                        `xml:"PropertyId,attr"`
-	PropertyType               MapiPropertyTypeType         `xml:"PropertyType,attr"`
+	DistinguishedPropertySetId DistinguishedPropertySetType `xml:"DistinguishedPropertySetId,attr,omitempty"`
+	PropertySetId              GuidType                     `xml:"PropertySetId,attr,omitempty"`
+	PropertyTag                PropertyTagType              `xml:"PropertyTag,attr,omitempty"`
+	PropertyName               XsString                     `xml:"PropertyName,attr,omitempty"`
+	PropertyId                 XsInt                        `xml:"PropertyId,attr,omitempty"`
+	PropertyType               MapiPropertyTypeType         `xml:"PropertyType,attr,omitempty"`
 }
 
 type BasePathToElementType struct {
@@ -6172,7 +6172,7 @@ type SenderAddInEntityType struct {
 
 type RetentionTagType struct {
 	CharData   GuidType  `xml:",chardata"`
-	IsExplicit XsBoolean `xml:"IsExplicit,attr"`
+	IsExplicit XsBoolean `xml:"IsExplicit,attr,omitempty"`
 }
 
 type RightsManagementLicenseDataType struct {
@@ -6387,7 +6387,7 @@ type SearchFolderType struct {
 }
 
 type SearchParametersType struct {
-	Traversal     SearchFolderTraversalType         `xml:"Traversal,attr"`
+	Traversal     SearchFolderTraversalType         `xml:"Traversal,attr,omitempty"`
 	Restriction   *RestrictionType                  `xml:"t:Restriction,omitempty"`
 	BaseFolderIds *NonEmptyArrayOfBaseFolderIdsType `xml:"t:BaseFolderIds,omitempty"`
 }
@@ -6404,18 +6404,18 @@ type TasksFolderType struct {
 }
 
 type FindFolderParentType struct {
-	IndexedPagingOffset     XsInt               `xml:"IndexedPagingOffset,attr"`
-	NumeratorOffset         XsInt               `xml:"NumeratorOffset,attr"`
-	AbsoluteDenominator     XsInt               `xml:"AbsoluteDenominator,attr"`
-	IncludesLastItemInRange XsBoolean           `xml:"IncludesLastItemInRange,attr"`
-	TotalItemsInView        XsInt               `xml:"TotalItemsInView,attr"`
+	IndexedPagingOffset     XsInt               `xml:"IndexedPagingOffset,attr,omitempty"`
+	NumeratorOffset         XsInt               `xml:"NumeratorOffset,attr,omitempty"`
+	AbsoluteDenominator     XsInt               `xml:"AbsoluteDenominator,attr,omitempty"`
+	IncludesLastItemInRange XsBoolean           `xml:"IncludesLastItemInRange,attr,omitempty"`
+	TotalItemsInView        XsInt               `xml:"TotalItemsInView,attr,omitempty"`
 	Folders                 *ArrayOfFoldersType `xml:"t:Folders,omitempty"`
 }
 
 type RootItemIdType struct {
 	BaseItemIdType    `xml:",omitempty"`
-	RootItemId        XsString `xml:"RootItemId,attr"`
-	RootItemChangeKey XsString `xml:"RootItemChangeKey,attr"`
+	RootItemId        XsString `xml:"RootItemId,attr,omitempty"`
+	RootItemChangeKey XsString `xml:"RootItemChangeKey,attr,omitempty"`
 }
 
 type ClientAccessTokenType struct {
@@ -6426,11 +6426,11 @@ type ClientAccessTokenType struct {
 }
 
 type FindItemParentType struct {
-	IndexedPagingOffset     XsInt                    `xml:"IndexedPagingOffset,attr"`
-	NumeratorOffset         XsInt                    `xml:"NumeratorOffset,attr"`
-	AbsoluteDenominator     XsInt                    `xml:"AbsoluteDenominator,attr"`
-	IncludesLastItemInRange XsBoolean                `xml:"IncludesLastItemInRange,attr"`
-	TotalItemsInView        XsInt                    `xml:"TotalItemsInView,attr"`
+	IndexedPagingOffset     XsInt                    `xml:"IndexedPagingOffset,attr,omitempty"`
+	NumeratorOffset         XsInt                    `xml:"NumeratorOffset,attr,omitempty"`
+	AbsoluteDenominator     XsInt                    `xml:"AbsoluteDenominator,attr,omitempty"`
+	IncludesLastItemInRange XsBoolean                `xml:"IncludesLastItemInRange,attr,omitempty"`
+	TotalItemsInView        XsInt                    `xml:"TotalItemsInView,attr,omitempty"`
 	Items                   *ArrayOfRealItemsType    `xml:"t:Items,omitempty"`
 	Groups                  *ArrayOfGroupedItemsType `xml:"t:Groups,omitempty"`
 }
@@ -6462,11 +6462,11 @@ type HighlightTermType struct {
 }
 
 type ArrayOfResolutionType struct {
-	IndexedPagingOffset     XsInt             `xml:"IndexedPagingOffset,attr"`
-	NumeratorOffset         XsInt             `xml:"NumeratorOffset,attr"`
-	AbsoluteDenominator     XsInt             `xml:"AbsoluteDenominator,attr"`
-	IncludesLastItemInRange XsBoolean         `xml:"IncludesLastItemInRange,attr"`
-	TotalItemsInView        XsInt             `xml:"TotalItemsInView,attr"`
+	IndexedPagingOffset     XsInt             `xml:"IndexedPagingOffset,attr,omitempty"`
+	NumeratorOffset         XsInt             `xml:"NumeratorOffset,attr,omitempty"`
+	AbsoluteDenominator     XsInt             `xml:"AbsoluteDenominator,attr,omitempty"`
+	IncludesLastItemInRange XsBoolean         `xml:"IncludesLastItemInRange,attr,omitempty"`
+	TotalItemsInView        XsInt             `xml:"TotalItemsInView,attr,omitempty"`
 	Resolution              []*ResolutionType `xml:"t:Resolution,omitempty"`
 }
 
@@ -6476,11 +6476,11 @@ type ResolutionType struct {
 }
 
 type ArrayOfDLExpansionType struct {
-	IndexedPagingOffset     XsInt               `xml:"IndexedPagingOffset,attr"`
-	NumeratorOffset         XsInt               `xml:"NumeratorOffset,attr"`
-	AbsoluteDenominator     XsInt               `xml:"AbsoluteDenominator,attr"`
-	IncludesLastItemInRange XsBoolean           `xml:"IncludesLastItemInRange,attr"`
-	TotalItemsInView        XsInt               `xml:"TotalItemsInView,attr"`
+	IndexedPagingOffset     XsInt               `xml:"IndexedPagingOffset,attr,omitempty"`
+	NumeratorOffset         XsInt               `xml:"NumeratorOffset,attr,omitempty"`
+	AbsoluteDenominator     XsInt               `xml:"AbsoluteDenominator,attr,omitempty"`
+	IncludesLastItemInRange XsBoolean           `xml:"IncludesLastItemInRange,attr,omitempty"`
+	TotalItemsInView        XsInt               `xml:"TotalItemsInView,attr,omitempty"`
 	Mailbox                 []*EmailAddressType `xml:"t:Mailbox,omitempty"`
 }
 
@@ -6587,7 +6587,7 @@ type SyncFolderItemsReadFlagType struct {
 }
 
 type AlternateIdBaseType struct {
-	Format IdFormatType `xml:"Format,attr"`
+	Format IdFormatType `xml:"Format,attr,omitempty"`
 }
 
 type ArrayOfEncryptedSharedFolderDataType struct {
@@ -6622,7 +6622,7 @@ type UserConfigurationType struct {
 
 type UserConfigurationNameType struct {
 	TargetFolderIdType `xml:",omitempty"`
-	Name               NonEmptyStringType `xml:"Name,attr"`
+	Name               NonEmptyStringType `xml:"Name,attr,omitempty"`
 }
 
 type TargetFolderIdType struct {
@@ -6633,7 +6633,7 @@ type TargetFolderIdType struct {
 
 type AddressListIdType struct {
 	BaseFolderIdType `xml:",omitempty"`
-	Id               XsString `xml:"Id,attr"`
+	Id               XsString `xml:"Id,attr,omitempty"`
 }
 
 type UserConfigurationDictionaryType struct {
@@ -6692,8 +6692,8 @@ type MailboxStatisticsSearchResultType struct {
 }
 
 type UserMailboxType struct {
-	Id        XsString  `xml:"Id,attr"`
-	IsArchive XsBoolean `xml:"IsArchive,attr"`
+	Id        XsString  `xml:"Id,attr,omitempty"`
+	IsArchive XsBoolean `xml:"IsArchive,attr,omitempty"`
 }
 
 type KeywordStatisticsSearchResultType struct {
@@ -7164,18 +7164,18 @@ type NonEmptyArrayOfPathsToElementType struct {
 
 type IndexedPageViewType struct {
 	BasePagingType `xml:",omitempty"`
-	Offset         XsInt              `xml:"Offset,attr"`
-	BasePoint      IndexBasePointType `xml:"BasePoint,attr"`
+	Offset         XsInt              `xml:"Offset,attr,omitempty"`
+	BasePoint      IndexBasePointType `xml:"BasePoint,attr,omitempty"`
 }
 
 type BasePagingType struct {
-	MaxEntriesReturned XsInt `xml:"MaxEntriesReturned,attr"`
+	MaxEntriesReturned XsInt `xml:"MaxEntriesReturned,attr,omitempty"`
 }
 
 type FractionalPageViewType struct {
 	BasePagingType `xml:",omitempty"`
-	Numerator      XsInt `xml:"Numerator,attr"`
-	Denominator    XsInt `xml:"Denominator,attr"`
+	Numerator      XsInt `xml:"Numerator,attr,omitempty"`
+	Denominator    XsInt `xml:"Denominator,attr,omitempty"`
 }
 
 type TimeZoneContextType struct {
@@ -7211,26 +7211,26 @@ type NonEmptyArrayOfFieldOrdersType struct {
 }
 
 type FieldOrderType struct {
-	Order SortDirectionType     `xml:"Order,attr"`
+	Order SortDirectionType     `xml:"Order,attr,omitempty"`
 	Path  BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type SeekToConditionPageViewType struct {
 	BasePagingType `xml:",omitempty"`
-	BasePoint      IndexBasePointType `xml:"BasePoint,attr"`
+	BasePoint      IndexBasePointType `xml:"BasePoint,attr,omitempty"`
 	Condition      *RestrictionType   `xml:"t:Condition,omitempty"`
 }
 
 type CalendarViewType struct {
 	BasePagingType `xml:",omitempty"`
-	StartDate      XsDateTime `xml:"StartDate,attr"`
-	EndDate        XsDateTime `xml:"EndDate,attr"`
+	StartDate      XsDateTime `xml:"StartDate,attr,omitempty"`
+	EndDate        XsDateTime `xml:"EndDate,attr,omitempty"`
 }
 
 type ContactsViewType struct {
 	BasePagingType `xml:",omitempty"`
-	InitialName    XsString `xml:"InitialName,attr"`
-	FinalName      XsString `xml:"FinalName,attr"`
+	InitialName    XsString `xml:"InitialName,attr,omitempty"`
+	FinalName      XsString `xml:"FinalName,attr,omitempty"`
 }
 
 type GroupByType struct {
@@ -7246,11 +7246,11 @@ type GroupByType struct {
 }
 
 type BaseGroupByType struct {
-	Order SortDirectionType `xml:"Order,attr"`
+	Order SortDirectionType `xml:"Order,attr,omitempty"`
 }
 
 type AggregateOnType struct {
-	Aggregate        AggregateType             `xml:"Aggregate,attr"`
+	Aggregate        AggregateType             `xml:"Aggregate,attr,omitempty"`
 	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
 	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
 	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
@@ -7258,13 +7258,13 @@ type AggregateOnType struct {
 
 type PathToUnindexedFieldType struct {
 	BasePathToElementType `xml:",omitempty"`
-	FieldURI              UnindexedFieldURIType `xml:"FieldURI,attr"`
+	FieldURI              UnindexedFieldURIType `xml:"FieldURI,attr,omitempty"`
 }
 
 type PathToIndexedFieldType struct {
 	BasePathToElementType `xml:",omitempty"`
-	FieldURI              DictionaryURIType `xml:"FieldURI,attr"`
-	FieldIndex            XsString          `xml:"FieldIndex,attr"`
+	FieldURI              DictionaryURIType `xml:"FieldURI,attr,omitempty"`
+	FieldIndex            XsString          `xml:"FieldIndex,attr,omitempty"`
 }
 
 type ArrayOfGroupIdType struct {
@@ -7281,8 +7281,8 @@ type NonEmptyArrayOfUploadItemsType struct {
 }
 
 type UploadItemType struct {
-	CreateAction   CreateActionType `xml:"CreateAction,attr"`
-	IsAssociated   XsBoolean        `xml:"IsAssociated,attr"`
+	CreateAction   CreateActionType `xml:"CreateAction,attr,omitempty"`
+	IsAssociated   XsBoolean        `xml:"IsAssociated,attr,omitempty"`
 	ParentFolderId *FolderIdType    `xml:"t:ParentFolderId,omitempty"`
 	ItemId         *ItemIdType      `xml:"t:ItemId,omitempty"`
 	Data           XsBase64Binary   `xml:"t:Data,omitempty"`
@@ -7296,19 +7296,19 @@ type NonEmptyArrayOfAlternateIdsType struct {
 
 type AlternateIdType struct {
 	AlternateIdBaseType `xml:",omitempty"`
-	Id                  XsString           `xml:"Id,attr"`
-	Mailbox             NonEmptyStringType `xml:"Mailbox,attr"`
-	IsArchive           XsBoolean          `xml:"IsArchive,attr"`
+	Id                  XsString           `xml:"Id,attr,omitempty"`
+	Mailbox             NonEmptyStringType `xml:"Mailbox,attr,omitempty"`
+	IsArchive           XsBoolean          `xml:"IsArchive,attr,omitempty"`
 }
 
 type AlternatePublicFolderIdType struct {
 	AlternateIdBaseType `xml:",omitempty"`
-	FolderId            XsString `xml:"FolderId,attr"`
+	FolderId            XsString `xml:"FolderId,attr,omitempty"`
 }
 
 type AlternatePublicFolderItemIdType struct {
 	AlternatePublicFolderIdType `xml:",omitempty"`
-	ItemId                      XsString `xml:"ItemId,attr"`
+	ItemId                      XsString `xml:"ItemId,attr,omitempty"`
 }
 
 type NonEmptyArrayOfFoldersType struct {
@@ -7371,7 +7371,7 @@ type PullSubscriptionRequestType struct {
 }
 
 type BaseSubscriptionRequestType struct {
-	SubscribeToAllFolders XsBoolean                                  `xml:"SubscribeToAllFolders,attr"`
+	SubscribeToAllFolders XsBoolean                                  `xml:"SubscribeToAllFolders,attr,omitempty"`
 	FolderIds             *NonEmptyArrayOfBaseFolderIdsType          `xml:"t:FolderIds,omitempty"`
 	EventTypes            *NonEmptyArrayOfNotificationEventTypesType `xml:"t:EventTypes,omitempty"`
 	Watermark             WatermarkType                              `xml:"t:Watermark,omitempty"`
@@ -7389,7 +7389,7 @@ type PushSubscriptionRequestType struct {
 }
 
 type StreamingSubscriptionRequestType struct {
-	SubscribeToAllFolders XsBoolean                                  `xml:"SubscribeToAllFolders,attr"`
+	SubscribeToAllFolders XsBoolean                                  `xml:"SubscribeToAllFolders,attr,omitempty"`
 	FolderIds             *NonEmptyArrayOfBaseFolderIdsType          `xml:"t:FolderIds,omitempty"`
 	EventTypes            *NonEmptyArrayOfNotificationEventTypesType `xml:"t:EventTypes,omitempty"`
 }
@@ -7411,15 +7411,15 @@ type NonEmptyArrayOfBaseItemIdsType struct {
 
 type OccurrenceItemIdType struct {
 	BaseItemIdType    `xml:",omitempty"`
-	RecurringMasterId DerivedItemIdType `xml:"RecurringMasterId,attr"`
-	ChangeKey         XsString          `xml:"ChangeKey,attr"`
-	InstanceIndex     XsInt             `xml:"InstanceIndex,attr"`
+	RecurringMasterId DerivedItemIdType `xml:"RecurringMasterId,attr,omitempty"`
+	ChangeKey         XsString          `xml:"ChangeKey,attr,omitempty"`
+	InstanceIndex     XsInt             `xml:"InstanceIndex,attr,omitempty"`
 }
 
 type RecurringMasterItemIdType struct {
 	BaseItemIdType `xml:",omitempty"`
-	OccurrenceId   DerivedItemIdType `xml:"OccurrenceId,attr"`
-	ChangeKey      XsString          `xml:"ChangeKey,attr"`
+	OccurrenceId   DerivedItemIdType `xml:"OccurrenceId,attr,omitempty"`
+	ChangeKey      XsString          `xml:"ChangeKey,attr,omitempty"`
 }
 
 type RecurringMasterItemIdRangesType struct {
@@ -7432,10 +7432,10 @@ type ArrayOfOccurrenceRangesType struct {
 }
 
 type OccurrencesRangeType struct {
-	Start                    XsDateTime `xml:"Start,attr"`
-	End                      XsDateTime `xml:"End,attr"`
-	Count                    XsInt      `xml:"Count,attr"`
-	CompareOriginalStartTime XsBoolean  `xml:"CompareOriginalStartTime,attr"`
+	Start                    XsDateTime `xml:"Start,attr,omitempty"`
+	End                      XsDateTime `xml:"End,attr,omitempty"`
+	Count                    XsInt      `xml:"Count,attr,omitempty"`
+	CompareOriginalStartTime XsBoolean  `xml:"CompareOriginalStartTime,attr,omitempty"`
 }
 
 type NonEmptyArrayOfItemChangesType struct {
@@ -7717,7 +7717,7 @@ type UserOofSettings struct {
 }
 
 type ReplyBody struct {
-	Xxmllang XsString `xml:"xml:lang,attr"`
+	Xxmllang XsString `xml:"xml:lang,attr,omitempty"`
 	Message  XsString `xml:"t:Message,omitempty"`
 }
 
@@ -7748,8 +7748,8 @@ type SmtpDomainList struct {
 }
 
 type SmtpDomain struct {
-	Name              XsString  `xml:"Name,attr"`
-	IncludeSubdomains XsBoolean `xml:"IncludeSubdomains,attr"`
+	Name              XsString  `xml:"Name,attr,omitempty"`
+	IncludeSubdomains XsBoolean `xml:"IncludeSubdomains,attr,omitempty"`
 }
 
 type UnifiedMessageServiceConfiguration struct {
@@ -7761,7 +7761,7 @@ type UnifiedMessageServiceConfiguration struct {
 
 type ProtectionRulesServiceConfiguration struct {
 	ServiceConfiguration `xml:",omitempty"`
-	RefreshInterval      RefreshIntervalType         `xml:"RefreshInterval,attr"`
+	RefreshInterval      RefreshIntervalType         `xml:"RefreshInterval,attr,omitempty"`
 	Rules                *ArrayOfProtectionRulesType `xml:"t:Rules,omitempty"`
 	InternalDomains      *SmtpDomainList             `xml:"t:InternalDomains,omitempty"`
 }
@@ -7771,9 +7771,9 @@ type ArrayOfProtectionRulesType struct {
 }
 
 type ProtectionRuleType struct {
-	Name            NameType                     `xml:"Name,attr"`
-	UserOverridable XsBoolean                    `xml:"UserOverridable,attr"`
-	Priority        PriorityType                 `xml:"Priority,attr"`
+	Name            NameType                     `xml:"Name,attr,omitempty"`
+	UserOverridable XsBoolean                    `xml:"UserOverridable,attr,omitempty"`
+	Priority        PriorityType                 `xml:"Priority,attr,omitempty"`
 	Condition       *ProtectionRuleConditionType `xml:"t:Condition,omitempty"`
 	Action          *ProtectionRuleActionType    `xml:"t:Action,omitempty"`
 }
@@ -7803,12 +7803,12 @@ type ProtectionRuleSenderDepartmentsType struct {
 }
 
 type ProtectionRuleActionType struct {
-	Name     ProtectionRuleActionKindType  `xml:"Name,attr"`
+	Name     ProtectionRuleActionKindType  `xml:"Name,attr,omitempty"`
 	Argument []*ProtectionRuleArgumentType `xml:"t:Argument,omitempty"`
 }
 
 type ProtectionRuleArgumentType struct {
-	Value ValueType `xml:"Value,attr"`
+	Value ValueType `xml:"Value,attr,omitempty"`
 }
 
 type PolicyNudgeRulesServiceConfiguration struct {
@@ -7852,7 +7852,7 @@ type RecipientSuggestionType struct {
 }
 
 type PhoneCallIdType struct {
-	Id XsString `xml:"Id,attr"`
+	Id XsString `xml:"Id,attr,omitempty"`
 }
 
 type PhoneCallInformationType struct {
@@ -8456,7 +8456,7 @@ type SearchRefinerType struct {
 }
 
 type ExecuteSearchQueryIdType struct {
-	Id GuidType `xml:"Id,attr"`
+	Id GuidType `xml:"Id,attr,omitempty"`
 }
 
 type MailboxInformationType struct {
@@ -8466,8 +8466,8 @@ type MailboxInformationType struct {
 }
 
 type OfficeClientType struct {
-	Code    OfficeClientCodeType `xml:"Code,attr"`
-	Version VersionType          `xml:"Version,attr"`
+	Code    OfficeClientCodeType `xml:"Code,attr,omitempty"`
+	Version VersionType          `xml:"Version,attr,omitempty"`
 }
 
 type ResolveNamesSoapIn struct {
