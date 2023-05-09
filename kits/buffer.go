@@ -7,7 +7,7 @@ import (
 
 var (
 	DefaultBufferMinimum = 2048
-	DefaultBufferMaximum = DefaultBufferMinimum * 4
+	DefaultBufferMaximum = DefaultBufferMinimum * 10
 )
 
 type Buffer struct {
@@ -24,6 +24,11 @@ func NewBuffer(c int) *Buffer {
 		cap: c,
 		buf: make([]byte, c),
 	}
+}
+
+func (b *Buffer) GetBody() (io.ReadCloser, error) {
+	b.Seek(0, io.SeekStart)
+	return b, nil
 }
 
 func (b *Buffer) Len() int {

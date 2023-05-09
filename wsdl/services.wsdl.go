@@ -170,6 +170,10 @@ type Fault struct {
 	Detail      any    `xml:"detail,omitempty"`
 }
 
+func (f Fault) Error() string {
+	return f.FaultCode + ":" + f.FaultString
+}
+
 type ReminderMinutesBeforeStartTypeUnion0 XsInt
 
 type ReminderMinutesBeforeStartTypeUnion1 XsInt
