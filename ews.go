@@ -1,65 +1,77 @@
 package ews
 
-import (
-	"context"
-	"fmt"
-	"io"
-	"net/http"
-)
-
-const contextMetadata = "_contextMetadata_"
-
-// Metadata 上下文元数据
-type Metadata struct {
-	User    string
-	Corp    string
-	Account string
-}
-
-func With(meta *Metadata) context.Context {
-	return context.WithValue(context.Background(), contextMetadata, meta)
-}
-
-func From(ctx context.Context) *Metadata {
-	if meta, ok := ctx.Value(contextMetadata).(*Metadata); ok {
-		return meta
-	}
-	return nil
-}
+import "context"
 
 // Credential 凭证接口
 type Credential interface {
-	Get(meta *Metadata) (string, string, error)
+	Get(sess Session) (string, string, error)
 }
 
 // Authorizer 认证接口
 type Authorizer interface {
-	Get(meta *Metadata) (string, error)
-	Set(meta *Metadata, auth string) error
+	Get(sess Session) (string, error)
+	Set(sess Session, auth string) error
 }
 
-type Error struct {
-	Code    int
-	Status  int
-	Message string
+const ContextSession = "_session_"
+
+type Session interface {
+	GetId() string
+	GetEndpoint() string
 }
 
-func (e *Error) Error() string {
-	return fmt.Sprintf("%d: %s", e.Code, e.Message)
+// AccountSession 企业用户
+type AccountSession struct {
+	user     string
+	corp     string
+	account  string
+	endpoint string
+	_id      string // 临时数据
 }
 
-var _ error = (*Error)(nil)
+func NewAccountSession(user, corp, account, endpoint string) *AccountSession {
+	return &AccountSession{
+		user:     user,
+		corp:     corp,
+		account:  account,
+		endpoint: endpoint,
+		_id:      user + "/" + corp + "/" + account + "/" + endpoint,
+	}
+}
 
-const (
-	CodeInvalidMetadata   = 10000
-	CodeInvalidStatusCode = 10001
-)
+func (as *AccountSession) GetUser() string {
+	return as.user
+}
 
-var (
-	ErrInvalidMetadata = &Error{Code: CodeInvalidMetadata, Status: http.StatusForbidden, Message: "invalid metadata"}
-)
+func (as *AccountSession) GetCorp() string {
+	return as.corp
+}
 
-func DiscardAndCloseBody(body io.ReadCloser) {
-	io.Copy(io.Discard, body)
-	body.Close()
+func (as *AccountSession) GetAccount() string {
+	return as.account
+}
+
+func (as *AccountSession) GetEndpoint() string {
+	return as.endpoint
+}
+
+func (as *AccountSession) GetId() string {
+	return as._id
+}
+
+var _ Session = (*AccountSession)(nil)
+
+func MakeContext(sess Session) context.Context {
+	return WithContext(context.Background(), sess)
+}
+
+func WithContext(ctx context.Context, sess Session) context.Context {
+	return context.WithValue(ctx, ContextSession, sess)
+}
+
+func FromContext(ctx context.Context) Session {
+	if sess, ok := ctx.Value(ContextSession).(Session); ok {
+		return sess
+	}
+	return nil
 }

@@ -1,13 +1,13 @@
-package soap
+package kits
 
 import (
 	"io"
 	"sync"
 )
 
-const (
-	defaultBufferMinimum = 2048
-	defaultBufferMaximum = defaultBufferMinimum * 4
+var (
+	DefaultBufferMinimum = 2048
+	DefaultBufferMaximum = DefaultBufferMinimum * 4
 )
 
 type Buffer struct {
@@ -34,7 +34,7 @@ func (b *Buffer) Cap() int {
 	return b.cap
 }
 
-func (b *Buffer) Buff() []byte {
+func (b *Buffer) Data() []byte {
 	return b.buf[:b.len]
 }
 
@@ -91,18 +91,18 @@ var _ io.Closer = (*Buffer)(nil)
 
 var pool = sync.Pool{
 	New: func() any {
-		return NewBuffer(defaultBufferMinimum)
+		return NewBuffer(DefaultBufferMinimum)
 	},
 }
 
-func borrowBuffer() *Buffer {
+func BorrowBuffer() *Buffer {
 	buf := pool.Get().(*Buffer)
 	buf.Reset()
 	return buf
 }
 
-func returnBuffer(b *Buffer) {
-	if b.cap < defaultBufferMaximum {
+func ReturnBuffer(b *Buffer) {
+	if b.cap < DefaultBufferMaximum {
 		pool.Put(b)
 	}
 }
