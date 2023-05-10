@@ -2924,17 +2924,6 @@ const (
 
 type ListOfExtensionIdsType []GuidType
 
-type MessageXmlType struct {
-}
-
-type SearchRefinersTypeM struct {
-	SearchRefiner []*DynamicRefinerQueryType `xml:"m:SearchRefiner,omitempty"`
-}
-
-type ExtendedKeywordsType struct {
-	ExtendedKeywordDefinition []*ExtendedKeywordDefinitionType `xml:"m:ExtendedKeywordDefinition,omitempty"`
-}
-
 type RequestServerVersionType struct {
 	Version ExchangeVersionType `xml:"Version,attr,omitempty"`
 }
@@ -2973,6 +2962,17 @@ type SearchRefinersTypeT struct {
 
 type MailboxesInformationType struct {
 	MailboxInformation []*MailboxInformationType `xml:"t:MailboxInformation,omitempty"`
+}
+
+type MessageXmlType struct {
+}
+
+type SearchRefinersTypeM struct {
+	SearchRefiner []*DynamicRefinerQueryType `xml:"m:SearchRefiner,omitempty"`
+}
+
+type ExtendedKeywordsType struct {
+	ExtendedKeywordDefinition []*ExtendedKeywordDefinitionType `xml:"m:ExtendedKeywordDefinition,omitempty"`
 }
 
 type ResolveNamesType struct {
@@ -10028,14 +10028,17 @@ type ExchangeServiceBinding struct {
 }
 
 func (b *ExchangeServiceBinding) ResolveNames(ctx context.Context, input *ResolveNamesSoapIn, detail any) (*ResolveNamesSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		ResolveNames *ResolveNamesType `xml:"m:ResolveNames,omitempty"`
@@ -10063,14 +10066,17 @@ func (b *ExchangeServiceBinding) ResolveNames(ctx context.Context, input *Resolv
 }
 
 func (b *ExchangeServiceBinding) ExpandDL(ctx context.Context, input *ExpandDLSoapIn, detail any) (*ExpandDLSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		ExpandDL *ExpandDLType `xml:"m:ExpandDL,omitempty"`
@@ -10098,12 +10104,15 @@ func (b *ExchangeServiceBinding) ExpandDL(ctx context.Context, input *ExpandDLSo
 }
 
 func (b *ExchangeServiceBinding) GetServerTimeZones(ctx context.Context, input *GetServerTimeZonesSoapIn, detail any) (*GetServerTimeZonesSoapOut, error) {
-	inputHeader := &struct {
-		MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		MailboxCulture:       input.MailboxCulture,
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			MailboxCulture:       input.MailboxCulture,
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetServerTimeZones *GetServerTimeZonesType `xml:"m:GetServerTimeZones,omitempty"`
@@ -10131,18 +10140,21 @@ func (b *ExchangeServiceBinding) GetServerTimeZones(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) FindFolder(ctx context.Context, input *FindFolderSoapIn, detail any) (*FindFolderSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-		ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
-		ManagementRole:        input.ManagementRole,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+			ManagementRole:        input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		FindFolder *FindFolderType `xml:"m:FindFolder,omitempty"`
@@ -10170,20 +10182,23 @@ func (b *ExchangeServiceBinding) FindFolder(ctx context.Context, input *FindFold
 }
 
 func (b *ExchangeServiceBinding) FindItem(ctx context.Context, input *FindItemSoapIn, detail any) (*FindItemSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-		DateTimePrecision     DateTimePrecisionType      `xml:"t:DateTimePrecision,omitempty"`
-		ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
-		DateTimePrecision:     input.DateTimePrecision,
-		ManagementRole:        input.ManagementRole,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.DateTimePrecision != "" || input.ManagementRole != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+			DateTimePrecision     DateTimePrecisionType      `xml:"t:DateTimePrecision,omitempty"`
+			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+			DateTimePrecision:     input.DateTimePrecision,
+			ManagementRole:        input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		FindItem *FindItemType `xml:"m:FindItem,omitempty"`
@@ -10211,18 +10226,21 @@ func (b *ExchangeServiceBinding) FindItem(ctx context.Context, input *FindItemSo
 }
 
 func (b *ExchangeServiceBinding) GetFolder(ctx context.Context, input *GetFolderSoapIn, detail any) (*GetFolderSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-		ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
-		ManagementRole:        input.ManagementRole,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+			ManagementRole:        input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		GetFolder *GetFolderType `xml:"m:GetFolder,omitempty"`
@@ -10250,12 +10268,15 @@ func (b *ExchangeServiceBinding) GetFolder(ctx context.Context, input *GetFolder
 }
 
 func (b *ExchangeServiceBinding) ConvertId(ctx context.Context, input *ConvertIdSoapIn, detail any) (*ConvertIdSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		ConvertId *ConvertIdType `xml:"m:ConvertId,omitempty"`
@@ -10283,14 +10304,17 @@ func (b *ExchangeServiceBinding) ConvertId(ctx context.Context, input *ConvertId
 }
 
 func (b *ExchangeServiceBinding) UploadItems(ctx context.Context, input *UploadItemsSoapIn, detail any) (*UploadItemsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		UploadItems *UploadItemsType `xml:"m:UploadItems,omitempty"`
@@ -10318,16 +10342,19 @@ func (b *ExchangeServiceBinding) UploadItems(ctx context.Context, input *UploadI
 }
 
 func (b *ExchangeServiceBinding) ExportItems(ctx context.Context, input *ExportItemsSoapIn, detail any) (*ExportItemsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		ManagementRole:        input.ManagementRole,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			ManagementRole:        input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		ExportItems *ExportItemsType `xml:"m:ExportItems,omitempty"`
@@ -10355,16 +10382,19 @@ func (b *ExchangeServiceBinding) ExportItems(ctx context.Context, input *ExportI
 }
 
 func (b *ExchangeServiceBinding) CreateFolderPath(ctx context.Context, input *CreateFolderPathSoapIn, detail any) (*CreateFolderPathSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+		}
 	}
 	inputBody := &struct {
 		CreateFolderPath *CreateFolderPathType `xml:"m:CreateFolderPath,omitempty"`
@@ -10392,16 +10422,19 @@ func (b *ExchangeServiceBinding) CreateFolderPath(ctx context.Context, input *Cr
 }
 
 func (b *ExchangeServiceBinding) CreateFolder(ctx context.Context, input *CreateFolderSoapIn, detail any) (*CreateFolderSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+		}
 	}
 	inputBody := &struct {
 		CreateFolder *CreateFolderType `xml:"m:CreateFolder,omitempty"`
@@ -10429,14 +10462,17 @@ func (b *ExchangeServiceBinding) CreateFolder(ctx context.Context, input *Create
 }
 
 func (b *ExchangeServiceBinding) DeleteFolder(ctx context.Context, input *DeleteFolderSoapIn, detail any) (*DeleteFolderSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		DeleteFolder *DeleteFolderType `xml:"m:DeleteFolder,omitempty"`
@@ -10464,14 +10500,17 @@ func (b *ExchangeServiceBinding) DeleteFolder(ctx context.Context, input *Delete
 }
 
 func (b *ExchangeServiceBinding) EmptyFolder(ctx context.Context, input *EmptyFolderSoapIn, detail any) (*EmptyFolderSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		EmptyFolder *EmptyFolderType `xml:"m:EmptyFolder,omitempty"`
@@ -10499,16 +10538,19 @@ func (b *ExchangeServiceBinding) EmptyFolder(ctx context.Context, input *EmptyFo
 }
 
 func (b *ExchangeServiceBinding) UpdateFolder(ctx context.Context, input *UpdateFolderSoapIn, detail any) (*UpdateFolderSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+		}
 	}
 	inputBody := &struct {
 		UpdateFolder *UpdateFolderType `xml:"m:UpdateFolder,omitempty"`
@@ -10536,14 +10578,17 @@ func (b *ExchangeServiceBinding) UpdateFolder(ctx context.Context, input *Update
 }
 
 func (b *ExchangeServiceBinding) MoveFolder(ctx context.Context, input *MoveFolderSoapIn, detail any) (*MoveFolderSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		MoveFolder *MoveFolderType `xml:"m:MoveFolder,omitempty"`
@@ -10571,14 +10616,17 @@ func (b *ExchangeServiceBinding) MoveFolder(ctx context.Context, input *MoveFold
 }
 
 func (b *ExchangeServiceBinding) CopyFolder(ctx context.Context, input *CopyFolderSoapIn, detail any) (*CopyFolderSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		CopyFolder *CopyFolderType `xml:"m:CopyFolder,omitempty"`
@@ -10606,14 +10654,17 @@ func (b *ExchangeServiceBinding) CopyFolder(ctx context.Context, input *CopyFold
 }
 
 func (b *ExchangeServiceBinding) Subscribe(ctx context.Context, input *SubscribeSoapIn, detail any) (*SubscribeSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		Subscribe *SubscribeType `xml:"m:Subscribe,omitempty"`
@@ -10641,14 +10692,17 @@ func (b *ExchangeServiceBinding) Subscribe(ctx context.Context, input *Subscribe
 }
 
 func (b *ExchangeServiceBinding) Unsubscribe(ctx context.Context, input *UnsubscribeSoapIn, detail any) (*UnsubscribeSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		Unsubscribe *UnsubscribeType `xml:"m:Unsubscribe,omitempty"`
@@ -10676,14 +10730,17 @@ func (b *ExchangeServiceBinding) Unsubscribe(ctx context.Context, input *Unsubsc
 }
 
 func (b *ExchangeServiceBinding) GetEvents(ctx context.Context, input *GetEventsSoapIn, detail any) (*GetEventsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetEvents *GetEventsType `xml:"m:GetEvents,omitempty"`
@@ -10711,14 +10768,17 @@ func (b *ExchangeServiceBinding) GetEvents(ctx context.Context, input *GetEvents
 }
 
 func (b *ExchangeServiceBinding) GetStreamingEvents(ctx context.Context, input *GetStreamingEventsSoapIn, detail any) (*GetStreamingEventsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetStreamingEvents *GetStreamingEventsType `xml:"m:GetStreamingEvents,omitempty"`
@@ -10746,14 +10806,17 @@ func (b *ExchangeServiceBinding) GetStreamingEvents(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) SyncFolderHierarchy(ctx context.Context, input *SyncFolderHierarchySoapIn, detail any) (*SyncFolderHierarchySoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		SyncFolderHierarchy *SyncFolderHierarchyType `xml:"m:SyncFolderHierarchy,omitempty"`
@@ -10781,14 +10844,17 @@ func (b *ExchangeServiceBinding) SyncFolderHierarchy(ctx context.Context, input 
 }
 
 func (b *ExchangeServiceBinding) SyncFolderItems(ctx context.Context, input *SyncFolderItemsSoapIn, detail any) (*SyncFolderItemsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		SyncFolderItems *SyncFolderItemsType `xml:"m:SyncFolderItems,omitempty"`
@@ -10816,20 +10882,23 @@ func (b *ExchangeServiceBinding) SyncFolderItems(ctx context.Context, input *Syn
 }
 
 func (b *ExchangeServiceBinding) GetItem(ctx context.Context, input *GetItemSoapIn, detail any) (*GetItemSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-		DateTimePrecision     DateTimePrecisionType      `xml:"t:DateTimePrecision,omitempty"`
-		ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
-		DateTimePrecision:     input.DateTimePrecision,
-		ManagementRole:        input.ManagementRole,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.DateTimePrecision != "" || input.ManagementRole != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+			DateTimePrecision     DateTimePrecisionType      `xml:"t:DateTimePrecision,omitempty"`
+			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+			DateTimePrecision:     input.DateTimePrecision,
+			ManagementRole:        input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		GetItem *GetItemType `xml:"m:GetItem,omitempty"`
@@ -10857,16 +10926,19 @@ func (b *ExchangeServiceBinding) GetItem(ctx context.Context, input *GetItemSoap
 }
 
 func (b *ExchangeServiceBinding) CreateItem(ctx context.Context, input *CreateItemSoapIn, detail any) (*CreateItemSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+		}
 	}
 	inputBody := &struct {
 		CreateItem *CreateItemType `xml:"m:CreateItem,omitempty"`
@@ -10894,14 +10966,17 @@ func (b *ExchangeServiceBinding) CreateItem(ctx context.Context, input *CreateIt
 }
 
 func (b *ExchangeServiceBinding) DeleteItem(ctx context.Context, input *DeleteItemSoapIn, detail any) (*DeleteItemSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		DeleteItem *DeleteItemType `xml:"m:DeleteItem,omitempty"`
@@ -10929,16 +11004,19 @@ func (b *ExchangeServiceBinding) DeleteItem(ctx context.Context, input *DeleteIt
 }
 
 func (b *ExchangeServiceBinding) UpdateItem(ctx context.Context, input *UpdateItemSoapIn, detail any) (*UpdateItemSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+		}
 	}
 	inputBody := &struct {
 		UpdateItem *UpdateItemType `xml:"m:UpdateItem,omitempty"`
@@ -10966,18 +11044,21 @@ func (b *ExchangeServiceBinding) UpdateItem(ctx context.Context, input *UpdateIt
 }
 
 func (b *ExchangeServiceBinding) UpdateItemInRecoverableItems(ctx context.Context, input *UpdateItemInRecoverableItemsSoapIn, detail any) (*UpdateItemInRecoverableItemsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-		ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
-		ManagementRole:        input.ManagementRole,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+			ManagementRole:        input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		UpdateItemInRecoverableItems *UpdateItemInRecoverableItemsType `xml:"m:UpdateItemInRecoverableItems,omitempty"`
@@ -11005,14 +11086,17 @@ func (b *ExchangeServiceBinding) UpdateItemInRecoverableItems(ctx context.Contex
 }
 
 func (b *ExchangeServiceBinding) SendItem(ctx context.Context, input *SendItemSoapIn, detail any) (*SendItemSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		SendItem *SendItemType `xml:"m:SendItem,omitempty"`
@@ -11040,14 +11124,17 @@ func (b *ExchangeServiceBinding) SendItem(ctx context.Context, input *SendItemSo
 }
 
 func (b *ExchangeServiceBinding) MoveItem(ctx context.Context, input *MoveItemSoapIn, detail any) (*MoveItemSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		MoveItem *MoveItemType `xml:"m:MoveItem,omitempty"`
@@ -11075,14 +11162,17 @@ func (b *ExchangeServiceBinding) MoveItem(ctx context.Context, input *MoveItemSo
 }
 
 func (b *ExchangeServiceBinding) CopyItem(ctx context.Context, input *CopyItemSoapIn, detail any) (*CopyItemSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		CopyItem *CopyItemType `xml:"m:CopyItem,omitempty"`
@@ -11110,14 +11200,17 @@ func (b *ExchangeServiceBinding) CopyItem(ctx context.Context, input *CopyItemSo
 }
 
 func (b *ExchangeServiceBinding) ArchiveItem(ctx context.Context, input *ArchiveItemSoapIn, detail any) (*ArchiveItemSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		ArchiveItem *ArchiveItemType `xml:"m:ArchiveItem,omitempty"`
@@ -11145,16 +11238,19 @@ func (b *ExchangeServiceBinding) ArchiveItem(ctx context.Context, input *Archive
 }
 
 func (b *ExchangeServiceBinding) CreateAttachment(ctx context.Context, input *CreateAttachmentSoapIn, detail any) (*CreateAttachmentSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+		}
 	}
 	inputBody := &struct {
 		CreateAttachment *CreateAttachmentType `xml:"m:CreateAttachment,omitempty"`
@@ -11182,14 +11278,17 @@ func (b *ExchangeServiceBinding) CreateAttachment(ctx context.Context, input *Cr
 }
 
 func (b *ExchangeServiceBinding) DeleteAttachment(ctx context.Context, input *DeleteAttachmentSoapIn, detail any) (*DeleteAttachmentSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		DeleteAttachment *DeleteAttachmentType `xml:"m:DeleteAttachment,omitempty"`
@@ -11217,16 +11316,19 @@ func (b *ExchangeServiceBinding) DeleteAttachment(ctx context.Context, input *De
 }
 
 func (b *ExchangeServiceBinding) GetAttachment(ctx context.Context, input *GetAttachmentSoapIn, detail any) (*GetAttachmentSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+		}
 	}
 	inputBody := &struct {
 		GetAttachment *GetAttachmentType `xml:"m:GetAttachment,omitempty"`
@@ -11254,10 +11356,13 @@ func (b *ExchangeServiceBinding) GetAttachment(ctx context.Context, input *GetAt
 }
 
 func (b *ExchangeServiceBinding) GetClientAccessToken(ctx context.Context, input *GetClientAccessTokenSoapIn, detail any) (*GetClientAccessTokenSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetClientAccessToken *GetClientAccessTokenType `xml:"m:GetClientAccessToken,omitempty"`
@@ -11285,14 +11390,17 @@ func (b *ExchangeServiceBinding) GetClientAccessToken(ctx context.Context, input
 }
 
 func (b *ExchangeServiceBinding) CreateManagedFolder(ctx context.Context, input *CreateManagedFolderSoapIn, detail any) (*CreateManagedFolderSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		CreateManagedFolder *CreateManagedFolderRequestType `xml:"m:CreateManagedFolder,omitempty"`
@@ -11320,14 +11428,17 @@ func (b *ExchangeServiceBinding) CreateManagedFolder(ctx context.Context, input 
 }
 
 func (b *ExchangeServiceBinding) GetDelegate(ctx context.Context, input *GetDelegateSoapIn, detail any) (*GetDelegateSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetDelegate *GetDelegateType `xml:"m:GetDelegate,omitempty"`
@@ -11355,14 +11466,17 @@ func (b *ExchangeServiceBinding) GetDelegate(ctx context.Context, input *GetDele
 }
 
 func (b *ExchangeServiceBinding) AddDelegate(ctx context.Context, input *AddDelegateSoapIn, detail any) (*AddDelegateSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		AddDelegate *AddDelegateType `xml:"m:AddDelegate,omitempty"`
@@ -11390,14 +11504,17 @@ func (b *ExchangeServiceBinding) AddDelegate(ctx context.Context, input *AddDele
 }
 
 func (b *ExchangeServiceBinding) RemoveDelegate(ctx context.Context, input *RemoveDelegateSoapIn, detail any) (*RemoveDelegateSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		RemoveDelegate *RemoveDelegateType `xml:"m:RemoveDelegate,omitempty"`
@@ -11425,14 +11542,17 @@ func (b *ExchangeServiceBinding) RemoveDelegate(ctx context.Context, input *Remo
 }
 
 func (b *ExchangeServiceBinding) UpdateDelegate(ctx context.Context, input *UpdateDelegateSoapIn, detail any) (*UpdateDelegateSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		UpdateDelegate *UpdateDelegateType `xml:"m:UpdateDelegate,omitempty"`
@@ -11460,14 +11580,17 @@ func (b *ExchangeServiceBinding) UpdateDelegate(ctx context.Context, input *Upda
 }
 
 func (b *ExchangeServiceBinding) CreateUserConfiguration(ctx context.Context, input *CreateUserConfigurationSoapIn, detail any) (*CreateUserConfigurationSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		CreateUserConfiguration *CreateUserConfigurationType `xml:"m:CreateUserConfiguration,omitempty"`
@@ -11495,14 +11618,17 @@ func (b *ExchangeServiceBinding) CreateUserConfiguration(ctx context.Context, in
 }
 
 func (b *ExchangeServiceBinding) DeleteUserConfiguration(ctx context.Context, input *DeleteUserConfigurationSoapIn, detail any) (*DeleteUserConfigurationSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		DeleteUserConfiguration *DeleteUserConfigurationType `xml:"m:DeleteUserConfiguration,omitempty"`
@@ -11530,14 +11656,17 @@ func (b *ExchangeServiceBinding) DeleteUserConfiguration(ctx context.Context, in
 }
 
 func (b *ExchangeServiceBinding) GetUserConfiguration(ctx context.Context, input *GetUserConfigurationSoapIn, detail any) (*GetUserConfigurationSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetUserConfiguration *GetUserConfigurationType `xml:"m:GetUserConfiguration,omitempty"`
@@ -11565,14 +11694,17 @@ func (b *ExchangeServiceBinding) GetUserConfiguration(ctx context.Context, input
 }
 
 func (b *ExchangeServiceBinding) GetSpecificUserConfiguration(ctx context.Context, input *GetSpecificUserConfigurationSoapIn, detail any) (*GetSpecificUserConfigurationSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetSpecificUserConfiguration *GetSpecificUserConfigurationType `xml:"m:GetSpecificUserConfiguration,omitempty"`
@@ -11600,14 +11732,17 @@ func (b *ExchangeServiceBinding) GetSpecificUserConfiguration(ctx context.Contex
 }
 
 func (b *ExchangeServiceBinding) UpdateUserConfiguration(ctx context.Context, input *UpdateUserConfigurationSoapIn, detail any) (*UpdateUserConfigurationSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		UpdateUserConfiguration *UpdateUserConfigurationType `xml:"m:UpdateUserConfiguration,omitempty"`
@@ -11635,14 +11770,17 @@ func (b *ExchangeServiceBinding) UpdateUserConfiguration(ctx context.Context, in
 }
 
 func (b *ExchangeServiceBinding) GetUserAvailability(ctx context.Context, input *GetUserAvailabilitySoapIn, detail any) (*GetUserAvailabilitySoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		TimeZoneContext:       input.TimeZoneContext,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.TimeZoneContext != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			TimeZoneContext:       input.TimeZoneContext,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetUserAvailabilityRequest *GetUserAvailabilityRequestType `xml:"m:GetUserAvailabilityRequest,omitempty"`
@@ -11670,10 +11808,13 @@ func (b *ExchangeServiceBinding) GetUserAvailability(ctx context.Context, input 
 }
 
 func (b *ExchangeServiceBinding) GetUserOofSettings(ctx context.Context, input *GetUserOofSettingsSoapIn, detail any) (*GetUserOofSettingsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		GetUserOofSettingsRequest *GetUserOofSettingsRequest `xml:"m:GetUserOofSettingsRequest,omitempty"`
@@ -11701,10 +11842,13 @@ func (b *ExchangeServiceBinding) GetUserOofSettings(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) SetUserOofSettings(ctx context.Context, input *SetUserOofSettingsSoapIn, detail any) (*SetUserOofSettingsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		SetUserOofSettingsRequest *SetUserOofSettingsRequest `xml:"m:SetUserOofSettingsRequest,omitempty"`
@@ -11732,14 +11876,17 @@ func (b *ExchangeServiceBinding) SetUserOofSettings(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) GetServiceConfiguration(ctx context.Context, input *GetServiceConfigurationSoapIn, detail any) (*GetServiceConfigurationSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		RequestServerVersion:  input.RequestServerVersion,
-		MailboxCulture:        input.MailboxCulture,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.RequestServerVersion != nil || input.MailboxCulture != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			RequestServerVersion:  input.RequestServerVersion,
+			MailboxCulture:        input.MailboxCulture,
+		}
 	}
 	inputBody := &struct {
 		GetServiceConfiguration *GetServiceConfigurationType `xml:"m:GetServiceConfiguration,omitempty"`
@@ -11767,12 +11914,15 @@ func (b *ExchangeServiceBinding) GetServiceConfiguration(ctx context.Context, in
 }
 
 func (b *ExchangeServiceBinding) GetMailTips(ctx context.Context, input *GetMailTipsSoapIn, detail any) (*GetMailTipsSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		MailboxCulture:       input.MailboxCulture,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			MailboxCulture:       input.MailboxCulture,
+		}
 	}
 	inputBody := &struct {
 		GetMailTips *GetMailTipsType `xml:"m:GetMailTips,omitempty"`
@@ -11800,14 +11950,17 @@ func (b *ExchangeServiceBinding) GetMailTips(ctx context.Context, input *GetMail
 }
 
 func (b *ExchangeServiceBinding) PlayOnPhone(ctx context.Context, input *PlayOnPhoneSoapIn, detail any) (*PlayOnPhoneSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		PlayOnPhone *PlayOnPhoneType `xml:"m:PlayOnPhone,omitempty"`
@@ -11835,14 +11988,17 @@ func (b *ExchangeServiceBinding) PlayOnPhone(ctx context.Context, input *PlayOnP
 }
 
 func (b *ExchangeServiceBinding) GetPhoneCallInformation(ctx context.Context, input *GetPhoneCallInformationSoapIn, detail any) (*GetPhoneCallInformationSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetPhoneCallInformation *GetPhoneCallInformationType `xml:"m:GetPhoneCallInformation,omitempty"`
@@ -11870,14 +12026,17 @@ func (b *ExchangeServiceBinding) GetPhoneCallInformation(ctx context.Context, in
 }
 
 func (b *ExchangeServiceBinding) DisconnectPhoneCall(ctx context.Context, input *DisconnectPhoneCallSoapIn, detail any) (*DisconnectPhoneCallSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		DisconnectPhoneCall *DisconnectPhoneCallType `xml:"m:DisconnectPhoneCall,omitempty"`
@@ -11905,10 +12064,13 @@ func (b *ExchangeServiceBinding) DisconnectPhoneCall(ctx context.Context, input 
 }
 
 func (b *ExchangeServiceBinding) GetSharingMetadata(ctx context.Context, input *GetSharingMetadataSoapIn, detail any) (*GetSharingMetadataSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetSharingMetadata *GetSharingMetadataType `xml:"m:GetSharingMetadata,omitempty"`
@@ -11936,10 +12098,13 @@ func (b *ExchangeServiceBinding) GetSharingMetadata(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) RefreshSharingFolder(ctx context.Context, input *RefreshSharingFolderSoapIn, detail any) (*RefreshSharingFolderSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		RefreshSharingFolder *RefreshSharingFolderType `xml:"m:RefreshSharingFolder,omitempty"`
@@ -11967,10 +12132,13 @@ func (b *ExchangeServiceBinding) RefreshSharingFolder(ctx context.Context, input
 }
 
 func (b *ExchangeServiceBinding) GetSharingFolder(ctx context.Context, input *GetSharingFolderSoapIn, detail any) (*GetSharingFolderSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetSharingFolder *GetSharingFolderType `xml:"m:GetSharingFolder,omitempty"`
@@ -11998,12 +12166,15 @@ func (b *ExchangeServiceBinding) GetSharingFolder(ctx context.Context, input *Ge
 }
 
 func (b *ExchangeServiceBinding) SetTeamMailbox(ctx context.Context, input *SetTeamMailboxSoapIn, detail any) (*SetTeamMailboxSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		SetTeamMailbox *SetTeamMailboxRequestType `xml:"m:SetTeamMailbox,omitempty"`
@@ -12031,10 +12202,13 @@ func (b *ExchangeServiceBinding) SetTeamMailbox(ctx context.Context, input *SetT
 }
 
 func (b *ExchangeServiceBinding) UnpinTeamMailbox(ctx context.Context, input *UnpinTeamMailboxSoapIn, detail any) (*UnpinTeamMailboxSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		UnpinTeamMailbox *UnpinTeamMailboxRequestType `xml:"m:UnpinTeamMailbox,omitempty"`
@@ -12062,14 +12236,17 @@ func (b *ExchangeServiceBinding) UnpinTeamMailbox(ctx context.Context, input *Un
 }
 
 func (b *ExchangeServiceBinding) GetRoomLists(ctx context.Context, input *GetRoomListsSoapIn, detail any) (*GetRoomListsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetRoomLists *GetRoomListsType `xml:"m:GetRoomLists,omitempty"`
@@ -12097,14 +12274,17 @@ func (b *ExchangeServiceBinding) GetRoomLists(ctx context.Context, input *GetRoo
 }
 
 func (b *ExchangeServiceBinding) GetRooms(ctx context.Context, input *GetRoomsSoapIn, detail any) (*GetRoomsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetRooms *GetRoomsType `xml:"m:GetRooms,omitempty"`
@@ -12132,10 +12312,13 @@ func (b *ExchangeServiceBinding) GetRooms(ctx context.Context, input *GetRoomsSo
 }
 
 func (b *ExchangeServiceBinding) FindMessageTrackingReport(ctx context.Context, input *FindMessageTrackingReportSoapIn, detail any) (*FindMessageTrackingReportSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		FindMessageTrackingReport *FindMessageTrackingReportRequestType `xml:"m:FindMessageTrackingReport,omitempty"`
@@ -12163,10 +12346,13 @@ func (b *ExchangeServiceBinding) FindMessageTrackingReport(ctx context.Context, 
 }
 
 func (b *ExchangeServiceBinding) GetMessageTrackingReport(ctx context.Context, input *GetMessageTrackingReportSoapIn, detail any) (*GetMessageTrackingReportSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetMessageTrackingReport *GetMessageTrackingReportRequestType `xml:"m:GetMessageTrackingReport,omitempty"`
@@ -12194,12 +12380,15 @@ func (b *ExchangeServiceBinding) GetMessageTrackingReport(ctx context.Context, i
 }
 
 func (b *ExchangeServiceBinding) FindConversation(ctx context.Context, input *FindConversationSoapIn, detail any) (*FindConversationSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		RequestServerVersion:  input.RequestServerVersion,
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			RequestServerVersion:  input.RequestServerVersion,
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		FindConversation *FindConversationType `xml:"m:FindConversation,omitempty"`
@@ -12227,12 +12416,15 @@ func (b *ExchangeServiceBinding) FindConversation(ctx context.Context, input *Fi
 }
 
 func (b *ExchangeServiceBinding) ApplyConversationAction(ctx context.Context, input *ApplyConversationActionSoapIn, detail any) (*ApplyConversationActionSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		RequestServerVersion:  input.RequestServerVersion,
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			RequestServerVersion:  input.RequestServerVersion,
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		ApplyConversationAction *ApplyConversationActionType `xml:"m:ApplyConversationAction,omitempty"`
@@ -12260,12 +12452,15 @@ func (b *ExchangeServiceBinding) ApplyConversationAction(ctx context.Context, in
 }
 
 func (b *ExchangeServiceBinding) GetConversationItems(ctx context.Context, input *GetConversationItemsSoapIn, detail any) (*GetConversationItemsSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		RequestServerVersion:  input.RequestServerVersion,
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			RequestServerVersion:  input.RequestServerVersion,
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		GetConversationItems *GetConversationItemsType `xml:"m:GetConversationItems,omitempty"`
@@ -12293,12 +12488,15 @@ func (b *ExchangeServiceBinding) GetConversationItems(ctx context.Context, input
 }
 
 func (b *ExchangeServiceBinding) FindPeople(ctx context.Context, input *FindPeopleSoapIn, detail any) (*FindPeopleSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		RequestServerVersion:  input.RequestServerVersion,
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			RequestServerVersion:  input.RequestServerVersion,
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		FindPeople *FindPeopleType `xml:"m:FindPeople,omitempty"`
@@ -12326,12 +12524,15 @@ func (b *ExchangeServiceBinding) FindPeople(ctx context.Context, input *FindPeop
 }
 
 func (b *ExchangeServiceBinding) FindTags(ctx context.Context, input *FindTagsSoapIn, detail any) (*FindTagsSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		RequestServerVersion:  input.RequestServerVersion,
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			RequestServerVersion:  input.RequestServerVersion,
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		FindTags *FindTagsType `xml:"m:FindTags,omitempty"`
@@ -12359,12 +12560,15 @@ func (b *ExchangeServiceBinding) FindTags(ctx context.Context, input *FindTagsSo
 }
 
 func (b *ExchangeServiceBinding) AddTag(ctx context.Context, input *AddTagSoapIn, detail any) (*AddTagSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		RequestServerVersion:  input.RequestServerVersion,
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			RequestServerVersion:  input.RequestServerVersion,
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		AddTag *AddTagType `xml:"m:AddTag,omitempty"`
@@ -12392,12 +12596,15 @@ func (b *ExchangeServiceBinding) AddTag(ctx context.Context, input *AddTagSoapIn
 }
 
 func (b *ExchangeServiceBinding) HideTag(ctx context.Context, input *HideTagSoapIn, detail any) (*HideTagSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		RequestServerVersion:  input.RequestServerVersion,
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			RequestServerVersion:  input.RequestServerVersion,
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		HideTag *HideTagType `xml:"m:HideTag,omitempty"`
@@ -12425,12 +12632,15 @@ func (b *ExchangeServiceBinding) HideTag(ctx context.Context, input *HideTagSoap
 }
 
 func (b *ExchangeServiceBinding) GetPersona(ctx context.Context, input *GetPersonaSoapIn, detail any) (*GetPersonaSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	}{
-		RequestServerVersion:  input.RequestServerVersion,
-		ExchangeImpersonation: input.ExchangeImpersonation,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
+		inputHeader = &struct {
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+		}{
+			RequestServerVersion:  input.RequestServerVersion,
+			ExchangeImpersonation: input.ExchangeImpersonation,
+		}
 	}
 	inputBody := &struct {
 		GetPersona *GetPersonaType `xml:"m:GetPersona,omitempty"`
@@ -12458,16 +12668,19 @@ func (b *ExchangeServiceBinding) GetPersona(ctx context.Context, input *GetPerso
 }
 
 func (b *ExchangeServiceBinding) GetInboxRules(ctx context.Context, input *GetInboxRulesSoapIn, detail any) (*GetInboxRulesSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+		}
 	}
 	inputBody := &struct {
 		GetInboxRules *GetInboxRulesRequestType `xml:"m:GetInboxRules,omitempty"`
@@ -12495,16 +12708,19 @@ func (b *ExchangeServiceBinding) GetInboxRules(ctx context.Context, input *GetIn
 }
 
 func (b *ExchangeServiceBinding) UpdateInboxRules(ctx context.Context, input *UpdateInboxRulesSoapIn, detail any) (*UpdateInboxRulesSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-		TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
-		TimeZoneContext:       input.TimeZoneContext,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+			TimeZoneContext:       input.TimeZoneContext,
+		}
 	}
 	inputBody := &struct {
 		UpdateInboxRules *UpdateInboxRulesRequestType `xml:"m:UpdateInboxRules,omitempty"`
@@ -12532,12 +12748,15 @@ func (b *ExchangeServiceBinding) UpdateInboxRules(ctx context.Context, input *Up
 }
 
 func (b *ExchangeServiceBinding) GetPasswordExpirationDate(ctx context.Context, input *GetPasswordExpirationDateSoapIn, detail any) (*GetPasswordExpirationDateSoapOut, error) {
-	inputHeader := &struct {
-		MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		MailboxCulture:       input.MailboxCulture,
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			MailboxCulture:       input.MailboxCulture,
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetPasswordExpirationDate *GetPasswordExpirationDateType `xml:"m:GetPasswordExpirationDate,omitempty"`
@@ -12565,12 +12784,15 @@ func (b *ExchangeServiceBinding) GetPasswordExpirationDate(ctx context.Context, 
 }
 
 func (b *ExchangeServiceBinding) GetDiscoverySearchConfiguration(ctx context.Context, input *GetDiscoverySearchConfigurationSoapIn, detail any) (*GetDiscoverySearchConfigurationSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		GetDiscoverySearchConfiguration *GetDiscoverySearchConfigurationType `xml:"m:GetDiscoverySearchConfiguration,omitempty"`
@@ -12598,12 +12820,15 @@ func (b *ExchangeServiceBinding) GetDiscoverySearchConfiguration(ctx context.Con
 }
 
 func (b *ExchangeServiceBinding) GetSearchableMailboxes(ctx context.Context, input *GetSearchableMailboxesSoapIn, detail any) (*GetSearchableMailboxesSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		GetSearchableMailboxes *GetSearchableMailboxesType `xml:"m:GetSearchableMailboxes,omitempty"`
@@ -12631,12 +12856,15 @@ func (b *ExchangeServiceBinding) GetSearchableMailboxes(ctx context.Context, inp
 }
 
 func (b *ExchangeServiceBinding) SearchMailboxes(ctx context.Context, input *SearchMailboxesSoapIn, detail any) (*SearchMailboxesSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		SearchMailboxes *SearchMailboxesType `xml:"m:SearchMailboxes,omitempty"`
@@ -12664,12 +12892,15 @@ func (b *ExchangeServiceBinding) SearchMailboxes(ctx context.Context, input *Sea
 }
 
 func (b *ExchangeServiceBinding) GetHoldOnMailboxes(ctx context.Context, input *GetHoldOnMailboxesSoapIn, detail any) (*GetHoldOnMailboxesSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		GetHoldOnMailboxes *GetHoldOnMailboxesType `xml:"m:GetHoldOnMailboxes,omitempty"`
@@ -12697,12 +12928,15 @@ func (b *ExchangeServiceBinding) GetHoldOnMailboxes(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) SetHoldOnMailboxes(ctx context.Context, input *SetHoldOnMailboxesSoapIn, detail any) (*SetHoldOnMailboxesSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		SetHoldOnMailboxes *SetHoldOnMailboxesType `xml:"m:SetHoldOnMailboxes,omitempty"`
@@ -12730,12 +12964,15 @@ func (b *ExchangeServiceBinding) SetHoldOnMailboxes(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) GetNonIndexableItemStatistics(ctx context.Context, input *GetNonIndexableItemStatisticsSoapIn, detail any) (*GetNonIndexableItemStatisticsSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		GetNonIndexableItemStatistics *GetNonIndexableItemStatisticsType `xml:"m:GetNonIndexableItemStatistics,omitempty"`
@@ -12763,12 +13000,15 @@ func (b *ExchangeServiceBinding) GetNonIndexableItemStatistics(ctx context.Conte
 }
 
 func (b *ExchangeServiceBinding) GetNonIndexableItemDetails(ctx context.Context, input *GetNonIndexableItemDetailsSoapIn, detail any) (*GetNonIndexableItemDetailsSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		GetNonIndexableItemDetails *GetNonIndexableItemDetailsType `xml:"m:GetNonIndexableItemDetails,omitempty"`
@@ -12796,14 +13036,17 @@ func (b *ExchangeServiceBinding) GetNonIndexableItemDetails(ctx context.Context,
 }
 
 func (b *ExchangeServiceBinding) MarkAllItemsAsRead(ctx context.Context, input *MarkAllItemsAsReadSoapIn, detail any) (*MarkAllItemsAsReadSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		MarkAllItemsAsRead *MarkAllItemsAsReadType `xml:"m:MarkAllItemsAsRead,omitempty"`
@@ -12831,14 +13074,17 @@ func (b *ExchangeServiceBinding) MarkAllItemsAsRead(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) MarkAsJunk(ctx context.Context, input *MarkAsJunkSoapIn, detail any) (*MarkAsJunkSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		MarkAsJunk *MarkAsJunkType `xml:"m:MarkAsJunk,omitempty"`
@@ -12866,14 +13112,17 @@ func (b *ExchangeServiceBinding) MarkAsJunk(ctx context.Context, input *MarkAsJu
 }
 
 func (b *ExchangeServiceBinding) ReportMessage(ctx context.Context, input *ReportMessageSoapIn, detail any) (*ReportMessageSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		ReportMessage *ReportMessageType `xml:"m:ReportMessage,omitempty"`
@@ -12901,10 +13150,13 @@ func (b *ExchangeServiceBinding) ReportMessage(ctx context.Context, input *Repor
 }
 
 func (b *ExchangeServiceBinding) GetAppManifests(ctx context.Context, input *GetAppManifestsSoapIn, detail any) (*GetAppManifestsSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetAppManifests *GetAppManifestsType `xml:"m:GetAppManifests,omitempty"`
@@ -12932,14 +13184,17 @@ func (b *ExchangeServiceBinding) GetAppManifests(ctx context.Context, input *Get
 }
 
 func (b *ExchangeServiceBinding) AddNewImContactToGroup(ctx context.Context, input *AddNewImContactToGroupSoapIn, detail any) (*AddNewImContactToGroupSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		AddNewImContactToGroup *AddNewImContactToGroupType `xml:"m:AddNewImContactToGroup,omitempty"`
@@ -12967,14 +13222,17 @@ func (b *ExchangeServiceBinding) AddNewImContactToGroup(ctx context.Context, inp
 }
 
 func (b *ExchangeServiceBinding) AddNewTelUriContactToGroup(ctx context.Context, input *AddNewTelUriContactToGroupSoapIn, detail any) (*AddNewTelUriContactToGroupSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		AddNewTelUriContactToGroup *AddNewTelUriContactToGroupType `xml:"m:AddNewTelUriContactToGroup,omitempty"`
@@ -13002,14 +13260,17 @@ func (b *ExchangeServiceBinding) AddNewTelUriContactToGroup(ctx context.Context,
 }
 
 func (b *ExchangeServiceBinding) AddImContactToGroup(ctx context.Context, input *AddImContactToGroupSoapIn, detail any) (*AddImContactToGroupSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		AddImContactToGroup *AddImContactToGroupType `xml:"m:AddImContactToGroup,omitempty"`
@@ -13037,14 +13298,17 @@ func (b *ExchangeServiceBinding) AddImContactToGroup(ctx context.Context, input 
 }
 
 func (b *ExchangeServiceBinding) RemoveImContactFromGroup(ctx context.Context, input *RemoveImContactFromGroupSoapIn, detail any) (*RemoveImContactFromGroupSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		RemoveImContactFromGroup *RemoveImContactFromGroupType `xml:"m:RemoveImContactFromGroup,omitempty"`
@@ -13072,14 +13336,17 @@ func (b *ExchangeServiceBinding) RemoveImContactFromGroup(ctx context.Context, i
 }
 
 func (b *ExchangeServiceBinding) AddImGroup(ctx context.Context, input *AddImGroupSoapIn, detail any) (*AddImGroupSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		AddImGroup *AddImGroupType `xml:"m:AddImGroup,omitempty"`
@@ -13107,14 +13374,17 @@ func (b *ExchangeServiceBinding) AddImGroup(ctx context.Context, input *AddImGro
 }
 
 func (b *ExchangeServiceBinding) AddDistributionGroupToImList(ctx context.Context, input *AddDistributionGroupToImListSoapIn, detail any) (*AddDistributionGroupToImListSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		AddDistributionGroupToImList *AddDistributionGroupToImListType `xml:"m:AddDistributionGroupToImList,omitempty"`
@@ -13142,14 +13412,17 @@ func (b *ExchangeServiceBinding) AddDistributionGroupToImList(ctx context.Contex
 }
 
 func (b *ExchangeServiceBinding) GetImItemList(ctx context.Context, input *GetImItemListSoapIn, detail any) (*GetImItemListSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetImItemList *GetImItemListType `xml:"m:GetImItemList,omitempty"`
@@ -13177,14 +13450,17 @@ func (b *ExchangeServiceBinding) GetImItemList(ctx context.Context, input *GetIm
 }
 
 func (b *ExchangeServiceBinding) GetImItems(ctx context.Context, input *GetImItemsSoapIn, detail any) (*GetImItemsSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetImItems *GetImItemsType `xml:"m:GetImItems,omitempty"`
@@ -13212,14 +13488,17 @@ func (b *ExchangeServiceBinding) GetImItems(ctx context.Context, input *GetImIte
 }
 
 func (b *ExchangeServiceBinding) RemoveContactFromImList(ctx context.Context, input *RemoveContactFromImListSoapIn, detail any) (*RemoveContactFromImListSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		RemoveContactFromImList *RemoveContactFromImListType `xml:"m:RemoveContactFromImList,omitempty"`
@@ -13247,14 +13526,17 @@ func (b *ExchangeServiceBinding) RemoveContactFromImList(ctx context.Context, in
 }
 
 func (b *ExchangeServiceBinding) RemoveDistributionGroupFromImList(ctx context.Context, input *RemoveDistributionGroupFromImListSoapIn, detail any) (*RemoveDistributionGroupFromImListSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		RemoveDistributionGroupFromImList *RemoveDistributionGroupFromImListType `xml:"m:RemoveDistributionGroupFromImList,omitempty"`
@@ -13282,14 +13564,17 @@ func (b *ExchangeServiceBinding) RemoveDistributionGroupFromImList(ctx context.C
 }
 
 func (b *ExchangeServiceBinding) RemoveImGroup(ctx context.Context, input *RemoveImGroupSoapIn, detail any) (*RemoveImGroupSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		RemoveImGroup *RemoveImGroupType `xml:"m:RemoveImGroup,omitempty"`
@@ -13317,14 +13602,17 @@ func (b *ExchangeServiceBinding) RemoveImGroup(ctx context.Context, input *Remov
 }
 
 func (b *ExchangeServiceBinding) SetImGroup(ctx context.Context, input *SetImGroupSoapIn, detail any) (*SetImGroupSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		SetImGroup *SetImGroupType `xml:"m:SetImGroup,omitempty"`
@@ -13352,14 +13640,17 @@ func (b *ExchangeServiceBinding) SetImGroup(ctx context.Context, input *SetImGro
 }
 
 func (b *ExchangeServiceBinding) SetImListMigrationCompleted(ctx context.Context, input *SetImListMigrationCompletedSoapIn, detail any) (*SetImListMigrationCompletedSoapOut, error) {
-	inputHeader := &struct {
-		ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-		MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
-		RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		ExchangeImpersonation: input.ExchangeImpersonation,
-		MailboxCulture:        input.MailboxCulture,
-		RequestServerVersion:  input.RequestServerVersion,
+	var inputHeader any
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
+			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			ExchangeImpersonation: input.ExchangeImpersonation,
+			MailboxCulture:        input.MailboxCulture,
+			RequestServerVersion:  input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		SetImListMigrationCompleted *SetImListMigrationCompletedType `xml:"m:SetImListMigrationCompleted,omitempty"`
@@ -13387,10 +13678,13 @@ func (b *ExchangeServiceBinding) SetImListMigrationCompleted(ctx context.Context
 }
 
 func (b *ExchangeServiceBinding) GetUserRetentionPolicyTags(ctx context.Context, input *GetUserRetentionPolicyTagsSoapIn, detail any) (*GetUserRetentionPolicyTagsSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetUserRetentionPolicyTags *GetUserRetentionPolicyTagsType `xml:"m:GetUserRetentionPolicyTags,omitempty"`
@@ -13418,10 +13712,13 @@ func (b *ExchangeServiceBinding) GetUserRetentionPolicyTags(ctx context.Context,
 }
 
 func (b *ExchangeServiceBinding) DisableApp(ctx context.Context, input *DisableAppSoapIn, detail any) (*DisableAppSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		DisableApp *DisableAppType `xml:"m:DisableApp,omitempty"`
@@ -13449,10 +13746,13 @@ func (b *ExchangeServiceBinding) DisableApp(ctx context.Context, input *DisableA
 }
 
 func (b *ExchangeServiceBinding) InstallApp(ctx context.Context, input *InstallAppSoapIn, detail any) (*InstallAppSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		InstallApp *InstallAppType `xml:"m:InstallApp,omitempty"`
@@ -13480,10 +13780,13 @@ func (b *ExchangeServiceBinding) InstallApp(ctx context.Context, input *InstallA
 }
 
 func (b *ExchangeServiceBinding) UpdateExtensionUsage(ctx context.Context, input *UpdateExtensionUsageSoapIn, detail any) (*UpdateExtensionUsageSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		UpdateExtensionUsage *UpdateExtensionUsageType `xml:"m:UpdateExtensionUsage,omitempty"`
@@ -13511,10 +13814,13 @@ func (b *ExchangeServiceBinding) UpdateExtensionUsage(ctx context.Context, input
 }
 
 func (b *ExchangeServiceBinding) UninstallApp(ctx context.Context, input *UninstallAppSoapIn, detail any) (*UninstallAppSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		UninstallApp *UninstallAppType `xml:"m:UninstallApp,omitempty"`
@@ -13542,10 +13848,13 @@ func (b *ExchangeServiceBinding) UninstallApp(ctx context.Context, input *Uninst
 }
 
 func (b *ExchangeServiceBinding) GetAppMarketplaceUrl(ctx context.Context, input *GetAppMarketplaceUrlSoapIn, detail any) (*GetAppMarketplaceUrlSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetAppMarketplaceUrl *GetAppMarketplaceUrlType `xml:"m:GetAppMarketplaceUrl,omitempty"`
@@ -13573,10 +13882,13 @@ func (b *ExchangeServiceBinding) GetAppMarketplaceUrl(ctx context.Context, input
 }
 
 func (b *ExchangeServiceBinding) FindAvailableMeetingTimes(ctx context.Context, input *FindAvailableMeetingTimesSoapIn, detail any) (*FindAvailableMeetingTimesSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		FindAvailableMeetingTimes *FindAvailableMeetingTimesType `xml:"m:FindAvailableMeetingTimes,omitempty"`
@@ -13604,10 +13916,13 @@ func (b *ExchangeServiceBinding) FindAvailableMeetingTimes(ctx context.Context, 
 }
 
 func (b *ExchangeServiceBinding) FindMeetingTimeCandidates(ctx context.Context, input *FindMeetingTimeCandidatesSoapIn, detail any) (*FindMeetingTimeCandidatesSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		FindMeetingTimeCandidates *FindMeetingTimeCandidatesType `xml:"m:FindMeetingTimeCandidates,omitempty"`
@@ -13635,10 +13950,13 @@ func (b *ExchangeServiceBinding) FindMeetingTimeCandidates(ctx context.Context, 
 }
 
 func (b *ExchangeServiceBinding) GetUserPhoto(ctx context.Context, input *GetUserPhotoSoapIn, detail any) (*GetUserPhotoSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetUserPhoto *GetUserPhotoType `xml:"m:GetUserPhoto,omitempty"`
@@ -13666,10 +13984,13 @@ func (b *ExchangeServiceBinding) GetUserPhoto(ctx context.Context, input *GetUse
 }
 
 func (b *ExchangeServiceBinding) SetUserPhoto(ctx context.Context, input *SetUserPhotoSoapIn, detail any) (*SetUserPhotoSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		SetUserPhoto *SetUserPhotoType `xml:"m:SetUserPhoto,omitempty"`
@@ -13697,12 +14018,15 @@ func (b *ExchangeServiceBinding) SetUserPhoto(ctx context.Context, input *SetUse
 }
 
 func (b *ExchangeServiceBinding) GetMeetingSpace(ctx context.Context, input *GetMeetingSpaceSoapIn, detail any) (*GetMeetingSpaceSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		GetMeetingSpace *GetMeetingSpaceType `xml:"m:GetMeetingSpace,omitempty"`
@@ -13730,12 +14054,15 @@ func (b *ExchangeServiceBinding) GetMeetingSpace(ctx context.Context, input *Get
 }
 
 func (b *ExchangeServiceBinding) DeleteMeetingSpace(ctx context.Context, input *DeleteMeetingSpaceSoapIn, detail any) (*DeleteMeetingSpaceSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		DeleteMeetingSpace *DeleteMeetingSpaceType `xml:"m:DeleteMeetingSpace,omitempty"`
@@ -13763,12 +14090,15 @@ func (b *ExchangeServiceBinding) DeleteMeetingSpace(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) UpdateMeetingSpace(ctx context.Context, input *UpdateMeetingSpaceSoapIn, detail any) (*UpdateMeetingSpaceSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		UpdateMeetingSpace *UpdateMeetingSpaceType `xml:"m:UpdateMeetingSpace,omitempty"`
@@ -13796,12 +14126,15 @@ func (b *ExchangeServiceBinding) UpdateMeetingSpace(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) CreateMeetingSpace(ctx context.Context, input *CreateMeetingSpaceSoapIn, detail any) (*CreateMeetingSpaceSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		CreateMeetingSpace *CreateMeetingSpaceType `xml:"m:CreateMeetingSpace,omitempty"`
@@ -13829,12 +14162,15 @@ func (b *ExchangeServiceBinding) CreateMeetingSpace(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) FindMeetingSpaceByJoinUrl(ctx context.Context, input *FindMeetingSpaceByJoinUrlSoapIn, detail any) (*FindMeetingSpaceByJoinUrlSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		FindMeetingSpaceByJoinUrl *FindMeetingSpaceByJoinUrlType `xml:"m:FindMeetingSpaceByJoinUrl,omitempty"`
@@ -13862,12 +14198,15 @@ func (b *ExchangeServiceBinding) FindMeetingSpaceByJoinUrl(ctx context.Context, 
 }
 
 func (b *ExchangeServiceBinding) GetMeetingInstance(ctx context.Context, input *GetMeetingInstanceSoapIn, detail any) (*GetMeetingInstanceSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		GetMeetingInstanceRequest *GetMeetingInstanceRequestType `xml:"m:GetMeetingInstanceRequest,omitempty"`
@@ -13895,12 +14234,15 @@ func (b *ExchangeServiceBinding) GetMeetingInstance(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) DeleteMeetingInstance(ctx context.Context, input *DeleteMeetingInstanceSoapIn, detail any) (*DeleteMeetingInstanceSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		DeleteMeetingInstanceRequest *DeleteMeetingInstanceRequestType `xml:"m:DeleteMeetingInstanceRequest,omitempty"`
@@ -13928,12 +14270,15 @@ func (b *ExchangeServiceBinding) DeleteMeetingInstance(ctx context.Context, inpu
 }
 
 func (b *ExchangeServiceBinding) UpdateMeetingInstance(ctx context.Context, input *UpdateMeetingInstanceSoapIn, detail any) (*UpdateMeetingInstanceSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		UpdateMeetingInstanceRequest *UpdateMeetingInstanceRequestType `xml:"m:UpdateMeetingInstanceRequest,omitempty"`
@@ -13961,12 +14306,15 @@ func (b *ExchangeServiceBinding) UpdateMeetingInstance(ctx context.Context, inpu
 }
 
 func (b *ExchangeServiceBinding) CreateMeetingInstance(ctx context.Context, input *CreateMeetingInstanceSoapIn, detail any) (*CreateMeetingInstanceSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		ManagementRole:       input.ManagementRole,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.ManagementRole != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			ManagementRole       *ManagementRoleType       `xml:"t:ManagementRole,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			ManagementRole:       input.ManagementRole,
+		}
 	}
 	inputBody := &struct {
 		CreateMeetingInstanceRequest *CreateMeetingInstanceRequestType `xml:"m:CreateMeetingInstanceRequest,omitempty"`
@@ -13994,12 +14342,15 @@ func (b *ExchangeServiceBinding) CreateMeetingInstance(ctx context.Context, inpu
 }
 
 func (b *ExchangeServiceBinding) StartSearchSession(ctx context.Context, input *StartSearchSessionSoapIn, detail any) (*StartSearchSessionSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		MailboxCulture:       input.MailboxCulture,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			MailboxCulture:       input.MailboxCulture,
+		}
 	}
 	inputBody := &struct {
 		StartSearchSession *StartSearchSession `xml:"m:StartSearchSession,omitempty"`
@@ -14027,12 +14378,15 @@ func (b *ExchangeServiceBinding) StartSearchSession(ctx context.Context, input *
 }
 
 func (b *ExchangeServiceBinding) ExecuteSearch(ctx context.Context, input *ExecuteSearchSoapIn, detail any) (*ExecuteSearchSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		MailboxCulture:       input.MailboxCulture,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			MailboxCulture:       input.MailboxCulture,
+		}
 	}
 	inputBody := &struct {
 		ExecuteSearch *ExecuteSearch `xml:"m:ExecuteSearch,omitempty"`
@@ -14060,12 +14414,15 @@ func (b *ExchangeServiceBinding) ExecuteSearch(ctx context.Context, input *Execu
 }
 
 func (b *ExchangeServiceBinding) GetSearchSuggestions(ctx context.Context, input *GetSearchSuggestionsSoapIn, detail any) (*GetSearchSuggestionsSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		MailboxCulture:       input.MailboxCulture,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			MailboxCulture:       input.MailboxCulture,
+		}
 	}
 	inputBody := &struct {
 		GetSearchSuggestions *GetSearchSuggestions `xml:"m:GetSearchSuggestions,omitempty"`
@@ -14093,12 +14450,15 @@ func (b *ExchangeServiceBinding) GetSearchSuggestions(ctx context.Context, input
 }
 
 func (b *ExchangeServiceBinding) DeleteSearchSuggestion(ctx context.Context, input *DeleteSearchSuggestionSoapIn, detail any) (*DeleteSearchSuggestionSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		MailboxCulture:       input.MailboxCulture,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			MailboxCulture:       input.MailboxCulture,
+		}
 	}
 	inputBody := &struct {
 		DeleteSearchSuggestion *DeleteSearchSuggestion `xml:"m:DeleteSearchSuggestion,omitempty"`
@@ -14126,12 +14486,15 @@ func (b *ExchangeServiceBinding) DeleteSearchSuggestion(ctx context.Context, inp
 }
 
 func (b *ExchangeServiceBinding) EndSearchSession(ctx context.Context, input *EndSearchSessionSoapIn, detail any) (*EndSearchSessionSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-		MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
-		MailboxCulture:       input.MailboxCulture,
+	var inputHeader any
+	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+			MailboxCulture:       input.MailboxCulture,
+		}
 	}
 	inputBody := &struct {
 		EndSearchSession *EndSearchSession `xml:"m:EndSearchSession,omitempty"`
@@ -14159,10 +14522,13 @@ func (b *ExchangeServiceBinding) EndSearchSession(ctx context.Context, input *En
 }
 
 func (b *ExchangeServiceBinding) GetLastPrivateCatalogUpdate(ctx context.Context, input *GetLastPrivateCatalogUpdateSoapIn, detail any) (*GetLastPrivateCatalogUpdateSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetLastPrivateCatalogUpdate *GetLastPrivateCatalogUpdateType `xml:"m:GetLastPrivateCatalogUpdate,omitempty"`
@@ -14190,10 +14556,13 @@ func (b *ExchangeServiceBinding) GetLastPrivateCatalogUpdate(ctx context.Context
 }
 
 func (b *ExchangeServiceBinding) GetPrivateCatalogAddIns(ctx context.Context, input *GetPrivateCatalogAddInsSoapIn, detail any) (*GetPrivateCatalogAddInsSoapOut, error) {
-	inputHeader := &struct {
-		RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	}{
-		RequestServerVersion: input.RequestServerVersion,
+	var inputHeader any
+	if input.RequestServerVersion != nil {
+		inputHeader = &struct {
+			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
+		}{
+			RequestServerVersion: input.RequestServerVersion,
+		}
 	}
 	inputBody := &struct {
 		GetPrivateCatalogAddIns *GetPrivateCatalogAddInsType `xml:"m:GetPrivateCatalogAddIns,omitempty"`
