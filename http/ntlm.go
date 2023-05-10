@@ -41,7 +41,13 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 		return nil, err
 	}
 	if rsp.StatusCode != http.StatusUnauthorized {
-		return rsp, err
+		if v := rsp.Header.Get("Set-Cookie"); v != auth {
+			if err = rt.authorizer.Set(sess, auth); err != nil {
+				kits.DiscardAndCloseBody(rsp.Body)
+				return nil, err
+			}
+		}
+		return rsp, nil
 	}
 	req.Body, _ = req.GetBody()
 	kits.DiscardAndCloseBody(rsp.Body)
@@ -87,13 +93,12 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 	}
 	if rsp.StatusCode != http.StatusUnauthorized {
 		auth = rsp.Header.Get("Set-Cookie")
-		err = rt.authorizer.Set(sess, auth)
-		if err != nil {
+		if err = rt.authorizer.Set(sess, auth); err != nil {
 			kits.DiscardAndCloseBody(rsp.Body)
 			return nil, err
 		}
 	}
-	return rsp, err
+	return rsp, nil
 }
 
 func extractWwwAuthenticate(vs []string) (data []byte, ntlm bool, err error) {
