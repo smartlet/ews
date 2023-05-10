@@ -2,10 +2,8 @@ package soap
 
 import (
 	"context"
-	"fmt"
 	"github.com/smartlet/ews"
 	"github.com/smartlet/ews/kits"
-	"github.com/smartlet/ews/soap/internal/encoding/xml"
 	"github.com/smartlet/ews/wsdl"
 	"io"
 	"net/http"
@@ -29,6 +27,8 @@ type client struct {
 	enconding MessageEncoding
 }
 
+var xmlHeader = []byte(`<?xml version="1.0" encoding="UTF-8"?>`)
+
 func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, inputBody any, outputHeader any, outputBody any) error {
 
 	sess := ews.FromContext(ctx)
@@ -39,6 +39,7 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 	buffer := kits.BorrowBuffer()
 	defer kits.ReturnBuffer(buffer)
 
+	buffer.Write(xmlHeader)
 	envelope := &wsdl.Envelope{
 		XmlnsS: wsdl.XmlnsS,
 		XmlnsM: wsdl.XmlnsM,
@@ -46,7 +47,6 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 		Header: inputHeader,
 		Body:   inputBody,
 	}
-	fmt.Fprint(buffer, xml.Header)
 	contentType, err := c.enconding.Encode(buffer, envelope)
 	if err != nil {
 		return err

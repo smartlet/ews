@@ -5,12 +5,14 @@ import (
 	"io"
 )
 
+const xmlContentType = `text/xml; charset="utf-8"`
+
 type xmlEncoding struct {
 }
 
 func (x *xmlEncoding) Encode(w io.Writer, v interface{}) (string, error) {
 	err := xml.NewEncoder(w).Encode(v)
-	return `text/xml; charset="utf-8"`, err
+	return xmlContentType, err
 }
 
 func (x *xmlEncoding) Decode(r io.Reader, v interface{}) error {
