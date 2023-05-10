@@ -27,24 +27,41 @@ func (d *dumpRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) 
 	}
 
 	// dump request/response
+	fmt.Fprintln(d.writer, "\n-------------------------------------")
 	fmt.Fprintln(d.writer, req.Method, req.URL)
 	for k, v := range req.Header {
 		fmt.Fprintln(d.writer, k, ":", v)
 	}
 	d.writer.Write(req.Body.(*kits.Buffer).Data())
-	fmt.Fprintln(d.writer)
-	fmt.Fprintln(d.writer)
+	fmt.Fprint(d.writer, "\n\n")
 	fmt.Fprintln(d.writer, rsp.Proto, rsp.Status)
 	for k, v := range rsp.Header {
 		fmt.Fprintln(d.writer, k, ":", v)
 	}
-	body := kits.NewBuffer(1024)
-	io.Copy(body, rsp.Body)
-	d.writer.Write(body.Data())
-	rsp.Body = body
-	fmt.Fprint(d.writer, "\n\n")
+	rsp.Body = &dumpReadCloser{writer: d.writer, reader: rsp.Body}
 
 	return rsp, nil
 }
 
 var _ http.RoundTripper = (*dumpRoundTripper)(nil)
+
+type dumpReadCloser struct {
+	writer io.Writer
+	reader io.Reader
+}
+
+func (d *dumpReadCloser) Read(p []byte) (int, error) {
+	n, err := d.reader.Read(p)
+	if n > 0 {
+		d.writer.Write(p[0:n])
+	} else {
+		fmt.Fprintln(d.writer)
+	}
+	return n, err
+}
+
+func (d *dumpReadCloser) Close() error {
+	return nil
+}
+
+var _ io.ReadCloser = (*dumpReadCloser)(nil)
