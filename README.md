@@ -317,7 +317,7 @@ type ExchangeServicePortType interface {
 var acc = ews.NewAccountSession(
 	"赵大海",
 	"哇哈哈",
-	"zhaodahai",
+	"zhaodahai@wahaha.com",
 	"https://wwww.wahaha.com/EWS/Exchange.asmx",
 )
 
@@ -331,7 +331,7 @@ var ntlmCli = http.NewNTLMRoundTripper(
 	kits.NewMemoryAuthorizer(),
 	kits.NewMemoryCredential(map[string][2]string{
 		acc.GetId(): {
-			"zhaodahai",
+			"zhaodahai@wahaha.com",
 			os.Getenv("PASSWORD"),
 		},
 	}))
