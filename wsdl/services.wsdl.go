@@ -142,6 +142,7 @@ type XsPositiveInteger int64
 // SOAPClient soap client interface
 type SOAPClient interface {
 	Call(ctx context.Context, soapAction string, inputHeader, inputBody, outputHeader, outputBody any) error
+	Stream(ctx context.Context, soapAction string, inputHeader, inputBody any, next func() (any, any, func() error)) error
 }
 
 const (
@@ -177,15 +178,6 @@ func (f Fault) Error() string {
 		return f.Detail.Error()
 	}
 	return f.FaultCode + ":" + f.FaultString
-}
-
-type SimpleFaultDetail struct {
-	ResponseCode string `xml:"ResponseCode,omitempty"`
-	Message      string `xml:"Message,omitempty"`
-}
-
-func (d SimpleFaultDetail) Error() string {
-	return d.ResponseCode + ":" + d.Message
 }
 
 type ReminderMinutesBeforeStartTypeUnion0 XsInt
@@ -14972,6 +14964,6 @@ func (b *ExchangeServiceBinding) GetPrivateCatalogAddIns(ctx context.Context, in
 	return output, nil
 }
 
-func NewExchangeServicePortType(client SOAPClient) *ExchangeServiceBinding {
+func NewExchangeServicePortType(client SOAPClient) ExchangeServicePortType {
 	return &ExchangeServiceBinding{client: client}
 }
