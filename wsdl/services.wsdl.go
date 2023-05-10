@@ -9912,136 +9912,136 @@ type GetPrivateCatalogAddInsSoapOut struct {
 }
 
 type ExchangeServicePortType interface {
-	ResolveNames(ctx context.Context, in *ResolveNamesSoapIn) (*ResolveNamesSoapOut, error)
-	ExpandDL(ctx context.Context, in *ExpandDLSoapIn) (*ExpandDLSoapOut, error)
-	GetServerTimeZones(ctx context.Context, in *GetServerTimeZonesSoapIn) (*GetServerTimeZonesSoapOut, error)
-	FindFolder(ctx context.Context, in *FindFolderSoapIn) (*FindFolderSoapOut, error)
-	FindItem(ctx context.Context, in *FindItemSoapIn) (*FindItemSoapOut, error)
-	GetFolder(ctx context.Context, in *GetFolderSoapIn) (*GetFolderSoapOut, error)
-	UploadItems(ctx context.Context, in *UploadItemsSoapIn) (*UploadItemsSoapOut, error)
-	ExportItems(ctx context.Context, in *ExportItemsSoapIn) (*ExportItemsSoapOut, error)
-	ConvertId(ctx context.Context, in *ConvertIdSoapIn) (*ConvertIdSoapOut, error)
-	CreateFolder(ctx context.Context, in *CreateFolderSoapIn) (*CreateFolderSoapOut, error)
-	CreateFolderPath(ctx context.Context, in *CreateFolderPathSoapIn) (*CreateFolderPathSoapOut, error)
-	DeleteFolder(ctx context.Context, in *DeleteFolderSoapIn) (*DeleteFolderSoapOut, error)
-	EmptyFolder(ctx context.Context, in *EmptyFolderSoapIn) (*EmptyFolderSoapOut, error)
-	UpdateFolder(ctx context.Context, in *UpdateFolderSoapIn) (*UpdateFolderSoapOut, error)
-	MoveFolder(ctx context.Context, in *MoveFolderSoapIn) (*MoveFolderSoapOut, error)
-	CopyFolder(ctx context.Context, in *CopyFolderSoapIn) (*CopyFolderSoapOut, error)
-	Subscribe(ctx context.Context, in *SubscribeSoapIn) (*SubscribeSoapOut, error)
-	Unsubscribe(ctx context.Context, in *UnsubscribeSoapIn) (*UnsubscribeSoapOut, error)
-	GetEvents(ctx context.Context, in *GetEventsSoapIn) (*GetEventsSoapOut, error)
-	GetStreamingEvents(ctx context.Context, in *GetStreamingEventsSoapIn) (*GetStreamingEventsSoapOut, error)
-	SyncFolderHierarchy(ctx context.Context, in *SyncFolderHierarchySoapIn) (*SyncFolderHierarchySoapOut, error)
-	SyncFolderItems(ctx context.Context, in *SyncFolderItemsSoapIn) (*SyncFolderItemsSoapOut, error)
-	CreateManagedFolder(ctx context.Context, in *CreateManagedFolderSoapIn) (*CreateManagedFolderSoapOut, error)
-	GetItem(ctx context.Context, in *GetItemSoapIn) (*GetItemSoapOut, error)
-	CreateItem(ctx context.Context, in *CreateItemSoapIn) (*CreateItemSoapOut, error)
-	DeleteItem(ctx context.Context, in *DeleteItemSoapIn) (*DeleteItemSoapOut, error)
-	UpdateItem(ctx context.Context, in *UpdateItemSoapIn) (*UpdateItemSoapOut, error)
-	UpdateItemInRecoverableItems(ctx context.Context, in *UpdateItemInRecoverableItemsSoapIn) (*UpdateItemInRecoverableItemsSoapOut, error)
-	SendItem(ctx context.Context, in *SendItemSoapIn) (*SendItemSoapOut, error)
-	MoveItem(ctx context.Context, in *MoveItemSoapIn) (*MoveItemSoapOut, error)
-	CopyItem(ctx context.Context, in *CopyItemSoapIn) (*CopyItemSoapOut, error)
-	ArchiveItem(ctx context.Context, in *ArchiveItemSoapIn) (*ArchiveItemSoapOut, error)
-	CreateAttachment(ctx context.Context, in *CreateAttachmentSoapIn) (*CreateAttachmentSoapOut, error)
-	DeleteAttachment(ctx context.Context, in *DeleteAttachmentSoapIn) (*DeleteAttachmentSoapOut, error)
-	GetAttachment(ctx context.Context, in *GetAttachmentSoapIn) (*GetAttachmentSoapOut, error)
-	GetClientAccessToken(ctx context.Context, in *GetClientAccessTokenSoapIn) (*GetClientAccessTokenSoapOut, error)
-	GetDelegate(ctx context.Context, in *GetDelegateSoapIn) (*GetDelegateSoapOut, error)
-	AddDelegate(ctx context.Context, in *AddDelegateSoapIn) (*AddDelegateSoapOut, error)
-	RemoveDelegate(ctx context.Context, in *RemoveDelegateSoapIn) (*RemoveDelegateSoapOut, error)
-	UpdateDelegate(ctx context.Context, in *UpdateDelegateSoapIn) (*UpdateDelegateSoapOut, error)
-	CreateUserConfiguration(ctx context.Context, in *CreateUserConfigurationSoapIn) (*CreateUserConfigurationSoapOut, error)
-	DeleteUserConfiguration(ctx context.Context, in *DeleteUserConfigurationSoapIn) (*DeleteUserConfigurationSoapOut, error)
-	GetUserConfiguration(ctx context.Context, in *GetUserConfigurationSoapIn) (*GetUserConfigurationSoapOut, error)
-	GetSpecificUserConfiguration(ctx context.Context, in *GetSpecificUserConfigurationSoapIn) (*GetSpecificUserConfigurationSoapOut, error)
-	UpdateUserConfiguration(ctx context.Context, in *UpdateUserConfigurationSoapIn) (*UpdateUserConfigurationSoapOut, error)
-	GetUserAvailability(ctx context.Context, in *GetUserAvailabilitySoapIn) (*GetUserAvailabilitySoapOut, error)
-	GetUserOofSettings(ctx context.Context, in *GetUserOofSettingsSoapIn) (*GetUserOofSettingsSoapOut, error)
-	SetUserOofSettings(ctx context.Context, in *SetUserOofSettingsSoapIn) (*SetUserOofSettingsSoapOut, error)
-	GetServiceConfiguration(ctx context.Context, in *GetServiceConfigurationSoapIn) (*GetServiceConfigurationSoapOut, error)
-	GetMailTips(ctx context.Context, in *GetMailTipsSoapIn) (*GetMailTipsSoapOut, error)
-	PlayOnPhone(ctx context.Context, in *PlayOnPhoneSoapIn) (*PlayOnPhoneSoapOut, error)
-	GetPhoneCallInformation(ctx context.Context, in *GetPhoneCallInformationSoapIn) (*GetPhoneCallInformationSoapOut, error)
-	DisconnectPhoneCall(ctx context.Context, in *DisconnectPhoneCallSoapIn) (*DisconnectPhoneCallSoapOut, error)
-	GetSharingMetadata(ctx context.Context, in *GetSharingMetadataSoapIn) (*GetSharingMetadataSoapOut, error)
-	RefreshSharingFolder(ctx context.Context, in *RefreshSharingFolderSoapIn) (*RefreshSharingFolderSoapOut, error)
-	GetSharingFolder(ctx context.Context, in *GetSharingFolderSoapIn) (*GetSharingFolderSoapOut, error)
-	SetTeamMailbox(ctx context.Context, in *SetTeamMailboxSoapIn) (*SetTeamMailboxSoapOut, error)
-	UnpinTeamMailbox(ctx context.Context, in *UnpinTeamMailboxSoapIn) (*UnpinTeamMailboxSoapOut, error)
-	GetRoomLists(ctx context.Context, in *GetRoomListsSoapIn) (*GetRoomListsSoapOut, error)
-	GetRooms(ctx context.Context, in *GetRoomsSoapIn) (*GetRoomsSoapOut, error)
-	FindMessageTrackingReport(ctx context.Context, in *FindMessageTrackingReportSoapIn) (*FindMessageTrackingReportSoapOut, error)
-	GetMessageTrackingReport(ctx context.Context, in *GetMessageTrackingReportSoapIn) (*GetMessageTrackingReportSoapOut, error)
-	FindConversation(ctx context.Context, in *FindConversationSoapIn) (*FindConversationSoapOut, error)
-	ApplyConversationAction(ctx context.Context, in *ApplyConversationActionSoapIn) (*ApplyConversationActionSoapOut, error)
-	GetConversationItems(ctx context.Context, in *GetConversationItemsSoapIn) (*GetConversationItemsSoapOut, error)
-	FindPeople(ctx context.Context, in *FindPeopleSoapIn) (*FindPeopleSoapOut, error)
-	FindTags(ctx context.Context, in *FindTagsSoapIn) (*FindTagsSoapOut, error)
-	AddTag(ctx context.Context, in *AddTagSoapIn) (*AddTagSoapOut, error)
-	HideTag(ctx context.Context, in *HideTagSoapIn) (*HideTagSoapOut, error)
-	GetPersona(ctx context.Context, in *GetPersonaSoapIn) (*GetPersonaSoapOut, error)
-	GetInboxRules(ctx context.Context, in *GetInboxRulesSoapIn) (*GetInboxRulesSoapOut, error)
-	UpdateInboxRules(ctx context.Context, in *UpdateInboxRulesSoapIn) (*UpdateInboxRulesSoapOut, error)
-	GetPasswordExpirationDate(ctx context.Context, in *GetPasswordExpirationDateSoapIn) (*GetPasswordExpirationDateSoapOut, error)
-	GetSearchableMailboxes(ctx context.Context, in *GetSearchableMailboxesSoapIn) (*GetSearchableMailboxesSoapOut, error)
-	SearchMailboxes(ctx context.Context, in *SearchMailboxesSoapIn) (*SearchMailboxesSoapOut, error)
-	GetDiscoverySearchConfiguration(ctx context.Context, in *GetDiscoverySearchConfigurationSoapIn) (*GetDiscoverySearchConfigurationSoapOut, error)
-	GetHoldOnMailboxes(ctx context.Context, in *GetHoldOnMailboxesSoapIn) (*GetHoldOnMailboxesSoapOut, error)
-	SetHoldOnMailboxes(ctx context.Context, in *SetHoldOnMailboxesSoapIn) (*SetHoldOnMailboxesSoapOut, error)
-	GetNonIndexableItemStatistics(ctx context.Context, in *GetNonIndexableItemStatisticsSoapIn) (*GetNonIndexableItemStatisticsSoapOut, error)
-	GetNonIndexableItemDetails(ctx context.Context, in *GetNonIndexableItemDetailsSoapIn) (*GetNonIndexableItemDetailsSoapOut, error)
-	MarkAllItemsAsRead(ctx context.Context, in *MarkAllItemsAsReadSoapIn) (*MarkAllItemsAsReadSoapOut, error)
-	MarkAsJunk(ctx context.Context, in *MarkAsJunkSoapIn) (*MarkAsJunkSoapOut, error)
-	ReportMessage(ctx context.Context, in *ReportMessageSoapIn) (*ReportMessageSoapOut, error)
-	GetAppManifests(ctx context.Context, in *GetAppManifestsSoapIn) (*GetAppManifestsSoapOut, error)
-	AddNewImContactToGroup(ctx context.Context, in *AddNewImContactToGroupSoapIn) (*AddNewImContactToGroupSoapOut, error)
-	AddNewTelUriContactToGroup(ctx context.Context, in *AddNewTelUriContactToGroupSoapIn) (*AddNewTelUriContactToGroupSoapOut, error)
-	AddImContactToGroup(ctx context.Context, in *AddImContactToGroupSoapIn) (*AddImContactToGroupSoapOut, error)
-	RemoveImContactFromGroup(ctx context.Context, in *RemoveImContactFromGroupSoapIn) (*RemoveImContactFromGroupSoapOut, error)
-	AddImGroup(ctx context.Context, in *AddImGroupSoapIn) (*AddImGroupSoapOut, error)
-	AddDistributionGroupToImList(ctx context.Context, in *AddDistributionGroupToImListSoapIn) (*AddDistributionGroupToImListSoapOut, error)
-	GetImItemList(ctx context.Context, in *GetImItemListSoapIn) (*GetImItemListSoapOut, error)
-	GetImItems(ctx context.Context, in *GetImItemsSoapIn) (*GetImItemsSoapOut, error)
-	RemoveContactFromImList(ctx context.Context, in *RemoveContactFromImListSoapIn) (*RemoveContactFromImListSoapOut, error)
-	RemoveDistributionGroupFromImList(ctx context.Context, in *RemoveDistributionGroupFromImListSoapIn) (*RemoveDistributionGroupFromImListSoapOut, error)
-	RemoveImGroup(ctx context.Context, in *RemoveImGroupSoapIn) (*RemoveImGroupSoapOut, error)
-	SetImGroup(ctx context.Context, in *SetImGroupSoapIn) (*SetImGroupSoapOut, error)
-	SetImListMigrationCompleted(ctx context.Context, in *SetImListMigrationCompletedSoapIn) (*SetImListMigrationCompletedSoapOut, error)
-	GetUserRetentionPolicyTags(ctx context.Context, in *GetUserRetentionPolicyTagsSoapIn) (*GetUserRetentionPolicyTagsSoapOut, error)
-	InstallApp(ctx context.Context, in *InstallAppSoapIn) (*InstallAppSoapOut, error)
-	UpdateExtensionUsage(ctx context.Context, in *UpdateExtensionUsageSoapIn) (*UpdateExtensionUsageSoapOut, error)
-	UninstallApp(ctx context.Context, in *UninstallAppSoapIn) (*UninstallAppSoapOut, error)
-	DisableApp(ctx context.Context, in *DisableAppSoapIn) (*DisableAppSoapOut, error)
-	GetAppMarketplaceUrl(ctx context.Context, in *GetAppMarketplaceUrlSoapIn) (*GetAppMarketplaceUrlSoapOut, error)
-	FindAvailableMeetingTimes(ctx context.Context, in *FindAvailableMeetingTimesSoapIn) (*FindAvailableMeetingTimesSoapOut, error)
-	FindMeetingTimeCandidates(ctx context.Context, in *FindMeetingTimeCandidatesSoapIn) (*FindMeetingTimeCandidatesSoapOut, error)
-	GetUserPhoto(ctx context.Context, in *GetUserPhotoSoapIn) (*GetUserPhotoSoapOut, error)
-	SetUserPhoto(ctx context.Context, in *SetUserPhotoSoapIn) (*SetUserPhotoSoapOut, error)
-	GetMeetingSpace(ctx context.Context, in *GetMeetingSpaceSoapIn) (*GetMeetingSpaceSoapOut, error)
-	DeleteMeetingSpace(ctx context.Context, in *DeleteMeetingSpaceSoapIn) (*DeleteMeetingSpaceSoapOut, error)
-	UpdateMeetingSpace(ctx context.Context, in *UpdateMeetingSpaceSoapIn) (*UpdateMeetingSpaceSoapOut, error)
-	CreateMeetingSpace(ctx context.Context, in *CreateMeetingSpaceSoapIn) (*CreateMeetingSpaceSoapOut, error)
-	FindMeetingSpaceByJoinUrl(ctx context.Context, in *FindMeetingSpaceByJoinUrlSoapIn) (*FindMeetingSpaceByJoinUrlSoapOut, error)
-	GetMeetingInstance(ctx context.Context, in *GetMeetingInstanceSoapIn) (*GetMeetingInstanceSoapOut, error)
-	DeleteMeetingInstance(ctx context.Context, in *DeleteMeetingInstanceSoapIn) (*DeleteMeetingInstanceSoapOut, error)
-	UpdateMeetingInstance(ctx context.Context, in *UpdateMeetingInstanceSoapIn) (*UpdateMeetingInstanceSoapOut, error)
-	CreateMeetingInstance(ctx context.Context, in *CreateMeetingInstanceSoapIn) (*CreateMeetingInstanceSoapOut, error)
-	StartSearchSession(ctx context.Context, in *StartSearchSessionSoapIn) (*StartSearchSessionSoapOut, error)
-	GetSearchSuggestions(ctx context.Context, in *GetSearchSuggestionsSoapIn) (*GetSearchSuggestionsSoapOut, error)
-	DeleteSearchSuggestion(ctx context.Context, in *DeleteSearchSuggestionSoapIn) (*DeleteSearchSuggestionSoapOut, error)
-	ExecuteSearch(ctx context.Context, in *ExecuteSearchSoapIn) (*ExecuteSearchSoapOut, error)
-	EndSearchSession(ctx context.Context, in *EndSearchSessionSoapIn) (*EndSearchSessionSoapOut, error)
-	GetLastPrivateCatalogUpdate(ctx context.Context, in *GetLastPrivateCatalogUpdateSoapIn) (*GetLastPrivateCatalogUpdateSoapOut, error)
-	GetPrivateCatalogAddIns(ctx context.Context, in *GetPrivateCatalogAddInsSoapIn) (*GetPrivateCatalogAddInsSoapOut, error)
+	ResolveNames(ctx context.Context, in *ResolveNamesSoapIn, detail error) (*ResolveNamesSoapOut, error)
+	ExpandDL(ctx context.Context, in *ExpandDLSoapIn, detail error) (*ExpandDLSoapOut, error)
+	GetServerTimeZones(ctx context.Context, in *GetServerTimeZonesSoapIn, detail error) (*GetServerTimeZonesSoapOut, error)
+	FindFolder(ctx context.Context, in *FindFolderSoapIn, detail error) (*FindFolderSoapOut, error)
+	FindItem(ctx context.Context, in *FindItemSoapIn, detail error) (*FindItemSoapOut, error)
+	GetFolder(ctx context.Context, in *GetFolderSoapIn, detail error) (*GetFolderSoapOut, error)
+	UploadItems(ctx context.Context, in *UploadItemsSoapIn, detail error) (*UploadItemsSoapOut, error)
+	ExportItems(ctx context.Context, in *ExportItemsSoapIn, detail error) (*ExportItemsSoapOut, error)
+	ConvertId(ctx context.Context, in *ConvertIdSoapIn, detail error) (*ConvertIdSoapOut, error)
+	CreateFolder(ctx context.Context, in *CreateFolderSoapIn, detail error) (*CreateFolderSoapOut, error)
+	CreateFolderPath(ctx context.Context, in *CreateFolderPathSoapIn, detail error) (*CreateFolderPathSoapOut, error)
+	DeleteFolder(ctx context.Context, in *DeleteFolderSoapIn, detail error) (*DeleteFolderSoapOut, error)
+	EmptyFolder(ctx context.Context, in *EmptyFolderSoapIn, detail error) (*EmptyFolderSoapOut, error)
+	UpdateFolder(ctx context.Context, in *UpdateFolderSoapIn, detail error) (*UpdateFolderSoapOut, error)
+	MoveFolder(ctx context.Context, in *MoveFolderSoapIn, detail error) (*MoveFolderSoapOut, error)
+	CopyFolder(ctx context.Context, in *CopyFolderSoapIn, detail error) (*CopyFolderSoapOut, error)
+	Subscribe(ctx context.Context, in *SubscribeSoapIn, detail error) (*SubscribeSoapOut, error)
+	Unsubscribe(ctx context.Context, in *UnsubscribeSoapIn, detail error) (*UnsubscribeSoapOut, error)
+	GetEvents(ctx context.Context, in *GetEventsSoapIn, detail error) (*GetEventsSoapOut, error)
+	GetStreamingEvents(ctx context.Context, in *GetStreamingEventsSoapIn, detail error) (*GetStreamingEventsSoapOut, error)
+	SyncFolderHierarchy(ctx context.Context, in *SyncFolderHierarchySoapIn, detail error) (*SyncFolderHierarchySoapOut, error)
+	SyncFolderItems(ctx context.Context, in *SyncFolderItemsSoapIn, detail error) (*SyncFolderItemsSoapOut, error)
+	CreateManagedFolder(ctx context.Context, in *CreateManagedFolderSoapIn, detail error) (*CreateManagedFolderSoapOut, error)
+	GetItem(ctx context.Context, in *GetItemSoapIn, detail error) (*GetItemSoapOut, error)
+	CreateItem(ctx context.Context, in *CreateItemSoapIn, detail error) (*CreateItemSoapOut, error)
+	DeleteItem(ctx context.Context, in *DeleteItemSoapIn, detail error) (*DeleteItemSoapOut, error)
+	UpdateItem(ctx context.Context, in *UpdateItemSoapIn, detail error) (*UpdateItemSoapOut, error)
+	UpdateItemInRecoverableItems(ctx context.Context, in *UpdateItemInRecoverableItemsSoapIn, detail error) (*UpdateItemInRecoverableItemsSoapOut, error)
+	SendItem(ctx context.Context, in *SendItemSoapIn, detail error) (*SendItemSoapOut, error)
+	MoveItem(ctx context.Context, in *MoveItemSoapIn, detail error) (*MoveItemSoapOut, error)
+	CopyItem(ctx context.Context, in *CopyItemSoapIn, detail error) (*CopyItemSoapOut, error)
+	ArchiveItem(ctx context.Context, in *ArchiveItemSoapIn, detail error) (*ArchiveItemSoapOut, error)
+	CreateAttachment(ctx context.Context, in *CreateAttachmentSoapIn, detail error) (*CreateAttachmentSoapOut, error)
+	DeleteAttachment(ctx context.Context, in *DeleteAttachmentSoapIn, detail error) (*DeleteAttachmentSoapOut, error)
+	GetAttachment(ctx context.Context, in *GetAttachmentSoapIn, detail error) (*GetAttachmentSoapOut, error)
+	GetClientAccessToken(ctx context.Context, in *GetClientAccessTokenSoapIn, detail error) (*GetClientAccessTokenSoapOut, error)
+	GetDelegate(ctx context.Context, in *GetDelegateSoapIn, detail error) (*GetDelegateSoapOut, error)
+	AddDelegate(ctx context.Context, in *AddDelegateSoapIn, detail error) (*AddDelegateSoapOut, error)
+	RemoveDelegate(ctx context.Context, in *RemoveDelegateSoapIn, detail error) (*RemoveDelegateSoapOut, error)
+	UpdateDelegate(ctx context.Context, in *UpdateDelegateSoapIn, detail error) (*UpdateDelegateSoapOut, error)
+	CreateUserConfiguration(ctx context.Context, in *CreateUserConfigurationSoapIn, detail error) (*CreateUserConfigurationSoapOut, error)
+	DeleteUserConfiguration(ctx context.Context, in *DeleteUserConfigurationSoapIn, detail error) (*DeleteUserConfigurationSoapOut, error)
+	GetUserConfiguration(ctx context.Context, in *GetUserConfigurationSoapIn, detail error) (*GetUserConfigurationSoapOut, error)
+	GetSpecificUserConfiguration(ctx context.Context, in *GetSpecificUserConfigurationSoapIn, detail error) (*GetSpecificUserConfigurationSoapOut, error)
+	UpdateUserConfiguration(ctx context.Context, in *UpdateUserConfigurationSoapIn, detail error) (*UpdateUserConfigurationSoapOut, error)
+	GetUserAvailability(ctx context.Context, in *GetUserAvailabilitySoapIn, detail error) (*GetUserAvailabilitySoapOut, error)
+	GetUserOofSettings(ctx context.Context, in *GetUserOofSettingsSoapIn, detail error) (*GetUserOofSettingsSoapOut, error)
+	SetUserOofSettings(ctx context.Context, in *SetUserOofSettingsSoapIn, detail error) (*SetUserOofSettingsSoapOut, error)
+	GetServiceConfiguration(ctx context.Context, in *GetServiceConfigurationSoapIn, detail error) (*GetServiceConfigurationSoapOut, error)
+	GetMailTips(ctx context.Context, in *GetMailTipsSoapIn, detail error) (*GetMailTipsSoapOut, error)
+	PlayOnPhone(ctx context.Context, in *PlayOnPhoneSoapIn, detail error) (*PlayOnPhoneSoapOut, error)
+	GetPhoneCallInformation(ctx context.Context, in *GetPhoneCallInformationSoapIn, detail error) (*GetPhoneCallInformationSoapOut, error)
+	DisconnectPhoneCall(ctx context.Context, in *DisconnectPhoneCallSoapIn, detail error) (*DisconnectPhoneCallSoapOut, error)
+	GetSharingMetadata(ctx context.Context, in *GetSharingMetadataSoapIn, detail error) (*GetSharingMetadataSoapOut, error)
+	RefreshSharingFolder(ctx context.Context, in *RefreshSharingFolderSoapIn, detail error) (*RefreshSharingFolderSoapOut, error)
+	GetSharingFolder(ctx context.Context, in *GetSharingFolderSoapIn, detail error) (*GetSharingFolderSoapOut, error)
+	SetTeamMailbox(ctx context.Context, in *SetTeamMailboxSoapIn, detail error) (*SetTeamMailboxSoapOut, error)
+	UnpinTeamMailbox(ctx context.Context, in *UnpinTeamMailboxSoapIn, detail error) (*UnpinTeamMailboxSoapOut, error)
+	GetRoomLists(ctx context.Context, in *GetRoomListsSoapIn, detail error) (*GetRoomListsSoapOut, error)
+	GetRooms(ctx context.Context, in *GetRoomsSoapIn, detail error) (*GetRoomsSoapOut, error)
+	FindMessageTrackingReport(ctx context.Context, in *FindMessageTrackingReportSoapIn, detail error) (*FindMessageTrackingReportSoapOut, error)
+	GetMessageTrackingReport(ctx context.Context, in *GetMessageTrackingReportSoapIn, detail error) (*GetMessageTrackingReportSoapOut, error)
+	FindConversation(ctx context.Context, in *FindConversationSoapIn, detail error) (*FindConversationSoapOut, error)
+	ApplyConversationAction(ctx context.Context, in *ApplyConversationActionSoapIn, detail error) (*ApplyConversationActionSoapOut, error)
+	GetConversationItems(ctx context.Context, in *GetConversationItemsSoapIn, detail error) (*GetConversationItemsSoapOut, error)
+	FindPeople(ctx context.Context, in *FindPeopleSoapIn, detail error) (*FindPeopleSoapOut, error)
+	FindTags(ctx context.Context, in *FindTagsSoapIn, detail error) (*FindTagsSoapOut, error)
+	AddTag(ctx context.Context, in *AddTagSoapIn, detail error) (*AddTagSoapOut, error)
+	HideTag(ctx context.Context, in *HideTagSoapIn, detail error) (*HideTagSoapOut, error)
+	GetPersona(ctx context.Context, in *GetPersonaSoapIn, detail error) (*GetPersonaSoapOut, error)
+	GetInboxRules(ctx context.Context, in *GetInboxRulesSoapIn, detail error) (*GetInboxRulesSoapOut, error)
+	UpdateInboxRules(ctx context.Context, in *UpdateInboxRulesSoapIn, detail error) (*UpdateInboxRulesSoapOut, error)
+	GetPasswordExpirationDate(ctx context.Context, in *GetPasswordExpirationDateSoapIn, detail error) (*GetPasswordExpirationDateSoapOut, error)
+	GetSearchableMailboxes(ctx context.Context, in *GetSearchableMailboxesSoapIn, detail error) (*GetSearchableMailboxesSoapOut, error)
+	SearchMailboxes(ctx context.Context, in *SearchMailboxesSoapIn, detail error) (*SearchMailboxesSoapOut, error)
+	GetDiscoverySearchConfiguration(ctx context.Context, in *GetDiscoverySearchConfigurationSoapIn, detail error) (*GetDiscoverySearchConfigurationSoapOut, error)
+	GetHoldOnMailboxes(ctx context.Context, in *GetHoldOnMailboxesSoapIn, detail error) (*GetHoldOnMailboxesSoapOut, error)
+	SetHoldOnMailboxes(ctx context.Context, in *SetHoldOnMailboxesSoapIn, detail error) (*SetHoldOnMailboxesSoapOut, error)
+	GetNonIndexableItemStatistics(ctx context.Context, in *GetNonIndexableItemStatisticsSoapIn, detail error) (*GetNonIndexableItemStatisticsSoapOut, error)
+	GetNonIndexableItemDetails(ctx context.Context, in *GetNonIndexableItemDetailsSoapIn, detail error) (*GetNonIndexableItemDetailsSoapOut, error)
+	MarkAllItemsAsRead(ctx context.Context, in *MarkAllItemsAsReadSoapIn, detail error) (*MarkAllItemsAsReadSoapOut, error)
+	MarkAsJunk(ctx context.Context, in *MarkAsJunkSoapIn, detail error) (*MarkAsJunkSoapOut, error)
+	ReportMessage(ctx context.Context, in *ReportMessageSoapIn, detail error) (*ReportMessageSoapOut, error)
+	GetAppManifests(ctx context.Context, in *GetAppManifestsSoapIn, detail error) (*GetAppManifestsSoapOut, error)
+	AddNewImContactToGroup(ctx context.Context, in *AddNewImContactToGroupSoapIn, detail error) (*AddNewImContactToGroupSoapOut, error)
+	AddNewTelUriContactToGroup(ctx context.Context, in *AddNewTelUriContactToGroupSoapIn, detail error) (*AddNewTelUriContactToGroupSoapOut, error)
+	AddImContactToGroup(ctx context.Context, in *AddImContactToGroupSoapIn, detail error) (*AddImContactToGroupSoapOut, error)
+	RemoveImContactFromGroup(ctx context.Context, in *RemoveImContactFromGroupSoapIn, detail error) (*RemoveImContactFromGroupSoapOut, error)
+	AddImGroup(ctx context.Context, in *AddImGroupSoapIn, detail error) (*AddImGroupSoapOut, error)
+	AddDistributionGroupToImList(ctx context.Context, in *AddDistributionGroupToImListSoapIn, detail error) (*AddDistributionGroupToImListSoapOut, error)
+	GetImItemList(ctx context.Context, in *GetImItemListSoapIn, detail error) (*GetImItemListSoapOut, error)
+	GetImItems(ctx context.Context, in *GetImItemsSoapIn, detail error) (*GetImItemsSoapOut, error)
+	RemoveContactFromImList(ctx context.Context, in *RemoveContactFromImListSoapIn, detail error) (*RemoveContactFromImListSoapOut, error)
+	RemoveDistributionGroupFromImList(ctx context.Context, in *RemoveDistributionGroupFromImListSoapIn, detail error) (*RemoveDistributionGroupFromImListSoapOut, error)
+	RemoveImGroup(ctx context.Context, in *RemoveImGroupSoapIn, detail error) (*RemoveImGroupSoapOut, error)
+	SetImGroup(ctx context.Context, in *SetImGroupSoapIn, detail error) (*SetImGroupSoapOut, error)
+	SetImListMigrationCompleted(ctx context.Context, in *SetImListMigrationCompletedSoapIn, detail error) (*SetImListMigrationCompletedSoapOut, error)
+	GetUserRetentionPolicyTags(ctx context.Context, in *GetUserRetentionPolicyTagsSoapIn, detail error) (*GetUserRetentionPolicyTagsSoapOut, error)
+	InstallApp(ctx context.Context, in *InstallAppSoapIn, detail error) (*InstallAppSoapOut, error)
+	UpdateExtensionUsage(ctx context.Context, in *UpdateExtensionUsageSoapIn, detail error) (*UpdateExtensionUsageSoapOut, error)
+	UninstallApp(ctx context.Context, in *UninstallAppSoapIn, detail error) (*UninstallAppSoapOut, error)
+	DisableApp(ctx context.Context, in *DisableAppSoapIn, detail error) (*DisableAppSoapOut, error)
+	GetAppMarketplaceUrl(ctx context.Context, in *GetAppMarketplaceUrlSoapIn, detail error) (*GetAppMarketplaceUrlSoapOut, error)
+	FindAvailableMeetingTimes(ctx context.Context, in *FindAvailableMeetingTimesSoapIn, detail error) (*FindAvailableMeetingTimesSoapOut, error)
+	FindMeetingTimeCandidates(ctx context.Context, in *FindMeetingTimeCandidatesSoapIn, detail error) (*FindMeetingTimeCandidatesSoapOut, error)
+	GetUserPhoto(ctx context.Context, in *GetUserPhotoSoapIn, detail error) (*GetUserPhotoSoapOut, error)
+	SetUserPhoto(ctx context.Context, in *SetUserPhotoSoapIn, detail error) (*SetUserPhotoSoapOut, error)
+	GetMeetingSpace(ctx context.Context, in *GetMeetingSpaceSoapIn, detail error) (*GetMeetingSpaceSoapOut, error)
+	DeleteMeetingSpace(ctx context.Context, in *DeleteMeetingSpaceSoapIn, detail error) (*DeleteMeetingSpaceSoapOut, error)
+	UpdateMeetingSpace(ctx context.Context, in *UpdateMeetingSpaceSoapIn, detail error) (*UpdateMeetingSpaceSoapOut, error)
+	CreateMeetingSpace(ctx context.Context, in *CreateMeetingSpaceSoapIn, detail error) (*CreateMeetingSpaceSoapOut, error)
+	FindMeetingSpaceByJoinUrl(ctx context.Context, in *FindMeetingSpaceByJoinUrlSoapIn, detail error) (*FindMeetingSpaceByJoinUrlSoapOut, error)
+	GetMeetingInstance(ctx context.Context, in *GetMeetingInstanceSoapIn, detail error) (*GetMeetingInstanceSoapOut, error)
+	DeleteMeetingInstance(ctx context.Context, in *DeleteMeetingInstanceSoapIn, detail error) (*DeleteMeetingInstanceSoapOut, error)
+	UpdateMeetingInstance(ctx context.Context, in *UpdateMeetingInstanceSoapIn, detail error) (*UpdateMeetingInstanceSoapOut, error)
+	CreateMeetingInstance(ctx context.Context, in *CreateMeetingInstanceSoapIn, detail error) (*CreateMeetingInstanceSoapOut, error)
+	StartSearchSession(ctx context.Context, in *StartSearchSessionSoapIn, detail error) (*StartSearchSessionSoapOut, error)
+	GetSearchSuggestions(ctx context.Context, in *GetSearchSuggestionsSoapIn, detail error) (*GetSearchSuggestionsSoapOut, error)
+	DeleteSearchSuggestion(ctx context.Context, in *DeleteSearchSuggestionSoapIn, detail error) (*DeleteSearchSuggestionSoapOut, error)
+	ExecuteSearch(ctx context.Context, in *ExecuteSearchSoapIn, detail error) (*ExecuteSearchSoapOut, error)
+	EndSearchSession(ctx context.Context, in *EndSearchSessionSoapIn, detail error) (*EndSearchSessionSoapOut, error)
+	GetLastPrivateCatalogUpdate(ctx context.Context, in *GetLastPrivateCatalogUpdateSoapIn, detail error) (*GetLastPrivateCatalogUpdateSoapOut, error)
+	GetPrivateCatalogAddIns(ctx context.Context, in *GetPrivateCatalogAddInsSoapIn, detail error) (*GetPrivateCatalogAddInsSoapOut, error)
 }
 
 type ExchangeServiceBinding struct {
 	client SOAPClient
 }
 
-func (b *ExchangeServiceBinding) ResolveNames(ctx context.Context, input *ResolveNamesSoapIn, detail any) (*ResolveNamesSoapOut, error) {
+func (b *ExchangeServiceBinding) ResolveNames(ctx context.Context, input *ResolveNamesSoapIn, detail error) (*ResolveNamesSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10082,7 +10082,7 @@ func (b *ExchangeServiceBinding) ResolveNames(ctx context.Context, input *Resolv
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) ExpandDL(ctx context.Context, input *ExpandDLSoapIn, detail any) (*ExpandDLSoapOut, error) {
+func (b *ExchangeServiceBinding) ExpandDL(ctx context.Context, input *ExpandDLSoapIn, detail error) (*ExpandDLSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10123,7 +10123,7 @@ func (b *ExchangeServiceBinding) ExpandDL(ctx context.Context, input *ExpandDLSo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetServerTimeZones(ctx context.Context, input *GetServerTimeZonesSoapIn, detail any) (*GetServerTimeZonesSoapOut, error) {
+func (b *ExchangeServiceBinding) GetServerTimeZones(ctx context.Context, input *GetServerTimeZonesSoapIn, detail error) (*GetServerTimeZonesSoapOut, error) {
 	var inputHeader any
 	if input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10162,7 +10162,7 @@ func (b *ExchangeServiceBinding) GetServerTimeZones(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) FindFolder(ctx context.Context, input *FindFolderSoapIn, detail any) (*FindFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) FindFolder(ctx context.Context, input *FindFolderSoapIn, detail error) (*FindFolderSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -10207,7 +10207,7 @@ func (b *ExchangeServiceBinding) FindFolder(ctx context.Context, input *FindFold
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) FindItem(ctx context.Context, input *FindItemSoapIn, detail any) (*FindItemSoapOut, error) {
+func (b *ExchangeServiceBinding) FindItem(ctx context.Context, input *FindItemSoapIn, detail error) (*FindItemSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.DateTimePrecision != "" || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -10254,7 +10254,7 @@ func (b *ExchangeServiceBinding) FindItem(ctx context.Context, input *FindItemSo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetFolder(ctx context.Context, input *GetFolderSoapIn, detail any) (*GetFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) GetFolder(ctx context.Context, input *GetFolderSoapIn, detail error) (*GetFolderSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -10299,7 +10299,7 @@ func (b *ExchangeServiceBinding) GetFolder(ctx context.Context, input *GetFolder
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) ConvertId(ctx context.Context, input *ConvertIdSoapIn, detail any) (*ConvertIdSoapOut, error) {
+func (b *ExchangeServiceBinding) ConvertId(ctx context.Context, input *ConvertIdSoapIn, detail error) (*ConvertIdSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10338,7 +10338,7 @@ func (b *ExchangeServiceBinding) ConvertId(ctx context.Context, input *ConvertId
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UploadItems(ctx context.Context, input *UploadItemsSoapIn, detail any) (*UploadItemsSoapOut, error) {
+func (b *ExchangeServiceBinding) UploadItems(ctx context.Context, input *UploadItemsSoapIn, detail error) (*UploadItemsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10379,7 +10379,7 @@ func (b *ExchangeServiceBinding) UploadItems(ctx context.Context, input *UploadI
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) ExportItems(ctx context.Context, input *ExportItemsSoapIn, detail any) (*ExportItemsSoapOut, error) {
+func (b *ExchangeServiceBinding) ExportItems(ctx context.Context, input *ExportItemsSoapIn, detail error) (*ExportItemsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -10422,7 +10422,7 @@ func (b *ExchangeServiceBinding) ExportItems(ctx context.Context, input *ExportI
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CreateFolderPath(ctx context.Context, input *CreateFolderPathSoapIn, detail any) (*CreateFolderPathSoapOut, error) {
+func (b *ExchangeServiceBinding) CreateFolderPath(ctx context.Context, input *CreateFolderPathSoapIn, detail error) (*CreateFolderPathSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
@@ -10465,7 +10465,7 @@ func (b *ExchangeServiceBinding) CreateFolderPath(ctx context.Context, input *Cr
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CreateFolder(ctx context.Context, input *CreateFolderSoapIn, detail any) (*CreateFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) CreateFolder(ctx context.Context, input *CreateFolderSoapIn, detail error) (*CreateFolderSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
@@ -10508,7 +10508,7 @@ func (b *ExchangeServiceBinding) CreateFolder(ctx context.Context, input *Create
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) DeleteFolder(ctx context.Context, input *DeleteFolderSoapIn, detail any) (*DeleteFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) DeleteFolder(ctx context.Context, input *DeleteFolderSoapIn, detail error) (*DeleteFolderSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10549,7 +10549,7 @@ func (b *ExchangeServiceBinding) DeleteFolder(ctx context.Context, input *Delete
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) EmptyFolder(ctx context.Context, input *EmptyFolderSoapIn, detail any) (*EmptyFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) EmptyFolder(ctx context.Context, input *EmptyFolderSoapIn, detail error) (*EmptyFolderSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10590,7 +10590,7 @@ func (b *ExchangeServiceBinding) EmptyFolder(ctx context.Context, input *EmptyFo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UpdateFolder(ctx context.Context, input *UpdateFolderSoapIn, detail any) (*UpdateFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) UpdateFolder(ctx context.Context, input *UpdateFolderSoapIn, detail error) (*UpdateFolderSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
@@ -10633,7 +10633,7 @@ func (b *ExchangeServiceBinding) UpdateFolder(ctx context.Context, input *Update
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) MoveFolder(ctx context.Context, input *MoveFolderSoapIn, detail any) (*MoveFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) MoveFolder(ctx context.Context, input *MoveFolderSoapIn, detail error) (*MoveFolderSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10674,7 +10674,7 @@ func (b *ExchangeServiceBinding) MoveFolder(ctx context.Context, input *MoveFold
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CopyFolder(ctx context.Context, input *CopyFolderSoapIn, detail any) (*CopyFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) CopyFolder(ctx context.Context, input *CopyFolderSoapIn, detail error) (*CopyFolderSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10715,7 +10715,7 @@ func (b *ExchangeServiceBinding) CopyFolder(ctx context.Context, input *CopyFold
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) Subscribe(ctx context.Context, input *SubscribeSoapIn, detail any) (*SubscribeSoapOut, error) {
+func (b *ExchangeServiceBinding) Subscribe(ctx context.Context, input *SubscribeSoapIn, detail error) (*SubscribeSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10756,7 +10756,7 @@ func (b *ExchangeServiceBinding) Subscribe(ctx context.Context, input *Subscribe
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) Unsubscribe(ctx context.Context, input *UnsubscribeSoapIn, detail any) (*UnsubscribeSoapOut, error) {
+func (b *ExchangeServiceBinding) Unsubscribe(ctx context.Context, input *UnsubscribeSoapIn, detail error) (*UnsubscribeSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10797,7 +10797,7 @@ func (b *ExchangeServiceBinding) Unsubscribe(ctx context.Context, input *Unsubsc
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetEvents(ctx context.Context, input *GetEventsSoapIn, detail any) (*GetEventsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetEvents(ctx context.Context, input *GetEventsSoapIn, detail error) (*GetEventsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10838,7 +10838,7 @@ func (b *ExchangeServiceBinding) GetEvents(ctx context.Context, input *GetEvents
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetStreamingEvents(ctx context.Context, input *GetStreamingEventsSoapIn, detail any) (*GetStreamingEventsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetStreamingEvents(ctx context.Context, input *GetStreamingEventsSoapIn, detail error) (*GetStreamingEventsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10879,7 +10879,7 @@ func (b *ExchangeServiceBinding) GetStreamingEvents(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SyncFolderHierarchy(ctx context.Context, input *SyncFolderHierarchySoapIn, detail any) (*SyncFolderHierarchySoapOut, error) {
+func (b *ExchangeServiceBinding) SyncFolderHierarchy(ctx context.Context, input *SyncFolderHierarchySoapIn, detail error) (*SyncFolderHierarchySoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10920,7 +10920,7 @@ func (b *ExchangeServiceBinding) SyncFolderHierarchy(ctx context.Context, input 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SyncFolderItems(ctx context.Context, input *SyncFolderItemsSoapIn, detail any) (*SyncFolderItemsSoapOut, error) {
+func (b *ExchangeServiceBinding) SyncFolderItems(ctx context.Context, input *SyncFolderItemsSoapIn, detail error) (*SyncFolderItemsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -10961,7 +10961,7 @@ func (b *ExchangeServiceBinding) SyncFolderItems(ctx context.Context, input *Syn
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetItem(ctx context.Context, input *GetItemSoapIn, detail any) (*GetItemSoapOut, error) {
+func (b *ExchangeServiceBinding) GetItem(ctx context.Context, input *GetItemSoapIn, detail error) (*GetItemSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.DateTimePrecision != "" || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -11008,7 +11008,7 @@ func (b *ExchangeServiceBinding) GetItem(ctx context.Context, input *GetItemSoap
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CreateItem(ctx context.Context, input *CreateItemSoapIn, detail any) (*CreateItemSoapOut, error) {
+func (b *ExchangeServiceBinding) CreateItem(ctx context.Context, input *CreateItemSoapIn, detail error) (*CreateItemSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
@@ -11051,7 +11051,7 @@ func (b *ExchangeServiceBinding) CreateItem(ctx context.Context, input *CreateIt
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) DeleteItem(ctx context.Context, input *DeleteItemSoapIn, detail any) (*DeleteItemSoapOut, error) {
+func (b *ExchangeServiceBinding) DeleteItem(ctx context.Context, input *DeleteItemSoapIn, detail error) (*DeleteItemSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11092,7 +11092,7 @@ func (b *ExchangeServiceBinding) DeleteItem(ctx context.Context, input *DeleteIt
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UpdateItem(ctx context.Context, input *UpdateItemSoapIn, detail any) (*UpdateItemSoapOut, error) {
+func (b *ExchangeServiceBinding) UpdateItem(ctx context.Context, input *UpdateItemSoapIn, detail error) (*UpdateItemSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
@@ -11135,7 +11135,7 @@ func (b *ExchangeServiceBinding) UpdateItem(ctx context.Context, input *UpdateIt
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UpdateItemInRecoverableItems(ctx context.Context, input *UpdateItemInRecoverableItemsSoapIn, detail any) (*UpdateItemInRecoverableItemsSoapOut, error) {
+func (b *ExchangeServiceBinding) UpdateItemInRecoverableItems(ctx context.Context, input *UpdateItemInRecoverableItemsSoapIn, detail error) (*UpdateItemInRecoverableItemsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -11180,7 +11180,7 @@ func (b *ExchangeServiceBinding) UpdateItemInRecoverableItems(ctx context.Contex
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SendItem(ctx context.Context, input *SendItemSoapIn, detail any) (*SendItemSoapOut, error) {
+func (b *ExchangeServiceBinding) SendItem(ctx context.Context, input *SendItemSoapIn, detail error) (*SendItemSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11221,7 +11221,7 @@ func (b *ExchangeServiceBinding) SendItem(ctx context.Context, input *SendItemSo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) MoveItem(ctx context.Context, input *MoveItemSoapIn, detail any) (*MoveItemSoapOut, error) {
+func (b *ExchangeServiceBinding) MoveItem(ctx context.Context, input *MoveItemSoapIn, detail error) (*MoveItemSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11262,7 +11262,7 @@ func (b *ExchangeServiceBinding) MoveItem(ctx context.Context, input *MoveItemSo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CopyItem(ctx context.Context, input *CopyItemSoapIn, detail any) (*CopyItemSoapOut, error) {
+func (b *ExchangeServiceBinding) CopyItem(ctx context.Context, input *CopyItemSoapIn, detail error) (*CopyItemSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11303,7 +11303,7 @@ func (b *ExchangeServiceBinding) CopyItem(ctx context.Context, input *CopyItemSo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) ArchiveItem(ctx context.Context, input *ArchiveItemSoapIn, detail any) (*ArchiveItemSoapOut, error) {
+func (b *ExchangeServiceBinding) ArchiveItem(ctx context.Context, input *ArchiveItemSoapIn, detail error) (*ArchiveItemSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11344,7 +11344,7 @@ func (b *ExchangeServiceBinding) ArchiveItem(ctx context.Context, input *Archive
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CreateAttachment(ctx context.Context, input *CreateAttachmentSoapIn, detail any) (*CreateAttachmentSoapOut, error) {
+func (b *ExchangeServiceBinding) CreateAttachment(ctx context.Context, input *CreateAttachmentSoapIn, detail error) (*CreateAttachmentSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
@@ -11387,7 +11387,7 @@ func (b *ExchangeServiceBinding) CreateAttachment(ctx context.Context, input *Cr
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) DeleteAttachment(ctx context.Context, input *DeleteAttachmentSoapIn, detail any) (*DeleteAttachmentSoapOut, error) {
+func (b *ExchangeServiceBinding) DeleteAttachment(ctx context.Context, input *DeleteAttachmentSoapIn, detail error) (*DeleteAttachmentSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11428,7 +11428,7 @@ func (b *ExchangeServiceBinding) DeleteAttachment(ctx context.Context, input *De
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetAttachment(ctx context.Context, input *GetAttachmentSoapIn, detail any) (*GetAttachmentSoapOut, error) {
+func (b *ExchangeServiceBinding) GetAttachment(ctx context.Context, input *GetAttachmentSoapIn, detail error) (*GetAttachmentSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
@@ -11471,7 +11471,7 @@ func (b *ExchangeServiceBinding) GetAttachment(ctx context.Context, input *GetAt
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetClientAccessToken(ctx context.Context, input *GetClientAccessTokenSoapIn, detail any) (*GetClientAccessTokenSoapOut, error) {
+func (b *ExchangeServiceBinding) GetClientAccessToken(ctx context.Context, input *GetClientAccessTokenSoapIn, detail error) (*GetClientAccessTokenSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11508,7 +11508,7 @@ func (b *ExchangeServiceBinding) GetClientAccessToken(ctx context.Context, input
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CreateManagedFolder(ctx context.Context, input *CreateManagedFolderSoapIn, detail any) (*CreateManagedFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) CreateManagedFolder(ctx context.Context, input *CreateManagedFolderSoapIn, detail error) (*CreateManagedFolderSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11549,7 +11549,7 @@ func (b *ExchangeServiceBinding) CreateManagedFolder(ctx context.Context, input 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetDelegate(ctx context.Context, input *GetDelegateSoapIn, detail any) (*GetDelegateSoapOut, error) {
+func (b *ExchangeServiceBinding) GetDelegate(ctx context.Context, input *GetDelegateSoapIn, detail error) (*GetDelegateSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11590,7 +11590,7 @@ func (b *ExchangeServiceBinding) GetDelegate(ctx context.Context, input *GetDele
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) AddDelegate(ctx context.Context, input *AddDelegateSoapIn, detail any) (*AddDelegateSoapOut, error) {
+func (b *ExchangeServiceBinding) AddDelegate(ctx context.Context, input *AddDelegateSoapIn, detail error) (*AddDelegateSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11631,7 +11631,7 @@ func (b *ExchangeServiceBinding) AddDelegate(ctx context.Context, input *AddDele
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) RemoveDelegate(ctx context.Context, input *RemoveDelegateSoapIn, detail any) (*RemoveDelegateSoapOut, error) {
+func (b *ExchangeServiceBinding) RemoveDelegate(ctx context.Context, input *RemoveDelegateSoapIn, detail error) (*RemoveDelegateSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11672,7 +11672,7 @@ func (b *ExchangeServiceBinding) RemoveDelegate(ctx context.Context, input *Remo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UpdateDelegate(ctx context.Context, input *UpdateDelegateSoapIn, detail any) (*UpdateDelegateSoapOut, error) {
+func (b *ExchangeServiceBinding) UpdateDelegate(ctx context.Context, input *UpdateDelegateSoapIn, detail error) (*UpdateDelegateSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11713,7 +11713,7 @@ func (b *ExchangeServiceBinding) UpdateDelegate(ctx context.Context, input *Upda
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CreateUserConfiguration(ctx context.Context, input *CreateUserConfigurationSoapIn, detail any) (*CreateUserConfigurationSoapOut, error) {
+func (b *ExchangeServiceBinding) CreateUserConfiguration(ctx context.Context, input *CreateUserConfigurationSoapIn, detail error) (*CreateUserConfigurationSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11754,7 +11754,7 @@ func (b *ExchangeServiceBinding) CreateUserConfiguration(ctx context.Context, in
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) DeleteUserConfiguration(ctx context.Context, input *DeleteUserConfigurationSoapIn, detail any) (*DeleteUserConfigurationSoapOut, error) {
+func (b *ExchangeServiceBinding) DeleteUserConfiguration(ctx context.Context, input *DeleteUserConfigurationSoapIn, detail error) (*DeleteUserConfigurationSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11795,7 +11795,7 @@ func (b *ExchangeServiceBinding) DeleteUserConfiguration(ctx context.Context, in
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetUserConfiguration(ctx context.Context, input *GetUserConfigurationSoapIn, detail any) (*GetUserConfigurationSoapOut, error) {
+func (b *ExchangeServiceBinding) GetUserConfiguration(ctx context.Context, input *GetUserConfigurationSoapIn, detail error) (*GetUserConfigurationSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11836,7 +11836,7 @@ func (b *ExchangeServiceBinding) GetUserConfiguration(ctx context.Context, input
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetSpecificUserConfiguration(ctx context.Context, input *GetSpecificUserConfigurationSoapIn, detail any) (*GetSpecificUserConfigurationSoapOut, error) {
+func (b *ExchangeServiceBinding) GetSpecificUserConfiguration(ctx context.Context, input *GetSpecificUserConfigurationSoapIn, detail error) (*GetSpecificUserConfigurationSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11877,7 +11877,7 @@ func (b *ExchangeServiceBinding) GetSpecificUserConfiguration(ctx context.Contex
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UpdateUserConfiguration(ctx context.Context, input *UpdateUserConfigurationSoapIn, detail any) (*UpdateUserConfigurationSoapOut, error) {
+func (b *ExchangeServiceBinding) UpdateUserConfiguration(ctx context.Context, input *UpdateUserConfigurationSoapIn, detail error) (*UpdateUserConfigurationSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11918,7 +11918,7 @@ func (b *ExchangeServiceBinding) UpdateUserConfiguration(ctx context.Context, in
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetUserAvailability(ctx context.Context, input *GetUserAvailabilitySoapIn, detail any) (*GetUserAvailabilitySoapOut, error) {
+func (b *ExchangeServiceBinding) GetUserAvailability(ctx context.Context, input *GetUserAvailabilitySoapIn, detail error) (*GetUserAvailabilitySoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.TimeZoneContext != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -11959,7 +11959,7 @@ func (b *ExchangeServiceBinding) GetUserAvailability(ctx context.Context, input 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetUserOofSettings(ctx context.Context, input *GetUserOofSettingsSoapIn, detail any) (*GetUserOofSettingsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetUserOofSettings(ctx context.Context, input *GetUserOofSettingsSoapIn, detail error) (*GetUserOofSettingsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -11996,7 +11996,7 @@ func (b *ExchangeServiceBinding) GetUserOofSettings(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SetUserOofSettings(ctx context.Context, input *SetUserOofSettingsSoapIn, detail any) (*SetUserOofSettingsSoapOut, error) {
+func (b *ExchangeServiceBinding) SetUserOofSettings(ctx context.Context, input *SetUserOofSettingsSoapIn, detail error) (*SetUserOofSettingsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -12033,7 +12033,7 @@ func (b *ExchangeServiceBinding) SetUserOofSettings(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetServiceConfiguration(ctx context.Context, input *GetServiceConfigurationSoapIn, detail any) (*GetServiceConfigurationSoapOut, error) {
+func (b *ExchangeServiceBinding) GetServiceConfiguration(ctx context.Context, input *GetServiceConfigurationSoapIn, detail error) (*GetServiceConfigurationSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
@@ -12074,7 +12074,7 @@ func (b *ExchangeServiceBinding) GetServiceConfiguration(ctx context.Context, in
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetMailTips(ctx context.Context, input *GetMailTipsSoapIn, detail any) (*GetMailTipsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetMailTips(ctx context.Context, input *GetMailTipsSoapIn, detail error) (*GetMailTipsSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
@@ -12113,7 +12113,7 @@ func (b *ExchangeServiceBinding) GetMailTips(ctx context.Context, input *GetMail
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) PlayOnPhone(ctx context.Context, input *PlayOnPhoneSoapIn, detail any) (*PlayOnPhoneSoapOut, error) {
+func (b *ExchangeServiceBinding) PlayOnPhone(ctx context.Context, input *PlayOnPhoneSoapIn, detail error) (*PlayOnPhoneSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12154,7 +12154,7 @@ func (b *ExchangeServiceBinding) PlayOnPhone(ctx context.Context, input *PlayOnP
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetPhoneCallInformation(ctx context.Context, input *GetPhoneCallInformationSoapIn, detail any) (*GetPhoneCallInformationSoapOut, error) {
+func (b *ExchangeServiceBinding) GetPhoneCallInformation(ctx context.Context, input *GetPhoneCallInformationSoapIn, detail error) (*GetPhoneCallInformationSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12195,7 +12195,7 @@ func (b *ExchangeServiceBinding) GetPhoneCallInformation(ctx context.Context, in
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) DisconnectPhoneCall(ctx context.Context, input *DisconnectPhoneCallSoapIn, detail any) (*DisconnectPhoneCallSoapOut, error) {
+func (b *ExchangeServiceBinding) DisconnectPhoneCall(ctx context.Context, input *DisconnectPhoneCallSoapIn, detail error) (*DisconnectPhoneCallSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12236,7 +12236,7 @@ func (b *ExchangeServiceBinding) DisconnectPhoneCall(ctx context.Context, input 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetSharingMetadata(ctx context.Context, input *GetSharingMetadataSoapIn, detail any) (*GetSharingMetadataSoapOut, error) {
+func (b *ExchangeServiceBinding) GetSharingMetadata(ctx context.Context, input *GetSharingMetadataSoapIn, detail error) (*GetSharingMetadataSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12273,7 +12273,7 @@ func (b *ExchangeServiceBinding) GetSharingMetadata(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) RefreshSharingFolder(ctx context.Context, input *RefreshSharingFolderSoapIn, detail any) (*RefreshSharingFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) RefreshSharingFolder(ctx context.Context, input *RefreshSharingFolderSoapIn, detail error) (*RefreshSharingFolderSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12310,7 +12310,7 @@ func (b *ExchangeServiceBinding) RefreshSharingFolder(ctx context.Context, input
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetSharingFolder(ctx context.Context, input *GetSharingFolderSoapIn, detail any) (*GetSharingFolderSoapOut, error) {
+func (b *ExchangeServiceBinding) GetSharingFolder(ctx context.Context, input *GetSharingFolderSoapIn, detail error) (*GetSharingFolderSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12347,7 +12347,7 @@ func (b *ExchangeServiceBinding) GetSharingFolder(ctx context.Context, input *Ge
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SetTeamMailbox(ctx context.Context, input *SetTeamMailboxSoapIn, detail any) (*SetTeamMailboxSoapOut, error) {
+func (b *ExchangeServiceBinding) SetTeamMailbox(ctx context.Context, input *SetTeamMailboxSoapIn, detail error) (*SetTeamMailboxSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -12386,7 +12386,7 @@ func (b *ExchangeServiceBinding) SetTeamMailbox(ctx context.Context, input *SetT
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UnpinTeamMailbox(ctx context.Context, input *UnpinTeamMailboxSoapIn, detail any) (*UnpinTeamMailboxSoapOut, error) {
+func (b *ExchangeServiceBinding) UnpinTeamMailbox(ctx context.Context, input *UnpinTeamMailboxSoapIn, detail error) (*UnpinTeamMailboxSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12423,7 +12423,7 @@ func (b *ExchangeServiceBinding) UnpinTeamMailbox(ctx context.Context, input *Un
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetRoomLists(ctx context.Context, input *GetRoomListsSoapIn, detail any) (*GetRoomListsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetRoomLists(ctx context.Context, input *GetRoomListsSoapIn, detail error) (*GetRoomListsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12464,7 +12464,7 @@ func (b *ExchangeServiceBinding) GetRoomLists(ctx context.Context, input *GetRoo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetRooms(ctx context.Context, input *GetRoomsSoapIn, detail any) (*GetRoomsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetRooms(ctx context.Context, input *GetRoomsSoapIn, detail error) (*GetRoomsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12505,7 +12505,7 @@ func (b *ExchangeServiceBinding) GetRooms(ctx context.Context, input *GetRoomsSo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) FindMessageTrackingReport(ctx context.Context, input *FindMessageTrackingReportSoapIn, detail any) (*FindMessageTrackingReportSoapOut, error) {
+func (b *ExchangeServiceBinding) FindMessageTrackingReport(ctx context.Context, input *FindMessageTrackingReportSoapIn, detail error) (*FindMessageTrackingReportSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12542,7 +12542,7 @@ func (b *ExchangeServiceBinding) FindMessageTrackingReport(ctx context.Context, 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetMessageTrackingReport(ctx context.Context, input *GetMessageTrackingReportSoapIn, detail any) (*GetMessageTrackingReportSoapOut, error) {
+func (b *ExchangeServiceBinding) GetMessageTrackingReport(ctx context.Context, input *GetMessageTrackingReportSoapIn, detail error) (*GetMessageTrackingReportSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -12579,7 +12579,7 @@ func (b *ExchangeServiceBinding) GetMessageTrackingReport(ctx context.Context, i
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) FindConversation(ctx context.Context, input *FindConversationSoapIn, detail any) (*FindConversationSoapOut, error) {
+func (b *ExchangeServiceBinding) FindConversation(ctx context.Context, input *FindConversationSoapIn, detail error) (*FindConversationSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -12618,7 +12618,7 @@ func (b *ExchangeServiceBinding) FindConversation(ctx context.Context, input *Fi
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) ApplyConversationAction(ctx context.Context, input *ApplyConversationActionSoapIn, detail any) (*ApplyConversationActionSoapOut, error) {
+func (b *ExchangeServiceBinding) ApplyConversationAction(ctx context.Context, input *ApplyConversationActionSoapIn, detail error) (*ApplyConversationActionSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -12657,7 +12657,7 @@ func (b *ExchangeServiceBinding) ApplyConversationAction(ctx context.Context, in
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetConversationItems(ctx context.Context, input *GetConversationItemsSoapIn, detail any) (*GetConversationItemsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetConversationItems(ctx context.Context, input *GetConversationItemsSoapIn, detail error) (*GetConversationItemsSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -12696,7 +12696,7 @@ func (b *ExchangeServiceBinding) GetConversationItems(ctx context.Context, input
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) FindPeople(ctx context.Context, input *FindPeopleSoapIn, detail any) (*FindPeopleSoapOut, error) {
+func (b *ExchangeServiceBinding) FindPeople(ctx context.Context, input *FindPeopleSoapIn, detail error) (*FindPeopleSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -12735,7 +12735,7 @@ func (b *ExchangeServiceBinding) FindPeople(ctx context.Context, input *FindPeop
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) FindTags(ctx context.Context, input *FindTagsSoapIn, detail any) (*FindTagsSoapOut, error) {
+func (b *ExchangeServiceBinding) FindTags(ctx context.Context, input *FindTagsSoapIn, detail error) (*FindTagsSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -12774,7 +12774,7 @@ func (b *ExchangeServiceBinding) FindTags(ctx context.Context, input *FindTagsSo
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) AddTag(ctx context.Context, input *AddTagSoapIn, detail any) (*AddTagSoapOut, error) {
+func (b *ExchangeServiceBinding) AddTag(ctx context.Context, input *AddTagSoapIn, detail error) (*AddTagSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -12813,7 +12813,7 @@ func (b *ExchangeServiceBinding) AddTag(ctx context.Context, input *AddTagSoapIn
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) HideTag(ctx context.Context, input *HideTagSoapIn, detail any) (*HideTagSoapOut, error) {
+func (b *ExchangeServiceBinding) HideTag(ctx context.Context, input *HideTagSoapIn, detail error) (*HideTagSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -12852,7 +12852,7 @@ func (b *ExchangeServiceBinding) HideTag(ctx context.Context, input *HideTagSoap
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetPersona(ctx context.Context, input *GetPersonaSoapIn, detail any) (*GetPersonaSoapOut, error) {
+func (b *ExchangeServiceBinding) GetPersona(ctx context.Context, input *GetPersonaSoapIn, detail error) (*GetPersonaSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ExchangeImpersonation != nil {
 		inputHeader = &struct {
@@ -12891,7 +12891,7 @@ func (b *ExchangeServiceBinding) GetPersona(ctx context.Context, input *GetPerso
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetInboxRules(ctx context.Context, input *GetInboxRulesSoapIn, detail any) (*GetInboxRulesSoapOut, error) {
+func (b *ExchangeServiceBinding) GetInboxRules(ctx context.Context, input *GetInboxRulesSoapIn, detail error) (*GetInboxRulesSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
@@ -12934,7 +12934,7 @@ func (b *ExchangeServiceBinding) GetInboxRules(ctx context.Context, input *GetIn
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UpdateInboxRules(ctx context.Context, input *UpdateInboxRulesSoapIn, detail any) (*UpdateInboxRulesSoapOut, error) {
+func (b *ExchangeServiceBinding) UpdateInboxRules(ctx context.Context, input *UpdateInboxRulesSoapIn, detail error) (*UpdateInboxRulesSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
@@ -12977,7 +12977,7 @@ func (b *ExchangeServiceBinding) UpdateInboxRules(ctx context.Context, input *Up
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetPasswordExpirationDate(ctx context.Context, input *GetPasswordExpirationDateSoapIn, detail any) (*GetPasswordExpirationDateSoapOut, error) {
+func (b *ExchangeServiceBinding) GetPasswordExpirationDate(ctx context.Context, input *GetPasswordExpirationDateSoapIn, detail error) (*GetPasswordExpirationDateSoapOut, error) {
 	var inputHeader any
 	if input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13016,7 +13016,7 @@ func (b *ExchangeServiceBinding) GetPasswordExpirationDate(ctx context.Context, 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetDiscoverySearchConfiguration(ctx context.Context, input *GetDiscoverySearchConfigurationSoapIn, detail any) (*GetDiscoverySearchConfigurationSoapOut, error) {
+func (b *ExchangeServiceBinding) GetDiscoverySearchConfiguration(ctx context.Context, input *GetDiscoverySearchConfigurationSoapIn, detail error) (*GetDiscoverySearchConfigurationSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -13055,7 +13055,7 @@ func (b *ExchangeServiceBinding) GetDiscoverySearchConfiguration(ctx context.Con
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetSearchableMailboxes(ctx context.Context, input *GetSearchableMailboxesSoapIn, detail any) (*GetSearchableMailboxesSoapOut, error) {
+func (b *ExchangeServiceBinding) GetSearchableMailboxes(ctx context.Context, input *GetSearchableMailboxesSoapIn, detail error) (*GetSearchableMailboxesSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -13094,7 +13094,7 @@ func (b *ExchangeServiceBinding) GetSearchableMailboxes(ctx context.Context, inp
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SearchMailboxes(ctx context.Context, input *SearchMailboxesSoapIn, detail any) (*SearchMailboxesSoapOut, error) {
+func (b *ExchangeServiceBinding) SearchMailboxes(ctx context.Context, input *SearchMailboxesSoapIn, detail error) (*SearchMailboxesSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -13133,7 +13133,7 @@ func (b *ExchangeServiceBinding) SearchMailboxes(ctx context.Context, input *Sea
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetHoldOnMailboxes(ctx context.Context, input *GetHoldOnMailboxesSoapIn, detail any) (*GetHoldOnMailboxesSoapOut, error) {
+func (b *ExchangeServiceBinding) GetHoldOnMailboxes(ctx context.Context, input *GetHoldOnMailboxesSoapIn, detail error) (*GetHoldOnMailboxesSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -13172,7 +13172,7 @@ func (b *ExchangeServiceBinding) GetHoldOnMailboxes(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SetHoldOnMailboxes(ctx context.Context, input *SetHoldOnMailboxesSoapIn, detail any) (*SetHoldOnMailboxesSoapOut, error) {
+func (b *ExchangeServiceBinding) SetHoldOnMailboxes(ctx context.Context, input *SetHoldOnMailboxesSoapIn, detail error) (*SetHoldOnMailboxesSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -13211,7 +13211,7 @@ func (b *ExchangeServiceBinding) SetHoldOnMailboxes(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetNonIndexableItemStatistics(ctx context.Context, input *GetNonIndexableItemStatisticsSoapIn, detail any) (*GetNonIndexableItemStatisticsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetNonIndexableItemStatistics(ctx context.Context, input *GetNonIndexableItemStatisticsSoapIn, detail error) (*GetNonIndexableItemStatisticsSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -13250,7 +13250,7 @@ func (b *ExchangeServiceBinding) GetNonIndexableItemStatistics(ctx context.Conte
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetNonIndexableItemDetails(ctx context.Context, input *GetNonIndexableItemDetailsSoapIn, detail any) (*GetNonIndexableItemDetailsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetNonIndexableItemDetails(ctx context.Context, input *GetNonIndexableItemDetailsSoapIn, detail error) (*GetNonIndexableItemDetailsSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -13289,7 +13289,7 @@ func (b *ExchangeServiceBinding) GetNonIndexableItemDetails(ctx context.Context,
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) MarkAllItemsAsRead(ctx context.Context, input *MarkAllItemsAsReadSoapIn, detail any) (*MarkAllItemsAsReadSoapOut, error) {
+func (b *ExchangeServiceBinding) MarkAllItemsAsRead(ctx context.Context, input *MarkAllItemsAsReadSoapIn, detail error) (*MarkAllItemsAsReadSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13330,7 +13330,7 @@ func (b *ExchangeServiceBinding) MarkAllItemsAsRead(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) MarkAsJunk(ctx context.Context, input *MarkAsJunkSoapIn, detail any) (*MarkAsJunkSoapOut, error) {
+func (b *ExchangeServiceBinding) MarkAsJunk(ctx context.Context, input *MarkAsJunkSoapIn, detail error) (*MarkAsJunkSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13371,7 +13371,7 @@ func (b *ExchangeServiceBinding) MarkAsJunk(ctx context.Context, input *MarkAsJu
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) ReportMessage(ctx context.Context, input *ReportMessageSoapIn, detail any) (*ReportMessageSoapOut, error) {
+func (b *ExchangeServiceBinding) ReportMessage(ctx context.Context, input *ReportMessageSoapIn, detail error) (*ReportMessageSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13412,7 +13412,7 @@ func (b *ExchangeServiceBinding) ReportMessage(ctx context.Context, input *Repor
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetAppManifests(ctx context.Context, input *GetAppManifestsSoapIn, detail any) (*GetAppManifestsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetAppManifests(ctx context.Context, input *GetAppManifestsSoapIn, detail error) (*GetAppManifestsSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13449,7 +13449,7 @@ func (b *ExchangeServiceBinding) GetAppManifests(ctx context.Context, input *Get
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) AddNewImContactToGroup(ctx context.Context, input *AddNewImContactToGroupSoapIn, detail any) (*AddNewImContactToGroupSoapOut, error) {
+func (b *ExchangeServiceBinding) AddNewImContactToGroup(ctx context.Context, input *AddNewImContactToGroupSoapIn, detail error) (*AddNewImContactToGroupSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13490,7 +13490,7 @@ func (b *ExchangeServiceBinding) AddNewImContactToGroup(ctx context.Context, inp
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) AddNewTelUriContactToGroup(ctx context.Context, input *AddNewTelUriContactToGroupSoapIn, detail any) (*AddNewTelUriContactToGroupSoapOut, error) {
+func (b *ExchangeServiceBinding) AddNewTelUriContactToGroup(ctx context.Context, input *AddNewTelUriContactToGroupSoapIn, detail error) (*AddNewTelUriContactToGroupSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13531,7 +13531,7 @@ func (b *ExchangeServiceBinding) AddNewTelUriContactToGroup(ctx context.Context,
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) AddImContactToGroup(ctx context.Context, input *AddImContactToGroupSoapIn, detail any) (*AddImContactToGroupSoapOut, error) {
+func (b *ExchangeServiceBinding) AddImContactToGroup(ctx context.Context, input *AddImContactToGroupSoapIn, detail error) (*AddImContactToGroupSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13572,7 +13572,7 @@ func (b *ExchangeServiceBinding) AddImContactToGroup(ctx context.Context, input 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) RemoveImContactFromGroup(ctx context.Context, input *RemoveImContactFromGroupSoapIn, detail any) (*RemoveImContactFromGroupSoapOut, error) {
+func (b *ExchangeServiceBinding) RemoveImContactFromGroup(ctx context.Context, input *RemoveImContactFromGroupSoapIn, detail error) (*RemoveImContactFromGroupSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13613,7 +13613,7 @@ func (b *ExchangeServiceBinding) RemoveImContactFromGroup(ctx context.Context, i
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) AddImGroup(ctx context.Context, input *AddImGroupSoapIn, detail any) (*AddImGroupSoapOut, error) {
+func (b *ExchangeServiceBinding) AddImGroup(ctx context.Context, input *AddImGroupSoapIn, detail error) (*AddImGroupSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13654,7 +13654,7 @@ func (b *ExchangeServiceBinding) AddImGroup(ctx context.Context, input *AddImGro
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) AddDistributionGroupToImList(ctx context.Context, input *AddDistributionGroupToImListSoapIn, detail any) (*AddDistributionGroupToImListSoapOut, error) {
+func (b *ExchangeServiceBinding) AddDistributionGroupToImList(ctx context.Context, input *AddDistributionGroupToImListSoapIn, detail error) (*AddDistributionGroupToImListSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13695,7 +13695,7 @@ func (b *ExchangeServiceBinding) AddDistributionGroupToImList(ctx context.Contex
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetImItemList(ctx context.Context, input *GetImItemListSoapIn, detail any) (*GetImItemListSoapOut, error) {
+func (b *ExchangeServiceBinding) GetImItemList(ctx context.Context, input *GetImItemListSoapIn, detail error) (*GetImItemListSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13736,7 +13736,7 @@ func (b *ExchangeServiceBinding) GetImItemList(ctx context.Context, input *GetIm
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetImItems(ctx context.Context, input *GetImItemsSoapIn, detail any) (*GetImItemsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetImItems(ctx context.Context, input *GetImItemsSoapIn, detail error) (*GetImItemsSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13777,7 +13777,7 @@ func (b *ExchangeServiceBinding) GetImItems(ctx context.Context, input *GetImIte
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) RemoveContactFromImList(ctx context.Context, input *RemoveContactFromImListSoapIn, detail any) (*RemoveContactFromImListSoapOut, error) {
+func (b *ExchangeServiceBinding) RemoveContactFromImList(ctx context.Context, input *RemoveContactFromImListSoapIn, detail error) (*RemoveContactFromImListSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13818,7 +13818,7 @@ func (b *ExchangeServiceBinding) RemoveContactFromImList(ctx context.Context, in
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) RemoveDistributionGroupFromImList(ctx context.Context, input *RemoveDistributionGroupFromImListSoapIn, detail any) (*RemoveDistributionGroupFromImListSoapOut, error) {
+func (b *ExchangeServiceBinding) RemoveDistributionGroupFromImList(ctx context.Context, input *RemoveDistributionGroupFromImListSoapIn, detail error) (*RemoveDistributionGroupFromImListSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13859,7 +13859,7 @@ func (b *ExchangeServiceBinding) RemoveDistributionGroupFromImList(ctx context.C
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) RemoveImGroup(ctx context.Context, input *RemoveImGroupSoapIn, detail any) (*RemoveImGroupSoapOut, error) {
+func (b *ExchangeServiceBinding) RemoveImGroup(ctx context.Context, input *RemoveImGroupSoapIn, detail error) (*RemoveImGroupSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13900,7 +13900,7 @@ func (b *ExchangeServiceBinding) RemoveImGroup(ctx context.Context, input *Remov
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SetImGroup(ctx context.Context, input *SetImGroupSoapIn, detail any) (*SetImGroupSoapOut, error) {
+func (b *ExchangeServiceBinding) SetImGroup(ctx context.Context, input *SetImGroupSoapIn, detail error) (*SetImGroupSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13941,7 +13941,7 @@ func (b *ExchangeServiceBinding) SetImGroup(ctx context.Context, input *SetImGro
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SetImListMigrationCompleted(ctx context.Context, input *SetImListMigrationCompletedSoapIn, detail any) (*SetImListMigrationCompletedSoapOut, error) {
+func (b *ExchangeServiceBinding) SetImListMigrationCompleted(ctx context.Context, input *SetImListMigrationCompletedSoapIn, detail error) (*SetImListMigrationCompletedSoapOut, error) {
 	var inputHeader any
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -13982,7 +13982,7 @@ func (b *ExchangeServiceBinding) SetImListMigrationCompleted(ctx context.Context
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetUserRetentionPolicyTags(ctx context.Context, input *GetUserRetentionPolicyTagsSoapIn, detail any) (*GetUserRetentionPolicyTagsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetUserRetentionPolicyTags(ctx context.Context, input *GetUserRetentionPolicyTagsSoapIn, detail error) (*GetUserRetentionPolicyTagsSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14019,7 +14019,7 @@ func (b *ExchangeServiceBinding) GetUserRetentionPolicyTags(ctx context.Context,
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) DisableApp(ctx context.Context, input *DisableAppSoapIn, detail any) (*DisableAppSoapOut, error) {
+func (b *ExchangeServiceBinding) DisableApp(ctx context.Context, input *DisableAppSoapIn, detail error) (*DisableAppSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14056,7 +14056,7 @@ func (b *ExchangeServiceBinding) DisableApp(ctx context.Context, input *DisableA
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) InstallApp(ctx context.Context, input *InstallAppSoapIn, detail any) (*InstallAppSoapOut, error) {
+func (b *ExchangeServiceBinding) InstallApp(ctx context.Context, input *InstallAppSoapIn, detail error) (*InstallAppSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14093,7 +14093,7 @@ func (b *ExchangeServiceBinding) InstallApp(ctx context.Context, input *InstallA
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UpdateExtensionUsage(ctx context.Context, input *UpdateExtensionUsageSoapIn, detail any) (*UpdateExtensionUsageSoapOut, error) {
+func (b *ExchangeServiceBinding) UpdateExtensionUsage(ctx context.Context, input *UpdateExtensionUsageSoapIn, detail error) (*UpdateExtensionUsageSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14130,7 +14130,7 @@ func (b *ExchangeServiceBinding) UpdateExtensionUsage(ctx context.Context, input
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UninstallApp(ctx context.Context, input *UninstallAppSoapIn, detail any) (*UninstallAppSoapOut, error) {
+func (b *ExchangeServiceBinding) UninstallApp(ctx context.Context, input *UninstallAppSoapIn, detail error) (*UninstallAppSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14167,7 +14167,7 @@ func (b *ExchangeServiceBinding) UninstallApp(ctx context.Context, input *Uninst
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetAppMarketplaceUrl(ctx context.Context, input *GetAppMarketplaceUrlSoapIn, detail any) (*GetAppMarketplaceUrlSoapOut, error) {
+func (b *ExchangeServiceBinding) GetAppMarketplaceUrl(ctx context.Context, input *GetAppMarketplaceUrlSoapIn, detail error) (*GetAppMarketplaceUrlSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14204,7 +14204,7 @@ func (b *ExchangeServiceBinding) GetAppMarketplaceUrl(ctx context.Context, input
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) FindAvailableMeetingTimes(ctx context.Context, input *FindAvailableMeetingTimesSoapIn, detail any) (*FindAvailableMeetingTimesSoapOut, error) {
+func (b *ExchangeServiceBinding) FindAvailableMeetingTimes(ctx context.Context, input *FindAvailableMeetingTimesSoapIn, detail error) (*FindAvailableMeetingTimesSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14241,7 +14241,7 @@ func (b *ExchangeServiceBinding) FindAvailableMeetingTimes(ctx context.Context, 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) FindMeetingTimeCandidates(ctx context.Context, input *FindMeetingTimeCandidatesSoapIn, detail any) (*FindMeetingTimeCandidatesSoapOut, error) {
+func (b *ExchangeServiceBinding) FindMeetingTimeCandidates(ctx context.Context, input *FindMeetingTimeCandidatesSoapIn, detail error) (*FindMeetingTimeCandidatesSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14278,7 +14278,7 @@ func (b *ExchangeServiceBinding) FindMeetingTimeCandidates(ctx context.Context, 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetUserPhoto(ctx context.Context, input *GetUserPhotoSoapIn, detail any) (*GetUserPhotoSoapOut, error) {
+func (b *ExchangeServiceBinding) GetUserPhoto(ctx context.Context, input *GetUserPhotoSoapIn, detail error) (*GetUserPhotoSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14315,7 +14315,7 @@ func (b *ExchangeServiceBinding) GetUserPhoto(ctx context.Context, input *GetUse
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) SetUserPhoto(ctx context.Context, input *SetUserPhotoSoapIn, detail any) (*SetUserPhotoSoapOut, error) {
+func (b *ExchangeServiceBinding) SetUserPhoto(ctx context.Context, input *SetUserPhotoSoapIn, detail error) (*SetUserPhotoSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14352,7 +14352,7 @@ func (b *ExchangeServiceBinding) SetUserPhoto(ctx context.Context, input *SetUse
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetMeetingSpace(ctx context.Context, input *GetMeetingSpaceSoapIn, detail any) (*GetMeetingSpaceSoapOut, error) {
+func (b *ExchangeServiceBinding) GetMeetingSpace(ctx context.Context, input *GetMeetingSpaceSoapIn, detail error) (*GetMeetingSpaceSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -14391,7 +14391,7 @@ func (b *ExchangeServiceBinding) GetMeetingSpace(ctx context.Context, input *Get
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) DeleteMeetingSpace(ctx context.Context, input *DeleteMeetingSpaceSoapIn, detail any) (*DeleteMeetingSpaceSoapOut, error) {
+func (b *ExchangeServiceBinding) DeleteMeetingSpace(ctx context.Context, input *DeleteMeetingSpaceSoapIn, detail error) (*DeleteMeetingSpaceSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -14430,7 +14430,7 @@ func (b *ExchangeServiceBinding) DeleteMeetingSpace(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UpdateMeetingSpace(ctx context.Context, input *UpdateMeetingSpaceSoapIn, detail any) (*UpdateMeetingSpaceSoapOut, error) {
+func (b *ExchangeServiceBinding) UpdateMeetingSpace(ctx context.Context, input *UpdateMeetingSpaceSoapIn, detail error) (*UpdateMeetingSpaceSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -14469,7 +14469,7 @@ func (b *ExchangeServiceBinding) UpdateMeetingSpace(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CreateMeetingSpace(ctx context.Context, input *CreateMeetingSpaceSoapIn, detail any) (*CreateMeetingSpaceSoapOut, error) {
+func (b *ExchangeServiceBinding) CreateMeetingSpace(ctx context.Context, input *CreateMeetingSpaceSoapIn, detail error) (*CreateMeetingSpaceSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -14508,7 +14508,7 @@ func (b *ExchangeServiceBinding) CreateMeetingSpace(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) FindMeetingSpaceByJoinUrl(ctx context.Context, input *FindMeetingSpaceByJoinUrlSoapIn, detail any) (*FindMeetingSpaceByJoinUrlSoapOut, error) {
+func (b *ExchangeServiceBinding) FindMeetingSpaceByJoinUrl(ctx context.Context, input *FindMeetingSpaceByJoinUrlSoapIn, detail error) (*FindMeetingSpaceByJoinUrlSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -14547,7 +14547,7 @@ func (b *ExchangeServiceBinding) FindMeetingSpaceByJoinUrl(ctx context.Context, 
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetMeetingInstance(ctx context.Context, input *GetMeetingInstanceSoapIn, detail any) (*GetMeetingInstanceSoapOut, error) {
+func (b *ExchangeServiceBinding) GetMeetingInstance(ctx context.Context, input *GetMeetingInstanceSoapIn, detail error) (*GetMeetingInstanceSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -14586,7 +14586,7 @@ func (b *ExchangeServiceBinding) GetMeetingInstance(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) DeleteMeetingInstance(ctx context.Context, input *DeleteMeetingInstanceSoapIn, detail any) (*DeleteMeetingInstanceSoapOut, error) {
+func (b *ExchangeServiceBinding) DeleteMeetingInstance(ctx context.Context, input *DeleteMeetingInstanceSoapIn, detail error) (*DeleteMeetingInstanceSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -14625,7 +14625,7 @@ func (b *ExchangeServiceBinding) DeleteMeetingInstance(ctx context.Context, inpu
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) UpdateMeetingInstance(ctx context.Context, input *UpdateMeetingInstanceSoapIn, detail any) (*UpdateMeetingInstanceSoapOut, error) {
+func (b *ExchangeServiceBinding) UpdateMeetingInstance(ctx context.Context, input *UpdateMeetingInstanceSoapIn, detail error) (*UpdateMeetingInstanceSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -14664,7 +14664,7 @@ func (b *ExchangeServiceBinding) UpdateMeetingInstance(ctx context.Context, inpu
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) CreateMeetingInstance(ctx context.Context, input *CreateMeetingInstanceSoapIn, detail any) (*CreateMeetingInstanceSoapOut, error) {
+func (b *ExchangeServiceBinding) CreateMeetingInstance(ctx context.Context, input *CreateMeetingInstanceSoapIn, detail error) (*CreateMeetingInstanceSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
@@ -14703,7 +14703,7 @@ func (b *ExchangeServiceBinding) CreateMeetingInstance(ctx context.Context, inpu
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) StartSearchSession(ctx context.Context, input *StartSearchSessionSoapIn, detail any) (*StartSearchSessionSoapOut, error) {
+func (b *ExchangeServiceBinding) StartSearchSession(ctx context.Context, input *StartSearchSessionSoapIn, detail error) (*StartSearchSessionSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
@@ -14742,7 +14742,7 @@ func (b *ExchangeServiceBinding) StartSearchSession(ctx context.Context, input *
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) ExecuteSearch(ctx context.Context, input *ExecuteSearchSoapIn, detail any) (*ExecuteSearchSoapOut, error) {
+func (b *ExchangeServiceBinding) ExecuteSearch(ctx context.Context, input *ExecuteSearchSoapIn, detail error) (*ExecuteSearchSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
@@ -14781,7 +14781,7 @@ func (b *ExchangeServiceBinding) ExecuteSearch(ctx context.Context, input *Execu
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetSearchSuggestions(ctx context.Context, input *GetSearchSuggestionsSoapIn, detail any) (*GetSearchSuggestionsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetSearchSuggestions(ctx context.Context, input *GetSearchSuggestionsSoapIn, detail error) (*GetSearchSuggestionsSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
@@ -14820,7 +14820,7 @@ func (b *ExchangeServiceBinding) GetSearchSuggestions(ctx context.Context, input
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) DeleteSearchSuggestion(ctx context.Context, input *DeleteSearchSuggestionSoapIn, detail any) (*DeleteSearchSuggestionSoapOut, error) {
+func (b *ExchangeServiceBinding) DeleteSearchSuggestion(ctx context.Context, input *DeleteSearchSuggestionSoapIn, detail error) (*DeleteSearchSuggestionSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
@@ -14859,7 +14859,7 @@ func (b *ExchangeServiceBinding) DeleteSearchSuggestion(ctx context.Context, inp
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) EndSearchSession(ctx context.Context, input *EndSearchSessionSoapIn, detail any) (*EndSearchSessionSoapOut, error) {
+func (b *ExchangeServiceBinding) EndSearchSession(ctx context.Context, input *EndSearchSessionSoapIn, detail error) (*EndSearchSessionSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
@@ -14898,7 +14898,7 @@ func (b *ExchangeServiceBinding) EndSearchSession(ctx context.Context, input *En
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetLastPrivateCatalogUpdate(ctx context.Context, input *GetLastPrivateCatalogUpdateSoapIn, detail any) (*GetLastPrivateCatalogUpdateSoapOut, error) {
+func (b *ExchangeServiceBinding) GetLastPrivateCatalogUpdate(ctx context.Context, input *GetLastPrivateCatalogUpdateSoapIn, detail error) (*GetLastPrivateCatalogUpdateSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {
@@ -14935,7 +14935,7 @@ func (b *ExchangeServiceBinding) GetLastPrivateCatalogUpdate(ctx context.Context
 	return output, nil
 }
 
-func (b *ExchangeServiceBinding) GetPrivateCatalogAddIns(ctx context.Context, input *GetPrivateCatalogAddInsSoapIn, detail any) (*GetPrivateCatalogAddInsSoapOut, error) {
+func (b *ExchangeServiceBinding) GetPrivateCatalogAddIns(ctx context.Context, input *GetPrivateCatalogAddInsSoapIn, detail error) (*GetPrivateCatalogAddInsSoapOut, error) {
 	var inputHeader any
 	if input.RequestServerVersion != nil {
 		inputHeader = &struct {

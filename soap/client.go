@@ -70,10 +70,9 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 
 	if response.StatusCode > http.StatusBadRequest {
 		data, _ := io.ReadAll(response.Body)
-		return &ews.Error{
-			Code:    ews.CodeInvalidStatus,
-			Status:  response.StatusCode,
-			Message: *(*string)(unsafe.Pointer(&data)),
+		return &wsdl.Fault{
+			FaultCode:   ews.CodeInvalidStatus,
+			FaultString: *(*string)(unsafe.Pointer(&data)),
 		}
 	}
 
