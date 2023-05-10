@@ -42,7 +42,7 @@ func (d *dumpRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) 
 	io.Copy(body, rsp.Body)
 	d.writer.Write(body.Data())
 	rsp.Body = body
-	fmt.Fprintln(d.writer)
+	fmt.Fprint(d.writer, "\n\n")
 
 	return rsp, nil
 }
