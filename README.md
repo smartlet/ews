@@ -339,6 +339,7 @@ var soapCli = soap.NewSOAPClient(ntlmCli)
 var service = wsdl.NewExchangeServicePortType(soapCli)
 
 func TestGetFolder(t *testing.T) {
+    defer trace.Sync()
 	rsp, err := service.GetFolder(ews.MakeContext(acc), &wsdl.GetFolderSoapIn{
 		GetFolder: &wsdl.GetFolderType{
 			FolderShape: &wsdl.FolderResponseShapeType{
