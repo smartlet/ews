@@ -292,7 +292,7 @@ Loop:
 				conflicts = append(conflicts, i)
 			}
 		} else {
-			if newf.name == oldf.name && newf.xmlns == oldf.xmlns {
+			if newf.name == oldf.name {
 				conflicts = append(conflicts, i)
 			}
 		}
