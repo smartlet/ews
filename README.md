@@ -1,12 +1,15 @@
 # ews
 
-EWS 是一种全面的服务，应用程序可以使用 EWS 来访问几乎所有存储在 Exchange Online、作为 Office 365 一部分的 Exchange Online 或 Exchange 本地邮箱中的信息。 EWS 使用标准 Web 协议，对 Exchange 服务器提供访问权限；诸如 EWS 托管 API 等库会环绕 EWS 操作，提供面向对象的界面。 运行本文中的示例后，你将基本了解可以使用 EWS 执行的操作。
+EWS 是一种全面的服务，应用程序可以使用 EWS 来访问几乎所有存储在 Exchange Online、作为 Office 365 一部分的 Exchange Online
+或 Exchange 本地邮箱中的信息。 EWS 使用标准 Web 协议，对 Exchange 服务器提供访问权限；诸如 EWS 托管 API 等库会环绕 EWS
+操作，提供面向对象的界面。 运行本文中的示例后，你将基本了解可以使用 EWS 执行的操作。
 
 ## 支持操作
 
 完整参考: https://learn.microsoft.com/zh-cn/exchange/client-developer/web-service-reference/ews-operations-in-exchange
 
 ### 电子数据展示操作
+
 - GetDiscoverySearchConfiguration 操作
 - GetHoldOnMailboxes 操作
 - GetNonIndexableItemDetails 操作
@@ -18,6 +21,7 @@ EWS 是一种全面的服务，应用程序可以使用 EWS 来访问几乎所�
 ### Exchange 邮箱数据操作
 
 Exchange 邮箱数据操作
+
 - ArchiveItem 操作
 - CreateItem 操作
 - CopyItem 操作
@@ -30,6 +34,7 @@ Exchange 邮箱数据操作
 - UpdateItem 操作
 
 Exchange 邮箱数据文件夹操作
+
 - CreateFolder 操作
 - CreateFolderPath 操作
 - CreateManagedFolder 操作
@@ -42,20 +47,24 @@ Exchange 邮箱数据文件夹操作
 - UpdateFolder 操作
 
 Exchange 邮箱数据附件操作
+
 - CreateAttachment 操作
 - GetAttachment 操作
 - DeleteAttachment 操作
 
 Exchange 邮箱提醒操作
+
 - GetReminders 操作
 - PerformReminderAction 操作
 
 Exchange 邮箱数据会话操作
+
 - ApplyConversationAction 操作
 - FindConversation 操作
 - GetConversationItems 操作
 
 Exchange 邮箱数据实用程序操作
+
 - ConvertId 操作
 - ExpandDL 操作
 - GetUserPhoto 操作
@@ -64,6 +73,7 @@ Exchange 邮箱数据实用程序操作
 - GetPasswordExpirationDate 操作
 
 ### 可用性操作
+
 - GetUserAvailability 操作
 - GetRoomLists 操作
 - GetRooms 操作
@@ -71,20 +81,24 @@ Exchange 邮箱数据实用程序操作
 - SetUserOofSettings 操作
 
 ### 批量传输操作
+
 - UploadItems 操作
 - ExportItems 操作
 
 ### 代理管理操作
+
 - AddDelegate 操作
 - GetDelegate 操作
 - UpdateDelegate 操作
 - RemoveDelegate 操作
 
 ### 收件箱规则操作
+
 - GetInboxRules 操作
 - UpdateInboxRules 操作
 
 ### 邮件应用管理操作
+
 - DisableApp 操作
 - GetAppManifests 操作
 - GetAppMarketplaceUrl 操作
@@ -93,47 +107,58 @@ Exchange 邮箱数据实用程序操作
 - UninstallApp 操作
 
 ### 邮件提示操作
+
 - GetMailTips 操作
 
 ### 邮件跟踪操作
+
 - FindMessageTrackingReport 操作
 - GetMessageTrackingReport 操作
 
 ### 通知操作
+
 - GetEvents 操作
 - GetStreamingEvents 操作
 - Subscribe 操作
 - Unsubscribe 操作
 
 ### 角色操作
+
 - FindPeople 操作
 - GetPersona 操作
 
 ### 保留策略操作
+
 - GetUserRetentionPolicyTags 操作
 
 ### 服务配置操作
+
 - GetServiceConfiguration 操作
 
 ### 共享操作
+
 - CreateItem 操作
 - GetSharingFolder 操作
 - GetSharingMetadata 操作
 - RefreshSharingFolder 操作
 
 ### 同步操作
+
 - SyncFolderHierarchy 操作
 - SyncFolderItems 操作
 
 ### 时区操作
+
 - GetServerTimeZones 操作
 
 ### 统一消息操作
+
 - DisconnectPhoneCall 操作
 - GetPhoneCallInformation 操作
 - PlayOnPhone 操作
 
 ### 统一联系人存储操作
+
 - AddNewImContactToGroup 操作
 - AddImContactToGroup 操作
 - AddImGroup 操作
@@ -148,13 +173,14 @@ Exchange 邮箱数据实用程序操作
 - SetImGroup 操作
 
 ### 用户配置操作
+
 - CreateUserConfiguration 操作
 - DeleteUserConfiguration 操作
 - GetUserConfiguration 操作
 - UpdateUserConfiguration 操作
 
-
 ## 完整API
+
 ```
 
 type ExchangeServicePortType interface {
@@ -286,6 +312,7 @@ type ExchangeServicePortType interface {
 ```
 
 ## 使用示例
+
 ```
 var acc = ews.NewAccountSession(
 	"赵大海",
@@ -294,11 +321,13 @@ var acc = ews.NewAccountSession(
 	"https://wwww.wahaha.com/EWS/Exchange.asmx",
 )
 
+// 打印所有http请求响应详细信息用于追踪
 var trace, _ = os.Create(`/tmp/trace.log`)
 
 var httpCli = http.NewHTTPRoundTripper(new(http.Config))
+var dumpCli = http.NewDumpRoundTripper(httpCli, trace)
 var ntlmCli = http.NewNTLMRoundTripper(
-	httpCli,
+	dumpCli,
 	kits.NewMemoryAuthorizer(),
 	kits.NewMemoryCredential(map[string][2]string{
 		acc.GetId(): {
@@ -306,8 +335,7 @@ var ntlmCli = http.NewNTLMRoundTripper(
 			os.Getenv("PASSWORD"),
 		},
 	}))
-var dumpCli = http.NewDumpRoundTripper(ntlmCli, trace)
-var soapCli = soap.NewSOAPClient(dumpCli)
+var soapCli = soap.NewSOAPClient(ntlmCli)
 var service = wsdl.NewExchangeServicePortType(soapCli)
 
 func TestGetFolder(t *testing.T) {
