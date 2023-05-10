@@ -9,18 +9,31 @@ import (
 	"strings"
 )
 
-func NewNTLMRoundTripper(tripper http.RoundTripper, auth ews.Authorizer, cred ews.Credential) http.RoundTripper {
-	return &ntlmRoundTripper{
+func NewNTLMRoundTripper(tripper http.RoundTripper, auth ews.Authorizer, cred ews.Credential, ops ...operation) http.RoundTripper {
+	rt := &ntlmRoundTripper{
 		tripper:    tripper,
 		authorizer: auth,
 		credential: cred,
 	}
+	for _, op := range ops {
+		op(rt)
+	}
+	return rt
+}
+
+type operation func(c *ntlmRoundTripper)
+
+func WithAccountDomain() operation {
+	return func(c *ntlmRoundTripper) {
+		c.withAccountDomain = true
+	}
 }
 
 type ntlmRoundTripper struct {
-	tripper    http.RoundTripper
-	authorizer ews.Authorizer
-	credential ews.Credential
+	tripper           http.RoundTripper
+	authorizer        ews.Authorizer
+	credential        ews.Credential
+	withAccountDomain bool // account是否带上domain. 默认false
 }
 
 func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) {
@@ -59,6 +72,9 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 	acc, pwd, err := rt.credential.Get(sess)
 	if err != nil {
 		return nil, err
+	}
+	if !rt.withAccountDomain {
+		acc = trimAccountDomain(acc)
 	}
 	user, domain, domainNeed := ntlmssp.GetDomain(acc)
 	negotiateMessage, err := ntlmssp.NewNegotiateMessage(domain, "")
@@ -125,4 +141,12 @@ func extractWwwAuthenticate(vs []string) (data []byte, ntlm bool, err error) {
 		}
 	}
 	return
+}
+
+func trimAccountDomain(acc string) string {
+	idx := strings.IndexByte(acc, '@')
+	if idx == -1 {
+		return acc
+	}
+	return acc[:idx]
 }

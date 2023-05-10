@@ -35,7 +35,7 @@ func NewAccountSession(user, corp, account, endpoint string) *AccountSession {
 		corp:     corp,
 		account:  account,
 		endpoint: endpoint,
-		_id:      user + "/" + corp + "/" + account + "/" + endpoint,
+		_id:      user + "/" + corp + "/" + account,
 	}
 }
 
