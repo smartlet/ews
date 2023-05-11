@@ -2930,6 +2930,17 @@ const (
 
 type ListOfExtensionIdsType []GuidType
 
+type MessageXmlType struct {
+}
+
+type SearchRefinersTypeM struct {
+	SearchRefiner []*DynamicRefinerQueryType `xml:"m:SearchRefiner,omitempty"`
+}
+
+type ExtendedKeywordsType struct {
+	ExtendedKeywordDefinition []*ExtendedKeywordDefinitionType `xml:"m:ExtendedKeywordDefinition,omitempty"`
+}
+
 type RequestServerVersionType struct {
 	Version ExchangeVersionType `xml:"Version,attr,omitempty"`
 }
@@ -2968,17 +2979,6 @@ type SearchRefinersTypeT struct {
 
 type MailboxesInformationType struct {
 	MailboxInformation []*MailboxInformationType `xml:"t:MailboxInformation,omitempty"`
-}
-
-type MessageXmlType struct {
-}
-
-type SearchRefinersTypeM struct {
-	SearchRefiner []*DynamicRefinerQueryType `xml:"m:SearchRefiner,omitempty"`
-}
-
-type ExtendedKeywordsType struct {
-	ExtendedKeywordDefinition []*ExtendedKeywordDefinitionType `xml:"m:ExtendedKeywordDefinition,omitempty"`
 }
 
 type NonEmptyArrayOfBaseFolderIdsType struct {
@@ -3025,27 +3025,37 @@ type ExchangeImpersonationType struct {
 }
 
 type ConnectingSIDType struct {
-	PrincipalName      *PrincipalNameType      `xml:"t:PrincipalName,omitempty"`
-	SID                *SIDType                `xml:"t:SID,omitempty"`
-	PrimarySmtpAddress *PrimarySmtpAddressType `xml:"t:PrimarySmtpAddress,omitempty"`
-	SmtpAddress        *SmtpAddressType        `xml:"t:SmtpAddress,omitempty"`
+	PrincipalName      PrincipalNameType      `xml:"t:PrincipalName,omitempty"`
+	SID                SIDType                `xml:"t:SID,omitempty"`
+	PrimarySmtpAddress PrimarySmtpAddressType `xml:"t:PrimarySmtpAddress,omitempty"`
+	SmtpAddress        SmtpAddressType        `xml:"t:SmtpAddress,omitempty"`
 }
+
+type PrincipalNameType NonEmptyStringType
 
 type PrincipalNameType struct {
 	CharData NonEmptyStringType `xml:",chardata"`
 }
 
+type SIDType NonEmptyStringType
+
 type SIDType struct {
 	CharData NonEmptyStringType `xml:",chardata"`
 }
+
+type PrimarySmtpAddressType NonEmptyStringType
 
 type PrimarySmtpAddressType struct {
 	CharData NonEmptyStringType `xml:",chardata"`
 }
 
+type SmtpAddressType NonEmptyStringType
+
 type SmtpAddressType struct {
 	CharData NonEmptyStringType `xml:",chardata"`
 }
+
+type MailboxCultureType XsLanguage
 
 type MailboxCultureType struct {
 	CharData XsLanguage `xml:",chardata"`
@@ -3300,7 +3310,7 @@ type MessageType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -3441,7 +3451,7 @@ type SharingMessageType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -4068,7 +4078,7 @@ type MeetingMessageType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -4175,7 +4185,7 @@ type MeetingRequestMessageType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -4502,7 +4512,7 @@ type MeetingResponseMessageType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -4617,7 +4627,7 @@ type MeetingCancellationMessageType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -4946,7 +4956,7 @@ type ReplyToItemType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5047,7 +5057,7 @@ type SmartResponseType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5148,7 +5158,7 @@ type SmartResponseBaseType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5248,7 +5258,7 @@ type ResponseObjectType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5347,7 +5357,7 @@ type ResponseObjectCoreType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5447,7 +5457,7 @@ type ForwardItemType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5548,7 +5558,7 @@ type ReplyAllToItemType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5650,7 +5660,7 @@ type AcceptItemType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5752,7 +5762,7 @@ type MeetingRegistrationResponseObjectType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5854,7 +5864,7 @@ type WellKnownResponseObjectType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -5954,7 +5964,7 @@ type TentativelyAcceptItemType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -6056,7 +6066,7 @@ type DeclineItemType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -6158,7 +6168,7 @@ type CancelCalendarItemType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -6259,7 +6269,7 @@ type RemoveItemType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -6359,7 +6369,7 @@ type SuppressReadReceiptType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -6459,7 +6469,7 @@ type ReferenceItemResponseType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -6559,7 +6569,7 @@ type PostReplyItemType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -6660,7 +6670,7 @@ type PostReplyItemBaseType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -6760,7 +6770,7 @@ type AcceptSharingInvitationType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -7207,7 +7217,7 @@ type AddItemToMyCalendarType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -7307,7 +7317,7 @@ type ProposeNewTimeType struct {
 	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
 	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
 	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress            SmtpAddressType                           `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
 	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
 	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
@@ -7836,7 +7846,7 @@ type SearchParametersType struct {
 }
 
 type RestrictionType struct {
-	SearchExpression SearchExpressionType `xml:"t:SearchExpression,omitempty"`
+	SearchExpression *SearchExpressionType `xml:"t:SearchExpression,omitempty"`
 }
 
 type SearchExpressionType struct {
@@ -8059,8 +8069,8 @@ type ArrayOfEncryptedSharedFolderDataType struct {
 }
 
 type EncryptedSharedFolderDataType struct {
-	Token EncryptedDataContainerType `xml:"t:Token,omitempty"`
-	Data  EncryptedDataContainerType `xml:"t:Data,omitempty"`
+	Token *EncryptedDataContainerType `xml:"t:Token,omitempty"`
+	Data  *EncryptedDataContainerType `xml:"t:Data,omitempty"`
 }
 
 type EncryptedDataContainerType struct {
@@ -8624,7 +8634,7 @@ type FolderResponseShapeType struct {
 }
 
 type NonEmptyArrayOfPathsToElementType struct {
-	Path []BasePathToElementType `xml:"t:Path,omitempty"`
+	Path []*BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type IndexedPageViewType struct {
@@ -8676,8 +8686,8 @@ type NonEmptyArrayOfFieldOrdersType struct {
 }
 
 type FieldOrderType struct {
-	Order SortDirectionType     `xml:"Order,attr,omitempty"`
-	Path  BasePathToElementType `xml:"t:Path,omitempty"`
+	Order SortDirectionType      `xml:"Order,attr,omitempty"`
+	Path  *BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type SeekToConditionPageViewType struct {
@@ -8800,33 +8810,33 @@ type NonEmptyArrayOfFolderChangeDescriptionsType struct {
 }
 
 type AppendToFolderFieldType struct {
-	Path           BasePathToElementType `xml:"t:Path,omitempty"`
-	Folder         *FolderType           `xml:"t:Folder,omitempty"`
-	CalendarFolder *CalendarFolderType   `xml:"t:CalendarFolder,omitempty"`
-	ContactsFolder *ContactsFolderType   `xml:"t:ContactsFolder,omitempty"`
-	SearchFolder   *SearchFolderType     `xml:"t:SearchFolder,omitempty"`
-	TasksFolder    *TasksFolderType      `xml:"t:TasksFolder,omitempty"`
+	Path           *BasePathToElementType `xml:"t:Path,omitempty"`
+	Folder         *FolderType            `xml:"t:Folder,omitempty"`
+	CalendarFolder *CalendarFolderType    `xml:"t:CalendarFolder,omitempty"`
+	ContactsFolder *ContactsFolderType    `xml:"t:ContactsFolder,omitempty"`
+	SearchFolder   *SearchFolderType      `xml:"t:SearchFolder,omitempty"`
+	TasksFolder    *TasksFolderType       `xml:"t:TasksFolder,omitempty"`
 }
 
 type FolderChangeDescriptionType struct {
-	Path BasePathToElementType `xml:"t:Path,omitempty"`
+	Path *BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type ChangeDescriptionType struct {
-	Path BasePathToElementType `xml:"t:Path,omitempty"`
+	Path *BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type SetFolderFieldType struct {
-	Path           BasePathToElementType `xml:"t:Path,omitempty"`
-	Folder         *FolderType           `xml:"t:Folder,omitempty"`
-	CalendarFolder *CalendarFolderType   `xml:"t:CalendarFolder,omitempty"`
-	ContactsFolder *ContactsFolderType   `xml:"t:ContactsFolder,omitempty"`
-	SearchFolder   *SearchFolderType     `xml:"t:SearchFolder,omitempty"`
-	TasksFolder    *TasksFolderType      `xml:"t:TasksFolder,omitempty"`
+	Path           *BasePathToElementType `xml:"t:Path,omitempty"`
+	Folder         *FolderType            `xml:"t:Folder,omitempty"`
+	CalendarFolder *CalendarFolderType    `xml:"t:CalendarFolder,omitempty"`
+	ContactsFolder *ContactsFolderType    `xml:"t:ContactsFolder,omitempty"`
+	SearchFolder   *SearchFolderType      `xml:"t:SearchFolder,omitempty"`
+	TasksFolder    *TasksFolderType       `xml:"t:TasksFolder,omitempty"`
 }
 
 type DeleteFolderFieldType struct {
-	Path BasePathToElementType `xml:"t:Path,omitempty"`
+	Path *BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type PullSubscriptionRequestType struct {
@@ -8926,7 +8936,7 @@ type NonEmptyArrayOfItemChangeDescriptionsType struct {
 }
 
 type AppendToItemFieldType struct {
-	Path                BasePathToElementType           `xml:"t:Path,omitempty"`
+	Path                *BasePathToElementType          `xml:"t:Path,omitempty"`
 	Item                *ItemType                       `xml:"t:Item,omitempty"`
 	Message             *MessageType                    `xml:"t:Message,omitempty"`
 	SharingMessage      *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
@@ -8945,11 +8955,11 @@ type AppendToItemFieldType struct {
 }
 
 type ItemChangeDescriptionType struct {
-	Path BasePathToElementType `xml:"t:Path,omitempty"`
+	Path *BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type SetItemFieldType struct {
-	Path                BasePathToElementType           `xml:"t:Path,omitempty"`
+	Path                *BasePathToElementType          `xml:"t:Path,omitempty"`
 	Item                *ItemType                       `xml:"t:Item,omitempty"`
 	Message             *MessageType                    `xml:"t:Message,omitempty"`
 	SharingMessage      *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
@@ -8968,7 +8978,7 @@ type SetItemFieldType struct {
 }
 
 type DeleteItemFieldType struct {
-	Path BasePathToElementType `xml:"t:Path,omitempty"`
+	Path *BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type NonEmptyArrayOfRequestAttachmentIdsType struct {
@@ -9324,7 +9334,7 @@ type PhoneCallInformationType struct {
 }
 
 type ArrayOfFindMessageTrackingSearchResultType struct {
-	MessageTrackingSearchResult []FindMessageTrackingSearchResultType `xml:"t:MessageTrackingSearchResult,omitempty"`
+	MessageTrackingSearchResult []*FindMessageTrackingSearchResultType `xml:"t:MessageTrackingSearchResult,omitempty"`
 }
 
 type FindMessageTrackingSearchResultType struct {
@@ -9397,7 +9407,7 @@ type ConversationType struct {
 	SortKey                   XsLong                          `xml:"t:SortKey,omitempty"`
 	MentionedMe               XsBoolean                       `xml:"t:MentionedMe,omitempty"`
 	GlobalMentionedMe         XsBoolean                       `xml:"t:GlobalMentionedMe,omitempty"`
-	SenderSMTPAddress         *SmtpAddressType                `xml:"t:SenderSMTPAddress,omitempty"`
+	SenderSMTPAddress         SmtpAddressType                 `xml:"t:SenderSMTPAddress,omitempty"`
 	MailboxGuids              *MailboxGuidsType               `xml:"t:MailboxGuids,omitempty"`
 	From                      *SingleRecipientType            `xml:"t:From,omitempty"`
 	AtAllMention              XsBoolean                       `xml:"t:AtAllMention,omitempty"`
@@ -9853,10 +9863,10 @@ type DelveSearchScopeType struct {
 }
 
 type SearchSuggestionsType struct {
-	TDSuggestionsBatchId    XsLong                `xml:"t:TDSuggestionsBatchId,omitempty"`
-	TDSuggestionsInstanceId GuidType              `xml:"t:TDSuggestionsInstanceId,omitempty"`
-	Suggestions             *SuggestionsType      `xml:"t:Suggestions,omitempty"`
-	DiagnosticsData         SearchDiagnosticsType `xml:"t:DiagnosticsData,omitempty"`
+	TDSuggestionsBatchId    XsLong                 `xml:"t:TDSuggestionsBatchId,omitempty"`
+	TDSuggestionsInstanceId GuidType               `xml:"t:TDSuggestionsInstanceId,omitempty"`
+	Suggestions             *SuggestionsType       `xml:"t:Suggestions,omitempty"`
+	DiagnosticsData         *SearchDiagnosticsType `xml:"t:DiagnosticsData,omitempty"`
 }
 
 type SuggestionType struct {
@@ -9872,9 +9882,9 @@ type SearchDiagnosticsType struct {
 }
 
 type DeleteSearchSuggestionResponseType struct {
-	Success         XsBoolean             `xml:"t:Success,omitempty"`
-	StatusMessage   XsString              `xml:"t:StatusMessage,omitempty"`
-	DiagnosticsData SearchDiagnosticsType `xml:"t:DiagnosticsData,omitempty"`
+	Success         XsBoolean              `xml:"t:Success,omitempty"`
+	StatusMessage   XsString               `xml:"t:StatusMessage,omitempty"`
+	DiagnosticsData *SearchDiagnosticsType `xml:"t:DiagnosticsData,omitempty"`
 }
 
 type AnalyzedQuery struct {
@@ -9899,7 +9909,7 @@ type SearchResultsType struct {
 	MoreResultsAvailable    XsBoolean                 `xml:"t:MoreResultsAvailable,omitempty"`
 	RefinerTelemetryBatchId XsInt                     `xml:"t:RefinerTelemetryBatchId,omitempty"`
 	SearchRefiners          *SearchRefinersTypeT      `xml:"t:SearchRefiners,omitempty"`
-	DiagnosticsData         SearchDiagnosticsType     `xml:"t:DiagnosticsData,omitempty"`
+	DiagnosticsData         *SearchDiagnosticsType    `xml:"t:DiagnosticsData,omitempty"`
 	SearchResultsCount      XsInt                     `xml:"t:SearchResultsCount,omitempty"`
 	TotalResultsCount       XsInt                     `xml:"t:TotalResultsCount,omitempty"`
 	SearchTerms             *ArrayOfStringsType       `xml:"t:SearchTerms,omitempty"`
@@ -9918,9 +9928,9 @@ type ExecuteSearchQueryIdType struct {
 }
 
 type MailboxInformationType struct {
-	MailboxGuid        GuidType         `xml:"t:MailboxGuid,omitempty"`
-	MailboxAddress     *SmtpAddressType `xml:"t:MailboxAddress,omitempty"`
-	MailboxDisplayName XsString         `xml:"t:MailboxDisplayName,omitempty"`
+	MailboxGuid        GuidType        `xml:"t:MailboxGuid,omitempty"`
+	MailboxAddress     SmtpAddressType `xml:"t:MailboxAddress,omitempty"`
+	MailboxDisplayName XsString        `xml:"t:MailboxDisplayName,omitempty"`
 }
 
 type OfficeClientType struct {
@@ -10035,7 +10045,7 @@ type ItemInfoResponseMessageType struct {
 	MessageText        XsString              `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
 	Items              *ArrayOfRealItemsType `xml:"m:Items,omitempty"`
 }
 
@@ -10044,7 +10054,7 @@ type ResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type DeleteItemResponseMessageType struct {
@@ -10052,7 +10062,7 @@ type DeleteItemResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type UpdateItemResponseMessageType struct {
@@ -10060,7 +10070,7 @@ type UpdateItemResponseMessageType struct {
 	MessageText        XsString              `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
 	Items              *ArrayOfRealItemsType `xml:"m:Items,omitempty"`
 	ConflictResults    *ConflictResultsType  `xml:"m:ConflictResults,omitempty"`
 }
@@ -10070,7 +10080,7 @@ type UpdateItemInRecoverableItemsResponseMessageType struct {
 	MessageText        XsString                `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType          `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType         `xml:"m:MessageXml,omitempty"`
 	Items              *ArrayOfRealItemsType   `xml:"m:Items,omitempty"`
 	Attachments        *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
 	ConflictResults    *ConflictResultsType    `xml:"m:ConflictResults,omitempty"`
@@ -10081,7 +10091,7 @@ type FolderInfoResponseMessageType struct {
 	MessageText        XsString            `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType    `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType      `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType     `xml:"m:MessageXml,omitempty"`
 	Folders            *ArrayOfFoldersType `xml:"m:Folders,omitempty"`
 }
 
@@ -10090,7 +10100,7 @@ type FindFolderResponseMessageType struct {
 	MessageText        XsString              `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
 	RootFolder         *FindFolderParentType `xml:"m:RootFolder,omitempty"`
 }
 
@@ -10099,7 +10109,7 @@ type AttachmentInfoResponseMessageType struct {
 	MessageText        XsString                `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType          `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType         `xml:"m:MessageXml,omitempty"`
 	Attachments        *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
 }
 
@@ -10108,7 +10118,7 @@ type DeleteAttachmentResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	RootItemId         *RootItemIdType   `xml:"m:RootItemId,omitempty"`
 }
 
@@ -10117,7 +10127,7 @@ type UploadItemsResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	ItemId             *ItemIdType       `xml:"m:ItemId,omitempty"`
 }
 
@@ -10126,7 +10136,7 @@ type ExportItemsResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	ItemId             *ItemIdType       `xml:"m:ItemId,omitempty"`
 	Data               XsBase64Binary    `xml:"m:Data,omitempty"`
 }
@@ -10136,7 +10146,7 @@ type GetClientAccessTokenResponseMessageType struct {
 	MessageText        XsString               `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
 	Token              *ClientAccessTokenType `xml:"m:Token,omitempty"`
 }
 
@@ -10145,7 +10155,7 @@ type FindItemResponseMessageType struct {
 	MessageText        XsString                   `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType            `xml:"m:MessageXml,omitempty"`
 	RootFolder         *FindItemParentType        `xml:"m:RootFolder,omitempty"`
 	HighlightTerms     *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
 }
@@ -10155,7 +10165,7 @@ type ResolveNamesResponseMessageType struct {
 	MessageText        XsString               `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
 	ResolutionSet      *ArrayOfResolutionType `xml:"m:ResolutionSet,omitempty"`
 }
 
@@ -10169,7 +10179,7 @@ type ExpandDLResponseMessageType struct {
 	MessageText             XsString                `xml:"m:MessageText,omitempty"`
 	ResponseCode            ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey      XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml              MessageXmlType          `xml:"m:MessageXml,omitempty"`
+	MessageXml              *MessageXmlType         `xml:"m:MessageXml,omitempty"`
 	DLExpansion             *ArrayOfDLExpansionType `xml:"m:DLExpansion,omitempty"`
 }
 
@@ -10178,7 +10188,7 @@ type GetServerTimeZonesResponseMessageType struct {
 	MessageText         XsString                       `xml:"m:MessageText,omitempty"`
 	ResponseCode        ResponseCodeType               `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey  XsInt                          `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml          MessageXmlType                 `xml:"m:MessageXml,omitempty"`
+	MessageXml          *MessageXmlType                `xml:"m:MessageXml,omitempty"`
 	TimeZoneDefinitions *ArrayOfTimeZoneDefinitionType `xml:"m:TimeZoneDefinitions,omitempty"`
 }
 
@@ -10187,7 +10197,7 @@ type GetEventsResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	Notification       *NotificationType `xml:"m:Notification,omitempty"`
 }
 
@@ -10196,7 +10206,7 @@ type GetStreamingEventsResponseMessageType struct {
 	MessageText          XsString                            `xml:"m:MessageText,omitempty"`
 	ResponseCode         ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey   XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml           MessageXmlType                      `xml:"m:MessageXml,omitempty"`
+	MessageXml           *MessageXmlType                     `xml:"m:MessageXml,omitempty"`
 	Notifications        *NonEmptyArrayOfNotificationsType   `xml:"m:Notifications,omitempty"`
 	ErrorSubscriptionIds *NonEmptyArrayOfSubscriptionIdsType `xml:"m:ErrorSubscriptionIds,omitempty"`
 	ConnectionStatus     ConnectionStatusType                `xml:"m:ConnectionStatus,omitempty"`
@@ -10207,7 +10217,7 @@ type SubscribeResponseMessageType struct {
 	MessageText        XsString           `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType     `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType    `xml:"m:MessageXml,omitempty"`
 	SubscriptionId     SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
 	Watermark          WatermarkType      `xml:"m:Watermark,omitempty"`
 }
@@ -10217,7 +10227,7 @@ type SendNotificationResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	Notification       *NotificationType `xml:"m:Notification,omitempty"`
 }
 
@@ -10226,7 +10236,7 @@ type SyncFolderHierarchyResponseMessageType struct {
 	MessageText               XsString                        `xml:"m:MessageText,omitempty"`
 	ResponseCode              ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey        XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                MessageXmlType                  `xml:"m:MessageXml,omitempty"`
+	MessageXml                *MessageXmlType                 `xml:"m:MessageXml,omitempty"`
 	SyncState                 XsString                        `xml:"m:SyncState,omitempty"`
 	IncludesLastFolderInRange XsBoolean                       `xml:"m:IncludesLastFolderInRange,omitempty"`
 	Changes                   *SyncFolderHierarchyChangesType `xml:"m:Changes,omitempty"`
@@ -10237,7 +10247,7 @@ type SyncFolderItemsResponseMessageType struct {
 	MessageText             XsString                    `xml:"m:MessageText,omitempty"`
 	ResponseCode            ResponseCodeType            `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey      XsInt                       `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml              MessageXmlType              `xml:"m:MessageXml,omitempty"`
+	MessageXml              *MessageXmlType             `xml:"m:MessageXml,omitempty"`
 	SyncState               XsString                    `xml:"m:SyncState,omitempty"`
 	IncludesLastItemInRange XsBoolean                   `xml:"m:IncludesLastItemInRange,omitempty"`
 	Changes                 *SyncFolderItemsChangesType `xml:"m:Changes,omitempty"`
@@ -10248,7 +10258,7 @@ type ConvertIdResponseMessageType struct {
 	MessageText        XsString             `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
 	AlternateId        *AlternateIdBaseType `xml:"m:AlternateId,omitempty"`
 }
 
@@ -10257,7 +10267,7 @@ type GetSharingMetadataResponseMessageType struct {
 	MessageText                         XsString                              `xml:"m:MessageText,omitempty"`
 	ResponseCode                        ResponseCodeType                      `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey                  XsInt                                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                          MessageXmlType                        `xml:"m:MessageXml,omitempty"`
+	MessageXml                          *MessageXmlType                       `xml:"m:MessageXml,omitempty"`
 	EncryptedSharedFolderDataCollection *ArrayOfEncryptedSharedFolderDataType `xml:"m:EncryptedSharedFolderDataCollection,omitempty"`
 	InvalidRecipients                   *ArrayOfInvalidRecipientsType         `xml:"m:InvalidRecipients,omitempty"`
 }
@@ -10267,7 +10277,7 @@ type RefreshSharingFolderResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type GetSharingFolderResponseMessageType struct {
@@ -10275,7 +10285,7 @@ type GetSharingFolderResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	SharingFolderId    *FolderIdType     `xml:"m:SharingFolderId,omitempty"`
 }
 
@@ -10284,7 +10294,7 @@ type GetUserConfigurationResponseMessageType struct {
 	MessageText        XsString               `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
 	UserConfiguration  *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
 }
 
@@ -10293,7 +10303,7 @@ type GetSpecificUserConfigurationResponseMessageType struct {
 	MessageText        XsString               `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
 	UserConfiguration  *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
 }
 
@@ -10302,7 +10312,7 @@ type GetRoomListsResponseMessageType struct {
 	MessageText        XsString                   `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType            `xml:"m:MessageXml,omitempty"`
 	RoomLists          *ArrayOfEmailAddressesType `xml:"m:RoomLists,omitempty"`
 }
 
@@ -10311,7 +10321,7 @@ type GetRoomsResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	Rooms              *ArrayOfRoomsType `xml:"m:Rooms,omitempty"`
 }
 
@@ -10320,7 +10330,7 @@ type GetRemindersResponseMessageType struct {
 	MessageText        XsString              `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
 	Reminders          *ArrayOfRemindersType `xml:"m:Reminders,omitempty"`
 }
 
@@ -10329,7 +10339,7 @@ type PerformReminderActionResponseMessageType struct {
 	MessageText        XsString                    `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType            `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                       `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType              `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType             `xml:"m:MessageXml,omitempty"`
 	UpdatedItemIds     *NonEmptyArrayOfItemIdsType `xml:"m:UpdatedItemIds,omitempty"`
 }
 
@@ -10338,7 +10348,7 @@ type ApplyConversationActionResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type FindMailboxStatisticsByKeywordsResponseMessageType struct {
@@ -10346,7 +10356,7 @@ type FindMailboxStatisticsByKeywordsResponseMessageType struct {
 	MessageText                   XsString                           `xml:"m:MessageText,omitempty"`
 	ResponseCode                  ResponseCodeType                   `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey            XsInt                              `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                    MessageXmlType                     `xml:"m:MessageXml,omitempty"`
+	MessageXml                    *MessageXmlType                    `xml:"m:MessageXml,omitempty"`
 	MailboxStatisticsSearchResult *MailboxStatisticsSearchResultType `xml:"m:MailboxStatisticsSearchResult,omitempty"`
 }
 
@@ -10355,7 +10365,7 @@ type GetSearchableMailboxesResponseMessageType struct {
 	MessageText         XsString                          `xml:"m:MessageText,omitempty"`
 	ResponseCode        ResponseCodeType                  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey  XsInt                             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml          MessageXmlType                    `xml:"m:MessageXml,omitempty"`
+	MessageXml          *MessageXmlType                   `xml:"m:MessageXml,omitempty"`
 	SearchableMailboxes *ArrayOfSearchableMailboxesType   `xml:"m:SearchableMailboxes,omitempty"`
 	FailedMailboxes     *ArrayOfFailedSearchMailboxesType `xml:"m:FailedMailboxes,omitempty"`
 }
@@ -10365,7 +10375,7 @@ type SearchMailboxesResponseMessageType struct {
 	MessageText           XsString                   `xml:"m:MessageText,omitempty"`
 	ResponseCode          ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey    XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	MessageXml            *MessageXmlType            `xml:"m:MessageXml,omitempty"`
 	SearchMailboxesResult *SearchMailboxesResultType `xml:"m:SearchMailboxesResult,omitempty"`
 }
 
@@ -10374,7 +10384,7 @@ type GetDiscoverySearchConfigurationResponseMessageType struct {
 	MessageText                   XsString                                 `xml:"m:MessageText,omitempty"`
 	ResponseCode                  ResponseCodeType                         `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey            XsInt                                    `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                    MessageXmlType                           `xml:"m:MessageXml,omitempty"`
+	MessageXml                    *MessageXmlType                          `xml:"m:MessageXml,omitempty"`
 	DiscoverySearchConfigurations *ArrayOfDiscoverySearchConfigurationType `xml:"m:DiscoverySearchConfigurations,omitempty"`
 }
 
@@ -10383,7 +10393,7 @@ type GetHoldOnMailboxesResponseMessageType struct {
 	MessageText        XsString               `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
 	MailboxHoldResult  *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
 }
 
@@ -10392,7 +10402,7 @@ type SetHoldOnMailboxesResponseMessageType struct {
 	MessageText        XsString               `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
 	MailboxHoldResult  *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
 }
 
@@ -10401,7 +10411,7 @@ type GetNonIndexableItemStatisticsResponseMessageType struct {
 	MessageText                XsString                               `xml:"m:MessageText,omitempty"`
 	ResponseCode               ResponseCodeType                       `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey         XsInt                                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                 MessageXmlType                         `xml:"m:MessageXml,omitempty"`
+	MessageXml                 *MessageXmlType                        `xml:"m:MessageXml,omitempty"`
 	NonIndexableItemStatistics *ArrayOfNonIndexableItemStatisticsType `xml:"m:NonIndexableItemStatistics,omitempty"`
 }
 
@@ -10410,7 +10420,7 @@ type GetNonIndexableItemDetailsResponseMessageType struct {
 	MessageText                   XsString                          `xml:"m:MessageText,omitempty"`
 	ResponseCode                  ResponseCodeType                  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey            XsInt                             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                    MessageXmlType                    `xml:"m:MessageXml,omitempty"`
+	MessageXml                    *MessageXmlType                   `xml:"m:MessageXml,omitempty"`
 	NonIndexableItemDetailsResult *NonIndexableItemDetailResultType `xml:"m:NonIndexableItemDetailsResult,omitempty"`
 }
 
@@ -10419,7 +10429,7 @@ type FindPeopleResponseMessageType struct {
 	MessageText               XsString           `xml:"m:MessageText,omitempty"`
 	ResponseCode              ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey        XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                MessageXmlType     `xml:"m:MessageXml,omitempty"`
+	MessageXml                *MessageXmlType    `xml:"m:MessageXml,omitempty"`
 	People                    *ArrayOfPeopleType `xml:"m:People,omitempty"`
 	TotalNumberOfPeopleInView XsInt              `xml:"m:TotalNumberOfPeopleInView,omitempty"`
 	FirstMatchingRowIndex     XsInt              `xml:"m:FirstMatchingRowIndex,omitempty"`
@@ -10432,7 +10442,7 @@ type FindTagsResponseMessageType struct {
 	MessageText        XsString            `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType    `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType      `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType     `xml:"m:MessageXml,omitempty"`
 	Tags               *ArrayOfStringsType `xml:"m:Tags,omitempty"`
 }
 
@@ -10441,7 +10451,7 @@ type AddTagResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	WasSuccessful      XsBoolean         `xml:"m:WasSuccessful,omitempty"`
 }
 
@@ -10450,7 +10460,7 @@ type HideTagResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	WasSuccessful      XsBoolean         `xml:"m:WasSuccessful,omitempty"`
 }
 
@@ -10459,7 +10469,7 @@ type GetPasswordExpirationDateResponseMessageType struct {
 	MessageText            XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode           ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey     XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml             MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml             *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	PasswordExpirationDate XsDateTime        `xml:"m:PasswordExpirationDate,omitempty"`
 }
 
@@ -10468,7 +10478,7 @@ type GetPersonaResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
 }
 
@@ -10477,7 +10487,7 @@ type GetConversationItemsResponseMessageType struct {
 	MessageText        XsString                  `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType          `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                     `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType            `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType           `xml:"m:MessageXml,omitempty"`
 	Conversation       *ConversationResponseType `xml:"m:Conversation,omitempty"`
 }
 
@@ -10486,7 +10496,7 @@ type GetUserRetentionPolicyTagsResponseMessageType struct {
 	MessageText         XsString                        `xml:"m:MessageText,omitempty"`
 	ResponseCode        ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey  XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml          MessageXmlType                  `xml:"m:MessageXml,omitempty"`
+	MessageXml          *MessageXmlType                 `xml:"m:MessageXml,omitempty"`
 	RetentionPolicyTags *ArrayOfRetentionPolicyTagsType `xml:"m:RetentionPolicyTags,omitempty"`
 }
 
@@ -10495,7 +10505,7 @@ type GetUserPhotoResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	HasChanged         XsBoolean         `xml:"m:HasChanged,omitempty"`
 	PictureData        XsBase64Binary    `xml:"m:PictureData,omitempty"`
 }
@@ -10505,7 +10515,7 @@ type MarkAsJunkResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
 }
 
@@ -10514,7 +10524,7 @@ type MarkAsPhishingResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
 }
 
@@ -10523,7 +10533,7 @@ type ReportMessageResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
 	Policy             XsString          `xml:"m:Policy,omitempty"`
 }
@@ -10905,7 +10915,7 @@ type GetDelegateResponseMessageType struct {
 	MessageText            XsString                                `xml:"m:MessageText,omitempty"`
 	ResponseCode           ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey     XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml             MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	MessageXml             *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
 	ResponseMessages       *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
 	DeliverMeetingRequests DeliverMeetingRequestsType              `xml:"m:DeliverMeetingRequests,omitempty"`
 }
@@ -10915,7 +10925,7 @@ type BaseDelegateResponseMessageType struct {
 	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
 	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
 }
 
@@ -10928,7 +10938,7 @@ type DelegateUserResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	DelegateUser       *DelegateUserType `xml:"m:DelegateUser,omitempty"`
 }
 
@@ -10943,7 +10953,7 @@ type AddDelegateResponseMessageType struct {
 	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
 	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
 }
 
@@ -10957,7 +10967,7 @@ type RemoveDelegateResponseMessageType struct {
 	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
 	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
 }
 
@@ -10972,7 +10982,7 @@ type UpdateDelegateResponseMessageType struct {
 	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
 	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
 }
 
@@ -11066,7 +11076,7 @@ type SetUserOofSettingsResponse struct {
 type GetServiceConfigurationType struct {
 	ActingAs                    *EmailAddressType                `xml:"m:ActingAs,omitempty"`
 	RequestedConfiguration      *ArrayOfServiceConfigurationType `xml:"m:RequestedConfiguration,omitempty"`
-	ConfigurationRequestDetails ConfigurationRequestDetailsType  `xml:"m:ConfigurationRequestDetails,omitempty"`
+	ConfigurationRequestDetails *ConfigurationRequestDetailsType `xml:"m:ConfigurationRequestDetails,omitempty"`
 }
 
 type ArrayOfServiceConfigurationType struct {
@@ -11078,7 +11088,7 @@ type GetServiceConfigurationResponseMessageType struct {
 	MessageText        XsString                                        `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType                                `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                                           `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType                                  `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType                                 `xml:"m:MessageXml,omitempty"`
 	ResponseMessages   *ArrayOfServiceConfigurationResponseMessageType `xml:"m:ResponseMessages,omitempty"`
 }
 
@@ -11087,16 +11097,16 @@ type ArrayOfServiceConfigurationResponseMessageType struct {
 }
 
 type ServiceConfigurationResponseMessageType struct {
-	ResponseClass                 ResponseClassType                    `xml:"ResponseClass,attr,omitempty"`
-	MessageText                   XsString                             `xml:"m:MessageText,omitempty"`
-	ResponseCode                  ResponseCodeType                     `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey            XsInt                                `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                    MessageXmlType                       `xml:"m:MessageXml,omitempty"`
-	MailTipsConfiguration         *MailTipsServiceConfiguration        `xml:"m:MailTipsConfiguration,omitempty"`
-	UnifiedMessagingConfiguration *UnifiedMessageServiceConfiguration  `xml:"m:UnifiedMessagingConfiguration,omitempty"`
-	ProtectionRulesConfiguration  *ProtectionRulesServiceConfiguration `xml:"m:ProtectionRulesConfiguration,omitempty"`
-	PolicyNudgeRulesConfiguration PolicyNudgeRulesServiceConfiguration `xml:"m:PolicyNudgeRulesConfiguration,omitempty"`
-	SharePointURLsConfiguration   *SharePointURLsServiceConfiguration  `xml:"m:SharePointURLsConfiguration,omitempty"`
+	ResponseClass                 ResponseClassType                     `xml:"ResponseClass,attr,omitempty"`
+	MessageText                   XsString                              `xml:"m:MessageText,omitempty"`
+	ResponseCode                  ResponseCodeType                      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey            XsInt                                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                    *MessageXmlType                       `xml:"m:MessageXml,omitempty"`
+	MailTipsConfiguration         *MailTipsServiceConfiguration         `xml:"m:MailTipsConfiguration,omitempty"`
+	UnifiedMessagingConfiguration *UnifiedMessageServiceConfiguration   `xml:"m:UnifiedMessagingConfiguration,omitempty"`
+	ProtectionRulesConfiguration  *ProtectionRulesServiceConfiguration  `xml:"m:ProtectionRulesConfiguration,omitempty"`
+	PolicyNudgeRulesConfiguration *PolicyNudgeRulesServiceConfiguration `xml:"m:PolicyNudgeRulesConfiguration,omitempty"`
+	SharePointURLsConfiguration   *SharePointURLsServiceConfiguration   `xml:"m:SharePointURLsConfiguration,omitempty"`
 }
 
 type GetMailTipsType struct {
@@ -11110,7 +11120,7 @@ type GetMailTipsResponseMessageType struct {
 	MessageText        XsString                            `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType                      `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType                     `xml:"m:MessageXml,omitempty"`
 	ResponseMessages   *ArrayOfMailTipsResponseMessageType `xml:"m:ResponseMessages,omitempty"`
 }
 
@@ -11123,7 +11133,7 @@ type MailTipsResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	MailTips           *MailTips         `xml:"m:MailTips,omitempty"`
 }
 
@@ -11137,7 +11147,7 @@ type PlayOnPhoneResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	PhoneCallId        *PhoneCallIdType  `xml:"m:PhoneCallId,omitempty"`
 }
 
@@ -11150,7 +11160,7 @@ type GetPhoneCallInformationResponseMessageType struct {
 	MessageText          XsString                  `xml:"m:MessageText,omitempty"`
 	ResponseCode         ResponseCodeType          `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey   XsInt                     `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml           MessageXmlType            `xml:"m:MessageXml,omitempty"`
+	MessageXml           *MessageXmlType           `xml:"m:MessageXml,omitempty"`
 	PhoneCallInformation *PhoneCallInformationType `xml:"m:PhoneCallInformation,omitempty"`
 }
 
@@ -11163,7 +11173,7 @@ type DisconnectPhoneCallResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type GetSharingMetadataType struct {
@@ -11193,7 +11203,7 @@ type SetTeamMailboxResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type UnpinTeamMailboxRequestType struct {
@@ -11205,7 +11215,7 @@ type UnpinTeamMailboxResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type GetRoomListsType struct {
@@ -11223,7 +11233,7 @@ type FindMessageTrackingReportResponseMessageType struct {
 	MessageText                  XsString                                    `xml:"m:MessageText,omitempty"`
 	ResponseCode                 ResponseCodeType                            `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey           XsInt                                       `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                   MessageXmlType                              `xml:"m:MessageXml,omitempty"`
+	MessageXml                   *MessageXmlType                             `xml:"m:MessageXml,omitempty"`
 	Diagnostics                  *ArrayOfStringsType                         `xml:"m:Diagnostics,omitempty"`
 	MessageTrackingSearchResults *ArrayOfFindMessageTrackingSearchResultType `xml:"m:MessageTrackingSearchResults,omitempty"`
 	ExecutedSearchScope          XsString                                    `xml:"m:ExecutedSearchScope,omitempty"`
@@ -11239,8 +11249,8 @@ type GetMessageTrackingReportResponseMessageType struct {
 	MessageText           XsString                               `xml:"m:MessageText,omitempty"`
 	ResponseCode          ResponseCodeType                       `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey    XsInt                                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            MessageXmlType                         `xml:"m:MessageXml,omitempty"`
-	MessageTrackingReport MessageTrackingReportType              `xml:"m:MessageTrackingReport,omitempty"`
+	MessageXml            *MessageXmlType                        `xml:"m:MessageXml,omitempty"`
+	MessageTrackingReport *MessageTrackingReportType             `xml:"m:MessageTrackingReport,omitempty"`
 	Diagnostics           *ArrayOfStringsType                    `xml:"m:Diagnostics,omitempty"`
 	Errors                *ArrayOfArraysOfTrackingPropertiesType `xml:"m:Errors,omitempty"`
 	Properties            *ArrayOfTrackingPropertiesType         `xml:"m:Properties,omitempty"`
@@ -11263,7 +11273,7 @@ type FindConversationResponseMessageType struct {
 	MessageText              XsString                   `xml:"m:MessageText,omitempty"`
 	ResponseCode             ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey       XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml               MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	MessageXml               *MessageXmlType            `xml:"m:MessageXml,omitempty"`
 	Conversations            *ArrayOfConversationsType  `xml:"m:Conversations,omitempty"`
 	HighlightTerms           *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
 	TotalConversationsInView XsInt                      `xml:"m:TotalConversationsInView,omitempty"`
@@ -11339,7 +11349,7 @@ type GetInboxRulesResponseType struct {
 	MessageText           XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode          ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey    XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml            *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	OutlookRuleBlobExists XsBoolean         `xml:"m:OutlookRuleBlobExists,omitempty"`
 	InboxRules            *ArrayOfRulesType `xml:"m:InboxRules,omitempty"`
 }
@@ -11355,7 +11365,7 @@ type UpdateInboxRulesResponseType struct {
 	MessageText         XsString                        `xml:"m:MessageText,omitempty"`
 	ResponseCode        ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey  XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml          MessageXmlType                  `xml:"m:MessageXml,omitempty"`
+	MessageXml          *MessageXmlType                 `xml:"m:MessageXml,omitempty"`
 	RuleOperationErrors *ArrayOfRuleOperationErrorsType `xml:"m:RuleOperationErrors,omitempty"`
 }
 
@@ -11485,7 +11495,7 @@ type GetAppManifestsResponseType struct {
 	MessageText        XsString                 `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType         `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                    `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType           `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType          `xml:"m:MessageXml,omitempty"`
 	Apps               *ArrayOfAppsType         `xml:"m:Apps,omitempty"`
 	Manifests          *ArrayOfAppManifestsType `xml:"m:Manifests,omitempty"`
 }
@@ -11505,7 +11515,7 @@ type AddNewImContactToGroupResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
 }
 
@@ -11521,7 +11531,7 @@ type AddNewTelUriContactToGroupResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
 }
 
@@ -11535,7 +11545,7 @@ type AddImContactToGroupResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type RemoveImContactFromGroupType struct {
@@ -11548,7 +11558,7 @@ type RemoveImContactFromGroupResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type AddImGroupType struct {
@@ -11560,7 +11570,7 @@ type AddImGroupResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	ImGroup            *ImGroupType      `xml:"m:ImGroup,omitempty"`
 }
 
@@ -11574,7 +11584,7 @@ type AddDistributionGroupToImListResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	ImGroup            *ImGroupType      `xml:"m:ImGroup,omitempty"`
 }
 
@@ -11587,7 +11597,7 @@ type GetImItemListResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	ImItemList         *ImItemListType   `xml:"m:ImItemList,omitempty"`
 }
 
@@ -11602,7 +11612,7 @@ type GetImItemsResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	ImItemList         *ImItemListType   `xml:"m:ImItemList,omitempty"`
 }
 
@@ -11615,7 +11625,7 @@ type RemoveContactFromImListResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type RemoveDistributionGroupFromImListType struct {
@@ -11627,7 +11637,7 @@ type RemoveDistributionGroupFromImListResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type RemoveImGroupType struct {
@@ -11639,7 +11649,7 @@ type RemoveImGroupResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type SetImGroupType struct {
@@ -11652,7 +11662,7 @@ type SetImGroupResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type SetImListMigrationCompletedType struct {
@@ -11664,7 +11674,7 @@ type SetImListMigrationCompletedResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type GetUserRetentionPolicyTagsType struct {
@@ -11688,7 +11698,7 @@ type InstallAppResponseType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	WasFirstInstall    XsBoolean         `xml:"m:WasFirstInstall,omitempty"`
 	Extension          *InstalledAppType `xml:"m:Extension,omitempty"`
 }
@@ -11713,7 +11723,7 @@ type UpdateExtensionUsageResponseType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type UninstallAppType struct {
@@ -11726,7 +11736,7 @@ type UninstallAppResponseType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type DisableAppType struct {
@@ -11740,7 +11750,7 @@ type DisableAppResponseType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type GetAppMarketplaceUrlType struct {
@@ -11751,7 +11761,7 @@ type GetAppMarketplaceUrlResponseMessageType struct {
 	MessageText             XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode            ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey      XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml              MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml              *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	AppMarketplaceUrl       XsString          `xml:"m:AppMarketplaceUrl,omitempty"`
 	ConnectorsManagementUrl XsString          `xml:"m:ConnectorsManagementUrl,omitempty"`
 }
@@ -11771,7 +11781,7 @@ type FindAvailableMeetingTimesResponseMessageType struct {
 	MessageText           XsString                     `xml:"m:MessageText,omitempty"`
 	ResponseCode          ResponseCodeType             `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey    XsInt                        `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            MessageXmlType               `xml:"m:MessageXml,omitempty"`
+	MessageXml            *MessageXmlType              `xml:"m:MessageXml,omitempty"`
 	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
 	EmptySuggestionsHint  EmptySuggestionReason        `xml:"m:EmptySuggestionsHint,omitempty"`
 }
@@ -11788,7 +11798,7 @@ type FindMeetingTimeCandidatesResponseMessageType struct {
 	MessageText           XsString                     `xml:"m:MessageText,omitempty"`
 	ResponseCode          ResponseCodeType             `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey    XsInt                        `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            MessageXmlType               `xml:"m:MessageXml,omitempty"`
+	MessageXml            *MessageXmlType              `xml:"m:MessageXml,omitempty"`
 	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
 }
 
@@ -11817,7 +11827,7 @@ type GetMeetingSpaceResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
 }
 
@@ -11830,7 +11840,7 @@ type DeleteMeetingSpaceResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type UpdateMeetingSpaceType struct {
@@ -11843,7 +11853,7 @@ type UpdateMeetingSpaceResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
 }
 
@@ -11856,7 +11866,7 @@ type CreateMeetingSpaceResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
 }
 
@@ -11869,7 +11879,7 @@ type FindMeetingSpaceByJoinUrlResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
 }
 
@@ -11882,7 +11892,7 @@ type GetMeetingInstanceResponseMessageType struct {
 	MessageText        XsString             `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
 	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
 }
 
@@ -11895,7 +11905,7 @@ type DeleteMeetingInstanceResponseMessageType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type UpdateMeetingInstanceRequestType struct {
@@ -11910,7 +11920,7 @@ type UpdateMeetingInstanceResponseMessageType struct {
 	MessageText        XsString             `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
 	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
 }
 
@@ -11923,7 +11933,7 @@ type CreateMeetingInstanceResponseMessageType struct {
 	MessageText        XsString             `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
 	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
 }
 
@@ -11942,7 +11952,7 @@ type StartSearchSessionResponseMessage struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type GetSearchSuggestions struct {
@@ -11960,7 +11970,7 @@ type GetSearchSuggestionsResponseMessage struct {
 	MessageText        XsString               `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
 	SearchSuggestions  *SearchSuggestionsType `xml:"m:SearchSuggestions,omitempty"`
 }
 
@@ -11977,7 +11987,7 @@ type DeleteSearchSuggestionResponseMessageType struct {
 	MessageText        XsString                            `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType                      `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType                     `xml:"m:MessageXml,omitempty"`
 	Response           *DeleteSearchSuggestionResponseType `xml:"m:Response,omitempty"`
 }
 
@@ -12012,7 +12022,7 @@ type ExecuteSearchResponseMessage struct {
 	MessageText        XsString           `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType     `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType    `xml:"m:MessageXml,omitempty"`
 	SearchResults      *SearchResultsType `xml:"m:SearchResults,omitempty"`
 }
 
@@ -12025,7 +12035,7 @@ type EndSearchSessionResponseMessage struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 }
 
 type GetLastPrivateCatalogUpdateType struct {
@@ -12037,7 +12047,7 @@ type GetLastPrivateCatalogUpdateResponseType struct {
 	MessageText        XsString          `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
 	LastUpdate         XsDateTime        `xml:"m:LastUpdate,omitempty"`
 	CatalogHash        XsString          `xml:"m:CatalogHash,omitempty"`
 }
@@ -12051,14 +12061,14 @@ type GetPrivateCatalogAddInsResponseType struct {
 	MessageText        XsString                         `xml:"m:MessageText,omitempty"`
 	ResponseCode       ResponseCodeType                 `xml:"m:ResponseCode,omitempty"`
 	DescriptiveLinkKey XsInt                            `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType                   `xml:"m:MessageXml,omitempty"`
+	MessageXml         *MessageXmlType                  `xml:"m:MessageXml,omitempty"`
 	AddIns             *ArrayOfPrivateCatalogAddInsType `xml:"m:AddIns,omitempty"`
 }
 
 type ResolveNamesSoapIn struct {
 	ResolveNames          *ResolveNamesType          `xml:"m:ResolveNames,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12070,7 +12080,7 @@ type ResolveNamesSoapOut struct {
 type ExpandDLSoapIn struct {
 	ExpandDL              *ExpandDLType              `xml:"m:ExpandDL,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12081,7 +12091,7 @@ type ExpandDLSoapOut struct {
 
 type GetServerTimeZonesSoapIn struct {
 	GetServerTimeZones   *GetServerTimeZonesType   `xml:"m:GetServerTimeZones,omitempty"`
-	MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12093,7 +12103,7 @@ type GetServerTimeZonesSoapOut struct {
 type FindFolderSoapIn struct {
 	FindFolder            *FindFolderType            `xml:"m:FindFolder,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 	ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
@@ -12107,7 +12117,7 @@ type FindFolderSoapOut struct {
 type FindItemSoapIn struct {
 	FindItem              *FindItemType              `xml:"m:FindItem,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 	DateTimePrecision     DateTimePrecisionType      `xml:"t:DateTimePrecision,omitempty"`
@@ -12122,7 +12132,7 @@ type FindItemSoapOut struct {
 type GetFolderSoapIn struct {
 	GetFolder             *GetFolderType             `xml:"m:GetFolder,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 	ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
@@ -12136,7 +12146,7 @@ type GetFolderSoapOut struct {
 type UploadItemsSoapIn struct {
 	UploadItems           *UploadItemsType           `xml:"m:UploadItems,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12148,7 +12158,7 @@ type UploadItemsSoapOut struct {
 type ExportItemsSoapIn struct {
 	ExportItems           *ExportItemsType           `xml:"m:ExportItems,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
 }
@@ -12172,7 +12182,7 @@ type ConvertIdSoapOut struct {
 type CreateFolderSoapIn struct {
 	CreateFolder          *CreateFolderType          `xml:"m:CreateFolder,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 }
@@ -12185,7 +12195,7 @@ type CreateFolderSoapOut struct {
 type CreateFolderPathSoapIn struct {
 	CreateFolderPath      *CreateFolderPathType      `xml:"m:CreateFolderPath,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 }
@@ -12198,7 +12208,7 @@ type CreateFolderPathSoapOut struct {
 type DeleteFolderSoapIn struct {
 	DeleteFolder          *DeleteFolderType          `xml:"m:DeleteFolder,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12210,7 +12220,7 @@ type DeleteFolderSoapOut struct {
 type EmptyFolderSoapIn struct {
 	EmptyFolder           *EmptyFolderType           `xml:"m:EmptyFolder,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12222,7 +12232,7 @@ type EmptyFolderSoapOut struct {
 type UpdateFolderSoapIn struct {
 	UpdateFolder          *UpdateFolderType          `xml:"m:UpdateFolder,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 }
@@ -12235,7 +12245,7 @@ type UpdateFolderSoapOut struct {
 type MoveFolderSoapIn struct {
 	MoveFolder            *MoveFolderType            `xml:"m:MoveFolder,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12247,7 +12257,7 @@ type MoveFolderSoapOut struct {
 type CopyFolderSoapIn struct {
 	CopyFolder            *CopyFolderType            `xml:"m:CopyFolder,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12259,7 +12269,7 @@ type CopyFolderSoapOut struct {
 type SubscribeSoapIn struct {
 	Subscribe             *SubscribeType             `xml:"m:Subscribe,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12271,7 +12281,7 @@ type SubscribeSoapOut struct {
 type UnsubscribeSoapIn struct {
 	Unsubscribe           *UnsubscribeType           `xml:"m:Unsubscribe,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12283,7 +12293,7 @@ type UnsubscribeSoapOut struct {
 type GetEventsSoapIn struct {
 	GetEvents             *GetEventsType             `xml:"m:GetEvents,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12295,7 +12305,7 @@ type GetEventsSoapOut struct {
 type GetStreamingEventsSoapIn struct {
 	GetStreamingEvents    *GetStreamingEventsType    `xml:"m:GetStreamingEvents,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12307,7 +12317,7 @@ type GetStreamingEventsSoapOut struct {
 type SyncFolderHierarchySoapIn struct {
 	SyncFolderHierarchy   *SyncFolderHierarchyType   `xml:"m:SyncFolderHierarchy,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12319,7 +12329,7 @@ type SyncFolderHierarchySoapOut struct {
 type SyncFolderItemsSoapIn struct {
 	SyncFolderItems       *SyncFolderItemsType       `xml:"m:SyncFolderItems,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12331,7 +12341,7 @@ type SyncFolderItemsSoapOut struct {
 type CreateManagedFolderSoapIn struct {
 	CreateManagedFolder   *CreateManagedFolderRequestType `xml:"m:CreateManagedFolder,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType      `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType             `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType              `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType       `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12343,7 +12353,7 @@ type CreateManagedFolderSoapOut struct {
 type GetItemSoapIn struct {
 	GetItem               *GetItemType               `xml:"m:GetItem,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 	DateTimePrecision     DateTimePrecisionType      `xml:"t:DateTimePrecision,omitempty"`
@@ -12358,7 +12368,7 @@ type GetItemSoapOut struct {
 type CreateItemSoapIn struct {
 	CreateItem            *CreateItemType            `xml:"m:CreateItem,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 }
@@ -12371,7 +12381,7 @@ type CreateItemSoapOut struct {
 type DeleteItemSoapIn struct {
 	DeleteItem            *DeleteItemType            `xml:"m:DeleteItem,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12383,7 +12393,7 @@ type DeleteItemSoapOut struct {
 type UpdateItemSoapIn struct {
 	UpdateItem            *UpdateItemType            `xml:"m:UpdateItem,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 }
@@ -12396,7 +12406,7 @@ type UpdateItemSoapOut struct {
 type UpdateItemInRecoverableItemsSoapIn struct {
 	UpdateItemInRecoverableItems *UpdateItemInRecoverableItemsType `xml:"m:UpdateItemInRecoverableItems,omitempty"`
 	ExchangeImpersonation        *ExchangeImpersonationType        `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture               *MailboxCultureType               `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture               MailboxCultureType                `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion         *RequestServerVersionType         `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext              *TimeZoneContextType              `xml:"t:TimeZoneContext,omitempty"`
 	ManagementRole               *ManagementRoleType               `xml:"t:ManagementRole,omitempty"`
@@ -12410,7 +12420,7 @@ type UpdateItemInRecoverableItemsSoapOut struct {
 type SendItemSoapIn struct {
 	SendItem              *SendItemType              `xml:"m:SendItem,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12422,7 +12432,7 @@ type SendItemSoapOut struct {
 type MoveItemSoapIn struct {
 	MoveItem              *MoveItemType              `xml:"m:MoveItem,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12434,7 +12444,7 @@ type MoveItemSoapOut struct {
 type CopyItemSoapIn struct {
 	CopyItem              *CopyItemType              `xml:"m:CopyItem,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12446,7 +12456,7 @@ type CopyItemSoapOut struct {
 type ArchiveItemSoapIn struct {
 	ArchiveItem           *ArchiveItemType           `xml:"m:ArchiveItem,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12458,7 +12468,7 @@ type ArchiveItemSoapOut struct {
 type CreateAttachmentSoapIn struct {
 	CreateAttachment      *CreateAttachmentType      `xml:"m:CreateAttachment,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 }
@@ -12471,7 +12481,7 @@ type CreateAttachmentSoapOut struct {
 type DeleteAttachmentSoapIn struct {
 	DeleteAttachment      *DeleteAttachmentType      `xml:"m:DeleteAttachment,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12483,7 +12493,7 @@ type DeleteAttachmentSoapOut struct {
 type GetAttachmentSoapIn struct {
 	GetAttachment         *GetAttachmentType         `xml:"m:GetAttachment,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 }
@@ -12506,7 +12516,7 @@ type GetClientAccessTokenSoapOut struct {
 type GetDelegateSoapIn struct {
 	GetDelegate           *GetDelegateType           `xml:"m:GetDelegate,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12518,7 +12528,7 @@ type GetDelegateSoapOut struct {
 type AddDelegateSoapIn struct {
 	AddDelegate           *AddDelegateType           `xml:"m:AddDelegate,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12530,7 +12540,7 @@ type AddDelegateSoapOut struct {
 type RemoveDelegateSoapIn struct {
 	RemoveDelegate        *RemoveDelegateType        `xml:"m:RemoveDelegate,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12542,7 +12552,7 @@ type RemoveDelegateSoapOut struct {
 type UpdateDelegateSoapIn struct {
 	UpdateDelegate        *UpdateDelegateType        `xml:"m:UpdateDelegate,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12554,7 +12564,7 @@ type UpdateDelegateSoapOut struct {
 type CreateUserConfigurationSoapIn struct {
 	CreateUserConfiguration *CreateUserConfigurationType `xml:"m:CreateUserConfiguration,omitempty"`
 	ExchangeImpersonation   *ExchangeImpersonationType   `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture          *MailboxCultureType          `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture          MailboxCultureType           `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion    *RequestServerVersionType    `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12566,7 +12576,7 @@ type CreateUserConfigurationSoapOut struct {
 type DeleteUserConfigurationSoapIn struct {
 	DeleteUserConfiguration *DeleteUserConfigurationType `xml:"m:DeleteUserConfiguration,omitempty"`
 	ExchangeImpersonation   *ExchangeImpersonationType   `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture          *MailboxCultureType          `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture          MailboxCultureType           `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion    *RequestServerVersionType    `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12578,7 +12588,7 @@ type DeleteUserConfigurationSoapOut struct {
 type GetUserConfigurationSoapIn struct {
 	GetUserConfiguration  *GetUserConfigurationType  `xml:"m:GetUserConfiguration,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12590,7 +12600,7 @@ type GetUserConfigurationSoapOut struct {
 type GetSpecificUserConfigurationSoapIn struct {
 	GetSpecificUserConfiguration *GetSpecificUserConfigurationType `xml:"m:GetSpecificUserConfiguration,omitempty"`
 	ExchangeImpersonation        *ExchangeImpersonationType        `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture               *MailboxCultureType               `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture               MailboxCultureType                `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion         *RequestServerVersionType         `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12602,7 +12612,7 @@ type GetSpecificUserConfigurationSoapOut struct {
 type UpdateUserConfigurationSoapIn struct {
 	UpdateUserConfiguration *UpdateUserConfigurationType `xml:"m:UpdateUserConfiguration,omitempty"`
 	ExchangeImpersonation   *ExchangeImpersonationType   `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture          *MailboxCultureType          `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture          MailboxCultureType           `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion    *RequestServerVersionType    `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12649,7 +12659,7 @@ type GetServiceConfigurationSoapIn struct {
 	GetServiceConfiguration *GetServiceConfigurationType `xml:"m:GetServiceConfiguration,omitempty"`
 	ExchangeImpersonation   *ExchangeImpersonationType   `xml:"t:ExchangeImpersonation,omitempty"`
 	RequestServerVersion    *RequestServerVersionType    `xml:"t:RequestServerVersion,omitempty"`
-	MailboxCulture          *MailboxCultureType          `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture          MailboxCultureType           `xml:"t:MailboxCulture,omitempty"`
 }
 
 type GetServiceConfigurationSoapOut struct {
@@ -12660,7 +12670,7 @@ type GetServiceConfigurationSoapOut struct {
 type GetMailTipsSoapIn struct {
 	GetMailTips          *GetMailTipsType          `xml:"m:GetMailTips,omitempty"`
 	RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-	MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 }
 
 type GetMailTipsSoapOut struct {
@@ -12671,7 +12681,7 @@ type GetMailTipsSoapOut struct {
 type PlayOnPhoneSoapIn struct {
 	PlayOnPhone           *PlayOnPhoneType           `xml:"m:PlayOnPhone,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12683,7 +12693,7 @@ type PlayOnPhoneSoapOut struct {
 type GetPhoneCallInformationSoapIn struct {
 	GetPhoneCallInformation *GetPhoneCallInformationType `xml:"m:GetPhoneCallInformation,omitempty"`
 	ExchangeImpersonation   *ExchangeImpersonationType   `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture          *MailboxCultureType          `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture          MailboxCultureType           `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion    *RequestServerVersionType    `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12695,7 +12705,7 @@ type GetPhoneCallInformationSoapOut struct {
 type DisconnectPhoneCallSoapIn struct {
 	DisconnectPhoneCall   *DisconnectPhoneCallType   `xml:"m:DisconnectPhoneCall,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12758,7 +12768,7 @@ type UnpinTeamMailboxSoapOut struct {
 type GetRoomListsSoapIn struct {
 	GetRoomLists          *GetRoomListsType          `xml:"m:GetRoomLists,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12770,7 +12780,7 @@ type GetRoomListsSoapOut struct {
 type GetRoomsSoapIn struct {
 	GetRooms              *GetRoomsType              `xml:"m:GetRooms,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -12890,7 +12900,7 @@ type GetPersonaSoapOut struct {
 type GetInboxRulesSoapIn struct {
 	GetInboxRules         *GetInboxRulesRequestType  `xml:"m:GetInboxRules,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 }
@@ -12903,7 +12913,7 @@ type GetInboxRulesSoapOut struct {
 type UpdateInboxRulesSoapIn struct {
 	UpdateInboxRules      *UpdateInboxRulesRequestType `xml:"m:UpdateInboxRules,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType   `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType          `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType           `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType    `xml:"t:RequestServerVersion,omitempty"`
 	TimeZoneContext       *TimeZoneContextType         `xml:"t:TimeZoneContext,omitempty"`
 }
@@ -12915,7 +12925,7 @@ type UpdateInboxRulesSoapOut struct {
 
 type GetPasswordExpirationDateSoapIn struct {
 	GetPasswordExpirationDate *GetPasswordExpirationDateType `xml:"m:GetPasswordExpirationDate,omitempty"`
-	MailboxCulture            *MailboxCultureType            `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture            MailboxCultureType             `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion      *RequestServerVersionType      `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13004,7 +13014,7 @@ type GetNonIndexableItemDetailsSoapOut struct {
 type MarkAllItemsAsReadSoapIn struct {
 	MarkAllItemsAsRead    *MarkAllItemsAsReadType    `xml:"m:MarkAllItemsAsRead,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13016,7 +13026,7 @@ type MarkAllItemsAsReadSoapOut struct {
 type MarkAsJunkSoapIn struct {
 	MarkAsJunk            *MarkAsJunkType            `xml:"m:MarkAsJunk,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13028,7 +13038,7 @@ type MarkAsJunkSoapOut struct {
 type ReportMessageSoapIn struct {
 	ReportMessage         *ReportMessageType         `xml:"m:ReportMessage,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13050,7 +13060,7 @@ type GetAppManifestsSoapOut struct {
 type AddNewImContactToGroupSoapIn struct {
 	AddNewImContactToGroup *AddNewImContactToGroupType `xml:"m:AddNewImContactToGroup,omitempty"`
 	ExchangeImpersonation  *ExchangeImpersonationType  `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture         *MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture         MailboxCultureType          `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion   *RequestServerVersionType   `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13062,7 +13072,7 @@ type AddNewImContactToGroupSoapOut struct {
 type AddNewTelUriContactToGroupSoapIn struct {
 	AddNewTelUriContactToGroup *AddNewTelUriContactToGroupType `xml:"m:AddNewTelUriContactToGroup,omitempty"`
 	ExchangeImpersonation      *ExchangeImpersonationType      `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture             *MailboxCultureType             `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture             MailboxCultureType              `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion       *RequestServerVersionType       `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13074,7 +13084,7 @@ type AddNewTelUriContactToGroupSoapOut struct {
 type AddImContactToGroupSoapIn struct {
 	AddImContactToGroup   *AddImContactToGroupType   `xml:"m:AddImContactToGroup,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13086,7 +13096,7 @@ type AddImContactToGroupSoapOut struct {
 type RemoveImContactFromGroupSoapIn struct {
 	RemoveImContactFromGroup *RemoveImContactFromGroupType `xml:"m:RemoveImContactFromGroup,omitempty"`
 	ExchangeImpersonation    *ExchangeImpersonationType    `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture           *MailboxCultureType           `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture           MailboxCultureType            `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion     *RequestServerVersionType     `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13098,7 +13108,7 @@ type RemoveImContactFromGroupSoapOut struct {
 type AddImGroupSoapIn struct {
 	AddImGroup            *AddImGroupType            `xml:"m:AddImGroup,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13110,7 +13120,7 @@ type AddImGroupSoapOut struct {
 type AddDistributionGroupToImListSoapIn struct {
 	AddDistributionGroupToImList *AddDistributionGroupToImListType `xml:"m:AddDistributionGroupToImList,omitempty"`
 	ExchangeImpersonation        *ExchangeImpersonationType        `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture               *MailboxCultureType               `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture               MailboxCultureType                `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion         *RequestServerVersionType         `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13122,7 +13132,7 @@ type AddDistributionGroupToImListSoapOut struct {
 type GetImItemListSoapIn struct {
 	GetImItemList         *GetImItemListType         `xml:"m:GetImItemList,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13134,7 +13144,7 @@ type GetImItemListSoapOut struct {
 type GetImItemsSoapIn struct {
 	GetImItems            *GetImItemsType            `xml:"m:GetImItems,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13146,7 +13156,7 @@ type GetImItemsSoapOut struct {
 type RemoveContactFromImListSoapIn struct {
 	RemoveContactFromImList *RemoveContactFromImListType `xml:"m:RemoveContactFromImList,omitempty"`
 	ExchangeImpersonation   *ExchangeImpersonationType   `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture          *MailboxCultureType          `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture          MailboxCultureType           `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion    *RequestServerVersionType    `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13158,7 +13168,7 @@ type RemoveContactFromImListSoapOut struct {
 type RemoveDistributionGroupFromImListSoapIn struct {
 	RemoveDistributionGroupFromImList *RemoveDistributionGroupFromImListType `xml:"m:RemoveDistributionGroupFromImList,omitempty"`
 	ExchangeImpersonation             *ExchangeImpersonationType             `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture                    *MailboxCultureType                    `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture                    MailboxCultureType                     `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion              *RequestServerVersionType              `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13170,7 +13180,7 @@ type RemoveDistributionGroupFromImListSoapOut struct {
 type RemoveImGroupSoapIn struct {
 	RemoveImGroup         *RemoveImGroupType         `xml:"m:RemoveImGroup,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13182,7 +13192,7 @@ type RemoveImGroupSoapOut struct {
 type SetImGroupSoapIn struct {
 	SetImGroup            *SetImGroupType            `xml:"m:SetImGroup,omitempty"`
 	ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13194,7 +13204,7 @@ type SetImGroupSoapOut struct {
 type SetImListMigrationCompletedSoapIn struct {
 	SetImListMigrationCompleted *SetImListMigrationCompletedType `xml:"m:SetImListMigrationCompleted,omitempty"`
 	ExchangeImpersonation       *ExchangeImpersonationType       `xml:"t:ExchangeImpersonation,omitempty"`
-	MailboxCulture              *MailboxCultureType              `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture              MailboxCultureType               `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion        *RequestServerVersionType        `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13409,7 +13419,7 @@ type CreateMeetingInstanceSoapOut struct {
 
 type StartSearchSessionSoapIn struct {
 	StartSearchSession   *StartSearchSession       `xml:"m:StartSearchSession,omitempty"`
-	MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13420,7 +13430,7 @@ type StartSearchSessionSoapOut struct {
 
 type GetSearchSuggestionsSoapIn struct {
 	GetSearchSuggestions *GetSearchSuggestions     `xml:"m:GetSearchSuggestions,omitempty"`
-	MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13431,7 +13441,7 @@ type GetSearchSuggestionsSoapOut struct {
 
 type DeleteSearchSuggestionSoapIn struct {
 	DeleteSearchSuggestion *DeleteSearchSuggestion   `xml:"m:DeleteSearchSuggestion,omitempty"`
-	MailboxCulture         *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture         MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion   *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13442,7 +13452,7 @@ type DeleteSearchSuggestionSoapOut struct {
 
 type ExecuteSearchSoapIn struct {
 	ExecuteSearch        *ExecuteSearch            `xml:"m:ExecuteSearch,omitempty"`
-	MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13453,7 +13463,7 @@ type ExecuteSearchSoapOut struct {
 
 type EndSearchSessionSoapIn struct {
 	EndSearchSession     *EndSearchSession         `xml:"m:EndSearchSession,omitempty"`
-	MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+	MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 	RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
 }
 
@@ -13617,7 +13627,7 @@ func (b *ExchangeServiceBinding) ResolveNames(ctx context.Context, input *Resolv
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -13658,7 +13668,7 @@ func (b *ExchangeServiceBinding) ExpandDL(ctx context.Context, input *ExpandDLSo
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -13698,7 +13708,7 @@ func (b *ExchangeServiceBinding) GetServerTimeZones(ctx context.Context, input *
 	var inputHeader any
 	if input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
-			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			MailboxCulture:       input.MailboxCulture,
@@ -13738,7 +13748,7 @@ func (b *ExchangeServiceBinding) FindFolder(ctx context.Context, input *FindFold
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
@@ -13783,7 +13793,7 @@ func (b *ExchangeServiceBinding) FindItem(ctx context.Context, input *FindItemSo
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.DateTimePrecision != "" || input.ManagementRole != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 			DateTimePrecision     DateTimePrecisionType      `xml:"t:DateTimePrecision,omitempty"`
@@ -13830,7 +13840,7 @@ func (b *ExchangeServiceBinding) GetFolder(ctx context.Context, input *GetFolder
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
@@ -13914,7 +13924,7 @@ func (b *ExchangeServiceBinding) UploadItems(ctx context.Context, input *UploadI
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -13955,7 +13965,7 @@ func (b *ExchangeServiceBinding) ExportItems(ctx context.Context, input *ExportI
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
 		}{
@@ -13998,7 +14008,7 @@ func (b *ExchangeServiceBinding) CreateFolderPath(ctx context.Context, input *Cr
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		}{
@@ -14041,7 +14051,7 @@ func (b *ExchangeServiceBinding) CreateFolder(ctx context.Context, input *Create
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		}{
@@ -14084,7 +14094,7 @@ func (b *ExchangeServiceBinding) DeleteFolder(ctx context.Context, input *Delete
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14125,7 +14135,7 @@ func (b *ExchangeServiceBinding) EmptyFolder(ctx context.Context, input *EmptyFo
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14166,7 +14176,7 @@ func (b *ExchangeServiceBinding) UpdateFolder(ctx context.Context, input *Update
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		}{
@@ -14209,7 +14219,7 @@ func (b *ExchangeServiceBinding) MoveFolder(ctx context.Context, input *MoveFold
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14250,7 +14260,7 @@ func (b *ExchangeServiceBinding) CopyFolder(ctx context.Context, input *CopyFold
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14291,7 +14301,7 @@ func (b *ExchangeServiceBinding) Subscribe(ctx context.Context, input *Subscribe
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14332,7 +14342,7 @@ func (b *ExchangeServiceBinding) Unsubscribe(ctx context.Context, input *Unsubsc
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14373,7 +14383,7 @@ func (b *ExchangeServiceBinding) GetEvents(ctx context.Context, input *GetEvents
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14414,7 +14424,7 @@ func (b *ExchangeServiceBinding) GetStreamingEvents(ctx context.Context, input *
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14455,7 +14465,7 @@ func (b *ExchangeServiceBinding) SyncFolderHierarchy(ctx context.Context, input 
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14496,7 +14506,7 @@ func (b *ExchangeServiceBinding) SyncFolderItems(ctx context.Context, input *Syn
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14537,7 +14547,7 @@ func (b *ExchangeServiceBinding) GetItem(ctx context.Context, input *GetItemSoap
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.DateTimePrecision != "" || input.ManagementRole != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 			DateTimePrecision     DateTimePrecisionType      `xml:"t:DateTimePrecision,omitempty"`
@@ -14584,7 +14594,7 @@ func (b *ExchangeServiceBinding) CreateItem(ctx context.Context, input *CreateIt
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		}{
@@ -14627,7 +14637,7 @@ func (b *ExchangeServiceBinding) DeleteItem(ctx context.Context, input *DeleteIt
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14668,7 +14678,7 @@ func (b *ExchangeServiceBinding) UpdateItem(ctx context.Context, input *UpdateIt
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		}{
@@ -14711,7 +14721,7 @@ func (b *ExchangeServiceBinding) UpdateItemInRecoverableItems(ctx context.Contex
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil || input.ManagementRole != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 			ManagementRole        *ManagementRoleType        `xml:"t:ManagementRole,omitempty"`
@@ -14756,7 +14766,7 @@ func (b *ExchangeServiceBinding) SendItem(ctx context.Context, input *SendItemSo
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14797,7 +14807,7 @@ func (b *ExchangeServiceBinding) MoveItem(ctx context.Context, input *MoveItemSo
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14838,7 +14848,7 @@ func (b *ExchangeServiceBinding) CopyItem(ctx context.Context, input *CopyItemSo
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14879,7 +14889,7 @@ func (b *ExchangeServiceBinding) ArchiveItem(ctx context.Context, input *Archive
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -14920,7 +14930,7 @@ func (b *ExchangeServiceBinding) CreateAttachment(ctx context.Context, input *Cr
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		}{
@@ -14963,7 +14973,7 @@ func (b *ExchangeServiceBinding) DeleteAttachment(ctx context.Context, input *De
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15004,7 +15014,7 @@ func (b *ExchangeServiceBinding) GetAttachment(ctx context.Context, input *GetAt
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		}{
@@ -15084,7 +15094,7 @@ func (b *ExchangeServiceBinding) CreateManagedFolder(ctx context.Context, input 
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15125,7 +15135,7 @@ func (b *ExchangeServiceBinding) GetDelegate(ctx context.Context, input *GetDele
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15166,7 +15176,7 @@ func (b *ExchangeServiceBinding) AddDelegate(ctx context.Context, input *AddDele
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15207,7 +15217,7 @@ func (b *ExchangeServiceBinding) RemoveDelegate(ctx context.Context, input *Remo
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15248,7 +15258,7 @@ func (b *ExchangeServiceBinding) UpdateDelegate(ctx context.Context, input *Upda
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15289,7 +15299,7 @@ func (b *ExchangeServiceBinding) CreateUserConfiguration(ctx context.Context, in
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15330,7 +15340,7 @@ func (b *ExchangeServiceBinding) DeleteUserConfiguration(ctx context.Context, in
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15371,7 +15381,7 @@ func (b *ExchangeServiceBinding) GetUserConfiguration(ctx context.Context, input
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15412,7 +15422,7 @@ func (b *ExchangeServiceBinding) GetSpecificUserConfiguration(ctx context.Contex
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15453,7 +15463,7 @@ func (b *ExchangeServiceBinding) UpdateUserConfiguration(ctx context.Context, in
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15610,7 +15620,7 @@ func (b *ExchangeServiceBinding) GetServiceConfiguration(ctx context.Context, in
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
 			RequestServerVersion:  input.RequestServerVersion,
@@ -15650,7 +15660,7 @@ func (b *ExchangeServiceBinding) GetMailTips(ctx context.Context, input *GetMail
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
 			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 		}{
 			RequestServerVersion: input.RequestServerVersion,
 			MailboxCulture:       input.MailboxCulture,
@@ -15689,7 +15699,7 @@ func (b *ExchangeServiceBinding) PlayOnPhone(ctx context.Context, input *PlayOnP
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15730,7 +15740,7 @@ func (b *ExchangeServiceBinding) GetPhoneCallInformation(ctx context.Context, in
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15771,7 +15781,7 @@ func (b *ExchangeServiceBinding) DisconnectPhoneCall(ctx context.Context, input 
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -15999,7 +16009,7 @@ func (b *ExchangeServiceBinding) GetRoomLists(ctx context.Context, input *GetRoo
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -16040,7 +16050,7 @@ func (b *ExchangeServiceBinding) GetRooms(ctx context.Context, input *GetRoomsSo
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -16467,7 +16477,7 @@ func (b *ExchangeServiceBinding) GetInboxRules(ctx context.Context, input *GetIn
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		}{
@@ -16510,7 +16520,7 @@ func (b *ExchangeServiceBinding) UpdateInboxRules(ctx context.Context, input *Up
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil || input.TimeZoneContext != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 			TimeZoneContext       *TimeZoneContextType       `xml:"t:TimeZoneContext,omitempty"`
 		}{
@@ -16552,7 +16562,7 @@ func (b *ExchangeServiceBinding) GetPasswordExpirationDate(ctx context.Context, 
 	var inputHeader any
 	if input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
-			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			MailboxCulture:       input.MailboxCulture,
@@ -16865,7 +16875,7 @@ func (b *ExchangeServiceBinding) MarkAllItemsAsRead(ctx context.Context, input *
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -16906,7 +16916,7 @@ func (b *ExchangeServiceBinding) MarkAsJunk(ctx context.Context, input *MarkAsJu
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -16947,7 +16957,7 @@ func (b *ExchangeServiceBinding) ReportMessage(ctx context.Context, input *Repor
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17025,7 +17035,7 @@ func (b *ExchangeServiceBinding) AddNewImContactToGroup(ctx context.Context, inp
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17066,7 +17076,7 @@ func (b *ExchangeServiceBinding) AddNewTelUriContactToGroup(ctx context.Context,
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17107,7 +17117,7 @@ func (b *ExchangeServiceBinding) AddImContactToGroup(ctx context.Context, input 
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17148,7 +17158,7 @@ func (b *ExchangeServiceBinding) RemoveImContactFromGroup(ctx context.Context, i
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17189,7 +17199,7 @@ func (b *ExchangeServiceBinding) AddImGroup(ctx context.Context, input *AddImGro
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17230,7 +17240,7 @@ func (b *ExchangeServiceBinding) AddDistributionGroupToImList(ctx context.Contex
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17271,7 +17281,7 @@ func (b *ExchangeServiceBinding) GetImItemList(ctx context.Context, input *GetIm
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17312,7 +17322,7 @@ func (b *ExchangeServiceBinding) GetImItems(ctx context.Context, input *GetImIte
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17353,7 +17363,7 @@ func (b *ExchangeServiceBinding) RemoveContactFromImList(ctx context.Context, in
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17394,7 +17404,7 @@ func (b *ExchangeServiceBinding) RemoveDistributionGroupFromImList(ctx context.C
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17435,7 +17445,7 @@ func (b *ExchangeServiceBinding) RemoveImGroup(ctx context.Context, input *Remov
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17476,7 +17486,7 @@ func (b *ExchangeServiceBinding) SetImGroup(ctx context.Context, input *SetImGro
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -17517,7 +17527,7 @@ func (b *ExchangeServiceBinding) SetImListMigrationCompleted(ctx context.Context
 	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,
@@ -18279,7 +18289,7 @@ func (b *ExchangeServiceBinding) StartSearchSession(ctx context.Context, input *
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
 			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 		}{
 			RequestServerVersion: input.RequestServerVersion,
 			MailboxCulture:       input.MailboxCulture,
@@ -18318,7 +18328,7 @@ func (b *ExchangeServiceBinding) ExecuteSearch(ctx context.Context, input *Execu
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
 			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 		}{
 			RequestServerVersion: input.RequestServerVersion,
 			MailboxCulture:       input.MailboxCulture,
@@ -18357,7 +18367,7 @@ func (b *ExchangeServiceBinding) GetSearchSuggestions(ctx context.Context, input
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
 			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 		}{
 			RequestServerVersion: input.RequestServerVersion,
 			MailboxCulture:       input.MailboxCulture,
@@ -18396,7 +18406,7 @@ func (b *ExchangeServiceBinding) DeleteSearchSuggestion(ctx context.Context, inp
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
 			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 		}{
 			RequestServerVersion: input.RequestServerVersion,
 			MailboxCulture:       input.MailboxCulture,
@@ -18435,7 +18445,7 @@ func (b *ExchangeServiceBinding) EndSearchSession(ctx context.Context, input *En
 	if input.RequestServerVersion != nil || input.MailboxCulture != nil {
 		inputHeader = &struct {
 			RequestServerVersion *RequestServerVersionType `xml:"t:RequestServerVersion,omitempty"`
-			MailboxCulture       *MailboxCultureType       `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture       MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
 		}{
 			RequestServerVersion: input.RequestServerVersion,
 			MailboxCulture:       input.MailboxCulture,
