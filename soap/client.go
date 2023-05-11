@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/smartlet/ews"
 	"github.com/smartlet/ews/kits"
-	"github.com/smartlet/ews/wsdl"
 	"io"
 	"net/http"
 	"strconv"
@@ -20,7 +19,7 @@ type MessageEncoding interface {
 	NewDecoder(r io.Reader) Decoder
 }
 
-func NewSOAPClient(tripper http.RoundTripper) wsdl.SOAPClient {
+func NewSOAPClient(tripper http.RoundTripper) ews.SOAPClient {
 	return &client{
 		tripper:   tripper,
 		enconding: new(xmlEncoding),
@@ -53,7 +52,7 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 		buffer.ReadFrom(response.Body)
 		err = c.enconding.Decode(buffer, envelope)
 		if err != nil {
-			return &wsdl.Fault{
+			return &ews.Fault{
 				FaultCode:   ews.CodeInvalidStatus,
 				FaultString: string(buffer.Data()),
 				FaultActor:  strconv.Itoa(response.StatusCode),
@@ -101,7 +100,7 @@ func (c *client) Stream(ctx context.Context, soapAction string, inputHeader, inp
 		buffer.ReadFrom(response.Body)
 		err = c.enconding.Decode(buffer, envelope)
 		if err != nil {
-			return &wsdl.Fault{
+			return &ews.Fault{
 				FaultCode:   ews.CodeInvalidStatus,
 				FaultString: string(buffer.Data()),
 				FaultActor:  strconv.Itoa(response.StatusCode),
@@ -111,17 +110,17 @@ func (c *client) Stream(ctx context.Context, soapAction string, inputHeader, inp
 	}
 }
 
-func (c *client) request(ctx context.Context, soapAction string, inputHeader, inputBody any) (*wsdl.Envelope, *http.Response, error) {
+func (c *client) request(ctx context.Context, soapAction string, inputHeader, inputBody any) (*ews.Envelope, *http.Response, error) {
 
 	sess := ews.FromContext(ctx)
 	if sess == nil {
 		return nil, nil, ews.ErrInvalidSession
 	}
 
-	envelope := &wsdl.Envelope{
-		XmlnsS: wsdl.XmlnsS,
-		XmlnsM: wsdl.XmlnsM,
-		XmlnsT: wsdl.XmlnsT,
+	envelope := &ews.Envelope{
+		XmlnsS: ews.XmlnsS,
+		XmlnsM: ews.XmlnsM,
+		XmlnsT: ews.XmlnsT,
 		Header: inputHeader,
 		Body:   inputBody,
 	}
@@ -152,4 +151,4 @@ func (c *client) request(ctx context.Context, soapAction string, inputHeader, in
 	return envelope, response, nil
 }
 
-var _ wsdl.SOAPClient = (*client)(nil)
+var _ ews.SOAPClient = (*client)(nil)

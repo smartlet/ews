@@ -5,12 +5,11 @@ import (
 	"github.com/smartlet/ews/http"
 	"github.com/smartlet/ews/kits"
 	"github.com/smartlet/ews/soap"
-	"github.com/smartlet/ews/wsdl"
 	"os"
 )
 
-// acc 特定测试会话,真实场景是每个context携带的session.业务可以扩展Session接口实现更多特性.
-var acc = ews.NewAccountSession(
+// testSess 特定测试会话,真实场景是每个context携带的session.业务可以扩展Session接口实现更多特性.
+var testSess = ews.NewAccountSession(
 	"test",
 	"test",
 	os.Getenv("test.user"), // Exchange用户
@@ -31,7 +30,7 @@ var ntlmCli = http.NewNTLMRoundTripper(
 	dumpCli,
 	kits.NewMemoryAuthorizer(), // 内存实现. 生产环境用redis
 	kits.NewMemoryCredential(map[string][2]string{ // 内存实现
-		acc.GetId(): {
+		testSess.GetId(): {
 			os.Getenv("test.user"),
 			os.Getenv("test.pass"),
 		},
@@ -42,4 +41,4 @@ var ntlmCli = http.NewNTLMRoundTripper(
 var soapCli = soap.NewSOAPClient(ntlmCli)
 
 // service portType服务实例
-var service = wsdl.NewExchangeServicePortType(soapCli)
+var service = ews.NewExchangeServicePortType(soapCli)

@@ -3,20 +3,19 @@ package test
 import (
 	"fmt"
 	"github.com/smartlet/ews"
-	"github.com/smartlet/ews/wsdl"
 	"testing"
 )
 
 func TestGetFolder(t *testing.T) {
 	defer dumpFile.Sync()
-	rsp, err := service.GetFolder(ews.MakeContext(acc), &wsdl.GetFolderSoapIn{
-		GetFolder: &wsdl.GetFolderType{
-			FolderShape: &wsdl.FolderResponseShapeType{
-				BaseShape: wsdl.DefaultShapeNamesTypeDefault,
+	rsp, err := service.GetFolder(ews.MakeContext(testSess), &ews.GetFolderSoapIn{
+		GetFolder: &ews.GetFolderType{
+			FolderShape: &ews.FolderResponseShapeType{
+				BaseShape: ews.DefaultShapeNamesTypeDefault,
 			},
-			FolderIds: &wsdl.NonEmptyArrayOfBaseFolderIdsType{
-				DistinguishedFolderId: []*wsdl.DistinguishedFolderIdType{
-					{Id: wsdl.DistinguishedFolderIdNameTypeIinbox},
+			FolderIds: &ews.NonEmptyArrayOfBaseFolderIdsType{
+				DistinguishedFolderId: []*ews.DistinguishedFolderIdType{
+					{Id: ews.DistinguishedFolderIdNameTypeIinbox},
 				},
 			},
 		},
@@ -32,14 +31,14 @@ func TestGetFolder_error(t *testing.T) {
 	defer dumpFile.Sync()
 
 	detail := new(ews.FaultDetail)
-	rsp, err := service.GetFolder(ews.MakeContext(acc), &wsdl.GetFolderSoapIn{
-		GetFolder: &wsdl.GetFolderType{
-			FolderShape: &wsdl.FolderResponseShapeType{
-				BaseShape: wsdl.DefaultShapeNamesTypeDefault,
+	rsp, err := service.GetFolder(ews.MakeContext(testSess), &ews.GetFolderSoapIn{
+		GetFolder: &ews.GetFolderType{
+			FolderShape: &ews.FolderResponseShapeType{
+				BaseShape: ews.DefaultShapeNamesTypeDefault,
 			},
-			FolderIds: &wsdl.NonEmptyArrayOfBaseFolderIdsType{
-				DistinguishedFolderId: []*wsdl.DistinguishedFolderIdType{
-					{Id: wsdl.DistinguishedFolderIdNameTypeIinbox},
+			FolderIds: &ews.NonEmptyArrayOfBaseFolderIdsType{
+				DistinguishedFolderId: []*ews.DistinguishedFolderIdType{
+					{Id: ews.DistinguishedFolderIdNameTypeIinbox},
 				},
 			},
 		},
