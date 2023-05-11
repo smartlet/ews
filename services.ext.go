@@ -13,10 +13,10 @@ type ExchangeServiceBindingExt struct {
 
 func (c *ExchangeServiceBindingExt) GetStreamingEventsExt(ctx context.Context, input *GetStreamingEventsSoapIn, detail error, call func(*GetStreamingEventsSoapOut) error) error {
 	var inputHeader any
-	if input.ExchangeImpersonation != nil || input.MailboxCulture != nil || input.RequestServerVersion != nil {
+	if input.ExchangeImpersonation != nil || input.MailboxCulture != "" || input.RequestServerVersion != nil {
 		inputHeader = &struct {
 			ExchangeImpersonation *ExchangeImpersonationType `xml:"t:ExchangeImpersonation,omitempty"`
-			MailboxCulture        *MailboxCultureType        `xml:"t:MailboxCulture,omitempty"`
+			MailboxCulture        MailboxCultureType         `xml:"t:MailboxCulture,omitempty"`
 			RequestServerVersion  *RequestServerVersionType  `xml:"t:RequestServerVersion,omitempty"`
 		}{
 			ExchangeImpersonation: input.ExchangeImpersonation,

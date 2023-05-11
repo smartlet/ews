@@ -1599,7 +1599,7 @@ var second = &unicode.RangeTable{
 // standard HTML entity characters.
 //
 // See the Decoder.Strict and Decoder.Entity fields' documentation.
-var HTMLEntity map[string]string = htmlEntity
+var HTMLEntity = htmlEntity
 
 var htmlEntity = map[string]string{
 	/*
@@ -1868,7 +1868,7 @@ var htmlEntity = map[string]string{
 // should be considered to close automatically.
 //
 // See the Decoder.Strict and Decoder.Entity fields' documentation.
-var HTMLAutoClose []string = htmlAutoClose
+var HTMLAutoClose = htmlAutoClose
 
 var htmlAutoClose = []string{
 	/*
