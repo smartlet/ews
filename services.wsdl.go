@@ -2981,1841 +2981,40 @@ type ExtendedKeywordsType struct {
 	ExtendedKeywordDefinition []*ExtendedKeywordDefinitionType `xml:"m:ExtendedKeywordDefinition,omitempty"`
 }
 
-type ResolveNamesType struct {
-	BaseRequestType       `xml:",omitempty"`
-	ReturnFullContactData XsBoolean                         `xml:"ReturnFullContactData,attr,omitempty"`
-	SearchScope           ResolveNamesSearchScopeType       `xml:"SearchScope,attr,omitempty"`
-	ContactDataShape      DefaultShapeNamesType             `xml:"ContactDataShape,attr,omitempty"`
-	ParentFolderIds       *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
-	UnresolvedEntry       NonEmptyStringType                `xml:"m:UnresolvedEntry,omitempty"`
-}
-
-type BaseRequestType struct {
-}
-
-type ResolveNamesResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type BaseResponseMessageType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ArrayOfResponseMessagesType struct {
-	CreateItemResponseMessage                      []*ItemInfoResponseMessageType                        `xml:"m:CreateItemResponseMessage,omitempty"`
-	DeleteItemResponseMessage                      []*DeleteItemResponseMessageType                      `xml:"m:DeleteItemResponseMessage,omitempty"`
-	GetItemResponseMessage                         []*ItemInfoResponseMessageType                        `xml:"m:GetItemResponseMessage,omitempty"`
-	UpdateItemResponseMessage                      []*UpdateItemResponseMessageType                      `xml:"m:UpdateItemResponseMessage,omitempty"`
-	UpdateItemInRecoverableItemsResponseMessage    []*UpdateItemInRecoverableItemsResponseMessageType    `xml:"m:UpdateItemInRecoverableItemsResponseMessage,omitempty"`
-	SendItemResponseMessage                        []*ResponseMessageType                                `xml:"m:SendItemResponseMessage,omitempty"`
-	DeleteFolderResponseMessage                    []*ResponseMessageType                                `xml:"m:DeleteFolderResponseMessage,omitempty"`
-	EmptyFolderResponseMessage                     []*ResponseMessageType                                `xml:"m:EmptyFolderResponseMessage,omitempty"`
-	CreateFolderResponseMessage                    []*FolderInfoResponseMessageType                      `xml:"m:CreateFolderResponseMessage,omitempty"`
-	GetFolderResponseMessage                       []*FolderInfoResponseMessageType                      `xml:"m:GetFolderResponseMessage,omitempty"`
-	FindFolderResponseMessage                      []*FindFolderResponseMessageType                      `xml:"m:FindFolderResponseMessage,omitempty"`
-	UpdateFolderResponseMessage                    []*FolderInfoResponseMessageType                      `xml:"m:UpdateFolderResponseMessage,omitempty"`
-	MoveFolderResponseMessage                      []*FolderInfoResponseMessageType                      `xml:"m:MoveFolderResponseMessage,omitempty"`
-	CopyFolderResponseMessage                      []*FolderInfoResponseMessageType                      `xml:"m:CopyFolderResponseMessage,omitempty"`
-	CreateFolderPathResponseMessage                []*FolderInfoResponseMessageType                      `xml:"m:CreateFolderPathResponseMessage,omitempty"`
-	CreateAttachmentResponseMessage                []*AttachmentInfoResponseMessageType                  `xml:"m:CreateAttachmentResponseMessage,omitempty"`
-	DeleteAttachmentResponseMessage                []*DeleteAttachmentResponseMessageType                `xml:"m:DeleteAttachmentResponseMessage,omitempty"`
-	GetAttachmentResponseMessage                   []*AttachmentInfoResponseMessageType                  `xml:"m:GetAttachmentResponseMessage,omitempty"`
-	UploadItemsResponseMessage                     []*UploadItemsResponseMessageType                     `xml:"m:UploadItemsResponseMessage,omitempty"`
-	ExportItemsResponseMessage                     []*ExportItemsResponseMessageType                     `xml:"m:ExportItemsResponseMessage,omitempty"`
-	MarkAllItemsAsReadResponseMessage              []*ResponseMessageType                                `xml:"m:MarkAllItemsAsReadResponseMessage,omitempty"`
-	GetClientAccessTokenResponseMessage            []*GetClientAccessTokenResponseMessageType            `xml:"m:GetClientAccessTokenResponseMessage,omitempty"`
-	GetAppManifestsResponseMessage                 []*ResponseMessageType                                `xml:"m:GetAppManifestsResponseMessage,omitempty"`
-	SetClientExtensionResponseMessage              []*ResponseMessageType                                `xml:"m:SetClientExtensionResponseMessage,omitempty"`
-	GetOMEConfigurationResponseMessage             []*ResponseMessageType                                `xml:"m:GetOMEConfigurationResponseMessage,omitempty"`
-	SetOMEConfigurationResponseMessage             []*ResponseMessageType                                `xml:"m:SetOMEConfigurationResponseMessage,omitempty"`
-	GetOMEMessageStatusResponseType                []*ResponseMessageType                                `xml:"m:GetOMEMessageStatusResponseType,omitempty"`
-	SetOMEMessageStatusResponseType                []*ResponseMessageType                                `xml:"m:SetOMEMessageStatusResponseType,omitempty"`
-	FindItemResponseMessage                        []*FindItemResponseMessageType                        `xml:"m:FindItemResponseMessage,omitempty"`
-	MoveItemResponseMessage                        []*ItemInfoResponseMessageType                        `xml:"m:MoveItemResponseMessage,omitempty"`
-	ArchiveItemResponseMessage                     []*ItemInfoResponseMessageType                        `xml:"m:ArchiveItemResponseMessage,omitempty"`
-	CopyItemResponseMessage                        []*ItemInfoResponseMessageType                        `xml:"m:CopyItemResponseMessage,omitempty"`
-	ResolveNamesResponseMessage                    []*ResolveNamesResponseMessageType                    `xml:"m:ResolveNamesResponseMessage,omitempty"`
-	ExpandDLResponseMessage                        []*ExpandDLResponseMessageType                        `xml:"m:ExpandDLResponseMessage,omitempty"`
-	GetServerTimeZonesResponseMessage              []*GetServerTimeZonesResponseMessageType              `xml:"m:GetServerTimeZonesResponseMessage,omitempty"`
-	GetEventsResponseMessage                       []*GetEventsResponseMessageType                       `xml:"m:GetEventsResponseMessage,omitempty"`
-	GetStreamingEventsResponseMessage              []*GetStreamingEventsResponseMessageType              `xml:"m:GetStreamingEventsResponseMessage,omitempty"`
-	SubscribeResponseMessage                       []*SubscribeResponseMessageType                       `xml:"m:SubscribeResponseMessage,omitempty"`
-	UnsubscribeResponseMessage                     []*ResponseMessageType                                `xml:"m:UnsubscribeResponseMessage,omitempty"`
-	SendNotificationResponseMessage                []*SendNotificationResponseMessageType                `xml:"m:SendNotificationResponseMessage,omitempty"`
-	SyncFolderHierarchyResponseMessage             []*SyncFolderHierarchyResponseMessageType             `xml:"m:SyncFolderHierarchyResponseMessage,omitempty"`
-	SyncFolderItemsResponseMessage                 []*SyncFolderItemsResponseMessageType                 `xml:"m:SyncFolderItemsResponseMessage,omitempty"`
-	CreateManagedFolderResponseMessage             []*FolderInfoResponseMessageType                      `xml:"m:CreateManagedFolderResponseMessage,omitempty"`
-	ConvertIdResponseMessage                       []*ConvertIdResponseMessageType                       `xml:"m:ConvertIdResponseMessage,omitempty"`
-	GetSharingMetadataResponseMessage              []*GetSharingMetadataResponseMessageType              `xml:"m:GetSharingMetadataResponseMessage,omitempty"`
-	RefreshSharingFolderResponseMessage            []*RefreshSharingFolderResponseMessageType            `xml:"m:RefreshSharingFolderResponseMessage,omitempty"`
-	GetSharingFolderResponseMessage                []*GetSharingFolderResponseMessageType                `xml:"m:GetSharingFolderResponseMessage,omitempty"`
-	CreateUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:CreateUserConfigurationResponseMessage,omitempty"`
-	DeleteUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:DeleteUserConfigurationResponseMessage,omitempty"`
-	GetUserConfigurationResponseMessage            []*GetUserConfigurationResponseMessageType            `xml:"m:GetUserConfigurationResponseMessage,omitempty"`
-	GetSpecificUserConfigurationResponseMessage    []*GetSpecificUserConfigurationResponseMessageType    `xml:"m:GetSpecificUserConfigurationResponseMessage,omitempty"`
-	UpdateUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:UpdateUserConfigurationResponseMessage,omitempty"`
-	GetRoomListsResponse                           []*GetRoomListsResponseMessageType                    `xml:"m:GetRoomListsResponse,omitempty"`
-	GetRoomsResponse                               []*GetRoomsResponseMessageType                        `xml:"m:GetRoomsResponse,omitempty"`
-	GetRemindersResponse                           []*GetRemindersResponseMessageType                    `xml:"m:GetRemindersResponse,omitempty"`
-	PerformReminderActionResponse                  []*PerformReminderActionResponseMessageType           `xml:"m:PerformReminderActionResponse,omitempty"`
-	ApplyConversationActionResponseMessage         []*ApplyConversationActionResponseMessageType         `xml:"m:ApplyConversationActionResponseMessage,omitempty"`
-	FindMailboxStatisticsByKeywordsResponseMessage []*FindMailboxStatisticsByKeywordsResponseMessageType `xml:"m:FindMailboxStatisticsByKeywordsResponseMessage,omitempty"`
-	GetSearchableMailboxesResponseMessage          []*GetSearchableMailboxesResponseMessageType          `xml:"m:GetSearchableMailboxesResponseMessage,omitempty"`
-	SearchMailboxesResponseMessage                 []*SearchMailboxesResponseMessageType                 `xml:"m:SearchMailboxesResponseMessage,omitempty"`
-	GetDiscoverySearchConfigurationResponseMessage []*GetDiscoverySearchConfigurationResponseMessageType `xml:"m:GetDiscoverySearchConfigurationResponseMessage,omitempty"`
-	GetHoldOnMailboxesResponseMessage              []*GetHoldOnMailboxesResponseMessageType              `xml:"m:GetHoldOnMailboxesResponseMessage,omitempty"`
-	SetHoldOnMailboxesResponseMessage              []*SetHoldOnMailboxesResponseMessageType              `xml:"m:SetHoldOnMailboxesResponseMessage,omitempty"`
-	GetNonIndexableItemStatisticsResponseMessage   []*GetNonIndexableItemStatisticsResponseMessageType   `xml:"m:GetNonIndexableItemStatisticsResponseMessage,omitempty"`
-	GetNonIndexableItemDetailsResponseMessage      []*GetNonIndexableItemDetailsResponseMessageType      `xml:"m:GetNonIndexableItemDetailsResponseMessage,omitempty"`
-	FindPeopleResponseMessage                      []*FindPeopleResponseMessageType                      `xml:"m:FindPeopleResponseMessage,omitempty"`
-	FindTagsResponseMessage                        []*FindTagsResponseMessageType                        `xml:"m:FindTagsResponseMessage,omitempty"`
-	AddTagResponseMessage                          []*AddTagResponseMessageType                          `xml:"m:AddTagResponseMessage,omitempty"`
-	HideTagResponseMessage                         []*HideTagResponseMessageType                         `xml:"m:HideTagResponseMessage,omitempty"`
-	GetPasswordExpirationDateResponse              []*GetPasswordExpirationDateResponseMessageType       `xml:"m:GetPasswordExpirationDateResponse,omitempty"`
-	GetPersonaResponseMessage                      []*GetPersonaResponseMessageType                      `xml:"m:GetPersonaResponseMessage,omitempty"`
-	GetConversationItemsResponseMessage            []*GetConversationItemsResponseMessageType            `xml:"m:GetConversationItemsResponseMessage,omitempty"`
-	GetUserRetentionPolicyTagsResponseMessage      []*GetUserRetentionPolicyTagsResponseMessageType      `xml:"m:GetUserRetentionPolicyTagsResponseMessage,omitempty"`
-	GetUserPhotoResponseMessage                    []*GetUserPhotoResponseMessageType                    `xml:"m:GetUserPhotoResponseMessage,omitempty"`
-	MarkAsJunkResponseMessage                      []*MarkAsJunkResponseMessageType                      `xml:"m:MarkAsJunkResponseMessage,omitempty"`
-	MarkAsPhishingResponseMessage                  []*MarkAsPhishingResponseMessageType                  `xml:"m:MarkAsPhishingResponseMessage,omitempty"`
-	ReportMessageResponseMessage                   []*ReportMessageResponseMessageType                   `xml:"m:ReportMessageResponseMessage,omitempty"`
-	PostModernGroupItemResponseMessage             []*ItemInfoResponseMessageType                        `xml:"m:PostModernGroupItemResponseMessage,omitempty"`
-	GetLastPrivateCatalogUpdateResponseMessage     []*ResponseMessageType                                `xml:"m:GetLastPrivateCatalogUpdateResponseMessage,omitempty"`
-	GetPrivateCatalogAddInsResponseMessage         []*ResponseMessageType                                `xml:"m:GetPrivateCatalogAddInsResponseMessage,omitempty"`
-}
-
-type ItemInfoResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Items               *ArrayOfRealItemsType `xml:"m:Items,omitempty"`
-}
-
-type ResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
-}
-
-type DeleteItemResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type UpdateItemResponseMessageType struct {
-	ItemInfoResponseMessageType `xml:",omitempty"`
-	ConflictResults             *ConflictResultsType `xml:"m:ConflictResults,omitempty"`
-}
-
-type UpdateItemInRecoverableItemsResponseMessageType struct {
-	ItemInfoResponseMessageType `xml:",omitempty"`
-	Attachments                 *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
-	ConflictResults             *ConflictResultsType    `xml:"m:ConflictResults,omitempty"`
-}
-
-type FolderInfoResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Folders             *ArrayOfFoldersType `xml:"m:Folders,omitempty"`
-}
-
-type FindFolderResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	RootFolder          *FindFolderParentType `xml:"m:RootFolder,omitempty"`
-}
-
-type AttachmentInfoResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Attachments         *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
-}
-
-type DeleteAttachmentResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	RootItemId          *RootItemIdType `xml:"m:RootItemId,omitempty"`
-}
-
-type UploadItemsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ItemId              *ItemIdType `xml:"m:ItemId,omitempty"`
-}
-
-type ExportItemsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ItemId              *ItemIdType    `xml:"m:ItemId,omitempty"`
-	Data                XsBase64Binary `xml:"m:Data,omitempty"`
-}
-
-type GetClientAccessTokenResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Token               *ClientAccessTokenType `xml:"m:Token,omitempty"`
-}
-
-type FindItemResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	RootFolder          *FindItemParentType        `xml:"m:RootFolder,omitempty"`
-	HighlightTerms      *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
-}
-
-type ResolveNamesResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ResolutionSet       *ArrayOfResolutionType `xml:"m:ResolutionSet,omitempty"`
-}
-
-type ExpandDLResponseMessageType struct {
-	ResponseMessageType     `xml:",omitempty"`
-	IndexedPagingOffset     XsInt                   `xml:"IndexedPagingOffset,attr,omitempty"`
-	NumeratorOffset         XsInt                   `xml:"NumeratorOffset,attr,omitempty"`
-	AbsoluteDenominator     XsInt                   `xml:"AbsoluteDenominator,attr,omitempty"`
-	IncludesLastItemInRange XsBoolean               `xml:"IncludesLastItemInRange,attr,omitempty"`
-	TotalItemsInView        XsInt                   `xml:"TotalItemsInView,attr,omitempty"`
-	DLExpansion             *ArrayOfDLExpansionType `xml:"m:DLExpansion,omitempty"`
-}
-
-type GetServerTimeZonesResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	TimeZoneDefinitions *ArrayOfTimeZoneDefinitionType `xml:"m:TimeZoneDefinitions,omitempty"`
-}
-
-type GetEventsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Notification        *NotificationType `xml:"m:Notification,omitempty"`
-}
-
-type GetStreamingEventsResponseMessageType struct {
-	ResponseMessageType  `xml:",omitempty"`
-	Notifications        *NonEmptyArrayOfNotificationsType   `xml:"m:Notifications,omitempty"`
-	ErrorSubscriptionIds *NonEmptyArrayOfSubscriptionIdsType `xml:"m:ErrorSubscriptionIds,omitempty"`
-	ConnectionStatus     ConnectionStatusType                `xml:"m:ConnectionStatus,omitempty"`
-}
-
-type SubscribeResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	SubscriptionId      SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
-	Watermark           WatermarkType      `xml:"m:Watermark,omitempty"`
-}
-
-type SendNotificationResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Notification        *NotificationType `xml:"m:Notification,omitempty"`
-}
-
-type SyncFolderHierarchyResponseMessageType struct {
-	ResponseMessageType       `xml:",omitempty"`
-	SyncState                 XsString                        `xml:"m:SyncState,omitempty"`
-	IncludesLastFolderInRange XsBoolean                       `xml:"m:IncludesLastFolderInRange,omitempty"`
-	Changes                   *SyncFolderHierarchyChangesType `xml:"m:Changes,omitempty"`
-}
-
-type SyncFolderItemsResponseMessageType struct {
-	ResponseMessageType     `xml:",omitempty"`
-	SyncState               XsString                    `xml:"m:SyncState,omitempty"`
-	IncludesLastItemInRange XsBoolean                   `xml:"m:IncludesLastItemInRange,omitempty"`
-	Changes                 *SyncFolderItemsChangesType `xml:"m:Changes,omitempty"`
-}
-
-type ConvertIdResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	AlternateId         *AlternateIdBaseType `xml:"m:AlternateId,omitempty"`
-}
-
-type GetSharingMetadataResponseMessageType struct {
-	ResponseMessageType                 `xml:",omitempty"`
-	EncryptedSharedFolderDataCollection *ArrayOfEncryptedSharedFolderDataType `xml:"m:EncryptedSharedFolderDataCollection,omitempty"`
-	InvalidRecipients                   *ArrayOfInvalidRecipientsType         `xml:"m:InvalidRecipients,omitempty"`
-}
-
-type RefreshSharingFolderResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type GetSharingFolderResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	SharingFolderId     *FolderIdType `xml:"m:SharingFolderId,omitempty"`
-}
-
-type GetUserConfigurationResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	UserConfiguration   *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
-}
-
-type GetSpecificUserConfigurationResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	UserConfiguration   *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
-}
-
-type GetRoomListsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	RoomLists           *ArrayOfEmailAddressesType `xml:"m:RoomLists,omitempty"`
-}
-
-type GetRoomsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Rooms               *ArrayOfRoomsType `xml:"m:Rooms,omitempty"`
-}
-
-type GetRemindersResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Reminders           *ArrayOfRemindersType `xml:"m:Reminders,omitempty"`
-}
-
-type PerformReminderActionResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	UpdatedItemIds      *NonEmptyArrayOfItemIdsType `xml:"m:UpdatedItemIds,omitempty"`
-}
-
-type ApplyConversationActionResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type FindMailboxStatisticsByKeywordsResponseMessageType struct {
-	ResponseMessageType           `xml:",omitempty"`
-	MailboxStatisticsSearchResult *MailboxStatisticsSearchResultType `xml:"m:MailboxStatisticsSearchResult,omitempty"`
-}
-
-type GetSearchableMailboxesResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	SearchableMailboxes *ArrayOfSearchableMailboxesType   `xml:"m:SearchableMailboxes,omitempty"`
-	FailedMailboxes     *ArrayOfFailedSearchMailboxesType `xml:"m:FailedMailboxes,omitempty"`
-}
-
-type SearchMailboxesResponseMessageType struct {
-	ResponseMessageType   `xml:",omitempty"`
-	SearchMailboxesResult *SearchMailboxesResultType `xml:"m:SearchMailboxesResult,omitempty"`
-}
-
-type GetDiscoverySearchConfigurationResponseMessageType struct {
-	ResponseMessageType           `xml:",omitempty"`
-	DiscoverySearchConfigurations *ArrayOfDiscoverySearchConfigurationType `xml:"m:DiscoverySearchConfigurations,omitempty"`
-}
-
-type GetHoldOnMailboxesResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MailboxHoldResult   *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
-}
-
-type SetHoldOnMailboxesResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MailboxHoldResult   *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
-}
-
-type GetNonIndexableItemStatisticsResponseMessageType struct {
-	ResponseMessageType        `xml:",omitempty"`
-	NonIndexableItemStatistics *ArrayOfNonIndexableItemStatisticsType `xml:"m:NonIndexableItemStatistics,omitempty"`
-}
-
-type GetNonIndexableItemDetailsResponseMessageType struct {
-	ResponseMessageType           `xml:",omitempty"`
-	NonIndexableItemDetailsResult *NonIndexableItemDetailResultType `xml:"m:NonIndexableItemDetailsResult,omitempty"`
-}
-
-type FindPeopleResponseMessageType struct {
-	ResponseMessageType       `xml:",omitempty"`
-	People                    *ArrayOfPeopleType `xml:"m:People,omitempty"`
-	TotalNumberOfPeopleInView XsInt              `xml:"m:TotalNumberOfPeopleInView,omitempty"`
-	FirstMatchingRowIndex     XsInt              `xml:"m:FirstMatchingRowIndex,omitempty"`
-	FirstLoadedRowIndex       XsInt              `xml:"m:FirstLoadedRowIndex,omitempty"`
-	TransactionId             GuidType           `xml:"m:TransactionId,omitempty"`
-}
-
-type FindTagsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Tags                *ArrayOfStringsType `xml:"m:Tags,omitempty"`
-}
-
-type AddTagResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	WasSuccessful       XsBoolean `xml:"m:WasSuccessful,omitempty"`
-}
-
-type HideTagResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	WasSuccessful       XsBoolean `xml:"m:WasSuccessful,omitempty"`
-}
-
-type GetPasswordExpirationDateResponseMessageType struct {
-	ResponseMessageType    `xml:",omitempty"`
-	PasswordExpirationDate XsDateTime `xml:"m:PasswordExpirationDate,omitempty"`
-}
-
-type GetPersonaResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Persona             *PersonaType `xml:"m:Persona,omitempty"`
-}
-
-type GetConversationItemsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Conversation        *ConversationResponseType `xml:"m:Conversation,omitempty"`
-}
-
-type GetUserRetentionPolicyTagsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	RetentionPolicyTags *ArrayOfRetentionPolicyTagsType `xml:"m:RetentionPolicyTags,omitempty"`
-}
-
-type GetUserPhotoResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	HasChanged          XsBoolean      `xml:"m:HasChanged,omitempty"`
-	PictureData         XsBase64Binary `xml:"m:PictureData,omitempty"`
-}
-
-type MarkAsJunkResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MovedItemId         *ItemIdType `xml:"m:MovedItemId,omitempty"`
-}
-
-type MarkAsPhishingResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MovedItemId         *ItemIdType `xml:"m:MovedItemId,omitempty"`
-}
-
-type ReportMessageResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MovedItemId         *ItemIdType `xml:"m:MovedItemId,omitempty"`
-	Policy              XsString    `xml:"m:Policy,omitempty"`
-}
-
-type ExpandDLType struct {
-	BaseRequestType `xml:",omitempty"`
-	Mailbox         *EmailAddressType `xml:"m:Mailbox,omitempty"`
-}
-
-type ExpandDLResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetServerTimeZonesType struct {
-	BaseRequestType        `xml:",omitempty"`
-	ReturnFullTimeZoneData XsBoolean                      `xml:"ReturnFullTimeZoneData,attr,omitempty"`
-	Ids                    *NonEmptyArrayOfTimeZoneIdType `xml:"m:Ids,omitempty"`
-}
-
-type GetServerTimeZonesResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type FindFolderType struct {
-	BaseRequestType          `xml:",omitempty"`
-	Traversal                FolderQueryTraversalType          `xml:"Traversal,attr,omitempty"`
-	FolderShape              *FolderResponseShapeType          `xml:"m:FolderShape,omitempty"`
-	Restriction              *RestrictionType                  `xml:"m:Restriction,omitempty"`
-	ParentFolderIds          *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
-	IndexedPageFolderView    *IndexedPageViewType              `xml:"m:IndexedPageFolderView,omitempty"`
-	FractionalPageFolderView *FractionalPageViewType           `xml:"m:FractionalPageFolderView,omitempty"`
-}
-
-type FindFolderResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type FindItemType struct {
-	BaseRequestType             `xml:",omitempty"`
-	Traversal                   ItemQueryTraversalType            `xml:"Traversal,attr,omitempty"`
-	ItemShape                   *ItemResponseShapeType            `xml:"m:ItemShape,omitempty"`
-	Restriction                 *RestrictionType                  `xml:"m:Restriction,omitempty"`
-	SortOrder                   *NonEmptyArrayOfFieldOrdersType   `xml:"m:SortOrder,omitempty"`
-	ParentFolderIds             *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
-	QueryString                 *QueryStringType                  `xml:"m:QueryString,omitempty"`
-	IndexedPageItemView         *IndexedPageViewType              `xml:"m:IndexedPageItemView,omitempty"`
-	FractionalPageItemView      *FractionalPageViewType           `xml:"m:FractionalPageItemView,omitempty"`
-	SeekToConditionPageItemView *SeekToConditionPageViewType      `xml:"m:SeekToConditionPageItemView,omitempty"`
-	CalendarView                *CalendarViewType                 `xml:"m:CalendarView,omitempty"`
-	ContactsView                *ContactsViewType                 `xml:"m:ContactsView,omitempty"`
-	GroupBy                     *GroupByType                      `xml:"m:GroupBy,omitempty"`
-	DistinguishedGroupBy        *DistinguishedGroupByType         `xml:"m:DistinguishedGroupBy,omitempty"`
-}
-
-type QueryStringType struct {
-	CharData             XsString  `xml:",chardata"`
-	ResetCache           XsBoolean `xml:"ResetCache,attr,omitempty"`
-	ReturnHighlightTerms XsBoolean `xml:"ReturnHighlightTerms,attr,omitempty"`
-	ReturnDeletedItems   XsBoolean `xml:"ReturnDeletedItems,attr,omitempty"`
-}
-
-type FindItemResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetFolderType struct {
-	BaseRequestType `xml:",omitempty"`
-	FolderShape     *FolderResponseShapeType          `xml:"m:FolderShape,omitempty"`
-	FolderIds       *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type GetFolderResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type UploadItemsType struct {
-	BaseRequestType `xml:",omitempty"`
-	Items           *NonEmptyArrayOfUploadItemsType `xml:"m:Items,omitempty"`
-}
-
-type UploadItemsResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type ExportItemsType struct {
-	BaseRequestType `xml:",omitempty"`
-	ItemIds         *NonEmptyArrayOfItemIdsType `xml:"m:ItemIds,omitempty"`
-}
-
-type ExportItemsResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type ConvertIdType struct {
-	BaseRequestType   `xml:",omitempty"`
-	DestinationFormat IdFormatType                     `xml:"DestinationFormat,attr,omitempty"`
-	SourceIds         *NonEmptyArrayOfAlternateIdsType `xml:"m:SourceIds,omitempty"`
-}
-
-type ConvertIdResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type CreateFolderType struct {
-	BaseRequestType `xml:",omitempty"`
-	ParentFolderId  *TargetFolderIdType         `xml:"m:ParentFolderId,omitempty"`
-	Folders         *NonEmptyArrayOfFoldersType `xml:"m:Folders,omitempty"`
-}
-
-type CreateFolderResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type CreateFolderPathType struct {
-	BaseRequestType    `xml:",omitempty"`
-	ParentFolderId     *TargetFolderIdType         `xml:"m:ParentFolderId,omitempty"`
-	RelativeFolderPath *NonEmptyArrayOfFoldersType `xml:"m:RelativeFolderPath,omitempty"`
-}
-
-type CreateFolderPathResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type DeleteFolderType struct {
-	BaseRequestType `xml:",omitempty"`
-	DeleteType      DisposalType                      `xml:"DeleteType,attr,omitempty"`
-	FolderIds       *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type DeleteFolderResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type EmptyFolderType struct {
-	BaseRequestType  `xml:",omitempty"`
-	DeleteType       DisposalType                      `xml:"DeleteType,attr,omitempty"`
-	DeleteSubFolders XsBoolean                         `xml:"DeleteSubFolders,attr,omitempty"`
-	FolderIds        *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type EmptyFolderResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type UpdateFolderType struct {
-	BaseRequestType `xml:",omitempty"`
-	FolderChanges   *NonEmptyArrayOfFolderChangesType `xml:"m:FolderChanges,omitempty"`
-}
-
-type UpdateFolderResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type MoveFolderType struct {
-	BaseMoveCopyFolderType `xml:",omitempty"`
-}
-
-type BaseMoveCopyFolderType struct {
-	BaseRequestType `xml:",omitempty"`
-	ToFolderId      *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
-	FolderIds       *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type MoveFolderResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type CopyFolderType struct {
-	BaseMoveCopyFolderType `xml:",omitempty"`
-}
-
-type CopyFolderResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type SubscribeType struct {
-	BaseRequestType              `xml:",omitempty"`
-	PullSubscriptionRequest      *PullSubscriptionRequestType      `xml:"m:PullSubscriptionRequest,omitempty"`
-	PushSubscriptionRequest      *PushSubscriptionRequestType      `xml:"m:PushSubscriptionRequest,omitempty"`
-	StreamingSubscriptionRequest *StreamingSubscriptionRequestType `xml:"m:StreamingSubscriptionRequest,omitempty"`
-}
-
-type SubscribeResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type UnsubscribeType struct {
-	BaseRequestType `xml:",omitempty"`
-	SubscriptionId  SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
-}
-
-type UnsubscribeResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetEventsType struct {
-	BaseRequestType `xml:",omitempty"`
-	SubscriptionId  SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
-	Watermark       WatermarkType      `xml:"m:Watermark,omitempty"`
-}
-
-type GetEventsResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetStreamingEventsType struct {
-	BaseRequestType   `xml:",omitempty"`
-	SubscriptionIds   *NonEmptyArrayOfSubscriptionIdsType        `xml:"m:SubscriptionIds,omitempty"`
-	ConnectionTimeout StreamingSubscriptionConnectionTimeoutType `xml:"m:ConnectionTimeout,omitempty"`
-}
-
-type GetStreamingEventsResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type SyncFolderHierarchyType struct {
-	BaseRequestType `xml:",omitempty"`
-	FolderShape     *FolderResponseShapeType `xml:"m:FolderShape,omitempty"`
-	SyncFolderId    *TargetFolderIdType      `xml:"m:SyncFolderId,omitempty"`
-	SyncState       XsString                 `xml:"m:SyncState,omitempty"`
-}
-
-type SyncFolderHierarchyResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type SyncFolderItemsType struct {
-	BaseRequestType    `xml:",omitempty"`
-	ItemShape          *ItemResponseShapeType     `xml:"m:ItemShape,omitempty"`
-	SyncFolderId       *TargetFolderIdType        `xml:"m:SyncFolderId,omitempty"`
-	SyncState          XsString                   `xml:"m:SyncState,omitempty"`
-	Ignore             *ArrayOfBaseItemIdsType    `xml:"m:Ignore,omitempty"`
-	MaxChangesReturned MaxSyncChangesReturnedType `xml:"m:MaxChangesReturned,omitempty"`
-	SyncScope          SyncFolderItemsScopeType   `xml:"m:SyncScope,omitempty"`
-}
-
-type SyncFolderItemsResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type CreateManagedFolderRequestType struct {
-	BaseRequestType `xml:",omitempty"`
-	FolderNames     *NonEmptyArrayOfFolderNamesType `xml:"m:FolderNames,omitempty"`
-	Mailbox         *EmailAddressType               `xml:"m:Mailbox,omitempty"`
-}
-
-type CreateManagedFolderResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetItemType struct {
-	BaseRequestType `xml:",omitempty"`
-	ItemShape       *ItemResponseShapeType          `xml:"m:ItemShape,omitempty"`
-	ItemIds         *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-}
-
-type GetItemResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type CreateItemType struct {
-	BaseRequestType        `xml:",omitempty"`
-	MessageDisposition     MessageDispositionType                  `xml:"MessageDisposition,attr,omitempty"`
-	SendMeetingInvitations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingInvitations,attr,omitempty"`
-	SavedItemFolderId      *TargetFolderIdType                     `xml:"m:SavedItemFolderId,omitempty"`
-	Items                  *NonEmptyArrayOfAllItemsType            `xml:"m:Items,omitempty"`
-}
-
-type CreateItemResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type DeleteItemType struct {
-	BaseRequestType          `xml:",omitempty"`
-	DeleteType               DisposalType                            `xml:"DeleteType,attr,omitempty"`
-	SendMeetingCancellations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingCancellations,attr,omitempty"`
-	AffectedTaskOccurrences  AffectedTaskOccurrencesType             `xml:"AffectedTaskOccurrences,attr,omitempty"`
-	SuppressReadReceipts     XsBoolean                               `xml:"SuppressReadReceipts,attr,omitempty"`
-	ItemIds                  *NonEmptyArrayOfBaseItemIdsType         `xml:"m:ItemIds,omitempty"`
-}
-
-type DeleteItemResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type UpdateItemType struct {
-	BaseRequestType                       `xml:",omitempty"`
-	ConflictResolution                    ConflictResolutionType          `xml:"ConflictResolution,attr,omitempty"`
-	MessageDisposition                    MessageDispositionType          `xml:"MessageDisposition,attr,omitempty"`
-	SendMeetingInvitationsOrCancellations CalendarItemUpdateOperationType `xml:"SendMeetingInvitationsOrCancellations,attr,omitempty"`
-	SuppressReadReceipts                  XsBoolean                       `xml:"SuppressReadReceipts,attr,omitempty"`
-	SavedItemFolderId                     *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
-	ItemChanges                           *NonEmptyArrayOfItemChangesType `xml:"m:ItemChanges,omitempty"`
-}
-
-type UpdateItemResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type UpdateItemInRecoverableItemsType struct {
-	BaseRequestType   `xml:",omitempty"`
-	ItemId            *ItemIdType                                `xml:"m:ItemId,omitempty"`
-	Updates           *NonEmptyArrayOfItemChangeDescriptionsType `xml:"m:Updates,omitempty"`
-	Attachments       *NonEmptyArrayOfAttachmentsType            `xml:"m:Attachments,omitempty"`
-	MakeItemImmutable XsBoolean                                  `xml:"m:MakeItemImmutable,omitempty"`
-}
-
-type UpdateItemInRecoverableItemsResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type SendItemType struct {
-	BaseRequestType   `xml:",omitempty"`
-	SaveItemToFolder  XsBoolean                       `xml:"SaveItemToFolder,attr,omitempty"`
-	ItemIds           *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-	SavedItemFolderId *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
-}
-
-type SendItemResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type MoveItemType struct {
-	BaseMoveCopyItemType `xml:",omitempty"`
-}
-
-type BaseMoveCopyItemType struct {
-	BaseRequestType  `xml:",omitempty"`
-	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
-	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
-}
-
-type MoveItemResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type CopyItemType struct {
-	BaseMoveCopyItemType `xml:",omitempty"`
-}
-
-type CopyItemResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type ArchiveItemType struct {
-	BaseRequestType       `xml:",omitempty"`
-	ArchiveSourceFolderId *TargetFolderIdType             `xml:"m:ArchiveSourceFolderId,omitempty"`
-	ItemIds               *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-}
-
-type ArchiveItemResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type CreateAttachmentType struct {
-	BaseRequestType `xml:",omitempty"`
-	ParentItemId    *ItemIdType                     `xml:"m:ParentItemId,omitempty"`
-	Attachments     *NonEmptyArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
-}
-
-type CreateAttachmentResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type DeleteAttachmentType struct {
-	BaseRequestType `xml:",omitempty"`
-	AttachmentIds   *NonEmptyArrayOfRequestAttachmentIdsType `xml:"m:AttachmentIds,omitempty"`
-}
-
-type DeleteAttachmentResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetAttachmentType struct {
-	BaseRequestType `xml:",omitempty"`
-	AttachmentShape *AttachmentResponseShapeType             `xml:"m:AttachmentShape,omitempty"`
-	AttachmentIds   *NonEmptyArrayOfRequestAttachmentIdsType `xml:"m:AttachmentIds,omitempty"`
-}
-
-type GetAttachmentResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetClientAccessTokenType struct {
-	BaseRequestType `xml:",omitempty"`
-	TokenRequests   *NonEmptyArrayOfClientAccessTokenRequestsType `xml:"m:TokenRequests,omitempty"`
-}
-
-type GetClientAccessTokenResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetDelegateType struct {
-	BaseDelegateType   `xml:",omitempty"`
-	IncludePermissions XsBoolean          `xml:"IncludePermissions,attr,omitempty"`
-	UserIds            *ArrayOfUserIdType `xml:"m:UserIds,omitempty"`
-}
-
-type BaseDelegateType struct {
-	BaseRequestType `xml:",omitempty"`
-	Mailbox         *EmailAddressType `xml:"m:Mailbox,omitempty"`
-}
-
-type GetDelegateResponseMessageType struct {
-	BaseDelegateResponseMessageType `xml:",omitempty"`
-	DeliverMeetingRequests          DeliverMeetingRequestsType `xml:"m:DeliverMeetingRequests,omitempty"`
-}
-
-type BaseDelegateResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ResponseMessages    *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ArrayOfDelegateUserResponseMessageType struct {
-	DelegateUserResponseMessageType []*DelegateUserResponseMessageType `xml:"m:DelegateUserResponseMessageType,omitempty"`
-}
-
-type DelegateUserResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	DelegateUser        *DelegateUserType `xml:"m:DelegateUser,omitempty"`
-}
-
-type AddDelegateType struct {
-	BaseDelegateType       `xml:",omitempty"`
-	DelegateUsers          *ArrayOfDelegateUserType   `xml:"m:DelegateUsers,omitempty"`
-	DeliverMeetingRequests DeliverMeetingRequestsType `xml:"m:DeliverMeetingRequests,omitempty"`
-}
-
-type AddDelegateResponseMessageType struct {
-	BaseDelegateResponseMessageType `xml:",omitempty"`
-}
-
-type RemoveDelegateType struct {
-	BaseDelegateType `xml:",omitempty"`
-	UserIds          *ArrayOfUserIdType `xml:"m:UserIds,omitempty"`
-}
-
-type RemoveDelegateResponseMessageType struct {
-	BaseDelegateResponseMessageType `xml:",omitempty"`
-}
-
-type UpdateDelegateType struct {
-	BaseDelegateType       `xml:",omitempty"`
-	DelegateUsers          *ArrayOfDelegateUserType   `xml:"m:DelegateUsers,omitempty"`
-	DeliverMeetingRequests DeliverMeetingRequestsType `xml:"m:DeliverMeetingRequests,omitempty"`
-}
-
-type UpdateDelegateResponseMessageType struct {
-	BaseDelegateResponseMessageType `xml:",omitempty"`
-}
-
-type CreateUserConfigurationType struct {
-	BaseRequestType   `xml:",omitempty"`
-	UserConfiguration *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
-}
-
-type CreateUserConfigurationResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type DeleteUserConfigurationType struct {
-	BaseRequestType       `xml:",omitempty"`
-	UserConfigurationName *UserConfigurationNameType `xml:"m:UserConfigurationName,omitempty"`
-}
-
-type DeleteUserConfigurationResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetUserConfigurationType struct {
-	BaseRequestType             `xml:",omitempty"`
-	UserConfigurationName       *UserConfigurationNameType    `xml:"m:UserConfigurationName,omitempty"`
-	UserConfigurationProperties UserConfigurationPropertyType `xml:"m:UserConfigurationProperties,omitempty"`
-}
-
-type GetUserConfigurationResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetSpecificUserConfigurationType struct {
-	BaseRequestType             `xml:",omitempty"`
-	UserConfigurationName       *UserConfigurationNameType    `xml:"m:UserConfigurationName,omitempty"`
-	UserConfigurationProperties UserConfigurationPropertyType `xml:"m:UserConfigurationProperties,omitempty"`
-}
-
-type GetSpecificUserConfigurationResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type UpdateUserConfigurationType struct {
-	BaseRequestType   `xml:",omitempty"`
-	UserConfiguration *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
-}
-
-type UpdateUserConfigurationResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetUserAvailabilityRequestType struct {
-	BaseRequestType        `xml:",omitempty"`
-	TimeZone               *SerializableTimeZone       `xml:"t:TimeZone,omitempty"`
-	MailboxDataArray       *ArrayOfMailboxData         `xml:"m:MailboxDataArray,omitempty"`
-	FreeBusyViewOptions    *FreeBusyViewOptionsType    `xml:"t:FreeBusyViewOptions,omitempty"`
-	SuggestionsViewOptions *SuggestionsViewOptionsType `xml:"t:SuggestionsViewOptions,omitempty"`
-}
-
-type GetUserAvailabilityResponseType struct {
-	FreeBusyResponseArray *ArrayOfFreeBusyResponse `xml:"m:FreeBusyResponseArray,omitempty"`
-	SuggestionsResponse   *SuggestionsResponseType `xml:"m:SuggestionsResponse,omitempty"`
-}
-
-type ArrayOfFreeBusyResponse struct {
-	FreeBusyResponse []*FreeBusyResponseType `xml:"m:FreeBusyResponse,omitempty"`
-}
-
-type FreeBusyResponseType struct {
-	ResponseMessage *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
-	FreeBusyView    *FreeBusyView        `xml:"m:FreeBusyView,omitempty"`
-}
-
-type SuggestionsResponseType struct {
-	ResponseMessage          *ResponseMessageType        `xml:"m:ResponseMessage,omitempty"`
-	SuggestionDayResultArray *ArrayOfSuggestionDayResult `xml:"m:SuggestionDayResultArray,omitempty"`
-}
-
-type GetUserOofSettingsRequest struct {
-	BaseRequestType `xml:",omitempty"`
-	Mailbox         *EmailAddress `xml:"t:Mailbox,omitempty"`
-}
-
-type GetUserOofSettingsResponse struct {
-	ResponseMessage  *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
-	OofSettings      *UserOofSettings     `xml:"t:OofSettings,omitempty"`
-	AllowExternalOof ExternalAudience     `xml:"m:AllowExternalOof,omitempty"`
-}
-
-type SetUserOofSettingsRequest struct {
-	BaseRequestType `xml:",omitempty"`
-	Mailbox         *EmailAddress    `xml:"t:Mailbox,omitempty"`
-	UserOofSettings *UserOofSettings `xml:"t:UserOofSettings,omitempty"`
-}
-
-type SetUserOofSettingsResponse struct {
-	ResponseMessage *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
-}
-
-type GetServiceConfigurationType struct {
-	BaseRequestType             `xml:",omitempty"`
-	ActingAs                    *EmailAddressType                `xml:"m:ActingAs,omitempty"`
-	RequestedConfiguration      *ArrayOfServiceConfigurationType `xml:"m:RequestedConfiguration,omitempty"`
-	ConfigurationRequestDetails ConfigurationRequestDetailsType  `xml:"m:ConfigurationRequestDetails,omitempty"`
-}
-
-type ArrayOfServiceConfigurationType struct {
-	ConfigurationName []ServiceConfigurationType `xml:"m:ConfigurationName,omitempty"`
-}
-
-type GetServiceConfigurationResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ResponseMessages    *ArrayOfServiceConfigurationResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ArrayOfServiceConfigurationResponseMessageType struct {
-	ServiceConfigurationResponseMessageType []*ServiceConfigurationResponseMessageType `xml:"m:ServiceConfigurationResponseMessageType,omitempty"`
-}
-
-type ServiceConfigurationResponseMessageType struct {
-	ResponseMessageType           `xml:",omitempty"`
-	MailTipsConfiguration         *MailTipsServiceConfiguration        `xml:"m:MailTipsConfiguration,omitempty"`
-	UnifiedMessagingConfiguration *UnifiedMessageServiceConfiguration  `xml:"m:UnifiedMessagingConfiguration,omitempty"`
-	ProtectionRulesConfiguration  *ProtectionRulesServiceConfiguration `xml:"m:ProtectionRulesConfiguration,omitempty"`
-	PolicyNudgeRulesConfiguration PolicyNudgeRulesServiceConfiguration `xml:"m:PolicyNudgeRulesConfiguration,omitempty"`
-	SharePointURLsConfiguration   *SharePointURLsServiceConfiguration  `xml:"m:SharePointURLsConfiguration,omitempty"`
-}
-
-type GetMailTipsType struct {
-	BaseRequestType   `xml:",omitempty"`
-	SendingAs         *EmailAddressType      `xml:"m:SendingAs,omitempty"`
-	Recipients        *ArrayOfRecipientsType `xml:"m:Recipients,omitempty"`
-	MailTipsRequested MailTipTypes           `xml:"m:MailTipsRequested,omitempty"`
-}
-
-type GetMailTipsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ResponseMessages    *ArrayOfMailTipsResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ArrayOfMailTipsResponseMessageType struct {
-	MailTipsResponseMessageType []*MailTipsResponseMessageType `xml:"m:MailTipsResponseMessageType,omitempty"`
-}
-
-type MailTipsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MailTips            *MailTips `xml:"m:MailTips,omitempty"`
-}
-
-type PlayOnPhoneType struct {
-	BaseRequestType `xml:",omitempty"`
-	ItemId          *ItemIdType `xml:"m:ItemId,omitempty"`
-	DialString      XsString    `xml:"m:DialString,omitempty"`
-}
-
-type PlayOnPhoneResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	PhoneCallId         *PhoneCallIdType `xml:"m:PhoneCallId,omitempty"`
-}
-
-type GetPhoneCallInformationType struct {
-	BaseRequestType `xml:",omitempty"`
-	PhoneCallId     *PhoneCallIdType `xml:"m:PhoneCallId,omitempty"`
-}
-
-type GetPhoneCallInformationResponseMessageType struct {
-	ResponseMessageType  `xml:",omitempty"`
-	PhoneCallInformation *PhoneCallInformationType `xml:"m:PhoneCallInformation,omitempty"`
-}
-
-type DisconnectPhoneCallType struct {
-	BaseRequestType `xml:",omitempty"`
-	PhoneCallId     *PhoneCallIdType `xml:"m:PhoneCallId,omitempty"`
-}
-
-type DisconnectPhoneCallResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type GetSharingMetadataType struct {
-	BaseRequestType   `xml:",omitempty"`
-	IdOfFolderToShare *FolderIdType           `xml:"m:IdOfFolderToShare,omitempty"`
-	SenderSmtpAddress NonEmptyStringType      `xml:"m:SenderSmtpAddress,omitempty"`
-	Recipients        *ArrayOfSmtpAddressType `xml:"m:Recipients,omitempty"`
-}
-
-type RefreshSharingFolderType struct {
-	BaseRequestType `xml:",omitempty"`
-	SharingFolderId *FolderIdType `xml:"m:SharingFolderId,omitempty"`
-}
-
-type GetSharingFolderType struct {
-	BaseRequestType `xml:",omitempty"`
-	SmtpAddress     NonEmptyStringType `xml:"m:SmtpAddress,omitempty"`
-	DataType        SharingDataType    `xml:"m:DataType,omitempty"`
-	SharedFolderId  NonEmptyStringType `xml:"m:SharedFolderId,omitempty"`
-}
-
-type SetTeamMailboxRequestType struct {
-	BaseRequestType   `xml:",omitempty"`
-	EmailAddress      *EmailAddressType             `xml:"m:EmailAddress,omitempty"`
-	SharePointSiteUrl XsString                      `xml:"m:SharePointSiteUrl,omitempty"`
-	State             TeamMailboxLifecycleStateType `xml:"m:State,omitempty"`
-}
-
-type SetTeamMailboxResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type UnpinTeamMailboxRequestType struct {
-	BaseRequestType `xml:",omitempty"`
-	EmailAddress    *EmailAddressType `xml:"m:EmailAddress,omitempty"`
-}
-
-type UnpinTeamMailboxResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type GetRoomListsType struct {
-	BaseRequestType `xml:",omitempty"`
-}
-
-type GetRoomsType struct {
-	BaseRequestType `xml:",omitempty"`
-	RoomList        *EmailAddressType `xml:"m:RoomList,omitempty"`
-}
-
-type FindMessageTrackingReportRequestType struct {
-	BaseRequestType `xml:",omitempty"`
-}
-
-type FindMessageTrackingReportResponseMessageType struct {
-	ResponseMessageType          `xml:",omitempty"`
-	Diagnostics                  *ArrayOfStringsType                         `xml:"m:Diagnostics,omitempty"`
-	MessageTrackingSearchResults *ArrayOfFindMessageTrackingSearchResultType `xml:"m:MessageTrackingSearchResults,omitempty"`
-	ExecutedSearchScope          XsString                                    `xml:"m:ExecutedSearchScope,omitempty"`
-	Errors                       *ArrayOfArraysOfTrackingPropertiesType      `xml:"m:Errors,omitempty"`
-	Properties                   *ArrayOfTrackingPropertiesType              `xml:"m:Properties,omitempty"`
-}
-
-type GetMessageTrackingReportRequestType struct {
-	BaseRequestType `xml:",omitempty"`
-}
-
-type GetMessageTrackingReportResponseMessageType struct {
-	ResponseMessageType   `xml:",omitempty"`
-	MessageTrackingReport MessageTrackingReportType              `xml:"m:MessageTrackingReport,omitempty"`
-	Diagnostics           *ArrayOfStringsType                    `xml:"m:Diagnostics,omitempty"`
-	Errors                *ArrayOfArraysOfTrackingPropertiesType `xml:"m:Errors,omitempty"`
-	Properties            *ArrayOfTrackingPropertiesType         `xml:"m:Properties,omitempty"`
-}
-
-type FindConversationType struct {
-	BaseRequestType             `xml:",omitempty"`
-	Traversal                   ConversationQueryTraversalType  `xml:"Traversal,attr,omitempty"`
-	ViewFilter                  ViewFilterType                  `xml:"ViewFilter,attr,omitempty"`
-	SortOrder                   *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
-	ParentFolderId              *TargetFolderIdType             `xml:"m:ParentFolderId,omitempty"`
-	MailboxScope                MailboxSearchLocationType       `xml:"m:MailboxScope,omitempty"`
-	QueryString                 *QueryStringType                `xml:"m:QueryString,omitempty"`
-	ConversationShape           *ConversationResponseShapeType  `xml:"m:ConversationShape,omitempty"`
-	IndexedPageItemView         *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
-	SeekToConditionPageItemView *SeekToConditionPageViewType    `xml:"m:SeekToConditionPageItemView,omitempty"`
-}
-
-type FindConversationResponseMessageType struct {
-	ResponseMessageType      `xml:",omitempty"`
-	Conversations            *ArrayOfConversationsType  `xml:"m:Conversations,omitempty"`
-	HighlightTerms           *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
-	TotalConversationsInView XsInt                      `xml:"m:TotalConversationsInView,omitempty"`
-	IndexedOffset            XsInt                      `xml:"m:IndexedOffset,omitempty"`
-}
-
-type ApplyConversationActionType struct {
-	BaseRequestType     `xml:",omitempty"`
-	ConversationActions *NonEmptyArrayOfApplyConversationActionType `xml:"m:ConversationActions,omitempty"`
-}
-
-type ApplyConversationActionResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetConversationItemsType struct {
-	BaseRequestType  `xml:",omitempty"`
-	ItemShape        *ItemResponseShapeType            `xml:"m:ItemShape,omitempty"`
-	FoldersToIgnore  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FoldersToIgnore,omitempty"`
-	MaxItemsToReturn XsInt                             `xml:"m:MaxItemsToReturn,omitempty"`
-	SortOrder        ConversationNodeSortOrder         `xml:"m:SortOrder,omitempty"`
-	MailboxScope     MailboxSearchLocationType         `xml:"m:MailboxScope,omitempty"`
-	Conversations    *ArrayOfConversationRequestsType  `xml:"m:Conversations,omitempty"`
-}
-
-type GetConversationItemsResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type FindPeopleType struct {
-	BaseRequestType             `xml:",omitempty"`
-	PersonaShape                *PersonaResponseShapeType       `xml:"m:PersonaShape,omitempty"`
-	IndexedPageItemView         *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
-	Restriction                 *RestrictionType                `xml:"m:Restriction,omitempty"`
-	AggregationRestriction      *RestrictionType                `xml:"m:AggregationRestriction,omitempty"`
-	SortOrder                   *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
-	ParentFolderId              *TargetFolderIdType             `xml:"m:ParentFolderId,omitempty"`
-	QueryString                 XsString                        `xml:"m:QueryString,omitempty"`
-	SearchPeopleSuggestionIndex XsBoolean                       `xml:"m:SearchPeopleSuggestionIndex,omitempty"`
-	TopicQueryString            XsString                        `xml:"m:TopicQueryString,omitempty"`
-	Context                     *ArrayOfContextProperty         `xml:"m:Context,omitempty"`
-	QuerySources                *ArrayOfPeopleQuerySource       `xml:"m:QuerySources,omitempty"`
-	ReturnFlattenedResults      XsBoolean                       `xml:"m:ReturnFlattenedResults,omitempty"`
-}
-
-type FindTagsType struct {
-	BaseRequestType     `xml:",omitempty"`
-	IndexedPageItemView *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
-	SortOrder           *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
-	QueryString         XsString                        `xml:"m:QueryString,omitempty"`
-	Context             *ArrayOfContextProperty         `xml:"m:Context,omitempty"`
-}
-
-type AddTagType struct {
-	BaseRequestType `xml:",omitempty"`
-	Tag             XsString `xml:"m:Tag,omitempty"`
-	AppName         XsString `xml:"m:AppName,omitempty"`
-}
-
-type HideTagType struct {
-	BaseRequestType `xml:",omitempty"`
-	Tag             XsString `xml:"m:Tag,omitempty"`
-}
-
-type GetPersonaType struct {
-	BaseRequestType      `xml:",omitempty"`
-	PersonaId            *ItemIdType                        `xml:"m:PersonaId,omitempty"`
-	EmailAddress         *EmailAddressType                  `xml:"m:EmailAddress,omitempty"`
-	ParentFolderId       *TargetFolderIdType                `xml:"m:ParentFolderId,omitempty"`
-	ItemLinkId           XsString                           `xml:"m:ItemLinkId,omitempty"`
-	AdditionalProperties *NonEmptyArrayOfPathsToElementType `xml:"m:AdditionalProperties,omitempty"`
-}
-
-type GetInboxRulesRequestType struct {
-	BaseRequestType    `xml:",omitempty"`
-	MailboxSmtpAddress XsString `xml:"m:MailboxSmtpAddress,omitempty"`
-}
-
-type GetInboxRulesResponseType struct {
-	ResponseMessageType   `xml:",omitempty"`
-	OutlookRuleBlobExists XsBoolean         `xml:"m:OutlookRuleBlobExists,omitempty"`
-	InboxRules            *ArrayOfRulesType `xml:"m:InboxRules,omitempty"`
-}
-
-type UpdateInboxRulesRequestType struct {
-	BaseRequestType       `xml:",omitempty"`
-	MailboxSmtpAddress    XsString                   `xml:"m:MailboxSmtpAddress,omitempty"`
-	RemoveOutlookRuleBlob XsBoolean                  `xml:"m:RemoveOutlookRuleBlob,omitempty"`
-	Operations            *ArrayOfRuleOperationsType `xml:"m:Operations,omitempty"`
-}
-
-type UpdateInboxRulesResponseType struct {
-	ResponseMessageType `xml:",omitempty"`
-	RuleOperationErrors *ArrayOfRuleOperationErrorsType `xml:"m:RuleOperationErrors,omitempty"`
-}
-
-type GetPasswordExpirationDateType struct {
-	BaseRequestType    `xml:",omitempty"`
-	MailboxSmtpAddress XsString `xml:"m:MailboxSmtpAddress,omitempty"`
-}
-
-type GetSearchableMailboxesType struct {
-	BaseRequestType       `xml:",omitempty"`
-	SearchFilter          XsString  `xml:"m:SearchFilter,omitempty"`
-	ExpandGroupMembership XsBoolean `xml:"m:ExpandGroupMembership,omitempty"`
-}
-
-type SearchMailboxesType struct {
-	BaseRequestType          `xml:",omitempty"`
-	SearchQueries            *NonEmptyArrayOfMailboxQueriesType `xml:"m:SearchQueries,omitempty"`
-	ResultType               SearchResultType                   `xml:"m:ResultType,omitempty"`
-	PreviewItemResponseShape *PreviewItemResponseShapeType      `xml:"m:PreviewItemResponseShape,omitempty"`
-	SortBy                   *FieldOrderType                    `xml:"m:SortBy,omitempty"`
-	Language                 XsString                           `xml:"m:Language,omitempty"`
-	Deduplication            XsBoolean                          `xml:"m:Deduplication,omitempty"`
-	PageSize                 XsInt                              `xml:"m:PageSize,omitempty"`
-	PageItemReference        XsString                           `xml:"m:PageItemReference,omitempty"`
-	PageDirection            SearchPageDirectionType            `xml:"m:PageDirection,omitempty"`
-}
-
-type SearchMailboxesResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetDiscoverySearchConfigurationType struct {
-	BaseRequestType              `xml:",omitempty"`
-	SearchId                     XsString  `xml:"m:SearchId,omitempty"`
-	ExpandGroupMembership        XsBoolean `xml:"m:ExpandGroupMembership,omitempty"`
-	InPlaceHoldConfigurationOnly XsBoolean `xml:"m:InPlaceHoldConfigurationOnly,omitempty"`
-}
-
-type GetHoldOnMailboxesType struct {
-	BaseRequestType `xml:",omitempty"`
-	HoldId          XsString `xml:"m:HoldId,omitempty"`
-}
-
-type SetHoldOnMailboxesType struct {
-	BaseRequestType          `xml:",omitempty"`
-	ActionType               HoldActionType      `xml:"m:ActionType,omitempty"`
-	HoldId                   XsString            `xml:"m:HoldId,omitempty"`
-	Query                    XsString            `xml:"m:Query,omitempty"`
-	Mailboxes                *ArrayOfStringsType `xml:"m:Mailboxes,omitempty"`
-	Language                 XsString            `xml:"m:Language,omitempty"`
-	IncludeNonIndexableItems XsBoolean           `xml:"m:IncludeNonIndexableItems,omitempty"`
-	Deduplication            XsBoolean           `xml:"m:Deduplication,omitempty"`
-	InPlaceHoldIdentity      XsString            `xml:"m:InPlaceHoldIdentity,omitempty"`
-	ItemHoldPeriod           XsString            `xml:"m:ItemHoldPeriod,omitempty"`
-}
-
-type GetNonIndexableItemStatisticsType struct {
-	BaseRequestType   `xml:",omitempty"`
-	Mailboxes         *NonEmptyArrayOfLegacyDNsType `xml:"m:Mailboxes,omitempty"`
-	SearchArchiveOnly XsBoolean                     `xml:"m:SearchArchiveOnly,omitempty"`
-}
-
-type GetNonIndexableItemDetailsType struct {
-	BaseRequestType   `xml:",omitempty"`
-	Mailboxes         *NonEmptyArrayOfLegacyDNsType `xml:"m:Mailboxes,omitempty"`
-	PageSize          XsInt                         `xml:"m:PageSize,omitempty"`
-	PageItemReference XsString                      `xml:"m:PageItemReference,omitempty"`
-	PageDirection     SearchPageDirectionType       `xml:"m:PageDirection,omitempty"`
-	SearchArchiveOnly XsBoolean                     `xml:"m:SearchArchiveOnly,omitempty"`
-}
-
-type MarkAllItemsAsReadType struct {
-	BaseRequestType      `xml:",omitempty"`
-	ReadFlag             XsBoolean                         `xml:"m:ReadFlag,omitempty"`
-	SuppressReadReceipts XsBoolean                         `xml:"m:SuppressReadReceipts,omitempty"`
-	FolderIds            *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type MarkAllItemsAsReadResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type MarkAsJunkType struct {
-	BaseRequestType `xml:",omitempty"`
-	IsJunk          XsBoolean                       `xml:"IsJunk,attr,omitempty"`
-	MoveItem        XsBoolean                       `xml:"MoveItem,attr,omitempty"`
-	ItemIds         *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-}
-
-type MarkAsJunkResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type ReportMessageType struct {
-	BaseRequestType           `xml:",omitempty"`
-	ReportAction              ReportMessageActionType   `xml:"ReportAction,attr,omitempty"`
-	ItemIds                   *ArrayOfBaseItemIdsType   `xml:"m:ItemIds,omitempty"`
-	BlockReportingToMicrosoft XsBoolean                 `xml:"m:BlockReportingToMicrosoft,omitempty"`
-	Platform                  ReportMessagePlatformType `xml:"m:Platform,omitempty"`
-}
-
-type ReportMessageResponseType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetAppManifestsType struct {
-	BaseRequestType           `xml:",omitempty"`
-	ApiVersionSupported       XsString                         `xml:"m:ApiVersionSupported,omitempty"`
-	SchemaVersionSupported    XsString                         `xml:"m:SchemaVersionSupported,omitempty"`
-	IncludeAllInstalledAddIns XsBoolean                        `xml:"m:IncludeAllInstalledAddIns,omitempty"`
-	IncludeEntitlementData    XsBoolean                        `xml:"m:IncludeEntitlementData,omitempty"`
-	IncludeManifestData       XsBoolean                        `xml:"m:IncludeManifestData,omitempty"`
-	IncludeCustomAppsData     XsBoolean                        `xml:"m:IncludeCustomAppsData,omitempty"`
-	ExtensionIds              ListOfExtensionIdsType           `xml:"m:ExtensionIds,omitempty"`
-	AddIns                    *ArrayOfPrivateCatalogAddInsType `xml:"m:AddIns,omitempty"`
-	IncludeExtensionMetaData  XsBoolean                        `xml:"m:IncludeExtensionMetaData,omitempty"`
-}
-
-type ArrayOfPrivateCatalogAddInsType struct {
-	AddIn []*PrivateCatalogAddInsType `xml:"m:AddIn,omitempty"`
-}
-
-type PrivateCatalogAddInsType struct {
-	ProductId            XsString                          `xml:"ProductId,attr,omitempty"`
-	State                AddInStateType                    `xml:"State,attr,omitempty"`
-	Version              VersionType                       `xml:"Version,attr,omitempty"`
-	DefaultEnabledStatus AADOfficeExtensionStatusType      `xml:"DefaultEnabledStatus,attr,omitempty"`
-	InstallTimeInTicks   XsLong                            `xml:"InstallTimeInTicks,attr,omitempty"`
-	StoreInfo            *PrivateCatalogAddInStoreInfoType `xml:"m:StoreInfo,omitempty"`
-}
-
-type PrivateCatalogAddInStoreInfoType struct {
-	AssetId       XsString `xml:"AssetId,attr,omitempty"`
-	ContentMarket XsString `xml:"ContentMarket,attr,omitempty"`
-}
-
-type GetAppManifestsResponseType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Apps                *ArrayOfAppsType         `xml:"m:Apps,omitempty"`
-	Manifests           *ArrayOfAppManifestsType `xml:"m:Manifests,omitempty"`
-}
-
-type ArrayOfAppManifestsType struct {
-	Manifest []XsBase64Binary `xml:"m:Manifest,omitempty"`
-}
-
-type AddNewImContactToGroupType struct {
-	BaseRequestType `xml:",omitempty"`
-	ImAddress       NonEmptyStringType `xml:"m:ImAddress,omitempty"`
-	DisplayName     NonEmptyStringType `xml:"m:DisplayName,omitempty"`
-	GroupId         *ItemIdType        `xml:"m:GroupId,omitempty"`
-}
-
-type AddNewImContactToGroupResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Persona             *PersonaType `xml:"m:Persona,omitempty"`
-}
-
-type AddNewTelUriContactToGroupType struct {
-	BaseRequestType        `xml:",omitempty"`
-	TelUriAddress          NonEmptyStringType `xml:"m:TelUriAddress,omitempty"`
-	ImContactSipUriAddress NonEmptyStringType `xml:"m:ImContactSipUriAddress,omitempty"`
-	ImTelephoneNumber      NonEmptyStringType `xml:"m:ImTelephoneNumber,omitempty"`
-	GroupId                *ItemIdType        `xml:"m:GroupId,omitempty"`
-}
-
-type AddNewTelUriContactToGroupResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Persona             *PersonaType `xml:"m:Persona,omitempty"`
-}
-
-type AddImContactToGroupType struct {
-	BaseRequestType `xml:",omitempty"`
-	ContactId       *ItemIdType `xml:"m:ContactId,omitempty"`
-	GroupId         *ItemIdType `xml:"m:GroupId,omitempty"`
-}
-
-type AddImContactToGroupResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type RemoveImContactFromGroupType struct {
-	BaseRequestType `xml:",omitempty"`
-	ContactId       *ItemIdType `xml:"m:ContactId,omitempty"`
-	GroupId         *ItemIdType `xml:"m:GroupId,omitempty"`
-}
-
-type RemoveImContactFromGroupResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type AddImGroupType struct {
-	BaseRequestType `xml:",omitempty"`
-	DisplayName     NonEmptyStringType `xml:"m:DisplayName,omitempty"`
-}
-
-type AddImGroupResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ImGroup             *ImGroupType `xml:"m:ImGroup,omitempty"`
-}
-
-type AddDistributionGroupToImListType struct {
-	BaseRequestType `xml:",omitempty"`
-	SmtpAddress     NonEmptyStringType `xml:"m:SmtpAddress,omitempty"`
-	DisplayName     NonEmptyStringType `xml:"m:DisplayName,omitempty"`
-}
-
-type AddDistributionGroupToImListResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ImGroup             *ImGroupType `xml:"m:ImGroup,omitempty"`
-}
-
-type GetImItemListType struct {
-	BaseRequestType    `xml:",omitempty"`
-	ExtendedProperties *NonEmptyArrayOfExtendedFieldURIs `xml:"m:ExtendedProperties,omitempty"`
-}
-
-type GetImItemListResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ImItemList          *ImItemListType `xml:"m:ImItemList,omitempty"`
-}
-
-type GetImItemsType struct {
-	BaseRequestType    `xml:",omitempty"`
-	ContactIds         *NonEmptyArrayOfBaseItemIdsType   `xml:"m:ContactIds,omitempty"`
-	GroupIds           *NonEmptyArrayOfBaseItemIdsType   `xml:"m:GroupIds,omitempty"`
-	ExtendedProperties *NonEmptyArrayOfExtendedFieldURIs `xml:"m:ExtendedProperties,omitempty"`
-}
-
-type GetImItemsResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	ImItemList          *ImItemListType `xml:"m:ImItemList,omitempty"`
-}
-
-type RemoveContactFromImListType struct {
-	BaseRequestType `xml:",omitempty"`
-	ContactId       *ItemIdType `xml:"m:ContactId,omitempty"`
-}
-
-type RemoveContactFromImListResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type RemoveDistributionGroupFromImListType struct {
-	BaseRequestType `xml:",omitempty"`
-	GroupId         *ItemIdType `xml:"m:GroupId,omitempty"`
-}
-
-type RemoveDistributionGroupFromImListResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type RemoveImGroupType struct {
-	BaseRequestType `xml:",omitempty"`
-	GroupId         *ItemIdType `xml:"m:GroupId,omitempty"`
-}
-
-type RemoveImGroupResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type SetImGroupType struct {
-	BaseRequestType `xml:",omitempty"`
-	GroupId         *ItemIdType        `xml:"m:GroupId,omitempty"`
-	NewDisplayName  NonEmptyStringType `xml:"m:NewDisplayName,omitempty"`
-}
-
-type SetImGroupResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type SetImListMigrationCompletedType struct {
-	BaseRequestType          `xml:",omitempty"`
-	ImListMigrationCompleted XsBoolean `xml:"m:ImListMigrationCompleted,omitempty"`
-}
-
-type SetImListMigrationCompletedResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type GetUserRetentionPolicyTagsType struct {
-	BaseRequestType `xml:",omitempty"`
-}
-
-type InstallAppType struct {
-	BaseRequestType          `xml:",omitempty"`
-	Manifest                 XsBase64Binary `xml:"m:Manifest,omitempty"`
-	MarketplaceAssetId       XsString       `xml:"m:MarketplaceAssetId,omitempty"`
-	MarketplaceContentMarket XsString       `xml:"m:MarketplaceContentMarket,omitempty"`
-	SendWelcomeEmail         XsBoolean      `xml:"m:SendWelcomeEmail,omitempty"`
-	ManifestUrl              XsString       `xml:"m:ManifestUrl,omitempty"`
-	MarketplaceCorrelationId XsString       `xml:"m:MarketplaceCorrelationId,omitempty"`
-	CampaignId               XsString       `xml:"m:CampaignId,omitempty"`
-	Id                       XsString       `xml:"m:Id,omitempty"`
-	IsMetaOSApp              XsBoolean      `xml:"m:IsMetaOSApp,omitempty"`
-	MetaOSSyncData           XsString       `xml:"m:MetaOSSyncData,omitempty"`
-}
-
-type InstallAppResponseType struct {
-	ResponseMessageType `xml:",omitempty"`
-	WasFirstInstall     XsBoolean         `xml:"m:WasFirstInstall,omitempty"`
-	Extension           *InstalledAppType `xml:"m:Extension,omitempty"`
-}
-
-type UpdateExtensionUsageType struct {
-	BaseRequestType `xml:",omitempty"`
-	Client          XsString                             `xml:"m:Client,omitempty"`
-	Extensions      *ArrayOfUpdateExtensionUsageItemType `xml:"m:Extensions,omitempty"`
-}
-
-type ArrayOfUpdateExtensionUsageItemType struct {
-	ExtensionId XsString                                  `xml:"m:ExtensionId,omitempty"`
-	Scenarios   *ArrayOfExtensionUsageScenarioCounterType `xml:"m:Scenarios,omitempty"`
-}
-
-type ArrayOfExtensionUsageScenarioCounterType struct {
-	ScenarioName XsString `xml:"m:ScenarioName,omitempty"`
-	Count        XsInt    `xml:"m:Count,omitempty"`
-}
-
-type UpdateExtensionUsageResponseType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type UninstallAppType struct {
-	BaseRequestType `xml:",omitempty"`
-	ID              XsString  `xml:"m:ID,omitempty"`
-	IsMetaOSApp     XsBoolean `xml:"m:IsMetaOSApp,omitempty"`
-}
-
-type UninstallAppResponseType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type DisableAppType struct {
-	BaseRequestType `xml:",omitempty"`
-	ID              XsString          `xml:"m:ID,omitempty"`
-	DisableReason   DisableReasonType `xml:"m:DisableReason,omitempty"`
-	IsMetaOSApp     XsBoolean         `xml:"m:IsMetaOSApp,omitempty"`
-}
-
-type DisableAppResponseType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type GetAppMarketplaceUrlType struct {
-	BaseRequestType `xml:",omitempty"`
-}
-
-type GetAppMarketplaceUrlResponseMessageType struct {
-	ResponseMessageType     `xml:",omitempty"`
-	AppMarketplaceUrl       XsString `xml:"m:AppMarketplaceUrl,omitempty"`
-	ConnectorsManagementUrl XsString `xml:"m:ConnectorsManagementUrl,omitempty"`
-}
-
-type FindAvailableMeetingTimesType struct {
-	BaseRequestType          `xml:",omitempty"`
-	Attendees                *ArrayOfSmtpAddressType `xml:"m:Attendees,omitempty"`
-	SearchWindowStart        XsDateTime              `xml:"m:SearchWindowStart,omitempty"`
-	SearchWindowDuration     XsDuration              `xml:"m:SearchWindowDuration,omitempty"`
-	MeetingDurationInMinutes XsInt                   `xml:"m:MeetingDurationInMinutes,omitempty"`
-	Location                 XsString                `xml:"m:Location,omitempty"`
-	MaxCandidates            XsInt                   `xml:"m:MaxCandidates,omitempty"`
-	ActivityDomain           ActivityDomainType      `xml:"m:ActivityDomain,omitempty"`
-}
-
-type FindAvailableMeetingTimesResponseMessageType struct {
-	ResponseMessageType   `xml:",omitempty"`
-	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
-	EmptySuggestionsHint  EmptySuggestionReason        `xml:"m:EmptySuggestionsHint,omitempty"`
-}
-
-type FindMeetingTimeCandidatesType struct {
-	BaseRequestType     `xml:",omitempty"`
-	AttendeeConstraints *FindMeetingTimesAttendeeConstraints `xml:"m:AttendeeConstraints,omitempty"`
-	LocationConstraints *FindMeetingTimesLocationConstraints `xml:"m:LocationConstraints,omitempty"`
-	SearchConstraints   *FindMeetingTimesSearchConstraints   `xml:"m:SearchConstraints,omitempty"`
-	Constraints         *FindMeetingTimesConstraints         `xml:"m:Constraints,omitempty"`
-}
-
-type FindMeetingTimeCandidatesResponseMessageType struct {
-	ResponseMessageType   `xml:",omitempty"`
-	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
-}
-
-type GetUserPhotoType struct {
-	BaseRequestType `xml:",omitempty"`
-	Email           XsString          `xml:"m:Email,omitempty"`
-	SizeRequested   UserPhotoSizeType `xml:"m:SizeRequested,omitempty"`
-	TypeRequested   UserPhotoTypeType `xml:"m:TypeRequested,omitempty"`
-}
-
-type SetUserPhotoType struct {
-	BaseRequestType `xml:",omitempty"`
-	Email           NonEmptyStringType `xml:"m:Email,omitempty"`
-	Content         XsString           `xml:"m:Content,omitempty"`
-	TypeRequested   UserPhotoTypeType  `xml:"m:TypeRequested,omitempty"`
-}
-
-type SetUserPhotoResponseMessageType struct {
-	BaseResponseMessageType `xml:",omitempty"`
-}
-
-type GetMeetingSpaceType struct {
-	BaseRequestType `xml:",omitempty"`
-	ItemId          *ItemIdType `xml:"m:ItemId,omitempty"`
-}
-
-type GetMeetingSpaceResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MeetingSpace        *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type DeleteMeetingSpaceType struct {
-	BaseRequestType `xml:",omitempty"`
-	ItemId          *ItemIdType `xml:"m:ItemId,omitempty"`
-}
-
-type DeleteMeetingSpaceResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type UpdateMeetingSpaceType struct {
-	BaseRequestType `xml:",omitempty"`
-	ItemId          *ItemIdType       `xml:"m:ItemId,omitempty"`
-	MeetingSpace    *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type UpdateMeetingSpaceResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MeetingSpace        *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type CreateMeetingSpaceType struct {
-	BaseRequestType `xml:",omitempty"`
-	MeetingSpace    *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type CreateMeetingSpaceResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MeetingSpace        *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type FindMeetingSpaceByJoinUrlType struct {
-	BaseRequestType `xml:",omitempty"`
-	JoinUrl         XsString `xml:"m:JoinUrl,omitempty"`
-}
-
-type FindMeetingSpaceByJoinUrlResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MeetingSpace        *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type GetMeetingInstanceRequestType struct {
-	BaseRequestType `xml:",omitempty"`
-	ItemId          *ItemIdType `xml:"m:ItemId,omitempty"`
-}
-
-type GetMeetingInstanceResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MeetingInstance     *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
-}
-
-type DeleteMeetingInstanceRequestType struct {
-	BaseRequestType `xml:",omitempty"`
-	ItemId          *ItemIdType `xml:"m:ItemId,omitempty"`
-}
-
-type DeleteMeetingInstanceResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type UpdateMeetingInstanceRequestType struct {
-	BaseRequestType            `xml:",omitempty"`
-	ItemId                     *ItemIdType                           `xml:"m:ItemId,omitempty"`
-	MeetingInstance            *MeetingInstanceType                  `xml:"m:MeetingInstance,omitempty"`
-	ContentActivitiesToAdd     *NonEmptyArrayOfContentActivities     `xml:"m:ContentActivitiesToAdd,omitempty"`
-	ParticipantActivitiesToAdd *NonEmptyArrayOfParticipantActivities `xml:"m:ParticipantActivitiesToAdd,omitempty"`
-}
-
-type UpdateMeetingInstanceResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MeetingInstance     *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
-}
-
-type CreateMeetingInstanceRequestType struct {
-	BaseRequestType `xml:",omitempty"`
-	MeetingInstance *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
-}
-
-type CreateMeetingInstanceResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	MeetingInstance     *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
-}
-
-type StartSearchSession struct {
-	BaseRequestType `xml:",omitempty"`
-	SearchSessionId GuidType                `xml:"m:SearchSessionId,omitempty"`
-	WarmupOptions   WarmupOptionsType       `xml:"m:WarmupOptions,omitempty"`
-	SuggestionTypes SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
-	SearchScope     *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
-	IdFormat        IdFormatType            `xml:"m:IdFormat,omitempty"`
-	ApplicationId   XsString                `xml:"m:ApplicationId,omitempty"`
-	Scenario        XsString                `xml:"m:Scenario,omitempty"`
-}
-
-type StartSearchSessionResponseMessage struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type GetSearchSuggestions struct {
-	BaseRequestType                      `xml:",omitempty"`
-	SearchSessionId                      GuidType                `xml:"m:SearchSessionId,omitempty"`
-	Query                                XsString                `xml:"m:Query,omitempty"`
-	SuggestionTypes                      SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
-	SuggestionsPrimer                    XsBoolean               `xml:"m:SuggestionsPrimer,omitempty"`
-	MaxSuggestionsCountPerSuggestionType XsLong                  `xml:"m:MaxSuggestionsCountPerSuggestionType,omitempty"`
-	SearchScope                          *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
-	Scenario                             XsString                `xml:"m:Scenario,omitempty"`
-}
-
-type GetSearchSuggestionsResponseMessage struct {
-	ResponseMessageType `xml:",omitempty"`
-	SearchSuggestions   *SearchSuggestionsType `xml:"m:SearchSuggestions,omitempty"`
-}
-
-type DeleteSearchSuggestion struct {
-	BaseRequestType `xml:",omitempty"`
-	SearchSessionId GuidType                `xml:"m:SearchSessionId,omitempty"`
-	Query           XsString                `xml:"m:Query,omitempty"`
-	SuggestionTypes SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
-	SearchScope     *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
-	Scenario        XsString                `xml:"m:Scenario,omitempty"`
-}
-
-type DeleteSearchSuggestionResponseMessageType struct {
-	ResponseMessageType `xml:",omitempty"`
-	Response            *DeleteSearchSuggestionResponseType `xml:"m:Response,omitempty"`
-}
-
-type ExecuteSearch struct {
-	BaseRequestType                `xml:",omitempty"`
-	ApplicationId                  SearchApplicationIdType          `xml:"m:ApplicationId,omitempty"`
-	Scenario                       XsString                         `xml:"m:Scenario,omitempty"`
-	SearchSessionId                GuidType                         `xml:"m:SearchSessionId,omitempty"`
-	SearchScope                    *ArrayOfSearchScopeType          `xml:"m:SearchScope,omitempty"`
-	Query                          XsString                         `xml:"m:Query,omitempty"`
-	AnalyzedQuery                  *AnalyzedQuery                   `xml:"m:AnalyzedQuery,omitempty"`
-	ResultRowCount                 XsLong                           `xml:"m:ResultRowCount,omitempty"`
-	ResultRowOffset                XsLong                           `xml:"m:ResultRowOffset,omitempty"`
-	MaxResultsCountHint            XsLong                           `xml:"m:MaxResultsCountHint,omitempty"`
-	MaxPreviewLength               XsLong                           `xml:"m:MaxPreviewLength,omitempty"`
-	SearchRefiners                 *SearchRefinersTypeM             `xml:"m:SearchRefiners,omitempty"`
-	ExtendedKeywords               *ExtendedKeywordsType            `xml:"m:ExtendedKeywords,omitempty"`
-	RetrieveRefiners               XsBoolean                        `xml:"m:RetrieveRefiners,omitempty"`
-	MaxRefinersCountPerRefinerType XsLong                           `xml:"m:MaxRefinersCountPerRefinerType,omitempty"`
-	IdFormat                       IdFormatType                     `xml:"m:IdFormat,omitempty"`
-	ItemTypes                      ItemTypesFilterType              `xml:"m:ItemTypes,omitempty"`
-	PropertySetName                SearchResultsPropertySetNameType `xml:"m:PropertySetName,omitempty"`
-	SearchRestrictions             *RestrictionType                 `xml:"m:SearchRestrictions,omitempty"`
-	IncludeDeleted                 XsBoolean                        `xml:"m:IncludeDeleted,omitempty"`
-	SortOrder                      ExecuteSearchSortOrderType       `xml:"m:SortOrder,omitempty"`
-	KeywordMatchOption             MatchOptionsType                 `xml:"m:KeywordMatchOption,omitempty"`
-	ReturnAdditionalIds            XsBoolean                        `xml:"m:ReturnAdditionalIds,omitempty"`
-	RequestedProperties            *ArrayOfStringsType              `xml:"m:RequestedProperties,omitempty"`
-}
-
-type ExecuteSearchResponseMessage struct {
-	ResponseMessageType `xml:",omitempty"`
-	SearchResults       *SearchResultsType `xml:"m:SearchResults,omitempty"`
-}
-
-type EndSearchSession struct {
-	BaseRequestType `xml:",omitempty"`
-	SearchSessionId GuidType `xml:"m:SearchSessionId,omitempty"`
-}
-
-type EndSearchSessionResponseMessage struct {
-	ResponseMessageType `xml:",omitempty"`
-}
-
-type GetLastPrivateCatalogUpdateType struct {
-	BaseRequestType `xml:",omitempty"`
-	Client          *OfficeClientType `xml:"m:Client,omitempty"`
-}
-
-type GetLastPrivateCatalogUpdateResponseType struct {
-	ResponseMessageType `xml:",omitempty"`
-	LastUpdate          XsDateTime `xml:"m:LastUpdate,omitempty"`
-	CatalogHash         XsString   `xml:"m:CatalogHash,omitempty"`
-}
-
-type GetPrivateCatalogAddInsType struct {
-	BaseRequestType `xml:",omitempty"`
-	Client          *OfficeClientType `xml:"m:Client,omitempty"`
-}
-
-type GetPrivateCatalogAddInsResponseType struct {
-	ResponseMessageType `xml:",omitempty"`
-	AddIns              *ArrayOfPrivateCatalogAddInsType `xml:"m:AddIns,omitempty"`
-}
-
 type NonEmptyArrayOfBaseFolderIdsType struct {
 	FolderId              []*FolderIdType              `xml:"t:FolderId,omitempty"`
 	DistinguishedFolderId []*DistinguishedFolderIdType `xml:"t:DistinguishedFolderId,omitempty"`
 }
 
 type FolderIdType struct {
-	BaseFolderIdType `xml:",omitempty"`
-	Id               XsString `xml:"Id,attr,omitempty"`
-	ChangeKey        XsString `xml:"ChangeKey,attr,omitempty"`
+	Id        XsString `xml:"Id,attr,omitempty"`
+	ChangeKey XsString `xml:"ChangeKey,attr,omitempty"`
 }
 
 type BaseFolderIdType struct {
 }
 
 type DistinguishedFolderIdType struct {
-	BaseFolderIdType `xml:",omitempty"`
-	Id               DistinguishedFolderIdNameType `xml:"Id,attr,omitempty"`
-	ChangeKey        XsString                      `xml:"ChangeKey,attr,omitempty"`
-	Mailbox          *EmailAddressType             `xml:"t:Mailbox,omitempty"`
+	Id        DistinguishedFolderIdNameType `xml:"Id,attr,omitempty"`
+	ChangeKey XsString                      `xml:"ChangeKey,attr,omitempty"`
+	Mailbox   *EmailAddressType             `xml:"t:Mailbox,omitempty"`
 }
 
 type EmailAddressType struct {
-	BaseEmailAddressType `xml:",omitempty"`
-	Name                 XsString           `xml:"t:Name,omitempty"`
-	EmailAddress         NonEmptyStringType `xml:"t:EmailAddress,omitempty"`
-	RoutingType          NonEmptyStringType `xml:"t:RoutingType,omitempty"`
-	MailboxType          MailboxTypeType    `xml:"t:MailboxType,omitempty"`
-	ItemId               *ItemIdType        `xml:"t:ItemId,omitempty"`
-	OriginalDisplayName  XsString           `xml:"t:OriginalDisplayName,omitempty"`
+	Name                XsString           `xml:"t:Name,omitempty"`
+	EmailAddress        NonEmptyStringType `xml:"t:EmailAddress,omitempty"`
+	RoutingType         NonEmptyStringType `xml:"t:RoutingType,omitempty"`
+	MailboxType         MailboxTypeType    `xml:"t:MailboxType,omitempty"`
+	ItemId              *ItemIdType        `xml:"t:ItemId,omitempty"`
+	OriginalDisplayName XsString           `xml:"t:OriginalDisplayName,omitempty"`
 }
 
 type BaseEmailAddressType struct {
 }
 
 type ItemIdType struct {
-	BaseItemIdType `xml:",omitempty"`
-	Id             XsString `xml:"Id,attr,omitempty"`
-	ChangeKey      XsString `xml:"ChangeKey,attr,omitempty"`
+	Id        XsString `xml:"Id,attr,omitempty"`
+	ChangeKey XsString `xml:"ChangeKey,attr,omitempty"`
 }
 
 type BaseItemIdType struct {
@@ -4962,21 +3161,29 @@ type NonEmptyArrayOfAttachmentsType struct {
 }
 
 type ItemAttachmentType struct {
-	AttachmentType      `xml:",omitempty"`
-	Item                *ItemType                       `xml:"t:Item,omitempty"`
-	Message             *MessageType                    `xml:"t:Message,omitempty"`
-	SharingMessage      *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
-	CalendarItem        *CalendarItemType               `xml:"t:CalendarItem,omitempty"`
-	Contact             *ContactItemType                `xml:"t:Contact,omitempty"`
-	MeetingMessage      *MeetingMessageType             `xml:"t:MeetingMessage,omitempty"`
-	MeetingRequest      *MeetingRequestMessageType      `xml:"t:MeetingRequest,omitempty"`
-	MeetingResponse     *MeetingResponseMessageType     `xml:"t:MeetingResponse,omitempty"`
-	MeetingCancellation *MeetingCancellationMessageType `xml:"t:MeetingCancellation,omitempty"`
-	Task                *TaskType                       `xml:"t:Task,omitempty"`
-	PostItem            *PostItemType                   `xml:"t:PostItem,omitempty"`
-	RoleMember          *RoleMemberItemType             `xml:"t:RoleMember,omitempty"`
-	Network             *NetworkItemType                `xml:"t:Network,omitempty"`
-	Person              *AbchPersonItemType             `xml:"t:Person,omitempty"`
+	AttachmentId          *AttachmentIdType               `xml:"t:AttachmentId,omitempty"`
+	Name                  XsString                        `xml:"t:Name,omitempty"`
+	ContentType           XsString                        `xml:"t:ContentType,omitempty"`
+	ContentId             XsString                        `xml:"t:ContentId,omitempty"`
+	ContentLocation       XsString                        `xml:"t:ContentLocation,omitempty"`
+	AttachmentOriginalUrl XsString                        `xml:"t:AttachmentOriginalUrl,omitempty"`
+	Size                  XsInt                           `xml:"t:Size,omitempty"`
+	LastModifiedTime      XsDateTime                      `xml:"t:LastModifiedTime,omitempty"`
+	IsInline              XsBoolean                       `xml:"t:IsInline,omitempty"`
+	Item                  *ItemType                       `xml:"t:Item,omitempty"`
+	Message               *MessageType                    `xml:"t:Message,omitempty"`
+	SharingMessage        *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
+	CalendarItem          *CalendarItemType               `xml:"t:CalendarItem,omitempty"`
+	Contact               *ContactItemType                `xml:"t:Contact,omitempty"`
+	MeetingMessage        *MeetingMessageType             `xml:"t:MeetingMessage,omitempty"`
+	MeetingRequest        *MeetingRequestMessageType      `xml:"t:MeetingRequest,omitempty"`
+	MeetingResponse       *MeetingResponseMessageType     `xml:"t:MeetingResponse,omitempty"`
+	MeetingCancellation   *MeetingCancellationMessageType `xml:"t:MeetingCancellation,omitempty"`
+	Task                  *TaskType                       `xml:"t:Task,omitempty"`
+	PostItem              *PostItemType                   `xml:"t:PostItem,omitempty"`
+	RoleMember            *RoleMemberItemType             `xml:"t:RoleMember,omitempty"`
+	Network               *NetworkItemType                `xml:"t:Network,omitempty"`
+	Person                *AbchPersonItemType             `xml:"t:Person,omitempty"`
 }
 
 type AttachmentType struct {
@@ -4992,42 +3199,111 @@ type AttachmentType struct {
 }
 
 type AttachmentIdType struct {
-	RequestAttachmentIdType `xml:",omitempty"`
-	RootItemId              XsString `xml:"RootItemId,attr,omitempty"`
-	RootItemChangeKey       XsString `xml:"RootItemChangeKey,attr,omitempty"`
+	Id                XsString `xml:"Id,attr,omitempty"`
+	RootItemId        XsString `xml:"RootItemId,attr,omitempty"`
+	RootItemChangeKey XsString `xml:"RootItemChangeKey,attr,omitempty"`
 }
 
 type RequestAttachmentIdType struct {
-	BaseItemIdType `xml:",omitempty"`
-	Id             XsString `xml:"Id,attr,omitempty"`
+	Id XsString `xml:"Id,attr,omitempty"`
 }
 
 type MessageType struct {
-	ItemType                   `xml:",omitempty"`
-	Sender                     *SingleRecipientType     `xml:"t:Sender,omitempty"`
-	ToRecipients               *ArrayOfRecipientsType   `xml:"t:ToRecipients,omitempty"`
-	CcRecipients               *ArrayOfRecipientsType   `xml:"t:CcRecipients,omitempty"`
-	BccRecipients              *ArrayOfRecipientsType   `xml:"t:BccRecipients,omitempty"`
-	IsReadReceiptRequested     XsBoolean                `xml:"t:IsReadReceiptRequested,omitempty"`
-	IsDeliveryReceiptRequested XsBoolean                `xml:"t:IsDeliveryReceiptRequested,omitempty"`
-	ConversationIndex          XsBase64Binary           `xml:"t:ConversationIndex,omitempty"`
-	ConversationTopic          XsString                 `xml:"t:ConversationTopic,omitempty"`
-	From                       *SingleRecipientType     `xml:"t:From,omitempty"`
-	InternetMessageId          XsString                 `xml:"t:InternetMessageId,omitempty"`
-	IsRead                     XsBoolean                `xml:"t:IsRead,omitempty"`
-	IsResponseRequested        XsBoolean                `xml:"t:IsResponseRequested,omitempty"`
-	References                 XsString                 `xml:"t:References,omitempty"`
-	ReplyTo                    *ArrayOfRecipientsType   `xml:"t:ReplyTo,omitempty"`
-	ReceivedBy                 *SingleRecipientType     `xml:"t:ReceivedBy,omitempty"`
-	ReceivedRepresenting       *SingleRecipientType     `xml:"t:ReceivedRepresenting,omitempty"`
-	ApprovalRequestData        *ApprovalRequestDataType `xml:"t:ApprovalRequestData,omitempty"`
-	VotingInformation          *VotingInformationType   `xml:"t:VotingInformation,omitempty"`
-	ReminderMessageData        *ReminderMessageDataType `xml:"t:ReminderMessageData,omitempty"`
-	MessageSafety              *MessageSafetyType       `xml:"t:MessageSafety,omitempty"`
-	SenderSMTPAddress          *SmtpAddressType         `xml:"t:SenderSMTPAddress,omitempty"`
-	MailboxGuids               *MailboxGuidsType        `xml:"t:MailboxGuids,omitempty"`
-	PublishedCalendarItemIcs   XsString                 `xml:"t:PublishedCalendarItemIcs,omitempty"`
-	PublishedCalendarItemName  XsString                 `xml:"t:PublishedCalendarItemName,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
 }
 
 type SingleRecipientType struct {
@@ -5074,9 +3350,103 @@ type MessageSafetyType struct {
 }
 
 type SharingMessageType struct {
-	MessageType           `xml:",omitempty"`
-	SharingMessageAction  *SharingMessageActionType        `xml:"t:SharingMessageAction,omitempty"`
-	SharingMessageActions *ArrayOfSharingMessageActionType `xml:"t:SharingMessageActions,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	SharingMessageAction         *SharingMessageActionType                 `xml:"t:SharingMessageAction,omitempty"`
+	SharingMessageActions        *ArrayOfSharingMessageActionType          `xml:"t:SharingMessageActions,omitempty"`
 }
 
 type SharingMessageActionType struct {
@@ -5090,62 +3460,132 @@ type ArrayOfSharingMessageActionType struct {
 }
 
 type CalendarItemType struct {
-	ItemType                  `xml:",omitempty"`
-	UID                       XsString                               `xml:"t:UID,omitempty"`
-	RecurrenceId              XsDateTime                             `xml:"t:RecurrenceId,omitempty"`
-	DateTimeStamp             XsDateTime                             `xml:"t:DateTimeStamp,omitempty"`
-	Start                     XsDateTime                             `xml:"t:Start,omitempty"`
-	End                       XsDateTime                             `xml:"t:End,omitempty"`
-	OriginalStart             XsDateTime                             `xml:"t:OriginalStart,omitempty"`
-	IsAllDayEvent             XsBoolean                              `xml:"t:IsAllDayEvent,omitempty"`
-	LegacyFreeBusyStatus      LegacyFreeBusyType                     `xml:"t:LegacyFreeBusyStatus,omitempty"`
-	Location                  XsString                               `xml:"t:Location,omitempty"`
-	When                      XsString                               `xml:"t:When,omitempty"`
-	IsMeeting                 XsBoolean                              `xml:"t:IsMeeting,omitempty"`
-	IsCancelled               XsBoolean                              `xml:"t:IsCancelled,omitempty"`
-	IsRecurring               XsBoolean                              `xml:"t:IsRecurring,omitempty"`
-	MeetingRequestWasSent     XsBoolean                              `xml:"t:MeetingRequestWasSent,omitempty"`
-	IsResponseRequested       XsBoolean                              `xml:"t:IsResponseRequested,omitempty"`
-	CalendarItemType          CalendarItemTypeType                   `xml:"t:CalendarItemType,omitempty"`
-	MyResponseType            ResponseTypeType                       `xml:"t:MyResponseType,omitempty"`
-	Organizer                 *SingleRecipientType                   `xml:"t:Organizer,omitempty"`
-	RequiredAttendees         *NonEmptyArrayOfAttendeesType          `xml:"t:RequiredAttendees,omitempty"`
-	OptionalAttendees         *NonEmptyArrayOfAttendeesType          `xml:"t:OptionalAttendees,omitempty"`
-	Resources                 *NonEmptyArrayOfAttendeesType          `xml:"t:Resources,omitempty"`
-	InboxReminders            *ArrayOfInboxReminderType              `xml:"t:InboxReminders,omitempty"`
-	ConflictingMeetingCount   XsInt                                  `xml:"t:ConflictingMeetingCount,omitempty"`
-	AdjacentMeetingCount      XsInt                                  `xml:"t:AdjacentMeetingCount,omitempty"`
-	ConflictingMeetings       *NonEmptyArrayOfAllItemsType           `xml:"t:ConflictingMeetings,omitempty"`
-	AdjacentMeetings          *NonEmptyArrayOfAllItemsType           `xml:"t:AdjacentMeetings,omitempty"`
-	Duration                  XsString                               `xml:"t:Duration,omitempty"`
-	TimeZone                  XsString                               `xml:"t:TimeZone,omitempty"`
-	AppointmentReplyTime      XsDateTime                             `xml:"t:AppointmentReplyTime,omitempty"`
-	AppointmentSequenceNumber XsInt                                  `xml:"t:AppointmentSequenceNumber,omitempty"`
-	AppointmentState          XsInt                                  `xml:"t:AppointmentState,omitempty"`
-	Recurrence                *RecurrenceType                        `xml:"t:Recurrence,omitempty"`
-	FirstOccurrence           *OccurrenceInfoType                    `xml:"t:FirstOccurrence,omitempty"`
-	LastOccurrence            *OccurrenceInfoType                    `xml:"t:LastOccurrence,omitempty"`
-	ModifiedOccurrences       *NonEmptyArrayOfOccurrenceInfoType     `xml:"t:ModifiedOccurrences,omitempty"`
-	DeletedOccurrences        *NonEmptyArrayOfDeletedOccurrencesType `xml:"t:DeletedOccurrences,omitempty"`
-	MeetingTimeZone           *TimeZoneType                          `xml:"t:MeetingTimeZone,omitempty"`
-	StartTimeZone             *TimeZoneDefinitionType                `xml:"t:StartTimeZone,omitempty"`
-	EndTimeZone               *TimeZoneDefinitionType                `xml:"t:EndTimeZone,omitempty"`
-	ConferenceType            XsInt                                  `xml:"t:ConferenceType,omitempty"`
-	AllowNewTimeProposal      XsBoolean                              `xml:"t:AllowNewTimeProposal,omitempty"`
-	IsOnlineMeeting           XsBoolean                              `xml:"t:IsOnlineMeeting,omitempty"`
-	MeetingWorkspaceUrl       XsString                               `xml:"t:MeetingWorkspaceUrl,omitempty"`
-	NetShowUrl                XsString                               `xml:"t:NetShowUrl,omitempty"`
-	EnhancedLocation          *EnhancedLocationType                  `xml:"t:EnhancedLocation,omitempty"`
-	StartWallClock            XsDateTime                             `xml:"t:StartWallClock,omitempty"`
-	EndWallClock              XsDateTime                             `xml:"t:EndWallClock,omitempty"`
-	StartTimeZoneId           XsString                               `xml:"t:StartTimeZoneId,omitempty"`
-	EndTimeZoneId             XsString                               `xml:"t:EndTimeZoneId,omitempty"`
-	IntendedFreeBusyStatus    LegacyFreeBusyType                     `xml:"t:IntendedFreeBusyStatus,omitempty"`
-	JoinOnlineMeetingUrl      XsString                               `xml:"t:JoinOnlineMeetingUrl,omitempty"`
-	OnlineMeetingSettings     *OnlineMeetingSettingsType             `xml:"t:OnlineMeetingSettings,omitempty"`
-	IsOrganizer               XsBoolean                              `xml:"t:IsOrganizer,omitempty"`
-	CalendarActivityData      *CalendarActivityDataType              `xml:"t:CalendarActivityData,omitempty"`
-	DoNotForwardMeeting       XsBoolean                              `xml:"t:DoNotForwardMeeting,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	UID                          XsString                                  `xml:"t:UID,omitempty"`
+	RecurrenceId                 XsDateTime                                `xml:"t:RecurrenceId,omitempty"`
+	DateTimeStamp                XsDateTime                                `xml:"t:DateTimeStamp,omitempty"`
+	Start                        XsDateTime                                `xml:"t:Start,omitempty"`
+	End                          XsDateTime                                `xml:"t:End,omitempty"`
+	OriginalStart                XsDateTime                                `xml:"t:OriginalStart,omitempty"`
+	IsAllDayEvent                XsBoolean                                 `xml:"t:IsAllDayEvent,omitempty"`
+	LegacyFreeBusyStatus         LegacyFreeBusyType                        `xml:"t:LegacyFreeBusyStatus,omitempty"`
+	Location                     XsString                                  `xml:"t:Location,omitempty"`
+	When                         XsString                                  `xml:"t:When,omitempty"`
+	IsMeeting                    XsBoolean                                 `xml:"t:IsMeeting,omitempty"`
+	IsCancelled                  XsBoolean                                 `xml:"t:IsCancelled,omitempty"`
+	IsRecurring                  XsBoolean                                 `xml:"t:IsRecurring,omitempty"`
+	MeetingRequestWasSent        XsBoolean                                 `xml:"t:MeetingRequestWasSent,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	CalendarItemType             CalendarItemTypeType                      `xml:"t:CalendarItemType,omitempty"`
+	MyResponseType               ResponseTypeType                          `xml:"t:MyResponseType,omitempty"`
+	Organizer                    *SingleRecipientType                      `xml:"t:Organizer,omitempty"`
+	RequiredAttendees            *NonEmptyArrayOfAttendeesType             `xml:"t:RequiredAttendees,omitempty"`
+	OptionalAttendees            *NonEmptyArrayOfAttendeesType             `xml:"t:OptionalAttendees,omitempty"`
+	Resources                    *NonEmptyArrayOfAttendeesType             `xml:"t:Resources,omitempty"`
+	InboxReminders               *ArrayOfInboxReminderType                 `xml:"t:InboxReminders,omitempty"`
+	ConflictingMeetingCount      XsInt                                     `xml:"t:ConflictingMeetingCount,omitempty"`
+	AdjacentMeetingCount         XsInt                                     `xml:"t:AdjacentMeetingCount,omitempty"`
+	ConflictingMeetings          *NonEmptyArrayOfAllItemsType              `xml:"t:ConflictingMeetings,omitempty"`
+	AdjacentMeetings             *NonEmptyArrayOfAllItemsType              `xml:"t:AdjacentMeetings,omitempty"`
+	Duration                     XsString                                  `xml:"t:Duration,omitempty"`
+	TimeZone                     XsString                                  `xml:"t:TimeZone,omitempty"`
+	AppointmentReplyTime         XsDateTime                                `xml:"t:AppointmentReplyTime,omitempty"`
+	AppointmentSequenceNumber    XsInt                                     `xml:"t:AppointmentSequenceNumber,omitempty"`
+	AppointmentState             XsInt                                     `xml:"t:AppointmentState,omitempty"`
+	Recurrence                   *RecurrenceType                           `xml:"t:Recurrence,omitempty"`
+	FirstOccurrence              *OccurrenceInfoType                       `xml:"t:FirstOccurrence,omitempty"`
+	LastOccurrence               *OccurrenceInfoType                       `xml:"t:LastOccurrence,omitempty"`
+	ModifiedOccurrences          *NonEmptyArrayOfOccurrenceInfoType        `xml:"t:ModifiedOccurrences,omitempty"`
+	DeletedOccurrences           *NonEmptyArrayOfDeletedOccurrencesType    `xml:"t:DeletedOccurrences,omitempty"`
+	MeetingTimeZone              *TimeZoneType                             `xml:"t:MeetingTimeZone,omitempty"`
+	StartTimeZone                *TimeZoneDefinitionType                   `xml:"t:StartTimeZone,omitempty"`
+	EndTimeZone                  *TimeZoneDefinitionType                   `xml:"t:EndTimeZone,omitempty"`
+	ConferenceType               XsInt                                     `xml:"t:ConferenceType,omitempty"`
+	AllowNewTimeProposal         XsBoolean                                 `xml:"t:AllowNewTimeProposal,omitempty"`
+	IsOnlineMeeting              XsBoolean                                 `xml:"t:IsOnlineMeeting,omitempty"`
+	MeetingWorkspaceUrl          XsString                                  `xml:"t:MeetingWorkspaceUrl,omitempty"`
+	NetShowUrl                   XsString                                  `xml:"t:NetShowUrl,omitempty"`
+	EnhancedLocation             *EnhancedLocationType                     `xml:"t:EnhancedLocation,omitempty"`
+	StartWallClock               XsDateTime                                `xml:"t:StartWallClock,omitempty"`
+	EndWallClock                 XsDateTime                                `xml:"t:EndWallClock,omitempty"`
+	StartTimeZoneId              XsString                                  `xml:"t:StartTimeZoneId,omitempty"`
+	EndTimeZoneId                XsString                                  `xml:"t:EndTimeZoneId,omitempty"`
+	IntendedFreeBusyStatus       LegacyFreeBusyType                        `xml:"t:IntendedFreeBusyStatus,omitempty"`
+	JoinOnlineMeetingUrl         XsString                                  `xml:"t:JoinOnlineMeetingUrl,omitempty"`
+	OnlineMeetingSettings        *OnlineMeetingSettingsType                `xml:"t:OnlineMeetingSettings,omitempty"`
+	IsOrganizer                  XsBoolean                                 `xml:"t:IsOrganizer,omitempty"`
+	CalendarActivityData         *CalendarActivityDataType                 `xml:"t:CalendarActivityData,omitempty"`
+	DoNotForwardMeeting          XsBoolean                                 `xml:"t:DoNotForwardMeeting,omitempty"`
 }
 
 type NonEmptyArrayOfAttendeesType struct {
@@ -5205,92 +3645,162 @@ type NonEmptyArrayOfAllItemsType struct {
 }
 
 type ContactItemType struct {
-	ItemType                        `xml:",omitempty"`
-	FileAs                          XsString                        `xml:"t:FileAs,omitempty"`
-	FileAsMapping                   FileAsMappingType               `xml:"t:FileAsMapping,omitempty"`
-	DisplayName                     XsString                        `xml:"t:DisplayName,omitempty"`
-	GivenName                       XsString                        `xml:"t:GivenName,omitempty"`
-	Initials                        XsString                        `xml:"t:Initials,omitempty"`
-	MiddleName                      XsString                        `xml:"t:MiddleName,omitempty"`
-	Nickname                        XsString                        `xml:"t:Nickname,omitempty"`
-	CompleteName                    *CompleteNameType               `xml:"t:CompleteName,omitempty"`
-	CompanyName                     XsString                        `xml:"t:CompanyName,omitempty"`
-	EmailAddresses                  *EmailAddressDictionaryType     `xml:"t:EmailAddresses,omitempty"`
-	AbchEmailAddresses              *AbchEmailAddressDictionaryType `xml:"t:AbchEmailAddresses,omitempty"`
-	PhysicalAddresses               *PhysicalAddressDictionaryType  `xml:"t:PhysicalAddresses,omitempty"`
-	PhoneNumbers                    *PhoneNumberDictionaryType      `xml:"t:PhoneNumbers,omitempty"`
-	AssistantName                   XsString                        `xml:"t:AssistantName,omitempty"`
-	Birthday                        XsDateTime                      `xml:"t:Birthday,omitempty"`
-	BusinessHomePage                XsAnyURI                        `xml:"t:BusinessHomePage,omitempty"`
-	Children                        *ArrayOfStringsType             `xml:"t:Children,omitempty"`
-	Companies                       *ArrayOfStringsType             `xml:"t:Companies,omitempty"`
-	ContactSource                   ContactSourceType               `xml:"t:ContactSource,omitempty"`
-	Department                      XsString                        `xml:"t:Department,omitempty"`
-	Generation                      XsString                        `xml:"t:Generation,omitempty"`
-	ImAddresses                     *ImAddressDictionaryType        `xml:"t:ImAddresses,omitempty"`
-	JobTitle                        XsString                        `xml:"t:JobTitle,omitempty"`
-	Manager                         XsString                        `xml:"t:Manager,omitempty"`
-	Mileage                         XsString                        `xml:"t:Mileage,omitempty"`
-	OfficeLocation                  XsString                        `xml:"t:OfficeLocation,omitempty"`
-	PostalAddressIndex              PhysicalAddressIndexType        `xml:"t:PostalAddressIndex,omitempty"`
-	Profession                      XsString                        `xml:"t:Profession,omitempty"`
-	SpouseName                      XsString                        `xml:"t:SpouseName,omitempty"`
-	Surname                         XsString                        `xml:"t:Surname,omitempty"`
-	WeddingAnniversary              XsDateTime                      `xml:"t:WeddingAnniversary,omitempty"`
-	HasPicture                      XsBoolean                       `xml:"t:HasPicture,omitempty"`
-	PhoneticFullName                XsString                        `xml:"t:PhoneticFullName,omitempty"`
-	PhoneticFirstName               XsString                        `xml:"t:PhoneticFirstName,omitempty"`
-	PhoneticLastName                XsString                        `xml:"t:PhoneticLastName,omitempty"`
-	Alias                           XsString                        `xml:"t:Alias,omitempty"`
-	Notes                           XsString                        `xml:"t:Notes,omitempty"`
-	Photo                           XsBase64Binary                  `xml:"t:Photo,omitempty"`
-	UserSMIMECertificate            *ArrayOfBinaryType              `xml:"t:UserSMIMECertificate,omitempty"`
-	MSExchangeCertificate           *ArrayOfBinaryType              `xml:"t:MSExchangeCertificate,omitempty"`
-	DirectoryId                     XsString                        `xml:"t:DirectoryId,omitempty"`
-	ManagerMailbox                  *SingleRecipientType            `xml:"t:ManagerMailbox,omitempty"`
-	DirectReports                   *ArrayOfRecipientsType          `xml:"t:DirectReports,omitempty"`
-	AccountName                     XsString                        `xml:"t:AccountName,omitempty"`
-	IsAutoUpdateDisabled            XsBoolean                       `xml:"t:IsAutoUpdateDisabled,omitempty"`
-	IsMessengerEnabled              XsBoolean                       `xml:"t:IsMessengerEnabled,omitempty"`
-	Comment                         XsString                        `xml:"t:Comment,omitempty"`
-	ContactShortId                  XsInt                           `xml:"t:ContactShortId,omitempty"`
-	ContactType                     XsString                        `xml:"t:ContactType,omitempty"`
-	Gender                          XsString                        `xml:"t:Gender,omitempty"`
-	IsHidden                        XsBoolean                       `xml:"t:IsHidden,omitempty"`
-	ObjectId                        XsString                        `xml:"t:ObjectId,omitempty"`
-	PassportId                      XsLong                          `xml:"t:PassportId,omitempty"`
-	IsPrivate                       XsBoolean                       `xml:"t:IsPrivate,omitempty"`
-	SourceId                        XsString                        `xml:"t:SourceId,omitempty"`
-	TrustLevel                      XsInt                           `xml:"t:TrustLevel,omitempty"`
-	CreatedBy                       XsString                        `xml:"t:CreatedBy,omitempty"`
-	Urls                            *ContactUrlDictionaryType       `xml:"t:Urls,omitempty"`
-	Cid                             XsLong                          `xml:"t:Cid,omitempty"`
-	SkypeAuthCertificate            XsString                        `xml:"t:SkypeAuthCertificate,omitempty"`
-	SkypeContext                    XsString                        `xml:"t:SkypeContext,omitempty"`
-	SkypeId                         XsString                        `xml:"t:SkypeId,omitempty"`
-	SkypeRelationship               XsString                        `xml:"t:SkypeRelationship,omitempty"`
-	YomiNickname                    XsString                        `xml:"t:YomiNickname,omitempty"`
-	XboxLiveTag                     XsString                        `xml:"t:XboxLiveTag,omitempty"`
-	InviteFree                      XsBoolean                       `xml:"t:InviteFree,omitempty"`
-	HidePresenceAndProfile          XsBoolean                       `xml:"t:HidePresenceAndProfile,omitempty"`
-	IsPendingOutbound               XsBoolean                       `xml:"t:IsPendingOutbound,omitempty"`
-	SupportGroupFeeds               XsBoolean                       `xml:"t:SupportGroupFeeds,omitempty"`
-	UserTileHash                    XsString                        `xml:"t:UserTileHash,omitempty"`
-	UnifiedInbox                    XsBoolean                       `xml:"t:UnifiedInbox,omitempty"`
-	Mris                            *ArrayOfStringsType             `xml:"t:Mris,omitempty"`
-	Wlid                            XsString                        `xml:"t:Wlid,omitempty"`
-	AbchContactId                   GuidType                        `xml:"t:AbchContactId,omitempty"`
-	NotInBirthdayCalendar           XsBoolean                       `xml:"t:NotInBirthdayCalendar,omitempty"`
-	ShellContactType                XsString                        `xml:"t:ShellContactType,omitempty"`
-	ImMri                           XsString                        `xml:"t:ImMri,omitempty"`
-	PresenceTrustLevel              XsInt                           `xml:"t:PresenceTrustLevel,omitempty"`
-	OtherMri                        XsString                        `xml:"t:OtherMri,omitempty"`
-	ProfileLastChanged              XsString                        `xml:"t:ProfileLastChanged,omitempty"`
-	MobileIMEnabled                 XsBoolean                       `xml:"t:MobileIMEnabled,omitempty"`
-	PartnerNetworkProfilePhotoUrl   XsString                        `xml:"t:PartnerNetworkProfilePhotoUrl,omitempty"`
-	PartnerNetworkThumbnailPhotoUrl XsString                        `xml:"t:PartnerNetworkThumbnailPhotoUrl,omitempty"`
-	PersonId                        XsString                        `xml:"t:PersonId,omitempty"`
-	ConversationGuid                GuidType                        `xml:"t:ConversationGuid,omitempty"`
+	MimeContent                     *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                          *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId                  *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                       ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                         XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                     SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                            *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                     *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived                XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                            XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                      *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                      ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                       XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                     XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                         XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                        XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                        XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                    XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders          *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                    XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated                 XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects                 *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                   XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                   XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime                XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart      ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                       XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                       XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                      XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments                  XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty                []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                         XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights                 *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName                XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime                XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                    XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString    XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString    XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId                  *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                      *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                            *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                    XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                     XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody                  *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult          *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                       *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                      *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                   XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                         XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData     *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons          *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                       XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                     XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages                XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                        *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                       IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                       XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                         XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                        *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                        *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                     XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview                 *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                      *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags                 *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview          *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                           *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                    *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds     *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                    XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                       XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification         InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	FileAs                          XsString                                  `xml:"t:FileAs,omitempty"`
+	FileAsMapping                   FileAsMappingType                         `xml:"t:FileAsMapping,omitempty"`
+	DisplayName                     XsString                                  `xml:"t:DisplayName,omitempty"`
+	GivenName                       XsString                                  `xml:"t:GivenName,omitempty"`
+	Initials                        XsString                                  `xml:"t:Initials,omitempty"`
+	MiddleName                      XsString                                  `xml:"t:MiddleName,omitempty"`
+	Nickname                        XsString                                  `xml:"t:Nickname,omitempty"`
+	CompleteName                    *CompleteNameType                         `xml:"t:CompleteName,omitempty"`
+	CompanyName                     XsString                                  `xml:"t:CompanyName,omitempty"`
+	EmailAddresses                  *EmailAddressDictionaryType               `xml:"t:EmailAddresses,omitempty"`
+	AbchEmailAddresses              *AbchEmailAddressDictionaryType           `xml:"t:AbchEmailAddresses,omitempty"`
+	PhysicalAddresses               *PhysicalAddressDictionaryType            `xml:"t:PhysicalAddresses,omitempty"`
+	PhoneNumbers                    *PhoneNumberDictionaryType                `xml:"t:PhoneNumbers,omitempty"`
+	AssistantName                   XsString                                  `xml:"t:AssistantName,omitempty"`
+	Birthday                        XsDateTime                                `xml:"t:Birthday,omitempty"`
+	BusinessHomePage                XsAnyURI                                  `xml:"t:BusinessHomePage,omitempty"`
+	Children                        *ArrayOfStringsType                       `xml:"t:Children,omitempty"`
+	Companies                       *ArrayOfStringsType                       `xml:"t:Companies,omitempty"`
+	ContactSource                   ContactSourceType                         `xml:"t:ContactSource,omitempty"`
+	Department                      XsString                                  `xml:"t:Department,omitempty"`
+	Generation                      XsString                                  `xml:"t:Generation,omitempty"`
+	ImAddresses                     *ImAddressDictionaryType                  `xml:"t:ImAddresses,omitempty"`
+	JobTitle                        XsString                                  `xml:"t:JobTitle,omitempty"`
+	Manager                         XsString                                  `xml:"t:Manager,omitempty"`
+	Mileage                         XsString                                  `xml:"t:Mileage,omitempty"`
+	OfficeLocation                  XsString                                  `xml:"t:OfficeLocation,omitempty"`
+	PostalAddressIndex              PhysicalAddressIndexType                  `xml:"t:PostalAddressIndex,omitempty"`
+	Profession                      XsString                                  `xml:"t:Profession,omitempty"`
+	SpouseName                      XsString                                  `xml:"t:SpouseName,omitempty"`
+	Surname                         XsString                                  `xml:"t:Surname,omitempty"`
+	WeddingAnniversary              XsDateTime                                `xml:"t:WeddingAnniversary,omitempty"`
+	HasPicture                      XsBoolean                                 `xml:"t:HasPicture,omitempty"`
+	PhoneticFullName                XsString                                  `xml:"t:PhoneticFullName,omitempty"`
+	PhoneticFirstName               XsString                                  `xml:"t:PhoneticFirstName,omitempty"`
+	PhoneticLastName                XsString                                  `xml:"t:PhoneticLastName,omitempty"`
+	Alias                           XsString                                  `xml:"t:Alias,omitempty"`
+	Notes                           XsString                                  `xml:"t:Notes,omitempty"`
+	Photo                           XsBase64Binary                            `xml:"t:Photo,omitempty"`
+	UserSMIMECertificate            *ArrayOfBinaryType                        `xml:"t:UserSMIMECertificate,omitempty"`
+	MSExchangeCertificate           *ArrayOfBinaryType                        `xml:"t:MSExchangeCertificate,omitempty"`
+	DirectoryId                     XsString                                  `xml:"t:DirectoryId,omitempty"`
+	ManagerMailbox                  *SingleRecipientType                      `xml:"t:ManagerMailbox,omitempty"`
+	DirectReports                   *ArrayOfRecipientsType                    `xml:"t:DirectReports,omitempty"`
+	AccountName                     XsString                                  `xml:"t:AccountName,omitempty"`
+	IsAutoUpdateDisabled            XsBoolean                                 `xml:"t:IsAutoUpdateDisabled,omitempty"`
+	IsMessengerEnabled              XsBoolean                                 `xml:"t:IsMessengerEnabled,omitempty"`
+	Comment                         XsString                                  `xml:"t:Comment,omitempty"`
+	ContactShortId                  XsInt                                     `xml:"t:ContactShortId,omitempty"`
+	ContactType                     XsString                                  `xml:"t:ContactType,omitempty"`
+	Gender                          XsString                                  `xml:"t:Gender,omitempty"`
+	IsHidden                        XsBoolean                                 `xml:"t:IsHidden,omitempty"`
+	ObjectId                        XsString                                  `xml:"t:ObjectId,omitempty"`
+	PassportId                      XsLong                                    `xml:"t:PassportId,omitempty"`
+	IsPrivate                       XsBoolean                                 `xml:"t:IsPrivate,omitempty"`
+	SourceId                        XsString                                  `xml:"t:SourceId,omitempty"`
+	TrustLevel                      XsInt                                     `xml:"t:TrustLevel,omitempty"`
+	CreatedBy                       XsString                                  `xml:"t:CreatedBy,omitempty"`
+	Urls                            *ContactUrlDictionaryType                 `xml:"t:Urls,omitempty"`
+	Cid                             XsLong                                    `xml:"t:Cid,omitempty"`
+	SkypeAuthCertificate            XsString                                  `xml:"t:SkypeAuthCertificate,omitempty"`
+	SkypeContext                    XsString                                  `xml:"t:SkypeContext,omitempty"`
+	SkypeId                         XsString                                  `xml:"t:SkypeId,omitempty"`
+	SkypeRelationship               XsString                                  `xml:"t:SkypeRelationship,omitempty"`
+	YomiNickname                    XsString                                  `xml:"t:YomiNickname,omitempty"`
+	XboxLiveTag                     XsString                                  `xml:"t:XboxLiveTag,omitempty"`
+	InviteFree                      XsBoolean                                 `xml:"t:InviteFree,omitempty"`
+	HidePresenceAndProfile          XsBoolean                                 `xml:"t:HidePresenceAndProfile,omitempty"`
+	IsPendingOutbound               XsBoolean                                 `xml:"t:IsPendingOutbound,omitempty"`
+	SupportGroupFeeds               XsBoolean                                 `xml:"t:SupportGroupFeeds,omitempty"`
+	UserTileHash                    XsString                                  `xml:"t:UserTileHash,omitempty"`
+	UnifiedInbox                    XsBoolean                                 `xml:"t:UnifiedInbox,omitempty"`
+	Mris                            *ArrayOfStringsType                       `xml:"t:Mris,omitempty"`
+	Wlid                            XsString                                  `xml:"t:Wlid,omitempty"`
+	AbchContactId                   GuidType                                  `xml:"t:AbchContactId,omitempty"`
+	NotInBirthdayCalendar           XsBoolean                                 `xml:"t:NotInBirthdayCalendar,omitempty"`
+	ShellContactType                XsString                                  `xml:"t:ShellContactType,omitempty"`
+	ImMri                           XsString                                  `xml:"t:ImMri,omitempty"`
+	PresenceTrustLevel              XsInt                                     `xml:"t:PresenceTrustLevel,omitempty"`
+	OtherMri                        XsString                                  `xml:"t:OtherMri,omitempty"`
+	ProfileLastChanged              XsString                                  `xml:"t:ProfileLastChanged,omitempty"`
+	MobileIMEnabled                 XsBoolean                                 `xml:"t:MobileIMEnabled,omitempty"`
+	PartnerNetworkProfilePhotoUrl   XsString                                  `xml:"t:PartnerNetworkProfilePhotoUrl,omitempty"`
+	PartnerNetworkThumbnailPhotoUrl XsString                                  `xml:"t:PartnerNetworkThumbnailPhotoUrl,omitempty"`
+	PersonId                        XsString                                  `xml:"t:PersonId,omitempty"`
+	ConversationGuid                GuidType                                  `xml:"t:ConversationGuid,omitempty"`
 }
 
 type CompleteNameType struct {
@@ -5379,11 +3889,81 @@ type ContactUrlDictionaryEntryType struct {
 }
 
 type DistributionListType struct {
-	ItemType      `xml:",omitempty"`
-	DisplayName   XsString          `xml:"t:DisplayName,omitempty"`
-	FileAs        XsString          `xml:"t:FileAs,omitempty"`
-	ContactSource ContactSourceType `xml:"t:ContactSource,omitempty"`
-	Members       *MembersListType  `xml:"t:Members,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	DisplayName                  XsString                                  `xml:"t:DisplayName,omitempty"`
+	FileAs                       XsString                                  `xml:"t:FileAs,omitempty"`
+	ContactSource                ContactSourceType                         `xml:"t:ContactSource,omitempty"`
+	Members                      *MembersListType                          `xml:"t:Members,omitempty"`
 }
 
 type MembersListType struct {
@@ -5397,68 +3977,265 @@ type MemberType struct {
 }
 
 type MeetingMessageType struct {
-	MessageType              `xml:",omitempty"`
-	AssociatedCalendarItemId *ItemIdType      `xml:"t:AssociatedCalendarItemId,omitempty"`
-	IsDelegated              XsBoolean        `xml:"t:IsDelegated,omitempty"`
-	IsOutOfDate              XsBoolean        `xml:"t:IsOutOfDate,omitempty"`
-	HasBeenProcessed         XsBoolean        `xml:"t:HasBeenProcessed,omitempty"`
-	ResponseType             ResponseTypeType `xml:"t:ResponseType,omitempty"`
-	UID                      XsString         `xml:"t:UID,omitempty"`
-	RecurrenceId             XsDateTime       `xml:"t:RecurrenceId,omitempty"`
-	DateTimeStamp            XsDateTime       `xml:"t:DateTimeStamp,omitempty"`
-	IsOrganizer              XsBoolean        `xml:"t:IsOrganizer,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	AssociatedCalendarItemId     *ItemIdType                               `xml:"t:AssociatedCalendarItemId,omitempty"`
+	IsDelegated                  XsBoolean                                 `xml:"t:IsDelegated,omitempty"`
+	IsOutOfDate                  XsBoolean                                 `xml:"t:IsOutOfDate,omitempty"`
+	HasBeenProcessed             XsBoolean                                 `xml:"t:HasBeenProcessed,omitempty"`
+	ResponseType                 ResponseTypeType                          `xml:"t:ResponseType,omitempty"`
+	UID                          XsString                                  `xml:"t:UID,omitempty"`
+	RecurrenceId                 XsDateTime                                `xml:"t:RecurrenceId,omitempty"`
+	DateTimeStamp                XsDateTime                                `xml:"t:DateTimeStamp,omitempty"`
+	IsOrganizer                  XsBoolean                                 `xml:"t:IsOrganizer,omitempty"`
 }
 
 type MeetingRequestMessageType struct {
-	MeetingMessageType        `xml:",omitempty"`
-	MeetingRequestType        MeetingRequestTypeType                 `xml:"t:MeetingRequestType,omitempty"`
-	IntendedFreeBusyStatus    LegacyFreeBusyType                     `xml:"t:IntendedFreeBusyStatus,omitempty"`
-	Start                     XsDateTime                             `xml:"t:Start,omitempty"`
-	End                       XsDateTime                             `xml:"t:End,omitempty"`
-	OriginalStart             XsDateTime                             `xml:"t:OriginalStart,omitempty"`
-	IsAllDayEvent             XsBoolean                              `xml:"t:IsAllDayEvent,omitempty"`
-	LegacyFreeBusyStatus      LegacyFreeBusyType                     `xml:"t:LegacyFreeBusyStatus,omitempty"`
-	Location                  XsString                               `xml:"t:Location,omitempty"`
-	When                      XsString                               `xml:"t:When,omitempty"`
-	IsMeeting                 XsBoolean                              `xml:"t:IsMeeting,omitempty"`
-	IsCancelled               XsBoolean                              `xml:"t:IsCancelled,omitempty"`
-	IsRecurring               XsBoolean                              `xml:"t:IsRecurring,omitempty"`
-	MeetingRequestWasSent     XsBoolean                              `xml:"t:MeetingRequestWasSent,omitempty"`
-	CalendarItemType          CalendarItemTypeType                   `xml:"t:CalendarItemType,omitempty"`
-	MyResponseType            ResponseTypeType                       `xml:"t:MyResponseType,omitempty"`
-	Organizer                 *SingleRecipientType                   `xml:"t:Organizer,omitempty"`
-	RequiredAttendees         *NonEmptyArrayOfAttendeesType          `xml:"t:RequiredAttendees,omitempty"`
-	OptionalAttendees         *NonEmptyArrayOfAttendeesType          `xml:"t:OptionalAttendees,omitempty"`
-	Resources                 *NonEmptyArrayOfAttendeesType          `xml:"t:Resources,omitempty"`
-	ConflictingMeetingCount   XsInt                                  `xml:"t:ConflictingMeetingCount,omitempty"`
-	AdjacentMeetingCount      XsInt                                  `xml:"t:AdjacentMeetingCount,omitempty"`
-	ConflictingMeetings       *NonEmptyArrayOfAllItemsType           `xml:"t:ConflictingMeetings,omitempty"`
-	AdjacentMeetings          *NonEmptyArrayOfAllItemsType           `xml:"t:AdjacentMeetings,omitempty"`
-	Duration                  XsString                               `xml:"t:Duration,omitempty"`
-	TimeZone                  XsString                               `xml:"t:TimeZone,omitempty"`
-	AppointmentReplyTime      XsDateTime                             `xml:"t:AppointmentReplyTime,omitempty"`
-	AppointmentSequenceNumber XsInt                                  `xml:"t:AppointmentSequenceNumber,omitempty"`
-	AppointmentState          XsInt                                  `xml:"t:AppointmentState,omitempty"`
-	Recurrence                *RecurrenceType                        `xml:"t:Recurrence,omitempty"`
-	FirstOccurrence           *OccurrenceInfoType                    `xml:"t:FirstOccurrence,omitempty"`
-	LastOccurrence            *OccurrenceInfoType                    `xml:"t:LastOccurrence,omitempty"`
-	ModifiedOccurrences       *NonEmptyArrayOfOccurrenceInfoType     `xml:"t:ModifiedOccurrences,omitempty"`
-	DeletedOccurrences        *NonEmptyArrayOfDeletedOccurrencesType `xml:"t:DeletedOccurrences,omitempty"`
-	MeetingTimeZone           *TimeZoneType                          `xml:"t:MeetingTimeZone,omitempty"`
-	StartTimeZone             *TimeZoneDefinitionType                `xml:"t:StartTimeZone,omitempty"`
-	EndTimeZone               *TimeZoneDefinitionType                `xml:"t:EndTimeZone,omitempty"`
-	ConferenceType            XsInt                                  `xml:"t:ConferenceType,omitempty"`
-	AllowNewTimeProposal      XsBoolean                              `xml:"t:AllowNewTimeProposal,omitempty"`
-	IsOnlineMeeting           XsBoolean                              `xml:"t:IsOnlineMeeting,omitempty"`
-	MeetingWorkspaceUrl       XsString                               `xml:"t:MeetingWorkspaceUrl,omitempty"`
-	NetShowUrl                XsString                               `xml:"t:NetShowUrl,omitempty"`
-	EnhancedLocation          *EnhancedLocationType                  `xml:"t:EnhancedLocation,omitempty"`
-	ChangeHighlights          *ChangeHighlightsType                  `xml:"t:ChangeHighlights,omitempty"`
-	StartWallClock            XsDateTime                             `xml:"t:StartWallClock,omitempty"`
-	EndWallClock              XsDateTime                             `xml:"t:EndWallClock,omitempty"`
-	StartTimeZoneId           XsString                               `xml:"t:StartTimeZoneId,omitempty"`
-	EndTimeZoneId             XsString                               `xml:"t:EndTimeZoneId,omitempty"`
-	DoNotForwardMeeting       XsBoolean                              `xml:"t:DoNotForwardMeeting,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	AssociatedCalendarItemId     *ItemIdType                               `xml:"t:AssociatedCalendarItemId,omitempty"`
+	IsDelegated                  XsBoolean                                 `xml:"t:IsDelegated,omitempty"`
+	IsOutOfDate                  XsBoolean                                 `xml:"t:IsOutOfDate,omitempty"`
+	HasBeenProcessed             XsBoolean                                 `xml:"t:HasBeenProcessed,omitempty"`
+	ResponseType                 ResponseTypeType                          `xml:"t:ResponseType,omitempty"`
+	UID                          XsString                                  `xml:"t:UID,omitempty"`
+	RecurrenceId                 XsDateTime                                `xml:"t:RecurrenceId,omitempty"`
+	DateTimeStamp                XsDateTime                                `xml:"t:DateTimeStamp,omitempty"`
+	IsOrganizer                  XsBoolean                                 `xml:"t:IsOrganizer,omitempty"`
+	MeetingRequestType           MeetingRequestTypeType                    `xml:"t:MeetingRequestType,omitempty"`
+	IntendedFreeBusyStatus       LegacyFreeBusyType                        `xml:"t:IntendedFreeBusyStatus,omitempty"`
+	Start                        XsDateTime                                `xml:"t:Start,omitempty"`
+	End                          XsDateTime                                `xml:"t:End,omitempty"`
+	OriginalStart                XsDateTime                                `xml:"t:OriginalStart,omitempty"`
+	IsAllDayEvent                XsBoolean                                 `xml:"t:IsAllDayEvent,omitempty"`
+	LegacyFreeBusyStatus         LegacyFreeBusyType                        `xml:"t:LegacyFreeBusyStatus,omitempty"`
+	Location                     XsString                                  `xml:"t:Location,omitempty"`
+	When                         XsString                                  `xml:"t:When,omitempty"`
+	IsMeeting                    XsBoolean                                 `xml:"t:IsMeeting,omitempty"`
+	IsCancelled                  XsBoolean                                 `xml:"t:IsCancelled,omitempty"`
+	IsRecurring                  XsBoolean                                 `xml:"t:IsRecurring,omitempty"`
+	MeetingRequestWasSent        XsBoolean                                 `xml:"t:MeetingRequestWasSent,omitempty"`
+	CalendarItemType             CalendarItemTypeType                      `xml:"t:CalendarItemType,omitempty"`
+	MyResponseType               ResponseTypeType                          `xml:"t:MyResponseType,omitempty"`
+	Organizer                    *SingleRecipientType                      `xml:"t:Organizer,omitempty"`
+	RequiredAttendees            *NonEmptyArrayOfAttendeesType             `xml:"t:RequiredAttendees,omitempty"`
+	OptionalAttendees            *NonEmptyArrayOfAttendeesType             `xml:"t:OptionalAttendees,omitempty"`
+	Resources                    *NonEmptyArrayOfAttendeesType             `xml:"t:Resources,omitempty"`
+	ConflictingMeetingCount      XsInt                                     `xml:"t:ConflictingMeetingCount,omitempty"`
+	AdjacentMeetingCount         XsInt                                     `xml:"t:AdjacentMeetingCount,omitempty"`
+	ConflictingMeetings          *NonEmptyArrayOfAllItemsType              `xml:"t:ConflictingMeetings,omitempty"`
+	AdjacentMeetings             *NonEmptyArrayOfAllItemsType              `xml:"t:AdjacentMeetings,omitempty"`
+	Duration                     XsString                                  `xml:"t:Duration,omitempty"`
+	TimeZone                     XsString                                  `xml:"t:TimeZone,omitempty"`
+	AppointmentReplyTime         XsDateTime                                `xml:"t:AppointmentReplyTime,omitempty"`
+	AppointmentSequenceNumber    XsInt                                     `xml:"t:AppointmentSequenceNumber,omitempty"`
+	AppointmentState             XsInt                                     `xml:"t:AppointmentState,omitempty"`
+	Recurrence                   *RecurrenceType                           `xml:"t:Recurrence,omitempty"`
+	FirstOccurrence              *OccurrenceInfoType                       `xml:"t:FirstOccurrence,omitempty"`
+	LastOccurrence               *OccurrenceInfoType                       `xml:"t:LastOccurrence,omitempty"`
+	ModifiedOccurrences          *NonEmptyArrayOfOccurrenceInfoType        `xml:"t:ModifiedOccurrences,omitempty"`
+	DeletedOccurrences           *NonEmptyArrayOfDeletedOccurrencesType    `xml:"t:DeletedOccurrences,omitempty"`
+	MeetingTimeZone              *TimeZoneType                             `xml:"t:MeetingTimeZone,omitempty"`
+	StartTimeZone                *TimeZoneDefinitionType                   `xml:"t:StartTimeZone,omitempty"`
+	EndTimeZone                  *TimeZoneDefinitionType                   `xml:"t:EndTimeZone,omitempty"`
+	ConferenceType               XsInt                                     `xml:"t:ConferenceType,omitempty"`
+	AllowNewTimeProposal         XsBoolean                                 `xml:"t:AllowNewTimeProposal,omitempty"`
+	IsOnlineMeeting              XsBoolean                                 `xml:"t:IsOnlineMeeting,omitempty"`
+	MeetingWorkspaceUrl          XsString                                  `xml:"t:MeetingWorkspaceUrl,omitempty"`
+	NetShowUrl                   XsString                                  `xml:"t:NetShowUrl,omitempty"`
+	EnhancedLocation             *EnhancedLocationType                     `xml:"t:EnhancedLocation,omitempty"`
+	ChangeHighlights             *ChangeHighlightsType                     `xml:"t:ChangeHighlights,omitempty"`
+	StartWallClock               XsDateTime                                `xml:"t:StartWallClock,omitempty"`
+	EndWallClock                 XsDateTime                                `xml:"t:EndWallClock,omitempty"`
+	StartTimeZoneId              XsString                                  `xml:"t:StartTimeZoneId,omitempty"`
+	EndTimeZoneId                XsString                                  `xml:"t:EndTimeZoneId,omitempty"`
+	DoNotForwardMeeting          XsBoolean                                 `xml:"t:DoNotForwardMeeting,omitempty"`
 }
 
 type RecurrenceType struct {
@@ -5474,49 +4251,46 @@ type RecurrenceType struct {
 }
 
 type RelativeYearlyRecurrencePatternType struct {
-	RecurrencePatternBaseType `xml:",omitempty"`
-	DaysOfWeek                DayOfWeekType      `xml:"t:DaysOfWeek,omitempty"`
-	DayOfWeekIndex            DayOfWeekIndexType `xml:"t:DayOfWeekIndex,omitempty"`
-	Month                     MonthNamesType     `xml:"t:Month,omitempty"`
+	DaysOfWeek     DayOfWeekType      `xml:"t:DaysOfWeek,omitempty"`
+	DayOfWeekIndex DayOfWeekIndexType `xml:"t:DayOfWeekIndex,omitempty"`
+	Month          MonthNamesType     `xml:"t:Month,omitempty"`
 }
 
 type RecurrencePatternBaseType struct {
 }
 
 type AbsoluteYearlyRecurrencePatternType struct {
-	RecurrencePatternBaseType `xml:",omitempty"`
-	DayOfMonth                XsInt          `xml:"t:DayOfMonth,omitempty"`
-	Month                     MonthNamesType `xml:"t:Month,omitempty"`
+	DayOfMonth XsInt          `xml:"t:DayOfMonth,omitempty"`
+	Month      MonthNamesType `xml:"t:Month,omitempty"`
 }
 
 type RelativeMonthlyRecurrencePatternType struct {
-	IntervalRecurrencePatternBaseType `xml:",omitempty"`
-	DaysOfWeek                        DayOfWeekType      `xml:"t:DaysOfWeek,omitempty"`
-	DayOfWeekIndex                    DayOfWeekIndexType `xml:"t:DayOfWeekIndex,omitempty"`
+	Interval       XsInt              `xml:"t:Interval,omitempty"`
+	DaysOfWeek     DayOfWeekType      `xml:"t:DaysOfWeek,omitempty"`
+	DayOfWeekIndex DayOfWeekIndexType `xml:"t:DayOfWeekIndex,omitempty"`
 }
 
 type IntervalRecurrencePatternBaseType struct {
-	RecurrencePatternBaseType `xml:",omitempty"`
-	Interval                  XsInt `xml:"t:Interval,omitempty"`
+	Interval XsInt `xml:"t:Interval,omitempty"`
 }
 
 type AbsoluteMonthlyRecurrencePatternType struct {
-	IntervalRecurrencePatternBaseType `xml:",omitempty"`
-	DayOfMonth                        XsInt `xml:"t:DayOfMonth,omitempty"`
+	Interval   XsInt `xml:"t:Interval,omitempty"`
+	DayOfMonth XsInt `xml:"t:DayOfMonth,omitempty"`
 }
 
 type WeeklyRecurrencePatternType struct {
-	IntervalRecurrencePatternBaseType `xml:",omitempty"`
-	DaysOfWeek                        DaysOfWeekType `xml:"t:DaysOfWeek,omitempty"`
-	FirstDayOfWeek                    DayOfWeekType  `xml:"t:FirstDayOfWeek,omitempty"`
+	Interval       XsInt          `xml:"t:Interval,omitempty"`
+	DaysOfWeek     DaysOfWeekType `xml:"t:DaysOfWeek,omitempty"`
+	FirstDayOfWeek DayOfWeekType  `xml:"t:FirstDayOfWeek,omitempty"`
 }
 
 type DailyRecurrencePatternType struct {
-	IntervalRecurrencePatternBaseType `xml:",omitempty"`
+	Interval XsInt `xml:"t:Interval,omitempty"`
 }
 
 type NoEndRecurrenceRangeType struct {
-	RecurrenceRangeBaseType `xml:",omitempty"`
+	StartDate XsDate `xml:"t:StartDate,omitempty"`
 }
 
 type RecurrenceRangeBaseType struct {
@@ -5524,13 +4298,13 @@ type RecurrenceRangeBaseType struct {
 }
 
 type EndDateRecurrenceRangeType struct {
-	RecurrenceRangeBaseType `xml:",omitempty"`
-	EndDate                 XsDate `xml:"t:EndDate,omitempty"`
+	StartDate XsDate `xml:"t:StartDate,omitempty"`
+	EndDate   XsDate `xml:"t:EndDate,omitempty"`
 }
 
 type NumberedRecurrenceRangeType struct {
-	RecurrenceRangeBaseType `xml:",omitempty"`
-	NumberOfOccurrences     XsInt `xml:"t:NumberOfOccurrences,omitempty"`
+	StartDate           XsDate `xml:"t:StartDate,omitempty"`
+	NumberOfOccurrences XsInt  `xml:"t:NumberOfOccurrences,omitempty"`
 }
 
 type OccurrenceInfoType struct {
@@ -5637,52 +4411,328 @@ type ChangeHighlightsType struct {
 }
 
 type MeetingResponseMessageType struct {
-	MeetingMessageType `xml:",omitempty"`
-	Start              XsDateTime            `xml:"t:Start,omitempty"`
-	End                XsDateTime            `xml:"t:End,omitempty"`
-	Location           XsString              `xml:"t:Location,omitempty"`
-	Recurrence         *RecurrenceType       `xml:"t:Recurrence,omitempty"`
-	CalendarItemType   XsString              `xml:"t:CalendarItemType,omitempty"`
-	ProposedStart      XsDateTime            `xml:"t:ProposedStart,omitempty"`
-	ProposedEnd        XsDateTime            `xml:"t:ProposedEnd,omitempty"`
-	EnhancedLocation   *EnhancedLocationType `xml:"t:EnhancedLocation,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	AssociatedCalendarItemId     *ItemIdType                               `xml:"t:AssociatedCalendarItemId,omitempty"`
+	IsDelegated                  XsBoolean                                 `xml:"t:IsDelegated,omitempty"`
+	IsOutOfDate                  XsBoolean                                 `xml:"t:IsOutOfDate,omitempty"`
+	HasBeenProcessed             XsBoolean                                 `xml:"t:HasBeenProcessed,omitempty"`
+	ResponseType                 ResponseTypeType                          `xml:"t:ResponseType,omitempty"`
+	UID                          XsString                                  `xml:"t:UID,omitempty"`
+	RecurrenceId                 XsDateTime                                `xml:"t:RecurrenceId,omitempty"`
+	DateTimeStamp                XsDateTime                                `xml:"t:DateTimeStamp,omitempty"`
+	IsOrganizer                  XsBoolean                                 `xml:"t:IsOrganizer,omitempty"`
+	Start                        XsDateTime                                `xml:"t:Start,omitempty"`
+	End                          XsDateTime                                `xml:"t:End,omitempty"`
+	Location                     XsString                                  `xml:"t:Location,omitempty"`
+	Recurrence                   *RecurrenceType                           `xml:"t:Recurrence,omitempty"`
+	CalendarItemType             XsString                                  `xml:"t:CalendarItemType,omitempty"`
+	ProposedStart                XsDateTime                                `xml:"t:ProposedStart,omitempty"`
+	ProposedEnd                  XsDateTime                                `xml:"t:ProposedEnd,omitempty"`
+	EnhancedLocation             *EnhancedLocationType                     `xml:"t:EnhancedLocation,omitempty"`
 }
 
 type MeetingCancellationMessageType struct {
-	MeetingMessageType  `xml:",omitempty"`
-	Start               XsDateTime            `xml:"t:Start,omitempty"`
-	End                 XsDateTime            `xml:"t:End,omitempty"`
-	Location            XsString              `xml:"t:Location,omitempty"`
-	Recurrence          *RecurrenceType       `xml:"t:Recurrence,omitempty"`
-	CalendarItemType    XsString              `xml:"t:CalendarItemType,omitempty"`
-	EnhancedLocation    *EnhancedLocationType `xml:"t:EnhancedLocation,omitempty"`
-	DoNotForwardMeeting XsBoolean             `xml:"t:DoNotForwardMeeting,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	AssociatedCalendarItemId     *ItemIdType                               `xml:"t:AssociatedCalendarItemId,omitempty"`
+	IsDelegated                  XsBoolean                                 `xml:"t:IsDelegated,omitempty"`
+	IsOutOfDate                  XsBoolean                                 `xml:"t:IsOutOfDate,omitempty"`
+	HasBeenProcessed             XsBoolean                                 `xml:"t:HasBeenProcessed,omitempty"`
+	ResponseType                 ResponseTypeType                          `xml:"t:ResponseType,omitempty"`
+	UID                          XsString                                  `xml:"t:UID,omitempty"`
+	RecurrenceId                 XsDateTime                                `xml:"t:RecurrenceId,omitempty"`
+	DateTimeStamp                XsDateTime                                `xml:"t:DateTimeStamp,omitempty"`
+	IsOrganizer                  XsBoolean                                 `xml:"t:IsOrganizer,omitempty"`
+	Start                        XsDateTime                                `xml:"t:Start,omitempty"`
+	End                          XsDateTime                                `xml:"t:End,omitempty"`
+	Location                     XsString                                  `xml:"t:Location,omitempty"`
+	Recurrence                   *RecurrenceType                           `xml:"t:Recurrence,omitempty"`
+	CalendarItemType             XsString                                  `xml:"t:CalendarItemType,omitempty"`
+	EnhancedLocation             *EnhancedLocationType                     `xml:"t:EnhancedLocation,omitempty"`
+	DoNotForwardMeeting          XsBoolean                                 `xml:"t:DoNotForwardMeeting,omitempty"`
 }
 
 type TaskType struct {
-	ItemType             `xml:",omitempty"`
-	ActualWork           XsInt                 `xml:"t:ActualWork,omitempty"`
-	AssignedTime         XsDateTime            `xml:"t:AssignedTime,omitempty"`
-	BillingInformation   XsString              `xml:"t:BillingInformation,omitempty"`
-	ChangeCount          XsInt                 `xml:"t:ChangeCount,omitempty"`
-	Companies            *ArrayOfStringsType   `xml:"t:Companies,omitempty"`
-	CompleteDate         XsDateTime            `xml:"t:CompleteDate,omitempty"`
-	Contacts             *ArrayOfStringsType   `xml:"t:Contacts,omitempty"`
-	DelegationState      TaskDelegateStateType `xml:"t:DelegationState,omitempty"`
-	Delegator            XsString              `xml:"t:Delegator,omitempty"`
-	DueDate              XsDateTime            `xml:"t:DueDate,omitempty"`
-	IsAssignmentEditable XsInt                 `xml:"t:IsAssignmentEditable,omitempty"`
-	IsComplete           XsBoolean             `xml:"t:IsComplete,omitempty"`
-	IsRecurring          XsBoolean             `xml:"t:IsRecurring,omitempty"`
-	IsTeamTask           XsBoolean             `xml:"t:IsTeamTask,omitempty"`
-	Mileage              XsString              `xml:"t:Mileage,omitempty"`
-	Owner                XsString              `xml:"t:Owner,omitempty"`
-	PercentComplete      XsDouble              `xml:"t:PercentComplete,omitempty"`
-	Recurrence           *TaskRecurrenceType   `xml:"t:Recurrence,omitempty"`
-	StartDate            XsDateTime            `xml:"t:StartDate,omitempty"`
-	Status               TaskStatusType        `xml:"t:Status,omitempty"`
-	StatusDescription    XsString              `xml:"t:StatusDescription,omitempty"`
-	TotalWork            XsInt                 `xml:"t:TotalWork,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	ActualWork                   XsInt                                     `xml:"t:ActualWork,omitempty"`
+	AssignedTime                 XsDateTime                                `xml:"t:AssignedTime,omitempty"`
+	BillingInformation           XsString                                  `xml:"t:BillingInformation,omitempty"`
+	ChangeCount                  XsInt                                     `xml:"t:ChangeCount,omitempty"`
+	Companies                    *ArrayOfStringsType                       `xml:"t:Companies,omitempty"`
+	CompleteDate                 XsDateTime                                `xml:"t:CompleteDate,omitempty"`
+	Contacts                     *ArrayOfStringsType                       `xml:"t:Contacts,omitempty"`
+	DelegationState              TaskDelegateStateType                     `xml:"t:DelegationState,omitempty"`
+	Delegator                    XsString                                  `xml:"t:Delegator,omitempty"`
+	DueDate                      XsDateTime                                `xml:"t:DueDate,omitempty"`
+	IsAssignmentEditable         XsInt                                     `xml:"t:IsAssignmentEditable,omitempty"`
+	IsComplete                   XsBoolean                                 `xml:"t:IsComplete,omitempty"`
+	IsRecurring                  XsBoolean                                 `xml:"t:IsRecurring,omitempty"`
+	IsTeamTask                   XsBoolean                                 `xml:"t:IsTeamTask,omitempty"`
+	Mileage                      XsString                                  `xml:"t:Mileage,omitempty"`
+	Owner                        XsString                                  `xml:"t:Owner,omitempty"`
+	PercentComplete              XsDouble                                  `xml:"t:PercentComplete,omitempty"`
+	Recurrence                   *TaskRecurrenceType                       `xml:"t:Recurrence,omitempty"`
+	StartDate                    XsDateTime                                `xml:"t:StartDate,omitempty"`
+	Status                       TaskStatusType                            `xml:"t:Status,omitempty"`
+	StatusDescription            XsString                                  `xml:"t:StatusDescription,omitempty"`
+	TotalWork                    XsInt                                     `xml:"t:TotalWork,omitempty"`
 }
 
 type TaskRecurrenceType struct {
@@ -5702,173 +4752,2284 @@ type TaskRecurrenceType struct {
 }
 
 type DailyRegeneratingPatternType struct {
-	RegeneratingPatternBaseType `xml:",omitempty"`
+	Interval XsInt `xml:"t:Interval,omitempty"`
 }
 
 type RegeneratingPatternBaseType struct {
-	IntervalRecurrencePatternBaseType `xml:",omitempty"`
+	Interval XsInt `xml:"t:Interval,omitempty"`
 }
 
 type WeeklyRegeneratingPatternType struct {
-	RegeneratingPatternBaseType `xml:",omitempty"`
+	Interval XsInt `xml:"t:Interval,omitempty"`
 }
 
 type MonthlyRegeneratingPatternType struct {
-	RegeneratingPatternBaseType `xml:",omitempty"`
+	Interval XsInt `xml:"t:Interval,omitempty"`
 }
 
 type YearlyRegeneratingPatternType struct {
-	RegeneratingPatternBaseType `xml:",omitempty"`
+	Interval XsInt `xml:"t:Interval,omitempty"`
 }
 
 type PostItemType struct {
-	ItemType          `xml:",omitempty"`
-	ConversationIndex XsBase64Binary       `xml:"t:ConversationIndex,omitempty"`
-	ConversationTopic XsString             `xml:"t:ConversationTopic,omitempty"`
-	From              *SingleRecipientType `xml:"t:From,omitempty"`
-	InternetMessageId XsString             `xml:"t:InternetMessageId,omitempty"`
-	IsRead            XsBoolean            `xml:"t:IsRead,omitempty"`
-	PostedTime        XsDateTime           `xml:"t:PostedTime,omitempty"`
-	References        XsString             `xml:"t:References,omitempty"`
-	Sender            *SingleRecipientType `xml:"t:Sender,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	PostedTime                   XsDateTime                                `xml:"t:PostedTime,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
 }
 
 type ReplyToItemType struct {
-	SmartResponseType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	NewBodyContent               *BodyType                                 `xml:"t:NewBodyContent,omitempty"`
 }
 
 type SmartResponseType struct {
-	SmartResponseBaseType `xml:",omitempty"`
-	NewBodyContent        *BodyType `xml:"t:NewBodyContent,omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	NewBodyContent               *BodyType                                 `xml:"t:NewBodyContent,omitempty"`
 }
 
 type SmartResponseBaseType struct {
-	ResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type ResponseObjectType struct {
-	ResponseObjectCoreType `xml:",omitempty"`
-	ObjectName             XsString `xml:"ObjectName,attr,omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type ResponseObjectCoreType struct {
-	MessageType     `xml:",omitempty"`
-	ReferenceItemId *ItemIdType `xml:"t:ReferenceItemId,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type ForwardItemType struct {
-	SmartResponseType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	NewBodyContent               *BodyType                                 `xml:"t:NewBodyContent,omitempty"`
 }
 
 type ReplyAllToItemType struct {
-	SmartResponseType      `xml:",omitempty"`
-	IsSpecificMessageReply XsBoolean `xml:"t:IsSpecificMessageReply,omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	NewBodyContent               *BodyType                                 `xml:"t:NewBodyContent,omitempty"`
+	IsSpecificMessageReply       XsBoolean                                 `xml:"t:IsSpecificMessageReply,omitempty"`
 }
 
 type AcceptItemType struct {
-	MeetingRegistrationResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	ProposedStart                XsDateTime                                `xml:"t:ProposedStart,omitempty"`
+	ProposedEnd                  XsDateTime                                `xml:"t:ProposedEnd,omitempty"`
 }
 
 type MeetingRegistrationResponseObjectType struct {
-	WellKnownResponseObjectType `xml:",omitempty"`
-	ProposedStart               XsDateTime `xml:"t:ProposedStart,omitempty"`
-	ProposedEnd                 XsDateTime `xml:"t:ProposedEnd,omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	ProposedStart                XsDateTime                                `xml:"t:ProposedStart,omitempty"`
+	ProposedEnd                  XsDateTime                                `xml:"t:ProposedEnd,omitempty"`
 }
 
 type WellKnownResponseObjectType struct {
-	ResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type TentativelyAcceptItemType struct {
-	MeetingRegistrationResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	ProposedStart                XsDateTime                                `xml:"t:ProposedStart,omitempty"`
+	ProposedEnd                  XsDateTime                                `xml:"t:ProposedEnd,omitempty"`
 }
 
 type DeclineItemType struct {
-	MeetingRegistrationResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	ProposedStart                XsDateTime                                `xml:"t:ProposedStart,omitempty"`
+	ProposedEnd                  XsDateTime                                `xml:"t:ProposedEnd,omitempty"`
 }
 
 type CancelCalendarItemType struct {
-	SmartResponseType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	NewBodyContent               *BodyType                                 `xml:"t:NewBodyContent,omitempty"`
 }
 
 type RemoveItemType struct {
-	ResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type SuppressReadReceiptType struct {
-	ReferenceItemResponseType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type ReferenceItemResponseType struct {
-	ResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type PostReplyItemType struct {
-	PostReplyItemBaseType `xml:",omitempty"`
-	NewBodyContent        *BodyType `xml:"t:NewBodyContent,omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
+	NewBodyContent               *BodyType                                 `xml:"t:NewBodyContent,omitempty"`
 }
 
 type PostReplyItemBaseType struct {
-	ResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type AcceptSharingInvitationType struct {
-	ReferenceItemResponseType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type RoleMemberItemType struct {
-	ItemType    `xml:",omitempty"`
-	DisplayName XsString           `xml:"t:DisplayName,omitempty"`
-	Type        RoleMemberTypeType `xml:"t:Type,omitempty"`
-	MemberId    XsString           `xml:"t:MemberId,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	DisplayName                  XsString                                  `xml:"t:DisplayName,omitempty"`
+	Type                         RoleMemberTypeType                        `xml:"t:Type,omitempty"`
+	MemberId                     XsString                                  `xml:"t:MemberId,omitempty"`
 }
 
 type NetworkItemType struct {
-	ItemType                  `xml:",omitempty"`
-	DomainId                  XsInt          `xml:"t:DomainId,omitempty"`
-	DomainTag                 XsString       `xml:"t:DomainTag,omitempty"`
-	UserTileUrl               XsString       `xml:"t:UserTileUrl,omitempty"`
-	ProfileUrl                XsString       `xml:"t:ProfileUrl,omitempty"`
-	Settings                  XsInt          `xml:"t:Settings,omitempty"`
-	IsDefault                 XsBoolean      `xml:"t:IsDefault,omitempty"`
-	AutoLinkError             XsString       `xml:"t:AutoLinkError,omitempty"`
-	AutoLinkSuccess           XsString       `xml:"t:AutoLinkSuccess,omitempty"`
-	UserEmail                 XsString       `xml:"t:UserEmail,omitempty"`
-	ClientPublishSecret       XsString       `xml:"t:ClientPublishSecret,omitempty"`
-	ClientToken               XsString       `xml:"t:ClientToken,omitempty"`
-	ClientToken2              XsString       `xml:"t:ClientToken2,omitempty"`
-	ContactSyncError          XsString       `xml:"t:ContactSyncError,omitempty"`
-	ContactSyncSuccess        XsString       `xml:"t:ContactSyncSuccess,omitempty"`
-	ErrorOffers               XsInt          `xml:"t:ErrorOffers,omitempty"`
-	FirstAuthErrorDates       XsString       `xml:"t:FirstAuthErrorDates,omitempty"`
-	LastVersionSaved          XsInt          `xml:"t:LastVersionSaved,omitempty"`
-	LastWelcomeContact        XsString       `xml:"t:LastWelcomeContact,omitempty"`
-	Offers                    XsInt          `xml:"t:Offers,omitempty"`
-	PsaLastChanged            XsDateTime     `xml:"t:PsaLastChanged,omitempty"`
-	RefreshToken2             XsString       `xml:"t:RefreshToken2,omitempty"`
-	RefreshTokenExpiry2       XsString       `xml:"t:RefreshTokenExpiry2,omitempty"`
-	SessionHandle             XsString       `xml:"t:SessionHandle,omitempty"`
-	RejectedOffers            XsInt          `xml:"t:RejectedOffers,omitempty"`
-	SyncEnabled               XsBoolean      `xml:"t:SyncEnabled,omitempty"`
-	TokenRefreshLastAttempted XsDateTime     `xml:"t:TokenRefreshLastAttempted,omitempty"`
-	TokenRefreshLastCompleted XsDateTime     `xml:"t:TokenRefreshLastCompleted,omitempty"`
-	PsaState                  XsString       `xml:"t:PsaState,omitempty"`
-	SourceEntryID             XsBase64Binary `xml:"t:SourceEntryID,omitempty"`
-	AccountName               XsString       `xml:"t:AccountName,omitempty"`
-	LastSync                  XsDateTime     `xml:"t:LastSync,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	DomainId                     XsInt                                     `xml:"t:DomainId,omitempty"`
+	DomainTag                    XsString                                  `xml:"t:DomainTag,omitempty"`
+	UserTileUrl                  XsString                                  `xml:"t:UserTileUrl,omitempty"`
+	ProfileUrl                   XsString                                  `xml:"t:ProfileUrl,omitempty"`
+	Settings                     XsInt                                     `xml:"t:Settings,omitempty"`
+	IsDefault                    XsBoolean                                 `xml:"t:IsDefault,omitempty"`
+	AutoLinkError                XsString                                  `xml:"t:AutoLinkError,omitempty"`
+	AutoLinkSuccess              XsString                                  `xml:"t:AutoLinkSuccess,omitempty"`
+	UserEmail                    XsString                                  `xml:"t:UserEmail,omitempty"`
+	ClientPublishSecret          XsString                                  `xml:"t:ClientPublishSecret,omitempty"`
+	ClientToken                  XsString                                  `xml:"t:ClientToken,omitempty"`
+	ClientToken2                 XsString                                  `xml:"t:ClientToken2,omitempty"`
+	ContactSyncError             XsString                                  `xml:"t:ContactSyncError,omitempty"`
+	ContactSyncSuccess           XsString                                  `xml:"t:ContactSyncSuccess,omitempty"`
+	ErrorOffers                  XsInt                                     `xml:"t:ErrorOffers,omitempty"`
+	FirstAuthErrorDates          XsString                                  `xml:"t:FirstAuthErrorDates,omitempty"`
+	LastVersionSaved             XsInt                                     `xml:"t:LastVersionSaved,omitempty"`
+	LastWelcomeContact           XsString                                  `xml:"t:LastWelcomeContact,omitempty"`
+	Offers                       XsInt                                     `xml:"t:Offers,omitempty"`
+	PsaLastChanged               XsDateTime                                `xml:"t:PsaLastChanged,omitempty"`
+	RefreshToken2                XsString                                  `xml:"t:RefreshToken2,omitempty"`
+	RefreshTokenExpiry2          XsString                                  `xml:"t:RefreshTokenExpiry2,omitempty"`
+	SessionHandle                XsString                                  `xml:"t:SessionHandle,omitempty"`
+	RejectedOffers               XsInt                                     `xml:"t:RejectedOffers,omitempty"`
+	SyncEnabled                  XsBoolean                                 `xml:"t:SyncEnabled,omitempty"`
+	TokenRefreshLastAttempted    XsDateTime                                `xml:"t:TokenRefreshLastAttempted,omitempty"`
+	TokenRefreshLastCompleted    XsDateTime                                `xml:"t:TokenRefreshLastCompleted,omitempty"`
+	PsaState                     XsString                                  `xml:"t:PsaState,omitempty"`
+	SourceEntryID                XsBase64Binary                            `xml:"t:SourceEntryID,omitempty"`
+	AccountName                  XsString                                  `xml:"t:AccountName,omitempty"`
+	LastSync                     XsDateTime                                `xml:"t:LastSync,omitempty"`
 }
 
 type AbchPersonItemType struct {
-	ItemType             `xml:",omitempty"`
-	AntiLinkInfo         XsString                             `xml:"t:AntiLinkInfo,omitempty"`
-	PersonId             GuidType                             `xml:"t:PersonId,omitempty"`
-	ContactHandles       *ArrayOfAbchPersonContactHandlesType `xml:"t:ContactHandles,omitempty"`
-	ContactCategories    *ArrayOfStringsType                  `xml:"t:ContactCategories,omitempty"`
-	RelevanceOrder1      XsString                             `xml:"t:RelevanceOrder1,omitempty"`
-	RelevanceOrder2      XsString                             `xml:"t:RelevanceOrder2,omitempty"`
-	TrustLevel           XsInt                                `xml:"t:TrustLevel,omitempty"`
-	FavoriteOrder        XsInt                                `xml:"t:FavoriteOrder,omitempty"`
-	ExchangePersonIdGuid GuidType                             `xml:"t:ExchangePersonIdGuid,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	AntiLinkInfo                 XsString                                  `xml:"t:AntiLinkInfo,omitempty"`
+	PersonId                     GuidType                                  `xml:"t:PersonId,omitempty"`
+	ContactHandles               *ArrayOfAbchPersonContactHandlesType      `xml:"t:ContactHandles,omitempty"`
+	ContactCategories            *ArrayOfStringsType                       `xml:"t:ContactCategories,omitempty"`
+	RelevanceOrder1              XsString                                  `xml:"t:RelevanceOrder1,omitempty"`
+	RelevanceOrder2              XsString                                  `xml:"t:RelevanceOrder2,omitempty"`
+	TrustLevel                   XsInt                                     `xml:"t:TrustLevel,omitempty"`
+	FavoriteOrder                XsInt                                     `xml:"t:FavoriteOrder,omitempty"`
+	ExchangePersonIdGuid         GuidType                                  `xml:"t:ExchangePersonIdGuid,omitempty"`
 }
 
 type ArrayOfAbchPersonContactHandlesType struct {
@@ -5895,21 +7056,37 @@ type CalendarActivityDataType struct {
 }
 
 type FileAttachmentType struct {
-	AttachmentType `xml:",omitempty"`
-	IsContactPhoto XsBoolean      `xml:"t:IsContactPhoto,omitempty"`
-	Content        XsBase64Binary `xml:"t:Content,omitempty"`
+	AttachmentId          *AttachmentIdType `xml:"t:AttachmentId,omitempty"`
+	Name                  XsString          `xml:"t:Name,omitempty"`
+	ContentType           XsString          `xml:"t:ContentType,omitempty"`
+	ContentId             XsString          `xml:"t:ContentId,omitempty"`
+	ContentLocation       XsString          `xml:"t:ContentLocation,omitempty"`
+	AttachmentOriginalUrl XsString          `xml:"t:AttachmentOriginalUrl,omitempty"`
+	Size                  XsInt             `xml:"t:Size,omitempty"`
+	LastModifiedTime      XsDateTime        `xml:"t:LastModifiedTime,omitempty"`
+	IsInline              XsBoolean         `xml:"t:IsInline,omitempty"`
+	IsContactPhoto        XsBoolean         `xml:"t:IsContactPhoto,omitempty"`
+	Content               XsBase64Binary    `xml:"t:Content,omitempty"`
 }
 
 type ReferenceAttachmentType struct {
-	AttachmentType         `xml:",omitempty"`
-	AttachLongPathName     XsString  `xml:"t:AttachLongPathName,omitempty"`
-	ProviderType           XsString  `xml:"t:ProviderType,omitempty"`
-	ProviderEndpointUrl    XsString  `xml:"t:ProviderEndpointUrl,omitempty"`
-	AttachmentThumbnailUrl XsString  `xml:"t:AttachmentThumbnailUrl,omitempty"`
-	AttachmentPreviewUrl   XsString  `xml:"t:AttachmentPreviewUrl,omitempty"`
-	PermissionType         XsInt     `xml:"t:PermissionType,omitempty"`
-	OriginalPermissionType XsInt     `xml:"t:OriginalPermissionType,omitempty"`
-	AttachmentIsFolder     XsBoolean `xml:"t:AttachmentIsFolder,omitempty"`
+	AttachmentId           *AttachmentIdType `xml:"t:AttachmentId,omitempty"`
+	Name                   XsString          `xml:"t:Name,omitempty"`
+	ContentType            XsString          `xml:"t:ContentType,omitempty"`
+	ContentId              XsString          `xml:"t:ContentId,omitempty"`
+	ContentLocation        XsString          `xml:"t:ContentLocation,omitempty"`
+	AttachmentOriginalUrl  XsString          `xml:"t:AttachmentOriginalUrl,omitempty"`
+	Size                   XsInt             `xml:"t:Size,omitempty"`
+	LastModifiedTime       XsDateTime        `xml:"t:LastModifiedTime,omitempty"`
+	IsInline               XsBoolean         `xml:"t:IsInline,omitempty"`
+	AttachLongPathName     XsString          `xml:"t:AttachLongPathName,omitempty"`
+	ProviderType           XsString          `xml:"t:ProviderType,omitempty"`
+	ProviderEndpointUrl    XsString          `xml:"t:ProviderEndpointUrl,omitempty"`
+	AttachmentThumbnailUrl XsString          `xml:"t:AttachmentThumbnailUrl,omitempty"`
+	AttachmentPreviewUrl   XsString          `xml:"t:AttachmentPreviewUrl,omitempty"`
+	PermissionType         XsInt             `xml:"t:PermissionType,omitempty"`
+	OriginalPermissionType XsInt             `xml:"t:OriginalPermissionType,omitempty"`
+	AttachmentIsFolder     XsBoolean         `xml:"t:AttachmentIsFolder,omitempty"`
 }
 
 type NonEmptyArrayOfInternetHeadersType struct {
@@ -5938,11 +7115,203 @@ type NonEmptyArrayOfResponseObjectsType struct {
 }
 
 type AddItemToMyCalendarType struct {
-	ResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type ProposeNewTimeType struct {
-	ResponseObjectType `xml:",omitempty"`
+	ObjectName                   XsString                                  `xml:"ObjectName,attr,omitempty"`
+	MimeContent                  *MimeContentType                          `xml:"t:MimeContent,omitempty"`
+	ItemId                       *ItemIdType                               `xml:"t:ItemId,omitempty"`
+	ParentFolderId               *FolderIdType                             `xml:"t:ParentFolderId,omitempty"`
+	ItemClass                    ItemClassType                             `xml:"t:ItemClass,omitempty"`
+	Subject                      XsString                                  `xml:"t:Subject,omitempty"`
+	Sensitivity                  SensitivityChoicesType                    `xml:"t:Sensitivity,omitempty"`
+	Body                         *BodyType                                 `xml:"t:Body,omitempty"`
+	Attachments                  *NonEmptyArrayOfAttachmentsType           `xml:"t:Attachments,omitempty"`
+	DateTimeReceived             XsDateTime                                `xml:"t:DateTimeReceived,omitempty"`
+	Size                         XsInt                                     `xml:"t:Size,omitempty"`
+	Categories                   *ArrayOfStringsType                       `xml:"t:Categories,omitempty"`
+	Importance                   ImportanceChoicesType                     `xml:"t:Importance,omitempty"`
+	InReplyTo                    XsString                                  `xml:"t:InReplyTo,omitempty"`
+	IsSubmitted                  XsBoolean                                 `xml:"t:IsSubmitted,omitempty"`
+	IsDraft                      XsBoolean                                 `xml:"t:IsDraft,omitempty"`
+	IsFromMe                     XsBoolean                                 `xml:"t:IsFromMe,omitempty"`
+	IsResend                     XsBoolean                                 `xml:"t:IsResend,omitempty"`
+	IsUnmodified                 XsBoolean                                 `xml:"t:IsUnmodified,omitempty"`
+	InternetMessageHeaders       *NonEmptyArrayOfInternetHeadersType       `xml:"t:InternetMessageHeaders,omitempty"`
+	DateTimeSent                 XsDateTime                                `xml:"t:DateTimeSent,omitempty"`
+	DateTimeCreated              XsDateTime                                `xml:"t:DateTimeCreated,omitempty"`
+	ResponseObjects              *NonEmptyArrayOfResponseObjectsType       `xml:"t:ResponseObjects,omitempty"`
+	ReminderDueBy                XsDateTime                                `xml:"t:ReminderDueBy,omitempty"`
+	ReminderIsSet                XsBoolean                                 `xml:"t:ReminderIsSet,omitempty"`
+	ReminderNextTime             XsDateTime                                `xml:"t:ReminderNextTime,omitempty"`
+	ReminderMinutesBeforeStart   ReminderMinutesBeforeStartType            `xml:"t:ReminderMinutesBeforeStart,omitempty"`
+	DisplayCc                    XsString                                  `xml:"t:DisplayCc,omitempty"`
+	DisplayTo                    XsString                                  `xml:"t:DisplayTo,omitempty"`
+	DisplayBcc                   XsString                                  `xml:"t:DisplayBcc,omitempty"`
+	HasAttachments               XsBoolean                                 `xml:"t:HasAttachments,omitempty"`
+	ExtendedProperty             []*ExtendedPropertyType                   `xml:"t:ExtendedProperty,omitempty"`
+	Culture                      XsLanguage                                `xml:"t:Culture,omitempty"`
+	EffectiveRights              *EffectiveRightsType                      `xml:"t:EffectiveRights,omitempty"`
+	LastModifiedName             XsString                                  `xml:"t:LastModifiedName,omitempty"`
+	LastModifiedTime             XsDateTime                                `xml:"t:LastModifiedTime,omitempty"`
+	IsAssociated                 XsBoolean                                 `xml:"t:IsAssociated,omitempty"`
+	WebClientReadFormQueryString XsString                                  `xml:"t:WebClientReadFormQueryString,omitempty"`
+	WebClientEditFormQueryString XsString                                  `xml:"t:WebClientEditFormQueryString,omitempty"`
+	ConversationId               *ItemIdType                               `xml:"t:ConversationId,omitempty"`
+	UniqueBody                   *BodyType                                 `xml:"t:UniqueBody,omitempty"`
+	Flag                         *FlagType                                 `xml:"t:Flag,omitempty"`
+	StoreEntryId                 XsBase64Binary                            `xml:"t:StoreEntryId,omitempty"`
+	InstanceKey                  XsBase64Binary                            `xml:"t:InstanceKey,omitempty"`
+	NormalizedBody               *BodyType                                 `xml:"t:NormalizedBody,omitempty"`
+	EntityExtractionResult       *EntityExtractionResultType               `xml:"t:EntityExtractionResult,omitempty"`
+	PolicyTag                    *RetentionTagType                         `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag                   *RetentionTagType                         `xml:"t:ArchiveTag,omitempty"`
+	RetentionDate                XsDateTime                                `xml:"t:RetentionDate,omitempty"`
+	Preview                      XsString                                  `xml:"t:Preview,omitempty"`
+	RightsManagementLicenseData  *RightsManagementLicenseDataType          `xml:"t:RightsManagementLicenseData,omitempty"`
+	PredictedActionReasons       *NonEmptyArrayOfPredictedActionReasonType `xml:"t:PredictedActionReasons,omitempty"`
+	IsClutter                    XsBoolean                                 `xml:"t:IsClutter,omitempty"`
+	BlockStatus                  XsBoolean                                 `xml:"t:BlockStatus,omitempty"`
+	HasBlockedImages             XsBoolean                                 `xml:"t:HasBlockedImages,omitempty"`
+	TextBody                     *BodyType                                 `xml:"t:TextBody,omitempty"`
+	IconIndex                    IconIndexType                             `xml:"t:IconIndex,omitempty"`
+	SearchKey                    XsBase64Binary                            `xml:"t:SearchKey,omitempty"`
+	SortKey                      XsLong                                    `xml:"t:SortKey,omitempty"`
+	Hashtags                     *ArrayOfStringsType                       `xml:"t:Hashtags,omitempty"`
+	Mentions                     *ArrayOfRecipientsType                    `xml:"t:Mentions,omitempty"`
+	MentionedMe                  XsBoolean                                 `xml:"t:MentionedMe,omitempty"`
+	MentionsPreview              *MentionsPreviewType                      `xml:"t:MentionsPreview,omitempty"`
+	MentionsEx                   *NonEmptyArrayOfMentionActionsType        `xml:"t:MentionsEx,omitempty"`
+	AppliedHashtags              *NonEmptyArrayOfAppliedHashtagType        `xml:"t:AppliedHashtags,omitempty"`
+	AppliedHashtagsPreview       *AppliedHashtagsPreviewType               `xml:"t:AppliedHashtagsPreview,omitempty"`
+	Likes                        *NonEmptyArrayOfLikeType                  `xml:"t:Likes,omitempty"`
+	LikesPreview                 *LikesPreviewType                         `xml:"t:LikesPreview,omitempty"`
+	PendingSocialActivityTagIds  *ArrayOfStringsType                       `xml:"t:PendingSocialActivityTagIds,omitempty"`
+	AtAllMention                 XsBoolean                                 `xml:"t:AtAllMention,omitempty"`
+	CanDelete                    XsBoolean                                 `xml:"t:CanDelete,omitempty"`
+	InferenceClassification      InferenceClassificationType               `xml:"t:InferenceClassification,omitempty"`
+	Sender                       *SingleRecipientType                      `xml:"t:Sender,omitempty"`
+	ToRecipients                 *ArrayOfRecipientsType                    `xml:"t:ToRecipients,omitempty"`
+	CcRecipients                 *ArrayOfRecipientsType                    `xml:"t:CcRecipients,omitempty"`
+	BccRecipients                *ArrayOfRecipientsType                    `xml:"t:BccRecipients,omitempty"`
+	IsReadReceiptRequested       XsBoolean                                 `xml:"t:IsReadReceiptRequested,omitempty"`
+	IsDeliveryReceiptRequested   XsBoolean                                 `xml:"t:IsDeliveryReceiptRequested,omitempty"`
+	ConversationIndex            XsBase64Binary                            `xml:"t:ConversationIndex,omitempty"`
+	ConversationTopic            XsString                                  `xml:"t:ConversationTopic,omitempty"`
+	From                         *SingleRecipientType                      `xml:"t:From,omitempty"`
+	InternetMessageId            XsString                                  `xml:"t:InternetMessageId,omitempty"`
+	IsRead                       XsBoolean                                 `xml:"t:IsRead,omitempty"`
+	IsResponseRequested          XsBoolean                                 `xml:"t:IsResponseRequested,omitempty"`
+	References                   XsString                                  `xml:"t:References,omitempty"`
+	ReplyTo                      *ArrayOfRecipientsType                    `xml:"t:ReplyTo,omitempty"`
+	ReceivedBy                   *SingleRecipientType                      `xml:"t:ReceivedBy,omitempty"`
+	ReceivedRepresenting         *SingleRecipientType                      `xml:"t:ReceivedRepresenting,omitempty"`
+	ApprovalRequestData          *ApprovalRequestDataType                  `xml:"t:ApprovalRequestData,omitempty"`
+	VotingInformation            *VotingInformationType                    `xml:"t:VotingInformation,omitempty"`
+	ReminderMessageData          *ReminderMessageDataType                  `xml:"t:ReminderMessageData,omitempty"`
+	MessageSafety                *MessageSafetyType                        `xml:"t:MessageSafety,omitempty"`
+	SenderSMTPAddress            *SmtpAddressType                          `xml:"t:SenderSMTPAddress,omitempty"`
+	MailboxGuids                 *MailboxGuidsType                         `xml:"t:MailboxGuids,omitempty"`
+	PublishedCalendarItemIcs     XsString                                  `xml:"t:PublishedCalendarItemIcs,omitempty"`
+	PublishedCalendarItemName    XsString                                  `xml:"t:PublishedCalendarItemName,omitempty"`
+	ReferenceItemId              *ItemIdType                               `xml:"t:ReferenceItemId,omitempty"`
 }
 
 type ExtendedPropertyType struct {
@@ -5952,7 +7321,6 @@ type ExtendedPropertyType struct {
 }
 
 type PathToExtendedFieldType struct {
-	BasePathToElementType      `xml:",omitempty"`
 	DistinguishedPropertySetId DistinguishedPropertySetType `xml:"DistinguishedPropertySetId,attr,omitempty"`
 	PropertySetId              GuidType                     `xml:"PropertySetId,attr,omitempty"`
 	PropertyTag                PropertyTagType              `xml:"PropertyTag,attr,omitempty"`
@@ -6003,8 +7371,8 @@ type ArrayOfAddressEntitiesType struct {
 }
 
 type AddressEntityType struct {
-	EntityType `xml:",omitempty"`
-	Address    XsString `xml:"t:Address,omitempty"`
+	Position []EmailPositionType `xml:"t:Position,omitempty"`
+	Address  XsString            `xml:"t:Address,omitempty"`
 }
 
 type EntityType struct {
@@ -6016,7 +7384,7 @@ type ArrayOfMeetingSuggestionsType struct {
 }
 
 type MeetingSuggestionType struct {
-	EntityType           `xml:",omitempty"`
+	Position             []EmailPositionType    `xml:"t:Position,omitempty"`
 	Attendees            *ArrayOfEmailUsersType `xml:"t:Attendees,omitempty"`
 	Location             XsString               `xml:"t:Location,omitempty"`
 	Subject              XsString               `xml:"t:Subject,omitempty"`
@@ -6043,7 +7411,7 @@ type ArrayOfTaskSuggestionsType struct {
 }
 
 type TaskSuggestionType struct {
-	EntityType `xml:",omitempty"`
+	Position   []EmailPositionType    `xml:"t:Position,omitempty"`
 	TaskString XsString               `xml:"t:TaskString,omitempty"`
 	Assignees  *ArrayOfEmailUsersType `xml:"t:Assignees,omitempty"`
 }
@@ -6053,8 +7421,8 @@ type ArrayOfEmailAddressEntitiesType struct {
 }
 
 type EmailAddressEntityType struct {
-	EntityType   `xml:",omitempty"`
-	EmailAddress XsString `xml:"t:EmailAddress,omitempty"`
+	Position     []EmailPositionType `xml:"t:Position,omitempty"`
+	EmailAddress XsString            `xml:"t:EmailAddress,omitempty"`
 }
 
 type ArrayOfContactsType struct {
@@ -6062,7 +7430,7 @@ type ArrayOfContactsType struct {
 }
 
 type ContactType struct {
-	EntityType     `xml:",omitempty"`
+	Position       []EmailPositionType             `xml:"t:Position,omitempty"`
 	PersonName     XsString                        `xml:"t:PersonName,omitempty"`
 	BusinessName   XsString                        `xml:"t:BusinessName,omitempty"`
 	PhoneNumbers   *ArrayOfPhonesType              `xml:"t:PhoneNumbers,omitempty"`
@@ -6099,8 +7467,8 @@ type ArrayOfUrlEntitiesType struct {
 }
 
 type UrlEntityType struct {
-	EntityType `xml:",omitempty"`
-	Url        XsString `xml:"t:Url,omitempty"`
+	Position []EmailPositionType `xml:"t:Position,omitempty"`
+	Url      XsString            `xml:"t:Url,omitempty"`
 }
 
 type ArrayOfPhoneEntitiesType struct {
@@ -6108,10 +7476,10 @@ type ArrayOfPhoneEntitiesType struct {
 }
 
 type PhoneEntityType struct {
-	EntityType          `xml:",omitempty"`
-	OriginalPhoneString XsString `xml:"t:OriginalPhoneString,omitempty"`
-	PhoneString         XsString `xml:"t:PhoneString,omitempty"`
-	Type                XsString `xml:"t:Type,omitempty"`
+	Position            []EmailPositionType `xml:"t:Position,omitempty"`
+	OriginalPhoneString XsString            `xml:"t:OriginalPhoneString,omitempty"`
+	PhoneString         XsString            `xml:"t:PhoneString,omitempty"`
+	Type                XsString            `xml:"t:Type,omitempty"`
 }
 
 type ArrayOfParcelDeliveryEntitiesType struct {
@@ -6225,7 +7593,12 @@ type MentionActionType struct {
 }
 
 type EmailAddressExtendedType struct {
-	EmailAddressType    `xml:",omitempty"`
+	Name                XsString           `xml:"t:Name,omitempty"`
+	EmailAddress        NonEmptyStringType `xml:"t:EmailAddress,omitempty"`
+	RoutingType         NonEmptyStringType `xml:"t:RoutingType,omitempty"`
+	MailboxType         MailboxTypeType    `xml:"t:MailboxType,omitempty"`
+	ItemId              *ItemIdType        `xml:"t:ItemId,omitempty"`
+	OriginalDisplayName XsString           `xml:"t:OriginalDisplayName,omitempty"`
 	ExternalObjectId    XsString           `xml:"t:ExternalObjectId,omitempty"`
 	PrimaryEmailAddress NonEmptyStringType `xml:"t:PrimaryEmailAddress,omitempty"`
 }
@@ -6286,9 +7659,21 @@ type ArrayOfFoldersType struct {
 }
 
 type FolderType struct {
-	BaseFolderType `xml:",omitempty"`
-	PermissionSet  *PermissionSetType `xml:"t:PermissionSet,omitempty"`
-	UnreadCount    XsInt              `xml:"t:UnreadCount,omitempty"`
+	FolderId                 *FolderIdType                 `xml:"t:FolderId,omitempty"`
+	ParentFolderId           *FolderIdType                 `xml:"t:ParentFolderId,omitempty"`
+	FolderClass              XsString                      `xml:"t:FolderClass,omitempty"`
+	DisplayName              XsString                      `xml:"t:DisplayName,omitempty"`
+	TotalCount               XsInt                         `xml:"t:TotalCount,omitempty"`
+	ChildFolderCount         XsInt                         `xml:"t:ChildFolderCount,omitempty"`
+	ExtendedProperty         []*ExtendedPropertyType       `xml:"t:ExtendedProperty,omitempty"`
+	ManagedFolderInformation *ManagedFolderInformationType `xml:"t:ManagedFolderInformation,omitempty"`
+	EffectiveRights          *EffectiveRightsType          `xml:"t:EffectiveRights,omitempty"`
+	DistinguishedFolderId    DistinguishedFolderIdNameType `xml:"t:DistinguishedFolderId,omitempty"`
+	PolicyTag                *RetentionTagType             `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag               *RetentionTagType             `xml:"t:ArchiveTag,omitempty"`
+	ReplicaList              *ArrayOfStringsType           `xml:"t:ReplicaList,omitempty"`
+	PermissionSet            *PermissionSetType            `xml:"t:PermissionSet,omitempty"`
+	UnreadCount              XsInt                         `xml:"t:UnreadCount,omitempty"`
 }
 
 type BaseFolderType struct {
@@ -6330,9 +7715,16 @@ type ArrayOfPermissionsType struct {
 }
 
 type PermissionType struct {
-	BasePermissionType `xml:",omitempty"`
-	ReadItems          PermissionReadAccessType `xml:"t:ReadItems,omitempty"`
-	PermissionLevel    PermissionLevelType      `xml:"t:PermissionLevel,omitempty"`
+	UserId              *UserIdType              `xml:"t:UserId,omitempty"`
+	CanCreateItems      XsBoolean                `xml:"t:CanCreateItems,omitempty"`
+	CanCreateSubFolders XsBoolean                `xml:"t:CanCreateSubFolders,omitempty"`
+	IsFolderOwner       XsBoolean                `xml:"t:IsFolderOwner,omitempty"`
+	IsFolderVisible     XsBoolean                `xml:"t:IsFolderVisible,omitempty"`
+	IsFolderContact     XsBoolean                `xml:"t:IsFolderContact,omitempty"`
+	EditItems           PermissionActionType     `xml:"t:EditItems,omitempty"`
+	DeleteItems         PermissionActionType     `xml:"t:DeleteItems,omitempty"`
+	ReadItems           PermissionReadAccessType `xml:"t:ReadItems,omitempty"`
+	PermissionLevel     PermissionLevelType      `xml:"t:PermissionLevel,omitempty"`
 }
 
 type BasePermissionType struct {
@@ -6359,9 +7751,21 @@ type ArrayOfUnknownEntriesType struct {
 }
 
 type CalendarFolderType struct {
-	BaseFolderType         `xml:",omitempty"`
-	SharingEffectiveRights CalendarPermissionReadAccessType `xml:"t:SharingEffectiveRights,omitempty"`
-	PermissionSet          *CalendarPermissionSetType       `xml:"t:PermissionSet,omitempty"`
+	FolderId                 *FolderIdType                    `xml:"t:FolderId,omitempty"`
+	ParentFolderId           *FolderIdType                    `xml:"t:ParentFolderId,omitempty"`
+	FolderClass              XsString                         `xml:"t:FolderClass,omitempty"`
+	DisplayName              XsString                         `xml:"t:DisplayName,omitempty"`
+	TotalCount               XsInt                            `xml:"t:TotalCount,omitempty"`
+	ChildFolderCount         XsInt                            `xml:"t:ChildFolderCount,omitempty"`
+	ExtendedProperty         []*ExtendedPropertyType          `xml:"t:ExtendedProperty,omitempty"`
+	ManagedFolderInformation *ManagedFolderInformationType    `xml:"t:ManagedFolderInformation,omitempty"`
+	EffectiveRights          *EffectiveRightsType             `xml:"t:EffectiveRights,omitempty"`
+	DistinguishedFolderId    DistinguishedFolderIdNameType    `xml:"t:DistinguishedFolderId,omitempty"`
+	PolicyTag                *RetentionTagType                `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag               *RetentionTagType                `xml:"t:ArchiveTag,omitempty"`
+	ReplicaList              *ArrayOfStringsType              `xml:"t:ReplicaList,omitempty"`
+	SharingEffectiveRights   CalendarPermissionReadAccessType `xml:"t:SharingEffectiveRights,omitempty"`
+	PermissionSet            *CalendarPermissionSetType       `xml:"t:PermissionSet,omitempty"`
 }
 
 type CalendarPermissionSetType struct {
@@ -6374,22 +7778,55 @@ type ArrayOfCalendarPermissionsType struct {
 }
 
 type CalendarPermissionType struct {
-	BasePermissionType      `xml:",omitempty"`
+	UserId                  *UserIdType                      `xml:"t:UserId,omitempty"`
+	CanCreateItems          XsBoolean                        `xml:"t:CanCreateItems,omitempty"`
+	CanCreateSubFolders     XsBoolean                        `xml:"t:CanCreateSubFolders,omitempty"`
+	IsFolderOwner           XsBoolean                        `xml:"t:IsFolderOwner,omitempty"`
+	IsFolderVisible         XsBoolean                        `xml:"t:IsFolderVisible,omitempty"`
+	IsFolderContact         XsBoolean                        `xml:"t:IsFolderContact,omitempty"`
+	EditItems               PermissionActionType             `xml:"t:EditItems,omitempty"`
+	DeleteItems             PermissionActionType             `xml:"t:DeleteItems,omitempty"`
 	ReadItems               CalendarPermissionReadAccessType `xml:"t:ReadItems,omitempty"`
 	CalendarPermissionLevel CalendarPermissionLevelType      `xml:"t:CalendarPermissionLevel,omitempty"`
 }
 
 type ContactsFolderType struct {
-	BaseFolderType         `xml:",omitempty"`
-	SharingEffectiveRights PermissionReadAccessType `xml:"t:SharingEffectiveRights,omitempty"`
-	PermissionSet          *PermissionSetType       `xml:"t:PermissionSet,omitempty"`
-	SourceId               XsString                 `xml:"t:SourceId,omitempty"`
-	AccountName            XsString                 `xml:"t:AccountName,omitempty"`
+	FolderId                 *FolderIdType                 `xml:"t:FolderId,omitempty"`
+	ParentFolderId           *FolderIdType                 `xml:"t:ParentFolderId,omitempty"`
+	FolderClass              XsString                      `xml:"t:FolderClass,omitempty"`
+	DisplayName              XsString                      `xml:"t:DisplayName,omitempty"`
+	TotalCount               XsInt                         `xml:"t:TotalCount,omitempty"`
+	ChildFolderCount         XsInt                         `xml:"t:ChildFolderCount,omitempty"`
+	ExtendedProperty         []*ExtendedPropertyType       `xml:"t:ExtendedProperty,omitempty"`
+	ManagedFolderInformation *ManagedFolderInformationType `xml:"t:ManagedFolderInformation,omitempty"`
+	EffectiveRights          *EffectiveRightsType          `xml:"t:EffectiveRights,omitempty"`
+	DistinguishedFolderId    DistinguishedFolderIdNameType `xml:"t:DistinguishedFolderId,omitempty"`
+	PolicyTag                *RetentionTagType             `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag               *RetentionTagType             `xml:"t:ArchiveTag,omitempty"`
+	ReplicaList              *ArrayOfStringsType           `xml:"t:ReplicaList,omitempty"`
+	SharingEffectiveRights   PermissionReadAccessType      `xml:"t:SharingEffectiveRights,omitempty"`
+	PermissionSet            *PermissionSetType            `xml:"t:PermissionSet,omitempty"`
+	SourceId                 XsString                      `xml:"t:SourceId,omitempty"`
+	AccountName              XsString                      `xml:"t:AccountName,omitempty"`
 }
 
 type SearchFolderType struct {
-	FolderType       `xml:",omitempty"`
-	SearchParameters *SearchParametersType `xml:"t:SearchParameters,omitempty"`
+	FolderId                 *FolderIdType                 `xml:"t:FolderId,omitempty"`
+	ParentFolderId           *FolderIdType                 `xml:"t:ParentFolderId,omitempty"`
+	FolderClass              XsString                      `xml:"t:FolderClass,omitempty"`
+	DisplayName              XsString                      `xml:"t:DisplayName,omitempty"`
+	TotalCount               XsInt                         `xml:"t:TotalCount,omitempty"`
+	ChildFolderCount         XsInt                         `xml:"t:ChildFolderCount,omitempty"`
+	ExtendedProperty         []*ExtendedPropertyType       `xml:"t:ExtendedProperty,omitempty"`
+	ManagedFolderInformation *ManagedFolderInformationType `xml:"t:ManagedFolderInformation,omitempty"`
+	EffectiveRights          *EffectiveRightsType          `xml:"t:EffectiveRights,omitempty"`
+	DistinguishedFolderId    DistinguishedFolderIdNameType `xml:"t:DistinguishedFolderId,omitempty"`
+	PolicyTag                *RetentionTagType             `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag               *RetentionTagType             `xml:"t:ArchiveTag,omitempty"`
+	ReplicaList              *ArrayOfStringsType           `xml:"t:ReplicaList,omitempty"`
+	PermissionSet            *PermissionSetType            `xml:"t:PermissionSet,omitempty"`
+	UnreadCount              XsInt                         `xml:"t:UnreadCount,omitempty"`
+	SearchParameters         *SearchParametersType         `xml:"t:SearchParameters,omitempty"`
 }
 
 type SearchParametersType struct {
@@ -6406,7 +7843,21 @@ type SearchExpressionType struct {
 }
 
 type TasksFolderType struct {
-	FolderType `xml:",omitempty"`
+	FolderId                 *FolderIdType                 `xml:"t:FolderId,omitempty"`
+	ParentFolderId           *FolderIdType                 `xml:"t:ParentFolderId,omitempty"`
+	FolderClass              XsString                      `xml:"t:FolderClass,omitempty"`
+	DisplayName              XsString                      `xml:"t:DisplayName,omitempty"`
+	TotalCount               XsInt                         `xml:"t:TotalCount,omitempty"`
+	ChildFolderCount         XsInt                         `xml:"t:ChildFolderCount,omitempty"`
+	ExtendedProperty         []*ExtendedPropertyType       `xml:"t:ExtendedProperty,omitempty"`
+	ManagedFolderInformation *ManagedFolderInformationType `xml:"t:ManagedFolderInformation,omitempty"`
+	EffectiveRights          *EffectiveRightsType          `xml:"t:EffectiveRights,omitempty"`
+	DistinguishedFolderId    DistinguishedFolderIdNameType `xml:"t:DistinguishedFolderId,omitempty"`
+	PolicyTag                *RetentionTagType             `xml:"t:PolicyTag,omitempty"`
+	ArchiveTag               *RetentionTagType             `xml:"t:ArchiveTag,omitempty"`
+	ReplicaList              *ArrayOfStringsType           `xml:"t:ReplicaList,omitempty"`
+	PermissionSet            *PermissionSetType            `xml:"t:PermissionSet,omitempty"`
+	UnreadCount              XsInt                         `xml:"t:UnreadCount,omitempty"`
 }
 
 type FindFolderParentType struct {
@@ -6419,7 +7870,6 @@ type FindFolderParentType struct {
 }
 
 type RootItemIdType struct {
-	BaseItemIdType    `xml:",omitempty"`
 	RootItemId        XsString `xml:"RootItemId,attr,omitempty"`
 	RootItemChangeKey XsString `xml:"RootItemChangeKey,attr,omitempty"`
 }
@@ -6509,18 +7959,22 @@ type NotificationType struct {
 }
 
 type MovedCopiedEventType struct {
-	BaseObjectChangedEventType `xml:",omitempty"`
-	OldParentFolderId          *FolderIdType `xml:"t:OldParentFolderId,omitempty"`
-	OldFolderId                *FolderIdType `xml:"t:OldFolderId,omitempty"`
-	OldItemId                  *ItemIdType   `xml:"t:OldItemId,omitempty"`
+	Watermark         WatermarkType `xml:"t:Watermark,omitempty"`
+	TimeStamp         XsDateTime    `xml:"t:TimeStamp,omitempty"`
+	ParentFolderId    *FolderIdType `xml:"t:ParentFolderId,omitempty"`
+	FolderId          *FolderIdType `xml:"t:FolderId,omitempty"`
+	ItemId            *ItemIdType   `xml:"t:ItemId,omitempty"`
+	OldParentFolderId *FolderIdType `xml:"t:OldParentFolderId,omitempty"`
+	OldFolderId       *FolderIdType `xml:"t:OldFolderId,omitempty"`
+	OldItemId         *ItemIdType   `xml:"t:OldItemId,omitempty"`
 }
 
 type BaseObjectChangedEventType struct {
-	BaseNotificationEventType `xml:",omitempty"`
-	TimeStamp                 XsDateTime    `xml:"t:TimeStamp,omitempty"`
-	ParentFolderId            *FolderIdType `xml:"t:ParentFolderId,omitempty"`
-	FolderId                  *FolderIdType `xml:"t:FolderId,omitempty"`
-	ItemId                    *ItemIdType   `xml:"t:ItemId,omitempty"`
+	Watermark      WatermarkType `xml:"t:Watermark,omitempty"`
+	TimeStamp      XsDateTime    `xml:"t:TimeStamp,omitempty"`
+	ParentFolderId *FolderIdType `xml:"t:ParentFolderId,omitempty"`
+	FolderId       *FolderIdType `xml:"t:FolderId,omitempty"`
+	ItemId         *ItemIdType   `xml:"t:ItemId,omitempty"`
 }
 
 type BaseNotificationEventType struct {
@@ -6528,8 +7982,12 @@ type BaseNotificationEventType struct {
 }
 
 type ModifiedEventType struct {
-	BaseObjectChangedEventType `xml:",omitempty"`
-	UnreadCount                XsInt `xml:"t:UnreadCount,omitempty"`
+	Watermark      WatermarkType `xml:"t:Watermark,omitempty"`
+	TimeStamp      XsDateTime    `xml:"t:TimeStamp,omitempty"`
+	ParentFolderId *FolderIdType `xml:"t:ParentFolderId,omitempty"`
+	FolderId       *FolderIdType `xml:"t:FolderId,omitempty"`
+	ItemId         *ItemIdType   `xml:"t:ItemId,omitempty"`
+	UnreadCount    XsInt         `xml:"t:UnreadCount,omitempty"`
 }
 
 type NonEmptyArrayOfNotificationsType struct {
@@ -6627,8 +8085,10 @@ type UserConfigurationType struct {
 }
 
 type UserConfigurationNameType struct {
-	TargetFolderIdType `xml:",omitempty"`
-	Name               NonEmptyStringType `xml:"Name,attr,omitempty"`
+	Name                  NonEmptyStringType         `xml:"Name,attr,omitempty"`
+	FolderId              *FolderIdType              `xml:"t:FolderId,omitempty"`
+	DistinguishedFolderId *DistinguishedFolderIdType `xml:"t:DistinguishedFolderId,omitempty"`
+	AddressListId         *AddressListIdType         `xml:"t:AddressListId,omitempty"`
 }
 
 type TargetFolderIdType struct {
@@ -6638,8 +8098,7 @@ type TargetFolderIdType struct {
 }
 
 type AddressListIdType struct {
-	BaseFolderIdType `xml:",omitempty"`
-	Id               XsString `xml:"Id,attr,omitempty"`
+	Id XsString `xml:"Id,attr,omitempty"`
 }
 
 type UserConfigurationDictionaryType struct {
@@ -6665,7 +8124,7 @@ type ArrayOfRoomsType struct {
 }
 
 type RoomType struct {
-	DirectoryEntryType `xml:",omitempty"`
+	Id *EmailAddressType `xml:"t:Id,omitempty"`
 }
 
 type DirectoryEntryType struct {
@@ -7169,9 +8628,9 @@ type NonEmptyArrayOfPathsToElementType struct {
 }
 
 type IndexedPageViewType struct {
-	BasePagingType `xml:",omitempty"`
-	Offset         XsInt              `xml:"Offset,attr,omitempty"`
-	BasePoint      IndexBasePointType `xml:"BasePoint,attr,omitempty"`
+	MaxEntriesReturned XsInt              `xml:"MaxEntriesReturned,attr,omitempty"`
+	Offset             XsInt              `xml:"Offset,attr,omitempty"`
+	BasePoint          IndexBasePointType `xml:"BasePoint,attr,omitempty"`
 }
 
 type BasePagingType struct {
@@ -7179,9 +8638,9 @@ type BasePagingType struct {
 }
 
 type FractionalPageViewType struct {
-	BasePagingType `xml:",omitempty"`
-	Numerator      XsInt `xml:"Numerator,attr,omitempty"`
-	Denominator    XsInt `xml:"Denominator,attr,omitempty"`
+	MaxEntriesReturned XsInt `xml:"MaxEntriesReturned,attr,omitempty"`
+	Numerator          XsInt `xml:"Numerator,attr,omitempty"`
+	Denominator        XsInt `xml:"Denominator,attr,omitempty"`
 }
 
 type TimeZoneContextType struct {
@@ -7222,25 +8681,25 @@ type FieldOrderType struct {
 }
 
 type SeekToConditionPageViewType struct {
-	BasePagingType `xml:",omitempty"`
-	BasePoint      IndexBasePointType `xml:"BasePoint,attr,omitempty"`
-	Condition      *RestrictionType   `xml:"t:Condition,omitempty"`
+	MaxEntriesReturned XsInt              `xml:"MaxEntriesReturned,attr,omitempty"`
+	BasePoint          IndexBasePointType `xml:"BasePoint,attr,omitempty"`
+	Condition          *RestrictionType   `xml:"t:Condition,omitempty"`
 }
 
 type CalendarViewType struct {
-	BasePagingType `xml:",omitempty"`
-	StartDate      XsDateTime `xml:"StartDate,attr,omitempty"`
-	EndDate        XsDateTime `xml:"EndDate,attr,omitempty"`
+	MaxEntriesReturned XsInt      `xml:"MaxEntriesReturned,attr,omitempty"`
+	StartDate          XsDateTime `xml:"StartDate,attr,omitempty"`
+	EndDate            XsDateTime `xml:"EndDate,attr,omitempty"`
 }
 
 type ContactsViewType struct {
-	BasePagingType `xml:",omitempty"`
-	InitialName    XsString `xml:"InitialName,attr,omitempty"`
-	FinalName      XsString `xml:"FinalName,attr,omitempty"`
+	MaxEntriesReturned XsInt    `xml:"MaxEntriesReturned,attr,omitempty"`
+	InitialName        XsString `xml:"InitialName,attr,omitempty"`
+	FinalName          XsString `xml:"FinalName,attr,omitempty"`
 }
 
 type GroupByType struct {
-	BaseGroupByType      `xml:",omitempty"`
+	Order                SortDirectionType         `xml:"Order,attr,omitempty"`
 	AggregateOn          *AggregateOnType          `xml:"t:AggregateOn,omitempty"`
 	UseCollapsibleGroups XsBoolean                 `xml:"t:UseCollapsibleGroups,omitempty"`
 	ItemsPerGroup        XsNonNegativeInteger      `xml:"t:ItemsPerGroup,omitempty"`
@@ -7263,14 +8722,12 @@ type AggregateOnType struct {
 }
 
 type PathToUnindexedFieldType struct {
-	BasePathToElementType `xml:",omitempty"`
-	FieldURI              UnindexedFieldURIType `xml:"FieldURI,attr,omitempty"`
+	FieldURI UnindexedFieldURIType `xml:"FieldURI,attr,omitempty"`
 }
 
 type PathToIndexedFieldType struct {
-	BasePathToElementType `xml:",omitempty"`
-	FieldURI              DictionaryURIType `xml:"FieldURI,attr,omitempty"`
-	FieldIndex            XsString          `xml:"FieldIndex,attr,omitempty"`
+	FieldURI   DictionaryURIType `xml:"FieldURI,attr,omitempty"`
+	FieldIndex XsString          `xml:"FieldIndex,attr,omitempty"`
 }
 
 type ArrayOfGroupIdType struct {
@@ -7278,7 +8735,7 @@ type ArrayOfGroupIdType struct {
 }
 
 type DistinguishedGroupByType struct {
-	BaseGroupByType `xml:",omitempty"`
+	Order           SortDirectionType   `xml:"Order,attr,omitempty"`
 	StandardGroupBy StandardGroupByType `xml:"t:StandardGroupBy,omitempty"`
 }
 
@@ -7301,20 +8758,21 @@ type NonEmptyArrayOfAlternateIdsType struct {
 }
 
 type AlternateIdType struct {
-	AlternateIdBaseType `xml:",omitempty"`
-	Id                  XsString           `xml:"Id,attr,omitempty"`
-	Mailbox             NonEmptyStringType `xml:"Mailbox,attr,omitempty"`
-	IsArchive           XsBoolean          `xml:"IsArchive,attr,omitempty"`
+	Format    IdFormatType       `xml:"Format,attr,omitempty"`
+	Id        XsString           `xml:"Id,attr,omitempty"`
+	Mailbox   NonEmptyStringType `xml:"Mailbox,attr,omitempty"`
+	IsArchive XsBoolean          `xml:"IsArchive,attr,omitempty"`
 }
 
 type AlternatePublicFolderIdType struct {
-	AlternateIdBaseType `xml:",omitempty"`
-	FolderId            XsString `xml:"FolderId,attr,omitempty"`
+	Format   IdFormatType `xml:"Format,attr,omitempty"`
+	FolderId XsString     `xml:"FolderId,attr,omitempty"`
 }
 
 type AlternatePublicFolderItemIdType struct {
-	AlternatePublicFolderIdType `xml:",omitempty"`
-	ItemId                      XsString `xml:"ItemId,attr,omitempty"`
+	Format   IdFormatType `xml:"Format,attr,omitempty"`
+	FolderId XsString     `xml:"FolderId,attr,omitempty"`
+	ItemId   XsString     `xml:"ItemId,attr,omitempty"`
 }
 
 type NonEmptyArrayOfFoldersType struct {
@@ -7342,16 +8800,16 @@ type NonEmptyArrayOfFolderChangeDescriptionsType struct {
 }
 
 type AppendToFolderFieldType struct {
-	FolderChangeDescriptionType `xml:",omitempty"`
-	Folder                      *FolderType         `xml:"t:Folder,omitempty"`
-	CalendarFolder              *CalendarFolderType `xml:"t:CalendarFolder,omitempty"`
-	ContactsFolder              *ContactsFolderType `xml:"t:ContactsFolder,omitempty"`
-	SearchFolder                *SearchFolderType   `xml:"t:SearchFolder,omitempty"`
-	TasksFolder                 *TasksFolderType    `xml:"t:TasksFolder,omitempty"`
+	Path           BasePathToElementType `xml:"t:Path,omitempty"`
+	Folder         *FolderType           `xml:"t:Folder,omitempty"`
+	CalendarFolder *CalendarFolderType   `xml:"t:CalendarFolder,omitempty"`
+	ContactsFolder *ContactsFolderType   `xml:"t:ContactsFolder,omitempty"`
+	SearchFolder   *SearchFolderType     `xml:"t:SearchFolder,omitempty"`
+	TasksFolder    *TasksFolderType      `xml:"t:TasksFolder,omitempty"`
 }
 
 type FolderChangeDescriptionType struct {
-	ChangeDescriptionType `xml:",omitempty"`
+	Path BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type ChangeDescriptionType struct {
@@ -7359,21 +8817,24 @@ type ChangeDescriptionType struct {
 }
 
 type SetFolderFieldType struct {
-	FolderChangeDescriptionType `xml:",omitempty"`
-	Folder                      *FolderType         `xml:"t:Folder,omitempty"`
-	CalendarFolder              *CalendarFolderType `xml:"t:CalendarFolder,omitempty"`
-	ContactsFolder              *ContactsFolderType `xml:"t:ContactsFolder,omitempty"`
-	SearchFolder                *SearchFolderType   `xml:"t:SearchFolder,omitempty"`
-	TasksFolder                 *TasksFolderType    `xml:"t:TasksFolder,omitempty"`
+	Path           BasePathToElementType `xml:"t:Path,omitempty"`
+	Folder         *FolderType           `xml:"t:Folder,omitempty"`
+	CalendarFolder *CalendarFolderType   `xml:"t:CalendarFolder,omitempty"`
+	ContactsFolder *ContactsFolderType   `xml:"t:ContactsFolder,omitempty"`
+	SearchFolder   *SearchFolderType     `xml:"t:SearchFolder,omitempty"`
+	TasksFolder    *TasksFolderType      `xml:"t:TasksFolder,omitempty"`
 }
 
 type DeleteFolderFieldType struct {
-	FolderChangeDescriptionType `xml:",omitempty"`
+	Path BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type PullSubscriptionRequestType struct {
-	BaseSubscriptionRequestType `xml:",omitempty"`
-	Timeout                     SubscriptionTimeoutType `xml:"t:Timeout,omitempty"`
+	SubscribeToAllFolders XsBoolean                                  `xml:"SubscribeToAllFolders,attr,omitempty"`
+	FolderIds             *NonEmptyArrayOfBaseFolderIdsType          `xml:"t:FolderIds,omitempty"`
+	EventTypes            *NonEmptyArrayOfNotificationEventTypesType `xml:"t:EventTypes,omitempty"`
+	Watermark             WatermarkType                              `xml:"t:Watermark,omitempty"`
+	Timeout               SubscriptionTimeoutType                    `xml:"t:Timeout,omitempty"`
 }
 
 type BaseSubscriptionRequestType struct {
@@ -7388,10 +8849,13 @@ type NonEmptyArrayOfNotificationEventTypesType struct {
 }
 
 type PushSubscriptionRequestType struct {
-	BaseSubscriptionRequestType `xml:",omitempty"`
-	StatusFrequency             SubscriptionStatusFrequencyType `xml:"t:StatusFrequency,omitempty"`
-	URL                         XsString                        `xml:"t:URL,omitempty"`
-	CallerData                  XsString                        `xml:"t:CallerData,omitempty"`
+	SubscribeToAllFolders XsBoolean                                  `xml:"SubscribeToAllFolders,attr,omitempty"`
+	FolderIds             *NonEmptyArrayOfBaseFolderIdsType          `xml:"t:FolderIds,omitempty"`
+	EventTypes            *NonEmptyArrayOfNotificationEventTypesType `xml:"t:EventTypes,omitempty"`
+	Watermark             WatermarkType                              `xml:"t:Watermark,omitempty"`
+	StatusFrequency       SubscriptionStatusFrequencyType            `xml:"t:StatusFrequency,omitempty"`
+	URL                   XsString                                   `xml:"t:URL,omitempty"`
+	CallerData            XsString                                   `xml:"t:CallerData,omitempty"`
 }
 
 type StreamingSubscriptionRequestType struct {
@@ -7416,21 +8880,20 @@ type NonEmptyArrayOfBaseItemIdsType struct {
 }
 
 type OccurrenceItemIdType struct {
-	BaseItemIdType    `xml:",omitempty"`
 	RecurringMasterId DerivedItemIdType `xml:"RecurringMasterId,attr,omitempty"`
 	ChangeKey         XsString          `xml:"ChangeKey,attr,omitempty"`
 	InstanceIndex     XsInt             `xml:"InstanceIndex,attr,omitempty"`
 }
 
 type RecurringMasterItemIdType struct {
-	BaseItemIdType `xml:",omitempty"`
-	OccurrenceId   DerivedItemIdType `xml:"OccurrenceId,attr,omitempty"`
-	ChangeKey      XsString          `xml:"ChangeKey,attr,omitempty"`
+	OccurrenceId DerivedItemIdType `xml:"OccurrenceId,attr,omitempty"`
+	ChangeKey    XsString          `xml:"ChangeKey,attr,omitempty"`
 }
 
 type RecurringMasterItemIdRangesType struct {
-	ItemIdType `xml:",omitempty"`
-	Ranges     *ArrayOfOccurrenceRangesType `xml:"t:Ranges,omitempty"`
+	Id        XsString                     `xml:"Id,attr,omitempty"`
+	ChangeKey XsString                     `xml:"ChangeKey,attr,omitempty"`
+	Ranges    *ArrayOfOccurrenceRangesType `xml:"t:Ranges,omitempty"`
 }
 
 type ArrayOfOccurrenceRangesType struct {
@@ -7463,49 +8926,49 @@ type NonEmptyArrayOfItemChangeDescriptionsType struct {
 }
 
 type AppendToItemFieldType struct {
-	ItemChangeDescriptionType `xml:",omitempty"`
-	Item                      *ItemType                       `xml:"t:Item,omitempty"`
-	Message                   *MessageType                    `xml:"t:Message,omitempty"`
-	SharingMessage            *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
-	CalendarItem              *CalendarItemType               `xml:"t:CalendarItem,omitempty"`
-	Contact                   *ContactItemType                `xml:"t:Contact,omitempty"`
-	DistributionList          *DistributionListType           `xml:"t:DistributionList,omitempty"`
-	MeetingMessage            *MeetingMessageType             `xml:"t:MeetingMessage,omitempty"`
-	MeetingRequest            *MeetingRequestMessageType      `xml:"t:MeetingRequest,omitempty"`
-	MeetingResponse           *MeetingResponseMessageType     `xml:"t:MeetingResponse,omitempty"`
-	MeetingCancellation       *MeetingCancellationMessageType `xml:"t:MeetingCancellation,omitempty"`
-	Task                      *TaskType                       `xml:"t:Task,omitempty"`
-	PostItem                  *PostItemType                   `xml:"t:PostItem,omitempty"`
-	RoleMember                *RoleMemberItemType             `xml:"t:RoleMember,omitempty"`
-	Network                   *NetworkItemType                `xml:"t:Network,omitempty"`
-	Person                    *AbchPersonItemType             `xml:"t:Person,omitempty"`
+	Path                BasePathToElementType           `xml:"t:Path,omitempty"`
+	Item                *ItemType                       `xml:"t:Item,omitempty"`
+	Message             *MessageType                    `xml:"t:Message,omitempty"`
+	SharingMessage      *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
+	CalendarItem        *CalendarItemType               `xml:"t:CalendarItem,omitempty"`
+	Contact             *ContactItemType                `xml:"t:Contact,omitempty"`
+	DistributionList    *DistributionListType           `xml:"t:DistributionList,omitempty"`
+	MeetingMessage      *MeetingMessageType             `xml:"t:MeetingMessage,omitempty"`
+	MeetingRequest      *MeetingRequestMessageType      `xml:"t:MeetingRequest,omitempty"`
+	MeetingResponse     *MeetingResponseMessageType     `xml:"t:MeetingResponse,omitempty"`
+	MeetingCancellation *MeetingCancellationMessageType `xml:"t:MeetingCancellation,omitempty"`
+	Task                *TaskType                       `xml:"t:Task,omitempty"`
+	PostItem            *PostItemType                   `xml:"t:PostItem,omitempty"`
+	RoleMember          *RoleMemberItemType             `xml:"t:RoleMember,omitempty"`
+	Network             *NetworkItemType                `xml:"t:Network,omitempty"`
+	Person              *AbchPersonItemType             `xml:"t:Person,omitempty"`
 }
 
 type ItemChangeDescriptionType struct {
-	ChangeDescriptionType `xml:",omitempty"`
+	Path BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type SetItemFieldType struct {
-	ItemChangeDescriptionType `xml:",omitempty"`
-	Item                      *ItemType                       `xml:"t:Item,omitempty"`
-	Message                   *MessageType                    `xml:"t:Message,omitempty"`
-	SharingMessage            *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
-	CalendarItem              *CalendarItemType               `xml:"t:CalendarItem,omitempty"`
-	Contact                   *ContactItemType                `xml:"t:Contact,omitempty"`
-	DistributionList          *DistributionListType           `xml:"t:DistributionList,omitempty"`
-	MeetingMessage            *MeetingMessageType             `xml:"t:MeetingMessage,omitempty"`
-	MeetingRequest            *MeetingRequestMessageType      `xml:"t:MeetingRequest,omitempty"`
-	MeetingResponse           *MeetingResponseMessageType     `xml:"t:MeetingResponse,omitempty"`
-	MeetingCancellation       *MeetingCancellationMessageType `xml:"t:MeetingCancellation,omitempty"`
-	Task                      *TaskType                       `xml:"t:Task,omitempty"`
-	PostItem                  *PostItemType                   `xml:"t:PostItem,omitempty"`
-	RoleMember                *RoleMemberItemType             `xml:"t:RoleMember,omitempty"`
-	Network                   *NetworkItemType                `xml:"t:Network,omitempty"`
-	Person                    *AbchPersonItemType             `xml:"t:Person,omitempty"`
+	Path                BasePathToElementType           `xml:"t:Path,omitempty"`
+	Item                *ItemType                       `xml:"t:Item,omitempty"`
+	Message             *MessageType                    `xml:"t:Message,omitempty"`
+	SharingMessage      *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
+	CalendarItem        *CalendarItemType               `xml:"t:CalendarItem,omitempty"`
+	Contact             *ContactItemType                `xml:"t:Contact,omitempty"`
+	DistributionList    *DistributionListType           `xml:"t:DistributionList,omitempty"`
+	MeetingMessage      *MeetingMessageType             `xml:"t:MeetingMessage,omitempty"`
+	MeetingRequest      *MeetingRequestMessageType      `xml:"t:MeetingRequest,omitempty"`
+	MeetingResponse     *MeetingResponseMessageType     `xml:"t:MeetingResponse,omitempty"`
+	MeetingCancellation *MeetingCancellationMessageType `xml:"t:MeetingCancellation,omitempty"`
+	Task                *TaskType                       `xml:"t:Task,omitempty"`
+	PostItem            *PostItemType                   `xml:"t:PostItem,omitempty"`
+	RoleMember          *RoleMemberItemType             `xml:"t:RoleMember,omitempty"`
+	Network             *NetworkItemType                `xml:"t:Network,omitempty"`
+	Person              *AbchPersonItemType             `xml:"t:Person,omitempty"`
 }
 
 type DeleteItemFieldType struct {
-	ItemChangeDescriptionType `xml:",omitempty"`
+	Path BasePathToElementType `xml:"t:Path,omitempty"`
 }
 
 type NonEmptyArrayOfRequestAttachmentIdsType struct {
@@ -7683,23 +9146,19 @@ type ArrayOfAttendeeConflictData struct {
 }
 
 type UnknownAttendeeConflictData struct {
-	AttendeeConflictData `xml:",omitempty"`
 }
 
 type AttendeeConflictData struct {
 }
 
 type IndividualAttendeeConflictData struct {
-	AttendeeConflictData `xml:",omitempty"`
-	BusyType             LegacyFreeBusyType `xml:"t:BusyType,omitempty"`
+	BusyType LegacyFreeBusyType `xml:"t:BusyType,omitempty"`
 }
 
 type TooBigGroupAttendeeConflictData struct {
-	AttendeeConflictData `xml:",omitempty"`
 }
 
 type GroupAttendeeConflictData struct {
-	AttendeeConflictData        `xml:",omitempty"`
 	NumberOfMembers             XsInt `xml:"t:NumberOfMembers,omitempty"`
 	NumberOfMembersAvailable    XsInt `xml:"t:NumberOfMembersAvailable,omitempty"`
 	NumberOfMembersWithConflict XsInt `xml:"t:NumberOfMembersWithConflict,omitempty"`
@@ -7735,7 +9194,6 @@ type ConfigurationRequestDetailsType struct {
 }
 
 type MailTipsServiceConfiguration struct {
-	ServiceConfiguration               `xml:",omitempty"`
 	MailTipsEnabled                    XsBoolean       `xml:"t:MailTipsEnabled,omitempty"`
 	MaxRecipientsPerGetMailTipsRequest XsInt           `xml:"t:MaxRecipientsPerGetMailTipsRequest,omitempty"`
 	MaxMessageSize                     XsInt           `xml:"t:MaxMessageSize,omitempty"`
@@ -7759,17 +9217,15 @@ type SmtpDomain struct {
 }
 
 type UnifiedMessageServiceConfiguration struct {
-	ServiceConfiguration  `xml:",omitempty"`
 	UmEnabled             XsBoolean `xml:"t:UmEnabled,omitempty"`
 	PlayOnPhoneDialString XsString  `xml:"t:PlayOnPhoneDialString,omitempty"`
 	PlayOnPhoneEnabled    XsBoolean `xml:"t:PlayOnPhoneEnabled,omitempty"`
 }
 
 type ProtectionRulesServiceConfiguration struct {
-	ServiceConfiguration `xml:",omitempty"`
-	RefreshInterval      RefreshIntervalType         `xml:"RefreshInterval,attr,omitempty"`
-	Rules                *ArrayOfProtectionRulesType `xml:"t:Rules,omitempty"`
-	InternalDomains      *SmtpDomainList             `xml:"t:InternalDomains,omitempty"`
+	RefreshInterval RefreshIntervalType         `xml:"RefreshInterval,attr,omitempty"`
+	Rules           *ArrayOfProtectionRulesType `xml:"t:Rules,omitempty"`
+	InternalDomains *SmtpDomainList             `xml:"t:InternalDomains,omitempty"`
 }
 
 type ArrayOfProtectionRulesType struct {
@@ -7821,7 +9277,6 @@ type PolicyNudgeRulesServiceConfiguration struct {
 }
 
 type SharePointURLsServiceConfiguration struct {
-	ServiceConfiguration    `xml:",omitempty"`
 	InternalSPMySiteHostURL XsString `xml:"t:InternalSPMySiteHostURL,omitempty"`
 	ExternalSPMySiteHostURL XsString `xml:"t:ExternalSPMySiteHostURL,omitempty"`
 }
@@ -8087,21 +9542,18 @@ type ArrayOfRuleOperationsType struct {
 }
 
 type CreateRuleOperationType struct {
-	RuleOperationType `xml:",omitempty"`
-	Rule              *RuleType `xml:"t:Rule,omitempty"`
+	Rule *RuleType `xml:"t:Rule,omitempty"`
 }
 
 type RuleOperationType struct {
 }
 
 type SetRuleOperationType struct {
-	RuleOperationType `xml:",omitempty"`
-	Rule              *RuleType `xml:"t:Rule,omitempty"`
+	Rule *RuleType `xml:"t:Rule,omitempty"`
 }
 
 type DeleteRuleOperationType struct {
-	RuleOperationType `xml:",omitempty"`
-	RuleId            XsString `xml:"t:RuleId,omitempty"`
+	RuleId XsString `xml:"t:RuleId,omitempty"`
 }
 
 type ArrayOfRuleOperationErrorsType struct {
@@ -8252,8 +9704,8 @@ type ArrayOfAttendeeConstraintItems struct {
 }
 
 type AttendeeConstraintItem struct {
-	MeetingTimeCandidatesConstraintItem `xml:",omitempty"`
-	IsRequired                          XsBoolean `xml:"t:IsRequired,omitempty"`
+	Email      XsString  `xml:"t:Email,omitempty"`
+	IsRequired XsBoolean `xml:"t:IsRequired,omitempty"`
 }
 
 type MeetingTimeCandidatesConstraintItem struct {
@@ -8271,9 +9723,9 @@ type ArrayOfLocationConstraintItems struct {
 }
 
 type LocationConstraintItem struct {
-	MeetingTimeCandidatesConstraintItem `xml:",omitempty"`
-	Name                                XsString  `xml:"t:Name,omitempty"`
-	ResolveAvailability                 XsBoolean `xml:"t:ResolveAvailability,omitempty"`
+	Email               XsString  `xml:"t:Email,omitempty"`
+	Name                XsString  `xml:"t:Name,omitempty"`
+	ResolveAvailability XsBoolean `xml:"t:ResolveAvailability,omitempty"`
 }
 
 type FindMeetingTimesSearchConstraints struct {
@@ -8474,6 +9926,2133 @@ type MailboxInformationType struct {
 type OfficeClientType struct {
 	Code    OfficeClientCodeType `xml:"Code,attr,omitempty"`
 	Version VersionType          `xml:"Version,attr,omitempty"`
+}
+
+type ResolveNamesType struct {
+	ReturnFullContactData XsBoolean                         `xml:"ReturnFullContactData,attr,omitempty"`
+	SearchScope           ResolveNamesSearchScopeType       `xml:"SearchScope,attr,omitempty"`
+	ContactDataShape      DefaultShapeNamesType             `xml:"ContactDataShape,attr,omitempty"`
+	ParentFolderIds       *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
+	UnresolvedEntry       NonEmptyStringType                `xml:"m:UnresolvedEntry,omitempty"`
+}
+
+type BaseRequestType struct {
+}
+
+type ResolveNamesResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type BaseResponseMessageType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArrayOfResponseMessagesType struct {
+	CreateItemResponseMessage                      []*ItemInfoResponseMessageType                        `xml:"m:CreateItemResponseMessage,omitempty"`
+	DeleteItemResponseMessage                      []*DeleteItemResponseMessageType                      `xml:"m:DeleteItemResponseMessage,omitempty"`
+	GetItemResponseMessage                         []*ItemInfoResponseMessageType                        `xml:"m:GetItemResponseMessage,omitempty"`
+	UpdateItemResponseMessage                      []*UpdateItemResponseMessageType                      `xml:"m:UpdateItemResponseMessage,omitempty"`
+	UpdateItemInRecoverableItemsResponseMessage    []*UpdateItemInRecoverableItemsResponseMessageType    `xml:"m:UpdateItemInRecoverableItemsResponseMessage,omitempty"`
+	SendItemResponseMessage                        []*ResponseMessageType                                `xml:"m:SendItemResponseMessage,omitempty"`
+	DeleteFolderResponseMessage                    []*ResponseMessageType                                `xml:"m:DeleteFolderResponseMessage,omitempty"`
+	EmptyFolderResponseMessage                     []*ResponseMessageType                                `xml:"m:EmptyFolderResponseMessage,omitempty"`
+	CreateFolderResponseMessage                    []*FolderInfoResponseMessageType                      `xml:"m:CreateFolderResponseMessage,omitempty"`
+	GetFolderResponseMessage                       []*FolderInfoResponseMessageType                      `xml:"m:GetFolderResponseMessage,omitempty"`
+	FindFolderResponseMessage                      []*FindFolderResponseMessageType                      `xml:"m:FindFolderResponseMessage,omitempty"`
+	UpdateFolderResponseMessage                    []*FolderInfoResponseMessageType                      `xml:"m:UpdateFolderResponseMessage,omitempty"`
+	MoveFolderResponseMessage                      []*FolderInfoResponseMessageType                      `xml:"m:MoveFolderResponseMessage,omitempty"`
+	CopyFolderResponseMessage                      []*FolderInfoResponseMessageType                      `xml:"m:CopyFolderResponseMessage,omitempty"`
+	CreateFolderPathResponseMessage                []*FolderInfoResponseMessageType                      `xml:"m:CreateFolderPathResponseMessage,omitempty"`
+	CreateAttachmentResponseMessage                []*AttachmentInfoResponseMessageType                  `xml:"m:CreateAttachmentResponseMessage,omitempty"`
+	DeleteAttachmentResponseMessage                []*DeleteAttachmentResponseMessageType                `xml:"m:DeleteAttachmentResponseMessage,omitempty"`
+	GetAttachmentResponseMessage                   []*AttachmentInfoResponseMessageType                  `xml:"m:GetAttachmentResponseMessage,omitempty"`
+	UploadItemsResponseMessage                     []*UploadItemsResponseMessageType                     `xml:"m:UploadItemsResponseMessage,omitempty"`
+	ExportItemsResponseMessage                     []*ExportItemsResponseMessageType                     `xml:"m:ExportItemsResponseMessage,omitempty"`
+	MarkAllItemsAsReadResponseMessage              []*ResponseMessageType                                `xml:"m:MarkAllItemsAsReadResponseMessage,omitempty"`
+	GetClientAccessTokenResponseMessage            []*GetClientAccessTokenResponseMessageType            `xml:"m:GetClientAccessTokenResponseMessage,omitempty"`
+	GetAppManifestsResponseMessage                 []*ResponseMessageType                                `xml:"m:GetAppManifestsResponseMessage,omitempty"`
+	SetClientExtensionResponseMessage              []*ResponseMessageType                                `xml:"m:SetClientExtensionResponseMessage,omitempty"`
+	GetOMEConfigurationResponseMessage             []*ResponseMessageType                                `xml:"m:GetOMEConfigurationResponseMessage,omitempty"`
+	SetOMEConfigurationResponseMessage             []*ResponseMessageType                                `xml:"m:SetOMEConfigurationResponseMessage,omitempty"`
+	GetOMEMessageStatusResponseType                []*ResponseMessageType                                `xml:"m:GetOMEMessageStatusResponseType,omitempty"`
+	SetOMEMessageStatusResponseType                []*ResponseMessageType                                `xml:"m:SetOMEMessageStatusResponseType,omitempty"`
+	FindItemResponseMessage                        []*FindItemResponseMessageType                        `xml:"m:FindItemResponseMessage,omitempty"`
+	MoveItemResponseMessage                        []*ItemInfoResponseMessageType                        `xml:"m:MoveItemResponseMessage,omitempty"`
+	ArchiveItemResponseMessage                     []*ItemInfoResponseMessageType                        `xml:"m:ArchiveItemResponseMessage,omitempty"`
+	CopyItemResponseMessage                        []*ItemInfoResponseMessageType                        `xml:"m:CopyItemResponseMessage,omitempty"`
+	ResolveNamesResponseMessage                    []*ResolveNamesResponseMessageType                    `xml:"m:ResolveNamesResponseMessage,omitempty"`
+	ExpandDLResponseMessage                        []*ExpandDLResponseMessageType                        `xml:"m:ExpandDLResponseMessage,omitempty"`
+	GetServerTimeZonesResponseMessage              []*GetServerTimeZonesResponseMessageType              `xml:"m:GetServerTimeZonesResponseMessage,omitempty"`
+	GetEventsResponseMessage                       []*GetEventsResponseMessageType                       `xml:"m:GetEventsResponseMessage,omitempty"`
+	GetStreamingEventsResponseMessage              []*GetStreamingEventsResponseMessageType              `xml:"m:GetStreamingEventsResponseMessage,omitempty"`
+	SubscribeResponseMessage                       []*SubscribeResponseMessageType                       `xml:"m:SubscribeResponseMessage,omitempty"`
+	UnsubscribeResponseMessage                     []*ResponseMessageType                                `xml:"m:UnsubscribeResponseMessage,omitempty"`
+	SendNotificationResponseMessage                []*SendNotificationResponseMessageType                `xml:"m:SendNotificationResponseMessage,omitempty"`
+	SyncFolderHierarchyResponseMessage             []*SyncFolderHierarchyResponseMessageType             `xml:"m:SyncFolderHierarchyResponseMessage,omitempty"`
+	SyncFolderItemsResponseMessage                 []*SyncFolderItemsResponseMessageType                 `xml:"m:SyncFolderItemsResponseMessage,omitempty"`
+	CreateManagedFolderResponseMessage             []*FolderInfoResponseMessageType                      `xml:"m:CreateManagedFolderResponseMessage,omitempty"`
+	ConvertIdResponseMessage                       []*ConvertIdResponseMessageType                       `xml:"m:ConvertIdResponseMessage,omitempty"`
+	GetSharingMetadataResponseMessage              []*GetSharingMetadataResponseMessageType              `xml:"m:GetSharingMetadataResponseMessage,omitempty"`
+	RefreshSharingFolderResponseMessage            []*RefreshSharingFolderResponseMessageType            `xml:"m:RefreshSharingFolderResponseMessage,omitempty"`
+	GetSharingFolderResponseMessage                []*GetSharingFolderResponseMessageType                `xml:"m:GetSharingFolderResponseMessage,omitempty"`
+	CreateUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:CreateUserConfigurationResponseMessage,omitempty"`
+	DeleteUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:DeleteUserConfigurationResponseMessage,omitempty"`
+	GetUserConfigurationResponseMessage            []*GetUserConfigurationResponseMessageType            `xml:"m:GetUserConfigurationResponseMessage,omitempty"`
+	GetSpecificUserConfigurationResponseMessage    []*GetSpecificUserConfigurationResponseMessageType    `xml:"m:GetSpecificUserConfigurationResponseMessage,omitempty"`
+	UpdateUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:UpdateUserConfigurationResponseMessage,omitempty"`
+	GetRoomListsResponse                           []*GetRoomListsResponseMessageType                    `xml:"m:GetRoomListsResponse,omitempty"`
+	GetRoomsResponse                               []*GetRoomsResponseMessageType                        `xml:"m:GetRoomsResponse,omitempty"`
+	GetRemindersResponse                           []*GetRemindersResponseMessageType                    `xml:"m:GetRemindersResponse,omitempty"`
+	PerformReminderActionResponse                  []*PerformReminderActionResponseMessageType           `xml:"m:PerformReminderActionResponse,omitempty"`
+	ApplyConversationActionResponseMessage         []*ApplyConversationActionResponseMessageType         `xml:"m:ApplyConversationActionResponseMessage,omitempty"`
+	FindMailboxStatisticsByKeywordsResponseMessage []*FindMailboxStatisticsByKeywordsResponseMessageType `xml:"m:FindMailboxStatisticsByKeywordsResponseMessage,omitempty"`
+	GetSearchableMailboxesResponseMessage          []*GetSearchableMailboxesResponseMessageType          `xml:"m:GetSearchableMailboxesResponseMessage,omitempty"`
+	SearchMailboxesResponseMessage                 []*SearchMailboxesResponseMessageType                 `xml:"m:SearchMailboxesResponseMessage,omitempty"`
+	GetDiscoverySearchConfigurationResponseMessage []*GetDiscoverySearchConfigurationResponseMessageType `xml:"m:GetDiscoverySearchConfigurationResponseMessage,omitempty"`
+	GetHoldOnMailboxesResponseMessage              []*GetHoldOnMailboxesResponseMessageType              `xml:"m:GetHoldOnMailboxesResponseMessage,omitempty"`
+	SetHoldOnMailboxesResponseMessage              []*SetHoldOnMailboxesResponseMessageType              `xml:"m:SetHoldOnMailboxesResponseMessage,omitempty"`
+	GetNonIndexableItemStatisticsResponseMessage   []*GetNonIndexableItemStatisticsResponseMessageType   `xml:"m:GetNonIndexableItemStatisticsResponseMessage,omitempty"`
+	GetNonIndexableItemDetailsResponseMessage      []*GetNonIndexableItemDetailsResponseMessageType      `xml:"m:GetNonIndexableItemDetailsResponseMessage,omitempty"`
+	FindPeopleResponseMessage                      []*FindPeopleResponseMessageType                      `xml:"m:FindPeopleResponseMessage,omitempty"`
+	FindTagsResponseMessage                        []*FindTagsResponseMessageType                        `xml:"m:FindTagsResponseMessage,omitempty"`
+	AddTagResponseMessage                          []*AddTagResponseMessageType                          `xml:"m:AddTagResponseMessage,omitempty"`
+	HideTagResponseMessage                         []*HideTagResponseMessageType                         `xml:"m:HideTagResponseMessage,omitempty"`
+	GetPasswordExpirationDateResponse              []*GetPasswordExpirationDateResponseMessageType       `xml:"m:GetPasswordExpirationDateResponse,omitempty"`
+	GetPersonaResponseMessage                      []*GetPersonaResponseMessageType                      `xml:"m:GetPersonaResponseMessage,omitempty"`
+	GetConversationItemsResponseMessage            []*GetConversationItemsResponseMessageType            `xml:"m:GetConversationItemsResponseMessage,omitempty"`
+	GetUserRetentionPolicyTagsResponseMessage      []*GetUserRetentionPolicyTagsResponseMessageType      `xml:"m:GetUserRetentionPolicyTagsResponseMessage,omitempty"`
+	GetUserPhotoResponseMessage                    []*GetUserPhotoResponseMessageType                    `xml:"m:GetUserPhotoResponseMessage,omitempty"`
+	MarkAsJunkResponseMessage                      []*MarkAsJunkResponseMessageType                      `xml:"m:MarkAsJunkResponseMessage,omitempty"`
+	MarkAsPhishingResponseMessage                  []*MarkAsPhishingResponseMessageType                  `xml:"m:MarkAsPhishingResponseMessage,omitempty"`
+	ReportMessageResponseMessage                   []*ReportMessageResponseMessageType                   `xml:"m:ReportMessageResponseMessage,omitempty"`
+	PostModernGroupItemResponseMessage             []*ItemInfoResponseMessageType                        `xml:"m:PostModernGroupItemResponseMessage,omitempty"`
+	GetLastPrivateCatalogUpdateResponseMessage     []*ResponseMessageType                                `xml:"m:GetLastPrivateCatalogUpdateResponseMessage,omitempty"`
+	GetPrivateCatalogAddInsResponseMessage         []*ResponseMessageType                                `xml:"m:GetPrivateCatalogAddInsResponseMessage,omitempty"`
+}
+
+type ItemInfoResponseMessageType struct {
+	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString              `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	Items              *ArrayOfRealItemsType `xml:"m:Items,omitempty"`
+}
+
+type ResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type DeleteItemResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type UpdateItemResponseMessageType struct {
+	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString              `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	Items              *ArrayOfRealItemsType `xml:"m:Items,omitempty"`
+	ConflictResults    *ConflictResultsType  `xml:"m:ConflictResults,omitempty"`
+}
+
+type UpdateItemInRecoverableItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType          `xml:"m:MessageXml,omitempty"`
+	Items              *ArrayOfRealItemsType   `xml:"m:Items,omitempty"`
+	Attachments        *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
+	ConflictResults    *ConflictResultsType    `xml:"m:ConflictResults,omitempty"`
+}
+
+type FolderInfoResponseMessageType struct {
+	ResponseClass      ResponseClassType   `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString            `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType      `xml:"m:MessageXml,omitempty"`
+	Folders            *ArrayOfFoldersType `xml:"m:Folders,omitempty"`
+}
+
+type FindFolderResponseMessageType struct {
+	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString              `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	RootFolder         *FindFolderParentType `xml:"m:RootFolder,omitempty"`
+}
+
+type AttachmentInfoResponseMessageType struct {
+	ResponseClass      ResponseClassType       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType          `xml:"m:MessageXml,omitempty"`
+	Attachments        *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
+}
+
+type DeleteAttachmentResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	RootItemId         *RootItemIdType   `xml:"m:RootItemId,omitempty"`
+}
+
+type UploadItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	ItemId             *ItemIdType       `xml:"m:ItemId,omitempty"`
+}
+
+type ExportItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	ItemId             *ItemIdType       `xml:"m:ItemId,omitempty"`
+	Data               XsBase64Binary    `xml:"m:Data,omitempty"`
+}
+
+type GetClientAccessTokenResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	Token              *ClientAccessTokenType `xml:"m:Token,omitempty"`
+}
+
+type FindItemResponseMessageType struct {
+	ResponseClass      ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                   `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	RootFolder         *FindItemParentType        `xml:"m:RootFolder,omitempty"`
+	HighlightTerms     *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
+}
+
+type ResolveNamesResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	ResolutionSet      *ArrayOfResolutionType `xml:"m:ResolutionSet,omitempty"`
+}
+
+type ExpandDLResponseMessageType struct {
+	ResponseClass           ResponseClassType       `xml:"ResponseClass,attr,omitempty"`
+	IndexedPagingOffset     XsInt                   `xml:"IndexedPagingOffset,attr,omitempty"`
+	NumeratorOffset         XsInt                   `xml:"NumeratorOffset,attr,omitempty"`
+	AbsoluteDenominator     XsInt                   `xml:"AbsoluteDenominator,attr,omitempty"`
+	IncludesLastItemInRange XsBoolean               `xml:"IncludesLastItemInRange,attr,omitempty"`
+	TotalItemsInView        XsInt                   `xml:"TotalItemsInView,attr,omitempty"`
+	MessageText             XsString                `xml:"m:MessageText,omitempty"`
+	ResponseCode            ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey      XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml              MessageXmlType          `xml:"m:MessageXml,omitempty"`
+	DLExpansion             *ArrayOfDLExpansionType `xml:"m:DLExpansion,omitempty"`
+}
+
+type GetServerTimeZonesResponseMessageType struct {
+	ResponseClass       ResponseClassType              `xml:"ResponseClass,attr,omitempty"`
+	MessageText         XsString                       `xml:"m:MessageText,omitempty"`
+	ResponseCode        ResponseCodeType               `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey  XsInt                          `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml          MessageXmlType                 `xml:"m:MessageXml,omitempty"`
+	TimeZoneDefinitions *ArrayOfTimeZoneDefinitionType `xml:"m:TimeZoneDefinitions,omitempty"`
+}
+
+type GetEventsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	Notification       *NotificationType `xml:"m:Notification,omitempty"`
+}
+
+type GetStreamingEventsResponseMessageType struct {
+	ResponseClass        ResponseClassType                   `xml:"ResponseClass,attr,omitempty"`
+	MessageText          XsString                            `xml:"m:MessageText,omitempty"`
+	ResponseCode         ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey   XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml           MessageXmlType                      `xml:"m:MessageXml,omitempty"`
+	Notifications        *NonEmptyArrayOfNotificationsType   `xml:"m:Notifications,omitempty"`
+	ErrorSubscriptionIds *NonEmptyArrayOfSubscriptionIdsType `xml:"m:ErrorSubscriptionIds,omitempty"`
+	ConnectionStatus     ConnectionStatusType                `xml:"m:ConnectionStatus,omitempty"`
+}
+
+type SubscribeResponseMessageType struct {
+	ResponseClass      ResponseClassType  `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString           `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType     `xml:"m:MessageXml,omitempty"`
+	SubscriptionId     SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
+	Watermark          WatermarkType      `xml:"m:Watermark,omitempty"`
+}
+
+type SendNotificationResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	Notification       *NotificationType `xml:"m:Notification,omitempty"`
+}
+
+type SyncFolderHierarchyResponseMessageType struct {
+	ResponseClass             ResponseClassType               `xml:"ResponseClass,attr,omitempty"`
+	MessageText               XsString                        `xml:"m:MessageText,omitempty"`
+	ResponseCode              ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey        XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                MessageXmlType                  `xml:"m:MessageXml,omitempty"`
+	SyncState                 XsString                        `xml:"m:SyncState,omitempty"`
+	IncludesLastFolderInRange XsBoolean                       `xml:"m:IncludesLastFolderInRange,omitempty"`
+	Changes                   *SyncFolderHierarchyChangesType `xml:"m:Changes,omitempty"`
+}
+
+type SyncFolderItemsResponseMessageType struct {
+	ResponseClass           ResponseClassType           `xml:"ResponseClass,attr,omitempty"`
+	MessageText             XsString                    `xml:"m:MessageText,omitempty"`
+	ResponseCode            ResponseCodeType            `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey      XsInt                       `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml              MessageXmlType              `xml:"m:MessageXml,omitempty"`
+	SyncState               XsString                    `xml:"m:SyncState,omitempty"`
+	IncludesLastItemInRange XsBoolean                   `xml:"m:IncludesLastItemInRange,omitempty"`
+	Changes                 *SyncFolderItemsChangesType `xml:"m:Changes,omitempty"`
+}
+
+type ConvertIdResponseMessageType struct {
+	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString             `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	AlternateId        *AlternateIdBaseType `xml:"m:AlternateId,omitempty"`
+}
+
+type GetSharingMetadataResponseMessageType struct {
+	ResponseClass                       ResponseClassType                     `xml:"ResponseClass,attr,omitempty"`
+	MessageText                         XsString                              `xml:"m:MessageText,omitempty"`
+	ResponseCode                        ResponseCodeType                      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey                  XsInt                                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                          MessageXmlType                        `xml:"m:MessageXml,omitempty"`
+	EncryptedSharedFolderDataCollection *ArrayOfEncryptedSharedFolderDataType `xml:"m:EncryptedSharedFolderDataCollection,omitempty"`
+	InvalidRecipients                   *ArrayOfInvalidRecipientsType         `xml:"m:InvalidRecipients,omitempty"`
+}
+
+type RefreshSharingFolderResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type GetSharingFolderResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	SharingFolderId    *FolderIdType     `xml:"m:SharingFolderId,omitempty"`
+}
+
+type GetUserConfigurationResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	UserConfiguration  *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
+}
+
+type GetSpecificUserConfigurationResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	UserConfiguration  *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
+}
+
+type GetRoomListsResponseMessageType struct {
+	ResponseClass      ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                   `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	RoomLists          *ArrayOfEmailAddressesType `xml:"m:RoomLists,omitempty"`
+}
+
+type GetRoomsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	Rooms              *ArrayOfRoomsType `xml:"m:Rooms,omitempty"`
+}
+
+type GetRemindersResponseMessageType struct {
+	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString              `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	Reminders          *ArrayOfRemindersType `xml:"m:Reminders,omitempty"`
+}
+
+type PerformReminderActionResponseMessageType struct {
+	ResponseClass      ResponseClassType           `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                    `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType            `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                       `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType              `xml:"m:MessageXml,omitempty"`
+	UpdatedItemIds     *NonEmptyArrayOfItemIdsType `xml:"m:UpdatedItemIds,omitempty"`
+}
+
+type ApplyConversationActionResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type FindMailboxStatisticsByKeywordsResponseMessageType struct {
+	ResponseClass                 ResponseClassType                  `xml:"ResponseClass,attr,omitempty"`
+	MessageText                   XsString                           `xml:"m:MessageText,omitempty"`
+	ResponseCode                  ResponseCodeType                   `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey            XsInt                              `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                    MessageXmlType                     `xml:"m:MessageXml,omitempty"`
+	MailboxStatisticsSearchResult *MailboxStatisticsSearchResultType `xml:"m:MailboxStatisticsSearchResult,omitempty"`
+}
+
+type GetSearchableMailboxesResponseMessageType struct {
+	ResponseClass       ResponseClassType                 `xml:"ResponseClass,attr,omitempty"`
+	MessageText         XsString                          `xml:"m:MessageText,omitempty"`
+	ResponseCode        ResponseCodeType                  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey  XsInt                             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml          MessageXmlType                    `xml:"m:MessageXml,omitempty"`
+	SearchableMailboxes *ArrayOfSearchableMailboxesType   `xml:"m:SearchableMailboxes,omitempty"`
+	FailedMailboxes     *ArrayOfFailedSearchMailboxesType `xml:"m:FailedMailboxes,omitempty"`
+}
+
+type SearchMailboxesResponseMessageType struct {
+	ResponseClass         ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString                   `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	SearchMailboxesResult *SearchMailboxesResultType `xml:"m:SearchMailboxesResult,omitempty"`
+}
+
+type GetDiscoverySearchConfigurationResponseMessageType struct {
+	ResponseClass                 ResponseClassType                        `xml:"ResponseClass,attr,omitempty"`
+	MessageText                   XsString                                 `xml:"m:MessageText,omitempty"`
+	ResponseCode                  ResponseCodeType                         `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey            XsInt                                    `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                    MessageXmlType                           `xml:"m:MessageXml,omitempty"`
+	DiscoverySearchConfigurations *ArrayOfDiscoverySearchConfigurationType `xml:"m:DiscoverySearchConfigurations,omitempty"`
+}
+
+type GetHoldOnMailboxesResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	MailboxHoldResult  *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
+}
+
+type SetHoldOnMailboxesResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	MailboxHoldResult  *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
+}
+
+type GetNonIndexableItemStatisticsResponseMessageType struct {
+	ResponseClass              ResponseClassType                      `xml:"ResponseClass,attr,omitempty"`
+	MessageText                XsString                               `xml:"m:MessageText,omitempty"`
+	ResponseCode               ResponseCodeType                       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey         XsInt                                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                 MessageXmlType                         `xml:"m:MessageXml,omitempty"`
+	NonIndexableItemStatistics *ArrayOfNonIndexableItemStatisticsType `xml:"m:NonIndexableItemStatistics,omitempty"`
+}
+
+type GetNonIndexableItemDetailsResponseMessageType struct {
+	ResponseClass                 ResponseClassType                 `xml:"ResponseClass,attr,omitempty"`
+	MessageText                   XsString                          `xml:"m:MessageText,omitempty"`
+	ResponseCode                  ResponseCodeType                  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey            XsInt                             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                    MessageXmlType                    `xml:"m:MessageXml,omitempty"`
+	NonIndexableItemDetailsResult *NonIndexableItemDetailResultType `xml:"m:NonIndexableItemDetailsResult,omitempty"`
+}
+
+type FindPeopleResponseMessageType struct {
+	ResponseClass             ResponseClassType  `xml:"ResponseClass,attr,omitempty"`
+	MessageText               XsString           `xml:"m:MessageText,omitempty"`
+	ResponseCode              ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey        XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                MessageXmlType     `xml:"m:MessageXml,omitempty"`
+	People                    *ArrayOfPeopleType `xml:"m:People,omitempty"`
+	TotalNumberOfPeopleInView XsInt              `xml:"m:TotalNumberOfPeopleInView,omitempty"`
+	FirstMatchingRowIndex     XsInt              `xml:"m:FirstMatchingRowIndex,omitempty"`
+	FirstLoadedRowIndex       XsInt              `xml:"m:FirstLoadedRowIndex,omitempty"`
+	TransactionId             GuidType           `xml:"m:TransactionId,omitempty"`
+}
+
+type FindTagsResponseMessageType struct {
+	ResponseClass      ResponseClassType   `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString            `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType      `xml:"m:MessageXml,omitempty"`
+	Tags               *ArrayOfStringsType `xml:"m:Tags,omitempty"`
+}
+
+type AddTagResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	WasSuccessful      XsBoolean         `xml:"m:WasSuccessful,omitempty"`
+}
+
+type HideTagResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	WasSuccessful      XsBoolean         `xml:"m:WasSuccessful,omitempty"`
+}
+
+type GetPasswordExpirationDateResponseMessageType struct {
+	ResponseClass          ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText            XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode           ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey     XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml             MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	PasswordExpirationDate XsDateTime        `xml:"m:PasswordExpirationDate,omitempty"`
+}
+
+type GetPersonaResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
+}
+
+type GetConversationItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType         `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                  `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType          `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                     `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType            `xml:"m:MessageXml,omitempty"`
+	Conversation       *ConversationResponseType `xml:"m:Conversation,omitempty"`
+}
+
+type GetUserRetentionPolicyTagsResponseMessageType struct {
+	ResponseClass       ResponseClassType               `xml:"ResponseClass,attr,omitempty"`
+	MessageText         XsString                        `xml:"m:MessageText,omitempty"`
+	ResponseCode        ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey  XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml          MessageXmlType                  `xml:"m:MessageXml,omitempty"`
+	RetentionPolicyTags *ArrayOfRetentionPolicyTagsType `xml:"m:RetentionPolicyTags,omitempty"`
+}
+
+type GetUserPhotoResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	HasChanged         XsBoolean         `xml:"m:HasChanged,omitempty"`
+	PictureData        XsBase64Binary    `xml:"m:PictureData,omitempty"`
+}
+
+type MarkAsJunkResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
+}
+
+type MarkAsPhishingResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
+}
+
+type ReportMessageResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
+	Policy             XsString          `xml:"m:Policy,omitempty"`
+}
+
+type ExpandDLType struct {
+	Mailbox *EmailAddressType `xml:"m:Mailbox,omitempty"`
+}
+
+type ExpandDLResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetServerTimeZonesType struct {
+	ReturnFullTimeZoneData XsBoolean                      `xml:"ReturnFullTimeZoneData,attr,omitempty"`
+	Ids                    *NonEmptyArrayOfTimeZoneIdType `xml:"m:Ids,omitempty"`
+}
+
+type GetServerTimeZonesResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type FindFolderType struct {
+	Traversal                FolderQueryTraversalType          `xml:"Traversal,attr,omitempty"`
+	FolderShape              *FolderResponseShapeType          `xml:"m:FolderShape,omitempty"`
+	Restriction              *RestrictionType                  `xml:"m:Restriction,omitempty"`
+	ParentFolderIds          *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
+	IndexedPageFolderView    *IndexedPageViewType              `xml:"m:IndexedPageFolderView,omitempty"`
+	FractionalPageFolderView *FractionalPageViewType           `xml:"m:FractionalPageFolderView,omitempty"`
+}
+
+type FindFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type FindItemType struct {
+	Traversal                   ItemQueryTraversalType            `xml:"Traversal,attr,omitempty"`
+	ItemShape                   *ItemResponseShapeType            `xml:"m:ItemShape,omitempty"`
+	Restriction                 *RestrictionType                  `xml:"m:Restriction,omitempty"`
+	SortOrder                   *NonEmptyArrayOfFieldOrdersType   `xml:"m:SortOrder,omitempty"`
+	ParentFolderIds             *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
+	QueryString                 *QueryStringType                  `xml:"m:QueryString,omitempty"`
+	IndexedPageItemView         *IndexedPageViewType              `xml:"m:IndexedPageItemView,omitempty"`
+	FractionalPageItemView      *FractionalPageViewType           `xml:"m:FractionalPageItemView,omitempty"`
+	SeekToConditionPageItemView *SeekToConditionPageViewType      `xml:"m:SeekToConditionPageItemView,omitempty"`
+	CalendarView                *CalendarViewType                 `xml:"m:CalendarView,omitempty"`
+	ContactsView                *ContactsViewType                 `xml:"m:ContactsView,omitempty"`
+	GroupBy                     *GroupByType                      `xml:"m:GroupBy,omitempty"`
+	DistinguishedGroupBy        *DistinguishedGroupByType         `xml:"m:DistinguishedGroupBy,omitempty"`
+}
+
+type QueryStringType struct {
+	CharData             XsString  `xml:",chardata"`
+	ResetCache           XsBoolean `xml:"ResetCache,attr,omitempty"`
+	ReturnHighlightTerms XsBoolean `xml:"ReturnHighlightTerms,attr,omitempty"`
+	ReturnDeletedItems   XsBoolean `xml:"ReturnDeletedItems,attr,omitempty"`
+}
+
+type FindItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetFolderType struct {
+	FolderShape *FolderResponseShapeType          `xml:"m:FolderShape,omitempty"`
+	FolderIds   *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type GetFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UploadItemsType struct {
+	Items *NonEmptyArrayOfUploadItemsType `xml:"m:Items,omitempty"`
+}
+
+type UploadItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ExportItemsType struct {
+	ItemIds *NonEmptyArrayOfItemIdsType `xml:"m:ItemIds,omitempty"`
+}
+
+type ExportItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ConvertIdType struct {
+	DestinationFormat IdFormatType                     `xml:"DestinationFormat,attr,omitempty"`
+	SourceIds         *NonEmptyArrayOfAlternateIdsType `xml:"m:SourceIds,omitempty"`
+}
+
+type ConvertIdResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateFolderType struct {
+	ParentFolderId *TargetFolderIdType         `xml:"m:ParentFolderId,omitempty"`
+	Folders        *NonEmptyArrayOfFoldersType `xml:"m:Folders,omitempty"`
+}
+
+type CreateFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateFolderPathType struct {
+	ParentFolderId     *TargetFolderIdType         `xml:"m:ParentFolderId,omitempty"`
+	RelativeFolderPath *NonEmptyArrayOfFoldersType `xml:"m:RelativeFolderPath,omitempty"`
+}
+
+type CreateFolderPathResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type DeleteFolderType struct {
+	DeleteType DisposalType                      `xml:"DeleteType,attr,omitempty"`
+	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type DeleteFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type EmptyFolderType struct {
+	DeleteType       DisposalType                      `xml:"DeleteType,attr,omitempty"`
+	DeleteSubFolders XsBoolean                         `xml:"DeleteSubFolders,attr,omitempty"`
+	FolderIds        *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type EmptyFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateFolderType struct {
+	FolderChanges *NonEmptyArrayOfFolderChangesType `xml:"m:FolderChanges,omitempty"`
+}
+
+type UpdateFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type MoveFolderType struct {
+	ToFolderId *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
+	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type BaseMoveCopyFolderType struct {
+	ToFolderId *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
+	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type MoveFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CopyFolderType struct {
+	ToFolderId *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
+	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type CopyFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type SubscribeType struct {
+	PullSubscriptionRequest      *PullSubscriptionRequestType      `xml:"m:PullSubscriptionRequest,omitempty"`
+	PushSubscriptionRequest      *PushSubscriptionRequestType      `xml:"m:PushSubscriptionRequest,omitempty"`
+	StreamingSubscriptionRequest *StreamingSubscriptionRequestType `xml:"m:StreamingSubscriptionRequest,omitempty"`
+}
+
+type SubscribeResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UnsubscribeType struct {
+	SubscriptionId SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
+}
+
+type UnsubscribeResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetEventsType struct {
+	SubscriptionId SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
+	Watermark      WatermarkType      `xml:"m:Watermark,omitempty"`
+}
+
+type GetEventsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetStreamingEventsType struct {
+	SubscriptionIds   *NonEmptyArrayOfSubscriptionIdsType        `xml:"m:SubscriptionIds,omitempty"`
+	ConnectionTimeout StreamingSubscriptionConnectionTimeoutType `xml:"m:ConnectionTimeout,omitempty"`
+}
+
+type GetStreamingEventsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type SyncFolderHierarchyType struct {
+	FolderShape  *FolderResponseShapeType `xml:"m:FolderShape,omitempty"`
+	SyncFolderId *TargetFolderIdType      `xml:"m:SyncFolderId,omitempty"`
+	SyncState    XsString                 `xml:"m:SyncState,omitempty"`
+}
+
+type SyncFolderHierarchyResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type SyncFolderItemsType struct {
+	ItemShape          *ItemResponseShapeType     `xml:"m:ItemShape,omitempty"`
+	SyncFolderId       *TargetFolderIdType        `xml:"m:SyncFolderId,omitempty"`
+	SyncState          XsString                   `xml:"m:SyncState,omitempty"`
+	Ignore             *ArrayOfBaseItemIdsType    `xml:"m:Ignore,omitempty"`
+	MaxChangesReturned MaxSyncChangesReturnedType `xml:"m:MaxChangesReturned,omitempty"`
+	SyncScope          SyncFolderItemsScopeType   `xml:"m:SyncScope,omitempty"`
+}
+
+type SyncFolderItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateManagedFolderRequestType struct {
+	FolderNames *NonEmptyArrayOfFolderNamesType `xml:"m:FolderNames,omitempty"`
+	Mailbox     *EmailAddressType               `xml:"m:Mailbox,omitempty"`
+}
+
+type CreateManagedFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetItemType struct {
+	ItemShape *ItemResponseShapeType          `xml:"m:ItemShape,omitempty"`
+	ItemIds   *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+}
+
+type GetItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateItemType struct {
+	MessageDisposition     MessageDispositionType                  `xml:"MessageDisposition,attr,omitempty"`
+	SendMeetingInvitations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingInvitations,attr,omitempty"`
+	SavedItemFolderId      *TargetFolderIdType                     `xml:"m:SavedItemFolderId,omitempty"`
+	Items                  *NonEmptyArrayOfAllItemsType            `xml:"m:Items,omitempty"`
+}
+
+type CreateItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type DeleteItemType struct {
+	DeleteType               DisposalType                            `xml:"DeleteType,attr,omitempty"`
+	SendMeetingCancellations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingCancellations,attr,omitempty"`
+	AffectedTaskOccurrences  AffectedTaskOccurrencesType             `xml:"AffectedTaskOccurrences,attr,omitempty"`
+	SuppressReadReceipts     XsBoolean                               `xml:"SuppressReadReceipts,attr,omitempty"`
+	ItemIds                  *NonEmptyArrayOfBaseItemIdsType         `xml:"m:ItemIds,omitempty"`
+}
+
+type DeleteItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateItemType struct {
+	ConflictResolution                    ConflictResolutionType          `xml:"ConflictResolution,attr,omitempty"`
+	MessageDisposition                    MessageDispositionType          `xml:"MessageDisposition,attr,omitempty"`
+	SendMeetingInvitationsOrCancellations CalendarItemUpdateOperationType `xml:"SendMeetingInvitationsOrCancellations,attr,omitempty"`
+	SuppressReadReceipts                  XsBoolean                       `xml:"SuppressReadReceipts,attr,omitempty"`
+	SavedItemFolderId                     *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
+	ItemChanges                           *NonEmptyArrayOfItemChangesType `xml:"m:ItemChanges,omitempty"`
+}
+
+type UpdateItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateItemInRecoverableItemsType struct {
+	ItemId            *ItemIdType                                `xml:"m:ItemId,omitempty"`
+	Updates           *NonEmptyArrayOfItemChangeDescriptionsType `xml:"m:Updates,omitempty"`
+	Attachments       *NonEmptyArrayOfAttachmentsType            `xml:"m:Attachments,omitempty"`
+	MakeItemImmutable XsBoolean                                  `xml:"m:MakeItemImmutable,omitempty"`
+}
+
+type UpdateItemInRecoverableItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type SendItemType struct {
+	SaveItemToFolder  XsBoolean                       `xml:"SaveItemToFolder,attr,omitempty"`
+	ItemIds           *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+	SavedItemFolderId *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
+}
+
+type SendItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type MoveItemType struct {
+	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
+	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
+}
+
+type BaseMoveCopyItemType struct {
+	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
+	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
+}
+
+type MoveItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CopyItemType struct {
+	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
+	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
+}
+
+type CopyItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArchiveItemType struct {
+	ArchiveSourceFolderId *TargetFolderIdType             `xml:"m:ArchiveSourceFolderId,omitempty"`
+	ItemIds               *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+}
+
+type ArchiveItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateAttachmentType struct {
+	ParentItemId *ItemIdType                     `xml:"m:ParentItemId,omitempty"`
+	Attachments  *NonEmptyArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
+}
+
+type CreateAttachmentResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type DeleteAttachmentType struct {
+	AttachmentIds *NonEmptyArrayOfRequestAttachmentIdsType `xml:"m:AttachmentIds,omitempty"`
+}
+
+type DeleteAttachmentResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetAttachmentType struct {
+	AttachmentShape *AttachmentResponseShapeType             `xml:"m:AttachmentShape,omitempty"`
+	AttachmentIds   *NonEmptyArrayOfRequestAttachmentIdsType `xml:"m:AttachmentIds,omitempty"`
+}
+
+type GetAttachmentResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetClientAccessTokenType struct {
+	TokenRequests *NonEmptyArrayOfClientAccessTokenRequestsType `xml:"m:TokenRequests,omitempty"`
+}
+
+type GetClientAccessTokenResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetDelegateType struct {
+	IncludePermissions XsBoolean          `xml:"IncludePermissions,attr,omitempty"`
+	Mailbox            *EmailAddressType  `xml:"m:Mailbox,omitempty"`
+	UserIds            *ArrayOfUserIdType `xml:"m:UserIds,omitempty"`
+}
+
+type BaseDelegateType struct {
+	Mailbox *EmailAddressType `xml:"m:Mailbox,omitempty"`
+}
+
+type GetDelegateResponseMessageType struct {
+	ResponseClass          ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText            XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode           ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey     XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml             MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	ResponseMessages       *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+	DeliverMeetingRequests DeliverMeetingRequestsType              `xml:"m:DeliverMeetingRequests,omitempty"`
+}
+
+type BaseDelegateResponseMessageType struct {
+	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArrayOfDelegateUserResponseMessageType struct {
+	DelegateUserResponseMessageType []*DelegateUserResponseMessageType `xml:"m:DelegateUserResponseMessageType,omitempty"`
+}
+
+type DelegateUserResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	DelegateUser       *DelegateUserType `xml:"m:DelegateUser,omitempty"`
+}
+
+type AddDelegateType struct {
+	Mailbox                *EmailAddressType          `xml:"m:Mailbox,omitempty"`
+	DelegateUsers          *ArrayOfDelegateUserType   `xml:"m:DelegateUsers,omitempty"`
+	DeliverMeetingRequests DeliverMeetingRequestsType `xml:"m:DeliverMeetingRequests,omitempty"`
+}
+
+type AddDelegateResponseMessageType struct {
+	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type RemoveDelegateType struct {
+	Mailbox *EmailAddressType  `xml:"m:Mailbox,omitempty"`
+	UserIds *ArrayOfUserIdType `xml:"m:UserIds,omitempty"`
+}
+
+type RemoveDelegateResponseMessageType struct {
+	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateDelegateType struct {
+	Mailbox                *EmailAddressType          `xml:"m:Mailbox,omitempty"`
+	DelegateUsers          *ArrayOfDelegateUserType   `xml:"m:DelegateUsers,omitempty"`
+	DeliverMeetingRequests DeliverMeetingRequestsType `xml:"m:DeliverMeetingRequests,omitempty"`
+}
+
+type UpdateDelegateResponseMessageType struct {
+	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateUserConfigurationType struct {
+	UserConfiguration *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
+}
+
+type CreateUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type DeleteUserConfigurationType struct {
+	UserConfigurationName *UserConfigurationNameType `xml:"m:UserConfigurationName,omitempty"`
+}
+
+type DeleteUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetUserConfigurationType struct {
+	UserConfigurationName       *UserConfigurationNameType    `xml:"m:UserConfigurationName,omitempty"`
+	UserConfigurationProperties UserConfigurationPropertyType `xml:"m:UserConfigurationProperties,omitempty"`
+}
+
+type GetUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetSpecificUserConfigurationType struct {
+	UserConfigurationName       *UserConfigurationNameType    `xml:"m:UserConfigurationName,omitempty"`
+	UserConfigurationProperties UserConfigurationPropertyType `xml:"m:UserConfigurationProperties,omitempty"`
+}
+
+type GetSpecificUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateUserConfigurationType struct {
+	UserConfiguration *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
+}
+
+type UpdateUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetUserAvailabilityRequestType struct {
+	TimeZone               *SerializableTimeZone       `xml:"t:TimeZone,omitempty"`
+	MailboxDataArray       *ArrayOfMailboxData         `xml:"m:MailboxDataArray,omitempty"`
+	FreeBusyViewOptions    *FreeBusyViewOptionsType    `xml:"t:FreeBusyViewOptions,omitempty"`
+	SuggestionsViewOptions *SuggestionsViewOptionsType `xml:"t:SuggestionsViewOptions,omitempty"`
+}
+
+type GetUserAvailabilityResponseType struct {
+	FreeBusyResponseArray *ArrayOfFreeBusyResponse `xml:"m:FreeBusyResponseArray,omitempty"`
+	SuggestionsResponse   *SuggestionsResponseType `xml:"m:SuggestionsResponse,omitempty"`
+}
+
+type ArrayOfFreeBusyResponse struct {
+	FreeBusyResponse []*FreeBusyResponseType `xml:"m:FreeBusyResponse,omitempty"`
+}
+
+type FreeBusyResponseType struct {
+	ResponseMessage *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
+	FreeBusyView    *FreeBusyView        `xml:"m:FreeBusyView,omitempty"`
+}
+
+type SuggestionsResponseType struct {
+	ResponseMessage          *ResponseMessageType        `xml:"m:ResponseMessage,omitempty"`
+	SuggestionDayResultArray *ArrayOfSuggestionDayResult `xml:"m:SuggestionDayResultArray,omitempty"`
+}
+
+type GetUserOofSettingsRequest struct {
+	Mailbox *EmailAddress `xml:"t:Mailbox,omitempty"`
+}
+
+type GetUserOofSettingsResponse struct {
+	ResponseMessage  *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
+	OofSettings      *UserOofSettings     `xml:"t:OofSettings,omitempty"`
+	AllowExternalOof ExternalAudience     `xml:"m:AllowExternalOof,omitempty"`
+}
+
+type SetUserOofSettingsRequest struct {
+	Mailbox         *EmailAddress    `xml:"t:Mailbox,omitempty"`
+	UserOofSettings *UserOofSettings `xml:"t:UserOofSettings,omitempty"`
+}
+
+type SetUserOofSettingsResponse struct {
+	ResponseMessage *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
+}
+
+type GetServiceConfigurationType struct {
+	ActingAs                    *EmailAddressType                `xml:"m:ActingAs,omitempty"`
+	RequestedConfiguration      *ArrayOfServiceConfigurationType `xml:"m:RequestedConfiguration,omitempty"`
+	ConfigurationRequestDetails ConfigurationRequestDetailsType  `xml:"m:ConfigurationRequestDetails,omitempty"`
+}
+
+type ArrayOfServiceConfigurationType struct {
+	ConfigurationName []ServiceConfigurationType `xml:"m:ConfigurationName,omitempty"`
+}
+
+type GetServiceConfigurationResponseMessageType struct {
+	ResponseClass      ResponseClassType                               `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                        `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                                `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                           `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType                                  `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfServiceConfigurationResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArrayOfServiceConfigurationResponseMessageType struct {
+	ServiceConfigurationResponseMessageType []*ServiceConfigurationResponseMessageType `xml:"m:ServiceConfigurationResponseMessageType,omitempty"`
+}
+
+type ServiceConfigurationResponseMessageType struct {
+	ResponseClass                 ResponseClassType                    `xml:"ResponseClass,attr,omitempty"`
+	MessageText                   XsString                             `xml:"m:MessageText,omitempty"`
+	ResponseCode                  ResponseCodeType                     `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey            XsInt                                `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                    MessageXmlType                       `xml:"m:MessageXml,omitempty"`
+	MailTipsConfiguration         *MailTipsServiceConfiguration        `xml:"m:MailTipsConfiguration,omitempty"`
+	UnifiedMessagingConfiguration *UnifiedMessageServiceConfiguration  `xml:"m:UnifiedMessagingConfiguration,omitempty"`
+	ProtectionRulesConfiguration  *ProtectionRulesServiceConfiguration `xml:"m:ProtectionRulesConfiguration,omitempty"`
+	PolicyNudgeRulesConfiguration PolicyNudgeRulesServiceConfiguration `xml:"m:PolicyNudgeRulesConfiguration,omitempty"`
+	SharePointURLsConfiguration   *SharePointURLsServiceConfiguration  `xml:"m:SharePointURLsConfiguration,omitempty"`
+}
+
+type GetMailTipsType struct {
+	SendingAs         *EmailAddressType      `xml:"m:SendingAs,omitempty"`
+	Recipients        *ArrayOfRecipientsType `xml:"m:Recipients,omitempty"`
+	MailTipsRequested MailTipTypes           `xml:"m:MailTipsRequested,omitempty"`
+}
+
+type GetMailTipsResponseMessageType struct {
+	ResponseClass      ResponseClassType                   `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                            `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType                      `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfMailTipsResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArrayOfMailTipsResponseMessageType struct {
+	MailTipsResponseMessageType []*MailTipsResponseMessageType `xml:"m:MailTipsResponseMessageType,omitempty"`
+}
+
+type MailTipsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MailTips           *MailTips         `xml:"m:MailTips,omitempty"`
+}
+
+type PlayOnPhoneType struct {
+	ItemId     *ItemIdType `xml:"m:ItemId,omitempty"`
+	DialString XsString    `xml:"m:DialString,omitempty"`
+}
+
+type PlayOnPhoneResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	PhoneCallId        *PhoneCallIdType  `xml:"m:PhoneCallId,omitempty"`
+}
+
+type GetPhoneCallInformationType struct {
+	PhoneCallId *PhoneCallIdType `xml:"m:PhoneCallId,omitempty"`
+}
+
+type GetPhoneCallInformationResponseMessageType struct {
+	ResponseClass        ResponseClassType         `xml:"ResponseClass,attr,omitempty"`
+	MessageText          XsString                  `xml:"m:MessageText,omitempty"`
+	ResponseCode         ResponseCodeType          `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey   XsInt                     `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml           MessageXmlType            `xml:"m:MessageXml,omitempty"`
+	PhoneCallInformation *PhoneCallInformationType `xml:"m:PhoneCallInformation,omitempty"`
+}
+
+type DisconnectPhoneCallType struct {
+	PhoneCallId *PhoneCallIdType `xml:"m:PhoneCallId,omitempty"`
+}
+
+type DisconnectPhoneCallResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type GetSharingMetadataType struct {
+	IdOfFolderToShare *FolderIdType           `xml:"m:IdOfFolderToShare,omitempty"`
+	SenderSmtpAddress NonEmptyStringType      `xml:"m:SenderSmtpAddress,omitempty"`
+	Recipients        *ArrayOfSmtpAddressType `xml:"m:Recipients,omitempty"`
+}
+
+type RefreshSharingFolderType struct {
+	SharingFolderId *FolderIdType `xml:"m:SharingFolderId,omitempty"`
+}
+
+type GetSharingFolderType struct {
+	SmtpAddress    NonEmptyStringType `xml:"m:SmtpAddress,omitempty"`
+	DataType       SharingDataType    `xml:"m:DataType,omitempty"`
+	SharedFolderId NonEmptyStringType `xml:"m:SharedFolderId,omitempty"`
+}
+
+type SetTeamMailboxRequestType struct {
+	EmailAddress      *EmailAddressType             `xml:"m:EmailAddress,omitempty"`
+	SharePointSiteUrl XsString                      `xml:"m:SharePointSiteUrl,omitempty"`
+	State             TeamMailboxLifecycleStateType `xml:"m:State,omitempty"`
+}
+
+type SetTeamMailboxResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type UnpinTeamMailboxRequestType struct {
+	EmailAddress *EmailAddressType `xml:"m:EmailAddress,omitempty"`
+}
+
+type UnpinTeamMailboxResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type GetRoomListsType struct {
+}
+
+type GetRoomsType struct {
+	RoomList *EmailAddressType `xml:"m:RoomList,omitempty"`
+}
+
+type FindMessageTrackingReportRequestType struct {
+}
+
+type FindMessageTrackingReportResponseMessageType struct {
+	ResponseClass                ResponseClassType                           `xml:"ResponseClass,attr,omitempty"`
+	MessageText                  XsString                                    `xml:"m:MessageText,omitempty"`
+	ResponseCode                 ResponseCodeType                            `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey           XsInt                                       `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                   MessageXmlType                              `xml:"m:MessageXml,omitempty"`
+	Diagnostics                  *ArrayOfStringsType                         `xml:"m:Diagnostics,omitempty"`
+	MessageTrackingSearchResults *ArrayOfFindMessageTrackingSearchResultType `xml:"m:MessageTrackingSearchResults,omitempty"`
+	ExecutedSearchScope          XsString                                    `xml:"m:ExecutedSearchScope,omitempty"`
+	Errors                       *ArrayOfArraysOfTrackingPropertiesType      `xml:"m:Errors,omitempty"`
+	Properties                   *ArrayOfTrackingPropertiesType              `xml:"m:Properties,omitempty"`
+}
+
+type GetMessageTrackingReportRequestType struct {
+}
+
+type GetMessageTrackingReportResponseMessageType struct {
+	ResponseClass         ResponseClassType                      `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString                               `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType                       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt                                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            MessageXmlType                         `xml:"m:MessageXml,omitempty"`
+	MessageTrackingReport MessageTrackingReportType              `xml:"m:MessageTrackingReport,omitempty"`
+	Diagnostics           *ArrayOfStringsType                    `xml:"m:Diagnostics,omitempty"`
+	Errors                *ArrayOfArraysOfTrackingPropertiesType `xml:"m:Errors,omitempty"`
+	Properties            *ArrayOfTrackingPropertiesType         `xml:"m:Properties,omitempty"`
+}
+
+type FindConversationType struct {
+	Traversal                   ConversationQueryTraversalType  `xml:"Traversal,attr,omitempty"`
+	ViewFilter                  ViewFilterType                  `xml:"ViewFilter,attr,omitempty"`
+	SortOrder                   *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
+	ParentFolderId              *TargetFolderIdType             `xml:"m:ParentFolderId,omitempty"`
+	MailboxScope                MailboxSearchLocationType       `xml:"m:MailboxScope,omitempty"`
+	QueryString                 *QueryStringType                `xml:"m:QueryString,omitempty"`
+	ConversationShape           *ConversationResponseShapeType  `xml:"m:ConversationShape,omitempty"`
+	IndexedPageItemView         *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
+	SeekToConditionPageItemView *SeekToConditionPageViewType    `xml:"m:SeekToConditionPageItemView,omitempty"`
+}
+
+type FindConversationResponseMessageType struct {
+	ResponseClass            ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
+	MessageText              XsString                   `xml:"m:MessageText,omitempty"`
+	ResponseCode             ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey       XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml               MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	Conversations            *ArrayOfConversationsType  `xml:"m:Conversations,omitempty"`
+	HighlightTerms           *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
+	TotalConversationsInView XsInt                      `xml:"m:TotalConversationsInView,omitempty"`
+	IndexedOffset            XsInt                      `xml:"m:IndexedOffset,omitempty"`
+}
+
+type ApplyConversationActionType struct {
+	ConversationActions *NonEmptyArrayOfApplyConversationActionType `xml:"m:ConversationActions,omitempty"`
+}
+
+type ApplyConversationActionResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetConversationItemsType struct {
+	ItemShape        *ItemResponseShapeType            `xml:"m:ItemShape,omitempty"`
+	FoldersToIgnore  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FoldersToIgnore,omitempty"`
+	MaxItemsToReturn XsInt                             `xml:"m:MaxItemsToReturn,omitempty"`
+	SortOrder        ConversationNodeSortOrder         `xml:"m:SortOrder,omitempty"`
+	MailboxScope     MailboxSearchLocationType         `xml:"m:MailboxScope,omitempty"`
+	Conversations    *ArrayOfConversationRequestsType  `xml:"m:Conversations,omitempty"`
+}
+
+type GetConversationItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type FindPeopleType struct {
+	PersonaShape                *PersonaResponseShapeType       `xml:"m:PersonaShape,omitempty"`
+	IndexedPageItemView         *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
+	Restriction                 *RestrictionType                `xml:"m:Restriction,omitempty"`
+	AggregationRestriction      *RestrictionType                `xml:"m:AggregationRestriction,omitempty"`
+	SortOrder                   *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
+	ParentFolderId              *TargetFolderIdType             `xml:"m:ParentFolderId,omitempty"`
+	QueryString                 XsString                        `xml:"m:QueryString,omitempty"`
+	SearchPeopleSuggestionIndex XsBoolean                       `xml:"m:SearchPeopleSuggestionIndex,omitempty"`
+	TopicQueryString            XsString                        `xml:"m:TopicQueryString,omitempty"`
+	Context                     *ArrayOfContextProperty         `xml:"m:Context,omitempty"`
+	QuerySources                *ArrayOfPeopleQuerySource       `xml:"m:QuerySources,omitempty"`
+	ReturnFlattenedResults      XsBoolean                       `xml:"m:ReturnFlattenedResults,omitempty"`
+}
+
+type FindTagsType struct {
+	IndexedPageItemView *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
+	SortOrder           *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
+	QueryString         XsString                        `xml:"m:QueryString,omitempty"`
+	Context             *ArrayOfContextProperty         `xml:"m:Context,omitempty"`
+}
+
+type AddTagType struct {
+	Tag     XsString `xml:"m:Tag,omitempty"`
+	AppName XsString `xml:"m:AppName,omitempty"`
+}
+
+type HideTagType struct {
+	Tag XsString `xml:"m:Tag,omitempty"`
+}
+
+type GetPersonaType struct {
+	PersonaId            *ItemIdType                        `xml:"m:PersonaId,omitempty"`
+	EmailAddress         *EmailAddressType                  `xml:"m:EmailAddress,omitempty"`
+	ParentFolderId       *TargetFolderIdType                `xml:"m:ParentFolderId,omitempty"`
+	ItemLinkId           XsString                           `xml:"m:ItemLinkId,omitempty"`
+	AdditionalProperties *NonEmptyArrayOfPathsToElementType `xml:"m:AdditionalProperties,omitempty"`
+}
+
+type GetInboxRulesRequestType struct {
+	MailboxSmtpAddress XsString `xml:"m:MailboxSmtpAddress,omitempty"`
+}
+
+type GetInboxRulesResponseType struct {
+	ResponseClass         ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	OutlookRuleBlobExists XsBoolean         `xml:"m:OutlookRuleBlobExists,omitempty"`
+	InboxRules            *ArrayOfRulesType `xml:"m:InboxRules,omitempty"`
+}
+
+type UpdateInboxRulesRequestType struct {
+	MailboxSmtpAddress    XsString                   `xml:"m:MailboxSmtpAddress,omitempty"`
+	RemoveOutlookRuleBlob XsBoolean                  `xml:"m:RemoveOutlookRuleBlob,omitempty"`
+	Operations            *ArrayOfRuleOperationsType `xml:"m:Operations,omitempty"`
+}
+
+type UpdateInboxRulesResponseType struct {
+	ResponseClass       ResponseClassType               `xml:"ResponseClass,attr,omitempty"`
+	MessageText         XsString                        `xml:"m:MessageText,omitempty"`
+	ResponseCode        ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey  XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml          MessageXmlType                  `xml:"m:MessageXml,omitempty"`
+	RuleOperationErrors *ArrayOfRuleOperationErrorsType `xml:"m:RuleOperationErrors,omitempty"`
+}
+
+type GetPasswordExpirationDateType struct {
+	MailboxSmtpAddress XsString `xml:"m:MailboxSmtpAddress,omitempty"`
+}
+
+type GetSearchableMailboxesType struct {
+	SearchFilter          XsString  `xml:"m:SearchFilter,omitempty"`
+	ExpandGroupMembership XsBoolean `xml:"m:ExpandGroupMembership,omitempty"`
+}
+
+type SearchMailboxesType struct {
+	SearchQueries            *NonEmptyArrayOfMailboxQueriesType `xml:"m:SearchQueries,omitempty"`
+	ResultType               SearchResultType                   `xml:"m:ResultType,omitempty"`
+	PreviewItemResponseShape *PreviewItemResponseShapeType      `xml:"m:PreviewItemResponseShape,omitempty"`
+	SortBy                   *FieldOrderType                    `xml:"m:SortBy,omitempty"`
+	Language                 XsString                           `xml:"m:Language,omitempty"`
+	Deduplication            XsBoolean                          `xml:"m:Deduplication,omitempty"`
+	PageSize                 XsInt                              `xml:"m:PageSize,omitempty"`
+	PageItemReference        XsString                           `xml:"m:PageItemReference,omitempty"`
+	PageDirection            SearchPageDirectionType            `xml:"m:PageDirection,omitempty"`
+}
+
+type SearchMailboxesResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetDiscoverySearchConfigurationType struct {
+	SearchId                     XsString  `xml:"m:SearchId,omitempty"`
+	ExpandGroupMembership        XsBoolean `xml:"m:ExpandGroupMembership,omitempty"`
+	InPlaceHoldConfigurationOnly XsBoolean `xml:"m:InPlaceHoldConfigurationOnly,omitempty"`
+}
+
+type GetHoldOnMailboxesType struct {
+	HoldId XsString `xml:"m:HoldId,omitempty"`
+}
+
+type SetHoldOnMailboxesType struct {
+	ActionType               HoldActionType      `xml:"m:ActionType,omitempty"`
+	HoldId                   XsString            `xml:"m:HoldId,omitempty"`
+	Query                    XsString            `xml:"m:Query,omitempty"`
+	Mailboxes                *ArrayOfStringsType `xml:"m:Mailboxes,omitempty"`
+	Language                 XsString            `xml:"m:Language,omitempty"`
+	IncludeNonIndexableItems XsBoolean           `xml:"m:IncludeNonIndexableItems,omitempty"`
+	Deduplication            XsBoolean           `xml:"m:Deduplication,omitempty"`
+	InPlaceHoldIdentity      XsString            `xml:"m:InPlaceHoldIdentity,omitempty"`
+	ItemHoldPeriod           XsString            `xml:"m:ItemHoldPeriod,omitempty"`
+}
+
+type GetNonIndexableItemStatisticsType struct {
+	Mailboxes         *NonEmptyArrayOfLegacyDNsType `xml:"m:Mailboxes,omitempty"`
+	SearchArchiveOnly XsBoolean                     `xml:"m:SearchArchiveOnly,omitempty"`
+}
+
+type GetNonIndexableItemDetailsType struct {
+	Mailboxes         *NonEmptyArrayOfLegacyDNsType `xml:"m:Mailboxes,omitempty"`
+	PageSize          XsInt                         `xml:"m:PageSize,omitempty"`
+	PageItemReference XsString                      `xml:"m:PageItemReference,omitempty"`
+	PageDirection     SearchPageDirectionType       `xml:"m:PageDirection,omitempty"`
+	SearchArchiveOnly XsBoolean                     `xml:"m:SearchArchiveOnly,omitempty"`
+}
+
+type MarkAllItemsAsReadType struct {
+	ReadFlag             XsBoolean                         `xml:"m:ReadFlag,omitempty"`
+	SuppressReadReceipts XsBoolean                         `xml:"m:SuppressReadReceipts,omitempty"`
+	FolderIds            *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type MarkAllItemsAsReadResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type MarkAsJunkType struct {
+	IsJunk   XsBoolean                       `xml:"IsJunk,attr,omitempty"`
+	MoveItem XsBoolean                       `xml:"MoveItem,attr,omitempty"`
+	ItemIds  *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+}
+
+type MarkAsJunkResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ReportMessageType struct {
+	ReportAction              ReportMessageActionType   `xml:"ReportAction,attr,omitempty"`
+	ItemIds                   *ArrayOfBaseItemIdsType   `xml:"m:ItemIds,omitempty"`
+	BlockReportingToMicrosoft XsBoolean                 `xml:"m:BlockReportingToMicrosoft,omitempty"`
+	Platform                  ReportMessagePlatformType `xml:"m:Platform,omitempty"`
+}
+
+type ReportMessageResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetAppManifestsType struct {
+	ApiVersionSupported       XsString                         `xml:"m:ApiVersionSupported,omitempty"`
+	SchemaVersionSupported    XsString                         `xml:"m:SchemaVersionSupported,omitempty"`
+	IncludeAllInstalledAddIns XsBoolean                        `xml:"m:IncludeAllInstalledAddIns,omitempty"`
+	IncludeEntitlementData    XsBoolean                        `xml:"m:IncludeEntitlementData,omitempty"`
+	IncludeManifestData       XsBoolean                        `xml:"m:IncludeManifestData,omitempty"`
+	IncludeCustomAppsData     XsBoolean                        `xml:"m:IncludeCustomAppsData,omitempty"`
+	ExtensionIds              ListOfExtensionIdsType           `xml:"m:ExtensionIds,omitempty"`
+	AddIns                    *ArrayOfPrivateCatalogAddInsType `xml:"m:AddIns,omitempty"`
+	IncludeExtensionMetaData  XsBoolean                        `xml:"m:IncludeExtensionMetaData,omitempty"`
+}
+
+type ArrayOfPrivateCatalogAddInsType struct {
+	AddIn []*PrivateCatalogAddInsType `xml:"m:AddIn,omitempty"`
+}
+
+type PrivateCatalogAddInsType struct {
+	ProductId            XsString                          `xml:"ProductId,attr,omitempty"`
+	State                AddInStateType                    `xml:"State,attr,omitempty"`
+	Version              VersionType                       `xml:"Version,attr,omitempty"`
+	DefaultEnabledStatus AADOfficeExtensionStatusType      `xml:"DefaultEnabledStatus,attr,omitempty"`
+	InstallTimeInTicks   XsLong                            `xml:"InstallTimeInTicks,attr,omitempty"`
+	StoreInfo            *PrivateCatalogAddInStoreInfoType `xml:"m:StoreInfo,omitempty"`
+}
+
+type PrivateCatalogAddInStoreInfoType struct {
+	AssetId       XsString `xml:"AssetId,attr,omitempty"`
+	ContentMarket XsString `xml:"ContentMarket,attr,omitempty"`
+}
+
+type GetAppManifestsResponseType struct {
+	ResponseClass      ResponseClassType        `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                 `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType         `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                    `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType           `xml:"m:MessageXml,omitempty"`
+	Apps               *ArrayOfAppsType         `xml:"m:Apps,omitempty"`
+	Manifests          *ArrayOfAppManifestsType `xml:"m:Manifests,omitempty"`
+}
+
+type ArrayOfAppManifestsType struct {
+	Manifest []XsBase64Binary `xml:"m:Manifest,omitempty"`
+}
+
+type AddNewImContactToGroupType struct {
+	ImAddress   NonEmptyStringType `xml:"m:ImAddress,omitempty"`
+	DisplayName NonEmptyStringType `xml:"m:DisplayName,omitempty"`
+	GroupId     *ItemIdType        `xml:"m:GroupId,omitempty"`
+}
+
+type AddNewImContactToGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
+}
+
+type AddNewTelUriContactToGroupType struct {
+	TelUriAddress          NonEmptyStringType `xml:"m:TelUriAddress,omitempty"`
+	ImContactSipUriAddress NonEmptyStringType `xml:"m:ImContactSipUriAddress,omitempty"`
+	ImTelephoneNumber      NonEmptyStringType `xml:"m:ImTelephoneNumber,omitempty"`
+	GroupId                *ItemIdType        `xml:"m:GroupId,omitempty"`
+}
+
+type AddNewTelUriContactToGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
+}
+
+type AddImContactToGroupType struct {
+	ContactId *ItemIdType `xml:"m:ContactId,omitempty"`
+	GroupId   *ItemIdType `xml:"m:GroupId,omitempty"`
+}
+
+type AddImContactToGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type RemoveImContactFromGroupType struct {
+	ContactId *ItemIdType `xml:"m:ContactId,omitempty"`
+	GroupId   *ItemIdType `xml:"m:GroupId,omitempty"`
+}
+
+type RemoveImContactFromGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type AddImGroupType struct {
+	DisplayName NonEmptyStringType `xml:"m:DisplayName,omitempty"`
+}
+
+type AddImGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	ImGroup            *ImGroupType      `xml:"m:ImGroup,omitempty"`
+}
+
+type AddDistributionGroupToImListType struct {
+	SmtpAddress NonEmptyStringType `xml:"m:SmtpAddress,omitempty"`
+	DisplayName NonEmptyStringType `xml:"m:DisplayName,omitempty"`
+}
+
+type AddDistributionGroupToImListResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	ImGroup            *ImGroupType      `xml:"m:ImGroup,omitempty"`
+}
+
+type GetImItemListType struct {
+	ExtendedProperties *NonEmptyArrayOfExtendedFieldURIs `xml:"m:ExtendedProperties,omitempty"`
+}
+
+type GetImItemListResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	ImItemList         *ImItemListType   `xml:"m:ImItemList,omitempty"`
+}
+
+type GetImItemsType struct {
+	ContactIds         *NonEmptyArrayOfBaseItemIdsType   `xml:"m:ContactIds,omitempty"`
+	GroupIds           *NonEmptyArrayOfBaseItemIdsType   `xml:"m:GroupIds,omitempty"`
+	ExtendedProperties *NonEmptyArrayOfExtendedFieldURIs `xml:"m:ExtendedProperties,omitempty"`
+}
+
+type GetImItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	ImItemList         *ImItemListType   `xml:"m:ImItemList,omitempty"`
+}
+
+type RemoveContactFromImListType struct {
+	ContactId *ItemIdType `xml:"m:ContactId,omitempty"`
+}
+
+type RemoveContactFromImListResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type RemoveDistributionGroupFromImListType struct {
+	GroupId *ItemIdType `xml:"m:GroupId,omitempty"`
+}
+
+type RemoveDistributionGroupFromImListResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type RemoveImGroupType struct {
+	GroupId *ItemIdType `xml:"m:GroupId,omitempty"`
+}
+
+type RemoveImGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type SetImGroupType struct {
+	GroupId        *ItemIdType        `xml:"m:GroupId,omitempty"`
+	NewDisplayName NonEmptyStringType `xml:"m:NewDisplayName,omitempty"`
+}
+
+type SetImGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type SetImListMigrationCompletedType struct {
+	ImListMigrationCompleted XsBoolean `xml:"m:ImListMigrationCompleted,omitempty"`
+}
+
+type SetImListMigrationCompletedResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type GetUserRetentionPolicyTagsType struct {
+}
+
+type InstallAppType struct {
+	Manifest                 XsBase64Binary `xml:"m:Manifest,omitempty"`
+	MarketplaceAssetId       XsString       `xml:"m:MarketplaceAssetId,omitempty"`
+	MarketplaceContentMarket XsString       `xml:"m:MarketplaceContentMarket,omitempty"`
+	SendWelcomeEmail         XsBoolean      `xml:"m:SendWelcomeEmail,omitempty"`
+	ManifestUrl              XsString       `xml:"m:ManifestUrl,omitempty"`
+	MarketplaceCorrelationId XsString       `xml:"m:MarketplaceCorrelationId,omitempty"`
+	CampaignId               XsString       `xml:"m:CampaignId,omitempty"`
+	Id                       XsString       `xml:"m:Id,omitempty"`
+	IsMetaOSApp              XsBoolean      `xml:"m:IsMetaOSApp,omitempty"`
+	MetaOSSyncData           XsString       `xml:"m:MetaOSSyncData,omitempty"`
+}
+
+type InstallAppResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	WasFirstInstall    XsBoolean         `xml:"m:WasFirstInstall,omitempty"`
+	Extension          *InstalledAppType `xml:"m:Extension,omitempty"`
+}
+
+type UpdateExtensionUsageType struct {
+	Client     XsString                             `xml:"m:Client,omitempty"`
+	Extensions *ArrayOfUpdateExtensionUsageItemType `xml:"m:Extensions,omitempty"`
+}
+
+type ArrayOfUpdateExtensionUsageItemType struct {
+	ExtensionId XsString                                  `xml:"m:ExtensionId,omitempty"`
+	Scenarios   *ArrayOfExtensionUsageScenarioCounterType `xml:"m:Scenarios,omitempty"`
+}
+
+type ArrayOfExtensionUsageScenarioCounterType struct {
+	ScenarioName XsString `xml:"m:ScenarioName,omitempty"`
+	Count        XsInt    `xml:"m:Count,omitempty"`
+}
+
+type UpdateExtensionUsageResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type UninstallAppType struct {
+	ID          XsString  `xml:"m:ID,omitempty"`
+	IsMetaOSApp XsBoolean `xml:"m:IsMetaOSApp,omitempty"`
+}
+
+type UninstallAppResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type DisableAppType struct {
+	ID            XsString          `xml:"m:ID,omitempty"`
+	DisableReason DisableReasonType `xml:"m:DisableReason,omitempty"`
+	IsMetaOSApp   XsBoolean         `xml:"m:IsMetaOSApp,omitempty"`
+}
+
+type DisableAppResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type GetAppMarketplaceUrlType struct {
+}
+
+type GetAppMarketplaceUrlResponseMessageType struct {
+	ResponseClass           ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText             XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode            ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey      XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml              MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	AppMarketplaceUrl       XsString          `xml:"m:AppMarketplaceUrl,omitempty"`
+	ConnectorsManagementUrl XsString          `xml:"m:ConnectorsManagementUrl,omitempty"`
+}
+
+type FindAvailableMeetingTimesType struct {
+	Attendees                *ArrayOfSmtpAddressType `xml:"m:Attendees,omitempty"`
+	SearchWindowStart        XsDateTime              `xml:"m:SearchWindowStart,omitempty"`
+	SearchWindowDuration     XsDuration              `xml:"m:SearchWindowDuration,omitempty"`
+	MeetingDurationInMinutes XsInt                   `xml:"m:MeetingDurationInMinutes,omitempty"`
+	Location                 XsString                `xml:"m:Location,omitempty"`
+	MaxCandidates            XsInt                   `xml:"m:MaxCandidates,omitempty"`
+	ActivityDomain           ActivityDomainType      `xml:"m:ActivityDomain,omitempty"`
+}
+
+type FindAvailableMeetingTimesResponseMessageType struct {
+	ResponseClass         ResponseClassType            `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString                     `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType             `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt                        `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            MessageXmlType               `xml:"m:MessageXml,omitempty"`
+	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
+	EmptySuggestionsHint  EmptySuggestionReason        `xml:"m:EmptySuggestionsHint,omitempty"`
+}
+
+type FindMeetingTimeCandidatesType struct {
+	AttendeeConstraints *FindMeetingTimesAttendeeConstraints `xml:"m:AttendeeConstraints,omitempty"`
+	LocationConstraints *FindMeetingTimesLocationConstraints `xml:"m:LocationConstraints,omitempty"`
+	SearchConstraints   *FindMeetingTimesSearchConstraints   `xml:"m:SearchConstraints,omitempty"`
+	Constraints         *FindMeetingTimesConstraints         `xml:"m:Constraints,omitempty"`
+}
+
+type FindMeetingTimeCandidatesResponseMessageType struct {
+	ResponseClass         ResponseClassType            `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString                     `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType             `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt                        `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            MessageXmlType               `xml:"m:MessageXml,omitempty"`
+	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
+}
+
+type GetUserPhotoType struct {
+	Email         XsString          `xml:"m:Email,omitempty"`
+	SizeRequested UserPhotoSizeType `xml:"m:SizeRequested,omitempty"`
+	TypeRequested UserPhotoTypeType `xml:"m:TypeRequested,omitempty"`
+}
+
+type SetUserPhotoType struct {
+	Email         NonEmptyStringType `xml:"m:Email,omitempty"`
+	Content       XsString           `xml:"m:Content,omitempty"`
+	TypeRequested UserPhotoTypeType  `xml:"m:TypeRequested,omitempty"`
+}
+
+type SetUserPhotoResponseMessageType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetMeetingSpaceType struct {
+	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
+}
+
+type GetMeetingSpaceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type DeleteMeetingSpaceType struct {
+	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
+}
+
+type DeleteMeetingSpaceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type UpdateMeetingSpaceType struct {
+	ItemId       *ItemIdType       `xml:"m:ItemId,omitempty"`
+	MeetingSpace *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type UpdateMeetingSpaceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type CreateMeetingSpaceType struct {
+	MeetingSpace *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type CreateMeetingSpaceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type FindMeetingSpaceByJoinUrlType struct {
+	JoinUrl XsString `xml:"m:JoinUrl,omitempty"`
+}
+
+type FindMeetingSpaceByJoinUrlResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type GetMeetingInstanceRequestType struct {
+	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
+}
+
+type GetMeetingInstanceResponseMessageType struct {
+	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString             `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
+}
+
+type DeleteMeetingInstanceRequestType struct {
+	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
+}
+
+type DeleteMeetingInstanceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type UpdateMeetingInstanceRequestType struct {
+	ItemId                     *ItemIdType                           `xml:"m:ItemId,omitempty"`
+	MeetingInstance            *MeetingInstanceType                  `xml:"m:MeetingInstance,omitempty"`
+	ContentActivitiesToAdd     *NonEmptyArrayOfContentActivities     `xml:"m:ContentActivitiesToAdd,omitempty"`
+	ParticipantActivitiesToAdd *NonEmptyArrayOfParticipantActivities `xml:"m:ParticipantActivitiesToAdd,omitempty"`
+}
+
+type UpdateMeetingInstanceResponseMessageType struct {
+	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString             `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
+}
+
+type CreateMeetingInstanceRequestType struct {
+	MeetingInstance *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
+}
+
+type CreateMeetingInstanceResponseMessageType struct {
+	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString             `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
+}
+
+type StartSearchSession struct {
+	SearchSessionId GuidType                `xml:"m:SearchSessionId,omitempty"`
+	WarmupOptions   WarmupOptionsType       `xml:"m:WarmupOptions,omitempty"`
+	SuggestionTypes SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
+	SearchScope     *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
+	IdFormat        IdFormatType            `xml:"m:IdFormat,omitempty"`
+	ApplicationId   XsString                `xml:"m:ApplicationId,omitempty"`
+	Scenario        XsString                `xml:"m:Scenario,omitempty"`
+}
+
+type StartSearchSessionResponseMessage struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type GetSearchSuggestions struct {
+	SearchSessionId                      GuidType                `xml:"m:SearchSessionId,omitempty"`
+	Query                                XsString                `xml:"m:Query,omitempty"`
+	SuggestionTypes                      SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
+	SuggestionsPrimer                    XsBoolean               `xml:"m:SuggestionsPrimer,omitempty"`
+	MaxSuggestionsCountPerSuggestionType XsLong                  `xml:"m:MaxSuggestionsCountPerSuggestionType,omitempty"`
+	SearchScope                          *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
+	Scenario                             XsString                `xml:"m:Scenario,omitempty"`
+}
+
+type GetSearchSuggestionsResponseMessage struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	SearchSuggestions  *SearchSuggestionsType `xml:"m:SearchSuggestions,omitempty"`
+}
+
+type DeleteSearchSuggestion struct {
+	SearchSessionId GuidType                `xml:"m:SearchSessionId,omitempty"`
+	Query           XsString                `xml:"m:Query,omitempty"`
+	SuggestionTypes SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
+	SearchScope     *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
+	Scenario        XsString                `xml:"m:Scenario,omitempty"`
+}
+
+type DeleteSearchSuggestionResponseMessageType struct {
+	ResponseClass      ResponseClassType                   `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                            `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType                      `xml:"m:MessageXml,omitempty"`
+	Response           *DeleteSearchSuggestionResponseType `xml:"m:Response,omitempty"`
+}
+
+type ExecuteSearch struct {
+	ApplicationId                  SearchApplicationIdType          `xml:"m:ApplicationId,omitempty"`
+	Scenario                       XsString                         `xml:"m:Scenario,omitempty"`
+	SearchSessionId                GuidType                         `xml:"m:SearchSessionId,omitempty"`
+	SearchScope                    *ArrayOfSearchScopeType          `xml:"m:SearchScope,omitempty"`
+	Query                          XsString                         `xml:"m:Query,omitempty"`
+	AnalyzedQuery                  *AnalyzedQuery                   `xml:"m:AnalyzedQuery,omitempty"`
+	ResultRowCount                 XsLong                           `xml:"m:ResultRowCount,omitempty"`
+	ResultRowOffset                XsLong                           `xml:"m:ResultRowOffset,omitempty"`
+	MaxResultsCountHint            XsLong                           `xml:"m:MaxResultsCountHint,omitempty"`
+	MaxPreviewLength               XsLong                           `xml:"m:MaxPreviewLength,omitempty"`
+	SearchRefiners                 *SearchRefinersTypeM             `xml:"m:SearchRefiners,omitempty"`
+	ExtendedKeywords               *ExtendedKeywordsType            `xml:"m:ExtendedKeywords,omitempty"`
+	RetrieveRefiners               XsBoolean                        `xml:"m:RetrieveRefiners,omitempty"`
+	MaxRefinersCountPerRefinerType XsLong                           `xml:"m:MaxRefinersCountPerRefinerType,omitempty"`
+	IdFormat                       IdFormatType                     `xml:"m:IdFormat,omitempty"`
+	ItemTypes                      ItemTypesFilterType              `xml:"m:ItemTypes,omitempty"`
+	PropertySetName                SearchResultsPropertySetNameType `xml:"m:PropertySetName,omitempty"`
+	SearchRestrictions             *RestrictionType                 `xml:"m:SearchRestrictions,omitempty"`
+	IncludeDeleted                 XsBoolean                        `xml:"m:IncludeDeleted,omitempty"`
+	SortOrder                      ExecuteSearchSortOrderType       `xml:"m:SortOrder,omitempty"`
+	KeywordMatchOption             MatchOptionsType                 `xml:"m:KeywordMatchOption,omitempty"`
+	ReturnAdditionalIds            XsBoolean                        `xml:"m:ReturnAdditionalIds,omitempty"`
+	RequestedProperties            *ArrayOfStringsType              `xml:"m:RequestedProperties,omitempty"`
+}
+
+type ExecuteSearchResponseMessage struct {
+	ResponseClass      ResponseClassType  `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString           `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType     `xml:"m:MessageXml,omitempty"`
+	SearchResults      *SearchResultsType `xml:"m:SearchResults,omitempty"`
+}
+
+type EndSearchSession struct {
+	SearchSessionId GuidType `xml:"m:SearchSessionId,omitempty"`
+}
+
+type EndSearchSessionResponseMessage struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+}
+
+type GetLastPrivateCatalogUpdateType struct {
+	Client *OfficeClientType `xml:"m:Client,omitempty"`
+}
+
+type GetLastPrivateCatalogUpdateResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	LastUpdate         XsDateTime        `xml:"m:LastUpdate,omitempty"`
+	CatalogHash        XsString          `xml:"m:CatalogHash,omitempty"`
+}
+
+type GetPrivateCatalogAddInsType struct {
+	Client *OfficeClientType `xml:"m:Client,omitempty"`
+}
+
+type GetPrivateCatalogAddInsResponseType struct {
+	ResponseClass      ResponseClassType                `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                         `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                 `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                            `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         MessageXmlType                   `xml:"m:MessageXml,omitempty"`
+	AddIns             *ArrayOfPrivateCatalogAddInsType `xml:"m:AddIns,omitempty"`
 }
 
 type ResolveNamesSoapIn struct {

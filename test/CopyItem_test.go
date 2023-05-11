@@ -12,7 +12,6 @@ const itemId = "AAAWAGhlemhhb3d1MUBraW5nc29mdC5jb20ARgAAAAAAC9AYe7rimkOhvpHgvNsO
 func TestCopyItem(t *testing.T) {
 	defer dumpFile.Sync()
 
-	//rsp, err := service.CopyItem(ews.MakeContext(testSess), &wsdl.)
 }
 
 func TestIdInfo(t *testing.T) {
