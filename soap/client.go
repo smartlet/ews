@@ -54,8 +54,9 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 		err = c.enconding.Decode(buffer, envelope)
 		if err != nil {
 			return &wsdl.Fault{
-				FaultCode:   strconv.Itoa(response.StatusCode),
+				FaultCode:   ews.CodeInvalidStatus,
 				FaultString: string(buffer.Data()),
+				FaultActor:  strconv.Itoa(response.StatusCode),
 			}
 		}
 		return nil
