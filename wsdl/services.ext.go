@@ -50,9 +50,10 @@ func (c *ExchangeServiceBindingExt) GetStreamingEventsExt(ctx context.Context, i
 	return c.client.Stream(ctx, "http://schemas.microsoft.com/exchange/services/2006/messages/GetEvents", inputHeader, inputBody, func() (any, any, func() error) {
 		outputHeader.ServerVersionInfo = nil
 		outputBody.GetStreamingEventsResponse = nil
-		if outputBody.Fault == nil {
-			outputBody.Fault = &Fault{Detail: detail}
-		}
+		outputBody.Fault.FaultCode = ""
+		outputBody.Fault.FaultString = ""
+		outputBody.Fault.FaultActor = ""
+		outputBody.Fault.Detail = detail
 		return outputHeader, outputBody, action
 	})
 }
