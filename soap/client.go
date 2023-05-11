@@ -7,7 +7,7 @@ import (
 	"github.com/smartlet/ews/wsdl"
 	"io"
 	"net/http"
-	"unsafe"
+	"strconv"
 )
 
 type Decoder interface {
@@ -42,11 +42,24 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 
 	envelope.Header = outputHeader
 	envelope.Body = outputBody
-	err = c.enconding.Decode(response.Body, envelope)
-	if err != nil {
-		return err
+	if response.StatusCode < http.StatusBadRequest {
+		// 成功. 正常解码.
+		return c.enconding.Decode(response.Body, envelope)
+	} else {
+		// 错误. 尝试解码.
+		buffer := kits.BorrowBuffer()
+		defer kits.ReturnBuffer(buffer)
+
+		buffer.ReadFrom(response.Body)
+		err = c.enconding.Decode(buffer, envelope)
+		if err != nil {
+			return &wsdl.Fault{
+				FaultCode:   strconv.Itoa(response.StatusCode),
+				FaultString: string(buffer.Data()),
+			}
+		}
+		return nil
 	}
-	return nil
 }
 
 func (c *client) Stream(ctx context.Context, soapAction string, inputHeader, inputBody any, next func() (any, any, func() error)) error {
@@ -57,22 +70,42 @@ func (c *client) Stream(ctx context.Context, soapAction string, inputHeader, inp
 	}
 	defer kits.DiscardAndCloseBody(response.Body)
 
-	// 链式回调
-	dec := c.enconding.NewDecoder(response.Body)
-	for {
-		outputHeader, outputBody, action := next()
-		envelope.Header = outputHeader
-		envelope.Body = outputBody
-		if err = dec.Decode(envelope); err != nil {
-			if err == io.EOF {
-				return nil
-			} else {
+	if response.StatusCode < http.StatusBadRequest {
+		// 链式回调
+		dec := c.enconding.NewDecoder(response.Body)
+		for {
+			outputHeader, outputBody, action := next()
+			envelope.Header = outputHeader
+			envelope.Body = outputBody
+			if err = dec.Decode(envelope); err != nil {
+				if err == io.EOF {
+					return nil
+				} else {
+					return err
+				}
+			}
+			if err = action(); err != nil {
 				return err
 			}
 		}
-		if err = action(); err != nil {
-			return err
+	} else {
+		// 错误. 尝试解码.
+		outputHeader, outputBody, action := next()
+		envelope.Header = outputHeader
+		envelope.Body = outputBody
+
+		buffer := kits.BorrowBuffer()
+		defer kits.ReturnBuffer(buffer)
+
+		buffer.ReadFrom(response.Body)
+		err = c.enconding.Decode(buffer, envelope)
+		if err != nil {
+			return &wsdl.Fault{
+				FaultCode:   strconv.Itoa(response.StatusCode),
+				FaultString: string(buffer.Data()),
+			}
 		}
+		return action()
 	}
 }
 
@@ -114,16 +147,6 @@ func (c *client) request(ctx context.Context, soapAction string, inputHeader, in
 	if err != nil {
 		return nil, nil, err
 	}
-
-	if response.StatusCode > http.StatusBadRequest {
-		data, _ := io.ReadAll(response.Body)
-		kits.DiscardAndCloseBody(response.Body)
-		return nil, nil, &wsdl.Fault{
-			FaultCode:   ews.CodeInvalidStatus,
-			FaultString: *(*string)(unsafe.Pointer(&data)),
-		}
-	}
-
 	return envelope, response, nil
 }
 

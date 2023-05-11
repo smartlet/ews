@@ -5,10 +5,7 @@ import (
 	"sync"
 )
 
-var (
-	DefaultBufferMinimum = 2048
-	DefaultBufferMaximum = DefaultBufferMinimum * 10
-)
+var DefaultBufferMinimum = 4 * 1024 // 最小4K
 
 type Buffer struct {
 	off int
@@ -85,6 +82,22 @@ func (b *Buffer) Seek(offset int64, whence int) (int64, error) {
 	return int64(b.off), nil
 }
 
+func (b *Buffer) ReadFrom(r io.Reader) (int64, error) {
+	start := b.len
+	for {
+		n, err := r.Read(b.buf[b.len:])
+		if n > 0 {
+			b.len += n
+		} else {
+			// 已经读完忽略EOF
+			if err == io.EOF {
+				err = nil
+			}
+			return int64(b.len - start), err
+		}
+	}
+}
+
 func (b *Buffer) Close() error {
 	return nil
 }
@@ -92,6 +105,7 @@ func (b *Buffer) Close() error {
 var _ io.Reader = (*Buffer)(nil)
 var _ io.Writer = (*Buffer)(nil)
 var _ io.Seeker = (*Buffer)(nil)
+var _ io.ReaderFrom = (*Buffer)(nil)
 var _ io.Closer = (*Buffer)(nil)
 
 var pool = sync.Pool{
@@ -107,7 +121,5 @@ func BorrowBuffer() *Buffer {
 }
 
 func ReturnBuffer(b *Buffer) {
-	if b.cap < DefaultBufferMaximum {
-		pool.Put(b)
-	}
+	pool.Put(b)
 }
