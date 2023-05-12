@@ -41,4 +41,4 @@ var ntlmCli = http.NewNTLMRoundTripper(
 var soapCli = soap.NewSOAPClient(ntlmCli)
 
 // service portType服务实例
-var service = ews.NewExchangeServicePortType(soapCli)
+var service = ews.NewExchangeServicePortTypeExt(soapCli)
