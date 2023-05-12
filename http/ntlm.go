@@ -1,7 +1,6 @@
 package http
 
 import (
-	"context"
 	"encoding/base64"
 	"github.com/Azure/go-ntlmssp"
 	"github.com/smartlet/ews"
@@ -37,7 +36,7 @@ type ntlmRoundTripper struct {
 	withAccountDomain bool // account是否带上domain. 默认false
 }
 
-func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) {
+func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (rsp *http.Response, err error) {
 
 	sess := ews.FromContext(req.Context())
 	if sess == nil {
@@ -47,16 +46,21 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 	if err != nil {
 		return nil, err
 	}
-	if auth == "" {
-		auth, err = rt.authenticate(req.Context(), sess)
-		if err != nil {
+
+	if auth != "" {
+		req.Header.Set("Cookie", auth)
+		if rsp, err = rt.tripper.RoundTrip(req); err != nil {
 			return nil, err
 		}
-	}
-	req.Header.Set("Cookie", auth)
-	rsp, err := rt.tripper.RoundTrip(req)
-	if err != nil {
-		return nil, err
+		// 如果过期失败再执行一次完整校验(先释放原来的response.body
+		if rsp.StatusCode == http.StatusUnauthorized {
+			kits.DiscardAndCloseBody(rsp.Body)
+			rsp, err = rt.authorization(req, sess)
+		}
+	} else {
+		if rsp, err = rt.authorization(req, sess); err != nil {
+			return nil, err
+		}
 	}
 	if rsp.StatusCode != http.StatusUnauthorized {
 		if v := rsp.Header.Get("Set-Cookie"); v != auth {
@@ -69,23 +73,24 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 	return rsp, nil
 }
 
-func (rt *ntlmRoundTripper) authenticate(ctx context.Context, sess ews.Session) (string, error) {
-	req, err := http.NewRequestWithContext(ctx, "POST", sess.GetEndpoint(), nil)
+func (rt *ntlmRoundTripper) authorization(dstReq *http.Request, sess ews.Session) (*http.Response, error) {
+	req, err := http.NewRequestWithContext(dstReq.Context(), "POST", sess.GetEndpoint(), nil)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	rsp, err := rt.tripper.RoundTrip(req)
-	if err != nil {
-		return "", err
-	}
-	kits.DiscardAndCloseBody(rsp.Body)
-	_, ntlm, err := extractWwwAuthenticate(rsp.Header.Values("Www-Authenticate"))
-	if err != nil {
-		return "", err
-	}
+	/*断言肯定支持NTLM*/
+	//rsp, err := rt.tripper.RoundTrip(req)
+	//if err != nil {
+	//	return "", err
+	//}
+	//kits.DiscardAndCloseBody(rsp.Body)
+	//_, ntlm, err := extractWwwAuthenticate(rsp.Header.Values("Www-Authenticate"))
+	//if err != nil {
+	//	return "", err
+	//}
 	acc, pwd, err := rt.credential.Get(sess)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	if !rt.withAccountDomain {
 		acc = trimAccountDomain(acc)
@@ -93,42 +98,32 @@ func (rt *ntlmRoundTripper) authenticate(ctx context.Context, sess ews.Session) 
 	user, domain, domainNeed := ntlmssp.GetDomain(acc)
 	negotiateMessage, err := ntlmssp.NewNegotiateMessage(domain, "")
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	if ntlm {
-		req.Header.Set("Authorization", "NTLM "+base64.StdEncoding.EncodeToString(negotiateMessage))
-	} else {
-		req.Header.Set("Authorization", "Negotiate "+base64.StdEncoding.EncodeToString(negotiateMessage))
-	}
-	rsp, err = rt.tripper.RoundTrip(req)
+	/*断言肯定支持NTLM*/
+	//if ntlm {
+	req.Header.Set("Authorization", "NTLM "+base64.StdEncoding.EncodeToString(negotiateMessage))
+	//} else {
+	//	req.Header.Set("requestByAuthorization", "Negotiate "+base64.StdEncoding.EncodeToString(negotiateMessage))
+	//}
+	rsp, err := rt.tripper.RoundTrip(req)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	kits.DiscardAndCloseBody(rsp.Body)
 
 	challengeMessage, ntlm, err := extractWwwAuthenticate(rsp.Header.Values("Www-Authenticate"))
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	authenticateMessage, err := ntlmssp.ProcessChallenge(challengeMessage, user, pwd, domainNeed)
 	if ntlm {
-		req.Header.Set("Authorization", "NTLM "+base64.StdEncoding.EncodeToString(authenticateMessage))
+		dstReq.Header.Set("Authorization", "NTLM "+base64.StdEncoding.EncodeToString(authenticateMessage))
 	} else {
-		req.Header.Set("Authorization", "Negotiate "+base64.StdEncoding.EncodeToString(authenticateMessage))
+		dstReq.Header.Set("Authorization", "Negotiate "+base64.StdEncoding.EncodeToString(authenticateMessage))
 	}
-	rsp, err = rt.tripper.RoundTrip(req)
-	if err != nil {
-		return "", err
-	}
-	if rsp.StatusCode != http.StatusUnauthorized {
-		auth := rsp.Header.Get("Set-Cookie")
-		if err = rt.authorizer.Set(sess, auth); err != nil {
-			kits.DiscardAndCloseBody(rsp.Body)
-			return "", err
-		}
-		return auth, nil
-	}
-	return "", nil
+
+	return rt.tripper.RoundTrip(dstReq)
 }
 
 func extractWwwAuthenticate(vs []string) (data []byte, ntlm bool, err error) {
