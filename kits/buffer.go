@@ -5,22 +5,13 @@ import (
 	"sync"
 )
 
-var DefaultBufferMinimum = 4 * 1024 // 最小4K
+var DefaultBufferMinimum = 32 * 1024 // 最小32K与io.Copy的默认buffer大小相同
 
 type Buffer struct {
 	off int
 	len int
 	cap int
 	buf []byte
-}
-
-func NewBuffer(c int) *Buffer {
-	return &Buffer{
-		off: 0,
-		len: 0,
-		cap: c,
-		buf: make([]byte, c),
-	}
 }
 
 func (b *Buffer) GetBody() (io.ReadCloser, error) {
@@ -82,22 +73,6 @@ func (b *Buffer) Seek(offset int64, whence int) (int64, error) {
 	return int64(b.off), nil
 }
 
-func (b *Buffer) ReadFrom(r io.Reader) (int64, error) {
-	start := b.len
-	for {
-		n, err := r.Read(b.buf[b.len:])
-		if n > 0 {
-			b.len += n
-		} else {
-			// 已经读完忽略EOF
-			if err == io.EOF {
-				err = nil
-			}
-			return int64(b.len - start), err
-		}
-	}
-}
-
 func (b *Buffer) Close() error {
 	return nil
 }
@@ -105,21 +80,46 @@ func (b *Buffer) Close() error {
 var _ io.Reader = (*Buffer)(nil)
 var _ io.Writer = (*Buffer)(nil)
 var _ io.Seeker = (*Buffer)(nil)
-var _ io.ReaderFrom = (*Buffer)(nil)
 var _ io.Closer = (*Buffer)(nil)
 
-var pool = sync.Pool{
+var buffers = sync.Pool{
 	New: func() any {
-		return NewBuffer(DefaultBufferMinimum)
+		return &Buffer{
+			off: 0,
+			len: 0,
+			cap: DefaultBufferMinimum,
+			buf: make([]byte, DefaultBufferMinimum),
+		}
 	},
 }
 
 func BorrowBuffer() *Buffer {
-	buf := pool.Get().(*Buffer)
+	buf := buffers.Get().(*Buffer)
 	buf.Reset()
 	return buf
 }
 
 func ReturnBuffer(b *Buffer) {
-	pool.Put(b)
+	buffers.Put(b)
+}
+
+var blocks = sync.Pool{
+	New: func() any {
+		return make([]byte, DefaultBufferMinimum)
+	},
+}
+
+func BorrowBlock() []byte {
+	return blocks.Get().([]byte)
+}
+
+func ReturnBlock(b []byte) {
+	blocks.Put(b)
+}
+
+func Copy(w io.Writer, r io.Reader) (int64, error) {
+	b := BorrowBlock()
+	defer ReturnBlock(b)
+
+	return io.CopyBuffer(w, r, b)
 }

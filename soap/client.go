@@ -49,7 +49,10 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 		buffer := kits.BorrowBuffer()
 		defer kits.ReturnBuffer(buffer)
 
-		buffer.ReadFrom(response.Body)
+		_, err = kits.Copy(buffer, response.Body)
+		if err != nil {
+			return err
+		}
 		err = c.enconding.Decode(buffer, envelope)
 		if err != nil {
 			return &ews.Fault{
@@ -97,7 +100,10 @@ func (c *client) Stream(ctx context.Context, soapAction string, inputHeader, inp
 		buffer := kits.BorrowBuffer()
 		defer kits.ReturnBuffer(buffer)
 
-		buffer.ReadFrom(response.Body)
+		_, err = kits.Copy(buffer, response.Body)
+		if err != nil {
+			return err
+		}
 		err = c.enconding.Decode(buffer, envelope)
 		if err != nil {
 			return &ews.Fault{
