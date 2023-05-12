@@ -9,6 +9,7 @@ import (
 )
 
 func TestCreateItem_email(t *testing.T) {
+	defer dumpFile.Sync()
 	rsp, err := service.CreateItem(ews.MakeContext(testSess), &ews.CreateItemSoapIn{
 		CreateItem: &ews.CreateItemType{
 			SavedItemFolderId: &ews.TargetFolderIdType{

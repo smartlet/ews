@@ -103,23 +103,9 @@ func ReturnBuffer(b *Buffer) {
 	buffers.Put(b)
 }
 
-var blocks = sync.Pool{
-	New: func() any {
-		return make([]byte, DefaultBufferMinimum)
-	},
-}
-
-func BorrowBlock() []byte {
-	return blocks.Get().([]byte)
-}
-
-func ReturnBlock(b []byte) {
-	blocks.Put(b)
-}
-
 func Copy(w io.Writer, r io.Reader) (int64, error) {
-	b := BorrowBlock()
-	defer ReturnBlock(b)
+	b := BorrowBuffer()
+	defer ReturnBuffer(b)
 
-	return io.CopyBuffer(w, r, b)
+	return io.CopyBuffer(w, r, b.buf)
 }

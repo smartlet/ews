@@ -1,6 +1,7 @@
 package http
 
 import (
+	"context"
 	"encoding/base64"
 	"github.com/Azure/go-ntlmssp"
 	"github.com/smartlet/ews"
@@ -46,9 +47,13 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 	if err != nil {
 		return nil, err
 	}
-	if auth != "" {
-		req.Header.Set("Cookie", auth)
+	if auth == "" {
+		auth, err = rt.authenticate(req.Context(), sess)
+		if err != nil {
+			return nil, err
+		}
 	}
+	req.Header.Set("Cookie", auth)
 	rsp, err := rt.tripper.RoundTrip(req)
 	if err != nil {
 		return nil, err
@@ -60,18 +65,27 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 				return nil, err
 			}
 		}
-		return rsp, nil
 	}
-	req.Body, _ = req.GetBody()
-	kits.DiscardAndCloseBody(rsp.Body)
+	return rsp, nil
+}
 
+func (rt *ntlmRoundTripper) authenticate(ctx context.Context, sess ews.Session) (string, error) {
+	req, err := http.NewRequestWithContext(ctx, "POST", sess.GetEndpoint(), nil)
+	if err != nil {
+		return "", err
+	}
+	rsp, err := rt.tripper.RoundTrip(req)
+	if err != nil {
+		return "", err
+	}
+	kits.DiscardAndCloseBody(rsp.Body)
 	_, ntlm, err := extractWwwAuthenticate(rsp.Header.Values("Www-Authenticate"))
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	acc, pwd, err := rt.credential.Get(sess)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	if !rt.withAccountDomain {
 		acc = trimAccountDomain(acc)
@@ -79,7 +93,7 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 	user, domain, domainNeed := ntlmssp.GetDomain(acc)
 	negotiateMessage, err := ntlmssp.NewNegotiateMessage(domain, "")
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	if ntlm {
 		req.Header.Set("Authorization", "NTLM "+base64.StdEncoding.EncodeToString(negotiateMessage))
@@ -88,14 +102,13 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 	}
 	rsp, err = rt.tripper.RoundTrip(req)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	req.Body, _ = req.GetBody()
 	kits.DiscardAndCloseBody(rsp.Body)
 
 	challengeMessage, ntlm, err := extractWwwAuthenticate(rsp.Header.Values("Www-Authenticate"))
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	authenticateMessage, err := ntlmssp.ProcessChallenge(challengeMessage, user, pwd, domainNeed)
 	if ntlm {
@@ -105,16 +118,17 @@ func (rt *ntlmRoundTripper) RoundTrip(req *http.Request) (*http.Response, error)
 	}
 	rsp, err = rt.tripper.RoundTrip(req)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	if rsp.StatusCode != http.StatusUnauthorized {
-		auth = rsp.Header.Get("Set-Cookie")
+		auth := rsp.Header.Get("Set-Cookie")
 		if err = rt.authorizer.Set(sess, auth); err != nil {
 			kits.DiscardAndCloseBody(rsp.Body)
-			return nil, err
+			return "", err
 		}
+		return auth, nil
 	}
-	return rsp, nil
+	return "", nil
 }
 
 func extractWwwAuthenticate(vs []string) (data []byte, ntlm bool, err error) {

@@ -32,7 +32,13 @@ func (d *dumpRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) 
 	for k, v := range req.Header {
 		fmt.Fprintln(d.writer, k, ":", v)
 	}
-	d.writer.Write(req.Body.(*kits.Buffer).Data())
+	if req.Body != nil {
+		if bf, ok := req.Body.(*kits.Buffer); ok {
+			d.writer.Write(bf.Data())
+		} else {
+			kits.Copy(d.writer, req.Body)
+		}
+	}
 	fmt.Fprint(d.writer, "\n\n")
 	fmt.Fprintln(d.writer, rsp.Proto, rsp.Status)
 	for k, v := range rsp.Header {
