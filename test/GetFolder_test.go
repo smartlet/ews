@@ -6,6 +6,8 @@ import (
 	"testing"
 )
 
+var folderId ews.XsString
+
 func TestGetFolder(t *testing.T) {
 	defer dumpFile.Sync()
 	rsp, err := service.GetFolder(ews.MakeContext(testSess), &ews.GetFolderSoapIn{
@@ -15,7 +17,7 @@ func TestGetFolder(t *testing.T) {
 			},
 			FolderIds: &ews.NonEmptyArrayOfBaseFolderIdsType{
 				DistinguishedFolderId: []*ews.DistinguishedFolderIdType{
-					{Id: ews.DistinguishedFolderIdNameTypeIinbox},
+					{Id: ews.DistinguishedFolderIdNameTypeInbox},
 				},
 			},
 		},
@@ -23,8 +25,8 @@ func TestGetFolder(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(rsp.ServerVersionInfo)
-	fmt.Println(rsp.GetFolderResponse)
+	folderId = rsp.GetFolderResponse.ResponseMessages.GetFolderResponseMessage[0].Folders.Folder[0].FolderId.Id
+	fmt.Println(folderId)
 }
 
 func TestGetFolder_error(t *testing.T) {
@@ -38,7 +40,7 @@ func TestGetFolder_error(t *testing.T) {
 			},
 			FolderIds: &ews.NonEmptyArrayOfBaseFolderIdsType{
 				DistinguishedFolderId: []*ews.DistinguishedFolderIdType{
-					{Id: ews.DistinguishedFolderIdNameTypeIinbox},
+					{Id: ews.DistinguishedFolderIdNameTypeInbox},
 				},
 			},
 		},

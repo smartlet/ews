@@ -16,7 +16,7 @@ func TestCopyItem(t *testing.T) {
 		CopyItem: &ews.CopyItemType{
 			ToFolderId: &ews.TargetFolderIdType{
 				DistinguishedFolderId: &ews.DistinguishedFolderIdType{
-					Id: ews.DistinguishedFolderIdNameTypeDdeleteditems,
+					Id: ews.DistinguishedFolderIdNameTypeDeleteditems,
 				},
 			},
 			ItemIds: &ews.NonEmptyArrayOfBaseItemIdsType{

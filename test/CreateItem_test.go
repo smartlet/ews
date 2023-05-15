@@ -2,11 +2,12 @@ package test
 
 import (
 	"encoding/base64"
-	"fmt"
 	"github.com/smartlet/ews"
-	"os"
 	"testing"
 )
+
+var CreateItemId ews.XsString
+var CreateItemChangeKey ews.XsString
 
 func TestCreateItem_email(t *testing.T) {
 	defer dumpFile.Sync()
@@ -14,7 +15,7 @@ func TestCreateItem_email(t *testing.T) {
 		CreateItem: &ews.CreateItemType{
 			SavedItemFolderId: &ews.TargetFolderIdType{
 				DistinguishedFolderId: &ews.DistinguishedFolderIdType{
-					Id: ews.DistinguishedFolderIdNameTypeSsentitems,
+					Id: ews.DistinguishedFolderIdNameTypeSentitems,
 				},
 			},
 			Items: &ews.NonEmptyArrayOfAllItemsType{
@@ -23,29 +24,28 @@ func TestCreateItem_email(t *testing.T) {
 						ItemClass: "IPM.Note",
 						ToRecipients: &ews.ArrayOfRecipientsType{
 							Mailbox: []*ews.EmailAddressType{
-								{EmailAddress: "hezhaowu1@ksomail.com"},
-								{EmailAddress: "hezhaowu2@wpsemail.com"},
+								{EmailAddress: "zhaoshi@wahaha.com"},
 							},
 						},
 						MimeContent: &ews.MimeContentType{
 							CharacterSet: "utf8",
-							CharData:     eml(),
+							CharData:     ews.XsString(base64.StdEncoding.EncodeToString([]byte("this is a test data"))),
 						},
 						IsRead: false,
 					},
 				},
 			},
-			MessageDisposition: ews.MessageDispositionTypeSaveOnly, // 测试不要使用Send
+			MessageDisposition: ews.MessageDispositionTypeSaveOnly, // 测试不要使用Send, 否则会自动发送To/CC相关的人
 		},
 	}, nil)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(rsp.CreateItemResponse.ResponseMessages.CreateItemResponseMessage[0])
-}
+	item := rsp.CreateItemResponse.ResponseMessages.CreateItemResponseMessage[0].Items.Message[0].ItemId
+	CreateItemId = item.Id
+	CreateItemChangeKey = item.ChangeKey
+	if CreateItemId == "" {
+		panic("create failed")
+	}
 
-func eml() ews.XsString {
-	const path = `C:\Users\jason\Desktop\exchange\测试完整邮件.eml`
-	data, _ := os.ReadFile(path)
-	return ews.XsString(base64.StdEncoding.EncodeToString(data))
 }

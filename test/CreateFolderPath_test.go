@@ -22,7 +22,7 @@ func TestCreatFolderPath(t *testing.T) {
 		CreateFolderPath: &ews.CreateFolderPathType{
 			ParentFolderId: &ews.TargetFolderIdType{
 				DistinguishedFolderId: &ews.DistinguishedFolderIdType{
-					Id: ews.DistinguishedFolderIdNameTypeDdeleteditems,
+					Id: ews.DistinguishedFolderIdNameTypeDeleteditems,
 				},
 			},
 			RelativeFolderPath: &ews.NonEmptyArrayOfFoldersType{

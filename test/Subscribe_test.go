@@ -16,7 +16,7 @@ func TestSubscribe(t *testing.T) {
 			StreamingSubscriptionRequest: &ews.StreamingSubscriptionRequestType{
 				FolderIds: &ews.NonEmptyArrayOfBaseFolderIdsType{
 					DistinguishedFolderId: []*ews.DistinguishedFolderIdType{
-						{Id: ews.DistinguishedFolderIdNameTypeIinbox},
+						{Id: ews.DistinguishedFolderIdNameTypeInbox},
 					},
 				},
 				EventTypes: &ews.NonEmptyArrayOfNotificationEventTypesType{

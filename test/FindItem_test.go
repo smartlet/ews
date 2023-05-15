@@ -6,6 +6,9 @@ import (
 	"testing"
 )
 
+var FindItemId ews.XsString
+var FindItemChangeKey ews.XsString
+
 func TestFindItem(t *testing.T) {
 	rsp, err := service.FindItem(ews.MakeContext(testSess), &ews.FindItemSoapIn{
 		FindItem: &ews.FindItemType{
@@ -14,7 +17,7 @@ func TestFindItem(t *testing.T) {
 			},
 			ParentFolderIds: &ews.NonEmptyArrayOfBaseFolderIdsType{
 				DistinguishedFolderId: []*ews.DistinguishedFolderIdType{
-					{Id: ews.DistinguishedFolderIdNameTypeIinbox},
+					{Id: ews.DistinguishedFolderIdNameTypeInbox},
 				},
 			},
 		},
@@ -23,5 +26,8 @@ func TestFindItem(t *testing.T) {
 		panic(err)
 	}
 	// 对应xml的结果 FindItemResponse>ResponseMessages>FindItemResponseMessage*>RootFolder>Items>Message*>ItemId>Id
-	fmt.Println(rsp.FindItemResponse.ResponseMessages.FindItemResponseMessage[0].RootFolder.Items.Message[0].ItemId.Id)
+	FindItemId = rsp.FindItemResponse.ResponseMessages.FindItemResponseMessage[0].RootFolder.Items.Message[0].ItemId.Id
+	FindItemChangeKey = rsp.FindItemResponse.ResponseMessages.FindItemResponseMessage[0].RootFolder.Items.Message[0].ItemId.ChangeKey
+
+	fmt.Println(FindItemId)
 }

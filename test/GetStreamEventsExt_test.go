@@ -19,7 +19,7 @@ func TestGetStreamingEvents(t *testing.T) {
 		GetStreamingEvents: &ews.GetStreamingEventsType{
 			SubscriptionIds: &ews.NonEmptyArrayOfSubscriptionIdsType{
 				SubscriptionId: []ews.SubscriptionIdType{
-					ews.SubscriptionIdType(SubscriptionId),
+					SubscriptionId,
 				},
 			},
 			ConnectionTimeout: 30,

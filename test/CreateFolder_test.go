@@ -13,7 +13,7 @@ func TestCreateFolder(t *testing.T) {
 		CreateFolder: &ews.CreateFolderType{
 			ParentFolderId: &ews.TargetFolderIdType{
 				DistinguishedFolderId: &ews.DistinguishedFolderIdType{
-					Id: ews.DistinguishedFolderIdNameTypeMmsgfolderroot,
+					Id: ews.DistinguishedFolderIdNameTypeMsgfolderroot,
 				},
 			},
 			Folders: &ews.NonEmptyArrayOfFoldersType{

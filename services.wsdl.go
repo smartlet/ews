@@ -308,542 +308,6 @@ const (
 	ItemTypesFilterTypeItemMessageItems      ItemTypesFilterTypeItem = "MessageItems"
 )
 
-type ResponseCodeType XsString
-
-const (
-	ResponseCodeTypeNoError                                                  ResponseCodeType = "NoError"
-	ResponseCodeTypeErrorAccessDenied                                        ResponseCodeType = "ErrorAccessDenied"
-	ResponseCodeTypeErrorAccessModeSpecified                                 ResponseCodeType = "ErrorAccessModeSpecified"
-	ResponseCodeTypeErrorAccountDisabled                                     ResponseCodeType = "ErrorAccountDisabled"
-	ResponseCodeTypeErrorAddDelegatesFailed                                  ResponseCodeType = "ErrorAddDelegatesFailed"
-	ResponseCodeTypeErrorAddressSpaceNotFound                                ResponseCodeType = "ErrorAddressSpaceNotFound"
-	ResponseCodeTypeErrorADOperation                                         ResponseCodeType = "ErrorADOperation"
-	ResponseCodeTypeErrorADSessionFilter                                     ResponseCodeType = "ErrorADSessionFilter"
-	ResponseCodeTypeErrorADUnavailable                                       ResponseCodeType = "ErrorADUnavailable"
-	ResponseCodeTypeErrorServiceUnavailable                                  ResponseCodeType = "ErrorServiceUnavailable"
-	ResponseCodeTypeErrorAutoDiscoverFailed                                  ResponseCodeType = "ErrorAutoDiscoverFailed"
-	ResponseCodeTypeErrorAffectedTaskOccurrencesRequired                     ResponseCodeType = "ErrorAffectedTaskOccurrencesRequired"
-	ResponseCodeTypeErrorAttachmentNestLevelLimitExceeded                    ResponseCodeType = "ErrorAttachmentNestLevelLimitExceeded"
-	ResponseCodeTypeErrorAttachmentSizeLimitExceeded                         ResponseCodeType = "ErrorAttachmentSizeLimitExceeded"
-	ResponseCodeTypeErrorArchiveFolderPathCreation                           ResponseCodeType = "ErrorArchiveFolderPathCreation"
-	ResponseCodeTypeErrorArchiveMailboxNotEnabled                            ResponseCodeType = "ErrorArchiveMailboxNotEnabled"
-	ResponseCodeTypeErrorArchiveMailboxServiceDiscoveryFailed                ResponseCodeType = "ErrorArchiveMailboxServiceDiscoveryFailed"
-	ResponseCodeTypeErrorAvailabilityConfigNotFound                          ResponseCodeType = "ErrorAvailabilityConfigNotFound"
-	ResponseCodeTypeErrorBatchProcessingStopped                              ResponseCodeType = "ErrorBatchProcessingStopped"
-	ResponseCodeTypeErrorCalendarCannotMoveOrCopyOccurrence                  ResponseCodeType = "ErrorCalendarCannotMoveOrCopyOccurrence"
-	ResponseCodeTypeErrorCalendarCannotUpdateDeletedItem                     ResponseCodeType = "ErrorCalendarCannotUpdateDeletedItem"
-	ResponseCodeTypeErrorCalendarCannotUseIdForOccurrenceId                  ResponseCodeType = "ErrorCalendarCannotUseIdForOccurrenceId"
-	ResponseCodeTypeErrorCalendarCannotUseIdForRecurringMasterId             ResponseCodeType = "ErrorCalendarCannotUseIdForRecurringMasterId"
-	ResponseCodeTypeErrorCalendarDurationIsTooLong                           ResponseCodeType = "ErrorCalendarDurationIsTooLong"
-	ResponseCodeTypeErrorCalendarEndDateIsEarlierThanStartDate               ResponseCodeType = "ErrorCalendarEndDateIsEarlierThanStartDate"
-	ResponseCodeTypeErrorCalendarFolderIsInvalidForCalendarView              ResponseCodeType = "ErrorCalendarFolderIsInvalidForCalendarView"
-	ResponseCodeTypeErrorCalendarInvalidAttributeValue                       ResponseCodeType = "ErrorCalendarInvalidAttributeValue"
-	ResponseCodeTypeErrorCalendarInvalidDayForTimeChangePattern              ResponseCodeType = "ErrorCalendarInvalidDayForTimeChangePattern"
-	ResponseCodeTypeErrorCalendarInvalidDayForWeeklyRecurrence               ResponseCodeType = "ErrorCalendarInvalidDayForWeeklyRecurrence"
-	ResponseCodeTypeErrorCalendarInvalidPropertyState                        ResponseCodeType = "ErrorCalendarInvalidPropertyState"
-	ResponseCodeTypeErrorCalendarInvalidPropertyValue                        ResponseCodeType = "ErrorCalendarInvalidPropertyValue"
-	ResponseCodeTypeErrorCalendarInvalidRecurrence                           ResponseCodeType = "ErrorCalendarInvalidRecurrence"
-	ResponseCodeTypeErrorCalendarInvalidTimeZone                             ResponseCodeType = "ErrorCalendarInvalidTimeZone"
-	ResponseCodeTypeErrorCalendarIsCancelledForAccept                        ResponseCodeType = "ErrorCalendarIsCancelledForAccept"
-	ResponseCodeTypeErrorCalendarIsCancelledForDecline                       ResponseCodeType = "ErrorCalendarIsCancelledForDecline"
-	ResponseCodeTypeErrorCalendarIsCancelledForRemove                        ResponseCodeType = "ErrorCalendarIsCancelledForRemove"
-	ResponseCodeTypeErrorCalendarIsCancelledForTentative                     ResponseCodeType = "ErrorCalendarIsCancelledForTentative"
-	ResponseCodeTypeErrorCalendarIsDelegatedForAccept                        ResponseCodeType = "ErrorCalendarIsDelegatedForAccept"
-	ResponseCodeTypeErrorCalendarIsDelegatedForDecline                       ResponseCodeType = "ErrorCalendarIsDelegatedForDecline"
-	ResponseCodeTypeErrorCalendarIsDelegatedForRemove                        ResponseCodeType = "ErrorCalendarIsDelegatedForRemove"
-	ResponseCodeTypeErrorCalendarIsDelegatedForTentative                     ResponseCodeType = "ErrorCalendarIsDelegatedForTentative"
-	ResponseCodeTypeErrorCalendarIsNotOrganizer                              ResponseCodeType = "ErrorCalendarIsNotOrganizer"
-	ResponseCodeTypeErrorCalendarIsOrganizerForAccept                        ResponseCodeType = "ErrorCalendarIsOrganizerForAccept"
-	ResponseCodeTypeErrorCalendarIsOrganizerForDecline                       ResponseCodeType = "ErrorCalendarIsOrganizerForDecline"
-	ResponseCodeTypeErrorCalendarIsOrganizerForRemove                        ResponseCodeType = "ErrorCalendarIsOrganizerForRemove"
-	ResponseCodeTypeErrorCalendarIsOrganizerForTentative                     ResponseCodeType = "ErrorCalendarIsOrganizerForTentative"
-	ResponseCodeTypeErrorCalendarOccurrenceIndexIsOutOfRecurrenceRange       ResponseCodeType = "ErrorCalendarOccurrenceIndexIsOutOfRecurrenceRange"
-	ResponseCodeTypeErrorCalendarOccurrenceIsDeletedFromRecurrence           ResponseCodeType = "ErrorCalendarOccurrenceIsDeletedFromRecurrence"
-	ResponseCodeTypeErrorCalendarOutOfRange                                  ResponseCodeType = "ErrorCalendarOutOfRange"
-	ResponseCodeTypeErrorCalendarMeetingRequestIsOutOfDate                   ResponseCodeType = "ErrorCalendarMeetingRequestIsOutOfDate"
-	ResponseCodeTypeErrorCalendarViewRangeTooBig                             ResponseCodeType = "ErrorCalendarViewRangeTooBig"
-	ResponseCodeTypeErrorCallerIsInvalidADAccount                            ResponseCodeType = "ErrorCallerIsInvalidADAccount"
-	ResponseCodeTypeErrorCannotAccessDeletedPublicFolder                     ResponseCodeType = "ErrorCannotAccessDeletedPublicFolder"
-	ResponseCodeTypeErrorCannotArchiveCalendarContactTaskFolderException     ResponseCodeType = "ErrorCannotArchiveCalendarContactTaskFolderException"
-	ResponseCodeTypeErrorCannotArchiveItemsInPublicFolders                   ResponseCodeType = "ErrorCannotArchiveItemsInPublicFolders"
-	ResponseCodeTypeErrorCannotArchiveItemsInArchiveMailbox                  ResponseCodeType = "ErrorCannotArchiveItemsInArchiveMailbox"
-	ResponseCodeTypeErrorCannotCreateCalendarItemInNonCalendarFolder         ResponseCodeType = "ErrorCannotCreateCalendarItemInNonCalendarFolder"
-	ResponseCodeTypeErrorCannotCreateContactInNonContactFolder               ResponseCodeType = "ErrorCannotCreateContactInNonContactFolder"
-	ResponseCodeTypeErrorCannotCreatePostItemInNonMailFolder                 ResponseCodeType = "ErrorCannotCreatePostItemInNonMailFolder"
-	ResponseCodeTypeErrorCannotCreateTaskInNonTaskFolder                     ResponseCodeType = "ErrorCannotCreateTaskInNonTaskFolder"
-	ResponseCodeTypeErrorCannotDeleteObject                                  ResponseCodeType = "ErrorCannotDeleteObject"
-	ResponseCodeTypeErrorCannotDisableMandatoryExtension                     ResponseCodeType = "ErrorCannotDisableMandatoryExtension"
-	ResponseCodeTypeErrorCannotFindUser                                      ResponseCodeType = "ErrorCannotFindUser"
-	ResponseCodeTypeErrorCannotGetSourceFolderPath                           ResponseCodeType = "ErrorCannotGetSourceFolderPath"
-	ResponseCodeTypeErrorCannotGetExternalEcpUrl                             ResponseCodeType = "ErrorCannotGetExternalEcpUrl"
-	ResponseCodeTypeErrorCannotOpenFileAttachment                            ResponseCodeType = "ErrorCannotOpenFileAttachment"
-	ResponseCodeTypeErrorCannotDeleteTaskOccurrence                          ResponseCodeType = "ErrorCannotDeleteTaskOccurrence"
-	ResponseCodeTypeErrorCannotEmptyFolder                                   ResponseCodeType = "ErrorCannotEmptyFolder"
-	ResponseCodeTypeErrorCannotSetCalendarPermissionOnNonCalendarFolder      ResponseCodeType = "ErrorCannotSetCalendarPermissionOnNonCalendarFolder"
-	ResponseCodeTypeErrorCannotSetNonCalendarPermissionOnCalendarFolder      ResponseCodeType = "ErrorCannotSetNonCalendarPermissionOnCalendarFolder"
-	ResponseCodeTypeErrorCannotSetPermissionUnknownEntries                   ResponseCodeType = "ErrorCannotSetPermissionUnknownEntries"
-	ResponseCodeTypeErrorCannotSpecifySearchFolderAsSourceFolder             ResponseCodeType = "ErrorCannotSpecifySearchFolderAsSourceFolder"
-	ResponseCodeTypeErrorCannotUseFolderIdForItemId                          ResponseCodeType = "ErrorCannotUseFolderIdForItemId"
-	ResponseCodeTypeErrorCannotUseItemIdForFolderId                          ResponseCodeType = "ErrorCannotUseItemIdForFolderId"
-	ResponseCodeTypeErrorChangeKeyRequired                                   ResponseCodeType = "ErrorChangeKeyRequired"
-	ResponseCodeTypeErrorChangeKeyRequiredForWriteOperations                 ResponseCodeType = "ErrorChangeKeyRequiredForWriteOperations"
-	ResponseCodeTypeErrorClientDisconnected                                  ResponseCodeType = "ErrorClientDisconnected"
-	ResponseCodeTypeErrorClientIntentInvalidStateDefinition                  ResponseCodeType = "ErrorClientIntentInvalidStateDefinition"
-	ResponseCodeTypeErrorClientIntentNotFound                                ResponseCodeType = "ErrorClientIntentNotFound"
-	ResponseCodeTypeErrorConnectionFailed                                    ResponseCodeType = "ErrorConnectionFailed"
-	ResponseCodeTypeErrorContainsFilterWrongType                             ResponseCodeType = "ErrorContainsFilterWrongType"
-	ResponseCodeTypeErrorContentConversionFailed                             ResponseCodeType = "ErrorContentConversionFailed"
-	ResponseCodeTypeErrorContentIndexingNotEnabled                           ResponseCodeType = "ErrorContentIndexingNotEnabled"
-	ResponseCodeTypeErrorCorruptData                                         ResponseCodeType = "ErrorCorruptData"
-	ResponseCodeTypeErrorCreateItemAccessDenied                              ResponseCodeType = "ErrorCreateItemAccessDenied"
-	ResponseCodeTypeErrorCreateManagedFolderPartialCompletion                ResponseCodeType = "ErrorCreateManagedFolderPartialCompletion"
-	ResponseCodeTypeErrorCreateSubfolderAccessDenied                         ResponseCodeType = "ErrorCreateSubfolderAccessDenied"
-	ResponseCodeTypeErrorCrossMailboxMoveCopy                                ResponseCodeType = "ErrorCrossMailboxMoveCopy"
-	ResponseCodeTypeErrorCrossSiteRequest                                    ResponseCodeType = "ErrorCrossSiteRequest"
-	ResponseCodeTypeErrorDataSizeLimitExceeded                               ResponseCodeType = "ErrorDataSizeLimitExceeded"
-	ResponseCodeTypeErrorDataSourceOperation                                 ResponseCodeType = "ErrorDataSourceOperation"
-	ResponseCodeTypeErrorDelegateAlreadyExists                               ResponseCodeType = "ErrorDelegateAlreadyExists"
-	ResponseCodeTypeErrorDelegateCannotAddOwner                              ResponseCodeType = "ErrorDelegateCannotAddOwner"
-	ResponseCodeTypeErrorDelegateMissingConfiguration                        ResponseCodeType = "ErrorDelegateMissingConfiguration"
-	ResponseCodeTypeErrorDelegateNoUser                                      ResponseCodeType = "ErrorDelegateNoUser"
-	ResponseCodeTypeErrorDelegateValidationFailed                            ResponseCodeType = "ErrorDelegateValidationFailed"
-	ResponseCodeTypeErrorDeleteDistinguishedFolder                           ResponseCodeType = "ErrorDeleteDistinguishedFolder"
-	ResponseCodeTypeErrorDeleteItemsFailed                                   ResponseCodeType = "ErrorDeleteItemsFailed"
-	ResponseCodeTypeErrorDeleteUnifiedMessagingPromptFailed                  ResponseCodeType = "ErrorDeleteUnifiedMessagingPromptFailed"
-	ResponseCodeTypeErrorDistinguishedUserNotSupported                       ResponseCodeType = "ErrorDistinguishedUserNotSupported"
-	ResponseCodeTypeErrorDistributionListMemberNotExist                      ResponseCodeType = "ErrorDistributionListMemberNotExist"
-	ResponseCodeTypeErrorDuplicateInputFolderNames                           ResponseCodeType = "ErrorDuplicateInputFolderNames"
-	ResponseCodeTypeErrorDuplicateUserIdsSpecified                           ResponseCodeType = "ErrorDuplicateUserIdsSpecified"
-	ResponseCodeTypeErrorDuplicateTransactionId                              ResponseCodeType = "ErrorDuplicateTransactionId"
-	ResponseCodeTypeErrorEmailAddressMismatch                                ResponseCodeType = "ErrorEmailAddressMismatch"
-	ResponseCodeTypeErrorEventNotFound                                       ResponseCodeType = "ErrorEventNotFound"
-	ResponseCodeTypeErrorExceededConnectionCount                             ResponseCodeType = "ErrorExceededConnectionCount"
-	ResponseCodeTypeErrorExceededSubscriptionCount                           ResponseCodeType = "ErrorExceededSubscriptionCount"
-	ResponseCodeTypeErrorExceededFindCountLimit                              ResponseCodeType = "ErrorExceededFindCountLimit"
-	ResponseCodeTypeErrorExpiredSubscription                                 ResponseCodeType = "ErrorExpiredSubscription"
-	ResponseCodeTypeErrorExtensionNotFound                                   ResponseCodeType = "ErrorExtensionNotFound"
-	ResponseCodeTypeErrorExtensionsNotAuthorized                             ResponseCodeType = "ErrorExtensionsNotAuthorized"
-	ResponseCodeTypeErrorFolderCorrupt                                       ResponseCodeType = "ErrorFolderCorrupt"
-	ResponseCodeTypeErrorFolderNotFound                                      ResponseCodeType = "ErrorFolderNotFound"
-	ResponseCodeTypeErrorFolderPropertRequestFailed                          ResponseCodeType = "ErrorFolderPropertRequestFailed"
-	ResponseCodeTypeErrorFolderSave                                          ResponseCodeType = "ErrorFolderSave"
-	ResponseCodeTypeErrorFolderSaveFailed                                    ResponseCodeType = "ErrorFolderSaveFailed"
-	ResponseCodeTypeErrorFolderSavePropertyError                             ResponseCodeType = "ErrorFolderSavePropertyError"
-	ResponseCodeTypeErrorFolderExists                                        ResponseCodeType = "ErrorFolderExists"
-	ResponseCodeTypeErrorFreeBusyGenerationFailed                            ResponseCodeType = "ErrorFreeBusyGenerationFailed"
-	ResponseCodeTypeErrorGetServerSecurityDescriptorFailed                   ResponseCodeType = "ErrorGetServerSecurityDescriptorFailed"
-	ResponseCodeTypeErrorImContactLimitReached                               ResponseCodeType = "ErrorImContactLimitReached"
-	ResponseCodeTypeErrorImGroupDisplayNameAlreadyExists                     ResponseCodeType = "ErrorImGroupDisplayNameAlreadyExists"
-	ResponseCodeTypeErrorImGroupLimitReached                                 ResponseCodeType = "ErrorImGroupLimitReached"
-	ResponseCodeTypeErrorImpersonateUserDenied                               ResponseCodeType = "ErrorImpersonateUserDenied"
-	ResponseCodeTypeErrorImpersonationDenied                                 ResponseCodeType = "ErrorImpersonationDenied"
-	ResponseCodeTypeErrorImpersonationFailed                                 ResponseCodeType = "ErrorImpersonationFailed"
-	ResponseCodeTypeErrorIncorrectSchemaVersion                              ResponseCodeType = "ErrorIncorrectSchemaVersion"
-	ResponseCodeTypeErrorIncorrectUpdatePropertyCount                        ResponseCodeType = "ErrorIncorrectUpdatePropertyCount"
-	ResponseCodeTypeErrorIndividualMailboxLimitReached                       ResponseCodeType = "ErrorIndividualMailboxLimitReached"
-	ResponseCodeTypeErrorInsufficientResources                               ResponseCodeType = "ErrorInsufficientResources"
-	ResponseCodeTypeErrorInternalServerError                                 ResponseCodeType = "ErrorInternalServerError"
-	ResponseCodeTypeErrorInternalServerTransientError                        ResponseCodeType = "ErrorInternalServerTransientError"
-	ResponseCodeTypeErrorInvalidAccessLevel                                  ResponseCodeType = "ErrorInvalidAccessLevel"
-	ResponseCodeTypeErrorInvalidArgument                                     ResponseCodeType = "ErrorInvalidArgument"
-	ResponseCodeTypeErrorInvalidAttachmentId                                 ResponseCodeType = "ErrorInvalidAttachmentId"
-	ResponseCodeTypeErrorInvalidAttachmentSubfilter                          ResponseCodeType = "ErrorInvalidAttachmentSubfilter"
-	ResponseCodeTypeErrorInvalidAttachmentSubfilterTextFilter                ResponseCodeType = "ErrorInvalidAttachmentSubfilterTextFilter"
-	ResponseCodeTypeErrorInvalidAuthorizationContext                         ResponseCodeType = "ErrorInvalidAuthorizationContext"
-	ResponseCodeTypeErrorInvalidChangeKey                                    ResponseCodeType = "ErrorInvalidChangeKey"
-	ResponseCodeTypeErrorInvalidClientSecurityContext                        ResponseCodeType = "ErrorInvalidClientSecurityContext"
-	ResponseCodeTypeErrorInvalidCompleteDate                                 ResponseCodeType = "ErrorInvalidCompleteDate"
-	ResponseCodeTypeErrorInvalidContactEmailAddress                          ResponseCodeType = "ErrorInvalidContactEmailAddress"
-	ResponseCodeTypeErrorInvalidContactEmailIndex                            ResponseCodeType = "ErrorInvalidContactEmailIndex"
-	ResponseCodeTypeErrorInvalidCrossForestCredentials                       ResponseCodeType = "ErrorInvalidCrossForestCredentials"
-	ResponseCodeTypeErrorInvalidDelegatePermission                           ResponseCodeType = "ErrorInvalidDelegatePermission"
-	ResponseCodeTypeErrorInvalidDelegateUserId                               ResponseCodeType = "ErrorInvalidDelegateUserId"
-	ResponseCodeTypeErrorInvalidExcludesRestriction                          ResponseCodeType = "ErrorInvalidExcludesRestriction"
-	ResponseCodeTypeErrorInvalidExpressionTypeForSubFilter                   ResponseCodeType = "ErrorInvalidExpressionTypeForSubFilter"
-	ResponseCodeTypeErrorInvalidExtendedProperty                             ResponseCodeType = "ErrorInvalidExtendedProperty"
-	ResponseCodeTypeErrorInvalidExtendedPropertyValue                        ResponseCodeType = "ErrorInvalidExtendedPropertyValue"
-	ResponseCodeTypeErrorInvalidFolderId                                     ResponseCodeType = "ErrorInvalidFolderId"
-	ResponseCodeTypeErrorInvalidFolderTypeForOperation                       ResponseCodeType = "ErrorInvalidFolderTypeForOperation"
-	ResponseCodeTypeErrorInvalidFractionalPagingParameters                   ResponseCodeType = "ErrorInvalidFractionalPagingParameters"
-	ResponseCodeTypeErrorInvalidFreeBusyViewType                             ResponseCodeType = "ErrorInvalidFreeBusyViewType"
-	ResponseCodeTypeErrorInvalidId                                           ResponseCodeType = "ErrorInvalidId"
-	ResponseCodeTypeErrorInvalidIdEmpty                                      ResponseCodeType = "ErrorInvalidIdEmpty"
-	ResponseCodeTypeErrorInvalidIdMalformed                                  ResponseCodeType = "ErrorInvalidIdMalformed"
-	ResponseCodeTypeErrorInvalidIdMalformedEwsLegacyIdFormat                 ResponseCodeType = "ErrorInvalidIdMalformedEwsLegacyIdFormat"
-	ResponseCodeTypeErrorInvalidIdMonikerTooLong                             ResponseCodeType = "ErrorInvalidIdMonikerTooLong"
-	ResponseCodeTypeErrorInvalidIdNotAnItemAttachmentId                      ResponseCodeType = "ErrorInvalidIdNotAnItemAttachmentId"
-	ResponseCodeTypeErrorInvalidIdReturnedByResolveNames                     ResponseCodeType = "ErrorInvalidIdReturnedByResolveNames"
-	ResponseCodeTypeErrorInvalidIdStoreObjectIdTooLong                       ResponseCodeType = "ErrorInvalidIdStoreObjectIdTooLong"
-	ResponseCodeTypeErrorInvalidIdTooManyAttachmentLevels                    ResponseCodeType = "ErrorInvalidIdTooManyAttachmentLevels"
-	ResponseCodeTypeErrorInvalidIdXml                                        ResponseCodeType = "ErrorInvalidIdXml"
-	ResponseCodeTypeErrorInvalidImContactId                                  ResponseCodeType = "ErrorInvalidImContactId"
-	ResponseCodeTypeErrorInvalidImDistributionGroupSmtpAddress               ResponseCodeType = "ErrorInvalidImDistributionGroupSmtpAddress"
-	ResponseCodeTypeErrorInvalidImGroupId                                    ResponseCodeType = "ErrorInvalidImGroupId"
-	ResponseCodeTypeErrorInvalidIndexedPagingParameters                      ResponseCodeType = "ErrorInvalidIndexedPagingParameters"
-	ResponseCodeTypeErrorInvalidInternetHeaderChildNodes                     ResponseCodeType = "ErrorInvalidInternetHeaderChildNodes"
-	ResponseCodeTypeErrorInvalidItemForOperationArchiveItem                  ResponseCodeType = "ErrorInvalidItemForOperationArchiveItem"
-	ResponseCodeTypeErrorInvalidItemForOperationCreateItemAttachment         ResponseCodeType = "ErrorInvalidItemForOperationCreateItemAttachment"
-	ResponseCodeTypeErrorInvalidItemForOperationCreateItem                   ResponseCodeType = "ErrorInvalidItemForOperationCreateItem"
-	ResponseCodeTypeErrorInvalidItemForOperationAcceptItem                   ResponseCodeType = "ErrorInvalidItemForOperationAcceptItem"
-	ResponseCodeTypeErrorInvalidItemForOperationDeclineItem                  ResponseCodeType = "ErrorInvalidItemForOperationDeclineItem"
-	ResponseCodeTypeErrorInvalidItemForOperationCancelItem                   ResponseCodeType = "ErrorInvalidItemForOperationCancelItem"
-	ResponseCodeTypeErrorInvalidItemForOperationExpandDL                     ResponseCodeType = "ErrorInvalidItemForOperationExpandDL"
-	ResponseCodeTypeErrorInvalidItemForOperationRemoveItem                   ResponseCodeType = "ErrorInvalidItemForOperationRemoveItem"
-	ResponseCodeTypeErrorInvalidItemForOperationSendItem                     ResponseCodeType = "ErrorInvalidItemForOperationSendItem"
-	ResponseCodeTypeErrorInvalidItemForOperationTentative                    ResponseCodeType = "ErrorInvalidItemForOperationTentative"
-	ResponseCodeTypeErrorInvalidLogonType                                    ResponseCodeType = "ErrorInvalidLogonType"
-	ResponseCodeTypeErrorInvalidLikeRequest                                  ResponseCodeType = "ErrorInvalidLikeRequest"
-	ResponseCodeTypeErrorInvalidMailbox                                      ResponseCodeType = "ErrorInvalidMailbox"
-	ResponseCodeTypeErrorInvalidManagedFolderProperty                        ResponseCodeType = "ErrorInvalidManagedFolderProperty"
-	ResponseCodeTypeErrorInvalidManagedFolderQuota                           ResponseCodeType = "ErrorInvalidManagedFolderQuota"
-	ResponseCodeTypeErrorInvalidManagedFolderSize                            ResponseCodeType = "ErrorInvalidManagedFolderSize"
-	ResponseCodeTypeErrorInvalidMergedFreeBusyInterval                       ResponseCodeType = "ErrorInvalidMergedFreeBusyInterval"
-	ResponseCodeTypeErrorInvalidNameForNameResolution                        ResponseCodeType = "ErrorInvalidNameForNameResolution"
-	ResponseCodeTypeErrorInvalidOperation                                    ResponseCodeType = "ErrorInvalidOperation"
-	ResponseCodeTypeErrorInvalidNetworkServiceContext                        ResponseCodeType = "ErrorInvalidNetworkServiceContext"
-	ResponseCodeTypeErrorInvalidOofParameter                                 ResponseCodeType = "ErrorInvalidOofParameter"
-	ResponseCodeTypeErrorInvalidPagingMaxRows                                ResponseCodeType = "ErrorInvalidPagingMaxRows"
-	ResponseCodeTypeErrorInvalidParentFolder                                 ResponseCodeType = "ErrorInvalidParentFolder"
-	ResponseCodeTypeErrorInvalidPercentCompleteValue                         ResponseCodeType = "ErrorInvalidPercentCompleteValue"
-	ResponseCodeTypeErrorInvalidPermissionSettings                           ResponseCodeType = "ErrorInvalidPermissionSettings"
-	ResponseCodeTypeErrorInvalidPhoneCallId                                  ResponseCodeType = "ErrorInvalidPhoneCallId"
-	ResponseCodeTypeErrorInvalidPhoneNumber                                  ResponseCodeType = "ErrorInvalidPhoneNumber"
-	ResponseCodeTypeErrorInvalidUserInfo                                     ResponseCodeType = "ErrorInvalidUserInfo"
-	ResponseCodeTypeErrorInvalidPropertyAppend                               ResponseCodeType = "ErrorInvalidPropertyAppend"
-	ResponseCodeTypeErrorInvalidPropertyDelete                               ResponseCodeType = "ErrorInvalidPropertyDelete"
-	ResponseCodeTypeErrorInvalidPropertyForExists                            ResponseCodeType = "ErrorInvalidPropertyForExists"
-	ResponseCodeTypeErrorInvalidPropertyForOperation                         ResponseCodeType = "ErrorInvalidPropertyForOperation"
-	ResponseCodeTypeErrorInvalidPropertyRequest                              ResponseCodeType = "ErrorInvalidPropertyRequest"
-	ResponseCodeTypeErrorInvalidPropertySet                                  ResponseCodeType = "ErrorInvalidPropertySet"
-	ResponseCodeTypeErrorInvalidPropertyUpdateSentMessage                    ResponseCodeType = "ErrorInvalidPropertyUpdateSentMessage"
-	ResponseCodeTypeErrorInvalidProxySecurityContext                         ResponseCodeType = "ErrorInvalidProxySecurityContext"
-	ResponseCodeTypeErrorInvalidPullSubscriptionId                           ResponseCodeType = "ErrorInvalidPullSubscriptionId"
-	ResponseCodeTypeErrorInvalidPushSubscriptionUrl                          ResponseCodeType = "ErrorInvalidPushSubscriptionUrl"
-	ResponseCodeTypeErrorInvalidRecipients                                   ResponseCodeType = "ErrorInvalidRecipients"
-	ResponseCodeTypeErrorInvalidRecipientSubfilter                           ResponseCodeType = "ErrorInvalidRecipientSubfilter"
-	ResponseCodeTypeErrorInvalidRecipientSubfilterComparison                 ResponseCodeType = "ErrorInvalidRecipientSubfilterComparison"
-	ResponseCodeTypeErrorInvalidRecipientSubfilterOrder                      ResponseCodeType = "ErrorInvalidRecipientSubfilterOrder"
-	ResponseCodeTypeErrorInvalidRecipientSubfilterTextFilter                 ResponseCodeType = "ErrorInvalidRecipientSubfilterTextFilter"
-	ResponseCodeTypeErrorInvalidReferenceItem                                ResponseCodeType = "ErrorInvalidReferenceItem"
-	ResponseCodeTypeErrorInvalidRequest                                      ResponseCodeType = "ErrorInvalidRequest"
-	ResponseCodeTypeErrorInvalidRestriction                                  ResponseCodeType = "ErrorInvalidRestriction"
-	ResponseCodeTypeErrorInvalidRetentionTagTypeMismatch                     ResponseCodeType = "ErrorInvalidRetentionTagTypeMismatch"
-	ResponseCodeTypeErrorInvalidRetentionTagInvisible                        ResponseCodeType = "ErrorInvalidRetentionTagInvisible"
-	ResponseCodeTypeErrorInvalidRetentionTagInheritance                      ResponseCodeType = "ErrorInvalidRetentionTagInheritance"
-	ResponseCodeTypeErrorInvalidRetentionTagIdGuid                           ResponseCodeType = "ErrorInvalidRetentionTagIdGuid"
-	ResponseCodeTypeErrorInvalidRoutingType                                  ResponseCodeType = "ErrorInvalidRoutingType"
-	ResponseCodeTypeErrorInvalidScheduledOofDuration                         ResponseCodeType = "ErrorInvalidScheduledOofDuration"
-	ResponseCodeTypeErrorInvalidSchemaVersionForMailboxVersion               ResponseCodeType = "ErrorInvalidSchemaVersionForMailboxVersion"
-	ResponseCodeTypeErrorInvalidSecurityDescriptor                           ResponseCodeType = "ErrorInvalidSecurityDescriptor"
-	ResponseCodeTypeErrorInvalidSendItemSaveSettings                         ResponseCodeType = "ErrorInvalidSendItemSaveSettings"
-	ResponseCodeTypeErrorInvalidSerializedAccessToken                        ResponseCodeType = "ErrorInvalidSerializedAccessToken"
-	ResponseCodeTypeErrorInvalidServerVersion                                ResponseCodeType = "ErrorInvalidServerVersion"
-	ResponseCodeTypeErrorInvalidSid                                          ResponseCodeType = "ErrorInvalidSid"
-	ResponseCodeTypeErrorInvalidSIPUri                                       ResponseCodeType = "ErrorInvalidSIPUri"
-	ResponseCodeTypeErrorInvalidSmtpAddress                                  ResponseCodeType = "ErrorInvalidSmtpAddress"
-	ResponseCodeTypeErrorInvalidSubfilterType                                ResponseCodeType = "ErrorInvalidSubfilterType"
-	ResponseCodeTypeErrorInvalidSubfilterTypeNotAttendeeType                 ResponseCodeType = "ErrorInvalidSubfilterTypeNotAttendeeType"
-	ResponseCodeTypeErrorInvalidSubfilterTypeNotRecipientType                ResponseCodeType = "ErrorInvalidSubfilterTypeNotRecipientType"
-	ResponseCodeTypeErrorInvalidSubscription                                 ResponseCodeType = "ErrorInvalidSubscription"
-	ResponseCodeTypeErrorInvalidSubscriptionRequest                          ResponseCodeType = "ErrorInvalidSubscriptionRequest"
-	ResponseCodeTypeErrorInvalidSyncStateData                                ResponseCodeType = "ErrorInvalidSyncStateData"
-	ResponseCodeTypeErrorInvalidTimeInterval                                 ResponseCodeType = "ErrorInvalidTimeInterval"
-	ResponseCodeTypeErrorInvalidUserOofSettings                              ResponseCodeType = "ErrorInvalidUserOofSettings"
-	ResponseCodeTypeErrorInvalidUserPrincipalName                            ResponseCodeType = "ErrorInvalidUserPrincipalName"
-	ResponseCodeTypeErrorInvalidUserSid                                      ResponseCodeType = "ErrorInvalidUserSid"
-	ResponseCodeTypeErrorInvalidUserSidMissingUPN                            ResponseCodeType = "ErrorInvalidUserSidMissingUPN"
-	ResponseCodeTypeErrorInvalidValueForProperty                             ResponseCodeType = "ErrorInvalidValueForProperty"
-	ResponseCodeTypeErrorInvalidWatermark                                    ResponseCodeType = "ErrorInvalidWatermark"
-	ResponseCodeTypeErrorIPGatewayNotFound                                   ResponseCodeType = "ErrorIPGatewayNotFound"
-	ResponseCodeTypeErrorIrresolvableConflict                                ResponseCodeType = "ErrorIrresolvableConflict"
-	ResponseCodeTypeErrorItemCorrupt                                         ResponseCodeType = "ErrorItemCorrupt"
-	ResponseCodeTypeErrorItemNotFound                                        ResponseCodeType = "ErrorItemNotFound"
-	ResponseCodeTypeErrorItemPropertyRequestFailed                           ResponseCodeType = "ErrorItemPropertyRequestFailed"
-	ResponseCodeTypeErrorItemSave                                            ResponseCodeType = "ErrorItemSave"
-	ResponseCodeTypeErrorItemSavePropertyError                               ResponseCodeType = "ErrorItemSavePropertyError"
-	ResponseCodeTypeErrorLegacyMailboxFreeBusyViewTypeNotMerged              ResponseCodeType = "ErrorLegacyMailboxFreeBusyViewTypeNotMerged"
-	ResponseCodeTypeErrorLocalServerObjectNotFound                           ResponseCodeType = "ErrorLocalServerObjectNotFound"
-	ResponseCodeTypeErrorLogonAsNetworkServiceFailed                         ResponseCodeType = "ErrorLogonAsNetworkServiceFailed"
-	ResponseCodeTypeErrorMailboxConfiguration                                ResponseCodeType = "ErrorMailboxConfiguration"
-	ResponseCodeTypeErrorMailboxDataArrayEmpty                               ResponseCodeType = "ErrorMailboxDataArrayEmpty"
-	ResponseCodeTypeErrorMailboxDataArrayTooBig                              ResponseCodeType = "ErrorMailboxDataArrayTooBig"
-	ResponseCodeTypeErrorMailboxHoldNotFound                                 ResponseCodeType = "ErrorMailboxHoldNotFound"
-	ResponseCodeTypeErrorMailboxLogonFailed                                  ResponseCodeType = "ErrorMailboxLogonFailed"
-	ResponseCodeTypeErrorMailboxMoveInProgress                               ResponseCodeType = "ErrorMailboxMoveInProgress"
-	ResponseCodeTypeErrorMailboxStoreUnavailable                             ResponseCodeType = "ErrorMailboxStoreUnavailable"
-	ResponseCodeTypeErrorMailRecipientNotFound                               ResponseCodeType = "ErrorMailRecipientNotFound"
-	ResponseCodeTypeErrorMailTipsDisabled                                    ResponseCodeType = "ErrorMailTipsDisabled"
-	ResponseCodeTypeErrorManagedFolderAlreadyExists                          ResponseCodeType = "ErrorManagedFolderAlreadyExists"
-	ResponseCodeTypeErrorManagedFolderNotFound                               ResponseCodeType = "ErrorManagedFolderNotFound"
-	ResponseCodeTypeErrorManagedFoldersRootFailure                           ResponseCodeType = "ErrorManagedFoldersRootFailure"
-	ResponseCodeTypeErrorMeetingSuggestionGenerationFailed                   ResponseCodeType = "ErrorMeetingSuggestionGenerationFailed"
-	ResponseCodeTypeErrorMessageDispositionRequired                          ResponseCodeType = "ErrorMessageDispositionRequired"
-	ResponseCodeTypeErrorMessageSizeExceeded                                 ResponseCodeType = "ErrorMessageSizeExceeded"
-	ResponseCodeTypeErrorMimeContentConversionFailed                         ResponseCodeType = "ErrorMimeContentConversionFailed"
-	ResponseCodeTypeErrorMimeContentInvalid                                  ResponseCodeType = "ErrorMimeContentInvalid"
-	ResponseCodeTypeErrorMimeContentInvalidBase64String                      ResponseCodeType = "ErrorMimeContentInvalidBase64String"
-	ResponseCodeTypeErrorMissingArgument                                     ResponseCodeType = "ErrorMissingArgument"
-	ResponseCodeTypeErrorMissingEmailAddress                                 ResponseCodeType = "ErrorMissingEmailAddress"
-	ResponseCodeTypeErrorMissingEmailAddressForManagedFolder                 ResponseCodeType = "ErrorMissingEmailAddressForManagedFolder"
-	ResponseCodeTypeErrorMissingInformationEmailAddress                      ResponseCodeType = "ErrorMissingInformationEmailAddress"
-	ResponseCodeTypeErrorMissingInformationReferenceItemId                   ResponseCodeType = "ErrorMissingInformationReferenceItemId"
-	ResponseCodeTypeErrorMissingItemForCreateItemAttachment                  ResponseCodeType = "ErrorMissingItemForCreateItemAttachment"
-	ResponseCodeTypeErrorMissingManagedFolderId                              ResponseCodeType = "ErrorMissingManagedFolderId"
-	ResponseCodeTypeErrorMissingRecipients                                   ResponseCodeType = "ErrorMissingRecipients"
-	ResponseCodeTypeErrorMissingUserIdInformation                            ResponseCodeType = "ErrorMissingUserIdInformation"
-	ResponseCodeTypeErrorMoreThanOneAccessModeSpecified                      ResponseCodeType = "ErrorMoreThanOneAccessModeSpecified"
-	ResponseCodeTypeErrorMoveCopyFailed                                      ResponseCodeType = "ErrorMoveCopyFailed"
-	ResponseCodeTypeErrorMoveDistinguishedFolder                             ResponseCodeType = "ErrorMoveDistinguishedFolder"
-	ResponseCodeTypeErrorMoveUnifiedGroupPropertyFailed                      ResponseCodeType = "ErrorMoveUnifiedGroupPropertyFailed"
-	ResponseCodeTypeErrorMultiLegacyMailboxAccess                            ResponseCodeType = "ErrorMultiLegacyMailboxAccess"
-	ResponseCodeTypeErrorNameResolutionMultipleResults                       ResponseCodeType = "ErrorNameResolutionMultipleResults"
-	ResponseCodeTypeErrorNameResolutionNoMailbox                             ResponseCodeType = "ErrorNameResolutionNoMailbox"
-	ResponseCodeTypeErrorNameResolutionNoResults                             ResponseCodeType = "ErrorNameResolutionNoResults"
-	ResponseCodeTypeErrorNoApplicableProxyCASServersAvailable                ResponseCodeType = "ErrorNoApplicableProxyCASServersAvailable"
-	ResponseCodeTypeErrorNoCalendar                                          ResponseCodeType = "ErrorNoCalendar"
-	ResponseCodeTypeErrorNoDestinationCASDueToKerberosRequirements           ResponseCodeType = "ErrorNoDestinationCASDueToKerberosRequirements"
-	ResponseCodeTypeErrorNoDestinationCASDueToSSLRequirements                ResponseCodeType = "ErrorNoDestinationCASDueToSSLRequirements"
-	ResponseCodeTypeErrorNoDestinationCASDueToVersionMismatch                ResponseCodeType = "ErrorNoDestinationCASDueToVersionMismatch"
-	ResponseCodeTypeErrorNoFolderClassOverride                               ResponseCodeType = "ErrorNoFolderClassOverride"
-	ResponseCodeTypeErrorNoFreeBusyAccess                                    ResponseCodeType = "ErrorNoFreeBusyAccess"
-	ResponseCodeTypeErrorNonExistentMailbox                                  ResponseCodeType = "ErrorNonExistentMailbox"
-	ResponseCodeTypeErrorNonPrimarySmtpAddress                               ResponseCodeType = "ErrorNonPrimarySmtpAddress"
-	ResponseCodeTypeErrorNoPropertyTagForCustomProperties                    ResponseCodeType = "ErrorNoPropertyTagForCustomProperties"
-	ResponseCodeTypeErrorNoPublicFolderReplicaAvailable                      ResponseCodeType = "ErrorNoPublicFolderReplicaAvailable"
-	ResponseCodeTypeErrorNoPublicFolderServerAvailable                       ResponseCodeType = "ErrorNoPublicFolderServerAvailable"
-	ResponseCodeTypeErrorNoRespondingCASInDestinationSite                    ResponseCodeType = "ErrorNoRespondingCASInDestinationSite"
-	ResponseCodeTypeErrorNotDelegate                                         ResponseCodeType = "ErrorNotDelegate"
-	ResponseCodeTypeErrorNotEnoughMemory                                     ResponseCodeType = "ErrorNotEnoughMemory"
-	ResponseCodeTypeErrorObjectTypeChanged                                   ResponseCodeType = "ErrorObjectTypeChanged"
-	ResponseCodeTypeErrorOccurrenceCrossingBoundary                          ResponseCodeType = "ErrorOccurrenceCrossingBoundary"
-	ResponseCodeTypeErrorOccurrenceTimeSpanTooBig                            ResponseCodeType = "ErrorOccurrenceTimeSpanTooBig"
-	ResponseCodeTypeErrorOperationNotAllowedWithPublicFolderRoot             ResponseCodeType = "ErrorOperationNotAllowedWithPublicFolderRoot"
-	ResponseCodeTypeErrorParentFolderIdRequired                              ResponseCodeType = "ErrorParentFolderIdRequired"
-	ResponseCodeTypeErrorParentFolderNotFound                                ResponseCodeType = "ErrorParentFolderNotFound"
-	ResponseCodeTypeErrorPasswordChangeRequired                              ResponseCodeType = "ErrorPasswordChangeRequired"
-	ResponseCodeTypeErrorPasswordExpired                                     ResponseCodeType = "ErrorPasswordExpired"
-	ResponseCodeTypeErrorPhoneNumberNotDialable                              ResponseCodeType = "ErrorPhoneNumberNotDialable"
-	ResponseCodeTypeErrorPropertyUpdate                                      ResponseCodeType = "ErrorPropertyUpdate"
-	ResponseCodeTypeErrorPromptPublishingOperationFailed                     ResponseCodeType = "ErrorPromptPublishingOperationFailed"
-	ResponseCodeTypeErrorPropertyValidationFailure                           ResponseCodeType = "ErrorPropertyValidationFailure"
-	ResponseCodeTypeErrorProxiedSubscriptionCallFailure                      ResponseCodeType = "ErrorProxiedSubscriptionCallFailure"
-	ResponseCodeTypeErrorProxyCallFailed                                     ResponseCodeType = "ErrorProxyCallFailed"
-	ResponseCodeTypeErrorProxyGroupSidLimitExceeded                          ResponseCodeType = "ErrorProxyGroupSidLimitExceeded"
-	ResponseCodeTypeErrorProxyRequestNotAllowed                              ResponseCodeType = "ErrorProxyRequestNotAllowed"
-	ResponseCodeTypeErrorProxyRequestProcessingFailed                        ResponseCodeType = "ErrorProxyRequestProcessingFailed"
-	ResponseCodeTypeErrorProxyServiceDiscoveryFailed                         ResponseCodeType = "ErrorProxyServiceDiscoveryFailed"
-	ResponseCodeTypeErrorProxyTokenExpired                                   ResponseCodeType = "ErrorProxyTokenExpired"
-	ResponseCodeTypeErrorPublicFolderMailboxDiscoveryFailed                  ResponseCodeType = "ErrorPublicFolderMailboxDiscoveryFailed"
-	ResponseCodeTypeErrorPublicFolderOperationFailed                         ResponseCodeType = "ErrorPublicFolderOperationFailed"
-	ResponseCodeTypeErrorPublicFolderRequestProcessingFailed                 ResponseCodeType = "ErrorPublicFolderRequestProcessingFailed"
-	ResponseCodeTypeErrorPublicFolderServerNotFound                          ResponseCodeType = "ErrorPublicFolderServerNotFound"
-	ResponseCodeTypeErrorPublicFolderSyncException                           ResponseCodeType = "ErrorPublicFolderSyncException"
-	ResponseCodeTypeErrorQueryFilterTooLong                                  ResponseCodeType = "ErrorQueryFilterTooLong"
-	ResponseCodeTypeErrorQuotaExceeded                                       ResponseCodeType = "ErrorQuotaExceeded"
-	ResponseCodeTypeErrorReadEventsFailed                                    ResponseCodeType = "ErrorReadEventsFailed"
-	ResponseCodeTypeErrorReadReceiptNotPending                               ResponseCodeType = "ErrorReadReceiptNotPending"
-	ResponseCodeTypeErrorRecurrenceEndDateTooBig                             ResponseCodeType = "ErrorRecurrenceEndDateTooBig"
-	ResponseCodeTypeErrorRecurrenceHasNoOccurrence                           ResponseCodeType = "ErrorRecurrenceHasNoOccurrence"
-	ResponseCodeTypeErrorRemoveDelegatesFailed                               ResponseCodeType = "ErrorRemoveDelegatesFailed"
-	ResponseCodeTypeErrorRequestAborted                                      ResponseCodeType = "ErrorRequestAborted"
-	ResponseCodeTypeErrorRequestStreamTooBig                                 ResponseCodeType = "ErrorRequestStreamTooBig"
-	ResponseCodeTypeErrorRequiredPropertyMissing                             ResponseCodeType = "ErrorRequiredPropertyMissing"
-	ResponseCodeTypeErrorResolveNamesInvalidFolderType                       ResponseCodeType = "ErrorResolveNamesInvalidFolderType"
-	ResponseCodeTypeErrorResolveNamesOnlyOneContactsFolderAllowed            ResponseCodeType = "ErrorResolveNamesOnlyOneContactsFolderAllowed"
-	ResponseCodeTypeErrorResponseSchemaValidation                            ResponseCodeType = "ErrorResponseSchemaValidation"
-	ResponseCodeTypeErrorRestrictionTooLong                                  ResponseCodeType = "ErrorRestrictionTooLong"
-	ResponseCodeTypeErrorRestrictionTooComplex                               ResponseCodeType = "ErrorRestrictionTooComplex"
-	ResponseCodeTypeErrorResultSetTooBig                                     ResponseCodeType = "ErrorResultSetTooBig"
-	ResponseCodeTypeErrorInvalidExchangeImpersonationHeaderData              ResponseCodeType = "ErrorInvalidExchangeImpersonationHeaderData"
-	ResponseCodeTypeErrorSavedItemFolderNotFound                             ResponseCodeType = "ErrorSavedItemFolderNotFound"
-	ResponseCodeTypeErrorSchemaValidation                                    ResponseCodeType = "ErrorSchemaValidation"
-	ResponseCodeTypeErrorSearchFolderNotInitialized                          ResponseCodeType = "ErrorSearchFolderNotInitialized"
-	ResponseCodeTypeErrorSendAsDenied                                        ResponseCodeType = "ErrorSendAsDenied"
-	ResponseCodeTypeErrorSendMeetingCancellationsRequired                    ResponseCodeType = "ErrorSendMeetingCancellationsRequired"
-	ResponseCodeTypeErrorSendMeetingInvitationsOrCancellationsRequired       ResponseCodeType = "ErrorSendMeetingInvitationsOrCancellationsRequired"
-	ResponseCodeTypeErrorSendMeetingInvitationsRequired                      ResponseCodeType = "ErrorSendMeetingInvitationsRequired"
-	ResponseCodeTypeErrorSentMeetingRequestUpdate                            ResponseCodeType = "ErrorSentMeetingRequestUpdate"
-	ResponseCodeTypeErrorSentTaskRequestUpdate                               ResponseCodeType = "ErrorSentTaskRequestUpdate"
-	ResponseCodeTypeErrorServerBusy                                          ResponseCodeType = "ErrorServerBusy"
-	ResponseCodeTypeErrorServiceDiscoveryFailed                              ResponseCodeType = "ErrorServiceDiscoveryFailed"
-	ResponseCodeTypeErrorStaleObject                                         ResponseCodeType = "ErrorStaleObject"
-	ResponseCodeTypeErrorSubmissionQuotaExceeded                             ResponseCodeType = "ErrorSubmissionQuotaExceeded"
-	ResponseCodeTypeErrorSubscriptionAccessDenied                            ResponseCodeType = "ErrorSubscriptionAccessDenied"
-	ResponseCodeTypeErrorSubscriptionDelegateAccessNotSupported              ResponseCodeType = "ErrorSubscriptionDelegateAccessNotSupported"
-	ResponseCodeTypeErrorSubscriptionNotFound                                ResponseCodeType = "ErrorSubscriptionNotFound"
-	ResponseCodeTypeErrorSubscriptionUnsubscribed                            ResponseCodeType = "ErrorSubscriptionUnsubscribed"
-	ResponseCodeTypeErrorSyncFolderNotFound                                  ResponseCodeType = "ErrorSyncFolderNotFound"
-	ResponseCodeTypeErrorTeamMailboxNotFound                                 ResponseCodeType = "ErrorTeamMailboxNotFound"
-	ResponseCodeTypeErrorTeamMailboxNotLinkedToSharePoint                    ResponseCodeType = "ErrorTeamMailboxNotLinkedToSharePoint"
-	ResponseCodeTypeErrorTeamMailboxUrlValidationFailed                      ResponseCodeType = "ErrorTeamMailboxUrlValidationFailed"
-	ResponseCodeTypeErrorTeamMailboxNotAuthorizedOwner                       ResponseCodeType = "ErrorTeamMailboxNotAuthorizedOwner"
-	ResponseCodeTypeErrorTeamMailboxActiveToPendingDelete                    ResponseCodeType = "ErrorTeamMailboxActiveToPendingDelete"
-	ResponseCodeTypeErrorTeamMailboxFailedSendingNotifications               ResponseCodeType = "ErrorTeamMailboxFailedSendingNotifications"
-	ResponseCodeTypeErrorTeamMailboxErrorUnknown                             ResponseCodeType = "ErrorTeamMailboxErrorUnknown"
-	ResponseCodeTypeErrorTimeIntervalTooBig                                  ResponseCodeType = "ErrorTimeIntervalTooBig"
-	ResponseCodeTypeErrorTimeoutExpired                                      ResponseCodeType = "ErrorTimeoutExpired"
-	ResponseCodeTypeErrorTimeZone                                            ResponseCodeType = "ErrorTimeZone"
-	ResponseCodeTypeErrorToFolderNotFound                                    ResponseCodeType = "ErrorToFolderNotFound"
-	ResponseCodeTypeErrorTokenSerializationDenied                            ResponseCodeType = "ErrorTokenSerializationDenied"
-	ResponseCodeTypeErrorTooManyObjectsOpened                                ResponseCodeType = "ErrorTooManyObjectsOpened"
-	ResponseCodeTypeErrorUpdatePropertyMismatch                              ResponseCodeType = "ErrorUpdatePropertyMismatch"
-	ResponseCodeTypeErrorAccessingPartialCreatedUnifiedGroup                 ResponseCodeType = "ErrorAccessingPartialCreatedUnifiedGroup"
-	ResponseCodeTypeErrorUnifiedGroupMailboxAADCreationFailed                ResponseCodeType = "ErrorUnifiedGroupMailboxAADCreationFailed"
-	ResponseCodeTypeErrorUnifiedGroupMailboxAADDeleteFailed                  ResponseCodeType = "ErrorUnifiedGroupMailboxAADDeleteFailed"
-	ResponseCodeTypeErrorUnifiedGroupMailboxNamingPolicy                     ResponseCodeType = "ErrorUnifiedGroupMailboxNamingPolicy"
-	ResponseCodeTypeErrorUnifiedGroupMailboxDeleteFailed                     ResponseCodeType = "ErrorUnifiedGroupMailboxDeleteFailed"
-	ResponseCodeTypeErrorUnifiedGroupMailboxNotFound                         ResponseCodeType = "ErrorUnifiedGroupMailboxNotFound"
-	ResponseCodeTypeErrorUnifiedGroupMailboxUpdateDelayed                    ResponseCodeType = "ErrorUnifiedGroupMailboxUpdateDelayed"
-	ResponseCodeTypeErrorUnifiedGroupMailboxUpdatedPartialProperties         ResponseCodeType = "ErrorUnifiedGroupMailboxUpdatedPartialProperties"
-	ResponseCodeTypeErrorUnifiedGroupMailboxUpdateFailed                     ResponseCodeType = "ErrorUnifiedGroupMailboxUpdateFailed"
-	ResponseCodeTypeErrorUnifiedGroupMailboxProvisionFailed                  ResponseCodeType = "ErrorUnifiedGroupMailboxProvisionFailed"
-	ResponseCodeTypeErrorUnifiedMessagingDialPlanNotFound                    ResponseCodeType = "ErrorUnifiedMessagingDialPlanNotFound"
-	ResponseCodeTypeErrorUnifiedMessagingReportDataNotFound                  ResponseCodeType = "ErrorUnifiedMessagingReportDataNotFound"
-	ResponseCodeTypeErrorUnifiedMessagingPromptNotFound                      ResponseCodeType = "ErrorUnifiedMessagingPromptNotFound"
-	ResponseCodeTypeErrorUnifiedMessagingRequestFailed                       ResponseCodeType = "ErrorUnifiedMessagingRequestFailed"
-	ResponseCodeTypeErrorUnifiedMessagingServerNotFound                      ResponseCodeType = "ErrorUnifiedMessagingServerNotFound"
-	ResponseCodeTypeErrorUnableToGetUserOofSettings                          ResponseCodeType = "ErrorUnableToGetUserOofSettings"
-	ResponseCodeTypeErrorUnableToRemoveImContactFromGroup                    ResponseCodeType = "ErrorUnableToRemoveImContactFromGroup"
-	ResponseCodeTypeErrorUnsupportedSubFilter                                ResponseCodeType = "ErrorUnsupportedSubFilter"
-	ResponseCodeTypeErrorUnsupportedCulture                                  ResponseCodeType = "ErrorUnsupportedCulture"
-	ResponseCodeTypeErrorUnsupportedMapiPropertyType                         ResponseCodeType = "ErrorUnsupportedMapiPropertyType"
-	ResponseCodeTypeErrorUnsupportedMimeConversion                           ResponseCodeType = "ErrorUnsupportedMimeConversion"
-	ResponseCodeTypeErrorUnsupportedPathForQuery                             ResponseCodeType = "ErrorUnsupportedPathForQuery"
-	ResponseCodeTypeErrorUnsupportedPathForSortGroup                         ResponseCodeType = "ErrorUnsupportedPathForSortGroup"
-	ResponseCodeTypeErrorUnsupportedPropertyDefinition                       ResponseCodeType = "ErrorUnsupportedPropertyDefinition"
-	ResponseCodeTypeErrorUnsupportedQueryFilter                              ResponseCodeType = "ErrorUnsupportedQueryFilter"
-	ResponseCodeTypeErrorUnsupportedRecurrence                               ResponseCodeType = "ErrorUnsupportedRecurrence"
-	ResponseCodeTypeErrorUnsupportedTypeForConversion                        ResponseCodeType = "ErrorUnsupportedTypeForConversion"
-	ResponseCodeTypeErrorUpdateDelegatesFailed                               ResponseCodeType = "ErrorUpdateDelegatesFailed"
-	ResponseCodeTypeErrorUserNotUnifiedMessagingEnabled                      ResponseCodeType = "ErrorUserNotUnifiedMessagingEnabled"
-	ResponseCodeTypeErrorVoiceMailNotImplemented                             ResponseCodeType = "ErrorVoiceMailNotImplemented"
-	ResponseCodeTypeErrorValueOutOfRange                                     ResponseCodeType = "ErrorValueOutOfRange"
-	ResponseCodeTypeErrorVirusDetected                                       ResponseCodeType = "ErrorVirusDetected"
-	ResponseCodeTypeErrorVirusMessageDeleted                                 ResponseCodeType = "ErrorVirusMessageDeleted"
-	ResponseCodeTypeErrorWebRequestInInvalidState                            ResponseCodeType = "ErrorWebRequestInInvalidState"
-	ResponseCodeTypeErrorWin32InteropError                                   ResponseCodeType = "ErrorWin32InteropError"
-	ResponseCodeTypeErrorWorkingHoursSaveFailed                              ResponseCodeType = "ErrorWorkingHoursSaveFailed"
-	ResponseCodeTypeErrorWorkingHoursXmlMalformed                            ResponseCodeType = "ErrorWorkingHoursXmlMalformed"
-	ResponseCodeTypeErrorWrongServerVersion                                  ResponseCodeType = "ErrorWrongServerVersion"
-	ResponseCodeTypeErrorWrongServerVersionDelegate                          ResponseCodeType = "ErrorWrongServerVersionDelegate"
-	ResponseCodeTypeErrorMissingInformationSharingFolderId                   ResponseCodeType = "ErrorMissingInformationSharingFolderId"
-	ResponseCodeTypeErrorDuplicateSOAPHeader                                 ResponseCodeType = "ErrorDuplicateSOAPHeader"
-	ResponseCodeTypeErrorSharingSynchronizationFailed                        ResponseCodeType = "ErrorSharingSynchronizationFailed"
-	ResponseCodeTypeErrorSharingNoExternalEwsAvailable                       ResponseCodeType = "ErrorSharingNoExternalEwsAvailable"
-	ResponseCodeTypeErrorFreeBusyDLLimitReached                              ResponseCodeType = "ErrorFreeBusyDLLimitReached"
-	ResponseCodeTypeErrorInvalidGetSharingFolderRequest                      ResponseCodeType = "ErrorInvalidGetSharingFolderRequest"
-	ResponseCodeTypeErrorNotAllowedExternalSharingByPolicy                   ResponseCodeType = "ErrorNotAllowedExternalSharingByPolicy"
-	ResponseCodeTypeErrorUserNotAllowedByPolicy                              ResponseCodeType = "ErrorUserNotAllowedByPolicy"
-	ResponseCodeTypeErrorPermissionNotAllowedByPolicy                        ResponseCodeType = "ErrorPermissionNotAllowedByPolicy"
-	ResponseCodeTypeErrorOrganizationNotFederated                            ResponseCodeType = "ErrorOrganizationNotFederated"
-	ResponseCodeTypeErrorMailboxFailover                                     ResponseCodeType = "ErrorMailboxFailover"
-	ResponseCodeTypeErrorInvalidExternalSharingInitiator                     ResponseCodeType = "ErrorInvalidExternalSharingInitiator"
-	ResponseCodeTypeErrorMessageTrackingPermanentError                       ResponseCodeType = "ErrorMessageTrackingPermanentError"
-	ResponseCodeTypeErrorMessageTrackingTransientError                       ResponseCodeType = "ErrorMessageTrackingTransientError"
-	ResponseCodeTypeErrorMessageTrackingNoSuchDomain                         ResponseCodeType = "ErrorMessageTrackingNoSuchDomain"
-	ResponseCodeTypeErrorUserWithoutFederatedProxyAddress                    ResponseCodeType = "ErrorUserWithoutFederatedProxyAddress"
-	ResponseCodeTypeErrorInvalidOrganizationRelationshipForFreeBusy          ResponseCodeType = "ErrorInvalidOrganizationRelationshipForFreeBusy"
-	ResponseCodeTypeErrorInvalidFederatedOrganizationId                      ResponseCodeType = "ErrorInvalidFederatedOrganizationId"
-	ResponseCodeTypeErrorInvalidExternalSharingSubscriber                    ResponseCodeType = "ErrorInvalidExternalSharingSubscriber"
-	ResponseCodeTypeErrorInvalidSharingData                                  ResponseCodeType = "ErrorInvalidSharingData"
-	ResponseCodeTypeErrorInvalidSharingMessage                               ResponseCodeType = "ErrorInvalidSharingMessage"
-	ResponseCodeTypeErrorNotSupportedSharingMessage                          ResponseCodeType = "ErrorNotSupportedSharingMessage"
-	ResponseCodeTypeErrorApplyConversationActionFailed                       ResponseCodeType = "ErrorApplyConversationActionFailed"
-	ResponseCodeTypeErrorInboxRulesValidationError                           ResponseCodeType = "ErrorInboxRulesValidationError"
-	ResponseCodeTypeErrorOutlookRuleBlobExists                               ResponseCodeType = "ErrorOutlookRuleBlobExists"
-	ResponseCodeTypeErrorRulesOverQuota                                      ResponseCodeType = "ErrorRulesOverQuota"
-	ResponseCodeTypeErrorNewEventStreamConnectionOpened                      ResponseCodeType = "ErrorNewEventStreamConnectionOpened"
-	ResponseCodeTypeErrorMissedNotificationEvents                            ResponseCodeType = "ErrorMissedNotificationEvents"
-	ResponseCodeTypeErrorDuplicateLegacyDistinguishedName                    ResponseCodeType = "ErrorDuplicateLegacyDistinguishedName"
-	ResponseCodeTypeErrorInvalidClientAccessTokenRequest                     ResponseCodeType = "ErrorInvalidClientAccessTokenRequest"
-	ResponseCodeTypeErrorUnauthorizedClientAccessTokenRequest                ResponseCodeType = "ErrorUnauthorizedClientAccessTokenRequest"
-	ResponseCodeTypeErrorNoSpeechDetected                                    ResponseCodeType = "ErrorNoSpeechDetected"
-	ResponseCodeTypeErrorUMServerUnavailable                                 ResponseCodeType = "ErrorUMServerUnavailable"
-	ResponseCodeTypeErrorRecipientNotFound                                   ResponseCodeType = "ErrorRecipientNotFound"
-	ResponseCodeTypeErrorRecognizerNotInstalled                              ResponseCodeType = "ErrorRecognizerNotInstalled"
-	ResponseCodeTypeErrorSpeechGrammarError                                  ResponseCodeType = "ErrorSpeechGrammarError"
-	ResponseCodeTypeErrorInvalidManagementRoleHeader                         ResponseCodeType = "ErrorInvalidManagementRoleHeader"
-	ResponseCodeTypeErrorLocationServicesDisabled                            ResponseCodeType = "ErrorLocationServicesDisabled"
-	ResponseCodeTypeErrorLocationServicesRequestTimedOut                     ResponseCodeType = "ErrorLocationServicesRequestTimedOut"
-	ResponseCodeTypeErrorLocationServicesRequestFailed                       ResponseCodeType = "ErrorLocationServicesRequestFailed"
-	ResponseCodeTypeErrorLocationServicesInvalidRequest                      ResponseCodeType = "ErrorLocationServicesInvalidRequest"
-	ResponseCodeTypeErrorWeatherServiceDisabled                              ResponseCodeType = "ErrorWeatherServiceDisabled"
-	ResponseCodeTypeErrorMailboxScopeNotAllowedWithoutQueryString            ResponseCodeType = "ErrorMailboxScopeNotAllowedWithoutQueryString"
-	ResponseCodeTypeErrorArchiveMailboxSearchFailed                          ResponseCodeType = "ErrorArchiveMailboxSearchFailed"
-	ResponseCodeTypeErrorGetRemoteArchiveFolderFailed                        ResponseCodeType = "ErrorGetRemoteArchiveFolderFailed"
-	ResponseCodeTypeErrorFindRemoteArchiveFolderFailed                       ResponseCodeType = "ErrorFindRemoteArchiveFolderFailed"
-	ResponseCodeTypeErrorGetRemoteArchiveItemFailed                          ResponseCodeType = "ErrorGetRemoteArchiveItemFailed"
-	ResponseCodeTypeErrorExportRemoteArchiveItemsFailed                      ResponseCodeType = "ErrorExportRemoteArchiveItemsFailed"
-	ResponseCodeTypeErrorInvalidPhotoSize                                    ResponseCodeType = "ErrorInvalidPhotoSize"
-	ResponseCodeTypeErrorSearchQueryHasTooManyKeywords                       ResponseCodeType = "ErrorSearchQueryHasTooManyKeywords"
-	ResponseCodeTypeErrorSearchTooManyMailboxes                              ResponseCodeType = "ErrorSearchTooManyMailboxes"
-	ResponseCodeTypeErrorInvalidRetentionTagNone                             ResponseCodeType = "ErrorInvalidRetentionTagNone"
-	ResponseCodeTypeErrorDiscoverySearchesDisabled                           ResponseCodeType = "ErrorDiscoverySearchesDisabled"
-	ResponseCodeTypeErrorCalendarSeekToConditionNotSupported                 ResponseCodeType = "ErrorCalendarSeekToConditionNotSupported"
-	ResponseCodeTypeErrorCalendarIsGroupMailboxForAccept                     ResponseCodeType = "ErrorCalendarIsGroupMailboxForAccept"
-	ResponseCodeTypeErrorCalendarIsGroupMailboxForDecline                    ResponseCodeType = "ErrorCalendarIsGroupMailboxForDecline"
-	ResponseCodeTypeErrorCalendarIsGroupMailboxForTentative                  ResponseCodeType = "ErrorCalendarIsGroupMailboxForTentative"
-	ResponseCodeTypeErrorCalendarIsGroupMailboxForSuppressReadReceipt        ResponseCodeType = "ErrorCalendarIsGroupMailboxForSuppressReadReceipt"
-	ResponseCodeTypeErrorOrganizationAccessBlocked                           ResponseCodeType = "ErrorOrganizationAccessBlocked"
-	ResponseCodeTypeErrorInvalidLicense                                      ResponseCodeType = "ErrorInvalidLicense"
-	ResponseCodeTypeErrorMessagePerFolderCountReceiveQuotaExceeded           ResponseCodeType = "ErrorMessagePerFolderCountReceiveQuotaExceeded"
-	ResponseCodeTypeErrorInvalidBulkActionType                               ResponseCodeType = "ErrorInvalidBulkActionType"
-	ResponseCodeTypeErrorInvalidKeepNCount                                   ResponseCodeType = "ErrorInvalidKeepNCount"
-	ResponseCodeTypeErrorInvalidKeepNType                                    ResponseCodeType = "ErrorInvalidKeepNType"
-	ResponseCodeTypeErrorNoOAuthServerAvailableForRequest                    ResponseCodeType = "ErrorNoOAuthServerAvailableForRequest"
-	ResponseCodeTypeErrorInstantSearchSessionExpired                         ResponseCodeType = "ErrorInstantSearchSessionExpired"
-	ResponseCodeTypeErrorInstantSearchTimeout                                ResponseCodeType = "ErrorInstantSearchTimeout"
-	ResponseCodeTypeErrorInstantSearchFailed                                 ResponseCodeType = "ErrorInstantSearchFailed"
-	ResponseCodeTypeErrorUnsupportedUserForExecuteSearch                     ResponseCodeType = "ErrorUnsupportedUserForExecuteSearch"
-	ResponseCodeTypeErrorDuplicateExtendedKeywordDefinition                  ResponseCodeType = "ErrorDuplicateExtendedKeywordDefinition"
-	ResponseCodeTypeErrorMissingExchangePrincipal                            ResponseCodeType = "ErrorMissingExchangePrincipal"
-	ResponseCodeTypeErrorUnexpectedUnifiedGroupsCount                        ResponseCodeType = "ErrorUnexpectedUnifiedGroupsCount"
-	ResponseCodeTypeErrorParsingXMLResponse                                  ResponseCodeType = "ErrorParsingXMLResponse"
-	ResponseCodeTypeErrorInvalidFederationOrganizationIdentifier             ResponseCodeType = "ErrorInvalidFederationOrganizationIdentifier"
-	ResponseCodeTypeErrorInvalidSweepRule                                    ResponseCodeType = "ErrorInvalidSweepRule"
-	ResponseCodeTypeErrorInvalidSweepRuleOperationType                       ResponseCodeType = "ErrorInvalidSweepRuleOperationType"
-	ResponseCodeTypeErrorTargetDomainNotSupported                            ResponseCodeType = "ErrorTargetDomainNotSupported"
-	ResponseCodeTypeErrorInvalidInternetWebProxyOnLocalServer                ResponseCodeType = "ErrorInvalidInternetWebProxyOnLocalServer"
-	ResponseCodeTypeErrorNoSenderRestrictionsSettingsFoundInRequest          ResponseCodeType = "ErrorNoSenderRestrictionsSettingsFoundInRequest"
-	ResponseCodeTypeErrorDuplicateSenderRestrictionsInputFound               ResponseCodeType = "ErrorDuplicateSenderRestrictionsInputFound"
-	ResponseCodeTypeErrorSenderRestrictionsUpdateFailed                      ResponseCodeType = "ErrorSenderRestrictionsUpdateFailed"
-	ResponseCodeTypeErrorMessageSubmissionBlocked                            ResponseCodeType = "ErrorMessageSubmissionBlocked"
-	ResponseCodeTypeErrorExceededMessageLimit                                ResponseCodeType = "ErrorExceededMessageLimit"
-	ResponseCodeTypeErrorExceededMaxRecipientLimitBlock                      ResponseCodeType = "ErrorExceededMaxRecipientLimitBlock"
-	ResponseCodeTypeErrorAccountSuspend                                      ResponseCodeType = "ErrorAccountSuspend"
-	ResponseCodeTypeErrorExceededMaxRecipientLimit                           ResponseCodeType = "ErrorExceededMaxRecipientLimit"
-	ResponseCodeTypeErrorMessageBlocked                                      ResponseCodeType = "ErrorMessageBlocked"
-	ResponseCodeTypeErrorAccountSuspendShowTierUpgrade                       ResponseCodeType = "ErrorAccountSuspendShowTierUpgrade"
-	ResponseCodeTypeErrorExceededMessageLimitShowTierUpgrade                 ResponseCodeType = "ErrorExceededMessageLimitShowTierUpgrade"
-	ResponseCodeTypeErrorExceededMaxRecipientLimitShowTierUpgrade            ResponseCodeType = "ErrorExceededMaxRecipientLimitShowTierUpgrade"
-	ResponseCodeTypeErrorInvalidLongitude                                    ResponseCodeType = "ErrorInvalidLongitude"
-	ResponseCodeTypeErrorInvalidLatitude                                     ResponseCodeType = "ErrorInvalidLatitude"
-	ResponseCodeTypeErrorProxySoapException                                  ResponseCodeType = "ErrorProxySoapException"
-	ResponseCodeTypeErrorUnifiedGroupAlreadyExists                           ResponseCodeType = "ErrorUnifiedGroupAlreadyExists"
-	ResponseCodeTypeErrorUnifiedGroupAadAuthorizationRequestDenied           ResponseCodeType = "ErrorUnifiedGroupAadAuthorizationRequestDenied"
-	ResponseCodeTypeErrorUnifiedGroupCreationDisabled                        ResponseCodeType = "ErrorUnifiedGroupCreationDisabled"
-	ResponseCodeTypeErrorMarketPlaceExtensionAlreadyInstalledForOrg          ResponseCodeType = "ErrorMarketPlaceExtensionAlreadyInstalledForOrg"
-	ResponseCodeTypeErrorExtensionAlreadyInstalledForOrg                     ResponseCodeType = "ErrorExtensionAlreadyInstalledForOrg"
-	ResponseCodeTypeErrorNewerExtensionAlreadyInstalled                      ResponseCodeType = "ErrorNewerExtensionAlreadyInstalled"
-	ResponseCodeTypeErrorNewerMarketPlaceExtensionAlreadyInstalled           ResponseCodeType = "ErrorNewerMarketPlaceExtensionAlreadyInstalled"
-	ResponseCodeTypeErrorInvalidExtensionId                                  ResponseCodeType = "ErrorInvalidExtensionId"
-	ResponseCodeTypeErrorCannotUninstallProvidedExtensions                   ResponseCodeType = "ErrorCannotUninstallProvidedExtensions"
-	ResponseCodeTypeErrorNoRbacPermissionToInstallMarketPlaceExtensions      ResponseCodeType = "ErrorNoRbacPermissionToInstallMarketPlaceExtensions"
-	ResponseCodeTypeErrorNoRbacPermissionToInstallReadWriteMailboxExtensions ResponseCodeType = "ErrorNoRbacPermissionToInstallReadWriteMailboxExtensions"
-	ResponseCodeTypeErrorInvalidReportMessageActionType                      ResponseCodeType = "ErrorInvalidReportMessageActionType"
-	ResponseCodeTypeErrorCannotDownloadExtensionManifest                     ResponseCodeType = "ErrorCannotDownloadExtensionManifest"
-	ResponseCodeTypeErrorCalendarForwardActionNotAllowed                     ResponseCodeType = "ErrorCalendarForwardActionNotAllowed"
-	ResponseCodeTypeErrorUnifiedGroupAliasNamingPolicy                       ResponseCodeType = "ErrorUnifiedGroupAliasNamingPolicy"
-	ResponseCodeTypeErrorSubscriptionsDisabledForGroup                       ResponseCodeType = "ErrorSubscriptionsDisabledForGroup"
-	ResponseCodeTypeErrorCannotFindFileAttachment                            ResponseCodeType = "ErrorCannotFindFileAttachment"
-	ResponseCodeTypeErrorInvalidValueForFilter                               ResponseCodeType = "ErrorInvalidValueForFilter"
-	ResponseCodeTypeErrorQuotaExceededOnDelete                               ResponseCodeType = "ErrorQuotaExceededOnDelete"
-	ResponseCodeTypeErrorAccessDeniedDueToCompliance                         ResponseCodeType = "ErrorAccessDeniedDueToCompliance"
-	ResponseCodeTypeErrorRecoverableItemsAccessDenied                        ResponseCodeType = "ErrorRecoverableItemsAccessDenied"
-)
-
-type ListOfExtensionIdsType []GuidType
-
 type NonEmptyStringType XsString
 
 type MailboxTypeType XsString
@@ -864,77 +328,77 @@ const (
 type DistinguishedFolderIdNameType XsString
 
 const (
-	DistinguishedFolderIdNameTypeCcalendar                              DistinguishedFolderIdNameType = "calendar"
-	DistinguishedFolderIdNameTypeCcontacts                              DistinguishedFolderIdNameType = "contacts"
-	DistinguishedFolderIdNameTypeDdeleteditems                          DistinguishedFolderIdNameType = "deleteditems"
-	DistinguishedFolderIdNameTypeDdrafts                                DistinguishedFolderIdNameType = "drafts"
-	DistinguishedFolderIdNameTypeIinbox                                 DistinguishedFolderIdNameType = "inbox"
-	DistinguishedFolderIdNameTypeJjournal                               DistinguishedFolderIdNameType = "journal"
-	DistinguishedFolderIdNameTypeNnotes                                 DistinguishedFolderIdNameType = "notes"
-	DistinguishedFolderIdNameTypeOoutbox                                DistinguishedFolderIdNameType = "outbox"
-	DistinguishedFolderIdNameTypeSsentitems                             DistinguishedFolderIdNameType = "sentitems"
-	DistinguishedFolderIdNameTypeTtasks                                 DistinguishedFolderIdNameType = "tasks"
-	DistinguishedFolderIdNameTypeMmsgfolderroot                         DistinguishedFolderIdNameType = "msgfolderroot"
-	DistinguishedFolderIdNameTypePpublicfoldersroot                     DistinguishedFolderIdNameType = "publicfoldersroot"
-	DistinguishedFolderIdNameTypeRroot                                  DistinguishedFolderIdNameType = "root"
-	DistinguishedFolderIdNameTypeJjunkemail                             DistinguishedFolderIdNameType = "junkemail"
-	DistinguishedFolderIdNameTypeSsearchfolders                         DistinguishedFolderIdNameType = "searchfolders"
-	DistinguishedFolderIdNameTypeVvoicemail                             DistinguishedFolderIdNameType = "voicemail"
-	DistinguishedFolderIdNameTypeRrecoverableitemsroot                  DistinguishedFolderIdNameType = "recoverableitemsroot"
-	DistinguishedFolderIdNameTypeRrecoverableitemsdeletions             DistinguishedFolderIdNameType = "recoverableitemsdeletions"
-	DistinguishedFolderIdNameTypeRrecoverableitemsversions              DistinguishedFolderIdNameType = "recoverableitemsversions"
-	DistinguishedFolderIdNameTypeRrecoverableitemspurges                DistinguishedFolderIdNameType = "recoverableitemspurges"
-	DistinguishedFolderIdNameTypeRrecoverableitemsdiscoveryholds        DistinguishedFolderIdNameType = "recoverableitemsdiscoveryholds"
-	DistinguishedFolderIdNameTypeAarchiveroot                           DistinguishedFolderIdNameType = "archiveroot"
-	DistinguishedFolderIdNameTypeAarchivemsgfolderroot                  DistinguishedFolderIdNameType = "archivemsgfolderroot"
-	DistinguishedFolderIdNameTypeAarchivedeleteditems                   DistinguishedFolderIdNameType = "archivedeleteditems"
-	DistinguishedFolderIdNameTypeAarchiveinbox                          DistinguishedFolderIdNameType = "archiveinbox"
-	DistinguishedFolderIdNameTypeAarchiverecoverableitemsroot           DistinguishedFolderIdNameType = "archiverecoverableitemsroot"
-	DistinguishedFolderIdNameTypeAarchiverecoverableitemsdeletions      DistinguishedFolderIdNameType = "archiverecoverableitemsdeletions"
-	DistinguishedFolderIdNameTypeAarchiverecoverableitemsversions       DistinguishedFolderIdNameType = "archiverecoverableitemsversions"
-	DistinguishedFolderIdNameTypeAarchiverecoverableitemspurges         DistinguishedFolderIdNameType = "archiverecoverableitemspurges"
-	DistinguishedFolderIdNameTypeAarchiverecoverableitemsdiscoveryholds DistinguishedFolderIdNameType = "archiverecoverableitemsdiscoveryholds"
-	DistinguishedFolderIdNameTypeSsyncissues                            DistinguishedFolderIdNameType = "syncissues"
-	DistinguishedFolderIdNameTypeCconflicts                             DistinguishedFolderIdNameType = "conflicts"
-	DistinguishedFolderIdNameTypeLlocalfailures                         DistinguishedFolderIdNameType = "localfailures"
-	DistinguishedFolderIdNameTypeSserverfailures                        DistinguishedFolderIdNameType = "serverfailures"
-	DistinguishedFolderIdNameTypeRrecipientcache                        DistinguishedFolderIdNameType = "recipientcache"
-	DistinguishedFolderIdNameTypeQquickcontacts                         DistinguishedFolderIdNameType = "quickcontacts"
-	DistinguishedFolderIdNameTypeCconversationhistory                   DistinguishedFolderIdNameType = "conversationhistory"
-	DistinguishedFolderIdNameTypeAadminauditlogs                        DistinguishedFolderIdNameType = "adminauditlogs"
-	DistinguishedFolderIdNameTypeTtodosearch                            DistinguishedFolderIdNameType = "todosearch"
-	DistinguishedFolderIdNameTypeMmycontacts                            DistinguishedFolderIdNameType = "mycontacts"
-	DistinguishedFolderIdNameTypeDdirectory                             DistinguishedFolderIdNameType = "directory"
-	DistinguishedFolderIdNameTypeIimcontactlist                         DistinguishedFolderIdNameType = "imcontactlist"
-	DistinguishedFolderIdNameTypePpeopleconnect                         DistinguishedFolderIdNameType = "peopleconnect"
-	DistinguishedFolderIdNameTypeFfavorites                             DistinguishedFolderIdNameType = "favorites"
-	DistinguishedFolderIdNameTypeMmecontact                             DistinguishedFolderIdNameType = "mecontact"
-	DistinguishedFolderIdNameTypePpersonmetadata                        DistinguishedFolderIdNameType = "personmetadata"
-	DistinguishedFolderIdNameTypeTteamspaceactivity                     DistinguishedFolderIdNameType = "teamspaceactivity"
-	DistinguishedFolderIdNameTypeTteamspacemessaging                    DistinguishedFolderIdNameType = "teamspacemessaging"
-	DistinguishedFolderIdNameTypeTteamspaceworkitems                    DistinguishedFolderIdNameType = "teamspaceworkitems"
-	DistinguishedFolderIdNameTypeSscheduled                             DistinguishedFolderIdNameType = "scheduled"
-	DistinguishedFolderIdNameTypeOorionnotes                            DistinguishedFolderIdNameType = "orionnotes"
-	DistinguishedFolderIdNameTypeTtagitems                              DistinguishedFolderIdNameType = "tagitems"
-	DistinguishedFolderIdNameTypeAalltaggeditems                        DistinguishedFolderIdNameType = "alltaggeditems"
-	DistinguishedFolderIdNameTypeAallcategorizeditems                   DistinguishedFolderIdNameType = "allcategorizeditems"
-	DistinguishedFolderIdNameTypeEexternalcontacts                      DistinguishedFolderIdNameType = "externalcontacts"
-	DistinguishedFolderIdNameTypeTteamchat                              DistinguishedFolderIdNameType = "teamchat"
-	DistinguishedFolderIdNameTypeTteamchathistory                       DistinguishedFolderIdNameType = "teamchathistory"
-	DistinguishedFolderIdNameTypeYyammerdata                            DistinguishedFolderIdNameType = "yammerdata"
-	DistinguishedFolderIdNameTypeYyammerroot                            DistinguishedFolderIdNameType = "yammerroot"
-	DistinguishedFolderIdNameTypeYyammerinbound                         DistinguishedFolderIdNameType = "yammerinbound"
-	DistinguishedFolderIdNameTypeYyammeroutbound                        DistinguishedFolderIdNameType = "yammeroutbound"
-	DistinguishedFolderIdNameTypeYyammerfeeds                           DistinguishedFolderIdNameType = "yammerfeeds"
-	DistinguishedFolderIdNameTypeKkaizaladata                           DistinguishedFolderIdNameType = "kaizaladata"
-	DistinguishedFolderIdNameTypeMmessageingestion                      DistinguishedFolderIdNameType = "messageingestion"
-	DistinguishedFolderIdNameTypeOonedriveroot                          DistinguishedFolderIdNameType = "onedriveroot"
-	DistinguishedFolderIdNameTypeOonedriverecylebin                     DistinguishedFolderIdNameType = "onedriverecylebin"
-	DistinguishedFolderIdNameTypeOonedrivesystem                        DistinguishedFolderIdNameType = "onedrivesystem"
-	DistinguishedFolderIdNameTypeOonedrivevolume                        DistinguishedFolderIdNameType = "onedrivevolume"
-	DistinguishedFolderIdNameTypeIimportant                             DistinguishedFolderIdNameType = "important"
-	DistinguishedFolderIdNameTypeSstarred                               DistinguishedFolderIdNameType = "starred"
-	DistinguishedFolderIdNameTypeAarchive                               DistinguishedFolderIdNameType = "archive"
+	DistinguishedFolderIdNameTypeCalendar                              DistinguishedFolderIdNameType = "calendar"
+	DistinguishedFolderIdNameTypeContacts                              DistinguishedFolderIdNameType = "contacts"
+	DistinguishedFolderIdNameTypeDeleteditems                          DistinguishedFolderIdNameType = "deleteditems"
+	DistinguishedFolderIdNameTypeDrafts                                DistinguishedFolderIdNameType = "drafts"
+	DistinguishedFolderIdNameTypeInbox                                 DistinguishedFolderIdNameType = "inbox"
+	DistinguishedFolderIdNameTypeJournal                               DistinguishedFolderIdNameType = "journal"
+	DistinguishedFolderIdNameTypeNotes                                 DistinguishedFolderIdNameType = "notes"
+	DistinguishedFolderIdNameTypeOutbox                                DistinguishedFolderIdNameType = "outbox"
+	DistinguishedFolderIdNameTypeSentitems                             DistinguishedFolderIdNameType = "sentitems"
+	DistinguishedFolderIdNameTypeTasks                                 DistinguishedFolderIdNameType = "tasks"
+	DistinguishedFolderIdNameTypeMsgfolderroot                         DistinguishedFolderIdNameType = "msgfolderroot"
+	DistinguishedFolderIdNameTypePublicfoldersroot                     DistinguishedFolderIdNameType = "publicfoldersroot"
+	DistinguishedFolderIdNameTypeRoot                                  DistinguishedFolderIdNameType = "root"
+	DistinguishedFolderIdNameTypeJunkemail                             DistinguishedFolderIdNameType = "junkemail"
+	DistinguishedFolderIdNameTypeSearchfolders                         DistinguishedFolderIdNameType = "searchfolders"
+	DistinguishedFolderIdNameTypeVoicemail                             DistinguishedFolderIdNameType = "voicemail"
+	DistinguishedFolderIdNameTypeRecoverableitemsroot                  DistinguishedFolderIdNameType = "recoverableitemsroot"
+	DistinguishedFolderIdNameTypeRecoverableitemsdeletions             DistinguishedFolderIdNameType = "recoverableitemsdeletions"
+	DistinguishedFolderIdNameTypeRecoverableitemsversions              DistinguishedFolderIdNameType = "recoverableitemsversions"
+	DistinguishedFolderIdNameTypeRecoverableitemspurges                DistinguishedFolderIdNameType = "recoverableitemspurges"
+	DistinguishedFolderIdNameTypeRecoverableitemsdiscoveryholds        DistinguishedFolderIdNameType = "recoverableitemsdiscoveryholds"
+	DistinguishedFolderIdNameTypeArchiveroot                           DistinguishedFolderIdNameType = "archiveroot"
+	DistinguishedFolderIdNameTypeArchivemsgfolderroot                  DistinguishedFolderIdNameType = "archivemsgfolderroot"
+	DistinguishedFolderIdNameTypeArchivedeleteditems                   DistinguishedFolderIdNameType = "archivedeleteditems"
+	DistinguishedFolderIdNameTypeArchiveinbox                          DistinguishedFolderIdNameType = "archiveinbox"
+	DistinguishedFolderIdNameTypeArchiverecoverableitemsroot           DistinguishedFolderIdNameType = "archiverecoverableitemsroot"
+	DistinguishedFolderIdNameTypeArchiverecoverableitemsdeletions      DistinguishedFolderIdNameType = "archiverecoverableitemsdeletions"
+	DistinguishedFolderIdNameTypeArchiverecoverableitemsversions       DistinguishedFolderIdNameType = "archiverecoverableitemsversions"
+	DistinguishedFolderIdNameTypeArchiverecoverableitemspurges         DistinguishedFolderIdNameType = "archiverecoverableitemspurges"
+	DistinguishedFolderIdNameTypeArchiverecoverableitemsdiscoveryholds DistinguishedFolderIdNameType = "archiverecoverableitemsdiscoveryholds"
+	DistinguishedFolderIdNameTypeSyncissues                            DistinguishedFolderIdNameType = "syncissues"
+	DistinguishedFolderIdNameTypeConflicts                             DistinguishedFolderIdNameType = "conflicts"
+	DistinguishedFolderIdNameTypeLocalfailures                         DistinguishedFolderIdNameType = "localfailures"
+	DistinguishedFolderIdNameTypeServerfailures                        DistinguishedFolderIdNameType = "serverfailures"
+	DistinguishedFolderIdNameTypeRecipientcache                        DistinguishedFolderIdNameType = "recipientcache"
+	DistinguishedFolderIdNameTypeQuickcontacts                         DistinguishedFolderIdNameType = "quickcontacts"
+	DistinguishedFolderIdNameTypeConversationhistory                   DistinguishedFolderIdNameType = "conversationhistory"
+	DistinguishedFolderIdNameTypeAdminauditlogs                        DistinguishedFolderIdNameType = "adminauditlogs"
+	DistinguishedFolderIdNameTypeTodosearch                            DistinguishedFolderIdNameType = "todosearch"
+	DistinguishedFolderIdNameTypeMycontacts                            DistinguishedFolderIdNameType = "mycontacts"
+	DistinguishedFolderIdNameTypeDirectory                             DistinguishedFolderIdNameType = "directory"
+	DistinguishedFolderIdNameTypeImcontactlist                         DistinguishedFolderIdNameType = "imcontactlist"
+	DistinguishedFolderIdNameTypePeopleconnect                         DistinguishedFolderIdNameType = "peopleconnect"
+	DistinguishedFolderIdNameTypeFavorites                             DistinguishedFolderIdNameType = "favorites"
+	DistinguishedFolderIdNameTypeMecontact                             DistinguishedFolderIdNameType = "mecontact"
+	DistinguishedFolderIdNameTypePersonmetadata                        DistinguishedFolderIdNameType = "personmetadata"
+	DistinguishedFolderIdNameTypeTeamspaceactivity                     DistinguishedFolderIdNameType = "teamspaceactivity"
+	DistinguishedFolderIdNameTypeTeamspacemessaging                    DistinguishedFolderIdNameType = "teamspacemessaging"
+	DistinguishedFolderIdNameTypeTeamspaceworkitems                    DistinguishedFolderIdNameType = "teamspaceworkitems"
+	DistinguishedFolderIdNameTypeScheduled                             DistinguishedFolderIdNameType = "scheduled"
+	DistinguishedFolderIdNameTypeOrionnotes                            DistinguishedFolderIdNameType = "orionnotes"
+	DistinguishedFolderIdNameTypeTagitems                              DistinguishedFolderIdNameType = "tagitems"
+	DistinguishedFolderIdNameTypeAlltaggeditems                        DistinguishedFolderIdNameType = "alltaggeditems"
+	DistinguishedFolderIdNameTypeAllcategorizeditems                   DistinguishedFolderIdNameType = "allcategorizeditems"
+	DistinguishedFolderIdNameTypeExternalcontacts                      DistinguishedFolderIdNameType = "externalcontacts"
+	DistinguishedFolderIdNameTypeTeamchat                              DistinguishedFolderIdNameType = "teamchat"
+	DistinguishedFolderIdNameTypeTeamchathistory                       DistinguishedFolderIdNameType = "teamchathistory"
+	DistinguishedFolderIdNameTypeYammerdata                            DistinguishedFolderIdNameType = "yammerdata"
+	DistinguishedFolderIdNameTypeYammerroot                            DistinguishedFolderIdNameType = "yammerroot"
+	DistinguishedFolderIdNameTypeYammerinbound                         DistinguishedFolderIdNameType = "yammerinbound"
+	DistinguishedFolderIdNameTypeYammeroutbound                        DistinguishedFolderIdNameType = "yammeroutbound"
+	DistinguishedFolderIdNameTypeYammerfeeds                           DistinguishedFolderIdNameType = "yammerfeeds"
+	DistinguishedFolderIdNameTypeKaizaladata                           DistinguishedFolderIdNameType = "kaizaladata"
+	DistinguishedFolderIdNameTypeMessageingestion                      DistinguishedFolderIdNameType = "messageingestion"
+	DistinguishedFolderIdNameTypeOnedriveroot                          DistinguishedFolderIdNameType = "onedriveroot"
+	DistinguishedFolderIdNameTypeOnedriverecylebin                     DistinguishedFolderIdNameType = "onedriverecylebin"
+	DistinguishedFolderIdNameTypeOnedrivesystem                        DistinguishedFolderIdNameType = "onedrivesystem"
+	DistinguishedFolderIdNameTypeOnedrivevolume                        DistinguishedFolderIdNameType = "onedrivevolume"
+	DistinguishedFolderIdNameTypeImportant                             DistinguishedFolderIdNameType = "important"
+	DistinguishedFolderIdNameTypeStarred                               DistinguishedFolderIdNameType = "starred"
+	DistinguishedFolderIdNameTypeArchive                               DistinguishedFolderIdNameType = "archive"
 )
 
 type ResolveNamesSearchScopeType XsString
@@ -1557,6 +1021,561 @@ const (
 	CalendarPermissionLevelTypeCustom                            CalendarPermissionLevelType = "Custom"
 )
 
+type UnindexedFieldURIType XsString
+
+const (
+	UnindexedFieldURITypeFolderFolderId                          UnindexedFieldURIType = "folder:FolderId"
+	UnindexedFieldURITypeFolderParentFolderId                    UnindexedFieldURIType = "folder:ParentFolderId"
+	UnindexedFieldURITypeFolderDisplayName                       UnindexedFieldURIType = "folder:DisplayName"
+	UnindexedFieldURITypeFolderUnreadCount                       UnindexedFieldURIType = "folder:UnreadCount"
+	UnindexedFieldURITypeFolderTotalCount                        UnindexedFieldURIType = "folder:TotalCount"
+	UnindexedFieldURITypeFolderChildFolderCount                  UnindexedFieldURIType = "folder:ChildFolderCount"
+	UnindexedFieldURITypeFolderFolderClass                       UnindexedFieldURIType = "folder:FolderClass"
+	UnindexedFieldURITypeFolderSearchParameters                  UnindexedFieldURIType = "folder:SearchParameters"
+	UnindexedFieldURITypeFolderManagedFolderInformation          UnindexedFieldURIType = "folder:ManagedFolderInformation"
+	UnindexedFieldURITypeFolderPermissionSet                     UnindexedFieldURIType = "folder:PermissionSet"
+	UnindexedFieldURITypeFolderEffectiveRights                   UnindexedFieldURIType = "folder:EffectiveRights"
+	UnindexedFieldURITypeFolderSharingEffectiveRights            UnindexedFieldURIType = "folder:SharingEffectiveRights"
+	UnindexedFieldURITypeFolderDistinguishedFolderId             UnindexedFieldURIType = "folder:DistinguishedFolderId"
+	UnindexedFieldURITypeFolderPolicyTag                         UnindexedFieldURIType = "folder:PolicyTag"
+	UnindexedFieldURITypeFolderArchiveTag                        UnindexedFieldURIType = "folder:ArchiveTag"
+	UnindexedFieldURITypeFolderReplicaList                       UnindexedFieldURIType = "folder:ReplicaList"
+	UnindexedFieldURITypeItemItemId                              UnindexedFieldURIType = "item:ItemId"
+	UnindexedFieldURITypeItemParentFolderId                      UnindexedFieldURIType = "item:ParentFolderId"
+	UnindexedFieldURITypeItemItemClass                           UnindexedFieldURIType = "item:ItemClass"
+	UnindexedFieldURITypeItemMimeContent                         UnindexedFieldURIType = "item:MimeContent"
+	UnindexedFieldURITypeItemAttachments                         UnindexedFieldURIType = "item:Attachments"
+	UnindexedFieldURITypeItemSubject                             UnindexedFieldURIType = "item:Subject"
+	UnindexedFieldURITypeItemDateTimeReceived                    UnindexedFieldURIType = "item:DateTimeReceived"
+	UnindexedFieldURITypeItemSize                                UnindexedFieldURIType = "item:Size"
+	UnindexedFieldURITypeItemCategories                          UnindexedFieldURIType = "item:Categories"
+	UnindexedFieldURITypeItemHasAttachments                      UnindexedFieldURIType = "item:HasAttachments"
+	UnindexedFieldURITypeItemImportance                          UnindexedFieldURIType = "item:Importance"
+	UnindexedFieldURITypeItemInReplyTo                           UnindexedFieldURIType = "item:InReplyTo"
+	UnindexedFieldURITypeItemInternetMessageHeaders              UnindexedFieldURIType = "item:InternetMessageHeaders"
+	UnindexedFieldURITypeItemIsAssociated                        UnindexedFieldURIType = "item:IsAssociated"
+	UnindexedFieldURITypeItemIsDraft                             UnindexedFieldURIType = "item:IsDraft"
+	UnindexedFieldURITypeItemIsFromMe                            UnindexedFieldURIType = "item:IsFromMe"
+	UnindexedFieldURITypeItemIsResend                            UnindexedFieldURIType = "item:IsResend"
+	UnindexedFieldURITypeItemIsSubmitted                         UnindexedFieldURIType = "item:IsSubmitted"
+	UnindexedFieldURITypeItemIsUnmodified                        UnindexedFieldURIType = "item:IsUnmodified"
+	UnindexedFieldURITypeItemDateTimeSent                        UnindexedFieldURIType = "item:DateTimeSent"
+	UnindexedFieldURITypeItemDateTimeCreated                     UnindexedFieldURIType = "item:DateTimeCreated"
+	UnindexedFieldURITypeItemBody                                UnindexedFieldURIType = "item:Body"
+	UnindexedFieldURITypeItemResponseObjects                     UnindexedFieldURIType = "item:ResponseObjects"
+	UnindexedFieldURITypeItemSensitivity                         UnindexedFieldURIType = "item:Sensitivity"
+	UnindexedFieldURITypeItemReminderDueBy                       UnindexedFieldURIType = "item:ReminderDueBy"
+	UnindexedFieldURITypeItemReminderIsSet                       UnindexedFieldURIType = "item:ReminderIsSet"
+	UnindexedFieldURITypeItemReminderNextTime                    UnindexedFieldURIType = "item:ReminderNextTime"
+	UnindexedFieldURITypeItemReminderMinutesBeforeStart          UnindexedFieldURIType = "item:ReminderMinutesBeforeStart"
+	UnindexedFieldURITypeItemDisplayTo                           UnindexedFieldURIType = "item:DisplayTo"
+	UnindexedFieldURITypeItemDisplayCc                           UnindexedFieldURIType = "item:DisplayCc"
+	UnindexedFieldURITypeItemDisplayBcc                          UnindexedFieldURIType = "item:DisplayBcc"
+	UnindexedFieldURITypeItemCulture                             UnindexedFieldURIType = "item:Culture"
+	UnindexedFieldURITypeItemEffectiveRights                     UnindexedFieldURIType = "item:EffectiveRights"
+	UnindexedFieldURITypeItemLastModifiedName                    UnindexedFieldURIType = "item:LastModifiedName"
+	UnindexedFieldURITypeItemLastModifiedTime                    UnindexedFieldURIType = "item:LastModifiedTime"
+	UnindexedFieldURITypeItemConversationId                      UnindexedFieldURIType = "item:ConversationId"
+	UnindexedFieldURITypeItemUniqueBody                          UnindexedFieldURIType = "item:UniqueBody"
+	UnindexedFieldURITypeItemFlag                                UnindexedFieldURIType = "item:Flag"
+	UnindexedFieldURITypeItemStoreEntryId                        UnindexedFieldURIType = "item:StoreEntryId"
+	UnindexedFieldURITypeItemInstanceKey                         UnindexedFieldURIType = "item:InstanceKey"
+	UnindexedFieldURITypeItemNormalizedBody                      UnindexedFieldURIType = "item:NormalizedBody"
+	UnindexedFieldURITypeItemEntityExtractionResult              UnindexedFieldURIType = "item:EntityExtractionResult"
+	UnindexedFieldURITypeItemPolicyTag                           UnindexedFieldURIType = "item:PolicyTag"
+	UnindexedFieldURITypeItemArchiveTag                          UnindexedFieldURIType = "item:ArchiveTag"
+	UnindexedFieldURITypeItemRetentionDate                       UnindexedFieldURIType = "item:RetentionDate"
+	UnindexedFieldURITypeItemPreview                             UnindexedFieldURIType = "item:Preview"
+	UnindexedFieldURITypeItemPredictedActionReasons              UnindexedFieldURIType = "item:PredictedActionReasons"
+	UnindexedFieldURITypeItemIsClutter                           UnindexedFieldURIType = "item:IsClutter"
+	UnindexedFieldURITypeItemRightsManagementLicenseData         UnindexedFieldURIType = "item:RightsManagementLicenseData"
+	UnindexedFieldURITypeItemBlockStatus                         UnindexedFieldURIType = "item:BlockStatus"
+	UnindexedFieldURITypeItemHasBlockedImages                    UnindexedFieldURIType = "item:HasBlockedImages"
+	UnindexedFieldURITypeItemWebClientReadFormQueryString        UnindexedFieldURIType = "item:WebClientReadFormQueryString"
+	UnindexedFieldURITypeItemWebClientEditFormQueryString        UnindexedFieldURIType = "item:WebClientEditFormQueryString"
+	UnindexedFieldURITypeItemTextBody                            UnindexedFieldURIType = "item:TextBody"
+	UnindexedFieldURITypeItemIconIndex                           UnindexedFieldURIType = "item:IconIndex"
+	UnindexedFieldURITypeItemMimeContentUTF8                     UnindexedFieldURIType = "item:MimeContentUTF8"
+	UnindexedFieldURITypeItemMentions                            UnindexedFieldURIType = "item:Mentions"
+	UnindexedFieldURITypeItemMentionedMe                         UnindexedFieldURIType = "item:MentionedMe"
+	UnindexedFieldURITypeItemMentionsPreview                     UnindexedFieldURIType = "item:MentionsPreview"
+	UnindexedFieldURITypeItemMentionsEx                          UnindexedFieldURIType = "item:MentionsEx"
+	UnindexedFieldURITypeItemHashtags                            UnindexedFieldURIType = "item:Hashtags"
+	UnindexedFieldURITypeItemAppliedHashtags                     UnindexedFieldURIType = "item:AppliedHashtags"
+	UnindexedFieldURITypeItemAppliedHashtagsPreview              UnindexedFieldURIType = "item:AppliedHashtagsPreview"
+	UnindexedFieldURITypeItemLikes                               UnindexedFieldURIType = "item:Likes"
+	UnindexedFieldURITypeItemLikesPreview                        UnindexedFieldURIType = "item:LikesPreview"
+	UnindexedFieldURITypeItemPendingSocialActivityTagIds         UnindexedFieldURIType = "item:PendingSocialActivityTagIds"
+	UnindexedFieldURITypeItemAtAllMention                        UnindexedFieldURIType = "item:AtAllMention"
+	UnindexedFieldURITypeItemCanDelete                           UnindexedFieldURIType = "item:CanDelete"
+	UnindexedFieldURITypeItemInferenceClassification             UnindexedFieldURIType = "item:InferenceClassification"
+	UnindexedFieldURITypeItemFirstBody                           UnindexedFieldURIType = "item:FirstBody"
+	UnindexedFieldURITypeMessageConversationIndex                UnindexedFieldURIType = "message:ConversationIndex"
+	UnindexedFieldURITypeMessageConversationTopic                UnindexedFieldURIType = "message:ConversationTopic"
+	UnindexedFieldURITypeMessageInternetMessageId                UnindexedFieldURIType = "message:InternetMessageId"
+	UnindexedFieldURITypeMessageIsRead                           UnindexedFieldURIType = "message:IsRead"
+	UnindexedFieldURITypeMessageIsResponseRequested              UnindexedFieldURIType = "message:IsResponseRequested"
+	UnindexedFieldURITypeMessageIsReadReceiptRequested           UnindexedFieldURIType = "message:IsReadReceiptRequested"
+	UnindexedFieldURITypeMessageIsDeliveryReceiptRequested       UnindexedFieldURIType = "message:IsDeliveryReceiptRequested"
+	UnindexedFieldURITypeMessageReceivedBy                       UnindexedFieldURIType = "message:ReceivedBy"
+	UnindexedFieldURITypeMessageReceivedRepresenting             UnindexedFieldURIType = "message:ReceivedRepresenting"
+	UnindexedFieldURITypeMessageReferences                       UnindexedFieldURIType = "message:References"
+	UnindexedFieldURITypeMessageReplyTo                          UnindexedFieldURIType = "message:ReplyTo"
+	UnindexedFieldURITypeMessageFrom                             UnindexedFieldURIType = "message:From"
+	UnindexedFieldURITypeMessageSender                           UnindexedFieldURIType = "message:Sender"
+	UnindexedFieldURITypeMessageToRecipients                     UnindexedFieldURIType = "message:ToRecipients"
+	UnindexedFieldURITypeMessageCcRecipients                     UnindexedFieldURIType = "message:CcRecipients"
+	UnindexedFieldURITypeMessageBccRecipients                    UnindexedFieldURIType = "message:BccRecipients"
+	UnindexedFieldURITypeMessageApprovalRequestData              UnindexedFieldURIType = "message:ApprovalRequestData"
+	UnindexedFieldURITypeMessageVotingInformation                UnindexedFieldURIType = "message:VotingInformation"
+	UnindexedFieldURITypeMessageReminderMessageData              UnindexedFieldURIType = "message:ReminderMessageData"
+	UnindexedFieldURITypeMessagePublishedCalendarItemIcs         UnindexedFieldURIType = "message:PublishedCalendarItemIcs"
+	UnindexedFieldURITypeMessagePublishedCalendarItemName        UnindexedFieldURIType = "message:PublishedCalendarItemName"
+	UnindexedFieldURITypeMessageMessageSafety                    UnindexedFieldURIType = "message:MessageSafety"
+	UnindexedFieldURITypeSharingMessageSharingMessageAction      UnindexedFieldURIType = "sharingMessage:SharingMessageAction"
+	UnindexedFieldURITypeMeetingAssociatedCalendarItemId         UnindexedFieldURIType = "meeting:AssociatedCalendarItemId"
+	UnindexedFieldURITypeMeetingIsDelegated                      UnindexedFieldURIType = "meeting:IsDelegated"
+	UnindexedFieldURITypeMeetingIsOutOfDate                      UnindexedFieldURIType = "meeting:IsOutOfDate"
+	UnindexedFieldURITypeMeetingHasBeenProcessed                 UnindexedFieldURIType = "meeting:HasBeenProcessed"
+	UnindexedFieldURITypeMeetingResponseType                     UnindexedFieldURIType = "meeting:ResponseType"
+	UnindexedFieldURITypeMeetingProposedStart                    UnindexedFieldURIType = "meeting:ProposedStart"
+	UnindexedFieldURITypeMeetingProposedEnd                      UnindexedFieldURIType = "meeting:ProposedEnd"
+	UnindexedFieldURITypeMeetingDoNotForwardMeeting              UnindexedFieldURIType = "meeting:DoNotForwardMeeting"
+	UnindexedFieldURITypeMeetingRequestMeetingRequestType        UnindexedFieldURIType = "meetingRequest:MeetingRequestType"
+	UnindexedFieldURITypeMeetingRequestIntendedFreeBusyStatus    UnindexedFieldURIType = "meetingRequest:IntendedFreeBusyStatus"
+	UnindexedFieldURITypeMeetingRequestChangeHighlights          UnindexedFieldURIType = "meetingRequest:ChangeHighlights"
+	UnindexedFieldURITypeCalendarStart                           UnindexedFieldURIType = "calendar:Start"
+	UnindexedFieldURITypeCalendarEnd                             UnindexedFieldURIType = "calendar:End"
+	UnindexedFieldURITypeCalendarOriginalStart                   UnindexedFieldURIType = "calendar:OriginalStart"
+	UnindexedFieldURITypeCalendarStartWallClock                  UnindexedFieldURIType = "calendar:StartWallClock"
+	UnindexedFieldURITypeCalendarEndWallClock                    UnindexedFieldURIType = "calendar:EndWallClock"
+	UnindexedFieldURITypeCalendarStartTimeZoneId                 UnindexedFieldURIType = "calendar:StartTimeZoneId"
+	UnindexedFieldURITypeCalendarEndTimeZoneId                   UnindexedFieldURIType = "calendar:EndTimeZoneId"
+	UnindexedFieldURITypeCalendarIsAllDayEvent                   UnindexedFieldURIType = "calendar:IsAllDayEvent"
+	UnindexedFieldURITypeCalendarLegacyFreeBusyStatus            UnindexedFieldURIType = "calendar:LegacyFreeBusyStatus"
+	UnindexedFieldURITypeCalendarLocation                        UnindexedFieldURIType = "calendar:Location"
+	UnindexedFieldURITypeCalendarEnhancedLocation                UnindexedFieldURIType = "calendar:EnhancedLocation"
+	UnindexedFieldURITypeCalendarWhen                            UnindexedFieldURIType = "calendar:When"
+	UnindexedFieldURITypeCalendarIsMeeting                       UnindexedFieldURIType = "calendar:IsMeeting"
+	UnindexedFieldURITypeCalendarIsCancelled                     UnindexedFieldURIType = "calendar:IsCancelled"
+	UnindexedFieldURITypeCalendarIsRecurring                     UnindexedFieldURIType = "calendar:IsRecurring"
+	UnindexedFieldURITypeCalendarMeetingRequestWasSent           UnindexedFieldURIType = "calendar:MeetingRequestWasSent"
+	UnindexedFieldURITypeCalendarIsResponseRequested             UnindexedFieldURIType = "calendar:IsResponseRequested"
+	UnindexedFieldURITypeCalendarCalendarItemType                UnindexedFieldURIType = "calendar:CalendarItemType"
+	UnindexedFieldURITypeCalendarMyResponseType                  UnindexedFieldURIType = "calendar:MyResponseType"
+	UnindexedFieldURITypeCalendarOrganizer                       UnindexedFieldURIType = "calendar:Organizer"
+	UnindexedFieldURITypeCalendarRequiredAttendees               UnindexedFieldURIType = "calendar:RequiredAttendees"
+	UnindexedFieldURITypeCalendarOptionalAttendees               UnindexedFieldURIType = "calendar:OptionalAttendees"
+	UnindexedFieldURITypeCalendarResources                       UnindexedFieldURIType = "calendar:Resources"
+	UnindexedFieldURITypeCalendarConflictingMeetingCount         UnindexedFieldURIType = "calendar:ConflictingMeetingCount"
+	UnindexedFieldURITypeCalendarAdjacentMeetingCount            UnindexedFieldURIType = "calendar:AdjacentMeetingCount"
+	UnindexedFieldURITypeCalendarConflictingMeetings             UnindexedFieldURIType = "calendar:ConflictingMeetings"
+	UnindexedFieldURITypeCalendarAdjacentMeetings                UnindexedFieldURIType = "calendar:AdjacentMeetings"
+	UnindexedFieldURITypeCalendarInboxReminders                  UnindexedFieldURIType = "calendar:InboxReminders"
+	UnindexedFieldURITypeCalendarDuration                        UnindexedFieldURIType = "calendar:Duration"
+	UnindexedFieldURITypeCalendarTimeZone                        UnindexedFieldURIType = "calendar:TimeZone"
+	UnindexedFieldURITypeCalendarAppointmentReplyTime            UnindexedFieldURIType = "calendar:AppointmentReplyTime"
+	UnindexedFieldURITypeCalendarAppointmentSequenceNumber       UnindexedFieldURIType = "calendar:AppointmentSequenceNumber"
+	UnindexedFieldURITypeCalendarAppointmentState                UnindexedFieldURIType = "calendar:AppointmentState"
+	UnindexedFieldURITypeCalendarRecurrence                      UnindexedFieldURIType = "calendar:Recurrence"
+	UnindexedFieldURITypeCalendarFirstOccurrence                 UnindexedFieldURIType = "calendar:FirstOccurrence"
+	UnindexedFieldURITypeCalendarLastOccurrence                  UnindexedFieldURIType = "calendar:LastOccurrence"
+	UnindexedFieldURITypeCalendarModifiedOccurrences             UnindexedFieldURIType = "calendar:ModifiedOccurrences"
+	UnindexedFieldURITypeCalendarDeletedOccurrences              UnindexedFieldURIType = "calendar:DeletedOccurrences"
+	UnindexedFieldURITypeCalendarMeetingTimeZone                 UnindexedFieldURIType = "calendar:MeetingTimeZone"
+	UnindexedFieldURITypeCalendarConferenceType                  UnindexedFieldURIType = "calendar:ConferenceType"
+	UnindexedFieldURITypeCalendarAllowNewTimeProposal            UnindexedFieldURIType = "calendar:AllowNewTimeProposal"
+	UnindexedFieldURITypeCalendarIsOnlineMeeting                 UnindexedFieldURIType = "calendar:IsOnlineMeeting"
+	UnindexedFieldURITypeCalendarMeetingWorkspaceUrl             UnindexedFieldURIType = "calendar:MeetingWorkspaceUrl"
+	UnindexedFieldURITypeCalendarNetShowUrl                      UnindexedFieldURIType = "calendar:NetShowUrl"
+	UnindexedFieldURITypeCalendarUID                             UnindexedFieldURIType = "calendar:UID"
+	UnindexedFieldURITypeCalendarRecurrenceId                    UnindexedFieldURIType = "calendar:RecurrenceId"
+	UnindexedFieldURITypeCalendarDateTimeStamp                   UnindexedFieldURIType = "calendar:DateTimeStamp"
+	UnindexedFieldURITypeCalendarStartTimeZone                   UnindexedFieldURIType = "calendar:StartTimeZone"
+	UnindexedFieldURITypeCalendarEndTimeZone                     UnindexedFieldURIType = "calendar:EndTimeZone"
+	UnindexedFieldURITypeCalendarJoinOnlineMeetingUrl            UnindexedFieldURIType = "calendar:JoinOnlineMeetingUrl"
+	UnindexedFieldURITypeCalendarOnlineMeetingSettings           UnindexedFieldURIType = "calendar:OnlineMeetingSettings"
+	UnindexedFieldURITypeCalendarIsOrganizer                     UnindexedFieldURIType = "calendar:IsOrganizer"
+	UnindexedFieldURITypeCalendarCalendarActivityData            UnindexedFieldURIType = "calendar:CalendarActivityData"
+	UnindexedFieldURITypeCalendarDoNotForwardMeeting             UnindexedFieldURIType = "calendar:DoNotForwardMeeting"
+	UnindexedFieldURITypeTaskActualWork                          UnindexedFieldURIType = "task:ActualWork"
+	UnindexedFieldURITypeTaskAssignedTime                        UnindexedFieldURIType = "task:AssignedTime"
+	UnindexedFieldURITypeTaskBillingInformation                  UnindexedFieldURIType = "task:BillingInformation"
+	UnindexedFieldURITypeTaskChangeCount                         UnindexedFieldURIType = "task:ChangeCount"
+	UnindexedFieldURITypeTaskCompanies                           UnindexedFieldURIType = "task:Companies"
+	UnindexedFieldURITypeTaskCompleteDate                        UnindexedFieldURIType = "task:CompleteDate"
+	UnindexedFieldURITypeTaskContacts                            UnindexedFieldURIType = "task:Contacts"
+	UnindexedFieldURITypeTaskDelegationState                     UnindexedFieldURIType = "task:DelegationState"
+	UnindexedFieldURITypeTaskDelegator                           UnindexedFieldURIType = "task:Delegator"
+	UnindexedFieldURITypeTaskDueDate                             UnindexedFieldURIType = "task:DueDate"
+	UnindexedFieldURITypeTaskIsAssignmentEditable                UnindexedFieldURIType = "task:IsAssignmentEditable"
+	UnindexedFieldURITypeTaskIsComplete                          UnindexedFieldURIType = "task:IsComplete"
+	UnindexedFieldURITypeTaskIsRecurring                         UnindexedFieldURIType = "task:IsRecurring"
+	UnindexedFieldURITypeTaskIsTeamTask                          UnindexedFieldURIType = "task:IsTeamTask"
+	UnindexedFieldURITypeTaskMileage                             UnindexedFieldURIType = "task:Mileage"
+	UnindexedFieldURITypeTaskOwner                               UnindexedFieldURIType = "task:Owner"
+	UnindexedFieldURITypeTaskPercentComplete                     UnindexedFieldURIType = "task:PercentComplete"
+	UnindexedFieldURITypeTaskRecurrence                          UnindexedFieldURIType = "task:Recurrence"
+	UnindexedFieldURITypeTaskStartDate                           UnindexedFieldURIType = "task:StartDate"
+	UnindexedFieldURITypeTaskStatus                              UnindexedFieldURIType = "task:Status"
+	UnindexedFieldURITypeTaskStatusDescription                   UnindexedFieldURIType = "task:StatusDescription"
+	UnindexedFieldURITypeTaskTotalWork                           UnindexedFieldURIType = "task:TotalWork"
+	UnindexedFieldURITypeContactsAlias                           UnindexedFieldURIType = "contacts:Alias"
+	UnindexedFieldURITypeContactsAssistantName                   UnindexedFieldURIType = "contacts:AssistantName"
+	UnindexedFieldURITypeContactsBirthday                        UnindexedFieldURIType = "contacts:Birthday"
+	UnindexedFieldURITypeContactsBusinessHomePage                UnindexedFieldURIType = "contacts:BusinessHomePage"
+	UnindexedFieldURITypeContactsChildren                        UnindexedFieldURIType = "contacts:Children"
+	UnindexedFieldURITypeContactsCompanies                       UnindexedFieldURIType = "contacts:Companies"
+	UnindexedFieldURITypeContactsCompanyName                     UnindexedFieldURIType = "contacts:CompanyName"
+	UnindexedFieldURITypeContactsCompleteName                    UnindexedFieldURIType = "contacts:CompleteName"
+	UnindexedFieldURITypeContactsContactSource                   UnindexedFieldURIType = "contacts:ContactSource"
+	UnindexedFieldURITypeContactsCulture                         UnindexedFieldURIType = "contacts:Culture"
+	UnindexedFieldURITypeContactsDepartment                      UnindexedFieldURIType = "contacts:Department"
+	UnindexedFieldURITypeContactsDisplayName                     UnindexedFieldURIType = "contacts:DisplayName"
+	UnindexedFieldURITypeContactsDirectoryId                     UnindexedFieldURIType = "contacts:DirectoryId"
+	UnindexedFieldURITypeContactsDirectReports                   UnindexedFieldURIType = "contacts:DirectReports"
+	UnindexedFieldURITypeContactsEmailAddresses                  UnindexedFieldURIType = "contacts:EmailAddresses"
+	UnindexedFieldURITypeContactsAbchEmailAddresses              UnindexedFieldURIType = "contacts:AbchEmailAddresses"
+	UnindexedFieldURITypeContactsFileAs                          UnindexedFieldURIType = "contacts:FileAs"
+	UnindexedFieldURITypeContactsFileAsMapping                   UnindexedFieldURIType = "contacts:FileAsMapping"
+	UnindexedFieldURITypeContactsGeneration                      UnindexedFieldURIType = "contacts:Generation"
+	UnindexedFieldURITypeContactsGivenName                       UnindexedFieldURIType = "contacts:GivenName"
+	UnindexedFieldURITypeContactsImAddresses                     UnindexedFieldURIType = "contacts:ImAddresses"
+	UnindexedFieldURITypeContactsInitials                        UnindexedFieldURIType = "contacts:Initials"
+	UnindexedFieldURITypeContactsJobTitle                        UnindexedFieldURIType = "contacts:JobTitle"
+	UnindexedFieldURITypeContactsManager                         UnindexedFieldURIType = "contacts:Manager"
+	UnindexedFieldURITypeContactsManagerMailbox                  UnindexedFieldURIType = "contacts:ManagerMailbox"
+	UnindexedFieldURITypeContactsMiddleName                      UnindexedFieldURIType = "contacts:MiddleName"
+	UnindexedFieldURITypeContactsMileage                         UnindexedFieldURIType = "contacts:Mileage"
+	UnindexedFieldURITypeContactsMSExchangeCertificate           UnindexedFieldURIType = "contacts:MSExchangeCertificate"
+	UnindexedFieldURITypeContactsNickname                        UnindexedFieldURIType = "contacts:Nickname"
+	UnindexedFieldURITypeContactsNotes                           UnindexedFieldURIType = "contacts:Notes"
+	UnindexedFieldURITypeContactsOfficeLocation                  UnindexedFieldURIType = "contacts:OfficeLocation"
+	UnindexedFieldURITypeContactsPhoneNumbers                    UnindexedFieldURIType = "contacts:PhoneNumbers"
+	UnindexedFieldURITypeContactsPhoneticFullName                UnindexedFieldURIType = "contacts:PhoneticFullName"
+	UnindexedFieldURITypeContactsPhoneticFirstName               UnindexedFieldURIType = "contacts:PhoneticFirstName"
+	UnindexedFieldURITypeContactsPhoneticLastName                UnindexedFieldURIType = "contacts:PhoneticLastName"
+	UnindexedFieldURITypeContactsPhoto                           UnindexedFieldURIType = "contacts:Photo"
+	UnindexedFieldURITypeContactsPhysicalAddresses               UnindexedFieldURIType = "contacts:PhysicalAddresses"
+	UnindexedFieldURITypeContactsPostalAddressIndex              UnindexedFieldURIType = "contacts:PostalAddressIndex"
+	UnindexedFieldURITypeContactsProfession                      UnindexedFieldURIType = "contacts:Profession"
+	UnindexedFieldURITypeContactsSpouseName                      UnindexedFieldURIType = "contacts:SpouseName"
+	UnindexedFieldURITypeContactsSurname                         UnindexedFieldURIType = "contacts:Surname"
+	UnindexedFieldURITypeContactsWeddingAnniversary              UnindexedFieldURIType = "contacts:WeddingAnniversary"
+	UnindexedFieldURITypeContactsUserSMIMECertificate            UnindexedFieldURIType = "contacts:UserSMIMECertificate"
+	UnindexedFieldURITypeContactsHasPicture                      UnindexedFieldURIType = "contacts:HasPicture"
+	UnindexedFieldURITypeContactsAccountName                     UnindexedFieldURIType = "contacts:AccountName"
+	UnindexedFieldURITypeContactsIsAutoUpdateDisabled            UnindexedFieldURIType = "contacts:IsAutoUpdateDisabled"
+	UnindexedFieldURITypeContactsIsMessengerEnabled              UnindexedFieldURIType = "contacts:IsMessengerEnabled"
+	UnindexedFieldURITypeContactsComment                         UnindexedFieldURIType = "contacts:Comment"
+	UnindexedFieldURITypeContactsContactShortId                  UnindexedFieldURIType = "contacts:ContactShortId"
+	UnindexedFieldURITypeContactsContactType                     UnindexedFieldURIType = "contacts:ContactType"
+	UnindexedFieldURITypeContactsCreatedBy                       UnindexedFieldURIType = "contacts:CreatedBy"
+	UnindexedFieldURITypeContactsGender                          UnindexedFieldURIType = "contacts:Gender"
+	UnindexedFieldURITypeContactsIsHidden                        UnindexedFieldURIType = "contacts:IsHidden"
+	UnindexedFieldURITypeContactsObjectId                        UnindexedFieldURIType = "contacts:ObjectId"
+	UnindexedFieldURITypeContactsPassportId                      UnindexedFieldURIType = "contacts:PassportId"
+	UnindexedFieldURITypeContactsIsPrivate                       UnindexedFieldURIType = "contacts:IsPrivate"
+	UnindexedFieldURITypeContactsSourceId                        UnindexedFieldURIType = "contacts:SourceId"
+	UnindexedFieldURITypeContactsTrustLevel                      UnindexedFieldURIType = "contacts:TrustLevel"
+	UnindexedFieldURITypeContactsUrls                            UnindexedFieldURIType = "contacts:Urls"
+	UnindexedFieldURITypeContactsCid                             UnindexedFieldURIType = "contacts:Cid"
+	UnindexedFieldURITypeContactsSkypeAuthCertificate            UnindexedFieldURIType = "contacts:SkypeAuthCertificate"
+	UnindexedFieldURITypeContactsSkypeContext                    UnindexedFieldURIType = "contacts:SkypeContext"
+	UnindexedFieldURITypeContactsSkypeId                         UnindexedFieldURIType = "contacts:SkypeId"
+	UnindexedFieldURITypeContactsXboxLiveTag                     UnindexedFieldURIType = "contacts:XboxLiveTag"
+	UnindexedFieldURITypeContactsSkypeRelationship               UnindexedFieldURIType = "contacts:SkypeRelationship"
+	UnindexedFieldURITypeContactsYomiNickname                    UnindexedFieldURIType = "contacts:YomiNickname"
+	UnindexedFieldURITypeContactsInviteFree                      UnindexedFieldURIType = "contacts:InviteFree"
+	UnindexedFieldURITypeContactsHidePresenceAndProfile          UnindexedFieldURIType = "contacts:HidePresenceAndProfile"
+	UnindexedFieldURITypeContactsIsPendingOutbound               UnindexedFieldURIType = "contacts:IsPendingOutbound"
+	UnindexedFieldURITypeContactsSupportGroupFeeds               UnindexedFieldURIType = "contacts:SupportGroupFeeds"
+	UnindexedFieldURITypeContactsUserTileHash                    UnindexedFieldURIType = "contacts:UserTileHash"
+	UnindexedFieldURITypeContactsUnifiedInbox                    UnindexedFieldURIType = "contacts:UnifiedInbox"
+	UnindexedFieldURITypeContactsMris                            UnindexedFieldURIType = "contacts:Mris"
+	UnindexedFieldURITypeContactsWlid                            UnindexedFieldURIType = "contacts:Wlid"
+	UnindexedFieldURITypeContactsAbchContactId                   UnindexedFieldURIType = "contacts:AbchContactId"
+	UnindexedFieldURITypeContactsNotInBirthdayCalendar           UnindexedFieldURIType = "contacts:NotInBirthdayCalendar"
+	UnindexedFieldURITypeContactsShellContactType                UnindexedFieldURIType = "contacts:ShellContactType"
+	UnindexedFieldURITypeContactsImMri                           UnindexedFieldURIType = "contacts:ImMri"
+	UnindexedFieldURITypeContactsPresenceTrustLevel              UnindexedFieldURIType = "contacts:PresenceTrustLevel"
+	UnindexedFieldURITypeContactsOtherMri                        UnindexedFieldURIType = "contacts:OtherMri"
+	UnindexedFieldURITypeContactsProfileLastChanged              UnindexedFieldURIType = "contacts:ProfileLastChanged"
+	UnindexedFieldURITypeContactsMobileIMEnabled                 UnindexedFieldURIType = "contacts:MobileIMEnabled"
+	UnindexedFieldURITypeDistributionlistMembers                 UnindexedFieldURIType = "distributionlist:Members"
+	UnindexedFieldURITypeContactsPartnerNetworkProfilePhotoUrl   UnindexedFieldURIType = "contacts:PartnerNetworkProfilePhotoUrl"
+	UnindexedFieldURITypeContactsPartnerNetworkThumbnailPhotoUrl UnindexedFieldURIType = "contacts:PartnerNetworkThumbnailPhotoUrl"
+	UnindexedFieldURITypeContactsPersonId                        UnindexedFieldURIType = "contacts:PersonId"
+	UnindexedFieldURITypeContactsConversationGuid                UnindexedFieldURIType = "contacts:ConversationGuid"
+	UnindexedFieldURITypePostitemPostedTime                      UnindexedFieldURIType = "postitem:PostedTime"
+	UnindexedFieldURITypeConversationConversationId              UnindexedFieldURIType = "conversation:ConversationId"
+	UnindexedFieldURITypeConversationConversationTopic           UnindexedFieldURIType = "conversation:ConversationTopic"
+	UnindexedFieldURITypeConversationUniqueRecipients            UnindexedFieldURIType = "conversation:UniqueRecipients"
+	UnindexedFieldURITypeConversationGlobalUniqueRecipients      UnindexedFieldURIType = "conversation:GlobalUniqueRecipients"
+	UnindexedFieldURITypeConversationUniqueUnreadSenders         UnindexedFieldURIType = "conversation:UniqueUnreadSenders"
+	UnindexedFieldURITypeConversationGlobalUniqueUnreadSenders   UnindexedFieldURIType = "conversation:GlobalUniqueUnreadSenders"
+	UnindexedFieldURITypeConversationUniqueSenders               UnindexedFieldURIType = "conversation:UniqueSenders"
+	UnindexedFieldURITypeConversationGlobalUniqueSenders         UnindexedFieldURIType = "conversation:GlobalUniqueSenders"
+	UnindexedFieldURITypeConversationLastDeliveryTime            UnindexedFieldURIType = "conversation:LastDeliveryTime"
+	UnindexedFieldURITypeConversationGlobalLastDeliveryTime      UnindexedFieldURIType = "conversation:GlobalLastDeliveryTime"
+	UnindexedFieldURITypeConversationCategories                  UnindexedFieldURIType = "conversation:Categories"
+	UnindexedFieldURITypeConversationGlobalCategories            UnindexedFieldURIType = "conversation:GlobalCategories"
+	UnindexedFieldURITypeConversationFlagStatus                  UnindexedFieldURIType = "conversation:FlagStatus"
+	UnindexedFieldURITypeConversationGlobalFlagStatus            UnindexedFieldURIType = "conversation:GlobalFlagStatus"
+	UnindexedFieldURITypeConversationHasAttachments              UnindexedFieldURIType = "conversation:HasAttachments"
+	UnindexedFieldURITypeConversationGlobalHasAttachments        UnindexedFieldURIType = "conversation:GlobalHasAttachments"
+	UnindexedFieldURITypeConversationHasIrm                      UnindexedFieldURIType = "conversation:HasIrm"
+	UnindexedFieldURITypeConversationGlobalHasIrm                UnindexedFieldURIType = "conversation:GlobalHasIrm"
+	UnindexedFieldURITypeConversationMessageCount                UnindexedFieldURIType = "conversation:MessageCount"
+	UnindexedFieldURITypeConversationGlobalMessageCount          UnindexedFieldURIType = "conversation:GlobalMessageCount"
+	UnindexedFieldURITypeConversationUnreadCount                 UnindexedFieldURIType = "conversation:UnreadCount"
+	UnindexedFieldURITypeConversationGlobalUnreadCount           UnindexedFieldURIType = "conversation:GlobalUnreadCount"
+	UnindexedFieldURITypeConversationSize                        UnindexedFieldURIType = "conversation:Size"
+	UnindexedFieldURITypeConversationGlobalSize                  UnindexedFieldURIType = "conversation:GlobalSize"
+	UnindexedFieldURITypeConversationItemClasses                 UnindexedFieldURIType = "conversation:ItemClasses"
+	UnindexedFieldURITypeConversationGlobalItemClasses           UnindexedFieldURIType = "conversation:GlobalItemClasses"
+	UnindexedFieldURITypeConversationImportance                  UnindexedFieldURIType = "conversation:Importance"
+	UnindexedFieldURITypeConversationGlobalImportance            UnindexedFieldURIType = "conversation:GlobalImportance"
+	UnindexedFieldURITypeConversationItemIds                     UnindexedFieldURIType = "conversation:ItemIds"
+	UnindexedFieldURITypeConversationGlobalItemIds               UnindexedFieldURIType = "conversation:GlobalItemIds"
+	UnindexedFieldURITypeConversationLastModifiedTime            UnindexedFieldURIType = "conversation:LastModifiedTime"
+	UnindexedFieldURITypeConversationInstanceKey                 UnindexedFieldURIType = "conversation:InstanceKey"
+	UnindexedFieldURITypeConversationPreview                     UnindexedFieldURIType = "conversation:Preview"
+	UnindexedFieldURITypeConversationIconIndex                   UnindexedFieldURIType = "conversation:IconIndex"
+	UnindexedFieldURITypeConversationGlobalIconIndex             UnindexedFieldURIType = "conversation:GlobalIconIndex"
+	UnindexedFieldURITypeConversationDraftItemIds                UnindexedFieldURIType = "conversation:DraftItemIds"
+	UnindexedFieldURITypeConversationHasClutter                  UnindexedFieldURIType = "conversation:HasClutter"
+	UnindexedFieldURITypeConversationMentionedMe                 UnindexedFieldURIType = "conversation:MentionedMe"
+	UnindexedFieldURITypeConversationGlobalMentionedMe           UnindexedFieldURIType = "conversation:GlobalMentionedMe"
+	UnindexedFieldURITypeConversationAtAllMention                UnindexedFieldURIType = "conversation:AtAllMention"
+	UnindexedFieldURITypeConversationGlobalAtAllMention          UnindexedFieldURIType = "conversation:GlobalAtAllMention"
+	UnindexedFieldURITypePersonFullName                          UnindexedFieldURIType = "person:FullName"
+	UnindexedFieldURITypePersonGivenName                         UnindexedFieldURIType = "person:GivenName"
+	UnindexedFieldURITypePersonSurname                           UnindexedFieldURIType = "person:Surname"
+	UnindexedFieldURITypePersonPhoneNumber                       UnindexedFieldURIType = "person:PhoneNumber"
+	UnindexedFieldURITypePersonSMSNumber                         UnindexedFieldURIType = "person:SMSNumber"
+	UnindexedFieldURITypePersonEmailAddress                      UnindexedFieldURIType = "person:EmailAddress"
+	UnindexedFieldURITypePersonAlias                             UnindexedFieldURIType = "person:Alias"
+	UnindexedFieldURITypePersonDepartment                        UnindexedFieldURIType = "person:Department"
+	UnindexedFieldURITypePersonLinkedInProfileLink               UnindexedFieldURIType = "person:LinkedInProfileLink"
+	UnindexedFieldURITypePersonSkills                            UnindexedFieldURIType = "person:Skills"
+	UnindexedFieldURITypePersonProfessionalBiography             UnindexedFieldURIType = "person:ProfessionalBiography"
+	UnindexedFieldURITypePersonManagementChain                   UnindexedFieldURIType = "person:ManagementChain"
+	UnindexedFieldURITypePersonDirectReports                     UnindexedFieldURIType = "person:DirectReports"
+	UnindexedFieldURITypePersonPeers                             UnindexedFieldURIType = "person:Peers"
+	UnindexedFieldURITypePersonTeamSize                          UnindexedFieldURIType = "person:TeamSize"
+	UnindexedFieldURITypePersonCurrentJob                        UnindexedFieldURIType = "person:CurrentJob"
+	UnindexedFieldURITypePersonBirthday                          UnindexedFieldURIType = "person:Birthday"
+	UnindexedFieldURITypePersonHometown                          UnindexedFieldURIType = "person:Hometown"
+	UnindexedFieldURITypePersonCurrentLocation                   UnindexedFieldURIType = "person:CurrentLocation"
+	UnindexedFieldURITypePersonCompanyProfile                    UnindexedFieldURIType = "person:CompanyProfile"
+	UnindexedFieldURITypePersonOffice                            UnindexedFieldURIType = "person:Office"
+	UnindexedFieldURITypePersonHeadline                          UnindexedFieldURIType = "person:Headline"
+	UnindexedFieldURITypePersonMutualConnections                 UnindexedFieldURIType = "person:MutualConnections"
+	UnindexedFieldURITypePersonTitle                             UnindexedFieldURIType = "person:Title"
+	UnindexedFieldURITypePersonMutualManager                     UnindexedFieldURIType = "person:MutualManager"
+	UnindexedFieldURITypePersonInsights                          UnindexedFieldURIType = "person:Insights"
+	UnindexedFieldURITypePersonUserProfilePicture                UnindexedFieldURIType = "person:UserProfilePicture"
+	UnindexedFieldURITypePersonaPersonaId                        UnindexedFieldURIType = "persona:PersonaId"
+	UnindexedFieldURITypePersonaPersonaType                      UnindexedFieldURIType = "persona:PersonaType"
+	UnindexedFieldURITypePersonaGivenName                        UnindexedFieldURIType = "persona:GivenName"
+	UnindexedFieldURITypePersonaCompanyName                      UnindexedFieldURIType = "persona:CompanyName"
+	UnindexedFieldURITypePersonaSurname                          UnindexedFieldURIType = "persona:Surname"
+	UnindexedFieldURITypePersonaDisplayName                      UnindexedFieldURIType = "persona:DisplayName"
+	UnindexedFieldURITypePersonaEmailAddress                     UnindexedFieldURIType = "persona:EmailAddress"
+	UnindexedFieldURITypePersonaFileAs                           UnindexedFieldURIType = "persona:FileAs"
+	UnindexedFieldURITypePersonaHomeCity                         UnindexedFieldURIType = "persona:HomeCity"
+	UnindexedFieldURITypePersonaCreationTime                     UnindexedFieldURIType = "persona:CreationTime"
+	UnindexedFieldURITypePersonaRelevanceScore                   UnindexedFieldURIType = "persona:RelevanceScore"
+	UnindexedFieldURITypePersonaRankingWeight                    UnindexedFieldURIType = "persona:RankingWeight"
+	UnindexedFieldURITypePersonaWorkCity                         UnindexedFieldURIType = "persona:WorkCity"
+	UnindexedFieldURITypePersonaPersonaObjectStatus              UnindexedFieldURIType = "persona:PersonaObjectStatus"
+	UnindexedFieldURITypePersonaFileAsId                         UnindexedFieldURIType = "persona:FileAsId"
+	UnindexedFieldURITypePersonaDisplayNamePrefix                UnindexedFieldURIType = "persona:DisplayNamePrefix"
+	UnindexedFieldURITypePersonaYomiCompanyName                  UnindexedFieldURIType = "persona:YomiCompanyName"
+	UnindexedFieldURITypePersonaYomiFirstName                    UnindexedFieldURIType = "persona:YomiFirstName"
+	UnindexedFieldURITypePersonaYomiLastName                     UnindexedFieldURIType = "persona:YomiLastName"
+	UnindexedFieldURITypePersonaTitle                            UnindexedFieldURIType = "persona:Title"
+	UnindexedFieldURITypePersonaEmailAddresses                   UnindexedFieldURIType = "persona:EmailAddresses"
+	UnindexedFieldURITypePersonaPhoneNumber                      UnindexedFieldURIType = "persona:PhoneNumber"
+	UnindexedFieldURITypePersonaImAddress                        UnindexedFieldURIType = "persona:ImAddress"
+	UnindexedFieldURITypePersonaImAddresses                      UnindexedFieldURIType = "persona:ImAddresses"
+	UnindexedFieldURITypePersonaImAddresses2                     UnindexedFieldURIType = "persona:ImAddresses2"
+	UnindexedFieldURITypePersonaImAddresses3                     UnindexedFieldURIType = "persona:ImAddresses3"
+	UnindexedFieldURITypePersonaFolderIds                        UnindexedFieldURIType = "persona:FolderIds"
+	UnindexedFieldURITypePersonaAttributions                     UnindexedFieldURIType = "persona:Attributions"
+	UnindexedFieldURITypePersonaDisplayNames                     UnindexedFieldURIType = "persona:DisplayNames"
+	UnindexedFieldURITypePersonaInitials                         UnindexedFieldURIType = "persona:Initials"
+	UnindexedFieldURITypePersonaFileAses                         UnindexedFieldURIType = "persona:FileAses"
+	UnindexedFieldURITypePersonaFileAsIds                        UnindexedFieldURIType = "persona:FileAsIds"
+	UnindexedFieldURITypePersonaDisplayNamePrefixes              UnindexedFieldURIType = "persona:DisplayNamePrefixes"
+	UnindexedFieldURITypePersonaGivenNames                       UnindexedFieldURIType = "persona:GivenNames"
+	UnindexedFieldURITypePersonaMiddleNames                      UnindexedFieldURIType = "persona:MiddleNames"
+	UnindexedFieldURITypePersonaSurnames                         UnindexedFieldURIType = "persona:Surnames"
+	UnindexedFieldURITypePersonaGenerations                      UnindexedFieldURIType = "persona:Generations"
+	UnindexedFieldURITypePersonaNicknames                        UnindexedFieldURIType = "persona:Nicknames"
+	UnindexedFieldURITypePersonaYomiCompanyNames                 UnindexedFieldURIType = "persona:YomiCompanyNames"
+	UnindexedFieldURITypePersonaYomiFirstNames                   UnindexedFieldURIType = "persona:YomiFirstNames"
+	UnindexedFieldURITypePersonaYomiLastNames                    UnindexedFieldURIType = "persona:YomiLastNames"
+	UnindexedFieldURITypePersonaBusinessPhoneNumbers             UnindexedFieldURIType = "persona:BusinessPhoneNumbers"
+	UnindexedFieldURITypePersonaBusinessPhoneNumbers2            UnindexedFieldURIType = "persona:BusinessPhoneNumbers2"
+	UnindexedFieldURITypePersonaHomePhones                       UnindexedFieldURIType = "persona:HomePhones"
+	UnindexedFieldURITypePersonaHomePhones2                      UnindexedFieldURIType = "persona:HomePhones2"
+	UnindexedFieldURITypePersonaMobilePhones                     UnindexedFieldURIType = "persona:MobilePhones"
+	UnindexedFieldURITypePersonaMobilePhones2                    UnindexedFieldURIType = "persona:MobilePhones2"
+	UnindexedFieldURITypePersonaAssistantPhoneNumbers            UnindexedFieldURIType = "persona:AssistantPhoneNumbers"
+	UnindexedFieldURITypePersonaCallbackPhones                   UnindexedFieldURIType = "persona:CallbackPhones"
+	UnindexedFieldURITypePersonaCarPhones                        UnindexedFieldURIType = "persona:CarPhones"
+	UnindexedFieldURITypePersonaHomeFaxes                        UnindexedFieldURIType = "persona:HomeFaxes"
+	UnindexedFieldURITypePersonaOrganizationMainPhones           UnindexedFieldURIType = "persona:OrganizationMainPhones"
+	UnindexedFieldURITypePersonaOtherFaxes                       UnindexedFieldURIType = "persona:OtherFaxes"
+	UnindexedFieldURITypePersonaOtherTelephones                  UnindexedFieldURIType = "persona:OtherTelephones"
+	UnindexedFieldURITypePersonaOtherPhones2                     UnindexedFieldURIType = "persona:OtherPhones2"
+	UnindexedFieldURITypePersonaPagers                           UnindexedFieldURIType = "persona:Pagers"
+	UnindexedFieldURITypePersonaRadioPhones                      UnindexedFieldURIType = "persona:RadioPhones"
+	UnindexedFieldURITypePersonaTelexNumbers                     UnindexedFieldURIType = "persona:TelexNumbers"
+	UnindexedFieldURITypePersonaWorkFaxes                        UnindexedFieldURIType = "persona:WorkFaxes"
+	UnindexedFieldURITypePersonaEmails1                          UnindexedFieldURIType = "persona:Emails1"
+	UnindexedFieldURITypePersonaEmails2                          UnindexedFieldURIType = "persona:Emails2"
+	UnindexedFieldURITypePersonaEmails3                          UnindexedFieldURIType = "persona:Emails3"
+	UnindexedFieldURITypePersonaBusinessHomePages                UnindexedFieldURIType = "persona:BusinessHomePages"
+	UnindexedFieldURITypePersonaSchool                           UnindexedFieldURIType = "persona:School"
+	UnindexedFieldURITypePersonaPersonalHomePages                UnindexedFieldURIType = "persona:PersonalHomePages"
+	UnindexedFieldURITypePersonaOfficeLocations                  UnindexedFieldURIType = "persona:OfficeLocations"
+	UnindexedFieldURITypePersonaBusinessAddresses                UnindexedFieldURIType = "persona:BusinessAddresses"
+	UnindexedFieldURITypePersonaHomeAddresses                    UnindexedFieldURIType = "persona:HomeAddresses"
+	UnindexedFieldURITypePersonaOtherAddresses                   UnindexedFieldURIType = "persona:OtherAddresses"
+	UnindexedFieldURITypePersonaTitles                           UnindexedFieldURIType = "persona:Titles"
+	UnindexedFieldURITypePersonaDepartments                      UnindexedFieldURIType = "persona:Departments"
+	UnindexedFieldURITypePersonaCompanyNames                     UnindexedFieldURIType = "persona:CompanyNames"
+	UnindexedFieldURITypePersonaManagers                         UnindexedFieldURIType = "persona:Managers"
+	UnindexedFieldURITypePersonaAssistantNames                   UnindexedFieldURIType = "persona:AssistantNames"
+	UnindexedFieldURITypePersonaProfessions                      UnindexedFieldURIType = "persona:Professions"
+	UnindexedFieldURITypePersonaSpouseNames                      UnindexedFieldURIType = "persona:SpouseNames"
+	UnindexedFieldURITypePersonaHobbies                          UnindexedFieldURIType = "persona:Hobbies"
+	UnindexedFieldURITypePersonaWeddingAnniversaries             UnindexedFieldURIType = "persona:WeddingAnniversaries"
+	UnindexedFieldURITypePersonaBirthdays                        UnindexedFieldURIType = "persona:Birthdays"
+	UnindexedFieldURITypePersonaChildren                         UnindexedFieldURIType = "persona:Children"
+	UnindexedFieldURITypePersonaLocations                        UnindexedFieldURIType = "persona:Locations"
+	UnindexedFieldURITypePersonaExtendedProperties               UnindexedFieldURIType = "persona:ExtendedProperties"
+	UnindexedFieldURITypePersonaPostalAddress                    UnindexedFieldURIType = "persona:PostalAddress"
+	UnindexedFieldURITypePersonaBodies                           UnindexedFieldURIType = "persona:Bodies"
+	UnindexedFieldURITypePersonaIsFavorite                       UnindexedFieldURIType = "persona:IsFavorite"
+	UnindexedFieldURITypePersonaInlineLinks                      UnindexedFieldURIType = "persona:InlineLinks"
+	UnindexedFieldURITypePersonaItemLinkIds                      UnindexedFieldURIType = "persona:ItemLinkIds"
+	UnindexedFieldURITypePersonaHasActiveDeals                   UnindexedFieldURIType = "persona:HasActiveDeals"
+	UnindexedFieldURITypePersonaIsBusinessContact                UnindexedFieldURIType = "persona:IsBusinessContact"
+	UnindexedFieldURITypePersonaAttributedHasActiveDeals         UnindexedFieldURIType = "persona:AttributedHasActiveDeals"
+	UnindexedFieldURITypePersonaAttributedIsBusinessContact      UnindexedFieldURIType = "persona:AttributedIsBusinessContact"
+	UnindexedFieldURITypePersonaSourceMailboxGuids               UnindexedFieldURIType = "persona:SourceMailboxGuids"
+	UnindexedFieldURITypePersonaLastContactedDate                UnindexedFieldURIType = "persona:LastContactedDate"
+	UnindexedFieldURITypePersonaExternalDirectoryObjectId        UnindexedFieldURIType = "persona:ExternalDirectoryObjectId"
+	UnindexedFieldURITypePersonaMapiEntryId                      UnindexedFieldURIType = "persona:MapiEntryId"
+	UnindexedFieldURITypePersonaMapiEmailAddress                 UnindexedFieldURIType = "persona:MapiEmailAddress"
+	UnindexedFieldURITypePersonaMapiAddressType                  UnindexedFieldURIType = "persona:MapiAddressType"
+	UnindexedFieldURITypePersonaMapiSearchKey                    UnindexedFieldURIType = "persona:MapiSearchKey"
+	UnindexedFieldURITypePersonaMapiTransmittableDisplayName     UnindexedFieldURIType = "persona:MapiTransmittableDisplayName"
+	UnindexedFieldURITypePersonaMapiSendRichInfo                 UnindexedFieldURIType = "persona:MapiSendRichInfo"
+	UnindexedFieldURITypeRolememberMemberType                    UnindexedFieldURIType = "rolemember:MemberType"
+	UnindexedFieldURITypeRolememberMemberId                      UnindexedFieldURIType = "rolemember:MemberId"
+	UnindexedFieldURITypeRolememberDisplayName                   UnindexedFieldURIType = "rolemember:DisplayName"
+	UnindexedFieldURITypeNetworkTokenRefreshLastCompleted        UnindexedFieldURIType = "network:TokenRefreshLastCompleted"
+	UnindexedFieldURITypeNetworkTokenRefreshLastAttempted        UnindexedFieldURIType = "network:TokenRefreshLastAttempted"
+	UnindexedFieldURITypeNetworkSyncEnabled                      UnindexedFieldURIType = "network:SyncEnabled"
+	UnindexedFieldURITypeNetworkRejectedOffers                   UnindexedFieldURIType = "network:RejectedOffers"
+	UnindexedFieldURITypeNetworkSessionHandle                    UnindexedFieldURIType = "network:SessionHandle"
+	UnindexedFieldURITypeNetworkRefreshTokenExpiry2              UnindexedFieldURIType = "network:RefreshTokenExpiry2"
+	UnindexedFieldURITypeNetworkRefreshToken2                    UnindexedFieldURIType = "network:RefreshToken2"
+	UnindexedFieldURITypeNetworkPsaLastChanged                   UnindexedFieldURIType = "network:PsaLastChanged"
+	UnindexedFieldURITypeNetworkOffers                           UnindexedFieldURIType = "network:Offers"
+	UnindexedFieldURITypeNetworkLastWelcomeContact               UnindexedFieldURIType = "network:LastWelcomeContact"
+	UnindexedFieldURITypeNetworkLastVersionSaved                 UnindexedFieldURIType = "network:LastVersionSaved"
+	UnindexedFieldURITypeNetworkDomainTag                        UnindexedFieldURIType = "network:DomainTag"
+	UnindexedFieldURITypeNetworkFirstAuthErrorDates              UnindexedFieldURIType = "network:FirstAuthErrorDates"
+	UnindexedFieldURITypeNetworkErrorOffers                      UnindexedFieldURIType = "network:ErrorOffers"
+	UnindexedFieldURITypeNetworkContactSyncSuccess               UnindexedFieldURIType = "network:ContactSyncSuccess"
+	UnindexedFieldURITypeNetworkContactSyncError                 UnindexedFieldURIType = "network:ContactSyncError"
+	UnindexedFieldURITypeNetworkClientToken2                     UnindexedFieldURIType = "network:ClientToken2"
+	UnindexedFieldURITypeNetworkClientToken                      UnindexedFieldURIType = "network:ClientToken"
+	UnindexedFieldURITypeNetworkClientPublishSecret              UnindexedFieldURIType = "network:ClientPublishSecret"
+	UnindexedFieldURITypeNetworkUserEmail                        UnindexedFieldURIType = "network:UserEmail"
+	UnindexedFieldURITypeNetworkAutoLinkSuccess                  UnindexedFieldURIType = "network:AutoLinkSuccess"
+	UnindexedFieldURITypeNetworkAutoLinkError                    UnindexedFieldURIType = "network:AutoLinkError"
+	UnindexedFieldURITypeNetworkIsDefault                        UnindexedFieldURIType = "network:IsDefault"
+	UnindexedFieldURITypeNetworkSettings                         UnindexedFieldURIType = "network:Settings"
+	UnindexedFieldURITypeNetworkProfileUrl                       UnindexedFieldURIType = "network:ProfileUrl"
+	UnindexedFieldURITypeNetworkUserTileUrl                      UnindexedFieldURIType = "network:UserTileUrl"
+	UnindexedFieldURITypeNetworkDomainId                         UnindexedFieldURIType = "network:DomainId"
+	UnindexedFieldURITypeNetworkDisplayName                      UnindexedFieldURIType = "network:DisplayName"
+	UnindexedFieldURITypeNetworkAccountName                      UnindexedFieldURIType = "network:AccountName"
+	UnindexedFieldURITypeNetworkSourceEntryID                    UnindexedFieldURIType = "network:SourceEntryID"
+	UnindexedFieldURITypeAbchpersonFavoriteOrder                 UnindexedFieldURIType = "abchperson:FavoriteOrder"
+	UnindexedFieldURITypeAbchpersonPersonId                      UnindexedFieldURIType = "abchperson:PersonId"
+	UnindexedFieldURITypeAbchpersonExchangePersonIdGuid          UnindexedFieldURIType = "abchperson:ExchangePersonIdGuid"
+	UnindexedFieldURITypeAbchpersonAntiLinkInfo                  UnindexedFieldURIType = "abchperson:AntiLinkInfo"
+	UnindexedFieldURITypeAbchpersonRelevanceOrder1               UnindexedFieldURIType = "abchperson:RelevanceOrder1"
+	UnindexedFieldURITypeAbchpersonRelevanceOrder2               UnindexedFieldURIType = "abchperson:RelevanceOrder2"
+	UnindexedFieldURITypeAbchpersonContactHandles                UnindexedFieldURIType = "abchperson:ContactHandles"
+	UnindexedFieldURITypeAbchpersonCategories                    UnindexedFieldURIType = "abchperson:Categories"
+	UnindexedFieldURITypeBookingServiceIds                       UnindexedFieldURIType = "booking:ServiceIds"
+	UnindexedFieldURITypeBookingStaffIds                         UnindexedFieldURIType = "booking:StaffIds"
+	UnindexedFieldURITypeBookingStaffInitials                    UnindexedFieldURIType = "booking:StaffInitials"
+	UnindexedFieldURITypeBookingCustomerName                     UnindexedFieldURIType = "booking:CustomerName"
+	UnindexedFieldURITypeBookingCustomerEmail                    UnindexedFieldURIType = "booking:CustomerEmail"
+	UnindexedFieldURITypeBookingCustomerPhone                    UnindexedFieldURIType = "booking:CustomerPhone"
+	UnindexedFieldURITypeBookingCustomerId                       UnindexedFieldURIType = "booking:CustomerId"
+	UnindexedFieldURITypeInsightInsightId                        UnindexedFieldURIType = "insight:InsightId"
+	UnindexedFieldURITypeInsightType                             UnindexedFieldURIType = "insight:Type"
+	UnindexedFieldURITypeInsightStartTimeUtc                     UnindexedFieldURIType = "insight:StartTimeUtc"
+	UnindexedFieldURITypeInsightEndTimeUtc                       UnindexedFieldURIType = "insight:EndTimeUtc"
+	UnindexedFieldURITypeInsightStatus                           UnindexedFieldURIType = "insight:Status"
+	UnindexedFieldURITypeInsightVersion                          UnindexedFieldURIType = "insight:Version"
+	UnindexedFieldURITypeInsightApplicationsIds                  UnindexedFieldURIType = "insight:ApplicationsIds"
+	UnindexedFieldURITypeInsightText                             UnindexedFieldURIType = "insight:Text"
+	UnindexedFieldURITypeInsightSuggestedActions                 UnindexedFieldURIType = "insight:SuggestedActions"
+	UnindexedFieldURITypeInsightAppContexts                      UnindexedFieldURIType = "insight:AppContexts"
+)
+
+type DictionaryURIType XsString
+
+const (
+	DictionaryURITypeItemInternetMessageHeader              DictionaryURIType = "item:InternetMessageHeader"
+	DictionaryURITypeContactsImAddress                      DictionaryURIType = "contacts:ImAddress"
+	DictionaryURITypeContactsPhysicalAddressStreet          DictionaryURIType = "contacts:PhysicalAddress:Street"
+	DictionaryURITypeContactsPhysicalAddressCity            DictionaryURIType = "contacts:PhysicalAddress:City"
+	DictionaryURITypeContactsPhysicalAddressState           DictionaryURIType = "contacts:PhysicalAddress:State"
+	DictionaryURITypeContactsPhysicalAddressCountryOrRegion DictionaryURIType = "contacts:PhysicalAddress:CountryOrRegion"
+	DictionaryURITypeContactsPhysicalAddressPostalCode      DictionaryURIType = "contacts:PhysicalAddress:PostalCode"
+	DictionaryURITypeContactsPhoneNumber                    DictionaryURIType = "contacts:PhoneNumber"
+	DictionaryURITypeContactsEmailAddress                   DictionaryURIType = "contacts:EmailAddress"
+	DictionaryURITypeDistributionlistMembersMember          DictionaryURIType = "distributionlist:Members:Member"
+)
+
+type ExcludesAttributeType XsString
+
+type ContainmentModeType XsString
+
+const (
+	ContainmentModeTypeFullString    ContainmentModeType = "FullString"
+	ContainmentModeTypePrefixed      ContainmentModeType = "Prefixed"
+	ContainmentModeTypeSubstring     ContainmentModeType = "Substring"
+	ContainmentModeTypePrefixOnWords ContainmentModeType = "PrefixOnWords"
+	ContainmentModeTypeExactPhrase   ContainmentModeType = "ExactPhrase"
+)
+
+type ContainmentComparisonType XsString
+
+const (
+	ContainmentComparisonTypeExact                               ContainmentComparisonType = "Exact"
+	ContainmentComparisonTypeIgnoreCase                          ContainmentComparisonType = "IgnoreCase"
+	ContainmentComparisonTypeIgnoreNonSpacingCharacters          ContainmentComparisonType = "IgnoreNonSpacingCharacters"
+	ContainmentComparisonTypeLoose                               ContainmentComparisonType = "Loose"
+	ContainmentComparisonTypeIgnoreCaseAndNonSpacingCharacters   ContainmentComparisonType = "IgnoreCaseAndNonSpacingCharacters"
+	ContainmentComparisonTypeLooseAndIgnoreCase                  ContainmentComparisonType = "LooseAndIgnoreCase"
+	ContainmentComparisonTypeLooseAndIgnoreNonSpace              ContainmentComparisonType = "LooseAndIgnoreNonSpace"
+	ContainmentComparisonTypeLooseAndIgnoreCaseAndIgnoreNonSpace ContainmentComparisonType = "LooseAndIgnoreCaseAndIgnoreNonSpace"
+)
+
 type SearchFolderTraversalType XsString
 
 const (
@@ -1732,536 +1751,6 @@ type SortDirectionType XsString
 const (
 	SortDirectionTypeAscending  SortDirectionType = "Ascending"
 	SortDirectionTypeDescending SortDirectionType = "Descending"
-)
-
-type UnindexedFieldURIType XsString
-
-const (
-	UnindexedFieldURITypeFfolderFolderId                          UnindexedFieldURIType = "folder:FolderId"
-	UnindexedFieldURITypeFfolderParentFolderId                    UnindexedFieldURIType = "folder:ParentFolderId"
-	UnindexedFieldURITypeFfolderDisplayName                       UnindexedFieldURIType = "folder:DisplayName"
-	UnindexedFieldURITypeFfolderUnreadCount                       UnindexedFieldURIType = "folder:UnreadCount"
-	UnindexedFieldURITypeFfolderTotalCount                        UnindexedFieldURIType = "folder:TotalCount"
-	UnindexedFieldURITypeFfolderChildFolderCount                  UnindexedFieldURIType = "folder:ChildFolderCount"
-	UnindexedFieldURITypeFfolderFolderClass                       UnindexedFieldURIType = "folder:FolderClass"
-	UnindexedFieldURITypeFfolderSearchParameters                  UnindexedFieldURIType = "folder:SearchParameters"
-	UnindexedFieldURITypeFfolderManagedFolderInformation          UnindexedFieldURIType = "folder:ManagedFolderInformation"
-	UnindexedFieldURITypeFfolderPermissionSet                     UnindexedFieldURIType = "folder:PermissionSet"
-	UnindexedFieldURITypeFfolderEffectiveRights                   UnindexedFieldURIType = "folder:EffectiveRights"
-	UnindexedFieldURITypeFfolderSharingEffectiveRights            UnindexedFieldURIType = "folder:SharingEffectiveRights"
-	UnindexedFieldURITypeFfolderDistinguishedFolderId             UnindexedFieldURIType = "folder:DistinguishedFolderId"
-	UnindexedFieldURITypeFfolderPolicyTag                         UnindexedFieldURIType = "folder:PolicyTag"
-	UnindexedFieldURITypeFfolderArchiveTag                        UnindexedFieldURIType = "folder:ArchiveTag"
-	UnindexedFieldURITypeFfolderReplicaList                       UnindexedFieldURIType = "folder:ReplicaList"
-	UnindexedFieldURITypeIitemItemId                              UnindexedFieldURIType = "item:ItemId"
-	UnindexedFieldURITypeIitemParentFolderId                      UnindexedFieldURIType = "item:ParentFolderId"
-	UnindexedFieldURITypeIitemItemClass                           UnindexedFieldURIType = "item:ItemClass"
-	UnindexedFieldURITypeIitemMimeContent                         UnindexedFieldURIType = "item:MimeContent"
-	UnindexedFieldURITypeIitemAttachments                         UnindexedFieldURIType = "item:Attachments"
-	UnindexedFieldURITypeIitemSubject                             UnindexedFieldURIType = "item:Subject"
-	UnindexedFieldURITypeIitemDateTimeReceived                    UnindexedFieldURIType = "item:DateTimeReceived"
-	UnindexedFieldURITypeIitemSize                                UnindexedFieldURIType = "item:Size"
-	UnindexedFieldURITypeIitemCategories                          UnindexedFieldURIType = "item:Categories"
-	UnindexedFieldURITypeIitemHasAttachments                      UnindexedFieldURIType = "item:HasAttachments"
-	UnindexedFieldURITypeIitemImportance                          UnindexedFieldURIType = "item:Importance"
-	UnindexedFieldURITypeIitemInReplyTo                           UnindexedFieldURIType = "item:InReplyTo"
-	UnindexedFieldURITypeIitemInternetMessageHeaders              UnindexedFieldURIType = "item:InternetMessageHeaders"
-	UnindexedFieldURITypeIitemIsAssociated                        UnindexedFieldURIType = "item:IsAssociated"
-	UnindexedFieldURITypeIitemIsDraft                             UnindexedFieldURIType = "item:IsDraft"
-	UnindexedFieldURITypeIitemIsFromMe                            UnindexedFieldURIType = "item:IsFromMe"
-	UnindexedFieldURITypeIitemIsResend                            UnindexedFieldURIType = "item:IsResend"
-	UnindexedFieldURITypeIitemIsSubmitted                         UnindexedFieldURIType = "item:IsSubmitted"
-	UnindexedFieldURITypeIitemIsUnmodified                        UnindexedFieldURIType = "item:IsUnmodified"
-	UnindexedFieldURITypeIitemDateTimeSent                        UnindexedFieldURIType = "item:DateTimeSent"
-	UnindexedFieldURITypeIitemDateTimeCreated                     UnindexedFieldURIType = "item:DateTimeCreated"
-	UnindexedFieldURITypeIitemBody                                UnindexedFieldURIType = "item:Body"
-	UnindexedFieldURITypeIitemResponseObjects                     UnindexedFieldURIType = "item:ResponseObjects"
-	UnindexedFieldURITypeIitemSensitivity                         UnindexedFieldURIType = "item:Sensitivity"
-	UnindexedFieldURITypeIitemReminderDueBy                       UnindexedFieldURIType = "item:ReminderDueBy"
-	UnindexedFieldURITypeIitemReminderIsSet                       UnindexedFieldURIType = "item:ReminderIsSet"
-	UnindexedFieldURITypeIitemReminderNextTime                    UnindexedFieldURIType = "item:ReminderNextTime"
-	UnindexedFieldURITypeIitemReminderMinutesBeforeStart          UnindexedFieldURIType = "item:ReminderMinutesBeforeStart"
-	UnindexedFieldURITypeIitemDisplayTo                           UnindexedFieldURIType = "item:DisplayTo"
-	UnindexedFieldURITypeIitemDisplayCc                           UnindexedFieldURIType = "item:DisplayCc"
-	UnindexedFieldURITypeIitemDisplayBcc                          UnindexedFieldURIType = "item:DisplayBcc"
-	UnindexedFieldURITypeIitemCulture                             UnindexedFieldURIType = "item:Culture"
-	UnindexedFieldURITypeIitemEffectiveRights                     UnindexedFieldURIType = "item:EffectiveRights"
-	UnindexedFieldURITypeIitemLastModifiedName                    UnindexedFieldURIType = "item:LastModifiedName"
-	UnindexedFieldURITypeIitemLastModifiedTime                    UnindexedFieldURIType = "item:LastModifiedTime"
-	UnindexedFieldURITypeIitemConversationId                      UnindexedFieldURIType = "item:ConversationId"
-	UnindexedFieldURITypeIitemUniqueBody                          UnindexedFieldURIType = "item:UniqueBody"
-	UnindexedFieldURITypeIitemFlag                                UnindexedFieldURIType = "item:Flag"
-	UnindexedFieldURITypeIitemStoreEntryId                        UnindexedFieldURIType = "item:StoreEntryId"
-	UnindexedFieldURITypeIitemInstanceKey                         UnindexedFieldURIType = "item:InstanceKey"
-	UnindexedFieldURITypeIitemNormalizedBody                      UnindexedFieldURIType = "item:NormalizedBody"
-	UnindexedFieldURITypeIitemEntityExtractionResult              UnindexedFieldURIType = "item:EntityExtractionResult"
-	UnindexedFieldURITypeIitemPolicyTag                           UnindexedFieldURIType = "item:PolicyTag"
-	UnindexedFieldURITypeIitemArchiveTag                          UnindexedFieldURIType = "item:ArchiveTag"
-	UnindexedFieldURITypeIitemRetentionDate                       UnindexedFieldURIType = "item:RetentionDate"
-	UnindexedFieldURITypeIitemPreview                             UnindexedFieldURIType = "item:Preview"
-	UnindexedFieldURITypeIitemPredictedActionReasons              UnindexedFieldURIType = "item:PredictedActionReasons"
-	UnindexedFieldURITypeIitemIsClutter                           UnindexedFieldURIType = "item:IsClutter"
-	UnindexedFieldURITypeIitemRightsManagementLicenseData         UnindexedFieldURIType = "item:RightsManagementLicenseData"
-	UnindexedFieldURITypeIitemBlockStatus                         UnindexedFieldURIType = "item:BlockStatus"
-	UnindexedFieldURITypeIitemHasBlockedImages                    UnindexedFieldURIType = "item:HasBlockedImages"
-	UnindexedFieldURITypeIitemWebClientReadFormQueryString        UnindexedFieldURIType = "item:WebClientReadFormQueryString"
-	UnindexedFieldURITypeIitemWebClientEditFormQueryString        UnindexedFieldURIType = "item:WebClientEditFormQueryString"
-	UnindexedFieldURITypeIitemTextBody                            UnindexedFieldURIType = "item:TextBody"
-	UnindexedFieldURITypeIitemIconIndex                           UnindexedFieldURIType = "item:IconIndex"
-	UnindexedFieldURITypeIitemMimeContentUTF8                     UnindexedFieldURIType = "item:MimeContentUTF8"
-	UnindexedFieldURITypeIitemMentions                            UnindexedFieldURIType = "item:Mentions"
-	UnindexedFieldURITypeIitemMentionedMe                         UnindexedFieldURIType = "item:MentionedMe"
-	UnindexedFieldURITypeIitemMentionsPreview                     UnindexedFieldURIType = "item:MentionsPreview"
-	UnindexedFieldURITypeIitemMentionsEx                          UnindexedFieldURIType = "item:MentionsEx"
-	UnindexedFieldURITypeIitemHashtags                            UnindexedFieldURIType = "item:Hashtags"
-	UnindexedFieldURITypeIitemAppliedHashtags                     UnindexedFieldURIType = "item:AppliedHashtags"
-	UnindexedFieldURITypeIitemAppliedHashtagsPreview              UnindexedFieldURIType = "item:AppliedHashtagsPreview"
-	UnindexedFieldURITypeIitemLikes                               UnindexedFieldURIType = "item:Likes"
-	UnindexedFieldURITypeIitemLikesPreview                        UnindexedFieldURIType = "item:LikesPreview"
-	UnindexedFieldURITypeIitemPendingSocialActivityTagIds         UnindexedFieldURIType = "item:PendingSocialActivityTagIds"
-	UnindexedFieldURITypeIitemAtAllMention                        UnindexedFieldURIType = "item:AtAllMention"
-	UnindexedFieldURITypeIitemCanDelete                           UnindexedFieldURIType = "item:CanDelete"
-	UnindexedFieldURITypeIitemInferenceClassification             UnindexedFieldURIType = "item:InferenceClassification"
-	UnindexedFieldURITypeIitemFirstBody                           UnindexedFieldURIType = "item:FirstBody"
-	UnindexedFieldURITypeMmessageConversationIndex                UnindexedFieldURIType = "message:ConversationIndex"
-	UnindexedFieldURITypeMmessageConversationTopic                UnindexedFieldURIType = "message:ConversationTopic"
-	UnindexedFieldURITypeMmessageInternetMessageId                UnindexedFieldURIType = "message:InternetMessageId"
-	UnindexedFieldURITypeMmessageIsRead                           UnindexedFieldURIType = "message:IsRead"
-	UnindexedFieldURITypeMmessageIsResponseRequested              UnindexedFieldURIType = "message:IsResponseRequested"
-	UnindexedFieldURITypeMmessageIsReadReceiptRequested           UnindexedFieldURIType = "message:IsReadReceiptRequested"
-	UnindexedFieldURITypeMmessageIsDeliveryReceiptRequested       UnindexedFieldURIType = "message:IsDeliveryReceiptRequested"
-	UnindexedFieldURITypeMmessageReceivedBy                       UnindexedFieldURIType = "message:ReceivedBy"
-	UnindexedFieldURITypeMmessageReceivedRepresenting             UnindexedFieldURIType = "message:ReceivedRepresenting"
-	UnindexedFieldURITypeMmessageReferences                       UnindexedFieldURIType = "message:References"
-	UnindexedFieldURITypeMmessageReplyTo                          UnindexedFieldURIType = "message:ReplyTo"
-	UnindexedFieldURITypeMmessageFrom                             UnindexedFieldURIType = "message:From"
-	UnindexedFieldURITypeMmessageSender                           UnindexedFieldURIType = "message:Sender"
-	UnindexedFieldURITypeMmessageToRecipients                     UnindexedFieldURIType = "message:ToRecipients"
-	UnindexedFieldURITypeMmessageCcRecipients                     UnindexedFieldURIType = "message:CcRecipients"
-	UnindexedFieldURITypeMmessageBccRecipients                    UnindexedFieldURIType = "message:BccRecipients"
-	UnindexedFieldURITypeMmessageApprovalRequestData              UnindexedFieldURIType = "message:ApprovalRequestData"
-	UnindexedFieldURITypeMmessageVotingInformation                UnindexedFieldURIType = "message:VotingInformation"
-	UnindexedFieldURITypeMmessageReminderMessageData              UnindexedFieldURIType = "message:ReminderMessageData"
-	UnindexedFieldURITypeMmessagePublishedCalendarItemIcs         UnindexedFieldURIType = "message:PublishedCalendarItemIcs"
-	UnindexedFieldURITypeMmessagePublishedCalendarItemName        UnindexedFieldURIType = "message:PublishedCalendarItemName"
-	UnindexedFieldURITypeMmessageMessageSafety                    UnindexedFieldURIType = "message:MessageSafety"
-	UnindexedFieldURITypeSsharingMessageSharingMessageAction      UnindexedFieldURIType = "sharingMessage:SharingMessageAction"
-	UnindexedFieldURITypeMmeetingAssociatedCalendarItemId         UnindexedFieldURIType = "meeting:AssociatedCalendarItemId"
-	UnindexedFieldURITypeMmeetingIsDelegated                      UnindexedFieldURIType = "meeting:IsDelegated"
-	UnindexedFieldURITypeMmeetingIsOutOfDate                      UnindexedFieldURIType = "meeting:IsOutOfDate"
-	UnindexedFieldURITypeMmeetingHasBeenProcessed                 UnindexedFieldURIType = "meeting:HasBeenProcessed"
-	UnindexedFieldURITypeMmeetingResponseType                     UnindexedFieldURIType = "meeting:ResponseType"
-	UnindexedFieldURITypeMmeetingProposedStart                    UnindexedFieldURIType = "meeting:ProposedStart"
-	UnindexedFieldURITypeMmeetingProposedEnd                      UnindexedFieldURIType = "meeting:ProposedEnd"
-	UnindexedFieldURITypeMmeetingDoNotForwardMeeting              UnindexedFieldURIType = "meeting:DoNotForwardMeeting"
-	UnindexedFieldURITypeMmeetingRequestMeetingRequestType        UnindexedFieldURIType = "meetingRequest:MeetingRequestType"
-	UnindexedFieldURITypeMmeetingRequestIntendedFreeBusyStatus    UnindexedFieldURIType = "meetingRequest:IntendedFreeBusyStatus"
-	UnindexedFieldURITypeMmeetingRequestChangeHighlights          UnindexedFieldURIType = "meetingRequest:ChangeHighlights"
-	UnindexedFieldURITypeCcalendarStart                           UnindexedFieldURIType = "calendar:Start"
-	UnindexedFieldURITypeCcalendarEnd                             UnindexedFieldURIType = "calendar:End"
-	UnindexedFieldURITypeCcalendarOriginalStart                   UnindexedFieldURIType = "calendar:OriginalStart"
-	UnindexedFieldURITypeCcalendarStartWallClock                  UnindexedFieldURIType = "calendar:StartWallClock"
-	UnindexedFieldURITypeCcalendarEndWallClock                    UnindexedFieldURIType = "calendar:EndWallClock"
-	UnindexedFieldURITypeCcalendarStartTimeZoneId                 UnindexedFieldURIType = "calendar:StartTimeZoneId"
-	UnindexedFieldURITypeCcalendarEndTimeZoneId                   UnindexedFieldURIType = "calendar:EndTimeZoneId"
-	UnindexedFieldURITypeCcalendarIsAllDayEvent                   UnindexedFieldURIType = "calendar:IsAllDayEvent"
-	UnindexedFieldURITypeCcalendarLegacyFreeBusyStatus            UnindexedFieldURIType = "calendar:LegacyFreeBusyStatus"
-	UnindexedFieldURITypeCcalendarLocation                        UnindexedFieldURIType = "calendar:Location"
-	UnindexedFieldURITypeCcalendarEnhancedLocation                UnindexedFieldURIType = "calendar:EnhancedLocation"
-	UnindexedFieldURITypeCcalendarWhen                            UnindexedFieldURIType = "calendar:When"
-	UnindexedFieldURITypeCcalendarIsMeeting                       UnindexedFieldURIType = "calendar:IsMeeting"
-	UnindexedFieldURITypeCcalendarIsCancelled                     UnindexedFieldURIType = "calendar:IsCancelled"
-	UnindexedFieldURITypeCcalendarIsRecurring                     UnindexedFieldURIType = "calendar:IsRecurring"
-	UnindexedFieldURITypeCcalendarMeetingRequestWasSent           UnindexedFieldURIType = "calendar:MeetingRequestWasSent"
-	UnindexedFieldURITypeCcalendarIsResponseRequested             UnindexedFieldURIType = "calendar:IsResponseRequested"
-	UnindexedFieldURITypeCcalendarCalendarItemType                UnindexedFieldURIType = "calendar:CalendarItemType"
-	UnindexedFieldURITypeCcalendarMyResponseType                  UnindexedFieldURIType = "calendar:MyResponseType"
-	UnindexedFieldURITypeCcalendarOrganizer                       UnindexedFieldURIType = "calendar:Organizer"
-	UnindexedFieldURITypeCcalendarRequiredAttendees               UnindexedFieldURIType = "calendar:RequiredAttendees"
-	UnindexedFieldURITypeCcalendarOptionalAttendees               UnindexedFieldURIType = "calendar:OptionalAttendees"
-	UnindexedFieldURITypeCcalendarResources                       UnindexedFieldURIType = "calendar:Resources"
-	UnindexedFieldURITypeCcalendarConflictingMeetingCount         UnindexedFieldURIType = "calendar:ConflictingMeetingCount"
-	UnindexedFieldURITypeCcalendarAdjacentMeetingCount            UnindexedFieldURIType = "calendar:AdjacentMeetingCount"
-	UnindexedFieldURITypeCcalendarConflictingMeetings             UnindexedFieldURIType = "calendar:ConflictingMeetings"
-	UnindexedFieldURITypeCcalendarAdjacentMeetings                UnindexedFieldURIType = "calendar:AdjacentMeetings"
-	UnindexedFieldURITypeCcalendarInboxReminders                  UnindexedFieldURIType = "calendar:InboxReminders"
-	UnindexedFieldURITypeCcalendarDuration                        UnindexedFieldURIType = "calendar:Duration"
-	UnindexedFieldURITypeCcalendarTimeZone                        UnindexedFieldURIType = "calendar:TimeZone"
-	UnindexedFieldURITypeCcalendarAppointmentReplyTime            UnindexedFieldURIType = "calendar:AppointmentReplyTime"
-	UnindexedFieldURITypeCcalendarAppointmentSequenceNumber       UnindexedFieldURIType = "calendar:AppointmentSequenceNumber"
-	UnindexedFieldURITypeCcalendarAppointmentState                UnindexedFieldURIType = "calendar:AppointmentState"
-	UnindexedFieldURITypeCcalendarRecurrence                      UnindexedFieldURIType = "calendar:Recurrence"
-	UnindexedFieldURITypeCcalendarFirstOccurrence                 UnindexedFieldURIType = "calendar:FirstOccurrence"
-	UnindexedFieldURITypeCcalendarLastOccurrence                  UnindexedFieldURIType = "calendar:LastOccurrence"
-	UnindexedFieldURITypeCcalendarModifiedOccurrences             UnindexedFieldURIType = "calendar:ModifiedOccurrences"
-	UnindexedFieldURITypeCcalendarDeletedOccurrences              UnindexedFieldURIType = "calendar:DeletedOccurrences"
-	UnindexedFieldURITypeCcalendarMeetingTimeZone                 UnindexedFieldURIType = "calendar:MeetingTimeZone"
-	UnindexedFieldURITypeCcalendarConferenceType                  UnindexedFieldURIType = "calendar:ConferenceType"
-	UnindexedFieldURITypeCcalendarAllowNewTimeProposal            UnindexedFieldURIType = "calendar:AllowNewTimeProposal"
-	UnindexedFieldURITypeCcalendarIsOnlineMeeting                 UnindexedFieldURIType = "calendar:IsOnlineMeeting"
-	UnindexedFieldURITypeCcalendarMeetingWorkspaceUrl             UnindexedFieldURIType = "calendar:MeetingWorkspaceUrl"
-	UnindexedFieldURITypeCcalendarNetShowUrl                      UnindexedFieldURIType = "calendar:NetShowUrl"
-	UnindexedFieldURITypeCcalendarUID                             UnindexedFieldURIType = "calendar:UID"
-	UnindexedFieldURITypeCcalendarRecurrenceId                    UnindexedFieldURIType = "calendar:RecurrenceId"
-	UnindexedFieldURITypeCcalendarDateTimeStamp                   UnindexedFieldURIType = "calendar:DateTimeStamp"
-	UnindexedFieldURITypeCcalendarStartTimeZone                   UnindexedFieldURIType = "calendar:StartTimeZone"
-	UnindexedFieldURITypeCcalendarEndTimeZone                     UnindexedFieldURIType = "calendar:EndTimeZone"
-	UnindexedFieldURITypeCcalendarJoinOnlineMeetingUrl            UnindexedFieldURIType = "calendar:JoinOnlineMeetingUrl"
-	UnindexedFieldURITypeCcalendarOnlineMeetingSettings           UnindexedFieldURIType = "calendar:OnlineMeetingSettings"
-	UnindexedFieldURITypeCcalendarIsOrganizer                     UnindexedFieldURIType = "calendar:IsOrganizer"
-	UnindexedFieldURITypeCcalendarCalendarActivityData            UnindexedFieldURIType = "calendar:CalendarActivityData"
-	UnindexedFieldURITypeCcalendarDoNotForwardMeeting             UnindexedFieldURIType = "calendar:DoNotForwardMeeting"
-	UnindexedFieldURITypeTtaskActualWork                          UnindexedFieldURIType = "task:ActualWork"
-	UnindexedFieldURITypeTtaskAssignedTime                        UnindexedFieldURIType = "task:AssignedTime"
-	UnindexedFieldURITypeTtaskBillingInformation                  UnindexedFieldURIType = "task:BillingInformation"
-	UnindexedFieldURITypeTtaskChangeCount                         UnindexedFieldURIType = "task:ChangeCount"
-	UnindexedFieldURITypeTtaskCompanies                           UnindexedFieldURIType = "task:Companies"
-	UnindexedFieldURITypeTtaskCompleteDate                        UnindexedFieldURIType = "task:CompleteDate"
-	UnindexedFieldURITypeTtaskContacts                            UnindexedFieldURIType = "task:Contacts"
-	UnindexedFieldURITypeTtaskDelegationState                     UnindexedFieldURIType = "task:DelegationState"
-	UnindexedFieldURITypeTtaskDelegator                           UnindexedFieldURIType = "task:Delegator"
-	UnindexedFieldURITypeTtaskDueDate                             UnindexedFieldURIType = "task:DueDate"
-	UnindexedFieldURITypeTtaskIsAssignmentEditable                UnindexedFieldURIType = "task:IsAssignmentEditable"
-	UnindexedFieldURITypeTtaskIsComplete                          UnindexedFieldURIType = "task:IsComplete"
-	UnindexedFieldURITypeTtaskIsRecurring                         UnindexedFieldURIType = "task:IsRecurring"
-	UnindexedFieldURITypeTtaskIsTeamTask                          UnindexedFieldURIType = "task:IsTeamTask"
-	UnindexedFieldURITypeTtaskMileage                             UnindexedFieldURIType = "task:Mileage"
-	UnindexedFieldURITypeTtaskOwner                               UnindexedFieldURIType = "task:Owner"
-	UnindexedFieldURITypeTtaskPercentComplete                     UnindexedFieldURIType = "task:PercentComplete"
-	UnindexedFieldURITypeTtaskRecurrence                          UnindexedFieldURIType = "task:Recurrence"
-	UnindexedFieldURITypeTtaskStartDate                           UnindexedFieldURIType = "task:StartDate"
-	UnindexedFieldURITypeTtaskStatus                              UnindexedFieldURIType = "task:Status"
-	UnindexedFieldURITypeTtaskStatusDescription                   UnindexedFieldURIType = "task:StatusDescription"
-	UnindexedFieldURITypeTtaskTotalWork                           UnindexedFieldURIType = "task:TotalWork"
-	UnindexedFieldURITypeCcontactsAlias                           UnindexedFieldURIType = "contacts:Alias"
-	UnindexedFieldURITypeCcontactsAssistantName                   UnindexedFieldURIType = "contacts:AssistantName"
-	UnindexedFieldURITypeCcontactsBirthday                        UnindexedFieldURIType = "contacts:Birthday"
-	UnindexedFieldURITypeCcontactsBusinessHomePage                UnindexedFieldURIType = "contacts:BusinessHomePage"
-	UnindexedFieldURITypeCcontactsChildren                        UnindexedFieldURIType = "contacts:Children"
-	UnindexedFieldURITypeCcontactsCompanies                       UnindexedFieldURIType = "contacts:Companies"
-	UnindexedFieldURITypeCcontactsCompanyName                     UnindexedFieldURIType = "contacts:CompanyName"
-	UnindexedFieldURITypeCcontactsCompleteName                    UnindexedFieldURIType = "contacts:CompleteName"
-	UnindexedFieldURITypeCcontactsContactSource                   UnindexedFieldURIType = "contacts:ContactSource"
-	UnindexedFieldURITypeCcontactsCulture                         UnindexedFieldURIType = "contacts:Culture"
-	UnindexedFieldURITypeCcontactsDepartment                      UnindexedFieldURIType = "contacts:Department"
-	UnindexedFieldURITypeCcontactsDisplayName                     UnindexedFieldURIType = "contacts:DisplayName"
-	UnindexedFieldURITypeCcontactsDirectoryId                     UnindexedFieldURIType = "contacts:DirectoryId"
-	UnindexedFieldURITypeCcontactsDirectReports                   UnindexedFieldURIType = "contacts:DirectReports"
-	UnindexedFieldURITypeCcontactsEmailAddresses                  UnindexedFieldURIType = "contacts:EmailAddresses"
-	UnindexedFieldURITypeCcontactsAbchEmailAddresses              UnindexedFieldURIType = "contacts:AbchEmailAddresses"
-	UnindexedFieldURITypeCcontactsFileAs                          UnindexedFieldURIType = "contacts:FileAs"
-	UnindexedFieldURITypeCcontactsFileAsMapping                   UnindexedFieldURIType = "contacts:FileAsMapping"
-	UnindexedFieldURITypeCcontactsGeneration                      UnindexedFieldURIType = "contacts:Generation"
-	UnindexedFieldURITypeCcontactsGivenName                       UnindexedFieldURIType = "contacts:GivenName"
-	UnindexedFieldURITypeCcontactsImAddresses                     UnindexedFieldURIType = "contacts:ImAddresses"
-	UnindexedFieldURITypeCcontactsInitials                        UnindexedFieldURIType = "contacts:Initials"
-	UnindexedFieldURITypeCcontactsJobTitle                        UnindexedFieldURIType = "contacts:JobTitle"
-	UnindexedFieldURITypeCcontactsManager                         UnindexedFieldURIType = "contacts:Manager"
-	UnindexedFieldURITypeCcontactsManagerMailbox                  UnindexedFieldURIType = "contacts:ManagerMailbox"
-	UnindexedFieldURITypeCcontactsMiddleName                      UnindexedFieldURIType = "contacts:MiddleName"
-	UnindexedFieldURITypeCcontactsMileage                         UnindexedFieldURIType = "contacts:Mileage"
-	UnindexedFieldURITypeCcontactsMSExchangeCertificate           UnindexedFieldURIType = "contacts:MSExchangeCertificate"
-	UnindexedFieldURITypeCcontactsNickname                        UnindexedFieldURIType = "contacts:Nickname"
-	UnindexedFieldURITypeCcontactsNotes                           UnindexedFieldURIType = "contacts:Notes"
-	UnindexedFieldURITypeCcontactsOfficeLocation                  UnindexedFieldURIType = "contacts:OfficeLocation"
-	UnindexedFieldURITypeCcontactsPhoneNumbers                    UnindexedFieldURIType = "contacts:PhoneNumbers"
-	UnindexedFieldURITypeCcontactsPhoneticFullName                UnindexedFieldURIType = "contacts:PhoneticFullName"
-	UnindexedFieldURITypeCcontactsPhoneticFirstName               UnindexedFieldURIType = "contacts:PhoneticFirstName"
-	UnindexedFieldURITypeCcontactsPhoneticLastName                UnindexedFieldURIType = "contacts:PhoneticLastName"
-	UnindexedFieldURITypeCcontactsPhoto                           UnindexedFieldURIType = "contacts:Photo"
-	UnindexedFieldURITypeCcontactsPhysicalAddresses               UnindexedFieldURIType = "contacts:PhysicalAddresses"
-	UnindexedFieldURITypeCcontactsPostalAddressIndex              UnindexedFieldURIType = "contacts:PostalAddressIndex"
-	UnindexedFieldURITypeCcontactsProfession                      UnindexedFieldURIType = "contacts:Profession"
-	UnindexedFieldURITypeCcontactsSpouseName                      UnindexedFieldURIType = "contacts:SpouseName"
-	UnindexedFieldURITypeCcontactsSurname                         UnindexedFieldURIType = "contacts:Surname"
-	UnindexedFieldURITypeCcontactsWeddingAnniversary              UnindexedFieldURIType = "contacts:WeddingAnniversary"
-	UnindexedFieldURITypeCcontactsUserSMIMECertificate            UnindexedFieldURIType = "contacts:UserSMIMECertificate"
-	UnindexedFieldURITypeCcontactsHasPicture                      UnindexedFieldURIType = "contacts:HasPicture"
-	UnindexedFieldURITypeCcontactsAccountName                     UnindexedFieldURIType = "contacts:AccountName"
-	UnindexedFieldURITypeCcontactsIsAutoUpdateDisabled            UnindexedFieldURIType = "contacts:IsAutoUpdateDisabled"
-	UnindexedFieldURITypeCcontactsIsMessengerEnabled              UnindexedFieldURIType = "contacts:IsMessengerEnabled"
-	UnindexedFieldURITypeCcontactsComment                         UnindexedFieldURIType = "contacts:Comment"
-	UnindexedFieldURITypeCcontactsContactShortId                  UnindexedFieldURIType = "contacts:ContactShortId"
-	UnindexedFieldURITypeCcontactsContactType                     UnindexedFieldURIType = "contacts:ContactType"
-	UnindexedFieldURITypeCcontactsCreatedBy                       UnindexedFieldURIType = "contacts:CreatedBy"
-	UnindexedFieldURITypeCcontactsGender                          UnindexedFieldURIType = "contacts:Gender"
-	UnindexedFieldURITypeCcontactsIsHidden                        UnindexedFieldURIType = "contacts:IsHidden"
-	UnindexedFieldURITypeCcontactsObjectId                        UnindexedFieldURIType = "contacts:ObjectId"
-	UnindexedFieldURITypeCcontactsPassportId                      UnindexedFieldURIType = "contacts:PassportId"
-	UnindexedFieldURITypeCcontactsIsPrivate                       UnindexedFieldURIType = "contacts:IsPrivate"
-	UnindexedFieldURITypeCcontactsSourceId                        UnindexedFieldURIType = "contacts:SourceId"
-	UnindexedFieldURITypeCcontactsTrustLevel                      UnindexedFieldURIType = "contacts:TrustLevel"
-	UnindexedFieldURITypeCcontactsUrls                            UnindexedFieldURIType = "contacts:Urls"
-	UnindexedFieldURITypeCcontactsCid                             UnindexedFieldURIType = "contacts:Cid"
-	UnindexedFieldURITypeCcontactsSkypeAuthCertificate            UnindexedFieldURIType = "contacts:SkypeAuthCertificate"
-	UnindexedFieldURITypeCcontactsSkypeContext                    UnindexedFieldURIType = "contacts:SkypeContext"
-	UnindexedFieldURITypeCcontactsSkypeId                         UnindexedFieldURIType = "contacts:SkypeId"
-	UnindexedFieldURITypeCcontactsXboxLiveTag                     UnindexedFieldURIType = "contacts:XboxLiveTag"
-	UnindexedFieldURITypeCcontactsSkypeRelationship               UnindexedFieldURIType = "contacts:SkypeRelationship"
-	UnindexedFieldURITypeCcontactsYomiNickname                    UnindexedFieldURIType = "contacts:YomiNickname"
-	UnindexedFieldURITypeCcontactsInviteFree                      UnindexedFieldURIType = "contacts:InviteFree"
-	UnindexedFieldURITypeCcontactsHidePresenceAndProfile          UnindexedFieldURIType = "contacts:HidePresenceAndProfile"
-	UnindexedFieldURITypeCcontactsIsPendingOutbound               UnindexedFieldURIType = "contacts:IsPendingOutbound"
-	UnindexedFieldURITypeCcontactsSupportGroupFeeds               UnindexedFieldURIType = "contacts:SupportGroupFeeds"
-	UnindexedFieldURITypeCcontactsUserTileHash                    UnindexedFieldURIType = "contacts:UserTileHash"
-	UnindexedFieldURITypeCcontactsUnifiedInbox                    UnindexedFieldURIType = "contacts:UnifiedInbox"
-	UnindexedFieldURITypeCcontactsMris                            UnindexedFieldURIType = "contacts:Mris"
-	UnindexedFieldURITypeCcontactsWlid                            UnindexedFieldURIType = "contacts:Wlid"
-	UnindexedFieldURITypeCcontactsAbchContactId                   UnindexedFieldURIType = "contacts:AbchContactId"
-	UnindexedFieldURITypeCcontactsNotInBirthdayCalendar           UnindexedFieldURIType = "contacts:NotInBirthdayCalendar"
-	UnindexedFieldURITypeCcontactsShellContactType                UnindexedFieldURIType = "contacts:ShellContactType"
-	UnindexedFieldURITypeCcontactsImMri                           UnindexedFieldURIType = "contacts:ImMri"
-	UnindexedFieldURITypeCcontactsPresenceTrustLevel              UnindexedFieldURIType = "contacts:PresenceTrustLevel"
-	UnindexedFieldURITypeCcontactsOtherMri                        UnindexedFieldURIType = "contacts:OtherMri"
-	UnindexedFieldURITypeCcontactsProfileLastChanged              UnindexedFieldURIType = "contacts:ProfileLastChanged"
-	UnindexedFieldURITypeCcontactsMobileIMEnabled                 UnindexedFieldURIType = "contacts:MobileIMEnabled"
-	UnindexedFieldURITypeDdistributionlistMembers                 UnindexedFieldURIType = "distributionlist:Members"
-	UnindexedFieldURITypeCcontactsPartnerNetworkProfilePhotoUrl   UnindexedFieldURIType = "contacts:PartnerNetworkProfilePhotoUrl"
-	UnindexedFieldURITypeCcontactsPartnerNetworkThumbnailPhotoUrl UnindexedFieldURIType = "contacts:PartnerNetworkThumbnailPhotoUrl"
-	UnindexedFieldURITypeCcontactsPersonId                        UnindexedFieldURIType = "contacts:PersonId"
-	UnindexedFieldURITypeCcontactsConversationGuid                UnindexedFieldURIType = "contacts:ConversationGuid"
-	UnindexedFieldURITypePpostitemPostedTime                      UnindexedFieldURIType = "postitem:PostedTime"
-	UnindexedFieldURITypeCconversationConversationId              UnindexedFieldURIType = "conversation:ConversationId"
-	UnindexedFieldURITypeCconversationConversationTopic           UnindexedFieldURIType = "conversation:ConversationTopic"
-	UnindexedFieldURITypeCconversationUniqueRecipients            UnindexedFieldURIType = "conversation:UniqueRecipients"
-	UnindexedFieldURITypeCconversationGlobalUniqueRecipients      UnindexedFieldURIType = "conversation:GlobalUniqueRecipients"
-	UnindexedFieldURITypeCconversationUniqueUnreadSenders         UnindexedFieldURIType = "conversation:UniqueUnreadSenders"
-	UnindexedFieldURITypeCconversationGlobalUniqueUnreadSenders   UnindexedFieldURIType = "conversation:GlobalUniqueUnreadSenders"
-	UnindexedFieldURITypeCconversationUniqueSenders               UnindexedFieldURIType = "conversation:UniqueSenders"
-	UnindexedFieldURITypeCconversationGlobalUniqueSenders         UnindexedFieldURIType = "conversation:GlobalUniqueSenders"
-	UnindexedFieldURITypeCconversationLastDeliveryTime            UnindexedFieldURIType = "conversation:LastDeliveryTime"
-	UnindexedFieldURITypeCconversationGlobalLastDeliveryTime      UnindexedFieldURIType = "conversation:GlobalLastDeliveryTime"
-	UnindexedFieldURITypeCconversationCategories                  UnindexedFieldURIType = "conversation:Categories"
-	UnindexedFieldURITypeCconversationGlobalCategories            UnindexedFieldURIType = "conversation:GlobalCategories"
-	UnindexedFieldURITypeCconversationFlagStatus                  UnindexedFieldURIType = "conversation:FlagStatus"
-	UnindexedFieldURITypeCconversationGlobalFlagStatus            UnindexedFieldURIType = "conversation:GlobalFlagStatus"
-	UnindexedFieldURITypeCconversationHasAttachments              UnindexedFieldURIType = "conversation:HasAttachments"
-	UnindexedFieldURITypeCconversationGlobalHasAttachments        UnindexedFieldURIType = "conversation:GlobalHasAttachments"
-	UnindexedFieldURITypeCconversationHasIrm                      UnindexedFieldURIType = "conversation:HasIrm"
-	UnindexedFieldURITypeCconversationGlobalHasIrm                UnindexedFieldURIType = "conversation:GlobalHasIrm"
-	UnindexedFieldURITypeCconversationMessageCount                UnindexedFieldURIType = "conversation:MessageCount"
-	UnindexedFieldURITypeCconversationGlobalMessageCount          UnindexedFieldURIType = "conversation:GlobalMessageCount"
-	UnindexedFieldURITypeCconversationUnreadCount                 UnindexedFieldURIType = "conversation:UnreadCount"
-	UnindexedFieldURITypeCconversationGlobalUnreadCount           UnindexedFieldURIType = "conversation:GlobalUnreadCount"
-	UnindexedFieldURITypeCconversationSize                        UnindexedFieldURIType = "conversation:Size"
-	UnindexedFieldURITypeCconversationGlobalSize                  UnindexedFieldURIType = "conversation:GlobalSize"
-	UnindexedFieldURITypeCconversationItemClasses                 UnindexedFieldURIType = "conversation:ItemClasses"
-	UnindexedFieldURITypeCconversationGlobalItemClasses           UnindexedFieldURIType = "conversation:GlobalItemClasses"
-	UnindexedFieldURITypeCconversationImportance                  UnindexedFieldURIType = "conversation:Importance"
-	UnindexedFieldURITypeCconversationGlobalImportance            UnindexedFieldURIType = "conversation:GlobalImportance"
-	UnindexedFieldURITypeCconversationItemIds                     UnindexedFieldURIType = "conversation:ItemIds"
-	UnindexedFieldURITypeCconversationGlobalItemIds               UnindexedFieldURIType = "conversation:GlobalItemIds"
-	UnindexedFieldURITypeCconversationLastModifiedTime            UnindexedFieldURIType = "conversation:LastModifiedTime"
-	UnindexedFieldURITypeCconversationInstanceKey                 UnindexedFieldURIType = "conversation:InstanceKey"
-	UnindexedFieldURITypeCconversationPreview                     UnindexedFieldURIType = "conversation:Preview"
-	UnindexedFieldURITypeCconversationIconIndex                   UnindexedFieldURIType = "conversation:IconIndex"
-	UnindexedFieldURITypeCconversationGlobalIconIndex             UnindexedFieldURIType = "conversation:GlobalIconIndex"
-	UnindexedFieldURITypeCconversationDraftItemIds                UnindexedFieldURIType = "conversation:DraftItemIds"
-	UnindexedFieldURITypeCconversationHasClutter                  UnindexedFieldURIType = "conversation:HasClutter"
-	UnindexedFieldURITypeCconversationMentionedMe                 UnindexedFieldURIType = "conversation:MentionedMe"
-	UnindexedFieldURITypeCconversationGlobalMentionedMe           UnindexedFieldURIType = "conversation:GlobalMentionedMe"
-	UnindexedFieldURITypeCconversationAtAllMention                UnindexedFieldURIType = "conversation:AtAllMention"
-	UnindexedFieldURITypeCconversationGlobalAtAllMention          UnindexedFieldURIType = "conversation:GlobalAtAllMention"
-	UnindexedFieldURITypePpersonFullName                          UnindexedFieldURIType = "person:FullName"
-	UnindexedFieldURITypePpersonGivenName                         UnindexedFieldURIType = "person:GivenName"
-	UnindexedFieldURITypePpersonSurname                           UnindexedFieldURIType = "person:Surname"
-	UnindexedFieldURITypePpersonPhoneNumber                       UnindexedFieldURIType = "person:PhoneNumber"
-	UnindexedFieldURITypePpersonSMSNumber                         UnindexedFieldURIType = "person:SMSNumber"
-	UnindexedFieldURITypePpersonEmailAddress                      UnindexedFieldURIType = "person:EmailAddress"
-	UnindexedFieldURITypePpersonAlias                             UnindexedFieldURIType = "person:Alias"
-	UnindexedFieldURITypePpersonDepartment                        UnindexedFieldURIType = "person:Department"
-	UnindexedFieldURITypePpersonLinkedInProfileLink               UnindexedFieldURIType = "person:LinkedInProfileLink"
-	UnindexedFieldURITypePpersonSkills                            UnindexedFieldURIType = "person:Skills"
-	UnindexedFieldURITypePpersonProfessionalBiography             UnindexedFieldURIType = "person:ProfessionalBiography"
-	UnindexedFieldURITypePpersonManagementChain                   UnindexedFieldURIType = "person:ManagementChain"
-	UnindexedFieldURITypePpersonDirectReports                     UnindexedFieldURIType = "person:DirectReports"
-	UnindexedFieldURITypePpersonPeers                             UnindexedFieldURIType = "person:Peers"
-	UnindexedFieldURITypePpersonTeamSize                          UnindexedFieldURIType = "person:TeamSize"
-	UnindexedFieldURITypePpersonCurrentJob                        UnindexedFieldURIType = "person:CurrentJob"
-	UnindexedFieldURITypePpersonBirthday                          UnindexedFieldURIType = "person:Birthday"
-	UnindexedFieldURITypePpersonHometown                          UnindexedFieldURIType = "person:Hometown"
-	UnindexedFieldURITypePpersonCurrentLocation                   UnindexedFieldURIType = "person:CurrentLocation"
-	UnindexedFieldURITypePpersonCompanyProfile                    UnindexedFieldURIType = "person:CompanyProfile"
-	UnindexedFieldURITypePpersonOffice                            UnindexedFieldURIType = "person:Office"
-	UnindexedFieldURITypePpersonHeadline                          UnindexedFieldURIType = "person:Headline"
-	UnindexedFieldURITypePpersonMutualConnections                 UnindexedFieldURIType = "person:MutualConnections"
-	UnindexedFieldURITypePpersonTitle                             UnindexedFieldURIType = "person:Title"
-	UnindexedFieldURITypePpersonMutualManager                     UnindexedFieldURIType = "person:MutualManager"
-	UnindexedFieldURITypePpersonInsights                          UnindexedFieldURIType = "person:Insights"
-	UnindexedFieldURITypePpersonUserProfilePicture                UnindexedFieldURIType = "person:UserProfilePicture"
-	UnindexedFieldURITypePpersonaPersonaId                        UnindexedFieldURIType = "persona:PersonaId"
-	UnindexedFieldURITypePpersonaPersonaType                      UnindexedFieldURIType = "persona:PersonaType"
-	UnindexedFieldURITypePpersonaGivenName                        UnindexedFieldURIType = "persona:GivenName"
-	UnindexedFieldURITypePpersonaCompanyName                      UnindexedFieldURIType = "persona:CompanyName"
-	UnindexedFieldURITypePpersonaSurname                          UnindexedFieldURIType = "persona:Surname"
-	UnindexedFieldURITypePpersonaDisplayName                      UnindexedFieldURIType = "persona:DisplayName"
-	UnindexedFieldURITypePpersonaEmailAddress                     UnindexedFieldURIType = "persona:EmailAddress"
-	UnindexedFieldURITypePpersonaFileAs                           UnindexedFieldURIType = "persona:FileAs"
-	UnindexedFieldURITypePpersonaHomeCity                         UnindexedFieldURIType = "persona:HomeCity"
-	UnindexedFieldURITypePpersonaCreationTime                     UnindexedFieldURIType = "persona:CreationTime"
-	UnindexedFieldURITypePpersonaRelevanceScore                   UnindexedFieldURIType = "persona:RelevanceScore"
-	UnindexedFieldURITypePpersonaRankingWeight                    UnindexedFieldURIType = "persona:RankingWeight"
-	UnindexedFieldURITypePpersonaWorkCity                         UnindexedFieldURIType = "persona:WorkCity"
-	UnindexedFieldURITypePpersonaPersonaObjectStatus              UnindexedFieldURIType = "persona:PersonaObjectStatus"
-	UnindexedFieldURITypePpersonaFileAsId                         UnindexedFieldURIType = "persona:FileAsId"
-	UnindexedFieldURITypePpersonaDisplayNamePrefix                UnindexedFieldURIType = "persona:DisplayNamePrefix"
-	UnindexedFieldURITypePpersonaYomiCompanyName                  UnindexedFieldURIType = "persona:YomiCompanyName"
-	UnindexedFieldURITypePpersonaYomiFirstName                    UnindexedFieldURIType = "persona:YomiFirstName"
-	UnindexedFieldURITypePpersonaYomiLastName                     UnindexedFieldURIType = "persona:YomiLastName"
-	UnindexedFieldURITypePpersonaTitle                            UnindexedFieldURIType = "persona:Title"
-	UnindexedFieldURITypePpersonaEmailAddresses                   UnindexedFieldURIType = "persona:EmailAddresses"
-	UnindexedFieldURITypePpersonaPhoneNumber                      UnindexedFieldURIType = "persona:PhoneNumber"
-	UnindexedFieldURITypePpersonaImAddress                        UnindexedFieldURIType = "persona:ImAddress"
-	UnindexedFieldURITypePpersonaImAddresses                      UnindexedFieldURIType = "persona:ImAddresses"
-	UnindexedFieldURITypePpersonaImAddresses2                     UnindexedFieldURIType = "persona:ImAddresses2"
-	UnindexedFieldURITypePpersonaImAddresses3                     UnindexedFieldURIType = "persona:ImAddresses3"
-	UnindexedFieldURITypePpersonaFolderIds                        UnindexedFieldURIType = "persona:FolderIds"
-	UnindexedFieldURITypePpersonaAttributions                     UnindexedFieldURIType = "persona:Attributions"
-	UnindexedFieldURITypePpersonaDisplayNames                     UnindexedFieldURIType = "persona:DisplayNames"
-	UnindexedFieldURITypePpersonaInitials                         UnindexedFieldURIType = "persona:Initials"
-	UnindexedFieldURITypePpersonaFileAses                         UnindexedFieldURIType = "persona:FileAses"
-	UnindexedFieldURITypePpersonaFileAsIds                        UnindexedFieldURIType = "persona:FileAsIds"
-	UnindexedFieldURITypePpersonaDisplayNamePrefixes              UnindexedFieldURIType = "persona:DisplayNamePrefixes"
-	UnindexedFieldURITypePpersonaGivenNames                       UnindexedFieldURIType = "persona:GivenNames"
-	UnindexedFieldURITypePpersonaMiddleNames                      UnindexedFieldURIType = "persona:MiddleNames"
-	UnindexedFieldURITypePpersonaSurnames                         UnindexedFieldURIType = "persona:Surnames"
-	UnindexedFieldURITypePpersonaGenerations                      UnindexedFieldURIType = "persona:Generations"
-	UnindexedFieldURITypePpersonaNicknames                        UnindexedFieldURIType = "persona:Nicknames"
-	UnindexedFieldURITypePpersonaYomiCompanyNames                 UnindexedFieldURIType = "persona:YomiCompanyNames"
-	UnindexedFieldURITypePpersonaYomiFirstNames                   UnindexedFieldURIType = "persona:YomiFirstNames"
-	UnindexedFieldURITypePpersonaYomiLastNames                    UnindexedFieldURIType = "persona:YomiLastNames"
-	UnindexedFieldURITypePpersonaBusinessPhoneNumbers             UnindexedFieldURIType = "persona:BusinessPhoneNumbers"
-	UnindexedFieldURITypePpersonaBusinessPhoneNumbers2            UnindexedFieldURIType = "persona:BusinessPhoneNumbers2"
-	UnindexedFieldURITypePpersonaHomePhones                       UnindexedFieldURIType = "persona:HomePhones"
-	UnindexedFieldURITypePpersonaHomePhones2                      UnindexedFieldURIType = "persona:HomePhones2"
-	UnindexedFieldURITypePpersonaMobilePhones                     UnindexedFieldURIType = "persona:MobilePhones"
-	UnindexedFieldURITypePpersonaMobilePhones2                    UnindexedFieldURIType = "persona:MobilePhones2"
-	UnindexedFieldURITypePpersonaAssistantPhoneNumbers            UnindexedFieldURIType = "persona:AssistantPhoneNumbers"
-	UnindexedFieldURITypePpersonaCallbackPhones                   UnindexedFieldURIType = "persona:CallbackPhones"
-	UnindexedFieldURITypePpersonaCarPhones                        UnindexedFieldURIType = "persona:CarPhones"
-	UnindexedFieldURITypePpersonaHomeFaxes                        UnindexedFieldURIType = "persona:HomeFaxes"
-	UnindexedFieldURITypePpersonaOrganizationMainPhones           UnindexedFieldURIType = "persona:OrganizationMainPhones"
-	UnindexedFieldURITypePpersonaOtherFaxes                       UnindexedFieldURIType = "persona:OtherFaxes"
-	UnindexedFieldURITypePpersonaOtherTelephones                  UnindexedFieldURIType = "persona:OtherTelephones"
-	UnindexedFieldURITypePpersonaOtherPhones2                     UnindexedFieldURIType = "persona:OtherPhones2"
-	UnindexedFieldURITypePpersonaPagers                           UnindexedFieldURIType = "persona:Pagers"
-	UnindexedFieldURITypePpersonaRadioPhones                      UnindexedFieldURIType = "persona:RadioPhones"
-	UnindexedFieldURITypePpersonaTelexNumbers                     UnindexedFieldURIType = "persona:TelexNumbers"
-	UnindexedFieldURITypePpersonaWorkFaxes                        UnindexedFieldURIType = "persona:WorkFaxes"
-	UnindexedFieldURITypePpersonaEmails1                          UnindexedFieldURIType = "persona:Emails1"
-	UnindexedFieldURITypePpersonaEmails2                          UnindexedFieldURIType = "persona:Emails2"
-	UnindexedFieldURITypePpersonaEmails3                          UnindexedFieldURIType = "persona:Emails3"
-	UnindexedFieldURITypePpersonaBusinessHomePages                UnindexedFieldURIType = "persona:BusinessHomePages"
-	UnindexedFieldURITypePpersonaSchool                           UnindexedFieldURIType = "persona:School"
-	UnindexedFieldURITypePpersonaPersonalHomePages                UnindexedFieldURIType = "persona:PersonalHomePages"
-	UnindexedFieldURITypePpersonaOfficeLocations                  UnindexedFieldURIType = "persona:OfficeLocations"
-	UnindexedFieldURITypePpersonaBusinessAddresses                UnindexedFieldURIType = "persona:BusinessAddresses"
-	UnindexedFieldURITypePpersonaHomeAddresses                    UnindexedFieldURIType = "persona:HomeAddresses"
-	UnindexedFieldURITypePpersonaOtherAddresses                   UnindexedFieldURIType = "persona:OtherAddresses"
-	UnindexedFieldURITypePpersonaTitles                           UnindexedFieldURIType = "persona:Titles"
-	UnindexedFieldURITypePpersonaDepartments                      UnindexedFieldURIType = "persona:Departments"
-	UnindexedFieldURITypePpersonaCompanyNames                     UnindexedFieldURIType = "persona:CompanyNames"
-	UnindexedFieldURITypePpersonaManagers                         UnindexedFieldURIType = "persona:Managers"
-	UnindexedFieldURITypePpersonaAssistantNames                   UnindexedFieldURIType = "persona:AssistantNames"
-	UnindexedFieldURITypePpersonaProfessions                      UnindexedFieldURIType = "persona:Professions"
-	UnindexedFieldURITypePpersonaSpouseNames                      UnindexedFieldURIType = "persona:SpouseNames"
-	UnindexedFieldURITypePpersonaHobbies                          UnindexedFieldURIType = "persona:Hobbies"
-	UnindexedFieldURITypePpersonaWeddingAnniversaries             UnindexedFieldURIType = "persona:WeddingAnniversaries"
-	UnindexedFieldURITypePpersonaBirthdays                        UnindexedFieldURIType = "persona:Birthdays"
-	UnindexedFieldURITypePpersonaChildren                         UnindexedFieldURIType = "persona:Children"
-	UnindexedFieldURITypePpersonaLocations                        UnindexedFieldURIType = "persona:Locations"
-	UnindexedFieldURITypePpersonaExtendedProperties               UnindexedFieldURIType = "persona:ExtendedProperties"
-	UnindexedFieldURITypePpersonaPostalAddress                    UnindexedFieldURIType = "persona:PostalAddress"
-	UnindexedFieldURITypePpersonaBodies                           UnindexedFieldURIType = "persona:Bodies"
-	UnindexedFieldURITypePpersonaIsFavorite                       UnindexedFieldURIType = "persona:IsFavorite"
-	UnindexedFieldURITypePpersonaInlineLinks                      UnindexedFieldURIType = "persona:InlineLinks"
-	UnindexedFieldURITypePpersonaItemLinkIds                      UnindexedFieldURIType = "persona:ItemLinkIds"
-	UnindexedFieldURITypePpersonaHasActiveDeals                   UnindexedFieldURIType = "persona:HasActiveDeals"
-	UnindexedFieldURITypePpersonaIsBusinessContact                UnindexedFieldURIType = "persona:IsBusinessContact"
-	UnindexedFieldURITypePpersonaAttributedHasActiveDeals         UnindexedFieldURIType = "persona:AttributedHasActiveDeals"
-	UnindexedFieldURITypePpersonaAttributedIsBusinessContact      UnindexedFieldURIType = "persona:AttributedIsBusinessContact"
-	UnindexedFieldURITypePpersonaSourceMailboxGuids               UnindexedFieldURIType = "persona:SourceMailboxGuids"
-	UnindexedFieldURITypePpersonaLastContactedDate                UnindexedFieldURIType = "persona:LastContactedDate"
-	UnindexedFieldURITypePpersonaExternalDirectoryObjectId        UnindexedFieldURIType = "persona:ExternalDirectoryObjectId"
-	UnindexedFieldURITypePpersonaMapiEntryId                      UnindexedFieldURIType = "persona:MapiEntryId"
-	UnindexedFieldURITypePpersonaMapiEmailAddress                 UnindexedFieldURIType = "persona:MapiEmailAddress"
-	UnindexedFieldURITypePpersonaMapiAddressType                  UnindexedFieldURIType = "persona:MapiAddressType"
-	UnindexedFieldURITypePpersonaMapiSearchKey                    UnindexedFieldURIType = "persona:MapiSearchKey"
-	UnindexedFieldURITypePpersonaMapiTransmittableDisplayName     UnindexedFieldURIType = "persona:MapiTransmittableDisplayName"
-	UnindexedFieldURITypePpersonaMapiSendRichInfo                 UnindexedFieldURIType = "persona:MapiSendRichInfo"
-	UnindexedFieldURITypeRrolememberMemberType                    UnindexedFieldURIType = "rolemember:MemberType"
-	UnindexedFieldURITypeRrolememberMemberId                      UnindexedFieldURIType = "rolemember:MemberId"
-	UnindexedFieldURITypeRrolememberDisplayName                   UnindexedFieldURIType = "rolemember:DisplayName"
-	UnindexedFieldURITypeNnetworkTokenRefreshLastCompleted        UnindexedFieldURIType = "network:TokenRefreshLastCompleted"
-	UnindexedFieldURITypeNnetworkTokenRefreshLastAttempted        UnindexedFieldURIType = "network:TokenRefreshLastAttempted"
-	UnindexedFieldURITypeNnetworkSyncEnabled                      UnindexedFieldURIType = "network:SyncEnabled"
-	UnindexedFieldURITypeNnetworkRejectedOffers                   UnindexedFieldURIType = "network:RejectedOffers"
-	UnindexedFieldURITypeNnetworkSessionHandle                    UnindexedFieldURIType = "network:SessionHandle"
-	UnindexedFieldURITypeNnetworkRefreshTokenExpiry2              UnindexedFieldURIType = "network:RefreshTokenExpiry2"
-	UnindexedFieldURITypeNnetworkRefreshToken2                    UnindexedFieldURIType = "network:RefreshToken2"
-	UnindexedFieldURITypeNnetworkPsaLastChanged                   UnindexedFieldURIType = "network:PsaLastChanged"
-	UnindexedFieldURITypeNnetworkOffers                           UnindexedFieldURIType = "network:Offers"
-	UnindexedFieldURITypeNnetworkLastWelcomeContact               UnindexedFieldURIType = "network:LastWelcomeContact"
-	UnindexedFieldURITypeNnetworkLastVersionSaved                 UnindexedFieldURIType = "network:LastVersionSaved"
-	UnindexedFieldURITypeNnetworkDomainTag                        UnindexedFieldURIType = "network:DomainTag"
-	UnindexedFieldURITypeNnetworkFirstAuthErrorDates              UnindexedFieldURIType = "network:FirstAuthErrorDates"
-	UnindexedFieldURITypeNnetworkErrorOffers                      UnindexedFieldURIType = "network:ErrorOffers"
-	UnindexedFieldURITypeNnetworkContactSyncSuccess               UnindexedFieldURIType = "network:ContactSyncSuccess"
-	UnindexedFieldURITypeNnetworkContactSyncError                 UnindexedFieldURIType = "network:ContactSyncError"
-	UnindexedFieldURITypeNnetworkClientToken2                     UnindexedFieldURIType = "network:ClientToken2"
-	UnindexedFieldURITypeNnetworkClientToken                      UnindexedFieldURIType = "network:ClientToken"
-	UnindexedFieldURITypeNnetworkClientPublishSecret              UnindexedFieldURIType = "network:ClientPublishSecret"
-	UnindexedFieldURITypeNnetworkUserEmail                        UnindexedFieldURIType = "network:UserEmail"
-	UnindexedFieldURITypeNnetworkAutoLinkSuccess                  UnindexedFieldURIType = "network:AutoLinkSuccess"
-	UnindexedFieldURITypeNnetworkAutoLinkError                    UnindexedFieldURIType = "network:AutoLinkError"
-	UnindexedFieldURITypeNnetworkIsDefault                        UnindexedFieldURIType = "network:IsDefault"
-	UnindexedFieldURITypeNnetworkSettings                         UnindexedFieldURIType = "network:Settings"
-	UnindexedFieldURITypeNnetworkProfileUrl                       UnindexedFieldURIType = "network:ProfileUrl"
-	UnindexedFieldURITypeNnetworkUserTileUrl                      UnindexedFieldURIType = "network:UserTileUrl"
-	UnindexedFieldURITypeNnetworkDomainId                         UnindexedFieldURIType = "network:DomainId"
-	UnindexedFieldURITypeNnetworkDisplayName                      UnindexedFieldURIType = "network:DisplayName"
-	UnindexedFieldURITypeNnetworkAccountName                      UnindexedFieldURIType = "network:AccountName"
-	UnindexedFieldURITypeNnetworkSourceEntryID                    UnindexedFieldURIType = "network:SourceEntryID"
-	UnindexedFieldURITypeAabchpersonFavoriteOrder                 UnindexedFieldURIType = "abchperson:FavoriteOrder"
-	UnindexedFieldURITypeAabchpersonPersonId                      UnindexedFieldURIType = "abchperson:PersonId"
-	UnindexedFieldURITypeAabchpersonExchangePersonIdGuid          UnindexedFieldURIType = "abchperson:ExchangePersonIdGuid"
-	UnindexedFieldURITypeAabchpersonAntiLinkInfo                  UnindexedFieldURIType = "abchperson:AntiLinkInfo"
-	UnindexedFieldURITypeAabchpersonRelevanceOrder1               UnindexedFieldURIType = "abchperson:RelevanceOrder1"
-	UnindexedFieldURITypeAabchpersonRelevanceOrder2               UnindexedFieldURIType = "abchperson:RelevanceOrder2"
-	UnindexedFieldURITypeAabchpersonContactHandles                UnindexedFieldURIType = "abchperson:ContactHandles"
-	UnindexedFieldURITypeAabchpersonCategories                    UnindexedFieldURIType = "abchperson:Categories"
-	UnindexedFieldURITypeBbookingServiceIds                       UnindexedFieldURIType = "booking:ServiceIds"
-	UnindexedFieldURITypeBbookingStaffIds                         UnindexedFieldURIType = "booking:StaffIds"
-	UnindexedFieldURITypeBbookingStaffInitials                    UnindexedFieldURIType = "booking:StaffInitials"
-	UnindexedFieldURITypeBbookingCustomerName                     UnindexedFieldURIType = "booking:CustomerName"
-	UnindexedFieldURITypeBbookingCustomerEmail                    UnindexedFieldURIType = "booking:CustomerEmail"
-	UnindexedFieldURITypeBbookingCustomerPhone                    UnindexedFieldURIType = "booking:CustomerPhone"
-	UnindexedFieldURITypeBbookingCustomerId                       UnindexedFieldURIType = "booking:CustomerId"
-	UnindexedFieldURITypeIinsightInsightId                        UnindexedFieldURIType = "insight:InsightId"
-	UnindexedFieldURITypeIinsightType                             UnindexedFieldURIType = "insight:Type"
-	UnindexedFieldURITypeIinsightStartTimeUtc                     UnindexedFieldURIType = "insight:StartTimeUtc"
-	UnindexedFieldURITypeIinsightEndTimeUtc                       UnindexedFieldURIType = "insight:EndTimeUtc"
-	UnindexedFieldURITypeIinsightStatus                           UnindexedFieldURIType = "insight:Status"
-	UnindexedFieldURITypeIinsightVersion                          UnindexedFieldURIType = "insight:Version"
-	UnindexedFieldURITypeIinsightApplicationsIds                  UnindexedFieldURIType = "insight:ApplicationsIds"
-	UnindexedFieldURITypeIinsightText                             UnindexedFieldURIType = "insight:Text"
-	UnindexedFieldURITypeIinsightSuggestedActions                 UnindexedFieldURIType = "insight:SuggestedActions"
-	UnindexedFieldURITypeIinsightAppContexts                      UnindexedFieldURIType = "insight:AppContexts"
-)
-
-type DictionaryURIType XsString
-
-const (
-	DictionaryURITypeIitemInternetMessageHeader              DictionaryURIType = "item:InternetMessageHeader"
-	DictionaryURITypeCcontactsImAddress                      DictionaryURIType = "contacts:ImAddress"
-	DictionaryURITypeCcontactsPhysicalAddressStreet          DictionaryURIType = "contacts:PhysicalAddress:Street"
-	DictionaryURITypeCcontactsPhysicalAddressCity            DictionaryURIType = "contacts:PhysicalAddress:City"
-	DictionaryURITypeCcontactsPhysicalAddressState           DictionaryURIType = "contacts:PhysicalAddress:State"
-	DictionaryURITypeCcontactsPhysicalAddressCountryOrRegion DictionaryURIType = "contacts:PhysicalAddress:CountryOrRegion"
-	DictionaryURITypeCcontactsPhysicalAddressPostalCode      DictionaryURIType = "contacts:PhysicalAddress:PostalCode"
-	DictionaryURITypeCcontactsPhoneNumber                    DictionaryURIType = "contacts:PhoneNumber"
-	DictionaryURITypeCcontactsEmailAddress                   DictionaryURIType = "contacts:EmailAddress"
-	DictionaryURITypeDdistributionlistMembersMember          DictionaryURIType = "distributionlist:Members:Member"
 )
 
 type AggregateType XsString
@@ -2710,7 +2199,7 @@ type ReportMessagePlatformType XsString
 const (
 	ReportMessagePlatformTypeUnknown      ReportMessagePlatformType = "Unknown"
 	ReportMessagePlatformTypeAndroid      ReportMessagePlatformType = "Android"
-	ReportMessagePlatformTypeIiOS         ReportMessagePlatformType = "iOS"
+	ReportMessagePlatformTypeIOS          ReportMessagePlatformType = "iOS"
 	ReportMessagePlatformTypeMac          ReportMessagePlatformType = "Mac"
 	ReportMessagePlatformTypeOfficeOnline ReportMessagePlatformType = "OfficeOnline"
 	ReportMessagePlatformTypePC           ReportMessagePlatformType = "PC"
@@ -2930,6 +2419,542 @@ const (
 
 type OfficeClientCodeType XsString
 
+type ResponseCodeType XsString
+
+const (
+	ResponseCodeTypeNoError                                                  ResponseCodeType = "NoError"
+	ResponseCodeTypeErrorAccessDenied                                        ResponseCodeType = "ErrorAccessDenied"
+	ResponseCodeTypeErrorAccessModeSpecified                                 ResponseCodeType = "ErrorAccessModeSpecified"
+	ResponseCodeTypeErrorAccountDisabled                                     ResponseCodeType = "ErrorAccountDisabled"
+	ResponseCodeTypeErrorAddDelegatesFailed                                  ResponseCodeType = "ErrorAddDelegatesFailed"
+	ResponseCodeTypeErrorAddressSpaceNotFound                                ResponseCodeType = "ErrorAddressSpaceNotFound"
+	ResponseCodeTypeErrorADOperation                                         ResponseCodeType = "ErrorADOperation"
+	ResponseCodeTypeErrorADSessionFilter                                     ResponseCodeType = "ErrorADSessionFilter"
+	ResponseCodeTypeErrorADUnavailable                                       ResponseCodeType = "ErrorADUnavailable"
+	ResponseCodeTypeErrorServiceUnavailable                                  ResponseCodeType = "ErrorServiceUnavailable"
+	ResponseCodeTypeErrorAutoDiscoverFailed                                  ResponseCodeType = "ErrorAutoDiscoverFailed"
+	ResponseCodeTypeErrorAffectedTaskOccurrencesRequired                     ResponseCodeType = "ErrorAffectedTaskOccurrencesRequired"
+	ResponseCodeTypeErrorAttachmentNestLevelLimitExceeded                    ResponseCodeType = "ErrorAttachmentNestLevelLimitExceeded"
+	ResponseCodeTypeErrorAttachmentSizeLimitExceeded                         ResponseCodeType = "ErrorAttachmentSizeLimitExceeded"
+	ResponseCodeTypeErrorArchiveFolderPathCreation                           ResponseCodeType = "ErrorArchiveFolderPathCreation"
+	ResponseCodeTypeErrorArchiveMailboxNotEnabled                            ResponseCodeType = "ErrorArchiveMailboxNotEnabled"
+	ResponseCodeTypeErrorArchiveMailboxServiceDiscoveryFailed                ResponseCodeType = "ErrorArchiveMailboxServiceDiscoveryFailed"
+	ResponseCodeTypeErrorAvailabilityConfigNotFound                          ResponseCodeType = "ErrorAvailabilityConfigNotFound"
+	ResponseCodeTypeErrorBatchProcessingStopped                              ResponseCodeType = "ErrorBatchProcessingStopped"
+	ResponseCodeTypeErrorCalendarCannotMoveOrCopyOccurrence                  ResponseCodeType = "ErrorCalendarCannotMoveOrCopyOccurrence"
+	ResponseCodeTypeErrorCalendarCannotUpdateDeletedItem                     ResponseCodeType = "ErrorCalendarCannotUpdateDeletedItem"
+	ResponseCodeTypeErrorCalendarCannotUseIdForOccurrenceId                  ResponseCodeType = "ErrorCalendarCannotUseIdForOccurrenceId"
+	ResponseCodeTypeErrorCalendarCannotUseIdForRecurringMasterId             ResponseCodeType = "ErrorCalendarCannotUseIdForRecurringMasterId"
+	ResponseCodeTypeErrorCalendarDurationIsTooLong                           ResponseCodeType = "ErrorCalendarDurationIsTooLong"
+	ResponseCodeTypeErrorCalendarEndDateIsEarlierThanStartDate               ResponseCodeType = "ErrorCalendarEndDateIsEarlierThanStartDate"
+	ResponseCodeTypeErrorCalendarFolderIsInvalidForCalendarView              ResponseCodeType = "ErrorCalendarFolderIsInvalidForCalendarView"
+	ResponseCodeTypeErrorCalendarInvalidAttributeValue                       ResponseCodeType = "ErrorCalendarInvalidAttributeValue"
+	ResponseCodeTypeErrorCalendarInvalidDayForTimeChangePattern              ResponseCodeType = "ErrorCalendarInvalidDayForTimeChangePattern"
+	ResponseCodeTypeErrorCalendarInvalidDayForWeeklyRecurrence               ResponseCodeType = "ErrorCalendarInvalidDayForWeeklyRecurrence"
+	ResponseCodeTypeErrorCalendarInvalidPropertyState                        ResponseCodeType = "ErrorCalendarInvalidPropertyState"
+	ResponseCodeTypeErrorCalendarInvalidPropertyValue                        ResponseCodeType = "ErrorCalendarInvalidPropertyValue"
+	ResponseCodeTypeErrorCalendarInvalidRecurrence                           ResponseCodeType = "ErrorCalendarInvalidRecurrence"
+	ResponseCodeTypeErrorCalendarInvalidTimeZone                             ResponseCodeType = "ErrorCalendarInvalidTimeZone"
+	ResponseCodeTypeErrorCalendarIsCancelledForAccept                        ResponseCodeType = "ErrorCalendarIsCancelledForAccept"
+	ResponseCodeTypeErrorCalendarIsCancelledForDecline                       ResponseCodeType = "ErrorCalendarIsCancelledForDecline"
+	ResponseCodeTypeErrorCalendarIsCancelledForRemove                        ResponseCodeType = "ErrorCalendarIsCancelledForRemove"
+	ResponseCodeTypeErrorCalendarIsCancelledForTentative                     ResponseCodeType = "ErrorCalendarIsCancelledForTentative"
+	ResponseCodeTypeErrorCalendarIsDelegatedForAccept                        ResponseCodeType = "ErrorCalendarIsDelegatedForAccept"
+	ResponseCodeTypeErrorCalendarIsDelegatedForDecline                       ResponseCodeType = "ErrorCalendarIsDelegatedForDecline"
+	ResponseCodeTypeErrorCalendarIsDelegatedForRemove                        ResponseCodeType = "ErrorCalendarIsDelegatedForRemove"
+	ResponseCodeTypeErrorCalendarIsDelegatedForTentative                     ResponseCodeType = "ErrorCalendarIsDelegatedForTentative"
+	ResponseCodeTypeErrorCalendarIsNotOrganizer                              ResponseCodeType = "ErrorCalendarIsNotOrganizer"
+	ResponseCodeTypeErrorCalendarIsOrganizerForAccept                        ResponseCodeType = "ErrorCalendarIsOrganizerForAccept"
+	ResponseCodeTypeErrorCalendarIsOrganizerForDecline                       ResponseCodeType = "ErrorCalendarIsOrganizerForDecline"
+	ResponseCodeTypeErrorCalendarIsOrganizerForRemove                        ResponseCodeType = "ErrorCalendarIsOrganizerForRemove"
+	ResponseCodeTypeErrorCalendarIsOrganizerForTentative                     ResponseCodeType = "ErrorCalendarIsOrganizerForTentative"
+	ResponseCodeTypeErrorCalendarOccurrenceIndexIsOutOfRecurrenceRange       ResponseCodeType = "ErrorCalendarOccurrenceIndexIsOutOfRecurrenceRange"
+	ResponseCodeTypeErrorCalendarOccurrenceIsDeletedFromRecurrence           ResponseCodeType = "ErrorCalendarOccurrenceIsDeletedFromRecurrence"
+	ResponseCodeTypeErrorCalendarOutOfRange                                  ResponseCodeType = "ErrorCalendarOutOfRange"
+	ResponseCodeTypeErrorCalendarMeetingRequestIsOutOfDate                   ResponseCodeType = "ErrorCalendarMeetingRequestIsOutOfDate"
+	ResponseCodeTypeErrorCalendarViewRangeTooBig                             ResponseCodeType = "ErrorCalendarViewRangeTooBig"
+	ResponseCodeTypeErrorCallerIsInvalidADAccount                            ResponseCodeType = "ErrorCallerIsInvalidADAccount"
+	ResponseCodeTypeErrorCannotAccessDeletedPublicFolder                     ResponseCodeType = "ErrorCannotAccessDeletedPublicFolder"
+	ResponseCodeTypeErrorCannotArchiveCalendarContactTaskFolderException     ResponseCodeType = "ErrorCannotArchiveCalendarContactTaskFolderException"
+	ResponseCodeTypeErrorCannotArchiveItemsInPublicFolders                   ResponseCodeType = "ErrorCannotArchiveItemsInPublicFolders"
+	ResponseCodeTypeErrorCannotArchiveItemsInArchiveMailbox                  ResponseCodeType = "ErrorCannotArchiveItemsInArchiveMailbox"
+	ResponseCodeTypeErrorCannotCreateCalendarItemInNonCalendarFolder         ResponseCodeType = "ErrorCannotCreateCalendarItemInNonCalendarFolder"
+	ResponseCodeTypeErrorCannotCreateContactInNonContactFolder               ResponseCodeType = "ErrorCannotCreateContactInNonContactFolder"
+	ResponseCodeTypeErrorCannotCreatePostItemInNonMailFolder                 ResponseCodeType = "ErrorCannotCreatePostItemInNonMailFolder"
+	ResponseCodeTypeErrorCannotCreateTaskInNonTaskFolder                     ResponseCodeType = "ErrorCannotCreateTaskInNonTaskFolder"
+	ResponseCodeTypeErrorCannotDeleteObject                                  ResponseCodeType = "ErrorCannotDeleteObject"
+	ResponseCodeTypeErrorCannotDisableMandatoryExtension                     ResponseCodeType = "ErrorCannotDisableMandatoryExtension"
+	ResponseCodeTypeErrorCannotFindUser                                      ResponseCodeType = "ErrorCannotFindUser"
+	ResponseCodeTypeErrorCannotGetSourceFolderPath                           ResponseCodeType = "ErrorCannotGetSourceFolderPath"
+	ResponseCodeTypeErrorCannotGetExternalEcpUrl                             ResponseCodeType = "ErrorCannotGetExternalEcpUrl"
+	ResponseCodeTypeErrorCannotOpenFileAttachment                            ResponseCodeType = "ErrorCannotOpenFileAttachment"
+	ResponseCodeTypeErrorCannotDeleteTaskOccurrence                          ResponseCodeType = "ErrorCannotDeleteTaskOccurrence"
+	ResponseCodeTypeErrorCannotEmptyFolder                                   ResponseCodeType = "ErrorCannotEmptyFolder"
+	ResponseCodeTypeErrorCannotSetCalendarPermissionOnNonCalendarFolder      ResponseCodeType = "ErrorCannotSetCalendarPermissionOnNonCalendarFolder"
+	ResponseCodeTypeErrorCannotSetNonCalendarPermissionOnCalendarFolder      ResponseCodeType = "ErrorCannotSetNonCalendarPermissionOnCalendarFolder"
+	ResponseCodeTypeErrorCannotSetPermissionUnknownEntries                   ResponseCodeType = "ErrorCannotSetPermissionUnknownEntries"
+	ResponseCodeTypeErrorCannotSpecifySearchFolderAsSourceFolder             ResponseCodeType = "ErrorCannotSpecifySearchFolderAsSourceFolder"
+	ResponseCodeTypeErrorCannotUseFolderIdForItemId                          ResponseCodeType = "ErrorCannotUseFolderIdForItemId"
+	ResponseCodeTypeErrorCannotUseItemIdForFolderId                          ResponseCodeType = "ErrorCannotUseItemIdForFolderId"
+	ResponseCodeTypeErrorChangeKeyRequired                                   ResponseCodeType = "ErrorChangeKeyRequired"
+	ResponseCodeTypeErrorChangeKeyRequiredForWriteOperations                 ResponseCodeType = "ErrorChangeKeyRequiredForWriteOperations"
+	ResponseCodeTypeErrorClientDisconnected                                  ResponseCodeType = "ErrorClientDisconnected"
+	ResponseCodeTypeErrorClientIntentInvalidStateDefinition                  ResponseCodeType = "ErrorClientIntentInvalidStateDefinition"
+	ResponseCodeTypeErrorClientIntentNotFound                                ResponseCodeType = "ErrorClientIntentNotFound"
+	ResponseCodeTypeErrorConnectionFailed                                    ResponseCodeType = "ErrorConnectionFailed"
+	ResponseCodeTypeErrorContainsFilterWrongType                             ResponseCodeType = "ErrorContainsFilterWrongType"
+	ResponseCodeTypeErrorContentConversionFailed                             ResponseCodeType = "ErrorContentConversionFailed"
+	ResponseCodeTypeErrorContentIndexingNotEnabled                           ResponseCodeType = "ErrorContentIndexingNotEnabled"
+	ResponseCodeTypeErrorCorruptData                                         ResponseCodeType = "ErrorCorruptData"
+	ResponseCodeTypeErrorCreateItemAccessDenied                              ResponseCodeType = "ErrorCreateItemAccessDenied"
+	ResponseCodeTypeErrorCreateManagedFolderPartialCompletion                ResponseCodeType = "ErrorCreateManagedFolderPartialCompletion"
+	ResponseCodeTypeErrorCreateSubfolderAccessDenied                         ResponseCodeType = "ErrorCreateSubfolderAccessDenied"
+	ResponseCodeTypeErrorCrossMailboxMoveCopy                                ResponseCodeType = "ErrorCrossMailboxMoveCopy"
+	ResponseCodeTypeErrorCrossSiteRequest                                    ResponseCodeType = "ErrorCrossSiteRequest"
+	ResponseCodeTypeErrorDataSizeLimitExceeded                               ResponseCodeType = "ErrorDataSizeLimitExceeded"
+	ResponseCodeTypeErrorDataSourceOperation                                 ResponseCodeType = "ErrorDataSourceOperation"
+	ResponseCodeTypeErrorDelegateAlreadyExists                               ResponseCodeType = "ErrorDelegateAlreadyExists"
+	ResponseCodeTypeErrorDelegateCannotAddOwner                              ResponseCodeType = "ErrorDelegateCannotAddOwner"
+	ResponseCodeTypeErrorDelegateMissingConfiguration                        ResponseCodeType = "ErrorDelegateMissingConfiguration"
+	ResponseCodeTypeErrorDelegateNoUser                                      ResponseCodeType = "ErrorDelegateNoUser"
+	ResponseCodeTypeErrorDelegateValidationFailed                            ResponseCodeType = "ErrorDelegateValidationFailed"
+	ResponseCodeTypeErrorDeleteDistinguishedFolder                           ResponseCodeType = "ErrorDeleteDistinguishedFolder"
+	ResponseCodeTypeErrorDeleteItemsFailed                                   ResponseCodeType = "ErrorDeleteItemsFailed"
+	ResponseCodeTypeErrorDeleteUnifiedMessagingPromptFailed                  ResponseCodeType = "ErrorDeleteUnifiedMessagingPromptFailed"
+	ResponseCodeTypeErrorDistinguishedUserNotSupported                       ResponseCodeType = "ErrorDistinguishedUserNotSupported"
+	ResponseCodeTypeErrorDistributionListMemberNotExist                      ResponseCodeType = "ErrorDistributionListMemberNotExist"
+	ResponseCodeTypeErrorDuplicateInputFolderNames                           ResponseCodeType = "ErrorDuplicateInputFolderNames"
+	ResponseCodeTypeErrorDuplicateUserIdsSpecified                           ResponseCodeType = "ErrorDuplicateUserIdsSpecified"
+	ResponseCodeTypeErrorDuplicateTransactionId                              ResponseCodeType = "ErrorDuplicateTransactionId"
+	ResponseCodeTypeErrorEmailAddressMismatch                                ResponseCodeType = "ErrorEmailAddressMismatch"
+	ResponseCodeTypeErrorEventNotFound                                       ResponseCodeType = "ErrorEventNotFound"
+	ResponseCodeTypeErrorExceededConnectionCount                             ResponseCodeType = "ErrorExceededConnectionCount"
+	ResponseCodeTypeErrorExceededSubscriptionCount                           ResponseCodeType = "ErrorExceededSubscriptionCount"
+	ResponseCodeTypeErrorExceededFindCountLimit                              ResponseCodeType = "ErrorExceededFindCountLimit"
+	ResponseCodeTypeErrorExpiredSubscription                                 ResponseCodeType = "ErrorExpiredSubscription"
+	ResponseCodeTypeErrorExtensionNotFound                                   ResponseCodeType = "ErrorExtensionNotFound"
+	ResponseCodeTypeErrorExtensionsNotAuthorized                             ResponseCodeType = "ErrorExtensionsNotAuthorized"
+	ResponseCodeTypeErrorFolderCorrupt                                       ResponseCodeType = "ErrorFolderCorrupt"
+	ResponseCodeTypeErrorFolderNotFound                                      ResponseCodeType = "ErrorFolderNotFound"
+	ResponseCodeTypeErrorFolderPropertRequestFailed                          ResponseCodeType = "ErrorFolderPropertRequestFailed"
+	ResponseCodeTypeErrorFolderSave                                          ResponseCodeType = "ErrorFolderSave"
+	ResponseCodeTypeErrorFolderSaveFailed                                    ResponseCodeType = "ErrorFolderSaveFailed"
+	ResponseCodeTypeErrorFolderSavePropertyError                             ResponseCodeType = "ErrorFolderSavePropertyError"
+	ResponseCodeTypeErrorFolderExists                                        ResponseCodeType = "ErrorFolderExists"
+	ResponseCodeTypeErrorFreeBusyGenerationFailed                            ResponseCodeType = "ErrorFreeBusyGenerationFailed"
+	ResponseCodeTypeErrorGetServerSecurityDescriptorFailed                   ResponseCodeType = "ErrorGetServerSecurityDescriptorFailed"
+	ResponseCodeTypeErrorImContactLimitReached                               ResponseCodeType = "ErrorImContactLimitReached"
+	ResponseCodeTypeErrorImGroupDisplayNameAlreadyExists                     ResponseCodeType = "ErrorImGroupDisplayNameAlreadyExists"
+	ResponseCodeTypeErrorImGroupLimitReached                                 ResponseCodeType = "ErrorImGroupLimitReached"
+	ResponseCodeTypeErrorImpersonateUserDenied                               ResponseCodeType = "ErrorImpersonateUserDenied"
+	ResponseCodeTypeErrorImpersonationDenied                                 ResponseCodeType = "ErrorImpersonationDenied"
+	ResponseCodeTypeErrorImpersonationFailed                                 ResponseCodeType = "ErrorImpersonationFailed"
+	ResponseCodeTypeErrorIncorrectSchemaVersion                              ResponseCodeType = "ErrorIncorrectSchemaVersion"
+	ResponseCodeTypeErrorIncorrectUpdatePropertyCount                        ResponseCodeType = "ErrorIncorrectUpdatePropertyCount"
+	ResponseCodeTypeErrorIndividualMailboxLimitReached                       ResponseCodeType = "ErrorIndividualMailboxLimitReached"
+	ResponseCodeTypeErrorInsufficientResources                               ResponseCodeType = "ErrorInsufficientResources"
+	ResponseCodeTypeErrorInternalServerError                                 ResponseCodeType = "ErrorInternalServerError"
+	ResponseCodeTypeErrorInternalServerTransientError                        ResponseCodeType = "ErrorInternalServerTransientError"
+	ResponseCodeTypeErrorInvalidAccessLevel                                  ResponseCodeType = "ErrorInvalidAccessLevel"
+	ResponseCodeTypeErrorInvalidArgument                                     ResponseCodeType = "ErrorInvalidArgument"
+	ResponseCodeTypeErrorInvalidAttachmentId                                 ResponseCodeType = "ErrorInvalidAttachmentId"
+	ResponseCodeTypeErrorInvalidAttachmentSubfilter                          ResponseCodeType = "ErrorInvalidAttachmentSubfilter"
+	ResponseCodeTypeErrorInvalidAttachmentSubfilterTextFilter                ResponseCodeType = "ErrorInvalidAttachmentSubfilterTextFilter"
+	ResponseCodeTypeErrorInvalidAuthorizationContext                         ResponseCodeType = "ErrorInvalidAuthorizationContext"
+	ResponseCodeTypeErrorInvalidChangeKey                                    ResponseCodeType = "ErrorInvalidChangeKey"
+	ResponseCodeTypeErrorInvalidClientSecurityContext                        ResponseCodeType = "ErrorInvalidClientSecurityContext"
+	ResponseCodeTypeErrorInvalidCompleteDate                                 ResponseCodeType = "ErrorInvalidCompleteDate"
+	ResponseCodeTypeErrorInvalidContactEmailAddress                          ResponseCodeType = "ErrorInvalidContactEmailAddress"
+	ResponseCodeTypeErrorInvalidContactEmailIndex                            ResponseCodeType = "ErrorInvalidContactEmailIndex"
+	ResponseCodeTypeErrorInvalidCrossForestCredentials                       ResponseCodeType = "ErrorInvalidCrossForestCredentials"
+	ResponseCodeTypeErrorInvalidDelegatePermission                           ResponseCodeType = "ErrorInvalidDelegatePermission"
+	ResponseCodeTypeErrorInvalidDelegateUserId                               ResponseCodeType = "ErrorInvalidDelegateUserId"
+	ResponseCodeTypeErrorInvalidExcludesRestriction                          ResponseCodeType = "ErrorInvalidExcludesRestriction"
+	ResponseCodeTypeErrorInvalidExpressionTypeForSubFilter                   ResponseCodeType = "ErrorInvalidExpressionTypeForSubFilter"
+	ResponseCodeTypeErrorInvalidExtendedProperty                             ResponseCodeType = "ErrorInvalidExtendedProperty"
+	ResponseCodeTypeErrorInvalidExtendedPropertyValue                        ResponseCodeType = "ErrorInvalidExtendedPropertyValue"
+	ResponseCodeTypeErrorInvalidFolderId                                     ResponseCodeType = "ErrorInvalidFolderId"
+	ResponseCodeTypeErrorInvalidFolderTypeForOperation                       ResponseCodeType = "ErrorInvalidFolderTypeForOperation"
+	ResponseCodeTypeErrorInvalidFractionalPagingParameters                   ResponseCodeType = "ErrorInvalidFractionalPagingParameters"
+	ResponseCodeTypeErrorInvalidFreeBusyViewType                             ResponseCodeType = "ErrorInvalidFreeBusyViewType"
+	ResponseCodeTypeErrorInvalidId                                           ResponseCodeType = "ErrorInvalidId"
+	ResponseCodeTypeErrorInvalidIdEmpty                                      ResponseCodeType = "ErrorInvalidIdEmpty"
+	ResponseCodeTypeErrorInvalidIdMalformed                                  ResponseCodeType = "ErrorInvalidIdMalformed"
+	ResponseCodeTypeErrorInvalidIdMalformedEwsLegacyIdFormat                 ResponseCodeType = "ErrorInvalidIdMalformedEwsLegacyIdFormat"
+	ResponseCodeTypeErrorInvalidIdMonikerTooLong                             ResponseCodeType = "ErrorInvalidIdMonikerTooLong"
+	ResponseCodeTypeErrorInvalidIdNotAnItemAttachmentId                      ResponseCodeType = "ErrorInvalidIdNotAnItemAttachmentId"
+	ResponseCodeTypeErrorInvalidIdReturnedByResolveNames                     ResponseCodeType = "ErrorInvalidIdReturnedByResolveNames"
+	ResponseCodeTypeErrorInvalidIdStoreObjectIdTooLong                       ResponseCodeType = "ErrorInvalidIdStoreObjectIdTooLong"
+	ResponseCodeTypeErrorInvalidIdTooManyAttachmentLevels                    ResponseCodeType = "ErrorInvalidIdTooManyAttachmentLevels"
+	ResponseCodeTypeErrorInvalidIdXml                                        ResponseCodeType = "ErrorInvalidIdXml"
+	ResponseCodeTypeErrorInvalidImContactId                                  ResponseCodeType = "ErrorInvalidImContactId"
+	ResponseCodeTypeErrorInvalidImDistributionGroupSmtpAddress               ResponseCodeType = "ErrorInvalidImDistributionGroupSmtpAddress"
+	ResponseCodeTypeErrorInvalidImGroupId                                    ResponseCodeType = "ErrorInvalidImGroupId"
+	ResponseCodeTypeErrorInvalidIndexedPagingParameters                      ResponseCodeType = "ErrorInvalidIndexedPagingParameters"
+	ResponseCodeTypeErrorInvalidInternetHeaderChildNodes                     ResponseCodeType = "ErrorInvalidInternetHeaderChildNodes"
+	ResponseCodeTypeErrorInvalidItemForOperationArchiveItem                  ResponseCodeType = "ErrorInvalidItemForOperationArchiveItem"
+	ResponseCodeTypeErrorInvalidItemForOperationCreateItemAttachment         ResponseCodeType = "ErrorInvalidItemForOperationCreateItemAttachment"
+	ResponseCodeTypeErrorInvalidItemForOperationCreateItem                   ResponseCodeType = "ErrorInvalidItemForOperationCreateItem"
+	ResponseCodeTypeErrorInvalidItemForOperationAcceptItem                   ResponseCodeType = "ErrorInvalidItemForOperationAcceptItem"
+	ResponseCodeTypeErrorInvalidItemForOperationDeclineItem                  ResponseCodeType = "ErrorInvalidItemForOperationDeclineItem"
+	ResponseCodeTypeErrorInvalidItemForOperationCancelItem                   ResponseCodeType = "ErrorInvalidItemForOperationCancelItem"
+	ResponseCodeTypeErrorInvalidItemForOperationExpandDL                     ResponseCodeType = "ErrorInvalidItemForOperationExpandDL"
+	ResponseCodeTypeErrorInvalidItemForOperationRemoveItem                   ResponseCodeType = "ErrorInvalidItemForOperationRemoveItem"
+	ResponseCodeTypeErrorInvalidItemForOperationSendItem                     ResponseCodeType = "ErrorInvalidItemForOperationSendItem"
+	ResponseCodeTypeErrorInvalidItemForOperationTentative                    ResponseCodeType = "ErrorInvalidItemForOperationTentative"
+	ResponseCodeTypeErrorInvalidLogonType                                    ResponseCodeType = "ErrorInvalidLogonType"
+	ResponseCodeTypeErrorInvalidLikeRequest                                  ResponseCodeType = "ErrorInvalidLikeRequest"
+	ResponseCodeTypeErrorInvalidMailbox                                      ResponseCodeType = "ErrorInvalidMailbox"
+	ResponseCodeTypeErrorInvalidManagedFolderProperty                        ResponseCodeType = "ErrorInvalidManagedFolderProperty"
+	ResponseCodeTypeErrorInvalidManagedFolderQuota                           ResponseCodeType = "ErrorInvalidManagedFolderQuota"
+	ResponseCodeTypeErrorInvalidManagedFolderSize                            ResponseCodeType = "ErrorInvalidManagedFolderSize"
+	ResponseCodeTypeErrorInvalidMergedFreeBusyInterval                       ResponseCodeType = "ErrorInvalidMergedFreeBusyInterval"
+	ResponseCodeTypeErrorInvalidNameForNameResolution                        ResponseCodeType = "ErrorInvalidNameForNameResolution"
+	ResponseCodeTypeErrorInvalidOperation                                    ResponseCodeType = "ErrorInvalidOperation"
+	ResponseCodeTypeErrorInvalidNetworkServiceContext                        ResponseCodeType = "ErrorInvalidNetworkServiceContext"
+	ResponseCodeTypeErrorInvalidOofParameter                                 ResponseCodeType = "ErrorInvalidOofParameter"
+	ResponseCodeTypeErrorInvalidPagingMaxRows                                ResponseCodeType = "ErrorInvalidPagingMaxRows"
+	ResponseCodeTypeErrorInvalidParentFolder                                 ResponseCodeType = "ErrorInvalidParentFolder"
+	ResponseCodeTypeErrorInvalidPercentCompleteValue                         ResponseCodeType = "ErrorInvalidPercentCompleteValue"
+	ResponseCodeTypeErrorInvalidPermissionSettings                           ResponseCodeType = "ErrorInvalidPermissionSettings"
+	ResponseCodeTypeErrorInvalidPhoneCallId                                  ResponseCodeType = "ErrorInvalidPhoneCallId"
+	ResponseCodeTypeErrorInvalidPhoneNumber                                  ResponseCodeType = "ErrorInvalidPhoneNumber"
+	ResponseCodeTypeErrorInvalidUserInfo                                     ResponseCodeType = "ErrorInvalidUserInfo"
+	ResponseCodeTypeErrorInvalidPropertyAppend                               ResponseCodeType = "ErrorInvalidPropertyAppend"
+	ResponseCodeTypeErrorInvalidPropertyDelete                               ResponseCodeType = "ErrorInvalidPropertyDelete"
+	ResponseCodeTypeErrorInvalidPropertyForExists                            ResponseCodeType = "ErrorInvalidPropertyForExists"
+	ResponseCodeTypeErrorInvalidPropertyForOperation                         ResponseCodeType = "ErrorInvalidPropertyForOperation"
+	ResponseCodeTypeErrorInvalidPropertyRequest                              ResponseCodeType = "ErrorInvalidPropertyRequest"
+	ResponseCodeTypeErrorInvalidPropertySet                                  ResponseCodeType = "ErrorInvalidPropertySet"
+	ResponseCodeTypeErrorInvalidPropertyUpdateSentMessage                    ResponseCodeType = "ErrorInvalidPropertyUpdateSentMessage"
+	ResponseCodeTypeErrorInvalidProxySecurityContext                         ResponseCodeType = "ErrorInvalidProxySecurityContext"
+	ResponseCodeTypeErrorInvalidPullSubscriptionId                           ResponseCodeType = "ErrorInvalidPullSubscriptionId"
+	ResponseCodeTypeErrorInvalidPushSubscriptionUrl                          ResponseCodeType = "ErrorInvalidPushSubscriptionUrl"
+	ResponseCodeTypeErrorInvalidRecipients                                   ResponseCodeType = "ErrorInvalidRecipients"
+	ResponseCodeTypeErrorInvalidRecipientSubfilter                           ResponseCodeType = "ErrorInvalidRecipientSubfilter"
+	ResponseCodeTypeErrorInvalidRecipientSubfilterComparison                 ResponseCodeType = "ErrorInvalidRecipientSubfilterComparison"
+	ResponseCodeTypeErrorInvalidRecipientSubfilterOrder                      ResponseCodeType = "ErrorInvalidRecipientSubfilterOrder"
+	ResponseCodeTypeErrorInvalidRecipientSubfilterTextFilter                 ResponseCodeType = "ErrorInvalidRecipientSubfilterTextFilter"
+	ResponseCodeTypeErrorInvalidReferenceItem                                ResponseCodeType = "ErrorInvalidReferenceItem"
+	ResponseCodeTypeErrorInvalidRequest                                      ResponseCodeType = "ErrorInvalidRequest"
+	ResponseCodeTypeErrorInvalidRestriction                                  ResponseCodeType = "ErrorInvalidRestriction"
+	ResponseCodeTypeErrorInvalidRetentionTagTypeMismatch                     ResponseCodeType = "ErrorInvalidRetentionTagTypeMismatch"
+	ResponseCodeTypeErrorInvalidRetentionTagInvisible                        ResponseCodeType = "ErrorInvalidRetentionTagInvisible"
+	ResponseCodeTypeErrorInvalidRetentionTagInheritance                      ResponseCodeType = "ErrorInvalidRetentionTagInheritance"
+	ResponseCodeTypeErrorInvalidRetentionTagIdGuid                           ResponseCodeType = "ErrorInvalidRetentionTagIdGuid"
+	ResponseCodeTypeErrorInvalidRoutingType                                  ResponseCodeType = "ErrorInvalidRoutingType"
+	ResponseCodeTypeErrorInvalidScheduledOofDuration                         ResponseCodeType = "ErrorInvalidScheduledOofDuration"
+	ResponseCodeTypeErrorInvalidSchemaVersionForMailboxVersion               ResponseCodeType = "ErrorInvalidSchemaVersionForMailboxVersion"
+	ResponseCodeTypeErrorInvalidSecurityDescriptor                           ResponseCodeType = "ErrorInvalidSecurityDescriptor"
+	ResponseCodeTypeErrorInvalidSendItemSaveSettings                         ResponseCodeType = "ErrorInvalidSendItemSaveSettings"
+	ResponseCodeTypeErrorInvalidSerializedAccessToken                        ResponseCodeType = "ErrorInvalidSerializedAccessToken"
+	ResponseCodeTypeErrorInvalidServerVersion                                ResponseCodeType = "ErrorInvalidServerVersion"
+	ResponseCodeTypeErrorInvalidSid                                          ResponseCodeType = "ErrorInvalidSid"
+	ResponseCodeTypeErrorInvalidSIPUri                                       ResponseCodeType = "ErrorInvalidSIPUri"
+	ResponseCodeTypeErrorInvalidSmtpAddress                                  ResponseCodeType = "ErrorInvalidSmtpAddress"
+	ResponseCodeTypeErrorInvalidSubfilterType                                ResponseCodeType = "ErrorInvalidSubfilterType"
+	ResponseCodeTypeErrorInvalidSubfilterTypeNotAttendeeType                 ResponseCodeType = "ErrorInvalidSubfilterTypeNotAttendeeType"
+	ResponseCodeTypeErrorInvalidSubfilterTypeNotRecipientType                ResponseCodeType = "ErrorInvalidSubfilterTypeNotRecipientType"
+	ResponseCodeTypeErrorInvalidSubscription                                 ResponseCodeType = "ErrorInvalidSubscription"
+	ResponseCodeTypeErrorInvalidSubscriptionRequest                          ResponseCodeType = "ErrorInvalidSubscriptionRequest"
+	ResponseCodeTypeErrorInvalidSyncStateData                                ResponseCodeType = "ErrorInvalidSyncStateData"
+	ResponseCodeTypeErrorInvalidTimeInterval                                 ResponseCodeType = "ErrorInvalidTimeInterval"
+	ResponseCodeTypeErrorInvalidUserOofSettings                              ResponseCodeType = "ErrorInvalidUserOofSettings"
+	ResponseCodeTypeErrorInvalidUserPrincipalName                            ResponseCodeType = "ErrorInvalidUserPrincipalName"
+	ResponseCodeTypeErrorInvalidUserSid                                      ResponseCodeType = "ErrorInvalidUserSid"
+	ResponseCodeTypeErrorInvalidUserSidMissingUPN                            ResponseCodeType = "ErrorInvalidUserSidMissingUPN"
+	ResponseCodeTypeErrorInvalidValueForProperty                             ResponseCodeType = "ErrorInvalidValueForProperty"
+	ResponseCodeTypeErrorInvalidWatermark                                    ResponseCodeType = "ErrorInvalidWatermark"
+	ResponseCodeTypeErrorIPGatewayNotFound                                   ResponseCodeType = "ErrorIPGatewayNotFound"
+	ResponseCodeTypeErrorIrresolvableConflict                                ResponseCodeType = "ErrorIrresolvableConflict"
+	ResponseCodeTypeErrorItemCorrupt                                         ResponseCodeType = "ErrorItemCorrupt"
+	ResponseCodeTypeErrorItemNotFound                                        ResponseCodeType = "ErrorItemNotFound"
+	ResponseCodeTypeErrorItemPropertyRequestFailed                           ResponseCodeType = "ErrorItemPropertyRequestFailed"
+	ResponseCodeTypeErrorItemSave                                            ResponseCodeType = "ErrorItemSave"
+	ResponseCodeTypeErrorItemSavePropertyError                               ResponseCodeType = "ErrorItemSavePropertyError"
+	ResponseCodeTypeErrorLegacyMailboxFreeBusyViewTypeNotMerged              ResponseCodeType = "ErrorLegacyMailboxFreeBusyViewTypeNotMerged"
+	ResponseCodeTypeErrorLocalServerObjectNotFound                           ResponseCodeType = "ErrorLocalServerObjectNotFound"
+	ResponseCodeTypeErrorLogonAsNetworkServiceFailed                         ResponseCodeType = "ErrorLogonAsNetworkServiceFailed"
+	ResponseCodeTypeErrorMailboxConfiguration                                ResponseCodeType = "ErrorMailboxConfiguration"
+	ResponseCodeTypeErrorMailboxDataArrayEmpty                               ResponseCodeType = "ErrorMailboxDataArrayEmpty"
+	ResponseCodeTypeErrorMailboxDataArrayTooBig                              ResponseCodeType = "ErrorMailboxDataArrayTooBig"
+	ResponseCodeTypeErrorMailboxHoldNotFound                                 ResponseCodeType = "ErrorMailboxHoldNotFound"
+	ResponseCodeTypeErrorMailboxLogonFailed                                  ResponseCodeType = "ErrorMailboxLogonFailed"
+	ResponseCodeTypeErrorMailboxMoveInProgress                               ResponseCodeType = "ErrorMailboxMoveInProgress"
+	ResponseCodeTypeErrorMailboxStoreUnavailable                             ResponseCodeType = "ErrorMailboxStoreUnavailable"
+	ResponseCodeTypeErrorMailRecipientNotFound                               ResponseCodeType = "ErrorMailRecipientNotFound"
+	ResponseCodeTypeErrorMailTipsDisabled                                    ResponseCodeType = "ErrorMailTipsDisabled"
+	ResponseCodeTypeErrorManagedFolderAlreadyExists                          ResponseCodeType = "ErrorManagedFolderAlreadyExists"
+	ResponseCodeTypeErrorManagedFolderNotFound                               ResponseCodeType = "ErrorManagedFolderNotFound"
+	ResponseCodeTypeErrorManagedFoldersRootFailure                           ResponseCodeType = "ErrorManagedFoldersRootFailure"
+	ResponseCodeTypeErrorMeetingSuggestionGenerationFailed                   ResponseCodeType = "ErrorMeetingSuggestionGenerationFailed"
+	ResponseCodeTypeErrorMessageDispositionRequired                          ResponseCodeType = "ErrorMessageDispositionRequired"
+	ResponseCodeTypeErrorMessageSizeExceeded                                 ResponseCodeType = "ErrorMessageSizeExceeded"
+	ResponseCodeTypeErrorMimeContentConversionFailed                         ResponseCodeType = "ErrorMimeContentConversionFailed"
+	ResponseCodeTypeErrorMimeContentInvalid                                  ResponseCodeType = "ErrorMimeContentInvalid"
+	ResponseCodeTypeErrorMimeContentInvalidBase64String                      ResponseCodeType = "ErrorMimeContentInvalidBase64String"
+	ResponseCodeTypeErrorMissingArgument                                     ResponseCodeType = "ErrorMissingArgument"
+	ResponseCodeTypeErrorMissingEmailAddress                                 ResponseCodeType = "ErrorMissingEmailAddress"
+	ResponseCodeTypeErrorMissingEmailAddressForManagedFolder                 ResponseCodeType = "ErrorMissingEmailAddressForManagedFolder"
+	ResponseCodeTypeErrorMissingInformationEmailAddress                      ResponseCodeType = "ErrorMissingInformationEmailAddress"
+	ResponseCodeTypeErrorMissingInformationReferenceItemId                   ResponseCodeType = "ErrorMissingInformationReferenceItemId"
+	ResponseCodeTypeErrorMissingItemForCreateItemAttachment                  ResponseCodeType = "ErrorMissingItemForCreateItemAttachment"
+	ResponseCodeTypeErrorMissingManagedFolderId                              ResponseCodeType = "ErrorMissingManagedFolderId"
+	ResponseCodeTypeErrorMissingRecipients                                   ResponseCodeType = "ErrorMissingRecipients"
+	ResponseCodeTypeErrorMissingUserIdInformation                            ResponseCodeType = "ErrorMissingUserIdInformation"
+	ResponseCodeTypeErrorMoreThanOneAccessModeSpecified                      ResponseCodeType = "ErrorMoreThanOneAccessModeSpecified"
+	ResponseCodeTypeErrorMoveCopyFailed                                      ResponseCodeType = "ErrorMoveCopyFailed"
+	ResponseCodeTypeErrorMoveDistinguishedFolder                             ResponseCodeType = "ErrorMoveDistinguishedFolder"
+	ResponseCodeTypeErrorMoveUnifiedGroupPropertyFailed                      ResponseCodeType = "ErrorMoveUnifiedGroupPropertyFailed"
+	ResponseCodeTypeErrorMultiLegacyMailboxAccess                            ResponseCodeType = "ErrorMultiLegacyMailboxAccess"
+	ResponseCodeTypeErrorNameResolutionMultipleResults                       ResponseCodeType = "ErrorNameResolutionMultipleResults"
+	ResponseCodeTypeErrorNameResolutionNoMailbox                             ResponseCodeType = "ErrorNameResolutionNoMailbox"
+	ResponseCodeTypeErrorNameResolutionNoResults                             ResponseCodeType = "ErrorNameResolutionNoResults"
+	ResponseCodeTypeErrorNoApplicableProxyCASServersAvailable                ResponseCodeType = "ErrorNoApplicableProxyCASServersAvailable"
+	ResponseCodeTypeErrorNoCalendar                                          ResponseCodeType = "ErrorNoCalendar"
+	ResponseCodeTypeErrorNoDestinationCASDueToKerberosRequirements           ResponseCodeType = "ErrorNoDestinationCASDueToKerberosRequirements"
+	ResponseCodeTypeErrorNoDestinationCASDueToSSLRequirements                ResponseCodeType = "ErrorNoDestinationCASDueToSSLRequirements"
+	ResponseCodeTypeErrorNoDestinationCASDueToVersionMismatch                ResponseCodeType = "ErrorNoDestinationCASDueToVersionMismatch"
+	ResponseCodeTypeErrorNoFolderClassOverride                               ResponseCodeType = "ErrorNoFolderClassOverride"
+	ResponseCodeTypeErrorNoFreeBusyAccess                                    ResponseCodeType = "ErrorNoFreeBusyAccess"
+	ResponseCodeTypeErrorNonExistentMailbox                                  ResponseCodeType = "ErrorNonExistentMailbox"
+	ResponseCodeTypeErrorNonPrimarySmtpAddress                               ResponseCodeType = "ErrorNonPrimarySmtpAddress"
+	ResponseCodeTypeErrorNoPropertyTagForCustomProperties                    ResponseCodeType = "ErrorNoPropertyTagForCustomProperties"
+	ResponseCodeTypeErrorNoPublicFolderReplicaAvailable                      ResponseCodeType = "ErrorNoPublicFolderReplicaAvailable"
+	ResponseCodeTypeErrorNoPublicFolderServerAvailable                       ResponseCodeType = "ErrorNoPublicFolderServerAvailable"
+	ResponseCodeTypeErrorNoRespondingCASInDestinationSite                    ResponseCodeType = "ErrorNoRespondingCASInDestinationSite"
+	ResponseCodeTypeErrorNotDelegate                                         ResponseCodeType = "ErrorNotDelegate"
+	ResponseCodeTypeErrorNotEnoughMemory                                     ResponseCodeType = "ErrorNotEnoughMemory"
+	ResponseCodeTypeErrorObjectTypeChanged                                   ResponseCodeType = "ErrorObjectTypeChanged"
+	ResponseCodeTypeErrorOccurrenceCrossingBoundary                          ResponseCodeType = "ErrorOccurrenceCrossingBoundary"
+	ResponseCodeTypeErrorOccurrenceTimeSpanTooBig                            ResponseCodeType = "ErrorOccurrenceTimeSpanTooBig"
+	ResponseCodeTypeErrorOperationNotAllowedWithPublicFolderRoot             ResponseCodeType = "ErrorOperationNotAllowedWithPublicFolderRoot"
+	ResponseCodeTypeErrorParentFolderIdRequired                              ResponseCodeType = "ErrorParentFolderIdRequired"
+	ResponseCodeTypeErrorParentFolderNotFound                                ResponseCodeType = "ErrorParentFolderNotFound"
+	ResponseCodeTypeErrorPasswordChangeRequired                              ResponseCodeType = "ErrorPasswordChangeRequired"
+	ResponseCodeTypeErrorPasswordExpired                                     ResponseCodeType = "ErrorPasswordExpired"
+	ResponseCodeTypeErrorPhoneNumberNotDialable                              ResponseCodeType = "ErrorPhoneNumberNotDialable"
+	ResponseCodeTypeErrorPropertyUpdate                                      ResponseCodeType = "ErrorPropertyUpdate"
+	ResponseCodeTypeErrorPromptPublishingOperationFailed                     ResponseCodeType = "ErrorPromptPublishingOperationFailed"
+	ResponseCodeTypeErrorPropertyValidationFailure                           ResponseCodeType = "ErrorPropertyValidationFailure"
+	ResponseCodeTypeErrorProxiedSubscriptionCallFailure                      ResponseCodeType = "ErrorProxiedSubscriptionCallFailure"
+	ResponseCodeTypeErrorProxyCallFailed                                     ResponseCodeType = "ErrorProxyCallFailed"
+	ResponseCodeTypeErrorProxyGroupSidLimitExceeded                          ResponseCodeType = "ErrorProxyGroupSidLimitExceeded"
+	ResponseCodeTypeErrorProxyRequestNotAllowed                              ResponseCodeType = "ErrorProxyRequestNotAllowed"
+	ResponseCodeTypeErrorProxyRequestProcessingFailed                        ResponseCodeType = "ErrorProxyRequestProcessingFailed"
+	ResponseCodeTypeErrorProxyServiceDiscoveryFailed                         ResponseCodeType = "ErrorProxyServiceDiscoveryFailed"
+	ResponseCodeTypeErrorProxyTokenExpired                                   ResponseCodeType = "ErrorProxyTokenExpired"
+	ResponseCodeTypeErrorPublicFolderMailboxDiscoveryFailed                  ResponseCodeType = "ErrorPublicFolderMailboxDiscoveryFailed"
+	ResponseCodeTypeErrorPublicFolderOperationFailed                         ResponseCodeType = "ErrorPublicFolderOperationFailed"
+	ResponseCodeTypeErrorPublicFolderRequestProcessingFailed                 ResponseCodeType = "ErrorPublicFolderRequestProcessingFailed"
+	ResponseCodeTypeErrorPublicFolderServerNotFound                          ResponseCodeType = "ErrorPublicFolderServerNotFound"
+	ResponseCodeTypeErrorPublicFolderSyncException                           ResponseCodeType = "ErrorPublicFolderSyncException"
+	ResponseCodeTypeErrorQueryFilterTooLong                                  ResponseCodeType = "ErrorQueryFilterTooLong"
+	ResponseCodeTypeErrorQuotaExceeded                                       ResponseCodeType = "ErrorQuotaExceeded"
+	ResponseCodeTypeErrorReadEventsFailed                                    ResponseCodeType = "ErrorReadEventsFailed"
+	ResponseCodeTypeErrorReadReceiptNotPending                               ResponseCodeType = "ErrorReadReceiptNotPending"
+	ResponseCodeTypeErrorRecurrenceEndDateTooBig                             ResponseCodeType = "ErrorRecurrenceEndDateTooBig"
+	ResponseCodeTypeErrorRecurrenceHasNoOccurrence                           ResponseCodeType = "ErrorRecurrenceHasNoOccurrence"
+	ResponseCodeTypeErrorRemoveDelegatesFailed                               ResponseCodeType = "ErrorRemoveDelegatesFailed"
+	ResponseCodeTypeErrorRequestAborted                                      ResponseCodeType = "ErrorRequestAborted"
+	ResponseCodeTypeErrorRequestStreamTooBig                                 ResponseCodeType = "ErrorRequestStreamTooBig"
+	ResponseCodeTypeErrorRequiredPropertyMissing                             ResponseCodeType = "ErrorRequiredPropertyMissing"
+	ResponseCodeTypeErrorResolveNamesInvalidFolderType                       ResponseCodeType = "ErrorResolveNamesInvalidFolderType"
+	ResponseCodeTypeErrorResolveNamesOnlyOneContactsFolderAllowed            ResponseCodeType = "ErrorResolveNamesOnlyOneContactsFolderAllowed"
+	ResponseCodeTypeErrorResponseSchemaValidation                            ResponseCodeType = "ErrorResponseSchemaValidation"
+	ResponseCodeTypeErrorRestrictionTooLong                                  ResponseCodeType = "ErrorRestrictionTooLong"
+	ResponseCodeTypeErrorRestrictionTooComplex                               ResponseCodeType = "ErrorRestrictionTooComplex"
+	ResponseCodeTypeErrorResultSetTooBig                                     ResponseCodeType = "ErrorResultSetTooBig"
+	ResponseCodeTypeErrorInvalidExchangeImpersonationHeaderData              ResponseCodeType = "ErrorInvalidExchangeImpersonationHeaderData"
+	ResponseCodeTypeErrorSavedItemFolderNotFound                             ResponseCodeType = "ErrorSavedItemFolderNotFound"
+	ResponseCodeTypeErrorSchemaValidation                                    ResponseCodeType = "ErrorSchemaValidation"
+	ResponseCodeTypeErrorSearchFolderNotInitialized                          ResponseCodeType = "ErrorSearchFolderNotInitialized"
+	ResponseCodeTypeErrorSendAsDenied                                        ResponseCodeType = "ErrorSendAsDenied"
+	ResponseCodeTypeErrorSendMeetingCancellationsRequired                    ResponseCodeType = "ErrorSendMeetingCancellationsRequired"
+	ResponseCodeTypeErrorSendMeetingInvitationsOrCancellationsRequired       ResponseCodeType = "ErrorSendMeetingInvitationsOrCancellationsRequired"
+	ResponseCodeTypeErrorSendMeetingInvitationsRequired                      ResponseCodeType = "ErrorSendMeetingInvitationsRequired"
+	ResponseCodeTypeErrorSentMeetingRequestUpdate                            ResponseCodeType = "ErrorSentMeetingRequestUpdate"
+	ResponseCodeTypeErrorSentTaskRequestUpdate                               ResponseCodeType = "ErrorSentTaskRequestUpdate"
+	ResponseCodeTypeErrorServerBusy                                          ResponseCodeType = "ErrorServerBusy"
+	ResponseCodeTypeErrorServiceDiscoveryFailed                              ResponseCodeType = "ErrorServiceDiscoveryFailed"
+	ResponseCodeTypeErrorStaleObject                                         ResponseCodeType = "ErrorStaleObject"
+	ResponseCodeTypeErrorSubmissionQuotaExceeded                             ResponseCodeType = "ErrorSubmissionQuotaExceeded"
+	ResponseCodeTypeErrorSubscriptionAccessDenied                            ResponseCodeType = "ErrorSubscriptionAccessDenied"
+	ResponseCodeTypeErrorSubscriptionDelegateAccessNotSupported              ResponseCodeType = "ErrorSubscriptionDelegateAccessNotSupported"
+	ResponseCodeTypeErrorSubscriptionNotFound                                ResponseCodeType = "ErrorSubscriptionNotFound"
+	ResponseCodeTypeErrorSubscriptionUnsubscribed                            ResponseCodeType = "ErrorSubscriptionUnsubscribed"
+	ResponseCodeTypeErrorSyncFolderNotFound                                  ResponseCodeType = "ErrorSyncFolderNotFound"
+	ResponseCodeTypeErrorTeamMailboxNotFound                                 ResponseCodeType = "ErrorTeamMailboxNotFound"
+	ResponseCodeTypeErrorTeamMailboxNotLinkedToSharePoint                    ResponseCodeType = "ErrorTeamMailboxNotLinkedToSharePoint"
+	ResponseCodeTypeErrorTeamMailboxUrlValidationFailed                      ResponseCodeType = "ErrorTeamMailboxUrlValidationFailed"
+	ResponseCodeTypeErrorTeamMailboxNotAuthorizedOwner                       ResponseCodeType = "ErrorTeamMailboxNotAuthorizedOwner"
+	ResponseCodeTypeErrorTeamMailboxActiveToPendingDelete                    ResponseCodeType = "ErrorTeamMailboxActiveToPendingDelete"
+	ResponseCodeTypeErrorTeamMailboxFailedSendingNotifications               ResponseCodeType = "ErrorTeamMailboxFailedSendingNotifications"
+	ResponseCodeTypeErrorTeamMailboxErrorUnknown                             ResponseCodeType = "ErrorTeamMailboxErrorUnknown"
+	ResponseCodeTypeErrorTimeIntervalTooBig                                  ResponseCodeType = "ErrorTimeIntervalTooBig"
+	ResponseCodeTypeErrorTimeoutExpired                                      ResponseCodeType = "ErrorTimeoutExpired"
+	ResponseCodeTypeErrorTimeZone                                            ResponseCodeType = "ErrorTimeZone"
+	ResponseCodeTypeErrorToFolderNotFound                                    ResponseCodeType = "ErrorToFolderNotFound"
+	ResponseCodeTypeErrorTokenSerializationDenied                            ResponseCodeType = "ErrorTokenSerializationDenied"
+	ResponseCodeTypeErrorTooManyObjectsOpened                                ResponseCodeType = "ErrorTooManyObjectsOpened"
+	ResponseCodeTypeErrorUpdatePropertyMismatch                              ResponseCodeType = "ErrorUpdatePropertyMismatch"
+	ResponseCodeTypeErrorAccessingPartialCreatedUnifiedGroup                 ResponseCodeType = "ErrorAccessingPartialCreatedUnifiedGroup"
+	ResponseCodeTypeErrorUnifiedGroupMailboxAADCreationFailed                ResponseCodeType = "ErrorUnifiedGroupMailboxAADCreationFailed"
+	ResponseCodeTypeErrorUnifiedGroupMailboxAADDeleteFailed                  ResponseCodeType = "ErrorUnifiedGroupMailboxAADDeleteFailed"
+	ResponseCodeTypeErrorUnifiedGroupMailboxNamingPolicy                     ResponseCodeType = "ErrorUnifiedGroupMailboxNamingPolicy"
+	ResponseCodeTypeErrorUnifiedGroupMailboxDeleteFailed                     ResponseCodeType = "ErrorUnifiedGroupMailboxDeleteFailed"
+	ResponseCodeTypeErrorUnifiedGroupMailboxNotFound                         ResponseCodeType = "ErrorUnifiedGroupMailboxNotFound"
+	ResponseCodeTypeErrorUnifiedGroupMailboxUpdateDelayed                    ResponseCodeType = "ErrorUnifiedGroupMailboxUpdateDelayed"
+	ResponseCodeTypeErrorUnifiedGroupMailboxUpdatedPartialProperties         ResponseCodeType = "ErrorUnifiedGroupMailboxUpdatedPartialProperties"
+	ResponseCodeTypeErrorUnifiedGroupMailboxUpdateFailed                     ResponseCodeType = "ErrorUnifiedGroupMailboxUpdateFailed"
+	ResponseCodeTypeErrorUnifiedGroupMailboxProvisionFailed                  ResponseCodeType = "ErrorUnifiedGroupMailboxProvisionFailed"
+	ResponseCodeTypeErrorUnifiedMessagingDialPlanNotFound                    ResponseCodeType = "ErrorUnifiedMessagingDialPlanNotFound"
+	ResponseCodeTypeErrorUnifiedMessagingReportDataNotFound                  ResponseCodeType = "ErrorUnifiedMessagingReportDataNotFound"
+	ResponseCodeTypeErrorUnifiedMessagingPromptNotFound                      ResponseCodeType = "ErrorUnifiedMessagingPromptNotFound"
+	ResponseCodeTypeErrorUnifiedMessagingRequestFailed                       ResponseCodeType = "ErrorUnifiedMessagingRequestFailed"
+	ResponseCodeTypeErrorUnifiedMessagingServerNotFound                      ResponseCodeType = "ErrorUnifiedMessagingServerNotFound"
+	ResponseCodeTypeErrorUnableToGetUserOofSettings                          ResponseCodeType = "ErrorUnableToGetUserOofSettings"
+	ResponseCodeTypeErrorUnableToRemoveImContactFromGroup                    ResponseCodeType = "ErrorUnableToRemoveImContactFromGroup"
+	ResponseCodeTypeErrorUnsupportedSubFilter                                ResponseCodeType = "ErrorUnsupportedSubFilter"
+	ResponseCodeTypeErrorUnsupportedCulture                                  ResponseCodeType = "ErrorUnsupportedCulture"
+	ResponseCodeTypeErrorUnsupportedMapiPropertyType                         ResponseCodeType = "ErrorUnsupportedMapiPropertyType"
+	ResponseCodeTypeErrorUnsupportedMimeConversion                           ResponseCodeType = "ErrorUnsupportedMimeConversion"
+	ResponseCodeTypeErrorUnsupportedPathForQuery                             ResponseCodeType = "ErrorUnsupportedPathForQuery"
+	ResponseCodeTypeErrorUnsupportedPathForSortGroup                         ResponseCodeType = "ErrorUnsupportedPathForSortGroup"
+	ResponseCodeTypeErrorUnsupportedPropertyDefinition                       ResponseCodeType = "ErrorUnsupportedPropertyDefinition"
+	ResponseCodeTypeErrorUnsupportedQueryFilter                              ResponseCodeType = "ErrorUnsupportedQueryFilter"
+	ResponseCodeTypeErrorUnsupportedRecurrence                               ResponseCodeType = "ErrorUnsupportedRecurrence"
+	ResponseCodeTypeErrorUnsupportedTypeForConversion                        ResponseCodeType = "ErrorUnsupportedTypeForConversion"
+	ResponseCodeTypeErrorUpdateDelegatesFailed                               ResponseCodeType = "ErrorUpdateDelegatesFailed"
+	ResponseCodeTypeErrorUserNotUnifiedMessagingEnabled                      ResponseCodeType = "ErrorUserNotUnifiedMessagingEnabled"
+	ResponseCodeTypeErrorVoiceMailNotImplemented                             ResponseCodeType = "ErrorVoiceMailNotImplemented"
+	ResponseCodeTypeErrorValueOutOfRange                                     ResponseCodeType = "ErrorValueOutOfRange"
+	ResponseCodeTypeErrorVirusDetected                                       ResponseCodeType = "ErrorVirusDetected"
+	ResponseCodeTypeErrorVirusMessageDeleted                                 ResponseCodeType = "ErrorVirusMessageDeleted"
+	ResponseCodeTypeErrorWebRequestInInvalidState                            ResponseCodeType = "ErrorWebRequestInInvalidState"
+	ResponseCodeTypeErrorWin32InteropError                                   ResponseCodeType = "ErrorWin32InteropError"
+	ResponseCodeTypeErrorWorkingHoursSaveFailed                              ResponseCodeType = "ErrorWorkingHoursSaveFailed"
+	ResponseCodeTypeErrorWorkingHoursXmlMalformed                            ResponseCodeType = "ErrorWorkingHoursXmlMalformed"
+	ResponseCodeTypeErrorWrongServerVersion                                  ResponseCodeType = "ErrorWrongServerVersion"
+	ResponseCodeTypeErrorWrongServerVersionDelegate                          ResponseCodeType = "ErrorWrongServerVersionDelegate"
+	ResponseCodeTypeErrorMissingInformationSharingFolderId                   ResponseCodeType = "ErrorMissingInformationSharingFolderId"
+	ResponseCodeTypeErrorDuplicateSOAPHeader                                 ResponseCodeType = "ErrorDuplicateSOAPHeader"
+	ResponseCodeTypeErrorSharingSynchronizationFailed                        ResponseCodeType = "ErrorSharingSynchronizationFailed"
+	ResponseCodeTypeErrorSharingNoExternalEwsAvailable                       ResponseCodeType = "ErrorSharingNoExternalEwsAvailable"
+	ResponseCodeTypeErrorFreeBusyDLLimitReached                              ResponseCodeType = "ErrorFreeBusyDLLimitReached"
+	ResponseCodeTypeErrorInvalidGetSharingFolderRequest                      ResponseCodeType = "ErrorInvalidGetSharingFolderRequest"
+	ResponseCodeTypeErrorNotAllowedExternalSharingByPolicy                   ResponseCodeType = "ErrorNotAllowedExternalSharingByPolicy"
+	ResponseCodeTypeErrorUserNotAllowedByPolicy                              ResponseCodeType = "ErrorUserNotAllowedByPolicy"
+	ResponseCodeTypeErrorPermissionNotAllowedByPolicy                        ResponseCodeType = "ErrorPermissionNotAllowedByPolicy"
+	ResponseCodeTypeErrorOrganizationNotFederated                            ResponseCodeType = "ErrorOrganizationNotFederated"
+	ResponseCodeTypeErrorMailboxFailover                                     ResponseCodeType = "ErrorMailboxFailover"
+	ResponseCodeTypeErrorInvalidExternalSharingInitiator                     ResponseCodeType = "ErrorInvalidExternalSharingInitiator"
+	ResponseCodeTypeErrorMessageTrackingPermanentError                       ResponseCodeType = "ErrorMessageTrackingPermanentError"
+	ResponseCodeTypeErrorMessageTrackingTransientError                       ResponseCodeType = "ErrorMessageTrackingTransientError"
+	ResponseCodeTypeErrorMessageTrackingNoSuchDomain                         ResponseCodeType = "ErrorMessageTrackingNoSuchDomain"
+	ResponseCodeTypeErrorUserWithoutFederatedProxyAddress                    ResponseCodeType = "ErrorUserWithoutFederatedProxyAddress"
+	ResponseCodeTypeErrorInvalidOrganizationRelationshipForFreeBusy          ResponseCodeType = "ErrorInvalidOrganizationRelationshipForFreeBusy"
+	ResponseCodeTypeErrorInvalidFederatedOrganizationId                      ResponseCodeType = "ErrorInvalidFederatedOrganizationId"
+	ResponseCodeTypeErrorInvalidExternalSharingSubscriber                    ResponseCodeType = "ErrorInvalidExternalSharingSubscriber"
+	ResponseCodeTypeErrorInvalidSharingData                                  ResponseCodeType = "ErrorInvalidSharingData"
+	ResponseCodeTypeErrorInvalidSharingMessage                               ResponseCodeType = "ErrorInvalidSharingMessage"
+	ResponseCodeTypeErrorNotSupportedSharingMessage                          ResponseCodeType = "ErrorNotSupportedSharingMessage"
+	ResponseCodeTypeErrorApplyConversationActionFailed                       ResponseCodeType = "ErrorApplyConversationActionFailed"
+	ResponseCodeTypeErrorInboxRulesValidationError                           ResponseCodeType = "ErrorInboxRulesValidationError"
+	ResponseCodeTypeErrorOutlookRuleBlobExists                               ResponseCodeType = "ErrorOutlookRuleBlobExists"
+	ResponseCodeTypeErrorRulesOverQuota                                      ResponseCodeType = "ErrorRulesOverQuota"
+	ResponseCodeTypeErrorNewEventStreamConnectionOpened                      ResponseCodeType = "ErrorNewEventStreamConnectionOpened"
+	ResponseCodeTypeErrorMissedNotificationEvents                            ResponseCodeType = "ErrorMissedNotificationEvents"
+	ResponseCodeTypeErrorDuplicateLegacyDistinguishedName                    ResponseCodeType = "ErrorDuplicateLegacyDistinguishedName"
+	ResponseCodeTypeErrorInvalidClientAccessTokenRequest                     ResponseCodeType = "ErrorInvalidClientAccessTokenRequest"
+	ResponseCodeTypeErrorUnauthorizedClientAccessTokenRequest                ResponseCodeType = "ErrorUnauthorizedClientAccessTokenRequest"
+	ResponseCodeTypeErrorNoSpeechDetected                                    ResponseCodeType = "ErrorNoSpeechDetected"
+	ResponseCodeTypeErrorUMServerUnavailable                                 ResponseCodeType = "ErrorUMServerUnavailable"
+	ResponseCodeTypeErrorRecipientNotFound                                   ResponseCodeType = "ErrorRecipientNotFound"
+	ResponseCodeTypeErrorRecognizerNotInstalled                              ResponseCodeType = "ErrorRecognizerNotInstalled"
+	ResponseCodeTypeErrorSpeechGrammarError                                  ResponseCodeType = "ErrorSpeechGrammarError"
+	ResponseCodeTypeErrorInvalidManagementRoleHeader                         ResponseCodeType = "ErrorInvalidManagementRoleHeader"
+	ResponseCodeTypeErrorLocationServicesDisabled                            ResponseCodeType = "ErrorLocationServicesDisabled"
+	ResponseCodeTypeErrorLocationServicesRequestTimedOut                     ResponseCodeType = "ErrorLocationServicesRequestTimedOut"
+	ResponseCodeTypeErrorLocationServicesRequestFailed                       ResponseCodeType = "ErrorLocationServicesRequestFailed"
+	ResponseCodeTypeErrorLocationServicesInvalidRequest                      ResponseCodeType = "ErrorLocationServicesInvalidRequest"
+	ResponseCodeTypeErrorWeatherServiceDisabled                              ResponseCodeType = "ErrorWeatherServiceDisabled"
+	ResponseCodeTypeErrorMailboxScopeNotAllowedWithoutQueryString            ResponseCodeType = "ErrorMailboxScopeNotAllowedWithoutQueryString"
+	ResponseCodeTypeErrorArchiveMailboxSearchFailed                          ResponseCodeType = "ErrorArchiveMailboxSearchFailed"
+	ResponseCodeTypeErrorGetRemoteArchiveFolderFailed                        ResponseCodeType = "ErrorGetRemoteArchiveFolderFailed"
+	ResponseCodeTypeErrorFindRemoteArchiveFolderFailed                       ResponseCodeType = "ErrorFindRemoteArchiveFolderFailed"
+	ResponseCodeTypeErrorGetRemoteArchiveItemFailed                          ResponseCodeType = "ErrorGetRemoteArchiveItemFailed"
+	ResponseCodeTypeErrorExportRemoteArchiveItemsFailed                      ResponseCodeType = "ErrorExportRemoteArchiveItemsFailed"
+	ResponseCodeTypeErrorInvalidPhotoSize                                    ResponseCodeType = "ErrorInvalidPhotoSize"
+	ResponseCodeTypeErrorSearchQueryHasTooManyKeywords                       ResponseCodeType = "ErrorSearchQueryHasTooManyKeywords"
+	ResponseCodeTypeErrorSearchTooManyMailboxes                              ResponseCodeType = "ErrorSearchTooManyMailboxes"
+	ResponseCodeTypeErrorInvalidRetentionTagNone                             ResponseCodeType = "ErrorInvalidRetentionTagNone"
+	ResponseCodeTypeErrorDiscoverySearchesDisabled                           ResponseCodeType = "ErrorDiscoverySearchesDisabled"
+	ResponseCodeTypeErrorCalendarSeekToConditionNotSupported                 ResponseCodeType = "ErrorCalendarSeekToConditionNotSupported"
+	ResponseCodeTypeErrorCalendarIsGroupMailboxForAccept                     ResponseCodeType = "ErrorCalendarIsGroupMailboxForAccept"
+	ResponseCodeTypeErrorCalendarIsGroupMailboxForDecline                    ResponseCodeType = "ErrorCalendarIsGroupMailboxForDecline"
+	ResponseCodeTypeErrorCalendarIsGroupMailboxForTentative                  ResponseCodeType = "ErrorCalendarIsGroupMailboxForTentative"
+	ResponseCodeTypeErrorCalendarIsGroupMailboxForSuppressReadReceipt        ResponseCodeType = "ErrorCalendarIsGroupMailboxForSuppressReadReceipt"
+	ResponseCodeTypeErrorOrganizationAccessBlocked                           ResponseCodeType = "ErrorOrganizationAccessBlocked"
+	ResponseCodeTypeErrorInvalidLicense                                      ResponseCodeType = "ErrorInvalidLicense"
+	ResponseCodeTypeErrorMessagePerFolderCountReceiveQuotaExceeded           ResponseCodeType = "ErrorMessagePerFolderCountReceiveQuotaExceeded"
+	ResponseCodeTypeErrorInvalidBulkActionType                               ResponseCodeType = "ErrorInvalidBulkActionType"
+	ResponseCodeTypeErrorInvalidKeepNCount                                   ResponseCodeType = "ErrorInvalidKeepNCount"
+	ResponseCodeTypeErrorInvalidKeepNType                                    ResponseCodeType = "ErrorInvalidKeepNType"
+	ResponseCodeTypeErrorNoOAuthServerAvailableForRequest                    ResponseCodeType = "ErrorNoOAuthServerAvailableForRequest"
+	ResponseCodeTypeErrorInstantSearchSessionExpired                         ResponseCodeType = "ErrorInstantSearchSessionExpired"
+	ResponseCodeTypeErrorInstantSearchTimeout                                ResponseCodeType = "ErrorInstantSearchTimeout"
+	ResponseCodeTypeErrorInstantSearchFailed                                 ResponseCodeType = "ErrorInstantSearchFailed"
+	ResponseCodeTypeErrorUnsupportedUserForExecuteSearch                     ResponseCodeType = "ErrorUnsupportedUserForExecuteSearch"
+	ResponseCodeTypeErrorDuplicateExtendedKeywordDefinition                  ResponseCodeType = "ErrorDuplicateExtendedKeywordDefinition"
+	ResponseCodeTypeErrorMissingExchangePrincipal                            ResponseCodeType = "ErrorMissingExchangePrincipal"
+	ResponseCodeTypeErrorUnexpectedUnifiedGroupsCount                        ResponseCodeType = "ErrorUnexpectedUnifiedGroupsCount"
+	ResponseCodeTypeErrorParsingXMLResponse                                  ResponseCodeType = "ErrorParsingXMLResponse"
+	ResponseCodeTypeErrorInvalidFederationOrganizationIdentifier             ResponseCodeType = "ErrorInvalidFederationOrganizationIdentifier"
+	ResponseCodeTypeErrorInvalidSweepRule                                    ResponseCodeType = "ErrorInvalidSweepRule"
+	ResponseCodeTypeErrorInvalidSweepRuleOperationType                       ResponseCodeType = "ErrorInvalidSweepRuleOperationType"
+	ResponseCodeTypeErrorTargetDomainNotSupported                            ResponseCodeType = "ErrorTargetDomainNotSupported"
+	ResponseCodeTypeErrorInvalidInternetWebProxyOnLocalServer                ResponseCodeType = "ErrorInvalidInternetWebProxyOnLocalServer"
+	ResponseCodeTypeErrorNoSenderRestrictionsSettingsFoundInRequest          ResponseCodeType = "ErrorNoSenderRestrictionsSettingsFoundInRequest"
+	ResponseCodeTypeErrorDuplicateSenderRestrictionsInputFound               ResponseCodeType = "ErrorDuplicateSenderRestrictionsInputFound"
+	ResponseCodeTypeErrorSenderRestrictionsUpdateFailed                      ResponseCodeType = "ErrorSenderRestrictionsUpdateFailed"
+	ResponseCodeTypeErrorMessageSubmissionBlocked                            ResponseCodeType = "ErrorMessageSubmissionBlocked"
+	ResponseCodeTypeErrorExceededMessageLimit                                ResponseCodeType = "ErrorExceededMessageLimit"
+	ResponseCodeTypeErrorExceededMaxRecipientLimitBlock                      ResponseCodeType = "ErrorExceededMaxRecipientLimitBlock"
+	ResponseCodeTypeErrorAccountSuspend                                      ResponseCodeType = "ErrorAccountSuspend"
+	ResponseCodeTypeErrorExceededMaxRecipientLimit                           ResponseCodeType = "ErrorExceededMaxRecipientLimit"
+	ResponseCodeTypeErrorMessageBlocked                                      ResponseCodeType = "ErrorMessageBlocked"
+	ResponseCodeTypeErrorAccountSuspendShowTierUpgrade                       ResponseCodeType = "ErrorAccountSuspendShowTierUpgrade"
+	ResponseCodeTypeErrorExceededMessageLimitShowTierUpgrade                 ResponseCodeType = "ErrorExceededMessageLimitShowTierUpgrade"
+	ResponseCodeTypeErrorExceededMaxRecipientLimitShowTierUpgrade            ResponseCodeType = "ErrorExceededMaxRecipientLimitShowTierUpgrade"
+	ResponseCodeTypeErrorInvalidLongitude                                    ResponseCodeType = "ErrorInvalidLongitude"
+	ResponseCodeTypeErrorInvalidLatitude                                     ResponseCodeType = "ErrorInvalidLatitude"
+	ResponseCodeTypeErrorProxySoapException                                  ResponseCodeType = "ErrorProxySoapException"
+	ResponseCodeTypeErrorUnifiedGroupAlreadyExists                           ResponseCodeType = "ErrorUnifiedGroupAlreadyExists"
+	ResponseCodeTypeErrorUnifiedGroupAadAuthorizationRequestDenied           ResponseCodeType = "ErrorUnifiedGroupAadAuthorizationRequestDenied"
+	ResponseCodeTypeErrorUnifiedGroupCreationDisabled                        ResponseCodeType = "ErrorUnifiedGroupCreationDisabled"
+	ResponseCodeTypeErrorMarketPlaceExtensionAlreadyInstalledForOrg          ResponseCodeType = "ErrorMarketPlaceExtensionAlreadyInstalledForOrg"
+	ResponseCodeTypeErrorExtensionAlreadyInstalledForOrg                     ResponseCodeType = "ErrorExtensionAlreadyInstalledForOrg"
+	ResponseCodeTypeErrorNewerExtensionAlreadyInstalled                      ResponseCodeType = "ErrorNewerExtensionAlreadyInstalled"
+	ResponseCodeTypeErrorNewerMarketPlaceExtensionAlreadyInstalled           ResponseCodeType = "ErrorNewerMarketPlaceExtensionAlreadyInstalled"
+	ResponseCodeTypeErrorInvalidExtensionId                                  ResponseCodeType = "ErrorInvalidExtensionId"
+	ResponseCodeTypeErrorCannotUninstallProvidedExtensions                   ResponseCodeType = "ErrorCannotUninstallProvidedExtensions"
+	ResponseCodeTypeErrorNoRbacPermissionToInstallMarketPlaceExtensions      ResponseCodeType = "ErrorNoRbacPermissionToInstallMarketPlaceExtensions"
+	ResponseCodeTypeErrorNoRbacPermissionToInstallReadWriteMailboxExtensions ResponseCodeType = "ErrorNoRbacPermissionToInstallReadWriteMailboxExtensions"
+	ResponseCodeTypeErrorInvalidReportMessageActionType                      ResponseCodeType = "ErrorInvalidReportMessageActionType"
+	ResponseCodeTypeErrorCannotDownloadExtensionManifest                     ResponseCodeType = "ErrorCannotDownloadExtensionManifest"
+	ResponseCodeTypeErrorCalendarForwardActionNotAllowed                     ResponseCodeType = "ErrorCalendarForwardActionNotAllowed"
+	ResponseCodeTypeErrorUnifiedGroupAliasNamingPolicy                       ResponseCodeType = "ErrorUnifiedGroupAliasNamingPolicy"
+	ResponseCodeTypeErrorSubscriptionsDisabledForGroup                       ResponseCodeType = "ErrorSubscriptionsDisabledForGroup"
+	ResponseCodeTypeErrorCannotFindFileAttachment                            ResponseCodeType = "ErrorCannotFindFileAttachment"
+	ResponseCodeTypeErrorInvalidValueForFilter                               ResponseCodeType = "ErrorInvalidValueForFilter"
+	ResponseCodeTypeErrorQuotaExceededOnDelete                               ResponseCodeType = "ErrorQuotaExceededOnDelete"
+	ResponseCodeTypeErrorAccessDeniedDueToCompliance                         ResponseCodeType = "ErrorAccessDeniedDueToCompliance"
+	ResponseCodeTypeErrorRecoverableItemsAccessDenied                        ResponseCodeType = "ErrorRecoverableItemsAccessDenied"
+)
+
+type ListOfExtensionIdsType []GuidType
+
 type RequestServerVersionType struct {
 	Version ExchangeVersionType `xml:"Version,attr,omitempty"`
 }
@@ -2979,6 +3004,2133 @@ type SearchRefinersTypeM struct {
 
 type ExtendedKeywordsType struct {
 	ExtendedKeywordDefinition []*ExtendedKeywordDefinitionType `xml:"m:ExtendedKeywordDefinition,omitempty"`
+}
+
+type ResolveNamesType struct {
+	ReturnFullContactData XsBoolean                         `xml:"ReturnFullContactData,attr,omitempty"`
+	SearchScope           ResolveNamesSearchScopeType       `xml:"SearchScope,attr,omitempty"`
+	ContactDataShape      DefaultShapeNamesType             `xml:"ContactDataShape,attr,omitempty"`
+	ParentFolderIds       *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
+	UnresolvedEntry       NonEmptyStringType                `xml:"m:UnresolvedEntry,omitempty"`
+}
+
+type BaseRequestType struct {
+}
+
+type ResolveNamesResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type BaseResponseMessageType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArrayOfResponseMessagesType struct {
+	CreateItemResponseMessage                      []*ItemInfoResponseMessageType                        `xml:"m:CreateItemResponseMessage,omitempty"`
+	DeleteItemResponseMessage                      []*DeleteItemResponseMessageType                      `xml:"m:DeleteItemResponseMessage,omitempty"`
+	GetItemResponseMessage                         []*ItemInfoResponseMessageType                        `xml:"m:GetItemResponseMessage,omitempty"`
+	UpdateItemResponseMessage                      []*UpdateItemResponseMessageType                      `xml:"m:UpdateItemResponseMessage,omitempty"`
+	UpdateItemInRecoverableItemsResponseMessage    []*UpdateItemInRecoverableItemsResponseMessageType    `xml:"m:UpdateItemInRecoverableItemsResponseMessage,omitempty"`
+	SendItemResponseMessage                        []*ResponseMessageType                                `xml:"m:SendItemResponseMessage,omitempty"`
+	DeleteFolderResponseMessage                    []*ResponseMessageType                                `xml:"m:DeleteFolderResponseMessage,omitempty"`
+	EmptyFolderResponseMessage                     []*ResponseMessageType                                `xml:"m:EmptyFolderResponseMessage,omitempty"`
+	CreateFolderResponseMessage                    []*FolderInfoResponseMessageType                      `xml:"m:CreateFolderResponseMessage,omitempty"`
+	GetFolderResponseMessage                       []*FolderInfoResponseMessageType                      `xml:"m:GetFolderResponseMessage,omitempty"`
+	FindFolderResponseMessage                      []*FindFolderResponseMessageType                      `xml:"m:FindFolderResponseMessage,omitempty"`
+	UpdateFolderResponseMessage                    []*FolderInfoResponseMessageType                      `xml:"m:UpdateFolderResponseMessage,omitempty"`
+	MoveFolderResponseMessage                      []*FolderInfoResponseMessageType                      `xml:"m:MoveFolderResponseMessage,omitempty"`
+	CopyFolderResponseMessage                      []*FolderInfoResponseMessageType                      `xml:"m:CopyFolderResponseMessage,omitempty"`
+	CreateFolderPathResponseMessage                []*FolderInfoResponseMessageType                      `xml:"m:CreateFolderPathResponseMessage,omitempty"`
+	CreateAttachmentResponseMessage                []*AttachmentInfoResponseMessageType                  `xml:"m:CreateAttachmentResponseMessage,omitempty"`
+	DeleteAttachmentResponseMessage                []*DeleteAttachmentResponseMessageType                `xml:"m:DeleteAttachmentResponseMessage,omitempty"`
+	GetAttachmentResponseMessage                   []*AttachmentInfoResponseMessageType                  `xml:"m:GetAttachmentResponseMessage,omitempty"`
+	UploadItemsResponseMessage                     []*UploadItemsResponseMessageType                     `xml:"m:UploadItemsResponseMessage,omitempty"`
+	ExportItemsResponseMessage                     []*ExportItemsResponseMessageType                     `xml:"m:ExportItemsResponseMessage,omitempty"`
+	MarkAllItemsAsReadResponseMessage              []*ResponseMessageType                                `xml:"m:MarkAllItemsAsReadResponseMessage,omitempty"`
+	GetClientAccessTokenResponseMessage            []*GetClientAccessTokenResponseMessageType            `xml:"m:GetClientAccessTokenResponseMessage,omitempty"`
+	GetAppManifestsResponseMessage                 []*ResponseMessageType                                `xml:"m:GetAppManifestsResponseMessage,omitempty"`
+	SetClientExtensionResponseMessage              []*ResponseMessageType                                `xml:"m:SetClientExtensionResponseMessage,omitempty"`
+	GetOMEConfigurationResponseMessage             []*ResponseMessageType                                `xml:"m:GetOMEConfigurationResponseMessage,omitempty"`
+	SetOMEConfigurationResponseMessage             []*ResponseMessageType                                `xml:"m:SetOMEConfigurationResponseMessage,omitempty"`
+	GetOMEMessageStatusResponseType                []*ResponseMessageType                                `xml:"m:GetOMEMessageStatusResponseType,omitempty"`
+	SetOMEMessageStatusResponseType                []*ResponseMessageType                                `xml:"m:SetOMEMessageStatusResponseType,omitempty"`
+	FindItemResponseMessage                        []*FindItemResponseMessageType                        `xml:"m:FindItemResponseMessage,omitempty"`
+	MoveItemResponseMessage                        []*ItemInfoResponseMessageType                        `xml:"m:MoveItemResponseMessage,omitempty"`
+	ArchiveItemResponseMessage                     []*ItemInfoResponseMessageType                        `xml:"m:ArchiveItemResponseMessage,omitempty"`
+	CopyItemResponseMessage                        []*ItemInfoResponseMessageType                        `xml:"m:CopyItemResponseMessage,omitempty"`
+	ResolveNamesResponseMessage                    []*ResolveNamesResponseMessageType                    `xml:"m:ResolveNamesResponseMessage,omitempty"`
+	ExpandDLResponseMessage                        []*ExpandDLResponseMessageType                        `xml:"m:ExpandDLResponseMessage,omitempty"`
+	GetServerTimeZonesResponseMessage              []*GetServerTimeZonesResponseMessageType              `xml:"m:GetServerTimeZonesResponseMessage,omitempty"`
+	GetEventsResponseMessage                       []*GetEventsResponseMessageType                       `xml:"m:GetEventsResponseMessage,omitempty"`
+	GetStreamingEventsResponseMessage              []*GetStreamingEventsResponseMessageType              `xml:"m:GetStreamingEventsResponseMessage,omitempty"`
+	SubscribeResponseMessage                       []*SubscribeResponseMessageType                       `xml:"m:SubscribeResponseMessage,omitempty"`
+	UnsubscribeResponseMessage                     []*ResponseMessageType                                `xml:"m:UnsubscribeResponseMessage,omitempty"`
+	SendNotificationResponseMessage                []*SendNotificationResponseMessageType                `xml:"m:SendNotificationResponseMessage,omitempty"`
+	SyncFolderHierarchyResponseMessage             []*SyncFolderHierarchyResponseMessageType             `xml:"m:SyncFolderHierarchyResponseMessage,omitempty"`
+	SyncFolderItemsResponseMessage                 []*SyncFolderItemsResponseMessageType                 `xml:"m:SyncFolderItemsResponseMessage,omitempty"`
+	CreateManagedFolderResponseMessage             []*FolderInfoResponseMessageType                      `xml:"m:CreateManagedFolderResponseMessage,omitempty"`
+	ConvertIdResponseMessage                       []*ConvertIdResponseMessageType                       `xml:"m:ConvertIdResponseMessage,omitempty"`
+	GetSharingMetadataResponseMessage              []*GetSharingMetadataResponseMessageType              `xml:"m:GetSharingMetadataResponseMessage,omitempty"`
+	RefreshSharingFolderResponseMessage            []*RefreshSharingFolderResponseMessageType            `xml:"m:RefreshSharingFolderResponseMessage,omitempty"`
+	GetSharingFolderResponseMessage                []*GetSharingFolderResponseMessageType                `xml:"m:GetSharingFolderResponseMessage,omitempty"`
+	CreateUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:CreateUserConfigurationResponseMessage,omitempty"`
+	DeleteUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:DeleteUserConfigurationResponseMessage,omitempty"`
+	GetUserConfigurationResponseMessage            []*GetUserConfigurationResponseMessageType            `xml:"m:GetUserConfigurationResponseMessage,omitempty"`
+	GetSpecificUserConfigurationResponseMessage    []*GetSpecificUserConfigurationResponseMessageType    `xml:"m:GetSpecificUserConfigurationResponseMessage,omitempty"`
+	UpdateUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:UpdateUserConfigurationResponseMessage,omitempty"`
+	GetRoomListsResponse                           []*GetRoomListsResponseMessageType                    `xml:"m:GetRoomListsResponse,omitempty"`
+	GetRoomsResponse                               []*GetRoomsResponseMessageType                        `xml:"m:GetRoomsResponse,omitempty"`
+	GetRemindersResponse                           []*GetRemindersResponseMessageType                    `xml:"m:GetRemindersResponse,omitempty"`
+	PerformReminderActionResponse                  []*PerformReminderActionResponseMessageType           `xml:"m:PerformReminderActionResponse,omitempty"`
+	ApplyConversationActionResponseMessage         []*ApplyConversationActionResponseMessageType         `xml:"m:ApplyConversationActionResponseMessage,omitempty"`
+	FindMailboxStatisticsByKeywordsResponseMessage []*FindMailboxStatisticsByKeywordsResponseMessageType `xml:"m:FindMailboxStatisticsByKeywordsResponseMessage,omitempty"`
+	GetSearchableMailboxesResponseMessage          []*GetSearchableMailboxesResponseMessageType          `xml:"m:GetSearchableMailboxesResponseMessage,omitempty"`
+	SearchMailboxesResponseMessage                 []*SearchMailboxesResponseMessageType                 `xml:"m:SearchMailboxesResponseMessage,omitempty"`
+	GetDiscoverySearchConfigurationResponseMessage []*GetDiscoverySearchConfigurationResponseMessageType `xml:"m:GetDiscoverySearchConfigurationResponseMessage,omitempty"`
+	GetHoldOnMailboxesResponseMessage              []*GetHoldOnMailboxesResponseMessageType              `xml:"m:GetHoldOnMailboxesResponseMessage,omitempty"`
+	SetHoldOnMailboxesResponseMessage              []*SetHoldOnMailboxesResponseMessageType              `xml:"m:SetHoldOnMailboxesResponseMessage,omitempty"`
+	GetNonIndexableItemStatisticsResponseMessage   []*GetNonIndexableItemStatisticsResponseMessageType   `xml:"m:GetNonIndexableItemStatisticsResponseMessage,omitempty"`
+	GetNonIndexableItemDetailsResponseMessage      []*GetNonIndexableItemDetailsResponseMessageType      `xml:"m:GetNonIndexableItemDetailsResponseMessage,omitempty"`
+	FindPeopleResponseMessage                      []*FindPeopleResponseMessageType                      `xml:"m:FindPeopleResponseMessage,omitempty"`
+	FindTagsResponseMessage                        []*FindTagsResponseMessageType                        `xml:"m:FindTagsResponseMessage,omitempty"`
+	AddTagResponseMessage                          []*AddTagResponseMessageType                          `xml:"m:AddTagResponseMessage,omitempty"`
+	HideTagResponseMessage                         []*HideTagResponseMessageType                         `xml:"m:HideTagResponseMessage,omitempty"`
+	GetPasswordExpirationDateResponse              []*GetPasswordExpirationDateResponseMessageType       `xml:"m:GetPasswordExpirationDateResponse,omitempty"`
+	GetPersonaResponseMessage                      []*GetPersonaResponseMessageType                      `xml:"m:GetPersonaResponseMessage,omitempty"`
+	GetConversationItemsResponseMessage            []*GetConversationItemsResponseMessageType            `xml:"m:GetConversationItemsResponseMessage,omitempty"`
+	GetUserRetentionPolicyTagsResponseMessage      []*GetUserRetentionPolicyTagsResponseMessageType      `xml:"m:GetUserRetentionPolicyTagsResponseMessage,omitempty"`
+	GetUserPhotoResponseMessage                    []*GetUserPhotoResponseMessageType                    `xml:"m:GetUserPhotoResponseMessage,omitempty"`
+	MarkAsJunkResponseMessage                      []*MarkAsJunkResponseMessageType                      `xml:"m:MarkAsJunkResponseMessage,omitempty"`
+	MarkAsPhishingResponseMessage                  []*MarkAsPhishingResponseMessageType                  `xml:"m:MarkAsPhishingResponseMessage,omitempty"`
+	ReportMessageResponseMessage                   []*ReportMessageResponseMessageType                   `xml:"m:ReportMessageResponseMessage,omitempty"`
+	PostModernGroupItemResponseMessage             []*ItemInfoResponseMessageType                        `xml:"m:PostModernGroupItemResponseMessage,omitempty"`
+	GetLastPrivateCatalogUpdateResponseMessage     []*ResponseMessageType                                `xml:"m:GetLastPrivateCatalogUpdateResponseMessage,omitempty"`
+	GetPrivateCatalogAddInsResponseMessage         []*ResponseMessageType                                `xml:"m:GetPrivateCatalogAddInsResponseMessage,omitempty"`
+}
+
+type ItemInfoResponseMessageType struct {
+	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString              `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	Items              *ArrayOfRealItemsType `xml:"m:Items,omitempty"`
+}
+
+type ResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type DeleteItemResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type UpdateItemResponseMessageType struct {
+	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString              `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	Items              *ArrayOfRealItemsType `xml:"m:Items,omitempty"`
+	ConflictResults    *ConflictResultsType  `xml:"m:ConflictResults,omitempty"`
+}
+
+type UpdateItemInRecoverableItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	Items              *ArrayOfRealItemsType   `xml:"m:Items,omitempty"`
+	Attachments        *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
+	ConflictResults    *ConflictResultsType    `xml:"m:ConflictResults,omitempty"`
+}
+
+type FolderInfoResponseMessageType struct {
+	ResponseClass      ResponseClassType   `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString            `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType     `xml:"m:MessageXml,omitempty"`
+	Folders            *ArrayOfFoldersType `xml:"m:Folders,omitempty"`
+}
+
+type FindFolderResponseMessageType struct {
+	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString              `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	RootFolder         *FindFolderParentType `xml:"m:RootFolder,omitempty"`
+}
+
+type AttachmentInfoResponseMessageType struct {
+	ResponseClass      ResponseClassType       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	Attachments        *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
+}
+
+type DeleteAttachmentResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	RootItemId         *RootItemIdType   `xml:"m:RootItemId,omitempty"`
+}
+
+type UploadItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	ItemId             *ItemIdType       `xml:"m:ItemId,omitempty"`
+}
+
+type ExportItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	ItemId             *ItemIdType       `xml:"m:ItemId,omitempty"`
+	Data               XsBase64Binary    `xml:"m:Data,omitempty"`
+}
+
+type GetClientAccessTokenResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	Token              *ClientAccessTokenType `xml:"m:Token,omitempty"`
+}
+
+type FindItemResponseMessageType struct {
+	ResponseClass      ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                   `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType            `xml:"m:MessageXml,omitempty"`
+	RootFolder         *FindItemParentType        `xml:"m:RootFolder,omitempty"`
+	HighlightTerms     *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
+}
+
+type ResolveNamesResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	ResolutionSet      *ArrayOfResolutionType `xml:"m:ResolutionSet,omitempty"`
+}
+
+type ExpandDLResponseMessageType struct {
+	ResponseClass           ResponseClassType       `xml:"ResponseClass,attr,omitempty"`
+	IndexedPagingOffset     XsInt                   `xml:"IndexedPagingOffset,attr,omitempty"`
+	NumeratorOffset         XsInt                   `xml:"NumeratorOffset,attr,omitempty"`
+	AbsoluteDenominator     XsInt                   `xml:"AbsoluteDenominator,attr,omitempty"`
+	IncludesLastItemInRange XsBoolean               `xml:"IncludesLastItemInRange,attr,omitempty"`
+	TotalItemsInView        XsInt                   `xml:"TotalItemsInView,attr,omitempty"`
+	MessageText             XsString                `xml:"m:MessageText,omitempty"`
+	ResponseCode            ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey      XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml              *MessageXmlType         `xml:"m:MessageXml,omitempty"`
+	DLExpansion             *ArrayOfDLExpansionType `xml:"m:DLExpansion,omitempty"`
+}
+
+type GetServerTimeZonesResponseMessageType struct {
+	ResponseClass       ResponseClassType              `xml:"ResponseClass,attr,omitempty"`
+	MessageText         XsString                       `xml:"m:MessageText,omitempty"`
+	ResponseCode        ResponseCodeType               `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey  XsInt                          `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml          *MessageXmlType                `xml:"m:MessageXml,omitempty"`
+	TimeZoneDefinitions *ArrayOfTimeZoneDefinitionType `xml:"m:TimeZoneDefinitions,omitempty"`
+}
+
+type GetEventsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	Notification       *NotificationType `xml:"m:Notification,omitempty"`
+}
+
+type GetStreamingEventsResponseMessageType struct {
+	ResponseClass        ResponseClassType                   `xml:"ResponseClass,attr,omitempty"`
+	MessageText          XsString                            `xml:"m:MessageText,omitempty"`
+	ResponseCode         ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey   XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml           *MessageXmlType                     `xml:"m:MessageXml,omitempty"`
+	Notifications        *NonEmptyArrayOfNotificationsType   `xml:"m:Notifications,omitempty"`
+	ErrorSubscriptionIds *NonEmptyArrayOfSubscriptionIdsType `xml:"m:ErrorSubscriptionIds,omitempty"`
+	ConnectionStatus     ConnectionStatusType                `xml:"m:ConnectionStatus,omitempty"`
+}
+
+type SubscribeResponseMessageType struct {
+	ResponseClass      ResponseClassType  `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString           `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	SubscriptionId     SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
+	Watermark          WatermarkType      `xml:"m:Watermark,omitempty"`
+}
+
+type SendNotificationResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	Notification       *NotificationType `xml:"m:Notification,omitempty"`
+}
+
+type SyncFolderHierarchyResponseMessageType struct {
+	ResponseClass             ResponseClassType               `xml:"ResponseClass,attr,omitempty"`
+	MessageText               XsString                        `xml:"m:MessageText,omitempty"`
+	ResponseCode              ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey        XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                *MessageXmlType                 `xml:"m:MessageXml,omitempty"`
+	SyncState                 XsString                        `xml:"m:SyncState,omitempty"`
+	IncludesLastFolderInRange XsBoolean                       `xml:"m:IncludesLastFolderInRange,omitempty"`
+	Changes                   *SyncFolderHierarchyChangesType `xml:"m:Changes,omitempty"`
+}
+
+type SyncFolderItemsResponseMessageType struct {
+	ResponseClass           ResponseClassType           `xml:"ResponseClass,attr,omitempty"`
+	MessageText             XsString                    `xml:"m:MessageText,omitempty"`
+	ResponseCode            ResponseCodeType            `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey      XsInt                       `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml              *MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	SyncState               XsString                    `xml:"m:SyncState,omitempty"`
+	IncludesLastItemInRange XsBoolean                   `xml:"m:IncludesLastItemInRange,omitempty"`
+	Changes                 *SyncFolderItemsChangesType `xml:"m:Changes,omitempty"`
+}
+
+type ConvertIdResponseMessageType struct {
+	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString             `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
+	AlternateId        *AlternateIdBaseType `xml:"m:AlternateId,omitempty"`
+}
+
+type GetSharingMetadataResponseMessageType struct {
+	ResponseClass                       ResponseClassType                     `xml:"ResponseClass,attr,omitempty"`
+	MessageText                         XsString                              `xml:"m:MessageText,omitempty"`
+	ResponseCode                        ResponseCodeType                      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey                  XsInt                                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                          *MessageXmlType                       `xml:"m:MessageXml,omitempty"`
+	EncryptedSharedFolderDataCollection *ArrayOfEncryptedSharedFolderDataType `xml:"m:EncryptedSharedFolderDataCollection,omitempty"`
+	InvalidRecipients                   *ArrayOfInvalidRecipientsType         `xml:"m:InvalidRecipients,omitempty"`
+}
+
+type RefreshSharingFolderResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type GetSharingFolderResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	SharingFolderId    *FolderIdType     `xml:"m:SharingFolderId,omitempty"`
+}
+
+type GetUserConfigurationResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	UserConfiguration  *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
+}
+
+type GetSpecificUserConfigurationResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	UserConfiguration  *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
+}
+
+type GetRoomListsResponseMessageType struct {
+	ResponseClass      ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                   `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType            `xml:"m:MessageXml,omitempty"`
+	RoomLists          *ArrayOfEmailAddressesType `xml:"m:RoomLists,omitempty"`
+}
+
+type GetRoomsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	Rooms              *ArrayOfRoomsType `xml:"m:Rooms,omitempty"`
+}
+
+type GetRemindersResponseMessageType struct {
+	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString              `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
+	Reminders          *ArrayOfRemindersType `xml:"m:Reminders,omitempty"`
+}
+
+type PerformReminderActionResponseMessageType struct {
+	ResponseClass      ResponseClassType           `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                    `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType            `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                       `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType             `xml:"m:MessageXml,omitempty"`
+	UpdatedItemIds     *NonEmptyArrayOfItemIdsType `xml:"m:UpdatedItemIds,omitempty"`
+}
+
+type ApplyConversationActionResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type FindMailboxStatisticsByKeywordsResponseMessageType struct {
+	ResponseClass                 ResponseClassType                  `xml:"ResponseClass,attr,omitempty"`
+	MessageText                   XsString                           `xml:"m:MessageText,omitempty"`
+	ResponseCode                  ResponseCodeType                   `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey            XsInt                              `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                    *MessageXmlType                    `xml:"m:MessageXml,omitempty"`
+	MailboxStatisticsSearchResult *MailboxStatisticsSearchResultType `xml:"m:MailboxStatisticsSearchResult,omitempty"`
+}
+
+type GetSearchableMailboxesResponseMessageType struct {
+	ResponseClass       ResponseClassType                 `xml:"ResponseClass,attr,omitempty"`
+	MessageText         XsString                          `xml:"m:MessageText,omitempty"`
+	ResponseCode        ResponseCodeType                  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey  XsInt                             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml          *MessageXmlType                   `xml:"m:MessageXml,omitempty"`
+	SearchableMailboxes *ArrayOfSearchableMailboxesType   `xml:"m:SearchableMailboxes,omitempty"`
+	FailedMailboxes     *ArrayOfFailedSearchMailboxesType `xml:"m:FailedMailboxes,omitempty"`
+}
+
+type SearchMailboxesResponseMessageType struct {
+	ResponseClass         ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString                   `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            *MessageXmlType            `xml:"m:MessageXml,omitempty"`
+	SearchMailboxesResult *SearchMailboxesResultType `xml:"m:SearchMailboxesResult,omitempty"`
+}
+
+type GetDiscoverySearchConfigurationResponseMessageType struct {
+	ResponseClass                 ResponseClassType                        `xml:"ResponseClass,attr,omitempty"`
+	MessageText                   XsString                                 `xml:"m:MessageText,omitempty"`
+	ResponseCode                  ResponseCodeType                         `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey            XsInt                                    `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                    *MessageXmlType                          `xml:"m:MessageXml,omitempty"`
+	DiscoverySearchConfigurations *ArrayOfDiscoverySearchConfigurationType `xml:"m:DiscoverySearchConfigurations,omitempty"`
+}
+
+type GetHoldOnMailboxesResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	MailboxHoldResult  *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
+}
+
+type SetHoldOnMailboxesResponseMessageType struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	MailboxHoldResult  *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
+}
+
+type GetNonIndexableItemStatisticsResponseMessageType struct {
+	ResponseClass              ResponseClassType                      `xml:"ResponseClass,attr,omitempty"`
+	MessageText                XsString                               `xml:"m:MessageText,omitempty"`
+	ResponseCode               ResponseCodeType                       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey         XsInt                                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                 *MessageXmlType                        `xml:"m:MessageXml,omitempty"`
+	NonIndexableItemStatistics *ArrayOfNonIndexableItemStatisticsType `xml:"m:NonIndexableItemStatistics,omitempty"`
+}
+
+type GetNonIndexableItemDetailsResponseMessageType struct {
+	ResponseClass                 ResponseClassType                 `xml:"ResponseClass,attr,omitempty"`
+	MessageText                   XsString                          `xml:"m:MessageText,omitempty"`
+	ResponseCode                  ResponseCodeType                  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey            XsInt                             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                    *MessageXmlType                   `xml:"m:MessageXml,omitempty"`
+	NonIndexableItemDetailsResult *NonIndexableItemDetailResultType `xml:"m:NonIndexableItemDetailsResult,omitempty"`
+}
+
+type FindPeopleResponseMessageType struct {
+	ResponseClass             ResponseClassType  `xml:"ResponseClass,attr,omitempty"`
+	MessageText               XsString           `xml:"m:MessageText,omitempty"`
+	ResponseCode              ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey        XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                *MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	People                    *ArrayOfPeopleType `xml:"m:People,omitempty"`
+	TotalNumberOfPeopleInView XsInt              `xml:"m:TotalNumberOfPeopleInView,omitempty"`
+	FirstMatchingRowIndex     XsInt              `xml:"m:FirstMatchingRowIndex,omitempty"`
+	FirstLoadedRowIndex       XsInt              `xml:"m:FirstLoadedRowIndex,omitempty"`
+	TransactionId             GuidType           `xml:"m:TransactionId,omitempty"`
+}
+
+type FindTagsResponseMessageType struct {
+	ResponseClass      ResponseClassType   `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString            `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType     `xml:"m:MessageXml,omitempty"`
+	Tags               *ArrayOfStringsType `xml:"m:Tags,omitempty"`
+}
+
+type AddTagResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	WasSuccessful      XsBoolean         `xml:"m:WasSuccessful,omitempty"`
+}
+
+type HideTagResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	WasSuccessful      XsBoolean         `xml:"m:WasSuccessful,omitempty"`
+}
+
+type GetPasswordExpirationDateResponseMessageType struct {
+	ResponseClass          ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText            XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode           ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey     XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml             *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	PasswordExpirationDate XsDateTime        `xml:"m:PasswordExpirationDate,omitempty"`
+}
+
+type GetPersonaResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
+}
+
+type GetConversationItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType         `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                  `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType          `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                     `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType           `xml:"m:MessageXml,omitempty"`
+	Conversation       *ConversationResponseType `xml:"m:Conversation,omitempty"`
+}
+
+type GetUserRetentionPolicyTagsResponseMessageType struct {
+	ResponseClass       ResponseClassType               `xml:"ResponseClass,attr,omitempty"`
+	MessageText         XsString                        `xml:"m:MessageText,omitempty"`
+	ResponseCode        ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey  XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml          *MessageXmlType                 `xml:"m:MessageXml,omitempty"`
+	RetentionPolicyTags *ArrayOfRetentionPolicyTagsType `xml:"m:RetentionPolicyTags,omitempty"`
+}
+
+type GetUserPhotoResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	HasChanged         XsBoolean         `xml:"m:HasChanged,omitempty"`
+	PictureData        XsBase64Binary    `xml:"m:PictureData,omitempty"`
+}
+
+type MarkAsJunkResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
+}
+
+type MarkAsPhishingResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
+}
+
+type ReportMessageResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
+	Policy             XsString          `xml:"m:Policy,omitempty"`
+}
+
+type ExpandDLType struct {
+	Mailbox *EmailAddressType `xml:"m:Mailbox,omitempty"`
+}
+
+type ExpandDLResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetServerTimeZonesType struct {
+	ReturnFullTimeZoneData XsBoolean                      `xml:"ReturnFullTimeZoneData,attr,omitempty"`
+	Ids                    *NonEmptyArrayOfTimeZoneIdType `xml:"m:Ids,omitempty"`
+}
+
+type GetServerTimeZonesResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type FindFolderType struct {
+	Traversal                FolderQueryTraversalType          `xml:"Traversal,attr,omitempty"`
+	FolderShape              *FolderResponseShapeType          `xml:"m:FolderShape,omitempty"`
+	Restriction              *RestrictionType                  `xml:"m:Restriction,omitempty"`
+	ParentFolderIds          *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
+	IndexedPageFolderView    *IndexedPageViewType              `xml:"m:IndexedPageFolderView,omitempty"`
+	FractionalPageFolderView *FractionalPageViewType           `xml:"m:FractionalPageFolderView,omitempty"`
+}
+
+type FindFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type FindItemType struct {
+	Traversal                   ItemQueryTraversalType            `xml:"Traversal,attr,omitempty"`
+	ItemShape                   *ItemResponseShapeType            `xml:"m:ItemShape,omitempty"`
+	Restriction                 *RestrictionType                  `xml:"m:Restriction,omitempty"`
+	SortOrder                   *NonEmptyArrayOfFieldOrdersType   `xml:"m:SortOrder,omitempty"`
+	ParentFolderIds             *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
+	QueryString                 *QueryStringType                  `xml:"m:QueryString,omitempty"`
+	IndexedPageItemView         *IndexedPageViewType              `xml:"m:IndexedPageItemView,omitempty"`
+	FractionalPageItemView      *FractionalPageViewType           `xml:"m:FractionalPageItemView,omitempty"`
+	SeekToConditionPageItemView *SeekToConditionPageViewType      `xml:"m:SeekToConditionPageItemView,omitempty"`
+	CalendarView                *CalendarViewType                 `xml:"m:CalendarView,omitempty"`
+	ContactsView                *ContactsViewType                 `xml:"m:ContactsView,omitempty"`
+	GroupBy                     *GroupByType                      `xml:"m:GroupBy,omitempty"`
+	DistinguishedGroupBy        *DistinguishedGroupByType         `xml:"m:DistinguishedGroupBy,omitempty"`
+}
+
+type QueryStringType struct {
+	CharData             XsString  `xml:",chardata"`
+	ResetCache           XsBoolean `xml:"ResetCache,attr,omitempty"`
+	ReturnHighlightTerms XsBoolean `xml:"ReturnHighlightTerms,attr,omitempty"`
+	ReturnDeletedItems   XsBoolean `xml:"ReturnDeletedItems,attr,omitempty"`
+}
+
+type FindItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetFolderType struct {
+	FolderShape *FolderResponseShapeType          `xml:"m:FolderShape,omitempty"`
+	FolderIds   *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type GetFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UploadItemsType struct {
+	Items *NonEmptyArrayOfUploadItemsType `xml:"m:Items,omitempty"`
+}
+
+type UploadItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ExportItemsType struct {
+	ItemIds *NonEmptyArrayOfItemIdsType `xml:"m:ItemIds,omitempty"`
+}
+
+type ExportItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ConvertIdType struct {
+	DestinationFormat IdFormatType                     `xml:"DestinationFormat,attr,omitempty"`
+	SourceIds         *NonEmptyArrayOfAlternateIdsType `xml:"m:SourceIds,omitempty"`
+}
+
+type ConvertIdResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateFolderType struct {
+	ParentFolderId *TargetFolderIdType         `xml:"m:ParentFolderId,omitempty"`
+	Folders        *NonEmptyArrayOfFoldersType `xml:"m:Folders,omitempty"`
+}
+
+type CreateFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateFolderPathType struct {
+	ParentFolderId     *TargetFolderIdType         `xml:"m:ParentFolderId,omitempty"`
+	RelativeFolderPath *NonEmptyArrayOfFoldersType `xml:"m:RelativeFolderPath,omitempty"`
+}
+
+type CreateFolderPathResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type DeleteFolderType struct {
+	DeleteType DisposalType                      `xml:"DeleteType,attr,omitempty"`
+	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type DeleteFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type EmptyFolderType struct {
+	DeleteType       DisposalType                      `xml:"DeleteType,attr,omitempty"`
+	DeleteSubFolders XsBoolean                         `xml:"DeleteSubFolders,attr,omitempty"`
+	FolderIds        *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type EmptyFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateFolderType struct {
+	FolderChanges *NonEmptyArrayOfFolderChangesType `xml:"m:FolderChanges,omitempty"`
+}
+
+type UpdateFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type MoveFolderType struct {
+	ToFolderId *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
+	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type BaseMoveCopyFolderType struct {
+	ToFolderId *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
+	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type MoveFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CopyFolderType struct {
+	ToFolderId *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
+	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type CopyFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type SubscribeType struct {
+	PullSubscriptionRequest      *PullSubscriptionRequestType      `xml:"m:PullSubscriptionRequest,omitempty"`
+	PushSubscriptionRequest      *PushSubscriptionRequestType      `xml:"m:PushSubscriptionRequest,omitempty"`
+	StreamingSubscriptionRequest *StreamingSubscriptionRequestType `xml:"m:StreamingSubscriptionRequest,omitempty"`
+}
+
+type SubscribeResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UnsubscribeType struct {
+	SubscriptionId SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
+}
+
+type UnsubscribeResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetEventsType struct {
+	SubscriptionId SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
+	Watermark      WatermarkType      `xml:"m:Watermark,omitempty"`
+}
+
+type GetEventsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetStreamingEventsType struct {
+	SubscriptionIds   *NonEmptyArrayOfSubscriptionIdsType        `xml:"m:SubscriptionIds,omitempty"`
+	ConnectionTimeout StreamingSubscriptionConnectionTimeoutType `xml:"m:ConnectionTimeout,omitempty"`
+}
+
+type GetStreamingEventsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type SyncFolderHierarchyType struct {
+	FolderShape  *FolderResponseShapeType `xml:"m:FolderShape,omitempty"`
+	SyncFolderId *TargetFolderIdType      `xml:"m:SyncFolderId,omitempty"`
+	SyncState    XsString                 `xml:"m:SyncState,omitempty"`
+}
+
+type SyncFolderHierarchyResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type SyncFolderItemsType struct {
+	ItemShape          *ItemResponseShapeType     `xml:"m:ItemShape,omitempty"`
+	SyncFolderId       *TargetFolderIdType        `xml:"m:SyncFolderId,omitempty"`
+	SyncState          XsString                   `xml:"m:SyncState,omitempty"`
+	Ignore             *ArrayOfBaseItemIdsType    `xml:"m:Ignore,omitempty"`
+	MaxChangesReturned MaxSyncChangesReturnedType `xml:"m:MaxChangesReturned,omitempty"`
+	SyncScope          SyncFolderItemsScopeType   `xml:"m:SyncScope,omitempty"`
+}
+
+type SyncFolderItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateManagedFolderRequestType struct {
+	FolderNames *NonEmptyArrayOfFolderNamesType `xml:"m:FolderNames,omitempty"`
+	Mailbox     *EmailAddressType               `xml:"m:Mailbox,omitempty"`
+}
+
+type CreateManagedFolderResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetItemType struct {
+	ItemShape *ItemResponseShapeType          `xml:"m:ItemShape,omitempty"`
+	ItemIds   *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+}
+
+type GetItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateItemType struct {
+	MessageDisposition     MessageDispositionType                  `xml:"MessageDisposition,attr,omitempty"`
+	SendMeetingInvitations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingInvitations,attr,omitempty"`
+	SavedItemFolderId      *TargetFolderIdType                     `xml:"m:SavedItemFolderId,omitempty"`
+	Items                  *NonEmptyArrayOfAllItemsType            `xml:"m:Items,omitempty"`
+}
+
+type CreateItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type DeleteItemType struct {
+	DeleteType               DisposalType                            `xml:"DeleteType,attr,omitempty"`
+	SendMeetingCancellations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingCancellations,attr,omitempty"`
+	AffectedTaskOccurrences  AffectedTaskOccurrencesType             `xml:"AffectedTaskOccurrences,attr,omitempty"`
+	SuppressReadReceipts     XsBoolean                               `xml:"SuppressReadReceipts,attr,omitempty"`
+	ItemIds                  *NonEmptyArrayOfBaseItemIdsType         `xml:"m:ItemIds,omitempty"`
+}
+
+type DeleteItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateItemType struct {
+	ConflictResolution                    ConflictResolutionType          `xml:"ConflictResolution,attr,omitempty"`
+	MessageDisposition                    MessageDispositionType          `xml:"MessageDisposition,attr,omitempty"`
+	SendMeetingInvitationsOrCancellations CalendarItemUpdateOperationType `xml:"SendMeetingInvitationsOrCancellations,attr,omitempty"`
+	SuppressReadReceipts                  XsBoolean                       `xml:"SuppressReadReceipts,attr,omitempty"`
+	SavedItemFolderId                     *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
+	ItemChanges                           *NonEmptyArrayOfItemChangesType `xml:"m:ItemChanges,omitempty"`
+}
+
+type UpdateItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateItemInRecoverableItemsType struct {
+	ItemId            *ItemIdType                                `xml:"m:ItemId,omitempty"`
+	Updates           *NonEmptyArrayOfItemChangeDescriptionsType `xml:"m:Updates,omitempty"`
+	Attachments       *NonEmptyArrayOfAttachmentsType            `xml:"m:Attachments,omitempty"`
+	MakeItemImmutable XsBoolean                                  `xml:"m:MakeItemImmutable,omitempty"`
+}
+
+type UpdateItemInRecoverableItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type SendItemType struct {
+	SaveItemToFolder  XsBoolean                       `xml:"SaveItemToFolder,attr,omitempty"`
+	ItemIds           *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+	SavedItemFolderId *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
+}
+
+type SendItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type MoveItemType struct {
+	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
+	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
+}
+
+type BaseMoveCopyItemType struct {
+	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
+	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
+}
+
+type MoveItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CopyItemType struct {
+	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
+	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
+}
+
+type CopyItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArchiveItemType struct {
+	ArchiveSourceFolderId *TargetFolderIdType             `xml:"m:ArchiveSourceFolderId,omitempty"`
+	ItemIds               *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+}
+
+type ArchiveItemResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateAttachmentType struct {
+	ParentItemId *ItemIdType                     `xml:"m:ParentItemId,omitempty"`
+	Attachments  *NonEmptyArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
+}
+
+type CreateAttachmentResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type DeleteAttachmentType struct {
+	AttachmentIds *NonEmptyArrayOfRequestAttachmentIdsType `xml:"m:AttachmentIds,omitempty"`
+}
+
+type DeleteAttachmentResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetAttachmentType struct {
+	AttachmentShape *AttachmentResponseShapeType             `xml:"m:AttachmentShape,omitempty"`
+	AttachmentIds   *NonEmptyArrayOfRequestAttachmentIdsType `xml:"m:AttachmentIds,omitempty"`
+}
+
+type GetAttachmentResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetClientAccessTokenType struct {
+	TokenRequests *NonEmptyArrayOfClientAccessTokenRequestsType `xml:"m:TokenRequests,omitempty"`
+}
+
+type GetClientAccessTokenResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetDelegateType struct {
+	IncludePermissions XsBoolean          `xml:"IncludePermissions,attr,omitempty"`
+	Mailbox            *EmailAddressType  `xml:"m:Mailbox,omitempty"`
+	UserIds            *ArrayOfUserIdType `xml:"m:UserIds,omitempty"`
+}
+
+type BaseDelegateType struct {
+	Mailbox *EmailAddressType `xml:"m:Mailbox,omitempty"`
+}
+
+type GetDelegateResponseMessageType struct {
+	ResponseClass          ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText            XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode           ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey     XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml             *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
+	ResponseMessages       *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+	DeliverMeetingRequests DeliverMeetingRequestsType              `xml:"m:DeliverMeetingRequests,omitempty"`
+}
+
+type BaseDelegateResponseMessageType struct {
+	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArrayOfDelegateUserResponseMessageType struct {
+	DelegateUserResponseMessageType []*DelegateUserResponseMessageType `xml:"m:DelegateUserResponseMessageType,omitempty"`
+}
+
+type DelegateUserResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	DelegateUser       *DelegateUserType `xml:"m:DelegateUser,omitempty"`
+}
+
+type AddDelegateType struct {
+	Mailbox                *EmailAddressType          `xml:"m:Mailbox,omitempty"`
+	DelegateUsers          *ArrayOfDelegateUserType   `xml:"m:DelegateUsers,omitempty"`
+	DeliverMeetingRequests DeliverMeetingRequestsType `xml:"m:DeliverMeetingRequests,omitempty"`
+}
+
+type AddDelegateResponseMessageType struct {
+	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type RemoveDelegateType struct {
+	Mailbox *EmailAddressType  `xml:"m:Mailbox,omitempty"`
+	UserIds *ArrayOfUserIdType `xml:"m:UserIds,omitempty"`
+}
+
+type RemoveDelegateResponseMessageType struct {
+	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateDelegateType struct {
+	Mailbox                *EmailAddressType          `xml:"m:Mailbox,omitempty"`
+	DelegateUsers          *ArrayOfDelegateUserType   `xml:"m:DelegateUsers,omitempty"`
+	DeliverMeetingRequests DeliverMeetingRequestsType `xml:"m:DeliverMeetingRequests,omitempty"`
+}
+
+type UpdateDelegateResponseMessageType struct {
+	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type CreateUserConfigurationType struct {
+	UserConfiguration *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
+}
+
+type CreateUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type DeleteUserConfigurationType struct {
+	UserConfigurationName *UserConfigurationNameType `xml:"m:UserConfigurationName,omitempty"`
+}
+
+type DeleteUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetUserConfigurationType struct {
+	UserConfigurationName       *UserConfigurationNameType    `xml:"m:UserConfigurationName,omitempty"`
+	UserConfigurationProperties UserConfigurationPropertyType `xml:"m:UserConfigurationProperties,omitempty"`
+}
+
+type GetUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetSpecificUserConfigurationType struct {
+	UserConfigurationName       *UserConfigurationNameType    `xml:"m:UserConfigurationName,omitempty"`
+	UserConfigurationProperties UserConfigurationPropertyType `xml:"m:UserConfigurationProperties,omitempty"`
+}
+
+type GetSpecificUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type UpdateUserConfigurationType struct {
+	UserConfiguration *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
+}
+
+type UpdateUserConfigurationResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetUserAvailabilityRequestType struct {
+	TimeZone               *SerializableTimeZone       `xml:"t:TimeZone,omitempty"`
+	MailboxDataArray       *ArrayOfMailboxData         `xml:"m:MailboxDataArray,omitempty"`
+	FreeBusyViewOptions    *FreeBusyViewOptionsType    `xml:"t:FreeBusyViewOptions,omitempty"`
+	SuggestionsViewOptions *SuggestionsViewOptionsType `xml:"t:SuggestionsViewOptions,omitempty"`
+}
+
+type GetUserAvailabilityResponseType struct {
+	FreeBusyResponseArray *ArrayOfFreeBusyResponse `xml:"m:FreeBusyResponseArray,omitempty"`
+	SuggestionsResponse   *SuggestionsResponseType `xml:"m:SuggestionsResponse,omitempty"`
+}
+
+type ArrayOfFreeBusyResponse struct {
+	FreeBusyResponse []*FreeBusyResponseType `xml:"m:FreeBusyResponse,omitempty"`
+}
+
+type FreeBusyResponseType struct {
+	ResponseMessage *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
+	FreeBusyView    *FreeBusyView        `xml:"m:FreeBusyView,omitempty"`
+}
+
+type SuggestionsResponseType struct {
+	ResponseMessage          *ResponseMessageType        `xml:"m:ResponseMessage,omitempty"`
+	SuggestionDayResultArray *ArrayOfSuggestionDayResult `xml:"m:SuggestionDayResultArray,omitempty"`
+}
+
+type GetUserOofSettingsRequest struct {
+	Mailbox *EmailAddress `xml:"t:Mailbox,omitempty"`
+}
+
+type GetUserOofSettingsResponse struct {
+	ResponseMessage  *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
+	OofSettings      *UserOofSettings     `xml:"t:OofSettings,omitempty"`
+	AllowExternalOof ExternalAudience     `xml:"m:AllowExternalOof,omitempty"`
+}
+
+type SetUserOofSettingsRequest struct {
+	Mailbox         *EmailAddress    `xml:"t:Mailbox,omitempty"`
+	UserOofSettings *UserOofSettings `xml:"t:UserOofSettings,omitempty"`
+}
+
+type SetUserOofSettingsResponse struct {
+	ResponseMessage *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
+}
+
+type GetServiceConfigurationType struct {
+	ActingAs                    *EmailAddressType                `xml:"m:ActingAs,omitempty"`
+	RequestedConfiguration      *ArrayOfServiceConfigurationType `xml:"m:RequestedConfiguration,omitempty"`
+	ConfigurationRequestDetails *ConfigurationRequestDetailsType `xml:"m:ConfigurationRequestDetails,omitempty"`
+}
+
+type ArrayOfServiceConfigurationType struct {
+	ConfigurationName []ServiceConfigurationType `xml:"m:ConfigurationName,omitempty"`
+}
+
+type GetServiceConfigurationResponseMessageType struct {
+	ResponseClass      ResponseClassType                               `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                                        `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                                `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                                           `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType                                 `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfServiceConfigurationResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArrayOfServiceConfigurationResponseMessageType struct {
+	ServiceConfigurationResponseMessageType []*ServiceConfigurationResponseMessageType `xml:"m:ServiceConfigurationResponseMessageType,omitempty"`
+}
+
+type ServiceConfigurationResponseMessageType struct {
+	ResponseClass                 ResponseClassType                     `xml:"ResponseClass,attr,omitempty"`
+	MessageText                   XsString                              `xml:"m:MessageText,omitempty"`
+	ResponseCode                  ResponseCodeType                      `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey            XsInt                                 `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                    *MessageXmlType                       `xml:"m:MessageXml,omitempty"`
+	MailTipsConfiguration         *MailTipsServiceConfiguration         `xml:"m:MailTipsConfiguration,omitempty"`
+	UnifiedMessagingConfiguration *UnifiedMessageServiceConfiguration   `xml:"m:UnifiedMessagingConfiguration,omitempty"`
+	ProtectionRulesConfiguration  *ProtectionRulesServiceConfiguration  `xml:"m:ProtectionRulesConfiguration,omitempty"`
+	PolicyNudgeRulesConfiguration *PolicyNudgeRulesServiceConfiguration `xml:"m:PolicyNudgeRulesConfiguration,omitempty"`
+	SharePointURLsConfiguration   *SharePointURLsServiceConfiguration   `xml:"m:SharePointURLsConfiguration,omitempty"`
+}
+
+type GetMailTipsType struct {
+	SendingAs         *EmailAddressType      `xml:"m:SendingAs,omitempty"`
+	Recipients        *ArrayOfRecipientsType `xml:"m:Recipients,omitempty"`
+	MailTipsRequested MailTipTypes           `xml:"m:MailTipsRequested,omitempty"`
+}
+
+type GetMailTipsResponseMessageType struct {
+	ResponseClass      ResponseClassType                   `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                            `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType                     `xml:"m:MessageXml,omitempty"`
+	ResponseMessages   *ArrayOfMailTipsResponseMessageType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ArrayOfMailTipsResponseMessageType struct {
+	MailTipsResponseMessageType []*MailTipsResponseMessageType `xml:"m:MailTipsResponseMessageType,omitempty"`
+}
+
+type MailTipsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	MailTips           *MailTips         `xml:"m:MailTips,omitempty"`
+}
+
+type PlayOnPhoneType struct {
+	ItemId     *ItemIdType `xml:"m:ItemId,omitempty"`
+	DialString XsString    `xml:"m:DialString,omitempty"`
+}
+
+type PlayOnPhoneResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	PhoneCallId        *PhoneCallIdType  `xml:"m:PhoneCallId,omitempty"`
+}
+
+type GetPhoneCallInformationType struct {
+	PhoneCallId *PhoneCallIdType `xml:"m:PhoneCallId,omitempty"`
+}
+
+type GetPhoneCallInformationResponseMessageType struct {
+	ResponseClass        ResponseClassType         `xml:"ResponseClass,attr,omitempty"`
+	MessageText          XsString                  `xml:"m:MessageText,omitempty"`
+	ResponseCode         ResponseCodeType          `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey   XsInt                     `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml           *MessageXmlType           `xml:"m:MessageXml,omitempty"`
+	PhoneCallInformation *PhoneCallInformationType `xml:"m:PhoneCallInformation,omitempty"`
+}
+
+type DisconnectPhoneCallType struct {
+	PhoneCallId *PhoneCallIdType `xml:"m:PhoneCallId,omitempty"`
+}
+
+type DisconnectPhoneCallResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type GetSharingMetadataType struct {
+	IdOfFolderToShare *FolderIdType           `xml:"m:IdOfFolderToShare,omitempty"`
+	SenderSmtpAddress NonEmptyStringType      `xml:"m:SenderSmtpAddress,omitempty"`
+	Recipients        *ArrayOfSmtpAddressType `xml:"m:Recipients,omitempty"`
+}
+
+type RefreshSharingFolderType struct {
+	SharingFolderId *FolderIdType `xml:"m:SharingFolderId,omitempty"`
+}
+
+type GetSharingFolderType struct {
+	SmtpAddress    NonEmptyStringType `xml:"m:SmtpAddress,omitempty"`
+	DataType       SharingDataType    `xml:"m:DataType,omitempty"`
+	SharedFolderId NonEmptyStringType `xml:"m:SharedFolderId,omitempty"`
+}
+
+type SetTeamMailboxRequestType struct {
+	EmailAddress      *EmailAddressType             `xml:"m:EmailAddress,omitempty"`
+	SharePointSiteUrl XsString                      `xml:"m:SharePointSiteUrl,omitempty"`
+	State             TeamMailboxLifecycleStateType `xml:"m:State,omitempty"`
+}
+
+type SetTeamMailboxResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type UnpinTeamMailboxRequestType struct {
+	EmailAddress *EmailAddressType `xml:"m:EmailAddress,omitempty"`
+}
+
+type UnpinTeamMailboxResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type GetRoomListsType struct {
+}
+
+type GetRoomsType struct {
+	RoomList *EmailAddressType `xml:"m:RoomList,omitempty"`
+}
+
+type FindMessageTrackingReportRequestType struct {
+}
+
+type FindMessageTrackingReportResponseMessageType struct {
+	ResponseClass                ResponseClassType                           `xml:"ResponseClass,attr,omitempty"`
+	MessageText                  XsString                                    `xml:"m:MessageText,omitempty"`
+	ResponseCode                 ResponseCodeType                            `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey           XsInt                                       `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml                   *MessageXmlType                             `xml:"m:MessageXml,omitempty"`
+	Diagnostics                  *ArrayOfStringsType                         `xml:"m:Diagnostics,omitempty"`
+	MessageTrackingSearchResults *ArrayOfFindMessageTrackingSearchResultType `xml:"m:MessageTrackingSearchResults,omitempty"`
+	ExecutedSearchScope          XsString                                    `xml:"m:ExecutedSearchScope,omitempty"`
+	Errors                       *ArrayOfArraysOfTrackingPropertiesType      `xml:"m:Errors,omitempty"`
+	Properties                   *ArrayOfTrackingPropertiesType              `xml:"m:Properties,omitempty"`
+}
+
+type GetMessageTrackingReportRequestType struct {
+}
+
+type GetMessageTrackingReportResponseMessageType struct {
+	ResponseClass         ResponseClassType                      `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString                               `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType                       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt                                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            *MessageXmlType                        `xml:"m:MessageXml,omitempty"`
+	MessageTrackingReport *MessageTrackingReportType             `xml:"m:MessageTrackingReport,omitempty"`
+	Diagnostics           *ArrayOfStringsType                    `xml:"m:Diagnostics,omitempty"`
+	Errors                *ArrayOfArraysOfTrackingPropertiesType `xml:"m:Errors,omitempty"`
+	Properties            *ArrayOfTrackingPropertiesType         `xml:"m:Properties,omitempty"`
+}
+
+type FindConversationType struct {
+	Traversal                   ConversationQueryTraversalType  `xml:"Traversal,attr,omitempty"`
+	ViewFilter                  ViewFilterType                  `xml:"ViewFilter,attr,omitempty"`
+	SortOrder                   *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
+	ParentFolderId              *TargetFolderIdType             `xml:"m:ParentFolderId,omitempty"`
+	MailboxScope                MailboxSearchLocationType       `xml:"m:MailboxScope,omitempty"`
+	QueryString                 *QueryStringType                `xml:"m:QueryString,omitempty"`
+	ConversationShape           *ConversationResponseShapeType  `xml:"m:ConversationShape,omitempty"`
+	IndexedPageItemView         *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
+	SeekToConditionPageItemView *SeekToConditionPageViewType    `xml:"m:SeekToConditionPageItemView,omitempty"`
+}
+
+type FindConversationResponseMessageType struct {
+	ResponseClass            ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
+	MessageText              XsString                   `xml:"m:MessageText,omitempty"`
+	ResponseCode             ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey       XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml               *MessageXmlType            `xml:"m:MessageXml,omitempty"`
+	Conversations            *ArrayOfConversationsType  `xml:"m:Conversations,omitempty"`
+	HighlightTerms           *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
+	TotalConversationsInView XsInt                      `xml:"m:TotalConversationsInView,omitempty"`
+	IndexedOffset            XsInt                      `xml:"m:IndexedOffset,omitempty"`
+}
+
+type ApplyConversationActionType struct {
+	ConversationActions *NonEmptyArrayOfApplyConversationActionType `xml:"m:ConversationActions,omitempty"`
+}
+
+type ApplyConversationActionResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetConversationItemsType struct {
+	ItemShape        *ItemResponseShapeType            `xml:"m:ItemShape,omitempty"`
+	FoldersToIgnore  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FoldersToIgnore,omitempty"`
+	MaxItemsToReturn XsInt                             `xml:"m:MaxItemsToReturn,omitempty"`
+	SortOrder        ConversationNodeSortOrder         `xml:"m:SortOrder,omitempty"`
+	MailboxScope     MailboxSearchLocationType         `xml:"m:MailboxScope,omitempty"`
+	Conversations    *ArrayOfConversationRequestsType  `xml:"m:Conversations,omitempty"`
+}
+
+type GetConversationItemsResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type FindPeopleType struct {
+	PersonaShape                *PersonaResponseShapeType       `xml:"m:PersonaShape,omitempty"`
+	IndexedPageItemView         *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
+	Restriction                 *RestrictionType                `xml:"m:Restriction,omitempty"`
+	AggregationRestriction      *RestrictionType                `xml:"m:AggregationRestriction,omitempty"`
+	SortOrder                   *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
+	ParentFolderId              *TargetFolderIdType             `xml:"m:ParentFolderId,omitempty"`
+	QueryString                 XsString                        `xml:"m:QueryString,omitempty"`
+	SearchPeopleSuggestionIndex XsBoolean                       `xml:"m:SearchPeopleSuggestionIndex,omitempty"`
+	TopicQueryString            XsString                        `xml:"m:TopicQueryString,omitempty"`
+	Context                     *ArrayOfContextProperty         `xml:"m:Context,omitempty"`
+	QuerySources                *ArrayOfPeopleQuerySource       `xml:"m:QuerySources,omitempty"`
+	ReturnFlattenedResults      XsBoolean                       `xml:"m:ReturnFlattenedResults,omitempty"`
+}
+
+type FindTagsType struct {
+	IndexedPageItemView *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
+	SortOrder           *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
+	QueryString         XsString                        `xml:"m:QueryString,omitempty"`
+	Context             *ArrayOfContextProperty         `xml:"m:Context,omitempty"`
+}
+
+type AddTagType struct {
+	Tag     XsString `xml:"m:Tag,omitempty"`
+	AppName XsString `xml:"m:AppName,omitempty"`
+}
+
+type HideTagType struct {
+	Tag XsString `xml:"m:Tag,omitempty"`
+}
+
+type GetPersonaType struct {
+	PersonaId            *ItemIdType                        `xml:"m:PersonaId,omitempty"`
+	EmailAddress         *EmailAddressType                  `xml:"m:EmailAddress,omitempty"`
+	ParentFolderId       *TargetFolderIdType                `xml:"m:ParentFolderId,omitempty"`
+	ItemLinkId           XsString                           `xml:"m:ItemLinkId,omitempty"`
+	AdditionalProperties *NonEmptyArrayOfPathsToElementType `xml:"m:AdditionalProperties,omitempty"`
+}
+
+type GetInboxRulesRequestType struct {
+	MailboxSmtpAddress XsString `xml:"m:MailboxSmtpAddress,omitempty"`
+}
+
+type GetInboxRulesResponseType struct {
+	ResponseClass         ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	OutlookRuleBlobExists XsBoolean         `xml:"m:OutlookRuleBlobExists,omitempty"`
+	InboxRules            *ArrayOfRulesType `xml:"m:InboxRules,omitempty"`
+}
+
+type UpdateInboxRulesRequestType struct {
+	MailboxSmtpAddress    XsString                   `xml:"m:MailboxSmtpAddress,omitempty"`
+	RemoveOutlookRuleBlob XsBoolean                  `xml:"m:RemoveOutlookRuleBlob,omitempty"`
+	Operations            *ArrayOfRuleOperationsType `xml:"m:Operations,omitempty"`
+}
+
+type UpdateInboxRulesResponseType struct {
+	ResponseClass       ResponseClassType               `xml:"ResponseClass,attr,omitempty"`
+	MessageText         XsString                        `xml:"m:MessageText,omitempty"`
+	ResponseCode        ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey  XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml          *MessageXmlType                 `xml:"m:MessageXml,omitempty"`
+	RuleOperationErrors *ArrayOfRuleOperationErrorsType `xml:"m:RuleOperationErrors,omitempty"`
+}
+
+type GetPasswordExpirationDateType struct {
+	MailboxSmtpAddress XsString `xml:"m:MailboxSmtpAddress,omitempty"`
+}
+
+type GetSearchableMailboxesType struct {
+	SearchFilter          XsString  `xml:"m:SearchFilter,omitempty"`
+	ExpandGroupMembership XsBoolean `xml:"m:ExpandGroupMembership,omitempty"`
+}
+
+type SearchMailboxesType struct {
+	SearchQueries            *NonEmptyArrayOfMailboxQueriesType `xml:"m:SearchQueries,omitempty"`
+	ResultType               SearchResultType                   `xml:"m:ResultType,omitempty"`
+	PreviewItemResponseShape *PreviewItemResponseShapeType      `xml:"m:PreviewItemResponseShape,omitempty"`
+	SortBy                   *FieldOrderType                    `xml:"m:SortBy,omitempty"`
+	Language                 XsString                           `xml:"m:Language,omitempty"`
+	Deduplication            XsBoolean                          `xml:"m:Deduplication,omitempty"`
+	PageSize                 XsInt                              `xml:"m:PageSize,omitempty"`
+	PageItemReference        XsString                           `xml:"m:PageItemReference,omitempty"`
+	PageDirection            SearchPageDirectionType            `xml:"m:PageDirection,omitempty"`
+}
+
+type SearchMailboxesResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetDiscoverySearchConfigurationType struct {
+	SearchId                     XsString  `xml:"m:SearchId,omitempty"`
+	ExpandGroupMembership        XsBoolean `xml:"m:ExpandGroupMembership,omitempty"`
+	InPlaceHoldConfigurationOnly XsBoolean `xml:"m:InPlaceHoldConfigurationOnly,omitempty"`
+}
+
+type GetHoldOnMailboxesType struct {
+	HoldId XsString `xml:"m:HoldId,omitempty"`
+}
+
+type SetHoldOnMailboxesType struct {
+	ActionType               HoldActionType      `xml:"m:ActionType,omitempty"`
+	HoldId                   XsString            `xml:"m:HoldId,omitempty"`
+	Query                    XsString            `xml:"m:Query,omitempty"`
+	Mailboxes                *ArrayOfStringsType `xml:"m:Mailboxes,omitempty"`
+	Language                 XsString            `xml:"m:Language,omitempty"`
+	IncludeNonIndexableItems XsBoolean           `xml:"m:IncludeNonIndexableItems,omitempty"`
+	Deduplication            XsBoolean           `xml:"m:Deduplication,omitempty"`
+	InPlaceHoldIdentity      XsString            `xml:"m:InPlaceHoldIdentity,omitempty"`
+	ItemHoldPeriod           XsString            `xml:"m:ItemHoldPeriod,omitempty"`
+}
+
+type GetNonIndexableItemStatisticsType struct {
+	Mailboxes         *NonEmptyArrayOfLegacyDNsType `xml:"m:Mailboxes,omitempty"`
+	SearchArchiveOnly XsBoolean                     `xml:"m:SearchArchiveOnly,omitempty"`
+}
+
+type GetNonIndexableItemDetailsType struct {
+	Mailboxes         *NonEmptyArrayOfLegacyDNsType `xml:"m:Mailboxes,omitempty"`
+	PageSize          XsInt                         `xml:"m:PageSize,omitempty"`
+	PageItemReference XsString                      `xml:"m:PageItemReference,omitempty"`
+	PageDirection     SearchPageDirectionType       `xml:"m:PageDirection,omitempty"`
+	SearchArchiveOnly XsBoolean                     `xml:"m:SearchArchiveOnly,omitempty"`
+}
+
+type MarkAllItemsAsReadType struct {
+	ReadFlag             XsBoolean                         `xml:"m:ReadFlag,omitempty"`
+	SuppressReadReceipts XsBoolean                         `xml:"m:SuppressReadReceipts,omitempty"`
+	FolderIds            *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
+}
+
+type MarkAllItemsAsReadResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type MarkAsJunkType struct {
+	IsJunk   XsBoolean                       `xml:"IsJunk,attr,omitempty"`
+	MoveItem XsBoolean                       `xml:"MoveItem,attr,omitempty"`
+	ItemIds  *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
+}
+
+type MarkAsJunkResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type ReportMessageType struct {
+	ReportAction              ReportMessageActionType   `xml:"ReportAction,attr,omitempty"`
+	ItemIds                   *ArrayOfBaseItemIdsType   `xml:"m:ItemIds,omitempty"`
+	BlockReportingToMicrosoft XsBoolean                 `xml:"m:BlockReportingToMicrosoft,omitempty"`
+	Platform                  ReportMessagePlatformType `xml:"m:Platform,omitempty"`
+}
+
+type ReportMessageResponseType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetAppManifestsType struct {
+	ApiVersionSupported       XsString                         `xml:"m:ApiVersionSupported,omitempty"`
+	SchemaVersionSupported    XsString                         `xml:"m:SchemaVersionSupported,omitempty"`
+	IncludeAllInstalledAddIns XsBoolean                        `xml:"m:IncludeAllInstalledAddIns,omitempty"`
+	IncludeEntitlementData    XsBoolean                        `xml:"m:IncludeEntitlementData,omitempty"`
+	IncludeManifestData       XsBoolean                        `xml:"m:IncludeManifestData,omitempty"`
+	IncludeCustomAppsData     XsBoolean                        `xml:"m:IncludeCustomAppsData,omitempty"`
+	ExtensionIds              ListOfExtensionIdsType           `xml:"m:ExtensionIds,omitempty"`
+	AddIns                    *ArrayOfPrivateCatalogAddInsType `xml:"m:AddIns,omitempty"`
+	IncludeExtensionMetaData  XsBoolean                        `xml:"m:IncludeExtensionMetaData,omitempty"`
+}
+
+type ArrayOfPrivateCatalogAddInsType struct {
+	AddIn []*PrivateCatalogAddInsType `xml:"m:AddIn,omitempty"`
+}
+
+type PrivateCatalogAddInsType struct {
+	ProductId            XsString                          `xml:"ProductId,attr,omitempty"`
+	State                AddInStateType                    `xml:"State,attr,omitempty"`
+	Version              VersionType                       `xml:"Version,attr,omitempty"`
+	DefaultEnabledStatus AADOfficeExtensionStatusType      `xml:"DefaultEnabledStatus,attr,omitempty"`
+	InstallTimeInTicks   XsLong                            `xml:"InstallTimeInTicks,attr,omitempty"`
+	StoreInfo            *PrivateCatalogAddInStoreInfoType `xml:"m:StoreInfo,omitempty"`
+}
+
+type PrivateCatalogAddInStoreInfoType struct {
+	AssetId       XsString `xml:"AssetId,attr,omitempty"`
+	ContentMarket XsString `xml:"ContentMarket,attr,omitempty"`
+}
+
+type GetAppManifestsResponseType struct {
+	ResponseClass      ResponseClassType        `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                 `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType         `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                    `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType          `xml:"m:MessageXml,omitempty"`
+	Apps               *ArrayOfAppsType         `xml:"m:Apps,omitempty"`
+	Manifests          *ArrayOfAppManifestsType `xml:"m:Manifests,omitempty"`
+}
+
+type ArrayOfAppManifestsType struct {
+	Manifest []XsBase64Binary `xml:"m:Manifest,omitempty"`
+}
+
+type AddNewImContactToGroupType struct {
+	ImAddress   NonEmptyStringType `xml:"m:ImAddress,omitempty"`
+	DisplayName NonEmptyStringType `xml:"m:DisplayName,omitempty"`
+	GroupId     *ItemIdType        `xml:"m:GroupId,omitempty"`
+}
+
+type AddNewImContactToGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
+}
+
+type AddNewTelUriContactToGroupType struct {
+	TelUriAddress          NonEmptyStringType `xml:"m:TelUriAddress,omitempty"`
+	ImContactSipUriAddress NonEmptyStringType `xml:"m:ImContactSipUriAddress,omitempty"`
+	ImTelephoneNumber      NonEmptyStringType `xml:"m:ImTelephoneNumber,omitempty"`
+	GroupId                *ItemIdType        `xml:"m:GroupId,omitempty"`
+}
+
+type AddNewTelUriContactToGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
+}
+
+type AddImContactToGroupType struct {
+	ContactId *ItemIdType `xml:"m:ContactId,omitempty"`
+	GroupId   *ItemIdType `xml:"m:GroupId,omitempty"`
+}
+
+type AddImContactToGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type RemoveImContactFromGroupType struct {
+	ContactId *ItemIdType `xml:"m:ContactId,omitempty"`
+	GroupId   *ItemIdType `xml:"m:GroupId,omitempty"`
+}
+
+type RemoveImContactFromGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type AddImGroupType struct {
+	DisplayName NonEmptyStringType `xml:"m:DisplayName,omitempty"`
+}
+
+type AddImGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	ImGroup            *ImGroupType      `xml:"m:ImGroup,omitempty"`
+}
+
+type AddDistributionGroupToImListType struct {
+	SmtpAddress NonEmptyStringType `xml:"m:SmtpAddress,omitempty"`
+	DisplayName NonEmptyStringType `xml:"m:DisplayName,omitempty"`
+}
+
+type AddDistributionGroupToImListResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	ImGroup            *ImGroupType      `xml:"m:ImGroup,omitempty"`
+}
+
+type GetImItemListType struct {
+	ExtendedProperties *NonEmptyArrayOfExtendedFieldURIs `xml:"m:ExtendedProperties,omitempty"`
+}
+
+type GetImItemListResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	ImItemList         *ImItemListType   `xml:"m:ImItemList,omitempty"`
+}
+
+type GetImItemsType struct {
+	ContactIds         *NonEmptyArrayOfBaseItemIdsType   `xml:"m:ContactIds,omitempty"`
+	GroupIds           *NonEmptyArrayOfBaseItemIdsType   `xml:"m:GroupIds,omitempty"`
+	ExtendedProperties *NonEmptyArrayOfExtendedFieldURIs `xml:"m:ExtendedProperties,omitempty"`
+}
+
+type GetImItemsResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	ImItemList         *ImItemListType   `xml:"m:ImItemList,omitempty"`
+}
+
+type RemoveContactFromImListType struct {
+	ContactId *ItemIdType `xml:"m:ContactId,omitempty"`
+}
+
+type RemoveContactFromImListResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type RemoveDistributionGroupFromImListType struct {
+	GroupId *ItemIdType `xml:"m:GroupId,omitempty"`
+}
+
+type RemoveDistributionGroupFromImListResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type RemoveImGroupType struct {
+	GroupId *ItemIdType `xml:"m:GroupId,omitempty"`
+}
+
+type RemoveImGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type SetImGroupType struct {
+	GroupId        *ItemIdType        `xml:"m:GroupId,omitempty"`
+	NewDisplayName NonEmptyStringType `xml:"m:NewDisplayName,omitempty"`
+}
+
+type SetImGroupResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type SetImListMigrationCompletedType struct {
+	ImListMigrationCompleted XsBoolean `xml:"m:ImListMigrationCompleted,omitempty"`
+}
+
+type SetImListMigrationCompletedResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type GetUserRetentionPolicyTagsType struct {
+}
+
+type InstallAppType struct {
+	Manifest                 XsBase64Binary `xml:"m:Manifest,omitempty"`
+	MarketplaceAssetId       XsString       `xml:"m:MarketplaceAssetId,omitempty"`
+	MarketplaceContentMarket XsString       `xml:"m:MarketplaceContentMarket,omitempty"`
+	SendWelcomeEmail         XsBoolean      `xml:"m:SendWelcomeEmail,omitempty"`
+	ManifestUrl              XsString       `xml:"m:ManifestUrl,omitempty"`
+	MarketplaceCorrelationId XsString       `xml:"m:MarketplaceCorrelationId,omitempty"`
+	CampaignId               XsString       `xml:"m:CampaignId,omitempty"`
+	Id                       XsString       `xml:"m:Id,omitempty"`
+	IsMetaOSApp              XsBoolean      `xml:"m:IsMetaOSApp,omitempty"`
+	MetaOSSyncData           XsString       `xml:"m:MetaOSSyncData,omitempty"`
+}
+
+type InstallAppResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	WasFirstInstall    XsBoolean         `xml:"m:WasFirstInstall,omitempty"`
+	Extension          *InstalledAppType `xml:"m:Extension,omitempty"`
+}
+
+type UpdateExtensionUsageType struct {
+	Client     XsString                             `xml:"m:Client,omitempty"`
+	Extensions *ArrayOfUpdateExtensionUsageItemType `xml:"m:Extensions,omitempty"`
+}
+
+type ArrayOfUpdateExtensionUsageItemType struct {
+	ExtensionId XsString                                  `xml:"m:ExtensionId,omitempty"`
+	Scenarios   *ArrayOfExtensionUsageScenarioCounterType `xml:"m:Scenarios,omitempty"`
+}
+
+type ArrayOfExtensionUsageScenarioCounterType struct {
+	ScenarioName XsString `xml:"m:ScenarioName,omitempty"`
+	Count        XsInt    `xml:"m:Count,omitempty"`
+}
+
+type UpdateExtensionUsageResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type UninstallAppType struct {
+	ID          XsString  `xml:"m:ID,omitempty"`
+	IsMetaOSApp XsBoolean `xml:"m:IsMetaOSApp,omitempty"`
+}
+
+type UninstallAppResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type DisableAppType struct {
+	ID            XsString          `xml:"m:ID,omitempty"`
+	DisableReason DisableReasonType `xml:"m:DisableReason,omitempty"`
+	IsMetaOSApp   XsBoolean         `xml:"m:IsMetaOSApp,omitempty"`
+}
+
+type DisableAppResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type GetAppMarketplaceUrlType struct {
+}
+
+type GetAppMarketplaceUrlResponseMessageType struct {
+	ResponseClass           ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText             XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode            ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey      XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml              *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	AppMarketplaceUrl       XsString          `xml:"m:AppMarketplaceUrl,omitempty"`
+	ConnectorsManagementUrl XsString          `xml:"m:ConnectorsManagementUrl,omitempty"`
+}
+
+type FindAvailableMeetingTimesType struct {
+	Attendees                *ArrayOfSmtpAddressType `xml:"m:Attendees,omitempty"`
+	SearchWindowStart        XsDateTime              `xml:"m:SearchWindowStart,omitempty"`
+	SearchWindowDuration     XsDuration              `xml:"m:SearchWindowDuration,omitempty"`
+	MeetingDurationInMinutes XsInt                   `xml:"m:MeetingDurationInMinutes,omitempty"`
+	Location                 XsString                `xml:"m:Location,omitempty"`
+	MaxCandidates            XsInt                   `xml:"m:MaxCandidates,omitempty"`
+	ActivityDomain           ActivityDomainType      `xml:"m:ActivityDomain,omitempty"`
+}
+
+type FindAvailableMeetingTimesResponseMessageType struct {
+	ResponseClass         ResponseClassType            `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString                     `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType             `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt                        `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            *MessageXmlType              `xml:"m:MessageXml,omitempty"`
+	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
+	EmptySuggestionsHint  EmptySuggestionReason        `xml:"m:EmptySuggestionsHint,omitempty"`
+}
+
+type FindMeetingTimeCandidatesType struct {
+	AttendeeConstraints *FindMeetingTimesAttendeeConstraints `xml:"m:AttendeeConstraints,omitempty"`
+	LocationConstraints *FindMeetingTimesLocationConstraints `xml:"m:LocationConstraints,omitempty"`
+	SearchConstraints   *FindMeetingTimesSearchConstraints   `xml:"m:SearchConstraints,omitempty"`
+	Constraints         *FindMeetingTimesConstraints         `xml:"m:Constraints,omitempty"`
+}
+
+type FindMeetingTimeCandidatesResponseMessageType struct {
+	ResponseClass         ResponseClassType            `xml:"ResponseClass,attr,omitempty"`
+	MessageText           XsString                     `xml:"m:MessageText,omitempty"`
+	ResponseCode          ResponseCodeType             `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey    XsInt                        `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml            *MessageXmlType              `xml:"m:MessageXml,omitempty"`
+	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
+}
+
+type GetUserPhotoType struct {
+	Email         XsString          `xml:"m:Email,omitempty"`
+	SizeRequested UserPhotoSizeType `xml:"m:SizeRequested,omitempty"`
+	TypeRequested UserPhotoTypeType `xml:"m:TypeRequested,omitempty"`
+}
+
+type SetUserPhotoType struct {
+	Email         NonEmptyStringType `xml:"m:Email,omitempty"`
+	Content       XsString           `xml:"m:Content,omitempty"`
+	TypeRequested UserPhotoTypeType  `xml:"m:TypeRequested,omitempty"`
+}
+
+type SetUserPhotoResponseMessageType struct {
+	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
+}
+
+type GetMeetingSpaceType struct {
+	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
+}
+
+type GetMeetingSpaceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type DeleteMeetingSpaceType struct {
+	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
+}
+
+type DeleteMeetingSpaceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type UpdateMeetingSpaceType struct {
+	ItemId       *ItemIdType       `xml:"m:ItemId,omitempty"`
+	MeetingSpace *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type UpdateMeetingSpaceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type CreateMeetingSpaceType struct {
+	MeetingSpace *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type CreateMeetingSpaceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type FindMeetingSpaceByJoinUrlType struct {
+	JoinUrl XsString `xml:"m:JoinUrl,omitempty"`
+}
+
+type FindMeetingSpaceByJoinUrlResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
+}
+
+type GetMeetingInstanceRequestType struct {
+	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
+}
+
+type GetMeetingInstanceResponseMessageType struct {
+	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString             `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
+	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
+}
+
+type DeleteMeetingInstanceRequestType struct {
+	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
+}
+
+type DeleteMeetingInstanceResponseMessageType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type UpdateMeetingInstanceRequestType struct {
+	ItemId                     *ItemIdType                           `xml:"m:ItemId,omitempty"`
+	MeetingInstance            *MeetingInstanceType                  `xml:"m:MeetingInstance,omitempty"`
+	ContentActivitiesToAdd     *NonEmptyArrayOfContentActivities     `xml:"m:ContentActivitiesToAdd,omitempty"`
+	ParticipantActivitiesToAdd *NonEmptyArrayOfParticipantActivities `xml:"m:ParticipantActivitiesToAdd,omitempty"`
+}
+
+type UpdateMeetingInstanceResponseMessageType struct {
+	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString             `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
+	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
+}
+
+type CreateMeetingInstanceRequestType struct {
+	MeetingInstance *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
+}
+
+type CreateMeetingInstanceResponseMessageType struct {
+	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString             `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
+	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
+}
+
+type StartSearchSession struct {
+	SearchSessionId GuidType                `xml:"m:SearchSessionId,omitempty"`
+	WarmupOptions   WarmupOptionsType       `xml:"m:WarmupOptions,omitempty"`
+	SuggestionTypes SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
+	SearchScope     *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
+	IdFormat        IdFormatType            `xml:"m:IdFormat,omitempty"`
+	ApplicationId   XsString                `xml:"m:ApplicationId,omitempty"`
+	Scenario        XsString                `xml:"m:Scenario,omitempty"`
+}
+
+type StartSearchSessionResponseMessage struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type GetSearchSuggestions struct {
+	SearchSessionId                      GuidType                `xml:"m:SearchSessionId,omitempty"`
+	Query                                XsString                `xml:"m:Query,omitempty"`
+	SuggestionTypes                      SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
+	SuggestionsPrimer                    XsBoolean               `xml:"m:SuggestionsPrimer,omitempty"`
+	MaxSuggestionsCountPerSuggestionType XsLong                  `xml:"m:MaxSuggestionsCountPerSuggestionType,omitempty"`
+	SearchScope                          *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
+	Scenario                             XsString                `xml:"m:Scenario,omitempty"`
+}
+
+type GetSearchSuggestionsResponseMessage struct {
+	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString               `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
+	SearchSuggestions  *SearchSuggestionsType `xml:"m:SearchSuggestions,omitempty"`
+}
+
+type DeleteSearchSuggestion struct {
+	SearchSessionId GuidType                `xml:"m:SearchSessionId,omitempty"`
+	Query           XsString                `xml:"m:Query,omitempty"`
+	SuggestionTypes SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
+	SearchScope     *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
+	Scenario        XsString                `xml:"m:Scenario,omitempty"`
+}
+
+type DeleteSearchSuggestionResponseMessageType struct {
+	ResponseClass      ResponseClassType                   `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                            `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType                     `xml:"m:MessageXml,omitempty"`
+	Response           *DeleteSearchSuggestionResponseType `xml:"m:Response,omitempty"`
+}
+
+type ExecuteSearch struct {
+	ApplicationId                  SearchApplicationIdType          `xml:"m:ApplicationId,omitempty"`
+	Scenario                       XsString                         `xml:"m:Scenario,omitempty"`
+	SearchSessionId                GuidType                         `xml:"m:SearchSessionId,omitempty"`
+	SearchScope                    *ArrayOfSearchScopeType          `xml:"m:SearchScope,omitempty"`
+	Query                          XsString                         `xml:"m:Query,omitempty"`
+	AnalyzedQuery                  *AnalyzedQuery                   `xml:"m:AnalyzedQuery,omitempty"`
+	ResultRowCount                 XsLong                           `xml:"m:ResultRowCount,omitempty"`
+	ResultRowOffset                XsLong                           `xml:"m:ResultRowOffset,omitempty"`
+	MaxResultsCountHint            XsLong                           `xml:"m:MaxResultsCountHint,omitempty"`
+	MaxPreviewLength               XsLong                           `xml:"m:MaxPreviewLength,omitempty"`
+	SearchRefiners                 *SearchRefinersTypeM             `xml:"m:SearchRefiners,omitempty"`
+	ExtendedKeywords               *ExtendedKeywordsType            `xml:"m:ExtendedKeywords,omitempty"`
+	RetrieveRefiners               XsBoolean                        `xml:"m:RetrieveRefiners,omitempty"`
+	MaxRefinersCountPerRefinerType XsLong                           `xml:"m:MaxRefinersCountPerRefinerType,omitempty"`
+	IdFormat                       IdFormatType                     `xml:"m:IdFormat,omitempty"`
+	ItemTypes                      ItemTypesFilterType              `xml:"m:ItemTypes,omitempty"`
+	PropertySetName                SearchResultsPropertySetNameType `xml:"m:PropertySetName,omitempty"`
+	SearchRestrictions             *RestrictionType                 `xml:"m:SearchRestrictions,omitempty"`
+	IncludeDeleted                 XsBoolean                        `xml:"m:IncludeDeleted,omitempty"`
+	SortOrder                      ExecuteSearchSortOrderType       `xml:"m:SortOrder,omitempty"`
+	KeywordMatchOption             MatchOptionsType                 `xml:"m:KeywordMatchOption,omitempty"`
+	ReturnAdditionalIds            XsBoolean                        `xml:"m:ReturnAdditionalIds,omitempty"`
+	RequestedProperties            *ArrayOfStringsType              `xml:"m:RequestedProperties,omitempty"`
+}
+
+type ExecuteSearchResponseMessage struct {
+	ResponseClass      ResponseClassType  `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString           `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType    `xml:"m:MessageXml,omitempty"`
+	SearchResults      *SearchResultsType `xml:"m:SearchResults,omitempty"`
+}
+
+type EndSearchSession struct {
+	SearchSessionId GuidType `xml:"m:SearchSessionId,omitempty"`
+}
+
+type EndSearchSessionResponseMessage struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+}
+
+type GetLastPrivateCatalogUpdateType struct {
+	Client *OfficeClientType `xml:"m:Client,omitempty"`
+}
+
+type GetLastPrivateCatalogUpdateResponseType struct {
+	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString          `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
+	LastUpdate         XsDateTime        `xml:"m:LastUpdate,omitempty"`
+	CatalogHash        XsString          `xml:"m:CatalogHash,omitempty"`
+}
+
+type GetPrivateCatalogAddInsType struct {
+	Client *OfficeClientType `xml:"m:Client,omitempty"`
+}
+
+type GetPrivateCatalogAddInsResponseType struct {
+	ResponseClass      ResponseClassType                `xml:"ResponseClass,attr,omitempty"`
+	MessageText        XsString                         `xml:"m:MessageText,omitempty"`
+	ResponseCode       ResponseCodeType                 `xml:"m:ResponseCode,omitempty"`
+	DescriptiveLinkKey XsInt                            `xml:"m:DescriptiveLinkKey,omitempty"`
+	MessageXml         *MessageXmlType                  `xml:"m:MessageXml,omitempty"`
+	AddIns             *ArrayOfPrivateCatalogAddInsType `xml:"m:AddIns,omitempty"`
 }
 
 type NonEmptyArrayOfBaseFolderIdsType struct {
@@ -4354,8 +6506,11 @@ type ArrayOfTransitionsGroupsType struct {
 }
 
 type ArrayOfTransitionsType struct {
-	Id         XsString        `xml:"Id,attr,omitempty"`
-	Transition *TransitionType `xml:"t:Transition,omitempty"`
+	Id                      XsString                     `xml:"Id,attr,omitempty"`
+	Transition              *TransitionType              `xml:"t:Transition,omitempty"`
+	AbsoluteDateTransition  *AbsoluteDateTransitionType  `xml:"t:AbsoluteDateTransition,omitempty"`
+	RecurringDayTransition  *RecurringDayTransitionType  `xml:"t:RecurringDayTransition,omitempty"`
+	RecurringDateTransition *RecurringDateTransitionType `xml:"t:RecurringDateTransition,omitempty"`
 }
 
 type TransitionType struct {
@@ -4365,6 +6520,32 @@ type TransitionType struct {
 type TransitionTargetType struct {
 	CharData XsString                 `xml:",chardata"`
 	Kind     TransitionTargetKindType `xml:"Kind,attr,omitempty"`
+}
+
+type AbsoluteDateTransitionType struct {
+	To       *TransitionTargetType `xml:"t:To,omitempty"`
+	DateTime XsDateTime            `xml:"t:DateTime,omitempty"`
+}
+
+type RecurringDayTransitionType struct {
+	To         *TransitionTargetType `xml:"t:To,omitempty"`
+	TimeOffset XsDuration            `xml:"t:TimeOffset,omitempty"`
+	Month      XsInt                 `xml:"t:Month,omitempty"`
+	DayOfWeek  DayOfWeekType         `xml:"t:DayOfWeek,omitempty"`
+	Occurrence XsInt                 `xml:"t:Occurrence,omitempty"`
+}
+
+type RecurringTimeTransitionType struct {
+	To         *TransitionTargetType `xml:"t:To,omitempty"`
+	TimeOffset XsDuration            `xml:"t:TimeOffset,omitempty"`
+	Month      XsInt                 `xml:"t:Month,omitempty"`
+}
+
+type RecurringDateTransitionType struct {
+	To         *TransitionTargetType `xml:"t:To,omitempty"`
+	TimeOffset XsDuration            `xml:"t:TimeOffset,omitempty"`
+	Month      XsInt                 `xml:"t:Month,omitempty"`
+	Day        XsInt                 `xml:"t:Day,omitempty"`
 }
 
 type EnhancedLocationType struct {
@@ -7826,10 +10007,216 @@ type SearchParametersType struct {
 }
 
 type RestrictionType struct {
-	SearchExpression *SearchExpressionType `xml:"t:SearchExpression,omitempty"`
+	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    *NotType                    `xml:"t:Not,omitempty"`
+	And                    *AndType                    `xml:"t:And,omitempty"`
+	Or                     *OrType                     `xml:"t:Or,omitempty"`
+	Near                   *NearType                   `xml:"t:Near,omitempty"`
 }
 
 type SearchExpressionType struct {
+}
+
+type ExistsType struct {
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+}
+
+type PathToUnindexedFieldType struct {
+	FieldURI UnindexedFieldURIType `xml:"FieldURI,attr,omitempty"`
+}
+
+type PathToIndexedFieldType struct {
+	FieldURI   DictionaryURIType `xml:"FieldURI,attr,omitempty"`
+	FieldIndex XsString          `xml:"FieldIndex,attr,omitempty"`
+}
+
+type ExcludesType struct {
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	Bitmask          *ExcludesValueType        `xml:"t:Bitmask,omitempty"`
+}
+
+type ExcludesValueType struct {
+	Value ExcludesAttributeType `xml:"Value,attr,omitempty"`
+}
+
+type IsEqualToType struct {
+	Path               *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI           *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI    *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI   *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	FieldURIOrConstant *FieldURIOrConstantType   `xml:"t:FieldURIOrConstant,omitempty"`
+}
+
+type TwoOperandExpressionType struct {
+	Path               *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI           *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI    *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI   *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	FieldURIOrConstant *FieldURIOrConstantType   `xml:"t:FieldURIOrConstant,omitempty"`
+}
+
+type FieldURIOrConstantType struct {
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	Constant         *ConstantValueType        `xml:"t:Constant,omitempty"`
+}
+
+type ConstantValueType struct {
+	Value XsString `xml:"Value,attr,omitempty"`
+}
+
+type IsNotEqualToType struct {
+	Path               *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI           *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI    *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI   *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	FieldURIOrConstant *FieldURIOrConstantType   `xml:"t:FieldURIOrConstant,omitempty"`
+}
+
+type IsGreaterThanType struct {
+	Path               *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI           *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI    *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI   *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	FieldURIOrConstant *FieldURIOrConstantType   `xml:"t:FieldURIOrConstant,omitempty"`
+}
+
+type IsGreaterThanOrEqualToType struct {
+	Path               *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI           *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI    *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI   *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	FieldURIOrConstant *FieldURIOrConstantType   `xml:"t:FieldURIOrConstant,omitempty"`
+}
+
+type IsLessThanType struct {
+	Path               *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI           *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI    *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI   *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	FieldURIOrConstant *FieldURIOrConstantType   `xml:"t:FieldURIOrConstant,omitempty"`
+}
+
+type IsLessThanOrEqualToType struct {
+	Path               *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI           *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI    *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI   *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	FieldURIOrConstant *FieldURIOrConstantType   `xml:"t:FieldURIOrConstant,omitempty"`
+}
+
+type ContainsExpressionType struct {
+	ContainmentMode       ContainmentModeType       `xml:"ContainmentMode,attr,omitempty"`
+	ContainmentComparison ContainmentComparisonType `xml:"ContainmentComparison,attr,omitempty"`
+	Path                  *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI              *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI       *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI      *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	Constant              *ConstantValueType        `xml:"t:Constant,omitempty"`
+}
+
+type NotType struct {
+	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    *NotType                    `xml:"t:Not,omitempty"`
+	And                    *AndType                    `xml:"t:And,omitempty"`
+	Or                     *OrType                     `xml:"t:Or,omitempty"`
+	Near                   *NearType                   `xml:"t:Near,omitempty"`
+}
+
+type AndType struct {
+	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    *NotType                    `xml:"t:Not,omitempty"`
+	And                    *AndType                    `xml:"t:And,omitempty"`
+	Or                     *OrType                     `xml:"t:Or,omitempty"`
+	Near                   *NearType                   `xml:"t:Near,omitempty"`
+}
+
+type MultipleOperandBooleanExpressionType struct {
+	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    *NotType                    `xml:"t:Not,omitempty"`
+	And                    *AndType                    `xml:"t:And,omitempty"`
+	Or                     *OrType                     `xml:"t:Or,omitempty"`
+	Near                   *NearType                   `xml:"t:Near,omitempty"`
+}
+
+type OrType struct {
+	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    *NotType                    `xml:"t:Not,omitempty"`
+	And                    *AndType                    `xml:"t:And,omitempty"`
+	Or                     *OrType                     `xml:"t:Or,omitempty"`
+	Near                   *NearType                   `xml:"t:Near,omitempty"`
+}
+
+type NearType struct {
+	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    *NotType                    `xml:"t:Not,omitempty"`
+	And                    *AndType                    `xml:"t:And,omitempty"`
+	Or                     *OrType                     `xml:"t:Or,omitempty"`
+	Near                   *NearType                   `xml:"t:Near,omitempty"`
+	Distance               XsUnsignedInt               `xml:"t:Distance,omitempty"`
+	Ordered                XsBoolean                   `xml:"t:Ordered,omitempty"`
 }
 
 type TasksFolderType struct {
@@ -8614,7 +11001,10 @@ type FolderResponseShapeType struct {
 }
 
 type NonEmptyArrayOfPathsToElementType struct {
-	Path []*BasePathToElementType `xml:"t:Path,omitempty"`
+	Path             []*BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         []*PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  []*PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI []*PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
 }
 
 type IndexedPageViewType struct {
@@ -8666,8 +11056,11 @@ type NonEmptyArrayOfFieldOrdersType struct {
 }
 
 type FieldOrderType struct {
-	Order SortDirectionType      `xml:"Order,attr,omitempty"`
-	Path  *BasePathToElementType `xml:"t:Path,omitempty"`
+	Order            SortDirectionType         `xml:"Order,attr,omitempty"`
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
 }
 
 type SeekToConditionPageViewType struct {
@@ -8709,15 +11102,6 @@ type AggregateOnType struct {
 	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
 	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
 	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
-}
-
-type PathToUnindexedFieldType struct {
-	FieldURI UnindexedFieldURIType `xml:"FieldURI,attr,omitempty"`
-}
-
-type PathToIndexedFieldType struct {
-	FieldURI   DictionaryURIType `xml:"FieldURI,attr,omitempty"`
-	FieldIndex XsString          `xml:"FieldIndex,attr,omitempty"`
 }
 
 type ArrayOfGroupIdType struct {
@@ -8790,33 +11174,48 @@ type NonEmptyArrayOfFolderChangeDescriptionsType struct {
 }
 
 type AppendToFolderFieldType struct {
-	Path           *BasePathToElementType `xml:"t:Path,omitempty"`
-	Folder         *FolderType            `xml:"t:Folder,omitempty"`
-	CalendarFolder *CalendarFolderType    `xml:"t:CalendarFolder,omitempty"`
-	ContactsFolder *ContactsFolderType    `xml:"t:ContactsFolder,omitempty"`
-	SearchFolder   *SearchFolderType      `xml:"t:SearchFolder,omitempty"`
-	TasksFolder    *TasksFolderType       `xml:"t:TasksFolder,omitempty"`
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	Folder           *FolderType               `xml:"t:Folder,omitempty"`
+	CalendarFolder   *CalendarFolderType       `xml:"t:CalendarFolder,omitempty"`
+	ContactsFolder   *ContactsFolderType       `xml:"t:ContactsFolder,omitempty"`
+	SearchFolder     *SearchFolderType         `xml:"t:SearchFolder,omitempty"`
+	TasksFolder      *TasksFolderType          `xml:"t:TasksFolder,omitempty"`
 }
 
 type FolderChangeDescriptionType struct {
-	Path *BasePathToElementType `xml:"t:Path,omitempty"`
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
 }
 
 type ChangeDescriptionType struct {
-	Path *BasePathToElementType `xml:"t:Path,omitempty"`
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
 }
 
 type SetFolderFieldType struct {
-	Path           *BasePathToElementType `xml:"t:Path,omitempty"`
-	Folder         *FolderType            `xml:"t:Folder,omitempty"`
-	CalendarFolder *CalendarFolderType    `xml:"t:CalendarFolder,omitempty"`
-	ContactsFolder *ContactsFolderType    `xml:"t:ContactsFolder,omitempty"`
-	SearchFolder   *SearchFolderType      `xml:"t:SearchFolder,omitempty"`
-	TasksFolder    *TasksFolderType       `xml:"t:TasksFolder,omitempty"`
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
+	Folder           *FolderType               `xml:"t:Folder,omitempty"`
+	CalendarFolder   *CalendarFolderType       `xml:"t:CalendarFolder,omitempty"`
+	ContactsFolder   *ContactsFolderType       `xml:"t:ContactsFolder,omitempty"`
+	SearchFolder     *SearchFolderType         `xml:"t:SearchFolder,omitempty"`
+	TasksFolder      *TasksFolderType          `xml:"t:TasksFolder,omitempty"`
 }
 
 type DeleteFolderFieldType struct {
-	Path *BasePathToElementType `xml:"t:Path,omitempty"`
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
 }
 
 type PullSubscriptionRequestType struct {
@@ -8917,6 +11316,9 @@ type NonEmptyArrayOfItemChangeDescriptionsType struct {
 
 type AppendToItemFieldType struct {
 	Path                *BasePathToElementType          `xml:"t:Path,omitempty"`
+	FieldURI            *PathToUnindexedFieldType       `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI     *PathToIndexedFieldType         `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI    *PathToExtendedFieldType        `xml:"t:ExtendedFieldURI,omitempty"`
 	Item                *ItemType                       `xml:"t:Item,omitempty"`
 	Message             *MessageType                    `xml:"t:Message,omitempty"`
 	SharingMessage      *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
@@ -8935,11 +11337,17 @@ type AppendToItemFieldType struct {
 }
 
 type ItemChangeDescriptionType struct {
-	Path *BasePathToElementType `xml:"t:Path,omitempty"`
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
 }
 
 type SetItemFieldType struct {
 	Path                *BasePathToElementType          `xml:"t:Path,omitempty"`
+	FieldURI            *PathToUnindexedFieldType       `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI     *PathToIndexedFieldType         `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI    *PathToExtendedFieldType        `xml:"t:ExtendedFieldURI,omitempty"`
 	Item                *ItemType                       `xml:"t:Item,omitempty"`
 	Message             *MessageType                    `xml:"t:Message,omitempty"`
 	SharingMessage      *SharingMessageType             `xml:"t:SharingMessage,omitempty"`
@@ -8958,7 +11366,10 @@ type SetItemFieldType struct {
 }
 
 type DeleteItemFieldType struct {
-	Path *BasePathToElementType `xml:"t:Path,omitempty"`
+	Path             *BasePathToElementType    `xml:"t:Path,omitempty"`
+	FieldURI         *PathToUnindexedFieldType `xml:"t:FieldURI,omitempty"`
+	IndexedFieldURI  *PathToIndexedFieldType   `xml:"t:IndexedFieldURI,omitempty"`
+	ExtendedFieldURI *PathToExtendedFieldType  `xml:"t:ExtendedFieldURI,omitempty"`
 }
 
 type NonEmptyArrayOfRequestAttachmentIdsType struct {
@@ -9172,8 +11583,8 @@ type UserOofSettings struct {
 }
 
 type ReplyBody struct {
-	Xxmllang XsString `xml:"xml:lang,attr,omitempty"`
-	Message  XsString `xml:"t:Message,omitempty"`
+	Xmllang XsString `xml:"xml:lang,attr,omitempty"`
+	Message XsString `xml:"t:Message,omitempty"`
 }
 
 type ArrayOfEventIDType struct {
@@ -9916,2133 +12327,6 @@ type MailboxInformationType struct {
 type OfficeClientType struct {
 	Code    OfficeClientCodeType `xml:"Code,attr,omitempty"`
 	Version VersionType          `xml:"Version,attr,omitempty"`
-}
-
-type ResolveNamesType struct {
-	ReturnFullContactData XsBoolean                         `xml:"ReturnFullContactData,attr,omitempty"`
-	SearchScope           ResolveNamesSearchScopeType       `xml:"SearchScope,attr,omitempty"`
-	ContactDataShape      DefaultShapeNamesType             `xml:"ContactDataShape,attr,omitempty"`
-	ParentFolderIds       *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
-	UnresolvedEntry       NonEmptyStringType                `xml:"m:UnresolvedEntry,omitempty"`
-}
-
-type BaseRequestType struct {
-}
-
-type ResolveNamesResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type BaseResponseMessageType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ArrayOfResponseMessagesType struct {
-	CreateItemResponseMessage                      []*ItemInfoResponseMessageType                        `xml:"m:CreateItemResponseMessage,omitempty"`
-	DeleteItemResponseMessage                      []*DeleteItemResponseMessageType                      `xml:"m:DeleteItemResponseMessage,omitempty"`
-	GetItemResponseMessage                         []*ItemInfoResponseMessageType                        `xml:"m:GetItemResponseMessage,omitempty"`
-	UpdateItemResponseMessage                      []*UpdateItemResponseMessageType                      `xml:"m:UpdateItemResponseMessage,omitempty"`
-	UpdateItemInRecoverableItemsResponseMessage    []*UpdateItemInRecoverableItemsResponseMessageType    `xml:"m:UpdateItemInRecoverableItemsResponseMessage,omitempty"`
-	SendItemResponseMessage                        []*ResponseMessageType                                `xml:"m:SendItemResponseMessage,omitempty"`
-	DeleteFolderResponseMessage                    []*ResponseMessageType                                `xml:"m:DeleteFolderResponseMessage,omitempty"`
-	EmptyFolderResponseMessage                     []*ResponseMessageType                                `xml:"m:EmptyFolderResponseMessage,omitempty"`
-	CreateFolderResponseMessage                    []*FolderInfoResponseMessageType                      `xml:"m:CreateFolderResponseMessage,omitempty"`
-	GetFolderResponseMessage                       []*FolderInfoResponseMessageType                      `xml:"m:GetFolderResponseMessage,omitempty"`
-	FindFolderResponseMessage                      []*FindFolderResponseMessageType                      `xml:"m:FindFolderResponseMessage,omitempty"`
-	UpdateFolderResponseMessage                    []*FolderInfoResponseMessageType                      `xml:"m:UpdateFolderResponseMessage,omitempty"`
-	MoveFolderResponseMessage                      []*FolderInfoResponseMessageType                      `xml:"m:MoveFolderResponseMessage,omitempty"`
-	CopyFolderResponseMessage                      []*FolderInfoResponseMessageType                      `xml:"m:CopyFolderResponseMessage,omitempty"`
-	CreateFolderPathResponseMessage                []*FolderInfoResponseMessageType                      `xml:"m:CreateFolderPathResponseMessage,omitempty"`
-	CreateAttachmentResponseMessage                []*AttachmentInfoResponseMessageType                  `xml:"m:CreateAttachmentResponseMessage,omitempty"`
-	DeleteAttachmentResponseMessage                []*DeleteAttachmentResponseMessageType                `xml:"m:DeleteAttachmentResponseMessage,omitempty"`
-	GetAttachmentResponseMessage                   []*AttachmentInfoResponseMessageType                  `xml:"m:GetAttachmentResponseMessage,omitempty"`
-	UploadItemsResponseMessage                     []*UploadItemsResponseMessageType                     `xml:"m:UploadItemsResponseMessage,omitempty"`
-	ExportItemsResponseMessage                     []*ExportItemsResponseMessageType                     `xml:"m:ExportItemsResponseMessage,omitempty"`
-	MarkAllItemsAsReadResponseMessage              []*ResponseMessageType                                `xml:"m:MarkAllItemsAsReadResponseMessage,omitempty"`
-	GetClientAccessTokenResponseMessage            []*GetClientAccessTokenResponseMessageType            `xml:"m:GetClientAccessTokenResponseMessage,omitempty"`
-	GetAppManifestsResponseMessage                 []*ResponseMessageType                                `xml:"m:GetAppManifestsResponseMessage,omitempty"`
-	SetClientExtensionResponseMessage              []*ResponseMessageType                                `xml:"m:SetClientExtensionResponseMessage,omitempty"`
-	GetOMEConfigurationResponseMessage             []*ResponseMessageType                                `xml:"m:GetOMEConfigurationResponseMessage,omitempty"`
-	SetOMEConfigurationResponseMessage             []*ResponseMessageType                                `xml:"m:SetOMEConfigurationResponseMessage,omitempty"`
-	GetOMEMessageStatusResponseType                []*ResponseMessageType                                `xml:"m:GetOMEMessageStatusResponseType,omitempty"`
-	SetOMEMessageStatusResponseType                []*ResponseMessageType                                `xml:"m:SetOMEMessageStatusResponseType,omitempty"`
-	FindItemResponseMessage                        []*FindItemResponseMessageType                        `xml:"m:FindItemResponseMessage,omitempty"`
-	MoveItemResponseMessage                        []*ItemInfoResponseMessageType                        `xml:"m:MoveItemResponseMessage,omitempty"`
-	ArchiveItemResponseMessage                     []*ItemInfoResponseMessageType                        `xml:"m:ArchiveItemResponseMessage,omitempty"`
-	CopyItemResponseMessage                        []*ItemInfoResponseMessageType                        `xml:"m:CopyItemResponseMessage,omitempty"`
-	ResolveNamesResponseMessage                    []*ResolveNamesResponseMessageType                    `xml:"m:ResolveNamesResponseMessage,omitempty"`
-	ExpandDLResponseMessage                        []*ExpandDLResponseMessageType                        `xml:"m:ExpandDLResponseMessage,omitempty"`
-	GetServerTimeZonesResponseMessage              []*GetServerTimeZonesResponseMessageType              `xml:"m:GetServerTimeZonesResponseMessage,omitempty"`
-	GetEventsResponseMessage                       []*GetEventsResponseMessageType                       `xml:"m:GetEventsResponseMessage,omitempty"`
-	GetStreamingEventsResponseMessage              []*GetStreamingEventsResponseMessageType              `xml:"m:GetStreamingEventsResponseMessage,omitempty"`
-	SubscribeResponseMessage                       []*SubscribeResponseMessageType                       `xml:"m:SubscribeResponseMessage,omitempty"`
-	UnsubscribeResponseMessage                     []*ResponseMessageType                                `xml:"m:UnsubscribeResponseMessage,omitempty"`
-	SendNotificationResponseMessage                []*SendNotificationResponseMessageType                `xml:"m:SendNotificationResponseMessage,omitempty"`
-	SyncFolderHierarchyResponseMessage             []*SyncFolderHierarchyResponseMessageType             `xml:"m:SyncFolderHierarchyResponseMessage,omitempty"`
-	SyncFolderItemsResponseMessage                 []*SyncFolderItemsResponseMessageType                 `xml:"m:SyncFolderItemsResponseMessage,omitempty"`
-	CreateManagedFolderResponseMessage             []*FolderInfoResponseMessageType                      `xml:"m:CreateManagedFolderResponseMessage,omitempty"`
-	ConvertIdResponseMessage                       []*ConvertIdResponseMessageType                       `xml:"m:ConvertIdResponseMessage,omitempty"`
-	GetSharingMetadataResponseMessage              []*GetSharingMetadataResponseMessageType              `xml:"m:GetSharingMetadataResponseMessage,omitempty"`
-	RefreshSharingFolderResponseMessage            []*RefreshSharingFolderResponseMessageType            `xml:"m:RefreshSharingFolderResponseMessage,omitempty"`
-	GetSharingFolderResponseMessage                []*GetSharingFolderResponseMessageType                `xml:"m:GetSharingFolderResponseMessage,omitempty"`
-	CreateUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:CreateUserConfigurationResponseMessage,omitempty"`
-	DeleteUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:DeleteUserConfigurationResponseMessage,omitempty"`
-	GetUserConfigurationResponseMessage            []*GetUserConfigurationResponseMessageType            `xml:"m:GetUserConfigurationResponseMessage,omitempty"`
-	GetSpecificUserConfigurationResponseMessage    []*GetSpecificUserConfigurationResponseMessageType    `xml:"m:GetSpecificUserConfigurationResponseMessage,omitempty"`
-	UpdateUserConfigurationResponseMessage         []*ResponseMessageType                                `xml:"m:UpdateUserConfigurationResponseMessage,omitempty"`
-	GetRoomListsResponse                           []*GetRoomListsResponseMessageType                    `xml:"m:GetRoomListsResponse,omitempty"`
-	GetRoomsResponse                               []*GetRoomsResponseMessageType                        `xml:"m:GetRoomsResponse,omitempty"`
-	GetRemindersResponse                           []*GetRemindersResponseMessageType                    `xml:"m:GetRemindersResponse,omitempty"`
-	PerformReminderActionResponse                  []*PerformReminderActionResponseMessageType           `xml:"m:PerformReminderActionResponse,omitempty"`
-	ApplyConversationActionResponseMessage         []*ApplyConversationActionResponseMessageType         `xml:"m:ApplyConversationActionResponseMessage,omitempty"`
-	FindMailboxStatisticsByKeywordsResponseMessage []*FindMailboxStatisticsByKeywordsResponseMessageType `xml:"m:FindMailboxStatisticsByKeywordsResponseMessage,omitempty"`
-	GetSearchableMailboxesResponseMessage          []*GetSearchableMailboxesResponseMessageType          `xml:"m:GetSearchableMailboxesResponseMessage,omitempty"`
-	SearchMailboxesResponseMessage                 []*SearchMailboxesResponseMessageType                 `xml:"m:SearchMailboxesResponseMessage,omitempty"`
-	GetDiscoverySearchConfigurationResponseMessage []*GetDiscoverySearchConfigurationResponseMessageType `xml:"m:GetDiscoverySearchConfigurationResponseMessage,omitempty"`
-	GetHoldOnMailboxesResponseMessage              []*GetHoldOnMailboxesResponseMessageType              `xml:"m:GetHoldOnMailboxesResponseMessage,omitempty"`
-	SetHoldOnMailboxesResponseMessage              []*SetHoldOnMailboxesResponseMessageType              `xml:"m:SetHoldOnMailboxesResponseMessage,omitempty"`
-	GetNonIndexableItemStatisticsResponseMessage   []*GetNonIndexableItemStatisticsResponseMessageType   `xml:"m:GetNonIndexableItemStatisticsResponseMessage,omitempty"`
-	GetNonIndexableItemDetailsResponseMessage      []*GetNonIndexableItemDetailsResponseMessageType      `xml:"m:GetNonIndexableItemDetailsResponseMessage,omitempty"`
-	FindPeopleResponseMessage                      []*FindPeopleResponseMessageType                      `xml:"m:FindPeopleResponseMessage,omitempty"`
-	FindTagsResponseMessage                        []*FindTagsResponseMessageType                        `xml:"m:FindTagsResponseMessage,omitempty"`
-	AddTagResponseMessage                          []*AddTagResponseMessageType                          `xml:"m:AddTagResponseMessage,omitempty"`
-	HideTagResponseMessage                         []*HideTagResponseMessageType                         `xml:"m:HideTagResponseMessage,omitempty"`
-	GetPasswordExpirationDateResponse              []*GetPasswordExpirationDateResponseMessageType       `xml:"m:GetPasswordExpirationDateResponse,omitempty"`
-	GetPersonaResponseMessage                      []*GetPersonaResponseMessageType                      `xml:"m:GetPersonaResponseMessage,omitempty"`
-	GetConversationItemsResponseMessage            []*GetConversationItemsResponseMessageType            `xml:"m:GetConversationItemsResponseMessage,omitempty"`
-	GetUserRetentionPolicyTagsResponseMessage      []*GetUserRetentionPolicyTagsResponseMessageType      `xml:"m:GetUserRetentionPolicyTagsResponseMessage,omitempty"`
-	GetUserPhotoResponseMessage                    []*GetUserPhotoResponseMessageType                    `xml:"m:GetUserPhotoResponseMessage,omitempty"`
-	MarkAsJunkResponseMessage                      []*MarkAsJunkResponseMessageType                      `xml:"m:MarkAsJunkResponseMessage,omitempty"`
-	MarkAsPhishingResponseMessage                  []*MarkAsPhishingResponseMessageType                  `xml:"m:MarkAsPhishingResponseMessage,omitempty"`
-	ReportMessageResponseMessage                   []*ReportMessageResponseMessageType                   `xml:"m:ReportMessageResponseMessage,omitempty"`
-	PostModernGroupItemResponseMessage             []*ItemInfoResponseMessageType                        `xml:"m:PostModernGroupItemResponseMessage,omitempty"`
-	GetLastPrivateCatalogUpdateResponseMessage     []*ResponseMessageType                                `xml:"m:GetLastPrivateCatalogUpdateResponseMessage,omitempty"`
-	GetPrivateCatalogAddInsResponseMessage         []*ResponseMessageType                                `xml:"m:GetPrivateCatalogAddInsResponseMessage,omitempty"`
-}
-
-type ItemInfoResponseMessageType struct {
-	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString              `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
-	Items              *ArrayOfRealItemsType `xml:"m:Items,omitempty"`
-}
-
-type ResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type DeleteItemResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type UpdateItemResponseMessageType struct {
-	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString              `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
-	Items              *ArrayOfRealItemsType `xml:"m:Items,omitempty"`
-	ConflictResults    *ConflictResultsType  `xml:"m:ConflictResults,omitempty"`
-}
-
-type UpdateItemInRecoverableItemsResponseMessageType struct {
-	ResponseClass      ResponseClassType       `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType         `xml:"m:MessageXml,omitempty"`
-	Items              *ArrayOfRealItemsType   `xml:"m:Items,omitempty"`
-	Attachments        *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
-	ConflictResults    *ConflictResultsType    `xml:"m:ConflictResults,omitempty"`
-}
-
-type FolderInfoResponseMessageType struct {
-	ResponseClass      ResponseClassType   `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString            `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType    `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType     `xml:"m:MessageXml,omitempty"`
-	Folders            *ArrayOfFoldersType `xml:"m:Folders,omitempty"`
-}
-
-type FindFolderResponseMessageType struct {
-	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString              `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
-	RootFolder         *FindFolderParentType `xml:"m:RootFolder,omitempty"`
-}
-
-type AttachmentInfoResponseMessageType struct {
-	ResponseClass      ResponseClassType       `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType         `xml:"m:MessageXml,omitempty"`
-	Attachments        *ArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
-}
-
-type DeleteAttachmentResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	RootItemId         *RootItemIdType   `xml:"m:RootItemId,omitempty"`
-}
-
-type UploadItemsResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	ItemId             *ItemIdType       `xml:"m:ItemId,omitempty"`
-}
-
-type ExportItemsResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	ItemId             *ItemIdType       `xml:"m:ItemId,omitempty"`
-	Data               XsBase64Binary    `xml:"m:Data,omitempty"`
-}
-
-type GetClientAccessTokenResponseMessageType struct {
-	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString               `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
-	Token              *ClientAccessTokenType `xml:"m:Token,omitempty"`
-}
-
-type FindItemResponseMessageType struct {
-	ResponseClass      ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                   `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType            `xml:"m:MessageXml,omitempty"`
-	RootFolder         *FindItemParentType        `xml:"m:RootFolder,omitempty"`
-	HighlightTerms     *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
-}
-
-type ResolveNamesResponseMessageType struct {
-	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString               `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
-	ResolutionSet      *ArrayOfResolutionType `xml:"m:ResolutionSet,omitempty"`
-}
-
-type ExpandDLResponseMessageType struct {
-	ResponseClass           ResponseClassType       `xml:"ResponseClass,attr,omitempty"`
-	IndexedPagingOffset     XsInt                   `xml:"IndexedPagingOffset,attr,omitempty"`
-	NumeratorOffset         XsInt                   `xml:"NumeratorOffset,attr,omitempty"`
-	AbsoluteDenominator     XsInt                   `xml:"AbsoluteDenominator,attr,omitempty"`
-	IncludesLastItemInRange XsBoolean               `xml:"IncludesLastItemInRange,attr,omitempty"`
-	TotalItemsInView        XsInt                   `xml:"TotalItemsInView,attr,omitempty"`
-	MessageText             XsString                `xml:"m:MessageText,omitempty"`
-	ResponseCode            ResponseCodeType        `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey      XsInt                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml              *MessageXmlType         `xml:"m:MessageXml,omitempty"`
-	DLExpansion             *ArrayOfDLExpansionType `xml:"m:DLExpansion,omitempty"`
-}
-
-type GetServerTimeZonesResponseMessageType struct {
-	ResponseClass       ResponseClassType              `xml:"ResponseClass,attr,omitempty"`
-	MessageText         XsString                       `xml:"m:MessageText,omitempty"`
-	ResponseCode        ResponseCodeType               `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey  XsInt                          `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml          *MessageXmlType                `xml:"m:MessageXml,omitempty"`
-	TimeZoneDefinitions *ArrayOfTimeZoneDefinitionType `xml:"m:TimeZoneDefinitions,omitempty"`
-}
-
-type GetEventsResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	Notification       *NotificationType `xml:"m:Notification,omitempty"`
-}
-
-type GetStreamingEventsResponseMessageType struct {
-	ResponseClass        ResponseClassType                   `xml:"ResponseClass,attr,omitempty"`
-	MessageText          XsString                            `xml:"m:MessageText,omitempty"`
-	ResponseCode         ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey   XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml           *MessageXmlType                     `xml:"m:MessageXml,omitempty"`
-	Notifications        *NonEmptyArrayOfNotificationsType   `xml:"m:Notifications,omitempty"`
-	ErrorSubscriptionIds *NonEmptyArrayOfSubscriptionIdsType `xml:"m:ErrorSubscriptionIds,omitempty"`
-	ConnectionStatus     ConnectionStatusType                `xml:"m:ConnectionStatus,omitempty"`
-}
-
-type SubscribeResponseMessageType struct {
-	ResponseClass      ResponseClassType  `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString           `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType    `xml:"m:MessageXml,omitempty"`
-	SubscriptionId     SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
-	Watermark          WatermarkType      `xml:"m:Watermark,omitempty"`
-}
-
-type SendNotificationResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	Notification       *NotificationType `xml:"m:Notification,omitempty"`
-}
-
-type SyncFolderHierarchyResponseMessageType struct {
-	ResponseClass             ResponseClassType               `xml:"ResponseClass,attr,omitempty"`
-	MessageText               XsString                        `xml:"m:MessageText,omitempty"`
-	ResponseCode              ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey        XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                *MessageXmlType                 `xml:"m:MessageXml,omitempty"`
-	SyncState                 XsString                        `xml:"m:SyncState,omitempty"`
-	IncludesLastFolderInRange XsBoolean                       `xml:"m:IncludesLastFolderInRange,omitempty"`
-	Changes                   *SyncFolderHierarchyChangesType `xml:"m:Changes,omitempty"`
-}
-
-type SyncFolderItemsResponseMessageType struct {
-	ResponseClass           ResponseClassType           `xml:"ResponseClass,attr,omitempty"`
-	MessageText             XsString                    `xml:"m:MessageText,omitempty"`
-	ResponseCode            ResponseCodeType            `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey      XsInt                       `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml              *MessageXmlType             `xml:"m:MessageXml,omitempty"`
-	SyncState               XsString                    `xml:"m:SyncState,omitempty"`
-	IncludesLastItemInRange XsBoolean                   `xml:"m:IncludesLastItemInRange,omitempty"`
-	Changes                 *SyncFolderItemsChangesType `xml:"m:Changes,omitempty"`
-}
-
-type ConvertIdResponseMessageType struct {
-	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString             `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
-	AlternateId        *AlternateIdBaseType `xml:"m:AlternateId,omitempty"`
-}
-
-type GetSharingMetadataResponseMessageType struct {
-	ResponseClass                       ResponseClassType                     `xml:"ResponseClass,attr,omitempty"`
-	MessageText                         XsString                              `xml:"m:MessageText,omitempty"`
-	ResponseCode                        ResponseCodeType                      `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey                  XsInt                                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                          *MessageXmlType                       `xml:"m:MessageXml,omitempty"`
-	EncryptedSharedFolderDataCollection *ArrayOfEncryptedSharedFolderDataType `xml:"m:EncryptedSharedFolderDataCollection,omitempty"`
-	InvalidRecipients                   *ArrayOfInvalidRecipientsType         `xml:"m:InvalidRecipients,omitempty"`
-}
-
-type RefreshSharingFolderResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type GetSharingFolderResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	SharingFolderId    *FolderIdType     `xml:"m:SharingFolderId,omitempty"`
-}
-
-type GetUserConfigurationResponseMessageType struct {
-	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString               `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
-	UserConfiguration  *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
-}
-
-type GetSpecificUserConfigurationResponseMessageType struct {
-	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString               `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
-	UserConfiguration  *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
-}
-
-type GetRoomListsResponseMessageType struct {
-	ResponseClass      ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                   `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType            `xml:"m:MessageXml,omitempty"`
-	RoomLists          *ArrayOfEmailAddressesType `xml:"m:RoomLists,omitempty"`
-}
-
-type GetRoomsResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	Rooms              *ArrayOfRoomsType `xml:"m:Rooms,omitempty"`
-}
-
-type GetRemindersResponseMessageType struct {
-	ResponseClass      ResponseClassType     `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString              `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType      `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType       `xml:"m:MessageXml,omitempty"`
-	Reminders          *ArrayOfRemindersType `xml:"m:Reminders,omitempty"`
-}
-
-type PerformReminderActionResponseMessageType struct {
-	ResponseClass      ResponseClassType           `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                    `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType            `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                       `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType             `xml:"m:MessageXml,omitempty"`
-	UpdatedItemIds     *NonEmptyArrayOfItemIdsType `xml:"m:UpdatedItemIds,omitempty"`
-}
-
-type ApplyConversationActionResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type FindMailboxStatisticsByKeywordsResponseMessageType struct {
-	ResponseClass                 ResponseClassType                  `xml:"ResponseClass,attr,omitempty"`
-	MessageText                   XsString                           `xml:"m:MessageText,omitempty"`
-	ResponseCode                  ResponseCodeType                   `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey            XsInt                              `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                    *MessageXmlType                    `xml:"m:MessageXml,omitempty"`
-	MailboxStatisticsSearchResult *MailboxStatisticsSearchResultType `xml:"m:MailboxStatisticsSearchResult,omitempty"`
-}
-
-type GetSearchableMailboxesResponseMessageType struct {
-	ResponseClass       ResponseClassType                 `xml:"ResponseClass,attr,omitempty"`
-	MessageText         XsString                          `xml:"m:MessageText,omitempty"`
-	ResponseCode        ResponseCodeType                  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey  XsInt                             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml          *MessageXmlType                   `xml:"m:MessageXml,omitempty"`
-	SearchableMailboxes *ArrayOfSearchableMailboxesType   `xml:"m:SearchableMailboxes,omitempty"`
-	FailedMailboxes     *ArrayOfFailedSearchMailboxesType `xml:"m:FailedMailboxes,omitempty"`
-}
-
-type SearchMailboxesResponseMessageType struct {
-	ResponseClass         ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
-	MessageText           XsString                   `xml:"m:MessageText,omitempty"`
-	ResponseCode          ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey    XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            *MessageXmlType            `xml:"m:MessageXml,omitempty"`
-	SearchMailboxesResult *SearchMailboxesResultType `xml:"m:SearchMailboxesResult,omitempty"`
-}
-
-type GetDiscoverySearchConfigurationResponseMessageType struct {
-	ResponseClass                 ResponseClassType                        `xml:"ResponseClass,attr,omitempty"`
-	MessageText                   XsString                                 `xml:"m:MessageText,omitempty"`
-	ResponseCode                  ResponseCodeType                         `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey            XsInt                                    `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                    *MessageXmlType                          `xml:"m:MessageXml,omitempty"`
-	DiscoverySearchConfigurations *ArrayOfDiscoverySearchConfigurationType `xml:"m:DiscoverySearchConfigurations,omitempty"`
-}
-
-type GetHoldOnMailboxesResponseMessageType struct {
-	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString               `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
-	MailboxHoldResult  *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
-}
-
-type SetHoldOnMailboxesResponseMessageType struct {
-	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString               `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
-	MailboxHoldResult  *MailboxHoldResultType `xml:"m:MailboxHoldResult,omitempty"`
-}
-
-type GetNonIndexableItemStatisticsResponseMessageType struct {
-	ResponseClass              ResponseClassType                      `xml:"ResponseClass,attr,omitempty"`
-	MessageText                XsString                               `xml:"m:MessageText,omitempty"`
-	ResponseCode               ResponseCodeType                       `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey         XsInt                                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                 *MessageXmlType                        `xml:"m:MessageXml,omitempty"`
-	NonIndexableItemStatistics *ArrayOfNonIndexableItemStatisticsType `xml:"m:NonIndexableItemStatistics,omitempty"`
-}
-
-type GetNonIndexableItemDetailsResponseMessageType struct {
-	ResponseClass                 ResponseClassType                 `xml:"ResponseClass,attr,omitempty"`
-	MessageText                   XsString                          `xml:"m:MessageText,omitempty"`
-	ResponseCode                  ResponseCodeType                  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey            XsInt                             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                    *MessageXmlType                   `xml:"m:MessageXml,omitempty"`
-	NonIndexableItemDetailsResult *NonIndexableItemDetailResultType `xml:"m:NonIndexableItemDetailsResult,omitempty"`
-}
-
-type FindPeopleResponseMessageType struct {
-	ResponseClass             ResponseClassType  `xml:"ResponseClass,attr,omitempty"`
-	MessageText               XsString           `xml:"m:MessageText,omitempty"`
-	ResponseCode              ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey        XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                *MessageXmlType    `xml:"m:MessageXml,omitempty"`
-	People                    *ArrayOfPeopleType `xml:"m:People,omitempty"`
-	TotalNumberOfPeopleInView XsInt              `xml:"m:TotalNumberOfPeopleInView,omitempty"`
-	FirstMatchingRowIndex     XsInt              `xml:"m:FirstMatchingRowIndex,omitempty"`
-	FirstLoadedRowIndex       XsInt              `xml:"m:FirstLoadedRowIndex,omitempty"`
-	TransactionId             GuidType           `xml:"m:TransactionId,omitempty"`
-}
-
-type FindTagsResponseMessageType struct {
-	ResponseClass      ResponseClassType   `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString            `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType    `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType     `xml:"m:MessageXml,omitempty"`
-	Tags               *ArrayOfStringsType `xml:"m:Tags,omitempty"`
-}
-
-type AddTagResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	WasSuccessful      XsBoolean         `xml:"m:WasSuccessful,omitempty"`
-}
-
-type HideTagResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	WasSuccessful      XsBoolean         `xml:"m:WasSuccessful,omitempty"`
-}
-
-type GetPasswordExpirationDateResponseMessageType struct {
-	ResponseClass          ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText            XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode           ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey     XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml             *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	PasswordExpirationDate XsDateTime        `xml:"m:PasswordExpirationDate,omitempty"`
-}
-
-type GetPersonaResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
-}
-
-type GetConversationItemsResponseMessageType struct {
-	ResponseClass      ResponseClassType         `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                  `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType          `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                     `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType           `xml:"m:MessageXml,omitempty"`
-	Conversation       *ConversationResponseType `xml:"m:Conversation,omitempty"`
-}
-
-type GetUserRetentionPolicyTagsResponseMessageType struct {
-	ResponseClass       ResponseClassType               `xml:"ResponseClass,attr,omitempty"`
-	MessageText         XsString                        `xml:"m:MessageText,omitempty"`
-	ResponseCode        ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey  XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml          *MessageXmlType                 `xml:"m:MessageXml,omitempty"`
-	RetentionPolicyTags *ArrayOfRetentionPolicyTagsType `xml:"m:RetentionPolicyTags,omitempty"`
-}
-
-type GetUserPhotoResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	HasChanged         XsBoolean         `xml:"m:HasChanged,omitempty"`
-	PictureData        XsBase64Binary    `xml:"m:PictureData,omitempty"`
-}
-
-type MarkAsJunkResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
-}
-
-type MarkAsPhishingResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
-}
-
-type ReportMessageResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	MovedItemId        *ItemIdType       `xml:"m:MovedItemId,omitempty"`
-	Policy             XsString          `xml:"m:Policy,omitempty"`
-}
-
-type ExpandDLType struct {
-	Mailbox *EmailAddressType `xml:"m:Mailbox,omitempty"`
-}
-
-type ExpandDLResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetServerTimeZonesType struct {
-	ReturnFullTimeZoneData XsBoolean                      `xml:"ReturnFullTimeZoneData,attr,omitempty"`
-	Ids                    *NonEmptyArrayOfTimeZoneIdType `xml:"m:Ids,omitempty"`
-}
-
-type GetServerTimeZonesResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type FindFolderType struct {
-	Traversal                FolderQueryTraversalType          `xml:"Traversal,attr,omitempty"`
-	FolderShape              *FolderResponseShapeType          `xml:"m:FolderShape,omitempty"`
-	Restriction              *RestrictionType                  `xml:"m:Restriction,omitempty"`
-	ParentFolderIds          *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
-	IndexedPageFolderView    *IndexedPageViewType              `xml:"m:IndexedPageFolderView,omitempty"`
-	FractionalPageFolderView *FractionalPageViewType           `xml:"m:FractionalPageFolderView,omitempty"`
-}
-
-type FindFolderResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type FindItemType struct {
-	Traversal                   ItemQueryTraversalType            `xml:"Traversal,attr,omitempty"`
-	ItemShape                   *ItemResponseShapeType            `xml:"m:ItemShape,omitempty"`
-	Restriction                 *RestrictionType                  `xml:"m:Restriction,omitempty"`
-	SortOrder                   *NonEmptyArrayOfFieldOrdersType   `xml:"m:SortOrder,omitempty"`
-	ParentFolderIds             *NonEmptyArrayOfBaseFolderIdsType `xml:"m:ParentFolderIds,omitempty"`
-	QueryString                 *QueryStringType                  `xml:"m:QueryString,omitempty"`
-	IndexedPageItemView         *IndexedPageViewType              `xml:"m:IndexedPageItemView,omitempty"`
-	FractionalPageItemView      *FractionalPageViewType           `xml:"m:FractionalPageItemView,omitempty"`
-	SeekToConditionPageItemView *SeekToConditionPageViewType      `xml:"m:SeekToConditionPageItemView,omitempty"`
-	CalendarView                *CalendarViewType                 `xml:"m:CalendarView,omitempty"`
-	ContactsView                *ContactsViewType                 `xml:"m:ContactsView,omitempty"`
-	GroupBy                     *GroupByType                      `xml:"m:GroupBy,omitempty"`
-	DistinguishedGroupBy        *DistinguishedGroupByType         `xml:"m:DistinguishedGroupBy,omitempty"`
-}
-
-type QueryStringType struct {
-	CharData             XsString  `xml:",chardata"`
-	ResetCache           XsBoolean `xml:"ResetCache,attr,omitempty"`
-	ReturnHighlightTerms XsBoolean `xml:"ReturnHighlightTerms,attr,omitempty"`
-	ReturnDeletedItems   XsBoolean `xml:"ReturnDeletedItems,attr,omitempty"`
-}
-
-type FindItemResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetFolderType struct {
-	FolderShape *FolderResponseShapeType          `xml:"m:FolderShape,omitempty"`
-	FolderIds   *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type GetFolderResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type UploadItemsType struct {
-	Items *NonEmptyArrayOfUploadItemsType `xml:"m:Items,omitempty"`
-}
-
-type UploadItemsResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ExportItemsType struct {
-	ItemIds *NonEmptyArrayOfItemIdsType `xml:"m:ItemIds,omitempty"`
-}
-
-type ExportItemsResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ConvertIdType struct {
-	DestinationFormat IdFormatType                     `xml:"DestinationFormat,attr,omitempty"`
-	SourceIds         *NonEmptyArrayOfAlternateIdsType `xml:"m:SourceIds,omitempty"`
-}
-
-type ConvertIdResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type CreateFolderType struct {
-	ParentFolderId *TargetFolderIdType         `xml:"m:ParentFolderId,omitempty"`
-	Folders        *NonEmptyArrayOfFoldersType `xml:"m:Folders,omitempty"`
-}
-
-type CreateFolderResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type CreateFolderPathType struct {
-	ParentFolderId     *TargetFolderIdType         `xml:"m:ParentFolderId,omitempty"`
-	RelativeFolderPath *NonEmptyArrayOfFoldersType `xml:"m:RelativeFolderPath,omitempty"`
-}
-
-type CreateFolderPathResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type DeleteFolderType struct {
-	DeleteType DisposalType                      `xml:"DeleteType,attr,omitempty"`
-	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type DeleteFolderResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type EmptyFolderType struct {
-	DeleteType       DisposalType                      `xml:"DeleteType,attr,omitempty"`
-	DeleteSubFolders XsBoolean                         `xml:"DeleteSubFolders,attr,omitempty"`
-	FolderIds        *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type EmptyFolderResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type UpdateFolderType struct {
-	FolderChanges *NonEmptyArrayOfFolderChangesType `xml:"m:FolderChanges,omitempty"`
-}
-
-type UpdateFolderResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type MoveFolderType struct {
-	ToFolderId *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
-	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type BaseMoveCopyFolderType struct {
-	ToFolderId *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
-	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type MoveFolderResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type CopyFolderType struct {
-	ToFolderId *TargetFolderIdType               `xml:"m:ToFolderId,omitempty"`
-	FolderIds  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type CopyFolderResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type SubscribeType struct {
-	PullSubscriptionRequest      *PullSubscriptionRequestType      `xml:"m:PullSubscriptionRequest,omitempty"`
-	PushSubscriptionRequest      *PushSubscriptionRequestType      `xml:"m:PushSubscriptionRequest,omitempty"`
-	StreamingSubscriptionRequest *StreamingSubscriptionRequestType `xml:"m:StreamingSubscriptionRequest,omitempty"`
-}
-
-type SubscribeResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type UnsubscribeType struct {
-	SubscriptionId SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
-}
-
-type UnsubscribeResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetEventsType struct {
-	SubscriptionId SubscriptionIdType `xml:"m:SubscriptionId,omitempty"`
-	Watermark      WatermarkType      `xml:"m:Watermark,omitempty"`
-}
-
-type GetEventsResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetStreamingEventsType struct {
-	SubscriptionIds   *NonEmptyArrayOfSubscriptionIdsType        `xml:"m:SubscriptionIds,omitempty"`
-	ConnectionTimeout StreamingSubscriptionConnectionTimeoutType `xml:"m:ConnectionTimeout,omitempty"`
-}
-
-type GetStreamingEventsResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type SyncFolderHierarchyType struct {
-	FolderShape  *FolderResponseShapeType `xml:"m:FolderShape,omitempty"`
-	SyncFolderId *TargetFolderIdType      `xml:"m:SyncFolderId,omitempty"`
-	SyncState    XsString                 `xml:"m:SyncState,omitempty"`
-}
-
-type SyncFolderHierarchyResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type SyncFolderItemsType struct {
-	ItemShape          *ItemResponseShapeType     `xml:"m:ItemShape,omitempty"`
-	SyncFolderId       *TargetFolderIdType        `xml:"m:SyncFolderId,omitempty"`
-	SyncState          XsString                   `xml:"m:SyncState,omitempty"`
-	Ignore             *ArrayOfBaseItemIdsType    `xml:"m:Ignore,omitempty"`
-	MaxChangesReturned MaxSyncChangesReturnedType `xml:"m:MaxChangesReturned,omitempty"`
-	SyncScope          SyncFolderItemsScopeType   `xml:"m:SyncScope,omitempty"`
-}
-
-type SyncFolderItemsResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type CreateManagedFolderRequestType struct {
-	FolderNames *NonEmptyArrayOfFolderNamesType `xml:"m:FolderNames,omitempty"`
-	Mailbox     *EmailAddressType               `xml:"m:Mailbox,omitempty"`
-}
-
-type CreateManagedFolderResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetItemType struct {
-	ItemShape *ItemResponseShapeType          `xml:"m:ItemShape,omitempty"`
-	ItemIds   *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-}
-
-type GetItemResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type CreateItemType struct {
-	MessageDisposition     MessageDispositionType                  `xml:"MessageDisposition,attr,omitempty"`
-	SendMeetingInvitations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingInvitations,attr,omitempty"`
-	SavedItemFolderId      *TargetFolderIdType                     `xml:"m:SavedItemFolderId,omitempty"`
-	Items                  *NonEmptyArrayOfAllItemsType            `xml:"m:Items,omitempty"`
-}
-
-type CreateItemResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type DeleteItemType struct {
-	DeleteType               DisposalType                            `xml:"DeleteType,attr,omitempty"`
-	SendMeetingCancellations CalendarItemCreateOrDeleteOperationType `xml:"SendMeetingCancellations,attr,omitempty"`
-	AffectedTaskOccurrences  AffectedTaskOccurrencesType             `xml:"AffectedTaskOccurrences,attr,omitempty"`
-	SuppressReadReceipts     XsBoolean                               `xml:"SuppressReadReceipts,attr,omitempty"`
-	ItemIds                  *NonEmptyArrayOfBaseItemIdsType         `xml:"m:ItemIds,omitempty"`
-}
-
-type DeleteItemResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type UpdateItemType struct {
-	ConflictResolution                    ConflictResolutionType          `xml:"ConflictResolution,attr,omitempty"`
-	MessageDisposition                    MessageDispositionType          `xml:"MessageDisposition,attr,omitempty"`
-	SendMeetingInvitationsOrCancellations CalendarItemUpdateOperationType `xml:"SendMeetingInvitationsOrCancellations,attr,omitempty"`
-	SuppressReadReceipts                  XsBoolean                       `xml:"SuppressReadReceipts,attr,omitempty"`
-	SavedItemFolderId                     *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
-	ItemChanges                           *NonEmptyArrayOfItemChangesType `xml:"m:ItemChanges,omitempty"`
-}
-
-type UpdateItemResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type UpdateItemInRecoverableItemsType struct {
-	ItemId            *ItemIdType                                `xml:"m:ItemId,omitempty"`
-	Updates           *NonEmptyArrayOfItemChangeDescriptionsType `xml:"m:Updates,omitempty"`
-	Attachments       *NonEmptyArrayOfAttachmentsType            `xml:"m:Attachments,omitempty"`
-	MakeItemImmutable XsBoolean                                  `xml:"m:MakeItemImmutable,omitempty"`
-}
-
-type UpdateItemInRecoverableItemsResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type SendItemType struct {
-	SaveItemToFolder  XsBoolean                       `xml:"SaveItemToFolder,attr,omitempty"`
-	ItemIds           *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-	SavedItemFolderId *TargetFolderIdType             `xml:"m:SavedItemFolderId,omitempty"`
-}
-
-type SendItemResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type MoveItemType struct {
-	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
-	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
-}
-
-type BaseMoveCopyItemType struct {
-	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
-	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
-}
-
-type MoveItemResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type CopyItemType struct {
-	ToFolderId       *TargetFolderIdType             `xml:"m:ToFolderId,omitempty"`
-	ItemIds          *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-	ReturnNewItemIds XsBoolean                       `xml:"m:ReturnNewItemIds,omitempty"`
-}
-
-type CopyItemResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ArchiveItemType struct {
-	ArchiveSourceFolderId *TargetFolderIdType             `xml:"m:ArchiveSourceFolderId,omitempty"`
-	ItemIds               *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-}
-
-type ArchiveItemResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type CreateAttachmentType struct {
-	ParentItemId *ItemIdType                     `xml:"m:ParentItemId,omitempty"`
-	Attachments  *NonEmptyArrayOfAttachmentsType `xml:"m:Attachments,omitempty"`
-}
-
-type CreateAttachmentResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type DeleteAttachmentType struct {
-	AttachmentIds *NonEmptyArrayOfRequestAttachmentIdsType `xml:"m:AttachmentIds,omitempty"`
-}
-
-type DeleteAttachmentResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetAttachmentType struct {
-	AttachmentShape *AttachmentResponseShapeType             `xml:"m:AttachmentShape,omitempty"`
-	AttachmentIds   *NonEmptyArrayOfRequestAttachmentIdsType `xml:"m:AttachmentIds,omitempty"`
-}
-
-type GetAttachmentResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetClientAccessTokenType struct {
-	TokenRequests *NonEmptyArrayOfClientAccessTokenRequestsType `xml:"m:TokenRequests,omitempty"`
-}
-
-type GetClientAccessTokenResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetDelegateType struct {
-	IncludePermissions XsBoolean          `xml:"IncludePermissions,attr,omitempty"`
-	Mailbox            *EmailAddressType  `xml:"m:Mailbox,omitempty"`
-	UserIds            *ArrayOfUserIdType `xml:"m:UserIds,omitempty"`
-}
-
-type BaseDelegateType struct {
-	Mailbox *EmailAddressType `xml:"m:Mailbox,omitempty"`
-}
-
-type GetDelegateResponseMessageType struct {
-	ResponseClass          ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
-	MessageText            XsString                                `xml:"m:MessageText,omitempty"`
-	ResponseCode           ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey     XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml             *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
-	ResponseMessages       *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-	DeliverMeetingRequests DeliverMeetingRequestsType              `xml:"m:DeliverMeetingRequests,omitempty"`
-}
-
-type BaseDelegateResponseMessageType struct {
-	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
-	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ArrayOfDelegateUserResponseMessageType struct {
-	DelegateUserResponseMessageType []*DelegateUserResponseMessageType `xml:"m:DelegateUserResponseMessageType,omitempty"`
-}
-
-type DelegateUserResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	DelegateUser       *DelegateUserType `xml:"m:DelegateUser,omitempty"`
-}
-
-type AddDelegateType struct {
-	Mailbox                *EmailAddressType          `xml:"m:Mailbox,omitempty"`
-	DelegateUsers          *ArrayOfDelegateUserType   `xml:"m:DelegateUsers,omitempty"`
-	DeliverMeetingRequests DeliverMeetingRequestsType `xml:"m:DeliverMeetingRequests,omitempty"`
-}
-
-type AddDelegateResponseMessageType struct {
-	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
-	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type RemoveDelegateType struct {
-	Mailbox *EmailAddressType  `xml:"m:Mailbox,omitempty"`
-	UserIds *ArrayOfUserIdType `xml:"m:UserIds,omitempty"`
-}
-
-type RemoveDelegateResponseMessageType struct {
-	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
-	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type UpdateDelegateType struct {
-	Mailbox                *EmailAddressType          `xml:"m:Mailbox,omitempty"`
-	DelegateUsers          *ArrayOfDelegateUserType   `xml:"m:DelegateUsers,omitempty"`
-	DeliverMeetingRequests DeliverMeetingRequestsType `xml:"m:DeliverMeetingRequests,omitempty"`
-}
-
-type UpdateDelegateResponseMessageType struct {
-	ResponseClass      ResponseClassType                       `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                                `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType                        `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                                   `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType                         `xml:"m:MessageXml,omitempty"`
-	ResponseMessages   *ArrayOfDelegateUserResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type CreateUserConfigurationType struct {
-	UserConfiguration *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
-}
-
-type CreateUserConfigurationResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type DeleteUserConfigurationType struct {
-	UserConfigurationName *UserConfigurationNameType `xml:"m:UserConfigurationName,omitempty"`
-}
-
-type DeleteUserConfigurationResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetUserConfigurationType struct {
-	UserConfigurationName       *UserConfigurationNameType    `xml:"m:UserConfigurationName,omitempty"`
-	UserConfigurationProperties UserConfigurationPropertyType `xml:"m:UserConfigurationProperties,omitempty"`
-}
-
-type GetUserConfigurationResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetSpecificUserConfigurationType struct {
-	UserConfigurationName       *UserConfigurationNameType    `xml:"m:UserConfigurationName,omitempty"`
-	UserConfigurationProperties UserConfigurationPropertyType `xml:"m:UserConfigurationProperties,omitempty"`
-}
-
-type GetSpecificUserConfigurationResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type UpdateUserConfigurationType struct {
-	UserConfiguration *UserConfigurationType `xml:"m:UserConfiguration,omitempty"`
-}
-
-type UpdateUserConfigurationResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetUserAvailabilityRequestType struct {
-	TimeZone               *SerializableTimeZone       `xml:"t:TimeZone,omitempty"`
-	MailboxDataArray       *ArrayOfMailboxData         `xml:"m:MailboxDataArray,omitempty"`
-	FreeBusyViewOptions    *FreeBusyViewOptionsType    `xml:"t:FreeBusyViewOptions,omitempty"`
-	SuggestionsViewOptions *SuggestionsViewOptionsType `xml:"t:SuggestionsViewOptions,omitempty"`
-}
-
-type GetUserAvailabilityResponseType struct {
-	FreeBusyResponseArray *ArrayOfFreeBusyResponse `xml:"m:FreeBusyResponseArray,omitempty"`
-	SuggestionsResponse   *SuggestionsResponseType `xml:"m:SuggestionsResponse,omitempty"`
-}
-
-type ArrayOfFreeBusyResponse struct {
-	FreeBusyResponse []*FreeBusyResponseType `xml:"m:FreeBusyResponse,omitempty"`
-}
-
-type FreeBusyResponseType struct {
-	ResponseMessage *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
-	FreeBusyView    *FreeBusyView        `xml:"m:FreeBusyView,omitempty"`
-}
-
-type SuggestionsResponseType struct {
-	ResponseMessage          *ResponseMessageType        `xml:"m:ResponseMessage,omitempty"`
-	SuggestionDayResultArray *ArrayOfSuggestionDayResult `xml:"m:SuggestionDayResultArray,omitempty"`
-}
-
-type GetUserOofSettingsRequest struct {
-	Mailbox *EmailAddress `xml:"t:Mailbox,omitempty"`
-}
-
-type GetUserOofSettingsResponse struct {
-	ResponseMessage  *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
-	OofSettings      *UserOofSettings     `xml:"t:OofSettings,omitempty"`
-	AllowExternalOof ExternalAudience     `xml:"m:AllowExternalOof,omitempty"`
-}
-
-type SetUserOofSettingsRequest struct {
-	Mailbox         *EmailAddress    `xml:"t:Mailbox,omitempty"`
-	UserOofSettings *UserOofSettings `xml:"t:UserOofSettings,omitempty"`
-}
-
-type SetUserOofSettingsResponse struct {
-	ResponseMessage *ResponseMessageType `xml:"m:ResponseMessage,omitempty"`
-}
-
-type GetServiceConfigurationType struct {
-	ActingAs                    *EmailAddressType                `xml:"m:ActingAs,omitempty"`
-	RequestedConfiguration      *ArrayOfServiceConfigurationType `xml:"m:RequestedConfiguration,omitempty"`
-	ConfigurationRequestDetails *ConfigurationRequestDetailsType `xml:"m:ConfigurationRequestDetails,omitempty"`
-}
-
-type ArrayOfServiceConfigurationType struct {
-	ConfigurationName []ServiceConfigurationType `xml:"m:ConfigurationName,omitempty"`
-}
-
-type GetServiceConfigurationResponseMessageType struct {
-	ResponseClass      ResponseClassType                               `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                                        `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType                                `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                                           `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType                                 `xml:"m:MessageXml,omitempty"`
-	ResponseMessages   *ArrayOfServiceConfigurationResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ArrayOfServiceConfigurationResponseMessageType struct {
-	ServiceConfigurationResponseMessageType []*ServiceConfigurationResponseMessageType `xml:"m:ServiceConfigurationResponseMessageType,omitempty"`
-}
-
-type ServiceConfigurationResponseMessageType struct {
-	ResponseClass                 ResponseClassType                     `xml:"ResponseClass,attr,omitempty"`
-	MessageText                   XsString                              `xml:"m:MessageText,omitempty"`
-	ResponseCode                  ResponseCodeType                      `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey            XsInt                                 `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                    *MessageXmlType                       `xml:"m:MessageXml,omitempty"`
-	MailTipsConfiguration         *MailTipsServiceConfiguration         `xml:"m:MailTipsConfiguration,omitempty"`
-	UnifiedMessagingConfiguration *UnifiedMessageServiceConfiguration   `xml:"m:UnifiedMessagingConfiguration,omitempty"`
-	ProtectionRulesConfiguration  *ProtectionRulesServiceConfiguration  `xml:"m:ProtectionRulesConfiguration,omitempty"`
-	PolicyNudgeRulesConfiguration *PolicyNudgeRulesServiceConfiguration `xml:"m:PolicyNudgeRulesConfiguration,omitempty"`
-	SharePointURLsConfiguration   *SharePointURLsServiceConfiguration   `xml:"m:SharePointURLsConfiguration,omitempty"`
-}
-
-type GetMailTipsType struct {
-	SendingAs         *EmailAddressType      `xml:"m:SendingAs,omitempty"`
-	Recipients        *ArrayOfRecipientsType `xml:"m:Recipients,omitempty"`
-	MailTipsRequested MailTipTypes           `xml:"m:MailTipsRequested,omitempty"`
-}
-
-type GetMailTipsResponseMessageType struct {
-	ResponseClass      ResponseClassType                   `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                            `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType                     `xml:"m:MessageXml,omitempty"`
-	ResponseMessages   *ArrayOfMailTipsResponseMessageType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ArrayOfMailTipsResponseMessageType struct {
-	MailTipsResponseMessageType []*MailTipsResponseMessageType `xml:"m:MailTipsResponseMessageType,omitempty"`
-}
-
-type MailTipsResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	MailTips           *MailTips         `xml:"m:MailTips,omitempty"`
-}
-
-type PlayOnPhoneType struct {
-	ItemId     *ItemIdType `xml:"m:ItemId,omitempty"`
-	DialString XsString    `xml:"m:DialString,omitempty"`
-}
-
-type PlayOnPhoneResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	PhoneCallId        *PhoneCallIdType  `xml:"m:PhoneCallId,omitempty"`
-}
-
-type GetPhoneCallInformationType struct {
-	PhoneCallId *PhoneCallIdType `xml:"m:PhoneCallId,omitempty"`
-}
-
-type GetPhoneCallInformationResponseMessageType struct {
-	ResponseClass        ResponseClassType         `xml:"ResponseClass,attr,omitempty"`
-	MessageText          XsString                  `xml:"m:MessageText,omitempty"`
-	ResponseCode         ResponseCodeType          `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey   XsInt                     `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml           *MessageXmlType           `xml:"m:MessageXml,omitempty"`
-	PhoneCallInformation *PhoneCallInformationType `xml:"m:PhoneCallInformation,omitempty"`
-}
-
-type DisconnectPhoneCallType struct {
-	PhoneCallId *PhoneCallIdType `xml:"m:PhoneCallId,omitempty"`
-}
-
-type DisconnectPhoneCallResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type GetSharingMetadataType struct {
-	IdOfFolderToShare *FolderIdType           `xml:"m:IdOfFolderToShare,omitempty"`
-	SenderSmtpAddress NonEmptyStringType      `xml:"m:SenderSmtpAddress,omitempty"`
-	Recipients        *ArrayOfSmtpAddressType `xml:"m:Recipients,omitempty"`
-}
-
-type RefreshSharingFolderType struct {
-	SharingFolderId *FolderIdType `xml:"m:SharingFolderId,omitempty"`
-}
-
-type GetSharingFolderType struct {
-	SmtpAddress    NonEmptyStringType `xml:"m:SmtpAddress,omitempty"`
-	DataType       SharingDataType    `xml:"m:DataType,omitempty"`
-	SharedFolderId NonEmptyStringType `xml:"m:SharedFolderId,omitempty"`
-}
-
-type SetTeamMailboxRequestType struct {
-	EmailAddress      *EmailAddressType             `xml:"m:EmailAddress,omitempty"`
-	SharePointSiteUrl XsString                      `xml:"m:SharePointSiteUrl,omitempty"`
-	State             TeamMailboxLifecycleStateType `xml:"m:State,omitempty"`
-}
-
-type SetTeamMailboxResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type UnpinTeamMailboxRequestType struct {
-	EmailAddress *EmailAddressType `xml:"m:EmailAddress,omitempty"`
-}
-
-type UnpinTeamMailboxResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type GetRoomListsType struct {
-}
-
-type GetRoomsType struct {
-	RoomList *EmailAddressType `xml:"m:RoomList,omitempty"`
-}
-
-type FindMessageTrackingReportRequestType struct {
-}
-
-type FindMessageTrackingReportResponseMessageType struct {
-	ResponseClass                ResponseClassType                           `xml:"ResponseClass,attr,omitempty"`
-	MessageText                  XsString                                    `xml:"m:MessageText,omitempty"`
-	ResponseCode                 ResponseCodeType                            `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey           XsInt                                       `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml                   *MessageXmlType                             `xml:"m:MessageXml,omitempty"`
-	Diagnostics                  *ArrayOfStringsType                         `xml:"m:Diagnostics,omitempty"`
-	MessageTrackingSearchResults *ArrayOfFindMessageTrackingSearchResultType `xml:"m:MessageTrackingSearchResults,omitempty"`
-	ExecutedSearchScope          XsString                                    `xml:"m:ExecutedSearchScope,omitempty"`
-	Errors                       *ArrayOfArraysOfTrackingPropertiesType      `xml:"m:Errors,omitempty"`
-	Properties                   *ArrayOfTrackingPropertiesType              `xml:"m:Properties,omitempty"`
-}
-
-type GetMessageTrackingReportRequestType struct {
-}
-
-type GetMessageTrackingReportResponseMessageType struct {
-	ResponseClass         ResponseClassType                      `xml:"ResponseClass,attr,omitempty"`
-	MessageText           XsString                               `xml:"m:MessageText,omitempty"`
-	ResponseCode          ResponseCodeType                       `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey    XsInt                                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            *MessageXmlType                        `xml:"m:MessageXml,omitempty"`
-	MessageTrackingReport *MessageTrackingReportType             `xml:"m:MessageTrackingReport,omitempty"`
-	Diagnostics           *ArrayOfStringsType                    `xml:"m:Diagnostics,omitempty"`
-	Errors                *ArrayOfArraysOfTrackingPropertiesType `xml:"m:Errors,omitempty"`
-	Properties            *ArrayOfTrackingPropertiesType         `xml:"m:Properties,omitempty"`
-}
-
-type FindConversationType struct {
-	Traversal                   ConversationQueryTraversalType  `xml:"Traversal,attr,omitempty"`
-	ViewFilter                  ViewFilterType                  `xml:"ViewFilter,attr,omitempty"`
-	SortOrder                   *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
-	ParentFolderId              *TargetFolderIdType             `xml:"m:ParentFolderId,omitempty"`
-	MailboxScope                MailboxSearchLocationType       `xml:"m:MailboxScope,omitempty"`
-	QueryString                 *QueryStringType                `xml:"m:QueryString,omitempty"`
-	ConversationShape           *ConversationResponseShapeType  `xml:"m:ConversationShape,omitempty"`
-	IndexedPageItemView         *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
-	SeekToConditionPageItemView *SeekToConditionPageViewType    `xml:"m:SeekToConditionPageItemView,omitempty"`
-}
-
-type FindConversationResponseMessageType struct {
-	ResponseClass            ResponseClassType          `xml:"ResponseClass,attr,omitempty"`
-	MessageText              XsString                   `xml:"m:MessageText,omitempty"`
-	ResponseCode             ResponseCodeType           `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey       XsInt                      `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml               *MessageXmlType            `xml:"m:MessageXml,omitempty"`
-	Conversations            *ArrayOfConversationsType  `xml:"m:Conversations,omitempty"`
-	HighlightTerms           *ArrayOfHighlightTermsType `xml:"m:HighlightTerms,omitempty"`
-	TotalConversationsInView XsInt                      `xml:"m:TotalConversationsInView,omitempty"`
-	IndexedOffset            XsInt                      `xml:"m:IndexedOffset,omitempty"`
-}
-
-type ApplyConversationActionType struct {
-	ConversationActions *NonEmptyArrayOfApplyConversationActionType `xml:"m:ConversationActions,omitempty"`
-}
-
-type ApplyConversationActionResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetConversationItemsType struct {
-	ItemShape        *ItemResponseShapeType            `xml:"m:ItemShape,omitempty"`
-	FoldersToIgnore  *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FoldersToIgnore,omitempty"`
-	MaxItemsToReturn XsInt                             `xml:"m:MaxItemsToReturn,omitempty"`
-	SortOrder        ConversationNodeSortOrder         `xml:"m:SortOrder,omitempty"`
-	MailboxScope     MailboxSearchLocationType         `xml:"m:MailboxScope,omitempty"`
-	Conversations    *ArrayOfConversationRequestsType  `xml:"m:Conversations,omitempty"`
-}
-
-type GetConversationItemsResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type FindPeopleType struct {
-	PersonaShape                *PersonaResponseShapeType       `xml:"m:PersonaShape,omitempty"`
-	IndexedPageItemView         *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
-	Restriction                 *RestrictionType                `xml:"m:Restriction,omitempty"`
-	AggregationRestriction      *RestrictionType                `xml:"m:AggregationRestriction,omitempty"`
-	SortOrder                   *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
-	ParentFolderId              *TargetFolderIdType             `xml:"m:ParentFolderId,omitempty"`
-	QueryString                 XsString                        `xml:"m:QueryString,omitempty"`
-	SearchPeopleSuggestionIndex XsBoolean                       `xml:"m:SearchPeopleSuggestionIndex,omitempty"`
-	TopicQueryString            XsString                        `xml:"m:TopicQueryString,omitempty"`
-	Context                     *ArrayOfContextProperty         `xml:"m:Context,omitempty"`
-	QuerySources                *ArrayOfPeopleQuerySource       `xml:"m:QuerySources,omitempty"`
-	ReturnFlattenedResults      XsBoolean                       `xml:"m:ReturnFlattenedResults,omitempty"`
-}
-
-type FindTagsType struct {
-	IndexedPageItemView *IndexedPageViewType            `xml:"m:IndexedPageItemView,omitempty"`
-	SortOrder           *NonEmptyArrayOfFieldOrdersType `xml:"m:SortOrder,omitempty"`
-	QueryString         XsString                        `xml:"m:QueryString,omitempty"`
-	Context             *ArrayOfContextProperty         `xml:"m:Context,omitempty"`
-}
-
-type AddTagType struct {
-	Tag     XsString `xml:"m:Tag,omitempty"`
-	AppName XsString `xml:"m:AppName,omitempty"`
-}
-
-type HideTagType struct {
-	Tag XsString `xml:"m:Tag,omitempty"`
-}
-
-type GetPersonaType struct {
-	PersonaId            *ItemIdType                        `xml:"m:PersonaId,omitempty"`
-	EmailAddress         *EmailAddressType                  `xml:"m:EmailAddress,omitempty"`
-	ParentFolderId       *TargetFolderIdType                `xml:"m:ParentFolderId,omitempty"`
-	ItemLinkId           XsString                           `xml:"m:ItemLinkId,omitempty"`
-	AdditionalProperties *NonEmptyArrayOfPathsToElementType `xml:"m:AdditionalProperties,omitempty"`
-}
-
-type GetInboxRulesRequestType struct {
-	MailboxSmtpAddress XsString `xml:"m:MailboxSmtpAddress,omitempty"`
-}
-
-type GetInboxRulesResponseType struct {
-	ResponseClass         ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText           XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode          ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey    XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	OutlookRuleBlobExists XsBoolean         `xml:"m:OutlookRuleBlobExists,omitempty"`
-	InboxRules            *ArrayOfRulesType `xml:"m:InboxRules,omitempty"`
-}
-
-type UpdateInboxRulesRequestType struct {
-	MailboxSmtpAddress    XsString                   `xml:"m:MailboxSmtpAddress,omitempty"`
-	RemoveOutlookRuleBlob XsBoolean                  `xml:"m:RemoveOutlookRuleBlob,omitempty"`
-	Operations            *ArrayOfRuleOperationsType `xml:"m:Operations,omitempty"`
-}
-
-type UpdateInboxRulesResponseType struct {
-	ResponseClass       ResponseClassType               `xml:"ResponseClass,attr,omitempty"`
-	MessageText         XsString                        `xml:"m:MessageText,omitempty"`
-	ResponseCode        ResponseCodeType                `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey  XsInt                           `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml          *MessageXmlType                 `xml:"m:MessageXml,omitempty"`
-	RuleOperationErrors *ArrayOfRuleOperationErrorsType `xml:"m:RuleOperationErrors,omitempty"`
-}
-
-type GetPasswordExpirationDateType struct {
-	MailboxSmtpAddress XsString `xml:"m:MailboxSmtpAddress,omitempty"`
-}
-
-type GetSearchableMailboxesType struct {
-	SearchFilter          XsString  `xml:"m:SearchFilter,omitempty"`
-	ExpandGroupMembership XsBoolean `xml:"m:ExpandGroupMembership,omitempty"`
-}
-
-type SearchMailboxesType struct {
-	SearchQueries            *NonEmptyArrayOfMailboxQueriesType `xml:"m:SearchQueries,omitempty"`
-	ResultType               SearchResultType                   `xml:"m:ResultType,omitempty"`
-	PreviewItemResponseShape *PreviewItemResponseShapeType      `xml:"m:PreviewItemResponseShape,omitempty"`
-	SortBy                   *FieldOrderType                    `xml:"m:SortBy,omitempty"`
-	Language                 XsString                           `xml:"m:Language,omitempty"`
-	Deduplication            XsBoolean                          `xml:"m:Deduplication,omitempty"`
-	PageSize                 XsInt                              `xml:"m:PageSize,omitempty"`
-	PageItemReference        XsString                           `xml:"m:PageItemReference,omitempty"`
-	PageDirection            SearchPageDirectionType            `xml:"m:PageDirection,omitempty"`
-}
-
-type SearchMailboxesResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetDiscoverySearchConfigurationType struct {
-	SearchId                     XsString  `xml:"m:SearchId,omitempty"`
-	ExpandGroupMembership        XsBoolean `xml:"m:ExpandGroupMembership,omitempty"`
-	InPlaceHoldConfigurationOnly XsBoolean `xml:"m:InPlaceHoldConfigurationOnly,omitempty"`
-}
-
-type GetHoldOnMailboxesType struct {
-	HoldId XsString `xml:"m:HoldId,omitempty"`
-}
-
-type SetHoldOnMailboxesType struct {
-	ActionType               HoldActionType      `xml:"m:ActionType,omitempty"`
-	HoldId                   XsString            `xml:"m:HoldId,omitempty"`
-	Query                    XsString            `xml:"m:Query,omitempty"`
-	Mailboxes                *ArrayOfStringsType `xml:"m:Mailboxes,omitempty"`
-	Language                 XsString            `xml:"m:Language,omitempty"`
-	IncludeNonIndexableItems XsBoolean           `xml:"m:IncludeNonIndexableItems,omitempty"`
-	Deduplication            XsBoolean           `xml:"m:Deduplication,omitempty"`
-	InPlaceHoldIdentity      XsString            `xml:"m:InPlaceHoldIdentity,omitempty"`
-	ItemHoldPeriod           XsString            `xml:"m:ItemHoldPeriod,omitempty"`
-}
-
-type GetNonIndexableItemStatisticsType struct {
-	Mailboxes         *NonEmptyArrayOfLegacyDNsType `xml:"m:Mailboxes,omitempty"`
-	SearchArchiveOnly XsBoolean                     `xml:"m:SearchArchiveOnly,omitempty"`
-}
-
-type GetNonIndexableItemDetailsType struct {
-	Mailboxes         *NonEmptyArrayOfLegacyDNsType `xml:"m:Mailboxes,omitempty"`
-	PageSize          XsInt                         `xml:"m:PageSize,omitempty"`
-	PageItemReference XsString                      `xml:"m:PageItemReference,omitempty"`
-	PageDirection     SearchPageDirectionType       `xml:"m:PageDirection,omitempty"`
-	SearchArchiveOnly XsBoolean                     `xml:"m:SearchArchiveOnly,omitempty"`
-}
-
-type MarkAllItemsAsReadType struct {
-	ReadFlag             XsBoolean                         `xml:"m:ReadFlag,omitempty"`
-	SuppressReadReceipts XsBoolean                         `xml:"m:SuppressReadReceipts,omitempty"`
-	FolderIds            *NonEmptyArrayOfBaseFolderIdsType `xml:"m:FolderIds,omitempty"`
-}
-
-type MarkAllItemsAsReadResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type MarkAsJunkType struct {
-	IsJunk   XsBoolean                       `xml:"IsJunk,attr,omitempty"`
-	MoveItem XsBoolean                       `xml:"MoveItem,attr,omitempty"`
-	ItemIds  *NonEmptyArrayOfBaseItemIdsType `xml:"m:ItemIds,omitempty"`
-}
-
-type MarkAsJunkResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type ReportMessageType struct {
-	ReportAction              ReportMessageActionType   `xml:"ReportAction,attr,omitempty"`
-	ItemIds                   *ArrayOfBaseItemIdsType   `xml:"m:ItemIds,omitempty"`
-	BlockReportingToMicrosoft XsBoolean                 `xml:"m:BlockReportingToMicrosoft,omitempty"`
-	Platform                  ReportMessagePlatformType `xml:"m:Platform,omitempty"`
-}
-
-type ReportMessageResponseType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetAppManifestsType struct {
-	ApiVersionSupported       XsString                         `xml:"m:ApiVersionSupported,omitempty"`
-	SchemaVersionSupported    XsString                         `xml:"m:SchemaVersionSupported,omitempty"`
-	IncludeAllInstalledAddIns XsBoolean                        `xml:"m:IncludeAllInstalledAddIns,omitempty"`
-	IncludeEntitlementData    XsBoolean                        `xml:"m:IncludeEntitlementData,omitempty"`
-	IncludeManifestData       XsBoolean                        `xml:"m:IncludeManifestData,omitempty"`
-	IncludeCustomAppsData     XsBoolean                        `xml:"m:IncludeCustomAppsData,omitempty"`
-	ExtensionIds              ListOfExtensionIdsType           `xml:"m:ExtensionIds,omitempty"`
-	AddIns                    *ArrayOfPrivateCatalogAddInsType `xml:"m:AddIns,omitempty"`
-	IncludeExtensionMetaData  XsBoolean                        `xml:"m:IncludeExtensionMetaData,omitempty"`
-}
-
-type ArrayOfPrivateCatalogAddInsType struct {
-	AddIn []*PrivateCatalogAddInsType `xml:"m:AddIn,omitempty"`
-}
-
-type PrivateCatalogAddInsType struct {
-	ProductId            XsString                          `xml:"ProductId,attr,omitempty"`
-	State                AddInStateType                    `xml:"State,attr,omitempty"`
-	Version              VersionType                       `xml:"Version,attr,omitempty"`
-	DefaultEnabledStatus AADOfficeExtensionStatusType      `xml:"DefaultEnabledStatus,attr,omitempty"`
-	InstallTimeInTicks   XsLong                            `xml:"InstallTimeInTicks,attr,omitempty"`
-	StoreInfo            *PrivateCatalogAddInStoreInfoType `xml:"m:StoreInfo,omitempty"`
-}
-
-type PrivateCatalogAddInStoreInfoType struct {
-	AssetId       XsString `xml:"AssetId,attr,omitempty"`
-	ContentMarket XsString `xml:"ContentMarket,attr,omitempty"`
-}
-
-type GetAppManifestsResponseType struct {
-	ResponseClass      ResponseClassType        `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                 `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType         `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                    `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType          `xml:"m:MessageXml,omitempty"`
-	Apps               *ArrayOfAppsType         `xml:"m:Apps,omitempty"`
-	Manifests          *ArrayOfAppManifestsType `xml:"m:Manifests,omitempty"`
-}
-
-type ArrayOfAppManifestsType struct {
-	Manifest []XsBase64Binary `xml:"m:Manifest,omitempty"`
-}
-
-type AddNewImContactToGroupType struct {
-	ImAddress   NonEmptyStringType `xml:"m:ImAddress,omitempty"`
-	DisplayName NonEmptyStringType `xml:"m:DisplayName,omitempty"`
-	GroupId     *ItemIdType        `xml:"m:GroupId,omitempty"`
-}
-
-type AddNewImContactToGroupResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
-}
-
-type AddNewTelUriContactToGroupType struct {
-	TelUriAddress          NonEmptyStringType `xml:"m:TelUriAddress,omitempty"`
-	ImContactSipUriAddress NonEmptyStringType `xml:"m:ImContactSipUriAddress,omitempty"`
-	ImTelephoneNumber      NonEmptyStringType `xml:"m:ImTelephoneNumber,omitempty"`
-	GroupId                *ItemIdType        `xml:"m:GroupId,omitempty"`
-}
-
-type AddNewTelUriContactToGroupResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	Persona            *PersonaType      `xml:"m:Persona,omitempty"`
-}
-
-type AddImContactToGroupType struct {
-	ContactId *ItemIdType `xml:"m:ContactId,omitempty"`
-	GroupId   *ItemIdType `xml:"m:GroupId,omitempty"`
-}
-
-type AddImContactToGroupResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type RemoveImContactFromGroupType struct {
-	ContactId *ItemIdType `xml:"m:ContactId,omitempty"`
-	GroupId   *ItemIdType `xml:"m:GroupId,omitempty"`
-}
-
-type RemoveImContactFromGroupResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type AddImGroupType struct {
-	DisplayName NonEmptyStringType `xml:"m:DisplayName,omitempty"`
-}
-
-type AddImGroupResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	ImGroup            *ImGroupType      `xml:"m:ImGroup,omitempty"`
-}
-
-type AddDistributionGroupToImListType struct {
-	SmtpAddress NonEmptyStringType `xml:"m:SmtpAddress,omitempty"`
-	DisplayName NonEmptyStringType `xml:"m:DisplayName,omitempty"`
-}
-
-type AddDistributionGroupToImListResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	ImGroup            *ImGroupType      `xml:"m:ImGroup,omitempty"`
-}
-
-type GetImItemListType struct {
-	ExtendedProperties *NonEmptyArrayOfExtendedFieldURIs `xml:"m:ExtendedProperties,omitempty"`
-}
-
-type GetImItemListResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	ImItemList         *ImItemListType   `xml:"m:ImItemList,omitempty"`
-}
-
-type GetImItemsType struct {
-	ContactIds         *NonEmptyArrayOfBaseItemIdsType   `xml:"m:ContactIds,omitempty"`
-	GroupIds           *NonEmptyArrayOfBaseItemIdsType   `xml:"m:GroupIds,omitempty"`
-	ExtendedProperties *NonEmptyArrayOfExtendedFieldURIs `xml:"m:ExtendedProperties,omitempty"`
-}
-
-type GetImItemsResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	ImItemList         *ImItemListType   `xml:"m:ImItemList,omitempty"`
-}
-
-type RemoveContactFromImListType struct {
-	ContactId *ItemIdType `xml:"m:ContactId,omitempty"`
-}
-
-type RemoveContactFromImListResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type RemoveDistributionGroupFromImListType struct {
-	GroupId *ItemIdType `xml:"m:GroupId,omitempty"`
-}
-
-type RemoveDistributionGroupFromImListResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type RemoveImGroupType struct {
-	GroupId *ItemIdType `xml:"m:GroupId,omitempty"`
-}
-
-type RemoveImGroupResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type SetImGroupType struct {
-	GroupId        *ItemIdType        `xml:"m:GroupId,omitempty"`
-	NewDisplayName NonEmptyStringType `xml:"m:NewDisplayName,omitempty"`
-}
-
-type SetImGroupResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type SetImListMigrationCompletedType struct {
-	ImListMigrationCompleted XsBoolean `xml:"m:ImListMigrationCompleted,omitempty"`
-}
-
-type SetImListMigrationCompletedResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type GetUserRetentionPolicyTagsType struct {
-}
-
-type InstallAppType struct {
-	Manifest                 XsBase64Binary `xml:"m:Manifest,omitempty"`
-	MarketplaceAssetId       XsString       `xml:"m:MarketplaceAssetId,omitempty"`
-	MarketplaceContentMarket XsString       `xml:"m:MarketplaceContentMarket,omitempty"`
-	SendWelcomeEmail         XsBoolean      `xml:"m:SendWelcomeEmail,omitempty"`
-	ManifestUrl              XsString       `xml:"m:ManifestUrl,omitempty"`
-	MarketplaceCorrelationId XsString       `xml:"m:MarketplaceCorrelationId,omitempty"`
-	CampaignId               XsString       `xml:"m:CampaignId,omitempty"`
-	Id                       XsString       `xml:"m:Id,omitempty"`
-	IsMetaOSApp              XsBoolean      `xml:"m:IsMetaOSApp,omitempty"`
-	MetaOSSyncData           XsString       `xml:"m:MetaOSSyncData,omitempty"`
-}
-
-type InstallAppResponseType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	WasFirstInstall    XsBoolean         `xml:"m:WasFirstInstall,omitempty"`
-	Extension          *InstalledAppType `xml:"m:Extension,omitempty"`
-}
-
-type UpdateExtensionUsageType struct {
-	Client     XsString                             `xml:"m:Client,omitempty"`
-	Extensions *ArrayOfUpdateExtensionUsageItemType `xml:"m:Extensions,omitempty"`
-}
-
-type ArrayOfUpdateExtensionUsageItemType struct {
-	ExtensionId XsString                                  `xml:"m:ExtensionId,omitempty"`
-	Scenarios   *ArrayOfExtensionUsageScenarioCounterType `xml:"m:Scenarios,omitempty"`
-}
-
-type ArrayOfExtensionUsageScenarioCounterType struct {
-	ScenarioName XsString `xml:"m:ScenarioName,omitempty"`
-	Count        XsInt    `xml:"m:Count,omitempty"`
-}
-
-type UpdateExtensionUsageResponseType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type UninstallAppType struct {
-	ID          XsString  `xml:"m:ID,omitempty"`
-	IsMetaOSApp XsBoolean `xml:"m:IsMetaOSApp,omitempty"`
-}
-
-type UninstallAppResponseType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type DisableAppType struct {
-	ID            XsString          `xml:"m:ID,omitempty"`
-	DisableReason DisableReasonType `xml:"m:DisableReason,omitempty"`
-	IsMetaOSApp   XsBoolean         `xml:"m:IsMetaOSApp,omitempty"`
-}
-
-type DisableAppResponseType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type GetAppMarketplaceUrlType struct {
-}
-
-type GetAppMarketplaceUrlResponseMessageType struct {
-	ResponseClass           ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText             XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode            ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey      XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml              *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	AppMarketplaceUrl       XsString          `xml:"m:AppMarketplaceUrl,omitempty"`
-	ConnectorsManagementUrl XsString          `xml:"m:ConnectorsManagementUrl,omitempty"`
-}
-
-type FindAvailableMeetingTimesType struct {
-	Attendees                *ArrayOfSmtpAddressType `xml:"m:Attendees,omitempty"`
-	SearchWindowStart        XsDateTime              `xml:"m:SearchWindowStart,omitempty"`
-	SearchWindowDuration     XsDuration              `xml:"m:SearchWindowDuration,omitempty"`
-	MeetingDurationInMinutes XsInt                   `xml:"m:MeetingDurationInMinutes,omitempty"`
-	Location                 XsString                `xml:"m:Location,omitempty"`
-	MaxCandidates            XsInt                   `xml:"m:MaxCandidates,omitempty"`
-	ActivityDomain           ActivityDomainType      `xml:"m:ActivityDomain,omitempty"`
-}
-
-type FindAvailableMeetingTimesResponseMessageType struct {
-	ResponseClass         ResponseClassType            `xml:"ResponseClass,attr,omitempty"`
-	MessageText           XsString                     `xml:"m:MessageText,omitempty"`
-	ResponseCode          ResponseCodeType             `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey    XsInt                        `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            *MessageXmlType              `xml:"m:MessageXml,omitempty"`
-	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
-	EmptySuggestionsHint  EmptySuggestionReason        `xml:"m:EmptySuggestionsHint,omitempty"`
-}
-
-type FindMeetingTimeCandidatesType struct {
-	AttendeeConstraints *FindMeetingTimesAttendeeConstraints `xml:"m:AttendeeConstraints,omitempty"`
-	LocationConstraints *FindMeetingTimesLocationConstraints `xml:"m:LocationConstraints,omitempty"`
-	SearchConstraints   *FindMeetingTimesSearchConstraints   `xml:"m:SearchConstraints,omitempty"`
-	Constraints         *FindMeetingTimesConstraints         `xml:"m:Constraints,omitempty"`
-}
-
-type FindMeetingTimeCandidatesResponseMessageType struct {
-	ResponseClass         ResponseClassType            `xml:"ResponseClass,attr,omitempty"`
-	MessageText           XsString                     `xml:"m:MessageText,omitempty"`
-	ResponseCode          ResponseCodeType             `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey    XsInt                        `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml            *MessageXmlType              `xml:"m:MessageXml,omitempty"`
-	MeetingTimeCandidates *ArrayOfMeetingTimeCandidate `xml:"m:MeetingTimeCandidates,omitempty"`
-}
-
-type GetUserPhotoType struct {
-	Email         XsString          `xml:"m:Email,omitempty"`
-	SizeRequested UserPhotoSizeType `xml:"m:SizeRequested,omitempty"`
-	TypeRequested UserPhotoTypeType `xml:"m:TypeRequested,omitempty"`
-}
-
-type SetUserPhotoType struct {
-	Email         NonEmptyStringType `xml:"m:Email,omitempty"`
-	Content       XsString           `xml:"m:Content,omitempty"`
-	TypeRequested UserPhotoTypeType  `xml:"m:TypeRequested,omitempty"`
-}
-
-type SetUserPhotoResponseMessageType struct {
-	ResponseMessages *ArrayOfResponseMessagesType `xml:"m:ResponseMessages,omitempty"`
-}
-
-type GetMeetingSpaceType struct {
-	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
-}
-
-type GetMeetingSpaceResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type DeleteMeetingSpaceType struct {
-	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
-}
-
-type DeleteMeetingSpaceResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type UpdateMeetingSpaceType struct {
-	ItemId       *ItemIdType       `xml:"m:ItemId,omitempty"`
-	MeetingSpace *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type UpdateMeetingSpaceResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type CreateMeetingSpaceType struct {
-	MeetingSpace *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type CreateMeetingSpaceResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type FindMeetingSpaceByJoinUrlType struct {
-	JoinUrl XsString `xml:"m:JoinUrl,omitempty"`
-}
-
-type FindMeetingSpaceByJoinUrlResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	MeetingSpace       *MeetingSpaceType `xml:"m:MeetingSpace,omitempty"`
-}
-
-type GetMeetingInstanceRequestType struct {
-	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
-}
-
-type GetMeetingInstanceResponseMessageType struct {
-	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString             `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
-	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
-}
-
-type DeleteMeetingInstanceRequestType struct {
-	ItemId *ItemIdType `xml:"m:ItemId,omitempty"`
-}
-
-type DeleteMeetingInstanceResponseMessageType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type UpdateMeetingInstanceRequestType struct {
-	ItemId                     *ItemIdType                           `xml:"m:ItemId,omitempty"`
-	MeetingInstance            *MeetingInstanceType                  `xml:"m:MeetingInstance,omitempty"`
-	ContentActivitiesToAdd     *NonEmptyArrayOfContentActivities     `xml:"m:ContentActivitiesToAdd,omitempty"`
-	ParticipantActivitiesToAdd *NonEmptyArrayOfParticipantActivities `xml:"m:ParticipantActivitiesToAdd,omitempty"`
-}
-
-type UpdateMeetingInstanceResponseMessageType struct {
-	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString             `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
-	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
-}
-
-type CreateMeetingInstanceRequestType struct {
-	MeetingInstance *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
-}
-
-type CreateMeetingInstanceResponseMessageType struct {
-	ResponseClass      ResponseClassType    `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString             `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType     `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType      `xml:"m:MessageXml,omitempty"`
-	MeetingInstance    *MeetingInstanceType `xml:"m:MeetingInstance,omitempty"`
-}
-
-type StartSearchSession struct {
-	SearchSessionId GuidType                `xml:"m:SearchSessionId,omitempty"`
-	WarmupOptions   WarmupOptionsType       `xml:"m:WarmupOptions,omitempty"`
-	SuggestionTypes SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
-	SearchScope     *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
-	IdFormat        IdFormatType            `xml:"m:IdFormat,omitempty"`
-	ApplicationId   XsString                `xml:"m:ApplicationId,omitempty"`
-	Scenario        XsString                `xml:"m:Scenario,omitempty"`
-}
-
-type StartSearchSessionResponseMessage struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type GetSearchSuggestions struct {
-	SearchSessionId                      GuidType                `xml:"m:SearchSessionId,omitempty"`
-	Query                                XsString                `xml:"m:Query,omitempty"`
-	SuggestionTypes                      SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
-	SuggestionsPrimer                    XsBoolean               `xml:"m:SuggestionsPrimer,omitempty"`
-	MaxSuggestionsCountPerSuggestionType XsLong                  `xml:"m:MaxSuggestionsCountPerSuggestionType,omitempty"`
-	SearchScope                          *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
-	Scenario                             XsString                `xml:"m:Scenario,omitempty"`
-}
-
-type GetSearchSuggestionsResponseMessage struct {
-	ResponseClass      ResponseClassType      `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString               `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType       `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                  `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType        `xml:"m:MessageXml,omitempty"`
-	SearchSuggestions  *SearchSuggestionsType `xml:"m:SearchSuggestions,omitempty"`
-}
-
-type DeleteSearchSuggestion struct {
-	SearchSessionId GuidType                `xml:"m:SearchSessionId,omitempty"`
-	Query           XsString                `xml:"m:Query,omitempty"`
-	SuggestionTypes SuggestionKindType      `xml:"m:SuggestionTypes,omitempty"`
-	SearchScope     *ArrayOfSearchScopeType `xml:"m:SearchScope,omitempty"`
-	Scenario        XsString                `xml:"m:Scenario,omitempty"`
-}
-
-type DeleteSearchSuggestionResponseMessageType struct {
-	ResponseClass      ResponseClassType                   `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                            `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType                    `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                               `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType                     `xml:"m:MessageXml,omitempty"`
-	Response           *DeleteSearchSuggestionResponseType `xml:"m:Response,omitempty"`
-}
-
-type ExecuteSearch struct {
-	ApplicationId                  SearchApplicationIdType          `xml:"m:ApplicationId,omitempty"`
-	Scenario                       XsString                         `xml:"m:Scenario,omitempty"`
-	SearchSessionId                GuidType                         `xml:"m:SearchSessionId,omitempty"`
-	SearchScope                    *ArrayOfSearchScopeType          `xml:"m:SearchScope,omitempty"`
-	Query                          XsString                         `xml:"m:Query,omitempty"`
-	AnalyzedQuery                  *AnalyzedQuery                   `xml:"m:AnalyzedQuery,omitempty"`
-	ResultRowCount                 XsLong                           `xml:"m:ResultRowCount,omitempty"`
-	ResultRowOffset                XsLong                           `xml:"m:ResultRowOffset,omitempty"`
-	MaxResultsCountHint            XsLong                           `xml:"m:MaxResultsCountHint,omitempty"`
-	MaxPreviewLength               XsLong                           `xml:"m:MaxPreviewLength,omitempty"`
-	SearchRefiners                 *SearchRefinersTypeM             `xml:"m:SearchRefiners,omitempty"`
-	ExtendedKeywords               *ExtendedKeywordsType            `xml:"m:ExtendedKeywords,omitempty"`
-	RetrieveRefiners               XsBoolean                        `xml:"m:RetrieveRefiners,omitempty"`
-	MaxRefinersCountPerRefinerType XsLong                           `xml:"m:MaxRefinersCountPerRefinerType,omitempty"`
-	IdFormat                       IdFormatType                     `xml:"m:IdFormat,omitempty"`
-	ItemTypes                      ItemTypesFilterType              `xml:"m:ItemTypes,omitempty"`
-	PropertySetName                SearchResultsPropertySetNameType `xml:"m:PropertySetName,omitempty"`
-	SearchRestrictions             *RestrictionType                 `xml:"m:SearchRestrictions,omitempty"`
-	IncludeDeleted                 XsBoolean                        `xml:"m:IncludeDeleted,omitempty"`
-	SortOrder                      ExecuteSearchSortOrderType       `xml:"m:SortOrder,omitempty"`
-	KeywordMatchOption             MatchOptionsType                 `xml:"m:KeywordMatchOption,omitempty"`
-	ReturnAdditionalIds            XsBoolean                        `xml:"m:ReturnAdditionalIds,omitempty"`
-	RequestedProperties            *ArrayOfStringsType              `xml:"m:RequestedProperties,omitempty"`
-}
-
-type ExecuteSearchResponseMessage struct {
-	ResponseClass      ResponseClassType  `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString           `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType   `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt              `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType    `xml:"m:MessageXml,omitempty"`
-	SearchResults      *SearchResultsType `xml:"m:SearchResults,omitempty"`
-}
-
-type EndSearchSession struct {
-	SearchSessionId GuidType `xml:"m:SearchSessionId,omitempty"`
-}
-
-type EndSearchSessionResponseMessage struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-}
-
-type GetLastPrivateCatalogUpdateType struct {
-	Client *OfficeClientType `xml:"m:Client,omitempty"`
-}
-
-type GetLastPrivateCatalogUpdateResponseType struct {
-	ResponseClass      ResponseClassType `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString          `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType  `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt             `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType   `xml:"m:MessageXml,omitempty"`
-	LastUpdate         XsDateTime        `xml:"m:LastUpdate,omitempty"`
-	CatalogHash        XsString          `xml:"m:CatalogHash,omitempty"`
-}
-
-type GetPrivateCatalogAddInsType struct {
-	Client *OfficeClientType `xml:"m:Client,omitempty"`
-}
-
-type GetPrivateCatalogAddInsResponseType struct {
-	ResponseClass      ResponseClassType                `xml:"ResponseClass,attr,omitempty"`
-	MessageText        XsString                         `xml:"m:MessageText,omitempty"`
-	ResponseCode       ResponseCodeType                 `xml:"m:ResponseCode,omitempty"`
-	DescriptiveLinkKey XsInt                            `xml:"m:DescriptiveLinkKey,omitempty"`
-	MessageXml         *MessageXmlType                  `xml:"m:MessageXml,omitempty"`
-	AddIns             *ArrayOfPrivateCatalogAddInsType `xml:"m:AddIns,omitempty"`
 }
 
 type ResolveNamesSoapIn struct {
