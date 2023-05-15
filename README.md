@@ -339,15 +339,15 @@ var soapCli = soap.NewSOAPClient(ntlmCli)
 var service = wsdl.NewExchangeServicePortType(soapCli)
 
 func TestGetFolder(t *testing.T) {
-    defer trace.Sync()
-	rsp, err := service.GetFolder(ews.MakeContext(acc), &wsdl.GetFolderSoapIn{
-		GetFolder: &wsdl.GetFolderType{
-			FolderShape: &wsdl.FolderResponseShapeType{
-				BaseShape: wsdl.DefaultShapeNamesTypeDefault,
+	defer dumpFile.Sync()
+	rsp, err := service.GetFolder(ews.MakeContext(testSess), &ews.GetFolderSoapIn{
+		GetFolder: &ews.GetFolderType{
+			FolderShape: &ews.FolderResponseShapeType{
+				BaseShape: ews.DefaultShapeNamesTypeDefault,
 			},
-			FolderIds: &wsdl.NonEmptyArrayOfBaseFolderIdsType{
-				DistinguishedFolderId: []*wsdl.DistinguishedFolderIdType{
-					{Id: wsdl.DistinguishedFolderIdNameTypeIinbox},
+			FolderIds: &ews.NonEmptyArrayOfBaseFolderIdsType{
+				DistinguishedFolderId: []*ews.DistinguishedFolderIdType{
+					{Id: ews.DistinguishedFolderIdNameTypeInbox},
 				},
 			},
 		},
@@ -355,11 +355,8 @@ func TestGetFolder(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	data, err := xml.MarshalIndent(rsp, "", "\t")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("%s\n", data)
-}
+	folderId = rsp.GetFolderResponse.ResponseMessages.GetFolderResponseMessage[0].Folders.Folder[0].FolderId.Id
+	fmt.Println(folderId)
+}}
 
 ```
