@@ -314,29 +314,37 @@ type ExchangeServicePortType interface {
 ## 使用示例
 
 ```
-var acc = ews.NewAccountSession(
-	"赵大海",
-	"哇哈哈",
-	"zhaodahai@wahaha.com",
-	"https://wwww.wahaha.com/EWS/Exchange.asmx",
+// testSess 特定测试会话,真实场景是每个context携带的session.业务可以扩展Session接口实现更多特性.
+var testSess = ews.NewAccountSession(
+	"test",
+	"test",
+	os.Getenv("test.user"), // Exchange用户
 )
 
-// 打印所有http请求响应详细信息用于追踪
-var trace, _ = os.Create(`/tmp/trace.log`)
+// dumpFile
 
-var httpCli = http.NewHTTPRoundTripper(new(http.Config))
-var dumpCli = http.NewDumpRoundTripper(httpCli, trace)
-var ntlmCli = http.NewNTLMRoundTripper(
-	dumpCli,
-	kits.NewMemoryAuthorizer(),
-	kits.NewMemoryCredential(map[string][2]string{
-		acc.GetId(): {
-			"zhaodahai@wahaha.com",
-			os.Getenv("PASSWORD"),
+// httpTripper http客户端(连接池共享)
+var httpTripper = http.NewHTTPRoundTripper(new(http.Config))
+
+// dumpTripper dump客户端.打印所有request/response详情.仅仅用于调试!
+var dumpFile, _ = os.Create(`e:/tmp/dumpFile.log`)
+var dumpTripper = http.NewDumpRoundTripper(httpTripper, dumpFile)
+
+// soapCli soap客户端. 用于所有PortType服务
+var soapCli = soap.NewSOAPClient(
+	dumpTripper,
+	kits.NewMemoryAuthorizer(), // 内存实现. 生产环境用redis
+	kits.NewMemoryCredential(map[string][3]string{ // 内存实现
+		testSess.GetId(): {
+			os.Getenv("test.addr"), // Exchange地址. 例如"https://www.office365.com/EWS/Exchange.asmx"
+			os.Getenv("test.user"),
+			os.Getenv("test.pass"),
 		},
-	}))
-var soapCli = soap.NewSOAPClient(ntlmCli)
-var service = wsdl.NewExchangeServicePortType(soapCli)
+	}),
+)
+
+// service portType服务实例
+var service = ews.NewExchangeServicePortTypeExt(soapCli)
 
 func TestGetFolder(t *testing.T) {
 	defer dumpFile.Sync()
