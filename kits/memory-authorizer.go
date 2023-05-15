@@ -1,23 +1,28 @@
 package kits
 
-import "github.com/smartlet/ews"
+import (
+	"github.com/smartlet/ews"
+	"sync"
+)
 
 type MemoryAuthorizer struct {
-	data map[string]string
+	data sync.Map
 }
 
 func NewMemoryAuthorizer() *MemoryAuthorizer {
-	return &MemoryAuthorizer{
-		data: make(map[string]string),
-	}
+	return new(MemoryAuthorizer)
 }
 
 func (m MemoryAuthorizer) Get(sess ews.Session) (string, error) {
-	return m.data[sess.GetId()], nil
+	rt, ok := m.data.Load(sess.GetId())
+	if ok {
+		return rt.(string), nil
+	}
+	return "", nil
 }
 
 func (m MemoryAuthorizer) Set(sess ews.Session, auth string) error {
-	m.data[sess.GetId()] = auth
+	m.data.Store(sess.GetId(), auth)
 	return nil
 }
 
