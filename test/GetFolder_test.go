@@ -29,6 +29,12 @@ func TestGetFolder(t *testing.T) {
 	fmt.Println(folderId)
 }
 
+func TestGetFolderN(t *testing.T) {
+	for i := 0; i < 5; i++ {
+		TestGetFolder(t)
+	}
+}
+
 func TestGetFolder_error(t *testing.T) {
 	defer dumpFile.Sync()
 

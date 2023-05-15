@@ -6,38 +6,35 @@ import (
 
 // Credential 凭证接口
 type Credential interface {
-	Get(sess Session) (string, string, error)
+	Get(sess Session) (string, string, string, error) //  endpoint, account, password
 }
 
 // Authorizer 认证接口
 type Authorizer interface {
-	Get(sess Session) (string, error)
-	Set(sess Session, auth string) error
+	Get(sess Session) (string, string, error)
+	Set(sess Session, endpoint string, auth string) error
 }
 
 const ContextSession = "_session_"
 
 type Session interface {
 	GetId() string
-	GetEndpoint() string
 }
 
 // AccountSession 企业用户
 type AccountSession struct {
-	user     string
-	corp     string
-	account  string
-	endpoint string
-	_id      string // 临时数据
+	user    string
+	corp    string
+	account string
+	_id     string // 临时数据
 }
 
-func NewAccountSession(user, corp, account, endpoint string) *AccountSession {
+func NewAccountSession(user, corp, account string) *AccountSession {
 	return &AccountSession{
-		user:     user,
-		corp:     corp,
-		account:  account,
-		endpoint: endpoint,
-		_id:      user + "/" + corp + "/" + account,
+		user:    user,
+		corp:    corp,
+		account: account,
+		_id:     user + "/" + corp + "/" + account,
 	}
 }
 
@@ -51,10 +48,6 @@ func (as *AccountSession) GetCorp() string {
 
 func (as *AccountSession) GetAccount() string {
 	return as.account
-}
-
-func (as *AccountSession) GetEndpoint() string {
-	return as.endpoint
 }
 
 func (as *AccountSession) GetId() string {

@@ -2,6 +2,7 @@ package kits
 
 import (
 	"github.com/smartlet/ews"
+	"strings"
 	"sync"
 )
 
@@ -13,16 +14,20 @@ func NewMemoryAuthorizer() *MemoryAuthorizer {
 	return new(MemoryAuthorizer)
 }
 
-func (m MemoryAuthorizer) Get(sess ews.Session) (string, error) {
+func (m *MemoryAuthorizer) Get(sess ews.Session) (string, string, error) {
 	rt, ok := m.data.Load(sess.GetId())
 	if ok {
-		return rt.(string), nil
+		val, _ := rt.(string)
+		idx := strings.IndexByte(val, '\n')
+		if idx != -1 {
+			return val[:idx], val[idx+1:], nil
+		}
 	}
-	return "", nil
+	return "", "", nil
 }
 
-func (m MemoryAuthorizer) Set(sess ews.Session, auth string) error {
-	m.data.Store(sess.GetId(), auth)
+func (m *MemoryAuthorizer) Set(sess ews.Session, endpoint, auth string) error {
+	m.data.Store(sess.GetId(), endpoint+"\n"+auth)
 	return nil
 }
 

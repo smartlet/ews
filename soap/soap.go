@@ -9,29 +9,39 @@ import (
 	"strconv"
 )
 
+type HTTPClient interface {
+	Call(ctx context.Context, header http.Header, body *kits.Buffer) (*http.Response, error)
+}
+
 type Decoder interface {
 	Decode(v any) error
 }
 
-type MessageEncoding interface {
+type Encoding interface {
 	Encode(w io.Writer, v interface{}) (string, error)
 	Decode(r io.Reader, v interface{}) error
 	NewDecoder(r io.Reader) Decoder
 }
 
-func NewSOAPClient(tripper http.RoundTripper) ews.SOAPClient {
-	return &client{
-		tripper:   tripper,
-		enconding: new(xmlEncoding),
+func NewSOAPClient(tripper http.RoundTripper, auth ews.Authorizer, cred ews.Credential, ofs ...Option) ews.SOAPClient {
+
+	ops := new(options)
+	for _, f := range ofs {
+		f(ops)
+	}
+
+	return &soapClient{
+		client:   newNTLMClient(tripper, auth, cred, ops),
+		encoding: newXmlMessageEncoding(ops),
 	}
 }
 
-type client struct {
-	tripper   http.RoundTripper
-	enconding MessageEncoding
+type soapClient struct {
+	client   HTTPClient
+	encoding Encoding
 }
 
-func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, inputBody any, outputHeader any, outputBody any) error {
+func (c *soapClient) Call(ctx context.Context, soapAction string, inputHeader any, inputBody any, outputHeader any, outputBody any) error {
 
 	envelope, response, err := c.request(ctx, soapAction, inputHeader, inputBody)
 	if err != nil {
@@ -43,7 +53,7 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 	envelope.Body = outputBody
 	if response.StatusCode < http.StatusBadRequest {
 		// 成功. 正常解码.
-		return c.enconding.Decode(response.Body, envelope)
+		return c.encoding.Decode(response.Body, envelope)
 	} else {
 		// 错误. 尝试解码.
 		buffer := kits.BorrowBuffer()
@@ -53,7 +63,7 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 		if err != nil {
 			return err
 		}
-		err = c.enconding.Decode(buffer, envelope)
+		err = c.encoding.Decode(buffer, envelope)
 		if err != nil {
 			return &ews.Fault{
 				FaultCode:   ews.CodeInvalidStatus,
@@ -65,7 +75,7 @@ func (c *client) Call(ctx context.Context, soapAction string, inputHeader any, i
 	}
 }
 
-func (c *client) Stream(ctx context.Context, soapAction string, inputHeader, inputBody any, next func() (any, any, func() error)) error {
+func (c *soapClient) Stream(ctx context.Context, soapAction string, inputHeader, inputBody any, next func() (any, any, func() error)) error {
 
 	envelope, response, err := c.request(ctx, soapAction, inputHeader, inputBody)
 	if err != nil {
@@ -75,7 +85,7 @@ func (c *client) Stream(ctx context.Context, soapAction string, inputHeader, inp
 
 	if response.StatusCode < http.StatusBadRequest {
 		// 链式回调
-		dec := c.enconding.NewDecoder(response.Body)
+		dec := c.encoding.NewDecoder(response.Body)
 		for {
 			outputHeader, outputBody, action := next()
 			envelope.Header = outputHeader
@@ -104,7 +114,7 @@ func (c *client) Stream(ctx context.Context, soapAction string, inputHeader, inp
 		if err != nil {
 			return err
 		}
-		err = c.enconding.Decode(buffer, envelope)
+		err = c.encoding.Decode(buffer, envelope)
 		if err != nil {
 			return &ews.Fault{
 				FaultCode:   ews.CodeInvalidStatus,
@@ -116,12 +126,7 @@ func (c *client) Stream(ctx context.Context, soapAction string, inputHeader, inp
 	}
 }
 
-func (c *client) request(ctx context.Context, soapAction string, inputHeader, inputBody any) (*ews.Envelope, *http.Response, error) {
-
-	sess := ews.FromContext(ctx)
-	if sess == nil {
-		return nil, nil, ews.ErrInvalidSession
-	}
+func (c *soapClient) request(ctx context.Context, soapAction string, inputHeader, inputBody any) (*ews.Envelope, *http.Response, error) {
 
 	envelope := &ews.Envelope{
 		XmlnsS: ews.XmlnsS,
@@ -135,26 +140,22 @@ func (c *client) request(ctx context.Context, soapAction string, inputHeader, in
 	defer kits.ReturnBuffer(buffer)
 
 	buffer.Write(xmlHeader)
-	contentType, err := c.enconding.Encode(buffer, envelope)
+	contentType, err := c.encoding.Encode(buffer, envelope)
 	if err != nil {
 		return nil, nil, err
 	}
-	request, err := http.NewRequestWithContext(ctx, "POST", sess.GetEndpoint(), nil)
-	if err != nil {
-		return nil, nil, err
-	}
-	request.GetBody = buffer.GetBody
-	request.Body = buffer
-	request.ContentLength = int64(buffer.Len())
-	request.Header.Set("SOAPAction", soapAction)
-	request.Header.Set("Content-Type", contentType)
-	request.Header.Set("User-Agent", "ews")
 
-	response, err := c.tripper.RoundTrip(request)
+	header := http.Header{
+		"SOAPAction":   []string{soapAction},
+		"Content-Type": []string{contentType},
+		"User-Agent":   []string{"ews"},
+	}
+
+	response, err := c.client.Call(ctx, header, buffer)
 	if err != nil {
 		return nil, nil, err
 	}
 	return envelope, response, nil
 }
 
-var _ ews.SOAPClient = (*client)(nil)
+var _ ews.SOAPClient = (*soapClient)(nil)
