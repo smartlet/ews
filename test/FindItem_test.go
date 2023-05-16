@@ -17,7 +17,7 @@ func TestFindItem(t *testing.T) {
 			},
 			ParentFolderIds: &ews.NonEmptyArrayOfBaseFolderIdsType{
 				DistinguishedFolderId: []*ews.DistinguishedFolderIdType{
-					{Id: ews.DistinguishedFolderIdNameTypeInbox},
+					{Id: ews.DistinguishedFolderIdNameTypeDrafts},
 				},
 			},
 		},

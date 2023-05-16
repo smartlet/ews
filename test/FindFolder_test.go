@@ -11,11 +11,11 @@ func TestFindFolder(t *testing.T) {
 	rsp, err := service.FindFolder(ews.MakeContext(testSess), &ews.FindFolderSoapIn{
 		FindFolder: &ews.FindFolderType{
 			FolderShape: &ews.FolderResponseShapeType{
-				BaseShape: ews.DefaultShapeNamesTypeDefault,
+				BaseShape: ews.DefaultShapeNamesTypeAllProperties,
 			},
 			ParentFolderIds: &ews.NonEmptyArrayOfBaseFolderIdsType{
 				DistinguishedFolderId: []*ews.DistinguishedFolderIdType{
-					{Id: ews.DistinguishedFolderIdNameTypeDeleteditems},
+					{Id: ews.DistinguishedFolderIdNameTypeRoot},
 				},
 			},
 		},

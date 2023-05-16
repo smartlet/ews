@@ -31,7 +31,7 @@ func TestCreateItem_email(t *testing.T) {
 							CharacterSet: "utf8",
 							CharData:     ews.XsString(base64.StdEncoding.EncodeToString([]byte("this is a test data"))),
 						},
-						IsRead: false,
+						IsRead: XsBoolean(false),
 					},
 				},
 			},

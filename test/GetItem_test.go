@@ -13,7 +13,7 @@ func TestGetItem(t *testing.T) {
 		GetItem: &ews.GetItemType{
 			ItemShape: &ews.ItemResponseShapeType{
 				BaseShape:          ews.DefaultShapeNamesTypeDefault,
-				IncludeMimeContent: true,
+				IncludeMimeContent: XsBoolean(true),
 			},
 			ItemIds: &ews.NonEmptyArrayOfBaseItemIdsType{
 				ItemId: []*ews.ItemIdType{

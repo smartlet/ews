@@ -39,3 +39,16 @@ var soapCli = soap.NewSOAPClient(
 
 // service portType服务实例
 var service = ews.NewExchangeServicePortTypeExt(soapCli)
+
+var (
+	XsTrue  = true
+	XsFalse = false
+)
+
+func XsBoolean(c bool) ews.XsBoolean {
+	if c {
+		return &XsTrue
+	} else {
+		return &XsFalse
+	}
+}
