@@ -6506,11 +6506,11 @@ type ArrayOfTransitionsGroupsType struct {
 }
 
 type ArrayOfTransitionsType struct {
-	Id                      XsString                     `xml:"Id,attr,omitempty"`
-	Transition              *TransitionType              `xml:"t:Transition,omitempty"`
-	AbsoluteDateTransition  *AbsoluteDateTransitionType  `xml:"t:AbsoluteDateTransition,omitempty"`
-	RecurringDayTransition  *RecurringDayTransitionType  `xml:"t:RecurringDayTransition,omitempty"`
-	RecurringDateTransition *RecurringDateTransitionType `xml:"t:RecurringDateTransition,omitempty"`
+	Id                      XsString                       `xml:"Id,attr,omitempty"`
+	Transition              []*TransitionType              `xml:"t:Transition,omitempty"`
+	AbsoluteDateTransition  []*AbsoluteDateTransitionType  `xml:"t:AbsoluteDateTransition,omitempty"`
+	RecurringDayTransition  []*RecurringDayTransitionType  `xml:"t:RecurringDayTransition,omitempty"`
+	RecurringDateTransition []*RecurringDateTransitionType `xml:"t:RecurringDateTransition,omitempty"`
 }
 
 type TransitionType struct {
@@ -10150,73 +10150,73 @@ type NotType struct {
 }
 
 type AndType struct {
-	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
-	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
-	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
-	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
-	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
-	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
-	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
-	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
-	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
-	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
-	Not                    *NotType                    `xml:"t:Not,omitempty"`
-	And                    *AndType                    `xml:"t:And,omitempty"`
-	Or                     *OrType                     `xml:"t:Or,omitempty"`
-	Near                   *NearType                   `xml:"t:Near,omitempty"`
+	SearchExpression       []*SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 []*ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               []*ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              []*IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           []*IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          []*IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo []*IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             []*IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    []*IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               []*ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    []*NotType                    `xml:"t:Not,omitempty"`
+	And                    []*AndType                    `xml:"t:And,omitempty"`
+	Or                     []*OrType                     `xml:"t:Or,omitempty"`
+	Near                   []*NearType                   `xml:"t:Near,omitempty"`
 }
 
 type MultipleOperandBooleanExpressionType struct {
-	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
-	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
-	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
-	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
-	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
-	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
-	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
-	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
-	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
-	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
-	Not                    *NotType                    `xml:"t:Not,omitempty"`
-	And                    *AndType                    `xml:"t:And,omitempty"`
-	Or                     *OrType                     `xml:"t:Or,omitempty"`
-	Near                   *NearType                   `xml:"t:Near,omitempty"`
+	SearchExpression       []*SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 []*ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               []*ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              []*IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           []*IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          []*IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo []*IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             []*IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    []*IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               []*ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    []*NotType                    `xml:"t:Not,omitempty"`
+	And                    []*AndType                    `xml:"t:And,omitempty"`
+	Or                     []*OrType                     `xml:"t:Or,omitempty"`
+	Near                   []*NearType                   `xml:"t:Near,omitempty"`
 }
 
 type OrType struct {
-	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
-	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
-	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
-	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
-	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
-	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
-	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
-	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
-	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
-	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
-	Not                    *NotType                    `xml:"t:Not,omitempty"`
-	And                    *AndType                    `xml:"t:And,omitempty"`
-	Or                     *OrType                     `xml:"t:Or,omitempty"`
-	Near                   *NearType                   `xml:"t:Near,omitempty"`
+	SearchExpression       []*SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 []*ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               []*ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              []*IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           []*IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          []*IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo []*IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             []*IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    []*IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               []*ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    []*NotType                    `xml:"t:Not,omitempty"`
+	And                    []*AndType                    `xml:"t:And,omitempty"`
+	Or                     []*OrType                     `xml:"t:Or,omitempty"`
+	Near                   []*NearType                   `xml:"t:Near,omitempty"`
 }
 
 type NearType struct {
-	SearchExpression       *SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
-	Exists                 *ExistsType                 `xml:"t:Exists,omitempty"`
-	Excludes               *ExcludesType               `xml:"t:Excludes,omitempty"`
-	IsEqualTo              *IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
-	IsNotEqualTo           *IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
-	IsGreaterThan          *IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
-	IsGreaterThanOrEqualTo *IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
-	IsLessThan             *IsLessThanType             `xml:"t:IsLessThan,omitempty"`
-	IsLessThanOrEqualTo    *IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
-	Contains               *ContainsExpressionType     `xml:"t:Contains,omitempty"`
-	Not                    *NotType                    `xml:"t:Not,omitempty"`
-	And                    *AndType                    `xml:"t:And,omitempty"`
-	Or                     *OrType                     `xml:"t:Or,omitempty"`
-	Near                   *NearType                   `xml:"t:Near,omitempty"`
-	Distance               XsUnsignedInt               `xml:"t:Distance,omitempty"`
-	Ordered                XsBoolean                   `xml:"t:Ordered,omitempty"`
+	SearchExpression       []*SearchExpressionType       `xml:"t:SearchExpression,omitempty"`
+	Exists                 []*ExistsType                 `xml:"t:Exists,omitempty"`
+	Excludes               []*ExcludesType               `xml:"t:Excludes,omitempty"`
+	IsEqualTo              []*IsEqualToType              `xml:"t:IsEqualTo,omitempty"`
+	IsNotEqualTo           []*IsNotEqualToType           `xml:"t:IsNotEqualTo,omitempty"`
+	IsGreaterThan          []*IsGreaterThanType          `xml:"t:IsGreaterThan,omitempty"`
+	IsGreaterThanOrEqualTo []*IsGreaterThanOrEqualToType `xml:"t:IsGreaterThanOrEqualTo,omitempty"`
+	IsLessThan             []*IsLessThanType             `xml:"t:IsLessThan,omitempty"`
+	IsLessThanOrEqualTo    []*IsLessThanOrEqualToType    `xml:"t:IsLessThanOrEqualTo,omitempty"`
+	Contains               []*ContainsExpressionType     `xml:"t:Contains,omitempty"`
+	Not                    []*NotType                    `xml:"t:Not,omitempty"`
+	And                    []*AndType                    `xml:"t:And,omitempty"`
+	Or                     []*OrType                     `xml:"t:Or,omitempty"`
+	Near                   []*NearType                   `xml:"t:Near,omitempty"`
+	Distance               XsUnsignedInt                 `xml:"t:Distance,omitempty"`
+	Ordered                XsBoolean                     `xml:"t:Ordered,omitempty"`
 }
 
 type TasksFolderType struct {
