@@ -71,7 +71,7 @@ func (rt *ntlmClient) Call(ctx context.Context, header http.Header, buffer *kits
 	if err != nil {
 		return nil, err
 	}
-	if authEndpoint == "" || authEndpoint != credEndpoint {
+	if req.URL == nil || authEndpoint != credEndpoint {
 		req.URL, err = url.Parse(credEndpoint)
 		if err != nil {
 			return nil, err
