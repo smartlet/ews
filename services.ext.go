@@ -61,3 +61,16 @@ func (c *ExchangeServiceBindingExt) GetStreamingEventsExt(ctx context.Context, i
 func NewExchangeServicePortTypeExt(client SOAPClient) ExchangeServicePortTypeExt {
 	return &ExchangeServiceBindingExt{ExchangeServiceBinding{client: client}}
 }
+
+var (
+	_true  = true
+	_false = false
+)
+
+func Boolean(v bool) XsBoolean {
+	if v {
+		return &_true
+	} else {
+		return &_false
+	}
+}

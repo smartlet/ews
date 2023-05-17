@@ -822,7 +822,7 @@ const (
 	ImportanceChoicesTypeHigh   ImportanceChoicesType = "High"
 )
 
-type ReminderMinutesBeforeStartType any // union(ReminderMinutesBeforeStartTypeUnion0|ReminderMinutesBeforeStartTypeUnion1)
+type ReminderMinutesBeforeStartType XsInt // union(ReminderMinutesBeforeStartTypeUnion0|ReminderMinutesBeforeStartTypeUnion1)
 type DistinguishedPropertySetType XsString
 
 const (
@@ -838,7 +838,7 @@ const (
 	DistinguishedPropertySetTypeSharing           DistinguishedPropertySetType = "Sharing"
 )
 
-type PropertyTagType any // union(XsUnsignedShort|PropertyTagTypeUnion0)
+type PropertyTagType XsString // union(XsUnsignedShort|PropertyTagTypeUnion0)
 type MapiPropertyTypeType XsString
 
 const (
