@@ -6,6 +6,7 @@ import (
 	"github.com/Azure/go-ntlmssp"
 	"github.com/smartlet/ews"
 	"github.com/smartlet/ews/kits"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -65,6 +66,8 @@ func (rt *ntlmClient) Call(ctx context.Context, header http.Header, buffer *kits
 		}
 		// 必须关闭此前的response后再尝试一次
 		kits.DiscardAndCloseBody(rsp.Body)
+		// 重置此前的请求body
+		buffer.Seek(0, io.SeekStart)
 	}
 
 	credEndpoint, acc, pwd, err := rt.credential.Get(sess)
