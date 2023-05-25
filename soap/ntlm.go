@@ -3,32 +3,34 @@ package soap
 import (
 	"context"
 	"encoding/base64"
-	"github.com/Azure/go-ntlmssp"
-	"github.com/smartlet/ews"
-	"github.com/smartlet/ews/kits"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/Azure/go-ntlmssp"
+
+	"github.com/smartlet/ews"
+	"github.com/smartlet/ews/kits"
 )
 
-func newNTLMClient(tripper http.RoundTripper, auth ews.Authorizer, cred ews.Credential, options *options) HTTPClient {
-	return &ntlmClient{
+func NewNTLMClient(tripper http.RoundTripper, auth ews.Authorizer, cred ews.Credential, withAccountDomain bool) *NtlmClient {
+	return &NtlmClient{
 		tripper:           tripper,
 		authorizer:        auth,
 		credential:        cred,
-		withAccountDomain: options.WithAccountDomain,
+		withAccountDomain: withAccountDomain,
 	}
 }
 
-type ntlmClient struct {
+type NtlmClient struct {
 	tripper           http.RoundTripper
 	authorizer        ews.Authorizer
 	credential        ews.Credential
 	withAccountDomain bool // account是否带上domain. 默认false
 }
 
-func (rt *ntlmClient) Call(ctx context.Context, header http.Header, buffer *kits.Buffer) (rsp *http.Response, err error) {
+func (rt *NtlmClient) Call(ctx context.Context, header http.Header, buffer *kits.Buffer) (rsp *http.Response, err error) {
 
 	req := kits.NewRequestWithContext(ctx)
 	req.Method = http.MethodPost
@@ -100,7 +102,7 @@ func (rt *ntlmClient) Call(ctx context.Context, header http.Header, buffer *kits
 	return rsp, nil
 }
 
-func (rt *ntlmClient) authorization(req *http.Request, acc, pwd string) error {
+func (rt *NtlmClient) authorization(req *http.Request, acc, pwd string) error {
 
 	getBody, body, contentLength := req.GetBody, req.Body, req.ContentLength
 

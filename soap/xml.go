@@ -9,7 +9,7 @@ var xmlHeader = []byte(`<?xml version="1.0" encoding="UTF-8"?>`)
 
 const xmlContentType = `text/xml; charset="utf-8"`
 
-func newXmlMessageEncoding(ops *options) Encoding {
+func newXmlMessageEncoding() Encoding {
 	return new(xmlMessageEncoding)
 }
 

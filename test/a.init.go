@@ -26,15 +26,18 @@ var dumpTripper = http.NewDumpRoundTripper(httpTripper, dumpFile)
 
 // soapCli soap客户端. 用于所有PortType服务
 var soapCli = soap.NewSOAPClient(
-	dumpTripper,
-	kits.NewMemoryAuthorizer(), // 内存实现. 生产环境用redis
-	kits.NewMemoryCredential(map[string][3]string{ // 内存实现
-		testSess.GetId(): {
-			os.Getenv("test.addr"), // Exchange地址. 例如"https://www.office365.com/EWS/Exchange.asmx"
-			os.Getenv("test.user"),
-			os.Getenv("test.pass"),
-		},
-	}),
+	soap.NewNTLMClient(
+		dumpTripper,
+		kits.NewMemoryAuthorizer(), // 内存实现. 生产环境用redis
+		kits.NewMemoryCredential(map[string][3]string{ // 内存实现
+			testSess.GetId(): {
+				os.Getenv("test.addr"), // Exchange地址. 例如"https://www.office365.com/EWS/Exchange.asmx"
+				os.Getenv("test.user"),
+				os.Getenv("test.pass"),
+			},
+		}),
+		false,
+	),
 )
 
 // service portType服务实例

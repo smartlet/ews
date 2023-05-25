@@ -2,11 +2,12 @@ package soap
 
 import (
 	"context"
-	"github.com/smartlet/ews"
-	"github.com/smartlet/ews/kits"
 	"io"
 	"net/http"
 	"strconv"
+
+	"github.com/smartlet/ews"
+	"github.com/smartlet/ews/kits"
 )
 
 type HTTPClient interface {
@@ -23,16 +24,10 @@ type Encoding interface {
 	NewDecoder(r io.Reader) Decoder
 }
 
-func NewSOAPClient(tripper http.RoundTripper, auth ews.Authorizer, cred ews.Credential, ofs ...Option) ews.SOAPClient {
-
-	ops := new(options)
-	for _, f := range ofs {
-		f(ops)
-	}
-
+func NewSOAPClient(httpClient HTTPClient) ews.SOAPClient {
 	return &soapClient{
-		client:   newNTLMClient(tripper, auth, cred, ops),
-		encoding: newXmlMessageEncoding(ops),
+		client:   httpClient,
+		encoding: newXmlMessageEncoding(),
 	}
 }
 
