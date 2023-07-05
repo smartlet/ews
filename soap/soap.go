@@ -42,7 +42,7 @@ func (c *soapClient) Call(ctx context.Context, soapAction string, inputHeader an
 	if err != nil {
 		return err
 	}
-	defer kits.DiscardAndCloseBody(response.Body)
+	defer response.Body.Close()
 
 	envelope.Header = outputHeader
 	envelope.Body = outputBody
@@ -76,7 +76,7 @@ func (c *soapClient) Stream(ctx context.Context, soapAction string, inputHeader,
 	if err != nil {
 		return err
 	}
-	defer kits.DiscardAndCloseBody(response.Body)
+	defer response.Body.Close()
 
 	if response.StatusCode < http.StatusBadRequest {
 		// 链式回调
